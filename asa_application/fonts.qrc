@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/fonts">
+        <file>fonts/Typo_Square_Regular Demo.otf</file>
+        <file>fonts/Typo_Square_Bold_Italic Demo.otf</file>
+        <file>fonts/Typo_Square_Bold Demo.otf</file>
+        <file>fonts/Typo_Square_Italic Demo.otf</file>
+        <file>fonts/Typo_Square_Light_Italic Demo.otf</file>
+        <file>fonts/Typo_Square_Light Demo.otf</file>
+        <file>fonts/TypoSquare_1024.png</file>
+    </qresource>
+</RCC>
