@@ -364,12 +364,14 @@ qrc_images.cpp: ../asa_application/images.qrc \
 		../asa_application/images/Iconos/Clavija_azul.png \
 		../asa_application/images/Iconos/Globo_4_azul.png \
 		../asa_application/images/Iconos/Globo_4_amarillo.png \
+		../asa_application/images/Iconos/compu_logo.png \
 		../asa_application/images/Iconos/Clavija_blanco.png \
 		../asa_application/images/Iconos/Campana.png \
 		../asa_application/images/Iconos/Clavija_rojo.png \
 		../asa_application/images/Iconos/Globo_3_amarillo.png \
 		../asa_application/images/Iconos/Globo_1_azul.png \
 		../asa_application/images/Iconos/Globo_4_rojo.png \
+		../asa_application/images/Iconos/Punto_contrasena.png \
 		../asa_application/images/Iconos/Matraz_azul.png \
 		../asa_application/images/Iconos/Globo_2_amarillo.png \
 		../asa_application/images/Iconos/Medidor_blanco.png \
@@ -432,6 +434,7 @@ compiler_moc_header_make_all: moc_mainwindow.cpp moc_detailedwindow.cpp moc_mult
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_detailedwindow.cpp moc_multistatebutton.cpp moc_demo.cpp
 moc_mainwindow.cpp: ../asa_application/detailedwindow.h \
+		../asa_application/multistatebutton.h \
 		../asa_application/mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/luis/asa_qt_app/asa_application -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mainwindow.h -o moc_mainwindow.cpp
 
@@ -466,11 +469,13 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 main.o: ../asa_application/main.cpp ../asa_application/mainwindow.h \
-		../asa_application/detailedwindow.h
+		../asa_application/detailedwindow.h \
+		../asa_application/multistatebutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../asa_application/main.cpp
 
 mainwindow.o: ../asa_application/mainwindow.cpp ../asa_application/mainwindow.h \
 		../asa_application/detailedwindow.h \
+		../asa_application/multistatebutton.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../asa_application/mainwindow.cpp
 

@@ -46,12 +46,63 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
 //    ui->nombre->setStyleSheet("color: blue; background-color: yellow");
     ui->imagen->setStyleSheet("border-image: url("+detailed_elements[element].image+");");
 
+
+    //This is a hack to hide tabs from tab widget
+    ui->tabWidget->setTabText(0,"");
+    ui->tabWidget->setTabText(1,"");
+    ui->tabWidget->setTabText(2,"");
+    ui->tabWidget->setTabText(3,"");
+    ui->tabWidget->setTabText(4,"");
+    ui->tab_1->setStyleSheet("background:black");
+    ui->tab_2->setStyleSheet("background:black");
+    ui->tab_3->setStyleSheet("background:black");
+    ui->tab_4->setStyleSheet("background:black");
+    ui->tab_5->setStyleSheet("background:black");
+
+
     this->setObjectName("DetailedWindow");
-    this->setStyleSheet("detailedwindow#DetailedWindow{background-color:rgb(35, 35, 26)}");
+    this->setStyleSheet("detailedwindow#DetailedWindow{"
+                        "background-color:black;"
+                        "border-style: solid;"
+                        "border-width: 6px;"
+                        "border-radius: 6px;"
+                        "border-color: gray;"
+                        "}");
+
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
     this->show();
 }
 
 detailedwindow::~detailedwindow()
 {
     delete ui;
+}
+
+void detailedwindow::on_closeButton_clicked()
+{
+    this->close();
+}
+
+void detailedwindow::on_button_parametros_clicked()
+{
+    ui->label->setText("Parámetros");
+    ui->tabWidget->setCurrentIndex(0);
+}
+
+void detailedwindow::on_button_evento_clicked()
+{
+    ui->label->setText("Evento");
+    ui->tabWidget->setCurrentIndex(1);
+}
+
+void detailedwindow::on_button_descripcion_clicked()
+{
+    ui->label->setText("Descripción");
+    ui->tabWidget->setCurrentIndex(2);
+}
+
+void detailedwindow::on_button_visualizacion_clicked()
+{
+    ui->label->setText("Visualización de Parámetros");
+    ui->tabWidget->setCurrentIndex(3);
 }

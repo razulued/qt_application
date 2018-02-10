@@ -83,7 +83,8 @@
         <file>images/Iconos/Menu_amarillo.png</file>
         <file>images/Iconos/Menu_azul.png</file>
         <file>images/Iconos/Menu_rojo.png</file>
-        <file>images/Iconos/Punto_contraseña.png</file>
+        <file>images/Iconos/Punto_contrasena.png</file>
         <file>images/Iconos/Punto_linea_de_tiempo.png</file>
+        <file>images/Iconos/compu_logo.png</file>
     </qresource>
 </RCC>

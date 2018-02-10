@@ -40,6 +40,10 @@ public:
     QPushButton *modulo_5;
     QPushButton *modulo_6;
     QLabel *top_bar;
+    QPushButton *top_menu_1;
+    QPushButton *top_menu_2;
+    QPushButton *top_menu_3;
+    QPushButton *top_menu_4;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -232,6 +236,54 @@ public:
 "border: none; \n"
 "background-repeat: none;\n"
 " } "));
+        top_menu_1 = new QPushButton(centralWidget);
+        top_menu_1->setObjectName(QStringLiteral("top_menu_1"));
+        top_menu_1->setGeometry(QRect(20, 15, 23, 28));
+        top_menu_1->setFocusPolicy(Qt::NoFocus);
+        top_menu_1->setStyleSheet(QLatin1String("#top_menu_1 { \n"
+"background-color: transparent;\n"
+"border-image: url(:/iconos/images/Iconos/Campana.png);\n"
+"background: none; \n"
+"border: none; \n"
+"background-repeat: none;\n"
+" } "));
+        top_menu_1->setCheckable(true);
+        top_menu_2 = new QPushButton(centralWidget);
+        top_menu_2->setObjectName(QStringLiteral("top_menu_2"));
+        top_menu_2->setGeometry(QRect(70, 15, 35, 28));
+        top_menu_2->setFocusPolicy(Qt::NoFocus);
+        top_menu_2->setStyleSheet(QLatin1String("#top_menu_2 { \n"
+"background-color: transparent;\n"
+"border-image: url(:/iconos/images/Iconos/Libro.png);\n"
+"background: none; \n"
+"border: none; \n"
+"background-repeat: none;\n"
+" } "));
+        top_menu_2->setCheckable(true);
+        top_menu_3 = new QPushButton(centralWidget);
+        top_menu_3->setObjectName(QStringLiteral("top_menu_3"));
+        top_menu_3->setGeometry(QRect(130, 10, 37, 43));
+        top_menu_3->setFocusPolicy(Qt::NoFocus);
+        top_menu_3->setStyleSheet(QLatin1String("#top_menu_3 { \n"
+"background-color: transparent;\n"
+"border-image: url(:/iconos/images/Iconos/Diagrama.png);\n"
+"background: none; \n"
+"border: none; \n"
+"background-repeat: none;\n"
+" } "));
+        top_menu_3->setCheckable(true);
+        top_menu_4 = new QPushButton(centralWidget);
+        top_menu_4->setObjectName(QStringLiteral("top_menu_4"));
+        top_menu_4->setGeometry(QRect(190, 14, 41, 31));
+        top_menu_4->setFocusPolicy(Qt::NoFocus);
+        top_menu_4->setStyleSheet(QLatin1String("#top_menu_4 { \n"
+"background-color: transparent;\n"
+"border-image: url(:/iconos/images/Iconos/compu_logo.png);\n"
+"background: none; \n"
+"border: none; \n"
+"background-repeat: none;\n"
+" } "));
+        top_menu_4->setCheckable(true);
         MainWindow->setCentralWidget(centralWidget);
         bottom_bar->raise();
         pushButton->raise();
@@ -248,6 +300,10 @@ public:
         modulo_5->raise();
         modulo_6->raise();
         top_bar->raise();
+        top_menu_1->raise();
+        top_menu_2->raise();
+        top_menu_3->raise();
+        top_menu_4->raise();
 
         retranslateUi(MainWindow);
 
@@ -275,6 +331,10 @@ public:
         modulo_5->setText(QString());
         modulo_6->setText(QString());
         top_bar->setText(QString());
+        top_menu_1->setText(QString());
+        top_menu_2->setText(QString());
+        top_menu_3->setText(QString());
+        top_menu_4->setText(QString());
     } // retranslateUi
 
 };

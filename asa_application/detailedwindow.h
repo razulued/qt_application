@@ -25,6 +25,17 @@ public:
     explicit detailedwindow(detailed_elements_t element, QWidget *parent = 0);
     ~detailedwindow();
 
+private slots:
+    void on_closeButton_clicked();
+
+    void on_button_parametros_clicked();
+
+    void on_button_evento_clicked();
+
+    void on_button_descripcion_clicked();
+
+    void on_button_visualizacion_clicked();
+
 private:
     Ui::detailedwindow *ui;
 };
