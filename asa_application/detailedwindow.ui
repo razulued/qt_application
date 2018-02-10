@@ -50,6 +50,9 @@
    </property>
   </widget>
   <widget class="QLabel" name="imagen">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -312,6 +315,7 @@ background-repeat: none;
 
 QTabBar::tab {
 background-color: transparent;
+border: none;
 }</string>
    </property>
    <property name="tabPosition">
@@ -321,7 +325,7 @@ background-color: transparent;
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <property name="elideMode">
     <enum>Qt::ElideNone</enum>
@@ -343,6 +347,22 @@ background-color: transparent;
     <attribute name="title">
      <string>Tab 3</string>
     </attribute>
+    <widget class="QLabel" name="description_label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>261</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Descripcion</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">

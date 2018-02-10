@@ -38,6 +38,7 @@ public:
     QWidget *tab_1;
     QWidget *tab_2;
     QWidget *tab_3;
+    QLabel *description_label;
     QWidget *tab_4;
     QWidget *tab_5;
 
@@ -60,6 +61,7 @@ public:
         nombre->setWordWrap(true);
         imagen = new QLabel(detailedwindow);
         imagen->setObjectName(QStringLiteral("imagen"));
+        imagen->setEnabled(false);
         imagen->setGeometry(QRect(30, 80, 211, 181));
         imagen->setStyleSheet(QLatin1String("#imagen { \n"
 "background-color: transparent;\n"
@@ -171,6 +173,7 @@ public:
 "\n"
 "QTabBar::tab {\n"
 "background-color: transparent;\n"
+"border: none;\n"
 "}"));
         tabWidget->setTabPosition(QTabWidget::North);
         tabWidget->setTabShape(QTabWidget::Rounded);
@@ -184,6 +187,10 @@ public:
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
+        description_label = new QLabel(tab_3);
+        description_label->setObjectName(QStringLiteral("description_label"));
+        description_label->setGeometry(QRect(10, 10, 261, 131));
+        description_label->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
         tabWidget->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QStringLiteral("tab_4"));
@@ -194,7 +201,7 @@ public:
 
         retranslateUi(detailedwindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(detailedwindow);
@@ -214,6 +221,7 @@ public:
         button_visualizacion_2->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("detailedwindow", "Tab 1", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("detailedwindow", "Tab 2", 0));
+        description_label->setText(QApplication::translate("detailedwindow", "Descripcion", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("detailedwindow", "Tab 3", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("detailedwindow", "Tab 4", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("detailedwindow", "Tab 5", 0));

@@ -109,8 +109,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Bold Demo.otf");
     QFont active_parameter_font("Typo Square Bold Demo",20,1);
-    ui->active_param_label->setStyleSheet("color:black");
     ui->active_param_label->setFont(active_parameter_font);
+
+    ui->active_param_label->setStyleSheet("color:black");
 
 
 
