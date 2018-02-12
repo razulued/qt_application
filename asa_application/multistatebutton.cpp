@@ -1,5 +1,14 @@
 #include "multistatebutton.h"
 
+static multi_button_state_t parameter_state[TOTAL_TYPES_PARAM];
+static QPushButton *button_link[TOTAL_TYPES_PARAM];
+static parameters_t selected_parameter = PARAM_ELECTRIC;
+
+
+
+static void setBorderImage(QString *img, QPushButton *btn);
+static void setState(multi_button_state_t state, parameters_t parameter);
+
 const multi_button_icons_t icon_path[TOTAL_TYPES_PARAM]=
 {
     /*Electrical*/
@@ -24,36 +33,67 @@ const multi_button_icons_t icon_path[TOTAL_TYPES_PARAM]=
     },
 };
 
-MultiStateButton::MultiStateButton(multi_button_state_t init, paremeters_t param, QPushButton *parent) : QPushButton(parent)
+void InitButtons(QPushButton *elec, QPushButton *fis, QPushButton *chem)
 {
-    parameter = param;
-    setState(init);
+    button_link[PARAM_ELECTRIC] = elec;
+    button_link[PARAM_PHYSHIC] = fis;
+    button_link[PARAM_CHEMIC] = chem;
+
+    UpdateButtons();
 }
 
-MultiStateButton::~MultiStateButton()
+void UpdateButtons()
 {
+    //Electric
+    int i = 0;
 
+    for(i = 0; i < TOTAL_TYPES_PARAM; i++)
+    {
+        if(STATE_NORMAL == parameter_state[i])
+        {
+            setState(STATE_NORMAL, (parameters_t)i);
+        }
+
+        if(STATE_FAILED == parameter_state[i])
+        {
+            setState(STATE_FAILED, (parameters_t)i);
+        }
+
+        if(STATE_WARNING == parameter_state[i])
+        {
+            setState(STATE_WARNING, (parameters_t)i);
+        }
+    }
 }
 
-void MultiStateButton::setBorderImage(QString *img)
+//background-image: url(:/iconos/images/Iconos/Medidor_azul.png);
+//border: none;
+//background-repeat: none;
+//background-position: center;
+
+static void setBorderImage(QString *img, QPushButton *btn)
 {
-    this->setStyleSheet("border-image: url("+*img+");");
+    btn->setStyleSheet("background-image: url("+*img+");"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
 }
 
-void MultiStateButton::setState(multi_button_state_t state)
+static void setState(multi_button_state_t state, parameters_t parameter)
 {
-    button_state = state;
-
     QString *ico_ptr;
 
     switch(state)
     {
     case STATE_NORMAL:
-        ico_ptr = (QString *)&icon_path[parameter].ico_normal;
-    break;
-
-    case STATE_PRESSED:
-        ico_ptr = (QString *)&icon_path[parameter].ico_pressed;
+        if(selected_parameter == parameter)
+        {
+            ico_ptr = (QString *)&icon_path[parameter].ico_pressed;
+        }
+        else
+        {
+            ico_ptr = (QString *)&icon_path[parameter].ico_normal;
+        }
     break;
 
     case STATE_WARNING:
@@ -69,14 +109,13 @@ void MultiStateButton::setState(multi_button_state_t state)
     break;
     }
 
-    setBorderImage(ico_ptr);
+    setBorderImage(ico_ptr, button_link[parameter]);
 }
 
-multi_button_state_t MultiStateButton::getState()
+
+
+void SelectParemeter(parameters_t param)
 {
-    return STATE_PRESSED;
+    selected_parameter = param;
+    UpdateButtons();
 }
- void MultiStateButton::setParam(paremeters_t param)
- {
-     parameter = param;
- }

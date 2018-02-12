@@ -16,12 +16,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     detailedwindow.cpp \
     multistatebutton.cpp \
-    demo.cpp
+    demo.cpp \
+    bcm2835.c \
+    parameters.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
     multistatebutton.h \
-    demo.h
+    demo.h \
+    parameters.h \
+    bcm2835.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui
@@ -29,3 +33,8 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     images.qrc \
     fonts.qrc
+
+INSTALLS = target
+
+target.files = asa_application
+target.path = /home/pi

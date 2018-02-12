@@ -2,31 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QPushButton>
 #include <QFontDatabase>
-
-void MainWindow::InitButtons()
-{
-    physical_param_button = (MultiStateButton *)ui->pb_fisicos;
-    physical_param_button->setParam(PARAM_PHYSHIC);
-    physical_param_button->setState(STATE_NORMAL);
-
-    chemical_param_button = (MultiStateButton *)ui->pb_quimicos;
-    chemical_param_button->setParam(PARAM_CHEMIC);
-    chemical_param_button->setState(STATE_NORMAL);
-
-    electrical_param_button = (MultiStateButton *)ui->pb_electricos;
-    electrical_param_button->setParam(PARAM_ELECTRIC);
-    electrical_param_button->setState(STATE_PRESSED);
-
-    //Electric Paramenters are show by default
-    selected_parameter = E_PARAMETROS_ELECTRICOS;
-
-
-    //Hide parameters
-//    HandleParameterChange(E_PARAMETROS_ELECTRICOS);
-
-    display_parameters = false;
-    HideButtons(true);
-}
+#include "parameters.h"
+#include <QList>
 
 void MainWindow::HideButtons(bool hide)
 {
@@ -48,30 +25,103 @@ void MainWindow::HideButtons(bool hide)
     }
 }
 
-void MainWindow::HandleParameterChange(t_parameters param)
+void MainWindow::updateTooltips()
 {
-    switch(param)
+    //TODO make this dynamic later
+    int regulador_elec[] = {45, 48, 53};
+    int regulador_phys[] = {43, 40};
+    int reac_elect[] = {93, 96, 101};
+    int reac_phys[] = {165};
+    int reac_chem[] = {90, 160, 161, 163};
+
+    int i;
+    QFont font("Typo Square Ligth Demo",10,1);
+
+    // Nombre Del elemento
+    ui->tip_reg_elec->setFont(font);
+    ui->tip_reg_elec->clear();
+    ui->tip_reg_elec->setStyleSheet("background: transparent;"
+                                  "color: rgb(0, 167, 250);"
+                                    "border-color: rgb(0, 167, 250)");
+    ui->tip_reg_elec->setFont(font);
+
+
+    for(i = 0; i < 3; i++)
     {
-    case E_PARAMETROS_ELECTRICOS:
-        physical_param_button->setState(STATE_NORMAL);
-        chemical_param_button->setState(STATE_NORMAL);
-        electrical_param_button->setState(STATE_PRESSED);
-        ui->active_param_label->setText("Parámetros Eléctricos");
-        break;
-    case E_PARAMETROS_FISICOS:
-        physical_param_button->setState(STATE_PRESSED);
-        chemical_param_button->setState(STATE_NORMAL);
-        electrical_param_button->setState(STATE_NORMAL);
-        ui->active_param_label->setText("Parámetros Físicos");
-        break;
-    case E_PARAMETROS_QUIMICOS:
-        physical_param_button->setState(STATE_NORMAL);
-        chemical_param_button->setState(STATE_PRESSED);
-        electrical_param_button->setState(STATE_NORMAL);
-        ui->active_param_label->setText("Parámetros Químicos");
-        break;
+        if(true == getParamActiveShow(regulador_elec[i]))
+        {
+            ui->tip_reg_elec->addItem(getParamName(regulador_elec[i]) + ": " + getParamValue(regulador_elec[i]));
+        }
     }
-    selected_parameter = param;
+
+    ui->tip_reg_phys->setFont(font);
+    ui->tip_reg_phys->clear();
+    ui->tip_reg_phys->setStyleSheet("background: transparent;"
+                                  "color: rgb(0, 167, 250);");
+    ui->tip_reg_phys->setFont(font);
+    for(i = 0; i < 2; i++)
+    {
+        if(true == getParamActiveShow(regulador_phys[i]))
+        {
+            ui->tip_reg_phys->addItem(getParamName(regulador_phys[i]) + ": " + getParamValue(regulador_phys[i]));
+        }
+    }
+
+    ui->tip_reac_elec->setFont(font);
+    ui->tip_reac_elec->clear();
+    ui->tip_reac_elec->setStyleSheet("background: transparent;"
+                                  "color: rgb(0, 167, 250);");
+    ui->tip_reac_elec->setFont(font);
+    for(i = 0; i < 3; i++)
+    {
+        if(true == getParamActiveShow(reac_elect[i]))
+        {
+            ui->tip_reac_elec->addItem(getParamName(reac_elect[i]) + ": " + getParamValue(reac_elect[i]));
+        }
+    }
+
+    ui->tip_reac_phys->setFont(font);
+    ui->tip_reac_phys->clear();
+    ui->tip_reac_phys->setStyleSheet("background: transparent;"
+                                  "color: rgb(0, 167, 250);");
+    ui->tip_reac_phys->setFont(font);
+    for(i = 0; i < 1; i++)
+    {
+        if(true == getParamActiveShow(reac_phys[i]))
+        {
+            ui->tip_reac_phys->addItem(getParamName(reac_phys[i]) + ": " + getParamValue(reac_phys[i]));
+        }
+    }
+
+    ui->tip_reac_chem->setFont(font);
+    ui->tip_reac_chem->clear();
+    ui->tip_reac_chem->setStyleSheet("background: transparent;"
+                                  "color: rgb(0, 167, 250);");
+    ui->tip_reac_chem->setFont(font);
+    for(i = 0; i < 4; i++)
+    {
+        if(true == getParamActiveShow(reac_chem[i]))
+        {
+            ui->tip_reac_chem->addItem(getParamName(reac_chem[i]) + ": " + getParamValue(reac_chem[i]));
+        }
+    }
+
+
+//    quint32 i, param_id;
+//    ui->layout_param->setAlignment(Qt::AlignTop);
+//    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_elect.size();
+//    for(i = 0; i < (quint32)detailed_elements[element]->list_elect.size(); i++)
+//    {
+//        param_id = detailed_elements[element]->list_elect[i];
+//        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
+
+//        label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
+//        label->setFont(font_2);
+//        ui->layout_param->addWidget(label);
+
+//    }
+//    qDebug(
+
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -80,21 +130,27 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //Setup Timer
+    dataTimer.setInterval(200);
+    connect(&dataTimer, SIGNAL(timeout()),this,SLOT(dataTimerSlot()));
+    dataTimer.start();
+
+    //Add fonts
+    QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Bold Demo.otf");
+    QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Ligth Demo.otf");
+    QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Italic Demo.otf");
+
     //Setup Buttons and link to images
-    InitButtons();
+    InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
+    display_parameters = false;
+    HideButtons(true);
+    InitRandomParameters();
+    updateTooltips();
 
-    //Set mainwindows buttons properties
-    button_main_menu = ui->pushButton;
-    connect(button_main_menu, SIGNAL (released()),this, SLOT (handleMenuButton()));
-    button_main_menu->show();
-
-    ui->pb_electricos->setChecked(true);
+    //Set connect buttons to signals
+    connect(ui->pushButton, SIGNAL (released()),this, SLOT (handleMenuButton()));
     connect(ui->pb_electricos, SIGNAL (released()),this, SLOT (handleParametrosElectricosButton()));
-
-    ui->pb_fisicos->setChecked(false);
     connect(ui->pb_fisicos, SIGNAL (released()),this, SLOT (handleParametrosFisicosButton()));
-
-    ui->pb_quimicos->setChecked(false);
     connect(ui->pb_quimicos, SIGNAL (released()),this, SLOT (handleParametrosQuimicosButton()));
 
     //Connect slot to signal
@@ -106,8 +162,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->modulo_5, SIGNAL (released()),this, SLOT (handleDetailedView_5()));
     connect(ui->modulo_6, SIGNAL (released()),this, SLOT (handleDetailedView_6()));
 
-
-    QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Bold Demo.otf");
     QFont active_parameter_font("Typo Square Bold Demo",20,1);
     ui->active_param_label->setFont(active_parameter_font);
 
@@ -143,17 +197,17 @@ void MainWindow::handleMenuButton()
 
 void MainWindow::handleParametrosElectricosButton()
 {
-    HandleParameterChange(E_PARAMETROS_ELECTRICOS);
+    SelectParemeter(PARAM_ELECTRIC);
 }
 
 void MainWindow::handleParametrosFisicosButton()
 {
-    HandleParameterChange(E_PARAMETROS_FISICOS);
+    SelectParemeter(PARAM_PHYSHIC);
 }
 
 void MainWindow::handleParametrosQuimicosButton()
 {
-    HandleParameterChange(E_PARAMETROS_QUIMICOS);
+    SelectParemeter(PARAM_CHEMIC);
 }
 
 void MainWindow::handleDetailedView_1()
@@ -199,3 +253,13 @@ void MainWindow::handleDetailedView_6()
     detail_window = new detailedwindow(ELEMENT_DESHIDRATADOR);
 }
 
+
+void MainWindow::on_asa_logo_clicked()
+{
+    this->close();
+}
+
+void MainWindow::dataTimerSlot()
+{
+    this->updateTooltips();
+}

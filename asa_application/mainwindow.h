@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include "detailedwindow.h"
 #include "multistatebutton.h"
+#include "parameters.h"
 
 
 namespace Ui {
@@ -13,10 +14,11 @@ class MainWindow;
 
 typedef enum
 {
-    E_PARAMETROS_ELECTRICOS,
-    E_PARAMETROS_FISICOS,
-    E_PARAMETROS_QUIMICOS
-}t_parameters;
+    PARAMETER_NORMAL,
+    PARAMETER_NORMAL_SELECTED,
+    PARAMETER_WARNING,
+    PARAMETER_FAILED
+}parameter_state_t;
 
 class MainWindow : public QMainWindow
 {
@@ -25,15 +27,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void HandleParameterChange(t_parameters param);
-    t_parameters selected_parameter;;
-
-    /* Parameter buttons */
-    MultiStateButton *physical_param_button;
-    MultiStateButton *chemical_param_button;
-    MultiStateButton *electrical_param_button;
-
-    QPushButton *button_main_menu;
+    void updateTooltips();
 
 public slots:
     void handleMenuButton();
@@ -47,12 +41,20 @@ public slots:
     void handleDetailedView_5();
     void handleDetailedView_6();
 
+private slots:
+    void on_asa_logo_clicked();
+    void dataTimerSlot();
+
 private:
+    QTimer dataTimer;
+
     Ui::MainWindow *ui;
     bool display_parameters;
     detailedwindow *detail_window;
     void HideButtons(bool show);
-    void InitButtons();
+    parameter_state_t electric_state;
+    parameter_state_t chemic_state;
+    parameter_state_t physic_state;
 };
 
 #endif // MAINWINDOW_H

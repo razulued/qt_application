@@ -9,9 +9,10 @@ int main(int argc, char *argv[])
     w.setObjectName("MyMainWindow");
 //    w.setStyleSheet("MainWindow#MyMainWindow{background-image:url(:/images/images/main_window_background.jpg)}");
     w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
-    //w.show();
     w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
-    w.showFullScreen();
+    //w.showFullScreen();
+    w.show();
+
 
 
     return a.exec();

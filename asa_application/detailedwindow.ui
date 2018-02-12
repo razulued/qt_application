@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>614</width>
-    <height>328</height>
+    <height>367</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -24,6 +24,11 @@
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QCheckBox{
+color:white;
+}</string>
   </property>
   <widget class="QLabel" name="nombre">
    <property name="geometry">
@@ -78,9 +83,9 @@ background-repeat: none;
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>15</y>
+     <y>5</y>
      <width>281</width>
-     <height>41</height>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
@@ -107,10 +112,10 @@ background-repeat: none;
   <widget class="QPushButton" name="closeButton">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>14</y>
-     <width>20</width>
-     <height>20</height>
+     <x>575</x>
+     <y>6</y>
+     <width>31</width>
+     <height>30</height>
     </rect>
    </property>
    <property name="font">
@@ -126,7 +131,7 @@ background-repeat: none;
    <property name="styleSheet">
     <string notr="true">#closeButton { 
 background-color: transparent;
-border-image: none;
+border-image: url(:/iconos/images/Iconos/close-x.png);
 background: none; 
 border: none; 
 background-repeat: none;
@@ -134,7 +139,7 @@ color: rgb(0, 167, 250);
  } </string>
    </property>
    <property name="text">
-    <string>❌</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
@@ -151,27 +156,21 @@ color: rgb(0, 167, 250);
     <rect>
      <x>20</x>
      <y>270</y>
-     <width>23</width>
-     <height>23</height>
+     <width>35</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">#button_parametros{ 
-background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);
-background: none; 
-border: none; 
-background-repeat: none;
- } </string>
+    <string notr="true"/>
    </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="button_evento">
@@ -179,8 +178,8 @@ background-repeat: none;
     <rect>
      <x>70</x>
      <y>270</y>
-     <width>23</width>
-     <height>23</height>
+     <width>35</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="focusPolicy">
@@ -196,10 +195,10 @@ background-repeat: none;
  } </string>
    </property>
    <property name="text">
-    <string/>
+    <string>2</string>
    </property>
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="button_descripcion">
@@ -207,8 +206,8 @@ background-repeat: none;
     <rect>
      <x>120</x>
      <y>270</y>
-     <width>23</width>
-     <height>23</height>
+     <width>35</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="focusPolicy">
@@ -224,10 +223,10 @@ background-repeat: none;
  } </string>
    </property>
    <property name="text">
-    <string/>
+    <string>3</string>
    </property>
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="button_visualizacion">
@@ -235,8 +234,8 @@ background-repeat: none;
     <rect>
      <x>170</x>
      <y>270</y>
-     <width>23</width>
-     <height>23</height>
+     <width>35</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="focusPolicy">
@@ -252,10 +251,10 @@ background-repeat: none;
  } </string>
    </property>
    <property name="text">
-    <string/>
+    <string>4</string>
    </property>
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="button_visualizacion_2">
@@ -263,8 +262,8 @@ background-repeat: none;
     <rect>
      <x>220</x>
      <y>270</y>
-     <width>23</width>
-     <height>23</height>
+     <width>35</width>
+     <height>35</height>
     </rect>
    </property>
    <property name="focusPolicy">
@@ -280,22 +279,22 @@ background-repeat: none;
  } </string>
    </property>
    <property name="text">
-    <string/>
+    <string>5</string>
    </property>
    <property name="checkable">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QTabWidget" name="tabWidget">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="geometry">
     <rect>
      <x>290</x>
      <y>60</y>
      <width>291</width>
-     <height>251</height>
+     <height>301</height>
     </rect>
    </property>
    <property name="focusPolicy">
@@ -325,7 +324,7 @@ border: none;
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>3</number>
    </property>
    <property name="elideMode">
     <enum>Qt::ElideNone</enum>
@@ -337,6 +336,17 @@ border: none;
     <attribute name="title">
      <string>Tab 1</string>
     </attribute>
+    <widget class="QWidget" name="verticalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>261</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="layout_param"/>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -368,6 +378,17 @@ border: none;
     <attribute name="title">
      <string>Tab 4</string>
     </attribute>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>271</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout"/>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_5">
     <attribute name="title">
@@ -375,6 +396,16 @@ border: none;
     </attribute>
    </widget>
   </widget>
+  <zorder>nombre</zorder>
+  <zorder>imagen</zorder>
+  <zorder>closeButton</zorder>
+  <zorder>button_parametros</zorder>
+  <zorder>button_evento</zorder>
+  <zorder>button_descripcion</zorder>
+  <zorder>button_visualizacion</zorder>
+  <zorder>button_visualizacion_2</zorder>
+  <zorder>tabWidget</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>

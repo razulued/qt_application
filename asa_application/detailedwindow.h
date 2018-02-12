@@ -2,7 +2,7 @@
 #define DETAILEDWINDOW_H
 
 #include <QDialog>
-
+#include <QtCore>
 typedef enum
 {
     ELEMENT_REGULADOR,
@@ -12,6 +12,17 @@ typedef enum
     ELEMENT_DIGESTOR,
     ELEMENT_DESHIDRATADOR
 }detailed_elements_t;
+
+typedef struct
+{
+    QString name;
+    QString image;
+    QString description;
+    QList<int> list_elect;
+    QList<int> list_phys;
+    QList<int> list_chem;
+
+}detailed_window_elements_t;
 
 namespace Ui {
 class detailedwindow;
@@ -35,6 +46,8 @@ private slots:
     void on_button_descripcion_clicked();
 
     void on_button_visualizacion_clicked();
+
+    void checkBoxStateChanged(int);
 
 private:
     Ui::detailedwindow *ui;
