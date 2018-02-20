@@ -56,7 +56,8 @@ public:
         detailedwindow->setMaximumSize(QSize(614, 16777215));
         detailedwindow->setStyleSheet(QLatin1String("QCheckBox{\n"
 "color:white;\n"
-"}"));
+"}\n"
+""));
         nombre = new QLabel(detailedwindow);
         nombre->setObjectName(QStringLiteral("nombre"));
         nombre->setGeometry(QRect(30, 10, 201, 51));
@@ -87,7 +88,7 @@ public:
         label->setWordWrap(true);
         closeButton = new QPushButton(detailedwindow);
         closeButton->setObjectName(QStringLiteral("closeButton"));
-        closeButton->setGeometry(QRect(575, 6, 31, 30));
+        closeButton->setGeometry(QRect(572, 0, 41, 41));
         QFont font1;
         font1.setPointSize(20);
         font1.setBold(true);
@@ -100,60 +101,63 @@ public:
 "background: none; \n"
 "border: none; \n"
 "background-repeat: none;\n"
-"color: rgb(0, 167, 250);\n"
-" } "));
+"margin:5px;\n"
+" } \n"
+""));
         closeButton->setCheckable(false);
         closeButton->setAutoDefault(false);
         closeButton->setFlat(false);
         button_parametros = new QPushButton(detailedwindow);
         button_parametros->setObjectName(QStringLiteral("button_parametros"));
-        button_parametros->setGeometry(QRect(20, 270, 35, 35));
+        button_parametros->setGeometry(QRect(20, 270, 40, 60));
         button_parametros->setFocusPolicy(Qt::NoFocus);
-        button_parametros->setStyleSheet(QStringLiteral(""));
+        button_parametros->setStyleSheet(QLatin1String("#button_parametros{\n"
+"background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
         button_parametros->setCheckable(false);
         button_evento = new QPushButton(detailedwindow);
         button_evento->setObjectName(QStringLiteral("button_evento"));
-        button_evento->setGeometry(QRect(70, 270, 35, 35));
+        button_evento->setGeometry(QRect(70, 270, 40, 60));
         button_evento->setFocusPolicy(Qt::NoFocus);
-        button_evento->setStyleSheet(QLatin1String("#button_parametros{ \n"
-"background-color: transparent;\n"
-"border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);\n"
-"background: none; \n"
-"border: none; \n"
+        button_evento->setStyleSheet(QLatin1String("#button_evento{\n"
+"background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);\n"
+"border: none;\n"
 "background-repeat: none;\n"
-" } "));
+"background-position: center;\n"
+"}"));
         button_evento->setCheckable(false);
         button_descripcion = new QPushButton(detailedwindow);
         button_descripcion->setObjectName(QStringLiteral("button_descripcion"));
-        button_descripcion->setGeometry(QRect(120, 270, 35, 35));
+        button_descripcion->setGeometry(QRect(120, 270, 40, 60));
         button_descripcion->setFocusPolicy(Qt::NoFocus);
-        button_descripcion->setStyleSheet(QLatin1String("#button_parametros{ \n"
-"background-color: transparent;\n"
-"border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);\n"
-"background: none; \n"
-"border: none; \n"
+        button_descripcion->setStyleSheet(QLatin1String("#button_descripcion{\n"
+"background-image: url(:/iconos/images/Iconos/Info_azul.png);\n"
+"border: none;\n"
 "background-repeat: none;\n"
-" } "));
+"background-position: center;\n"
+"}"));
         button_descripcion->setCheckable(false);
         button_visualizacion = new QPushButton(detailedwindow);
         button_visualizacion->setObjectName(QStringLiteral("button_visualizacion"));
-        button_visualizacion->setGeometry(QRect(170, 270, 35, 35));
+        button_visualizacion->setGeometry(QRect(170, 270, 40, 60));
         button_visualizacion->setFocusPolicy(Qt::NoFocus);
-        button_visualizacion->setStyleSheet(QLatin1String("#button_parametros{ \n"
-"background-color: transparent;\n"
-"border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);\n"
-"background: none; \n"
-"border: none; \n"
+        button_visualizacion->setStyleSheet(QLatin1String("#button_visualizacion{\n"
+"background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);\n"
+"border: none;\n"
 "background-repeat: none;\n"
-" } "));
+"background-position: center;\n"
+"}"));
         button_visualizacion->setCheckable(false);
         button_visualizacion_2 = new QPushButton(detailedwindow);
         button_visualizacion_2->setObjectName(QStringLiteral("button_visualizacion_2"));
-        button_visualizacion_2->setGeometry(QRect(220, 270, 35, 35));
+        button_visualizacion_2->setGeometry(QRect(220, 270, 40, 60));
         button_visualizacion_2->setFocusPolicy(Qt::NoFocus);
-        button_visualizacion_2->setStyleSheet(QLatin1String("#button_parametros{ \n"
+        button_visualizacion_2->setStyleSheet(QLatin1String("#button_visualizacion_2{ \n"
 "background-color: transparent;\n"
-"border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);\n"
+"border-image: none;\n"
 "background: none; \n"
 "border: none; \n"
 "background-repeat: none;\n"
@@ -197,8 +201,9 @@ public:
         tab_3->setObjectName(QStringLiteral("tab_3"));
         description_label = new QLabel(tab_3);
         description_label->setObjectName(QStringLiteral("description_label"));
-        description_label->setGeometry(QRect(10, 10, 261, 131));
+        description_label->setGeometry(QRect(10, 10, 261, 171));
         description_label->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
+        description_label->setWordWrap(true);
         tabWidget->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QStringLiteral("tab_4"));
@@ -225,7 +230,7 @@ public:
 
         retranslateUi(detailedwindow);
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(detailedwindow);
@@ -238,11 +243,11 @@ public:
         imagen->setText(QString());
         label->setText(QApplication::translate("detailedwindow", "Par\303\241metros", 0));
         closeButton->setText(QString());
-        button_parametros->setText(QApplication::translate("detailedwindow", "1", 0));
-        button_evento->setText(QApplication::translate("detailedwindow", "2", 0));
-        button_descripcion->setText(QApplication::translate("detailedwindow", "3", 0));
-        button_visualizacion->setText(QApplication::translate("detailedwindow", "4", 0));
-        button_visualizacion_2->setText(QApplication::translate("detailedwindow", "5", 0));
+        button_parametros->setText(QString());
+        button_evento->setText(QString());
+        button_descripcion->setText(QString());
+        button_visualizacion->setText(QString());
+        button_visualizacion_2->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("detailedwindow", "Tab 1", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("detailedwindow", "Tab 2", 0));
         description_label->setText(QApplication::translate("detailedwindow", "Descripcion", 0));

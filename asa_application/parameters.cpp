@@ -1,112 +1,112 @@
 #include "parameters.h"
 #include <QtDebug>
 char* gen_stat_ecuid;
-unsigned int gen_stat_prodtype;
-unsigned int gen_stat_msgtype;
-unsigned int gen_stat_swver;
-unsigned int gen_stat_hwver;
-unsigned int gen_stat_txseqnum;
-unsigned int gen_stat_sysuptime;
-unsigned int gen_stat_gpslat;
-unsigned int gen_stat_gpslong;
-unsigned int gen_stat_gprs_rssi;
-unsigned int gen_stat_batlevel;
+double gen_stat_prodtype;
+double gen_stat_msgtype;
+double gen_stat_swver;
+double gen_stat_hwver;
+double gen_stat_txseqnum;
+double gen_stat_sysuptime;
+double gen_stat_gpslat;
+double gen_stat_gpslong;
+double gen_stat_gprs_rssi;
+double gen_stat_batlevel;
 char* gen_stat_debugmsg;
-unsigned int gen_stat_numresets;
-unsigned int gen_stat_databyaddr;
-unsigned int gen_stat_gprs_ber;
-unsigned int gen_stat_authlevel;
-unsigned int gen_parm_sec_challenge;
-unsigned int car_stat_shit_level;
-unsigned int car_stat_sens_ph_in;
-unsigned int car_stat_sens_sst_in;
-unsigned int car_stat_sens_caudal_in;
-unsigned int car_stat_diag_mot1;
-unsigned int car_stat_mot1_volt12;
-unsigned int car_stat_mot1_volt23;
-unsigned int car_stat_mot1_volt13;
-unsigned int car_stat_mot1_amp1;
-unsigned int car_stat_mot1_amp2;
-unsigned int car_stat_mot1_amp3;
-unsigned int car_stat_mot1_freq;
-unsigned int car_stat_mot1_cosphi;
-unsigned int car_stat_mot1_pfac;
-unsigned int car_stat_diag_mot2;
-unsigned int car_stat_mot2_volt12;
-unsigned int car_stat_mot2_volt23;
-unsigned int car_stat_mot2_volt13;
-unsigned int car_stat_mot2_amp1;
-unsigned int car_stat_mot2_amp2;
-unsigned int car_stat_mot2_amp3;
-unsigned int car_stat_mot2_freq;
-unsigned int car_stat_mot2_cosphi;
-unsigned int car_stat_mot2_pfac;
-unsigned int car_stat_diag_warn_ind;
-unsigned int car_stat_sens_turbidez_in;
-unsigned int car_parm_off_level;
-unsigned int car_parm_setp_lev1;
-unsigned int car_parm_setp_lev2;
-unsigned int car_parm_setp_lev3;
-unsigned int car_parm_time_alt_max;
-unsigned int car_ctrl_target_opmode;
-unsigned int car_ctrl_drive_mot1;
-unsigned int car_ctrl_drive_mot2;
-unsigned int car_ctrl_drive_warn_ind;
-unsigned int rea_stat_o2_sens_1_level;
-unsigned int rea_stat_o2_sens_2_level;
-unsigned int rea_stat_diag_mot1;
-unsigned int rea_stat_mot1_volt12;
-unsigned int rea_stat_mot1_volt23;
-unsigned int rea_stat_mot1_volt13;
-unsigned int rea_stat_mot1_amp1;
-unsigned int rea_stat_mot1_amp2;
-unsigned int rea_stat_mot1_amp3;
-unsigned int rea_stat_mot1_freq;
-unsigned int rea_stat_mot1_cosphi;
-unsigned int rea_stat_mot1_pfac;
-unsigned int rea_stat_diag_mot2;
-unsigned int rea_stat_mot2_volt12;
-unsigned int rea_stat_mot2_volt23;
-unsigned int rea_stat_mot2_volt13;
-unsigned int rea_stat_mot2_amp1;
-unsigned int rea_stat_mot2_amp2;
-unsigned int rea_stat_mot2_amp3;
-unsigned int rea_stat_mot2_freq;
-unsigned int rea_stat_mot2_cosphi;
-unsigned int rea_stat_mot2_pfac;
-unsigned int rea_stat_diag_mot3;
-unsigned int rea_stat_mot3_volt12;
-unsigned int rea_stat_mot3_volt23;
-unsigned int rea_stat_mot3_volt13;
-unsigned int rea_stat_mot3_amp1;
-unsigned int rea_stat_mot3_amp2;
-unsigned int rea_stat_mot3_amp3;
-unsigned int rea_stat_mot3_freq;
-unsigned int rea_stat_mot3_cosphi;
-unsigned int rea_stat_mot3_pfac;
-unsigned int rea_stat_sens_presion_1;
-unsigned int rea_parm_o2_level_MIN;
-unsigned int rea_parm_o2_level_MAX;
-unsigned int rea_parm_time_on_min;
-unsigned int rea_parm_time_alt_max;
-unsigned int rea_parm_prog_time_on;
-unsigned int rea_parm_prog_time_off;
-unsigned int rea_ctrl_target_opmode;
-unsigned int rea_ctrl_drive_mot1;
-unsigned int rea_ctrl_drive_mot2;
-unsigned int rea_ctrl_drive_mot3;
-unsigned int cla_stat_press_val;
-unsigned int cla_stat_diag_NC_valve1;
-unsigned int cla_parm_press_thresh_OPT;
-unsigned int cla_parm_press_thresh_MAX;
-unsigned int cla_ctrl_target_opmode;
-unsigned int cla_ctrl_drive_NC_valve1;
-unsigned int misc_stat_sens_ph_out;
-unsigned int misc_stat_sens_sst_out;
-unsigned int misc_stat_sens_caudal_out;
-unsigned int misc_stat_sens_turbidez_out;
-unsigned int misc_stat_sens_presion_2;
-unsigned int misc_stat_sens_presion_3;
+double gen_stat_numresets;
+double gen_stat_databyaddr;
+double gen_stat_gprs_ber;
+double gen_stat_authlevel;
+double gen_parm_sec_challenge;
+double car_stat_shit_level;
+double car_stat_sens_ph_in;
+double car_stat_sens_sst_in;
+double car_stat_sens_caudal_in;
+double car_stat_diag_mot1;
+double car_stat_mot1_volt12;
+double car_stat_mot1_volt23;
+double car_stat_mot1_volt13;
+double car_stat_mot1_amp1;
+double car_stat_mot1_amp2;
+double car_stat_mot1_amp3;
+double car_stat_mot1_freq;
+double car_stat_mot1_cosphi;
+double car_stat_mot1_pfac;
+double car_stat_diag_mot2;
+double car_stat_mot2_volt12;
+double car_stat_mot2_volt23;
+double car_stat_mot2_volt13;
+double car_stat_mot2_amp1;
+double car_stat_mot2_amp2;
+double car_stat_mot2_amp3;
+double car_stat_mot2_freq;
+double car_stat_mot2_cosphi;
+double car_stat_mot2_pfac;
+double car_stat_diag_warn_ind;
+double car_stat_sens_turbidez_in;
+double car_parm_off_level;
+double car_parm_setp_lev1;
+double car_parm_setp_lev2;
+double car_parm_setp_lev3;
+double car_parm_time_alt_max;
+double car_ctrl_target_opmode;
+double car_ctrl_drive_mot1;
+double car_ctrl_drive_mot2;
+double car_ctrl_drive_warn_ind;
+double rea_stat_o2_sens_1_level;
+double rea_stat_o2_sens_2_level;
+double rea_stat_diag_mot1;
+double rea_stat_mot1_volt12;
+double rea_stat_mot1_volt23;
+double rea_stat_mot1_volt13;
+double rea_stat_mot1_amp1;
+double rea_stat_mot1_amp2;
+double rea_stat_mot1_amp3;
+double rea_stat_mot1_freq;
+double rea_stat_mot1_cosphi;
+double rea_stat_mot1_pfac;
+double rea_stat_diag_mot2;
+double rea_stat_mot2_volt12;
+double rea_stat_mot2_volt23;
+double rea_stat_mot2_volt13;
+double rea_stat_mot2_amp1;
+double rea_stat_mot2_amp2;
+double rea_stat_mot2_amp3;
+double rea_stat_mot2_freq;
+double rea_stat_mot2_cosphi;
+double rea_stat_mot2_pfac;
+double rea_stat_diag_mot3;
+double rea_stat_mot3_volt12;
+double rea_stat_mot3_volt23;
+double rea_stat_mot3_volt13;
+double rea_stat_mot3_amp1;
+double rea_stat_mot3_amp2;
+double rea_stat_mot3_amp3;
+double rea_stat_mot3_freq;
+double rea_stat_mot3_cosphi;
+double rea_stat_mot3_pfac;
+double rea_stat_sens_presion_1;
+double rea_parm_o2_level_MIN;
+double rea_parm_o2_level_MAX;
+double rea_parm_time_on_min;
+double rea_parm_time_alt_max;
+double rea_parm_prog_time_on;
+double rea_parm_prog_time_off;
+double rea_ctrl_target_opmode;
+double rea_ctrl_drive_mot1;
+double rea_ctrl_drive_mot2;
+double rea_ctrl_drive_mot3;
+double cla_stat_press_val;
+double cla_stat_diag_NC_valve1;
+double cla_parm_press_thresh_OPT;
+double cla_parm_press_thresh_MAX;
+double cla_ctrl_target_opmode;
+double cla_ctrl_drive_NC_valve1;
+double misc_stat_sens_ph_out;
+double misc_stat_sens_sst_out;
+double misc_stat_sens_caudal_out;
+double misc_stat_sens_turbidez_out;
+double misc_stat_sens_presion_2;
+double misc_stat_sens_presion_3;
 
 
 parameter_config_t  all_parameters[]=
@@ -222,16 +222,18 @@ parameter_config_t  all_parameters[]=
 #define SIZE_OF_TABLE   (sizeof(all_parameters)/sizeof (parameter_config_t))
 void InitRandomParameters()
 {
-    unsigned int i;
+    unsigned int i,a;
 
-    unsigned int *uint_ptr;
+    double *uint_ptr;
 
     for(i = 0; i < SIZE_OF_TABLE; i++)
     {
         if(TYPE_HEX == all_parameters[i].type)
         {
-            uint_ptr = (unsigned int *)all_parameters[i].param;
-            *uint_ptr = (unsigned int)qrand() % 50;
+            uint_ptr = (double *)all_parameters[i].param;
+            a = qrand() % 50;
+            *uint_ptr = a;
+            *uint_ptr = std::trunc(100 * *uint_ptr) / 100;
             qDebug() << "Param: "<< all_parameters[i].name <<*uint_ptr;
         }
     }
@@ -264,7 +266,7 @@ QString getParamName(unsigned int id)
 QString getParamValue(unsigned int id)
 {
     QString str;
-    unsigned int *uint_ptr;
+    double *uint_ptr;
 
     switch(getParamType(id))
     {
@@ -275,11 +277,19 @@ QString getParamValue(unsigned int id)
         break;
     case TYPE_DECIMAL:
     case TYPE_HEX:
-        uint_ptr = (unsigned int *)all_parameters[getParamIndex(id)].param;
+        uint_ptr = (double *)all_parameters[getParamIndex(id)].param;
         str = QString::number(*uint_ptr);
         break;
     }
     return str;
+}
+
+void setParamValue(unsigned int id,double value)
+{
+    double *uint_ptr;
+
+    uint_ptr = (double *)all_parameters[getParamIndex(id)].param;
+    *uint_ptr = value;
 }
 
 bool getParamActiveShow(unsigned int id)

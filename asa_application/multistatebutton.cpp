@@ -119,3 +119,8 @@ void SelectParemeter(parameters_t param)
     selected_parameter = param;
     UpdateButtons();
 }
+
+parameters_t GetParemeter()
+{
+    return selected_parameter;
+}

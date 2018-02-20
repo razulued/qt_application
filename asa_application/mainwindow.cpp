@@ -4,6 +4,18 @@
 #include <QFontDatabase>
 #include "parameters.h"
 #include <QList>
+#include "custom_tooltip.h"
+
+custom_tooltip *tool_tip_regulador_electricos;
+custom_tooltip *tool_tip_regulador_fisicos;
+
+custom_tooltip *tool_tip_reactor_electricos;
+custom_tooltip *tool_tip_reactor_fisicos;
+custom_tooltip *tool_tip_reactor_quimicos;
+
+custom_tooltip *tool_tip_clarificador_fisicos;
+
+custom_tooltip *tool_tip_clorador_fisicos;
 
 void MainWindow::HideButtons(bool hide)
 {
@@ -25,102 +37,19 @@ void MainWindow::HideButtons(bool hide)
     }
 }
 
-void MainWindow::updateTooltips()
+void MainWindow::InitTooltips()
 {
-    //TODO make this dynamic later
-    int regulador_elec[] = {45, 48, 53};
-    int regulador_phys[] = {43, 40};
-    int reac_elect[] = {93, 96, 101};
-    int reac_phys[] = {165};
-    int reac_chem[] = {90, 160, 161, 163};
+    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, custom_tooltip::create_list() << 45 << 48 << 53);
+    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, custom_tooltip::create_list() << 43 << 40);
 
-    int i;
-    QFont font("Typo Square Ligth Demo",10,1);
+    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_3, custom_tooltip::create_list() << 93 << 96 << 101);
+    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_4, custom_tooltip::create_list() << 165);
+    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_5, custom_tooltip::create_list() << 90 << 160 << 161 << 163);
 
-    // Nombre Del elemento
-    ui->tip_reg_elec->setFont(font);
-    ui->tip_reg_elec->clear();
-    ui->tip_reg_elec->setStyleSheet("background: transparent;"
-                                  "color: rgb(0, 167, 250);"
-                                    "border-color: rgb(0, 167, 250)");
-    ui->tip_reg_elec->setFont(font);
+    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_6, custom_tooltip::create_list() << 145);
 
+    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_7, custom_tooltip::create_list() << 162);
 
-    for(i = 0; i < 3; i++)
-    {
-        if(true == getParamActiveShow(regulador_elec[i]))
-        {
-            ui->tip_reg_elec->addItem(getParamName(regulador_elec[i]) + ": " + getParamValue(regulador_elec[i]));
-        }
-    }
-
-    ui->tip_reg_phys->setFont(font);
-    ui->tip_reg_phys->clear();
-    ui->tip_reg_phys->setStyleSheet("background: transparent;"
-                                  "color: rgb(0, 167, 250);");
-    ui->tip_reg_phys->setFont(font);
-    for(i = 0; i < 2; i++)
-    {
-        if(true == getParamActiveShow(regulador_phys[i]))
-        {
-            ui->tip_reg_phys->addItem(getParamName(regulador_phys[i]) + ": " + getParamValue(regulador_phys[i]));
-        }
-    }
-
-    ui->tip_reac_elec->setFont(font);
-    ui->tip_reac_elec->clear();
-    ui->tip_reac_elec->setStyleSheet("background: transparent;"
-                                  "color: rgb(0, 167, 250);");
-    ui->tip_reac_elec->setFont(font);
-    for(i = 0; i < 3; i++)
-    {
-        if(true == getParamActiveShow(reac_elect[i]))
-        {
-            ui->tip_reac_elec->addItem(getParamName(reac_elect[i]) + ": " + getParamValue(reac_elect[i]));
-        }
-    }
-
-    ui->tip_reac_phys->setFont(font);
-    ui->tip_reac_phys->clear();
-    ui->tip_reac_phys->setStyleSheet("background: transparent;"
-                                  "color: rgb(0, 167, 250);");
-    ui->tip_reac_phys->setFont(font);
-    for(i = 0; i < 1; i++)
-    {
-        if(true == getParamActiveShow(reac_phys[i]))
-        {
-            ui->tip_reac_phys->addItem(getParamName(reac_phys[i]) + ": " + getParamValue(reac_phys[i]));
-        }
-    }
-
-    ui->tip_reac_chem->setFont(font);
-    ui->tip_reac_chem->clear();
-    ui->tip_reac_chem->setStyleSheet("background: transparent;"
-                                  "color: rgb(0, 167, 250);");
-    ui->tip_reac_chem->setFont(font);
-    for(i = 0; i < 4; i++)
-    {
-        if(true == getParamActiveShow(reac_chem[i]))
-        {
-            ui->tip_reac_chem->addItem(getParamName(reac_chem[i]) + ": " + getParamValue(reac_chem[i]));
-        }
-    }
-
-
-//    quint32 i, param_id;
-//    ui->layout_param->setAlignment(Qt::AlignTop);
-//    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_elect.size();
-//    for(i = 0; i < (quint32)detailed_elements[element]->list_elect.size(); i++)
-//    {
-//        param_id = detailed_elements[element]->list_elect[i];
-//        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
-
-//        label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
-//        label->setFont(font_2);
-//        ui->layout_param->addWidget(label);
-
-//    }
-//    qDebug(
 
 }
 
@@ -145,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
     display_parameters = false;
     HideButtons(true);
     InitRandomParameters();
-    updateTooltips();
+    InitTooltips();
 
     //Set connect buttons to signals
     connect(ui->pushButton, SIGNAL (released()),this, SLOT (handleMenuButton()));
@@ -166,6 +95,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->active_param_label->setFont(active_parameter_font);
 
     ui->active_param_label->setStyleSheet("color:black");
+    ui->active_param_label->setText("Parametros Eléctricos");
 
 
 
@@ -198,16 +128,19 @@ void MainWindow::handleMenuButton()
 void MainWindow::handleParametrosElectricosButton()
 {
     SelectParemeter(PARAM_ELECTRIC);
+    ui->active_param_label->setText("Parametros Eléctricos");
 }
 
 void MainWindow::handleParametrosFisicosButton()
 {
     SelectParemeter(PARAM_PHYSHIC);
+    ui->active_param_label->setText("Parametros Físicos");
 }
 
 void MainWindow::handleParametrosQuimicosButton()
 {
     SelectParemeter(PARAM_CHEMIC);
+    ui->active_param_label->setText("Parametros Químicos");
 }
 
 void MainWindow::handleDetailedView_1()
@@ -215,7 +148,8 @@ void MainWindow::handleDetailedView_1()
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_REGULADOR);
+    QPushButton *button = new QPushButton(this);
+    detail_window = new detailedwindow(ELEMENT_REGULADOR, this);
 }
 void MainWindow::handleDetailedView_2()
 {
@@ -261,5 +195,67 @@ void MainWindow::on_asa_logo_clicked()
 
 void MainWindow::dataTimerSlot()
 {
-    this->updateTooltips();
+    static int a = 0;
+    if(a++ > 10)
+    {
+        InitRandomParameters();
+        a = 0;
+    }
+
+    if(true == display_parameters)
+    {
+        switch(GetParemeter())
+        {
+        case PARAM_ELECTRIC:
+            tool_tip_regulador_electricos->force_show();
+            tool_tip_reactor_electricos->force_show();
+
+            tool_tip_regulador_fisicos->force_hide();
+            tool_tip_reactor_fisicos->force_hide();
+            tool_tip_clarificador_fisicos->force_hide();
+            tool_tip_clorador_fisicos->force_hide();
+
+            tool_tip_reactor_quimicos->force_hide();
+
+            break;
+        case PARAM_PHYSHIC:
+            tool_tip_regulador_fisicos->force_show();
+            tool_tip_reactor_fisicos->force_show();
+            tool_tip_clarificador_fisicos->force_show();
+            tool_tip_clorador_fisicos->force_show();
+
+            tool_tip_regulador_electricos->force_hide();
+            tool_tip_reactor_electricos->force_hide();
+
+            tool_tip_reactor_quimicos->force_hide();
+            break;
+        case PARAM_CHEMIC:
+            tool_tip_reactor_quimicos->force_show();
+
+            tool_tip_regulador_electricos->force_hide();
+            tool_tip_reactor_electricos->force_hide();
+
+            tool_tip_regulador_fisicos->force_hide();
+            tool_tip_reactor_fisicos->force_hide();
+            tool_tip_clarificador_fisicos->force_hide();
+            tool_tip_clorador_fisicos->force_hide();
+            break;
+        }
+    }
+    else
+    {
+        tool_tip_reactor_quimicos->update_data();
+
+        tool_tip_regulador_electricos->update_data();
+        tool_tip_reactor_electricos->update_data();
+
+        tool_tip_regulador_fisicos->update_data();
+        tool_tip_reactor_fisicos->update_data();
+        tool_tip_clarificador_fisicos->update_data();
+        tool_tip_clorador_fisicos->update_data();
+    }
+    if(detail_window != NULL)
+    {
+//        detail_window->update_params();
+    }
 }

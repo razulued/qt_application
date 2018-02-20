@@ -35,6 +35,7 @@ class detailedwindow : public QDialog
 public:
     explicit detailedwindow(detailed_elements_t element, QWidget *parent = 0);
     ~detailedwindow();
+    void update_params();
 
 private slots:
     void on_closeButton_clicked();
@@ -51,6 +52,7 @@ private slots:
 
 private:
     Ui::detailedwindow *ui;
+    detailed_elements_t what_element;
 };
 
 #endif // DETAILEDWINDOW_H

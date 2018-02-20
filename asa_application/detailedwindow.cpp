@@ -25,7 +25,9 @@ detailed_window_elements_t details_1=
 
     ":/images/images/detail_regulador.png",
 
-    "texto 1",
+    "Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo "
+    "igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujo"
+    "generado durante las horas pico",
 
     create_list() << 45 << 48 << 53,
 
@@ -40,7 +42,8 @@ detailed_window_elements_t details_2=
 
     ":/images/images/detail_reactor_biologico.png",
 
-    "Texto 2",
+    "Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo "
+    "en contacto las aguas residuales con una biomasa de microorganismos que la depuran.",
 
     create_list() << 93 << 96 << 101,
 
@@ -54,7 +57,8 @@ detailed_window_elements_t details_3=
 {
     "Clarificador",
     ":/images/images/detail_clarificador.png",
-    "Texto 3",
+    "Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos "
+    "suspendidos se sedimentan, separandose del agua.",
 
     create_list(),
 
@@ -67,7 +71,7 @@ detailed_window_elements_t details_4=
 {
     "Clorador",
     ":/images/images/detail_clorador.png",
-    "Texto 4",
+    "Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes.",
 
     create_list(),
 
@@ -80,7 +84,8 @@ detailed_window_elements_t details_5=
 {
     "Digestor de lodos",
     ":/images/images/detail_digestor.png",
-    "Texto 5",
+    "Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente"
+    " hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos.",
 
     create_list(),
 
@@ -93,7 +98,8 @@ detailed_window_elements_t details_6=
 {
     "Deshidratador de lodos",
     ":/images/images/detail_deshidratador.png",
-    "Texto 6",
+    "Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y "
+    "se permite su infiltración, dejando secar los lodos",
 
     create_list(),
 
@@ -147,6 +153,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
     // Fonts
     QFont font("Typo Square Italic Demo",20,1);
     QFont font_2("Typo Square Ligth Demo",14,1);
+    QFont font_3("Typo Square Ligth Demo",12,1);
 
     // Nombre Del elemento
     ui->nombre->setFont(font);
@@ -159,6 +166,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
     ui->label->setFont(font);
     ui->label->setStyleSheet("color: white");
 
+    what_element = element;
 
     //This is a hack to hide tabs from tab widget
     ui->tabWidget->setCurrentIndex(0);
@@ -219,7 +227,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
 
     /**** TAB 2 INIT: Descripcion ***/
     //Texto
-    ui->description_label->setFont(font_2);
+    ui->description_label->setFont(font_3);
     ui->description_label->setText(detailed_elements[element]->description);
     ui->description_label->setStyleSheet("color: white");
 
@@ -286,6 +294,10 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
     // Connect all checkboxes to mapper
     connect(checkboxMapper, SIGNAL(mapped(int)), this, SLOT(checkBoxStateChanged(int)));
 
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_blanco.png);"
+                    "border: none;"
+                    "background-repeat: none;"
+                    "background-position: center;");
 
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
@@ -306,28 +318,134 @@ void detailedwindow::on_button_parametros_clicked()
 {
     ui->label->setText("Parámetros");
     ui->tabWidget->setCurrentIndex(0);
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_blanco.png);"
+                    "border: none;"
+                    "background-repeat: none;"
+                    "background-position: center;");
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);;"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_azul.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
 }
 
 void detailedwindow::on_button_evento_clicked()
 {
     ui->label->setText("Evento");
     ui->tabWidget->setCurrentIndex(1);
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);"
+                    "border: none;"
+                    "background-repeat: none;"
+                    "background-position: center;");
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_blanco.png);;"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_azul.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
 }
 
 void detailedwindow::on_button_descripcion_clicked()
 {
     ui->label->setText("Descripción");
     ui->tabWidget->setCurrentIndex(2);
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);"
+                    "border: none;"
+                    "background-repeat: none;"
+                    "background-position: center;");
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);;"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_blanco.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
 }
 
 void detailedwindow::on_button_visualizacion_clicked()
 {
     ui->label->setText("Visualización de Parámetros");
     ui->tabWidget->setCurrentIndex(3);
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);"
+                    "border: none;"
+                    "background-repeat: none;"
+                    "background-position: center;");
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);;"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_azul.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_blanco.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+
 }
 
 void detailedwindow::checkBoxStateChanged(int a)
 {
     qDebug() << "Toggle active show " << a;
     toggleParamActiveShow(a);
+}
+
+void detailedwindow::update_params()
+{
+//    quint32 i, param_id;
+//    ui->layout_param->setAlignment(Qt::AlignTop);
+
+//    QFont font_2("Typo Square Ligth Demo",14,1);
+
+
+//    qDebug() << "Number of parameters to display is " << detailed_elements[what_element]->list_elect.size();
+//    for(i = 0; i < (quint32)detailed_elements[what_element]->list_elect.size(); i++)
+//    {
+//        param_id = detailed_elements[what_element]->list_elect[i];
+
+//        QLabel *label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
+//        ui->layout_param->update();
+//        label->setFont(font_2);
+//        ui->layout_param->addWidget(label);
+
+//    }
+//    qDebug() << "Number of parameters to display is " << detailed_elements[what_element]->list_phys.size();
+//    for(i = 0; i < (quint32)detailed_elements[what_element]->list_phys.size(); i++)
+//    {
+//        param_id = detailed_elements[what_element]->list_phys[i];
+
+//        QLabel *label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
+//        label->setFont(font_2);
+//        ui->layout_param->addWidget(label);
+
+//    }
+//    qDebug() << "Number of parameters to display is " << detailed_elements[what_element]->list_chem.size();
+//    for(i = 0; i < (quint32)detailed_elements[what_element]->list_chem.size(); i++)
+//    {
+//        param_id = detailed_elements[what_element]->list_chem[i];
+
+//        QLabel *label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
+//        label->setFont(font_2);
+//        ui->layout_param->addWidget(label);
+
+//    }
 }

@@ -37,6 +37,11 @@ background-color: transparent;
 border: none;
 background-repeat: none;
  } 
+#modulo_1:pressed{  
+background-color: red;
+border: none;
+background-repeat: none;
+ } 
 #modulo_2{  
 background-color: transparent;
 border: none;
@@ -62,7 +67,12 @@ background-color: transparent;
 border: none;
 background-repeat: none;
  } 
-</string>
+
+QWidget{
+border-style: solid;
+border-color:  black;
+border-width: 1px;
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
@@ -275,17 +285,24 @@ background-repeat: none;
    <widget class="QPushButton" name="modulo_1">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>280</y>
-      <width>91</width>
-      <height>91</height>
+      <x>140</x>
+      <y>240</y>
+      <width>131</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">#modulo_1 { 
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
     </property>
     <property name="text">
      <string/>
@@ -297,17 +314,21 @@ background-repeat: none;
    <widget class="QPushButton" name="modulo_2">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>230</y>
-      <width>91</width>
-      <height>91</height>
+      <x>340</x>
+      <y>200</y>
+      <width>131</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">#modulo_2{ 
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
     </property>
     <property name="text">
      <string/>
@@ -320,16 +341,20 @@ background-repeat: none;
     <property name="geometry">
      <rect>
       <x>550</x>
-      <y>180</y>
-      <width>91</width>
-      <height>91</height>
+      <y>150</y>
+      <width>131</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">#modulo_3 { 
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
     </property>
     <property name="text">
      <string/>
@@ -342,16 +367,20 @@ background-repeat: none;
     <property name="geometry">
      <rect>
       <x>750</x>
-      <y>130</y>
-      <width>91</width>
-      <height>91</height>
+      <y>90</y>
+      <width>121</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">#modulo_4 { 
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
     </property>
     <property name="text">
      <string/>
@@ -364,16 +393,20 @@ background-repeat: none;
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>340</y>
-      <width>91</width>
-      <height>91</height>
+      <y>300</y>
+      <width>121</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">#modulo_5 { 
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
     </property>
     <property name="text">
      <string/>
@@ -385,17 +418,21 @@ background-repeat: none;
    <widget class="QPushButton" name="modulo_6">
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>430</x>
       <y>420</y>
-      <width>91</width>
-      <height>91</height>
+      <width>191</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">#modulo_6{ 
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
     </property>
     <property name="text">
      <string/>
@@ -567,53 +604,73 @@ background-position: center;
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QListWidget" name="tip_reg_elec">
+   <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>210</y>
+      <x>60</x>
+      <y>190</y>
       <width>81</width>
-      <height>51</height>
+      <height>61</height>
      </rect>
     </property>
    </widget>
-   <widget class="QListWidget" name="tip_reg_phys">
+   <widget class="QWidget" name="widget_2" native="true">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>340</y>
+      <x>30</x>
+      <y>350</y>
       <width>81</width>
-      <height>51</height>
+      <height>61</height>
      </rect>
     </property>
    </widget>
-   <widget class="QListWidget" name="tip_reac_elec">
+   <widget class="QWidget" name="widget_3" native="true">
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>180</y>
+      <y>160</y>
       <width>81</width>
-      <height>51</height>
+      <height>61</height>
      </rect>
     </property>
    </widget>
-   <widget class="QListWidget" name="tip_reac_phys">
+   <widget class="QWidget" name="widget_4" native="true">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>110</y>
+      <x>330</x>
+      <y>80</y>
       <width>81</width>
-      <height>51</height>
+      <height>61</height>
      </rect>
     </property>
    </widget>
-   <widget class="QListWidget" name="tip_reac_chem">
+   <widget class="QWidget" name="widget_5" native="true">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>120</y>
-      <width>91</width>
-      <height>91</height>
+      <x>420</x>
+      <y>90</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_6" native="true">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>60</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_7" native="true">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>30</y>
+      <width>81</width>
+      <height>61</height>
      </rect>
     </property>
    </widget>
@@ -636,11 +693,13 @@ background-position: center;
    <zorder>top_menu_3</zorder>
    <zorder>top_menu_4</zorder>
    <zorder>asa_logo</zorder>
-   <zorder>tip_reg_elec</zorder>
-   <zorder>tip_reg_phys</zorder>
-   <zorder>tip_reac_elec</zorder>
-   <zorder>tip_reac_phys</zorder>
-   <zorder>tip_reac_chem</zorder>
+   <zorder>widget</zorder>
+   <zorder>widget_2</zorder>
+   <zorder>widget_3</zorder>
+   <zorder>widget_4</zorder>
+   <zorder>widget_5</zorder>
+   <zorder>widget_6</zorder>
+   <zorder>widget_7</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

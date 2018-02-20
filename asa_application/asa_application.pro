@@ -18,14 +18,22 @@ SOURCES += main.cpp\
     multistatebutton.cpp \
     demo.cpp \
     bcm2835.c \
-    parameters.cpp
+    parameters.cpp \
+    spicomm.cpp \
+    my_crc_api.cpp \
+    dataproccess.cpp \
+    custom_tooltip.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
     multistatebutton.h \
     demo.h \
     parameters.h \
-    bcm2835.h
+    bcm2835.h \
+    spicomm.h \
+    my_crc_api.h \
+    dataproccess.h \
+    custom_tooltip.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui

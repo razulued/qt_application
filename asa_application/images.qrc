@@ -87,5 +87,13 @@
         <file>images/Iconos/Punto_linea_de_tiempo.png</file>
         <file>images/Iconos/compu_logo.png</file>
         <file>images/Iconos/close-x.png</file>
+        <file>images/Iconos/Visualizar_blanco.png</file>
+        <file>images/Iconos/Visualizar_azul.png</file>
+        <file>images/Iconos/Info_blanco.png</file>
+        <file>images/Iconos/Info_azul.png</file>
+        <file>images/Iconos/Bitacora_blanco.png</file>
+        <file>images/Iconos/Bitacora_azul.png</file>
+        <file>images/Iconos/Ajustes_blanco.png</file>
+        <file>images/Iconos/Ajustes_azul.png</file>
     </qresource>
 </RCC>

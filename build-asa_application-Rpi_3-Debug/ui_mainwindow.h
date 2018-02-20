@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -45,11 +44,13 @@ public:
     QPushButton *top_menu_3;
     QPushButton *top_menu_4;
     QPushButton *asa_logo;
-    QListWidget *tip_reg_elec;
-    QListWidget *tip_reg_phys;
-    QListWidget *tip_reac_elec;
-    QListWidget *tip_reac_phys;
-    QListWidget *tip_reac_chem;
+    QWidget *widget;
+    QWidget *widget_2;
+    QWidget *widget_3;
+    QWidget *widget_4;
+    QWidget *widget_5;
+    QWidget *widget_6;
+    QWidget *widget_7;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -61,6 +62,11 @@ public:
         MainWindow->setAutoFillBackground(false);
         MainWindow->setStyleSheet(QLatin1String("#modulo_1{  \n"
 "background-color: transparent;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+" } \n"
+"#modulo_1:pressed{  \n"
+"background-color: red;\n"
 "border: none;\n"
 "background-repeat: none;\n"
 " } \n"
@@ -89,7 +95,12 @@ public:
 "border: none;\n"
 "background-repeat: none;\n"
 " } \n"
-""));
+"\n"
+"QWidget{\n"
+"border-style: solid;\n"
+"border-color:  black;\n"
+"border-width: 1px;\n"
+"}"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setEnabled(true);
@@ -185,39 +196,64 @@ public:
 " } "));
         modulo_1 = new QPushButton(centralWidget);
         modulo_1->setObjectName(QStringLiteral("modulo_1"));
-        modulo_1->setGeometry(QRect(170, 280, 91, 91));
+        modulo_1->setGeometry(QRect(140, 240, 131, 121));
         modulo_1->setFocusPolicy(Qt::NoFocus);
-        modulo_1->setStyleSheet(QStringLiteral(""));
+        modulo_1->setAutoFillBackground(false);
+        modulo_1->setStyleSheet(QLatin1String("#modulo_1 { \n"
+"border: none; \n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"} "));
         modulo_1->setFlat(true);
         modulo_2 = new QPushButton(centralWidget);
         modulo_2->setObjectName(QStringLiteral("modulo_2"));
-        modulo_2->setGeometry(QRect(360, 230, 91, 91));
+        modulo_2->setGeometry(QRect(340, 200, 131, 111));
         modulo_2->setFocusPolicy(Qt::NoFocus);
-        modulo_2->setStyleSheet(QStringLiteral(""));
+        modulo_2->setStyleSheet(QLatin1String("#modulo_2{ \n"
+"border: none; \n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"} "));
         modulo_2->setFlat(true);
         modulo_3 = new QPushButton(centralWidget);
         modulo_3->setObjectName(QStringLiteral("modulo_3"));
-        modulo_3->setGeometry(QRect(550, 180, 91, 91));
+        modulo_3->setGeometry(QRect(550, 150, 131, 121));
         modulo_3->setFocusPolicy(Qt::NoFocus);
-        modulo_3->setStyleSheet(QStringLiteral(""));
+        modulo_3->setStyleSheet(QLatin1String("#modulo_3 { \n"
+"border: none; \n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"} "));
         modulo_3->setFlat(true);
         modulo_4 = new QPushButton(centralWidget);
         modulo_4->setObjectName(QStringLiteral("modulo_4"));
-        modulo_4->setGeometry(QRect(750, 130, 91, 91));
+        modulo_4->setGeometry(QRect(750, 90, 121, 121));
         modulo_4->setFocusPolicy(Qt::NoFocus);
-        modulo_4->setStyleSheet(QStringLiteral(""));
+        modulo_4->setStyleSheet(QLatin1String("#modulo_4 { \n"
+"border: none; \n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"} "));
         modulo_4->setFlat(true);
         modulo_5 = new QPushButton(centralWidget);
         modulo_5->setObjectName(QStringLiteral("modulo_5"));
-        modulo_5->setGeometry(QRect(760, 340, 91, 91));
+        modulo_5->setGeometry(QRect(760, 300, 121, 111));
         modulo_5->setFocusPolicy(Qt::NoFocus);
-        modulo_5->setStyleSheet(QStringLiteral(""));
+        modulo_5->setStyleSheet(QLatin1String("#modulo_5 { \n"
+"border: none; \n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"} "));
         modulo_5->setFlat(true);
         modulo_6 = new QPushButton(centralWidget);
         modulo_6->setObjectName(QStringLiteral("modulo_6"));
-        modulo_6->setGeometry(QRect(470, 420, 91, 91));
+        modulo_6->setGeometry(QRect(430, 420, 191, 111));
         modulo_6->setFocusPolicy(Qt::NoFocus);
-        modulo_6->setStyleSheet(QStringLiteral(""));
+        modulo_6->setStyleSheet(QLatin1String("#modulo_6{ \n"
+"border: none; \n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"} "));
         modulo_6->setFlat(true);
         top_bar = new QLabel(centralWidget);
         top_bar->setObjectName(QStringLiteral("top_bar"));
@@ -288,21 +324,27 @@ public:
 "background-position: center;\n"
 "} "));
         asa_logo->setCheckable(true);
-        tip_reg_elec = new QListWidget(centralWidget);
-        tip_reg_elec->setObjectName(QStringLiteral("tip_reg_elec"));
-        tip_reg_elec->setGeometry(QRect(90, 210, 81, 51));
-        tip_reg_phys = new QListWidget(centralWidget);
-        tip_reg_phys->setObjectName(QStringLiteral("tip_reg_phys"));
-        tip_reg_phys->setGeometry(QRect(70, 340, 81, 51));
-        tip_reac_elec = new QListWidget(centralWidget);
-        tip_reac_elec->setObjectName(QStringLiteral("tip_reac_elec"));
-        tip_reac_elec->setGeometry(QRect(250, 180, 81, 51));
-        tip_reac_phys = new QListWidget(centralWidget);
-        tip_reac_phys->setObjectName(QStringLiteral("tip_reac_phys"));
-        tip_reac_phys->setGeometry(QRect(350, 110, 81, 51));
-        tip_reac_chem = new QListWidget(centralWidget);
-        tip_reac_chem->setObjectName(QStringLiteral("tip_reac_chem"));
-        tip_reac_chem->setGeometry(QRect(440, 120, 91, 91));
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(60, 190, 81, 61));
+        widget_2 = new QWidget(centralWidget);
+        widget_2->setObjectName(QStringLiteral("widget_2"));
+        widget_2->setGeometry(QRect(30, 350, 81, 61));
+        widget_3 = new QWidget(centralWidget);
+        widget_3->setObjectName(QStringLiteral("widget_3"));
+        widget_3->setGeometry(QRect(250, 160, 81, 61));
+        widget_4 = new QWidget(centralWidget);
+        widget_4->setObjectName(QStringLiteral("widget_4"));
+        widget_4->setGeometry(QRect(330, 80, 81, 61));
+        widget_5 = new QWidget(centralWidget);
+        widget_5->setObjectName(QStringLiteral("widget_5"));
+        widget_5->setGeometry(QRect(420, 90, 81, 61));
+        widget_6 = new QWidget(centralWidget);
+        widget_6->setObjectName(QStringLiteral("widget_6"));
+        widget_6->setGeometry(QRect(560, 60, 81, 61));
+        widget_7 = new QWidget(centralWidget);
+        widget_7->setObjectName(QStringLiteral("widget_7"));
+        widget_7->setGeometry(QRect(750, 30, 81, 61));
         MainWindow->setCentralWidget(centralWidget);
         bottom_bar->raise();
         pushButton->raise();
@@ -323,11 +365,13 @@ public:
         top_menu_3->raise();
         top_menu_4->raise();
         asa_logo->raise();
-        tip_reg_elec->raise();
-        tip_reg_phys->raise();
-        tip_reac_elec->raise();
-        tip_reac_phys->raise();
-        tip_reac_chem->raise();
+        widget->raise();
+        widget_2->raise();
+        widget_3->raise();
+        widget_4->raise();
+        widget_5->raise();
+        widget_6->raise();
+        widget_7->raise();
 
         retranslateUi(MainWindow);
 

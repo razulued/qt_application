@@ -21,6 +21,8 @@ typedef struct
 
 data_type_t getParamType(unsigned int id);
 QString getParamValue(unsigned int id);
+void setParamValue(unsigned int id, double value);
+
 QString getParamName(unsigned int id);
 bool getParamActiveShow(unsigned int id);
 void toggleParamActiveShow(unsigned int id);

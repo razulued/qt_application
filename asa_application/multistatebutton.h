@@ -32,4 +32,6 @@ void InitButtons(QPushButton *elec, QPushButton *fis, QPushButton *chem);
 void UpdateButtons();
 
 void SelectParemeter(parameters_t param);
+parameters_t GetParemeter();
+
 #endif // MULTISTATEBUTTON_H

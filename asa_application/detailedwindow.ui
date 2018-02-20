@@ -28,7 +28,8 @@
   <property name="styleSheet">
    <string notr="true">QCheckBox{
 color:white;
-}</string>
+}
+</string>
   </property>
   <widget class="QLabel" name="nombre">
    <property name="geometry">
@@ -112,10 +113,10 @@ background-repeat: none;
   <widget class="QPushButton" name="closeButton">
    <property name="geometry">
     <rect>
-     <x>575</x>
-     <y>6</y>
-     <width>31</width>
-     <height>30</height>
+     <x>572</x>
+     <y>0</y>
+     <width>41</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -135,8 +136,9 @@ border-image: url(:/iconos/images/Iconos/close-x.png);
 background: none; 
 border: none; 
 background-repeat: none;
-color: rgb(0, 167, 250);
- } </string>
+margin:5px;
+ } 
+</string>
    </property>
    <property name="text">
     <string/>
@@ -156,18 +158,23 @@ color: rgb(0, 167, 250);
     <rect>
      <x>20</x>
      <y>270</y>
-     <width>35</width>
-     <height>35</height>
+     <width>40</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">#button_parametros{
+background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
    </property>
    <property name="text">
-    <string>1</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
@@ -178,24 +185,23 @@ color: rgb(0, 167, 250);
     <rect>
      <x>70</x>
      <y>270</y>
-     <width>35</width>
-     <height>35</height>
+     <width>40</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">#button_parametros{ 
-background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);
-background: none; 
-border: none; 
+    <string notr="true">#button_evento{
+background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);
+border: none;
 background-repeat: none;
- } </string>
+background-position: center;
+}</string>
    </property>
    <property name="text">
-    <string>2</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
@@ -206,24 +212,23 @@ background-repeat: none;
     <rect>
      <x>120</x>
      <y>270</y>
-     <width>35</width>
-     <height>35</height>
+     <width>40</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">#button_parametros{ 
-background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);
-background: none; 
-border: none; 
+    <string notr="true">#button_descripcion{
+background-image: url(:/iconos/images/Iconos/Info_azul.png);
+border: none;
 background-repeat: none;
- } </string>
+background-position: center;
+}</string>
    </property>
    <property name="text">
-    <string>3</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
@@ -234,24 +239,23 @@ background-repeat: none;
     <rect>
      <x>170</x>
      <y>270</y>
-     <width>35</width>
-     <height>35</height>
+     <width>40</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">#button_parametros{ 
-background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);
-background: none; 
-border: none; 
+    <string notr="true">#button_visualizacion{
+background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);
+border: none;
 background-repeat: none;
- } </string>
+background-position: center;
+}</string>
    </property>
    <property name="text">
-    <string>4</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
@@ -262,24 +266,24 @@ background-repeat: none;
     <rect>
      <x>220</x>
      <y>270</y>
-     <width>35</width>
-     <height>35</height>
+     <width>40</width>
+     <height>60</height>
     </rect>
    </property>
    <property name="focusPolicy">
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">#button_parametros{ 
+    <string notr="true">#button_visualizacion_2{ 
 background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Punto_contrasena.png);
+border-image: none;
 background: none; 
 border: none; 
 background-repeat: none;
  } </string>
    </property>
    <property name="text">
-    <string>5</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
@@ -324,7 +328,7 @@ border: none;
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>2</number>
    </property>
    <property name="elideMode">
     <enum>Qt::ElideNone</enum>
@@ -363,7 +367,7 @@ border: none;
        <x>10</x>
        <y>10</y>
        <width>261</width>
-       <height>131</height>
+       <height>171</height>
       </rect>
      </property>
      <property name="text">
@@ -371,6 +375,9 @@ border: none;
      </property>
      <property name="alignment">
       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

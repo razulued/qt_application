@@ -27,7 +27,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void updateTooltips();
+    void InitTooltips();
 
 public slots:
     void handleMenuButton();
