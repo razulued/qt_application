@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>745</width>
-    <height>470</height>
+    <height>559</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,8 +34,3094 @@
    <item row="1" column="0" colspan="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>ASA Protocol (out)</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="cfg_out_rel_1">
+         <property name="text">
+          <string>cgf_out_rel_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="cfg_out_rel_1_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Bomba Monofásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Alerta sonora</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Bomba trifásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = LED</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Electrovalvula</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QComboBox" name="cfg_out_rel_1_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="cfg_out_rel_4">
+         <property name="text">
+          <string>cgf_out_rel_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="cfg_out_rel_2">
+         <property name="text">
+          <string>cgf_out_rel_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="cfg_out_rel_3">
+         <property name="text">
+          <string>cgf_out_rel_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="cfg_out_rel_3_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="cfg_out_rel_4_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Bomba Monofásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Alerta sonora</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Bomba trifásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = LED</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Electrovalvula</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QComboBox" name="cfg_out_rel_2_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="cfg_out_rel_3_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Bomba Monofásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Alerta sonora</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Bomba trifásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = LED</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Electrovalvula</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QComboBox" name="cfg_out_rel_4_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="cfg_out_led_1">
+         <property name="text">
+          <string>cgf_out_led_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="cfg_out_rel_2_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Bomba Monofásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Alerta sonora</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Bomba trifásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = LED</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Electrovalvula</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="cfg_out_led_1_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Bomba Monofásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Alerta sonora</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Bomba trifásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = LED</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Electrovalvula</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QComboBox" name="cfg_out_led_1_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>ASA Protocol (in)</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="6" column="2">
+        <widget class="QComboBox" name="cfg_ana_7_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QComboBox" name="cfg_ana_5_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="cfg_ana_1">
+         <property name="text">
+          <string>cfg_ana_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="cfg_ana_4">
+         <property name="text">
+          <string>cfg_ana_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="cfg_ana_3">
+         <property name="text">
+          <string>cfg_ana_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QComboBox" name="cfg_ana_8_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="cfg_ana_5_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="cfg_ana_7_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QComboBox" name="cfg_ana_6_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="cfg_ana_1_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="cfg_ana_2_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QComboBox" name="cfg_ana_2_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="cfg_ana_2">
+         <property name="text">
+          <string>cfg_ana_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="cfg_ana_6">
+         <property name="text">
+          <string>cfg_ana_6</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="cfg_ana_8">
+         <property name="text">
+          <string>cfg_ana_8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="cfg_ana_5">
+         <property name="text">
+          <string>cfg_ana_5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="cfg_ana_3_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QComboBox" name="cfg_ana_4_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="cfg_ana_7">
+         <property name="text">
+          <string>cfg_ana_7</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="cfg_ana_6_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="cfg_ana_4_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="cfg_ana_3_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="cfg_ana_8_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QComboBox" name="cfg_ana_1_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="cfg_ana_9">
+         <property name="text">
+          <string>cfg_ana_9</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QComboBox" name="cfg_ana_9_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Nivel Lineal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Presion</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Caudal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QComboBox" name="cfg_ana_9_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No Definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>ASA Protocol (modbus 1)</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="4" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_4">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_6">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_7">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="13" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_13">
+         <property name="text">
+          <string>cfg_modbus_addr_D</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_1">
+         <property name="text">
+          <string>cfg_modbus_addr_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_9">
+         <property name="text">
+          <string>cfg_modbus_addr_9</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_5">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="12" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_12">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="13" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_13">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_6">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_3">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_1">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="14" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_14">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_10">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_4">
+         <property name="text">
+          <string>cfg_modbus_addr_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_2">
+         <property name="text">
+          <string>cfg_modbus_addr_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_10">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_0">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="13" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_13">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_5">
+         <property name="text">
+          <string>cfg_modbus_addr_5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_3">
+         <property name="text">
+          <string>cfg_modbus_addr_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_3">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_5">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_0">
+         <property name="text">
+          <string>cfg_modbus_addr_0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_2">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_9">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_8">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="14" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_14">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="11" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_11">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="11" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_11">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="14" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_14">
+         <property name="text">
+          <string>cfg_modbus_addr_E</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_12">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_9">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_7">
+         <property name="text">
+          <string>cfg_modbus_addr_7</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_8">
+         <property name="text">
+          <string>cfg_modbus_addr_8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_6">
+         <property name="text">
+          <string>cfg_modbus_addr_6</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_1">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_4">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_11">
+         <property name="text">
+          <string>cfg_modbus_addr_B</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_12">
+         <property name="text">
+          <string>cfg_modbus_addr_C</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_7">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_10">
+         <property name="text">
+          <string>cfg_modbus_addr_A</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_8">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_0">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_2">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="15" column="0">
+        <widget class="QLabel" name="cfg_modbus_addr_15">
+         <property name="text">
+          <string>cfg_modbus_addr_F</string>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="1">
+        <widget class="QComboBox" name="cfg_modbus_MSB_15">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = ph</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = solidos suspendidos</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = turbidez</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = oxigeno</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = temperatura</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="15" column="2">
+        <widget class="QComboBox" name="cfg_modbus_LSB_15">
+         <item>
+          <property name="text">
+           <string>0 = NO definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>ASA Protocol (modbus 2)</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="4" column="1">
+        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_1_ch_0">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = out_rel_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = out_rel_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = out_rel_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = out_rel_4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = out_led_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = out_led_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = out_led_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = out_led_4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="cfg_modbus_2_addr_1_ch_2">
+         <property name="text">
+          <string>cfg_modbus_2_addr_1_ch_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="cfg_modbus_2_addr_0_ch_1">
+         <property name="text">
+          <string>cfg_modbus_2_addr_0_ch_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="cfg_modbus_2_addr_1_ch_0">
+         <property name="text">
+          <string>cfg_modbus_2_addr_1_ch_0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="cfg_modbus_2_addr_0_ch_2">
+         <property name="text">
+          <string>cfg_modbus_2_addr_0_ch_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="cfg_modbus_2_addr_1_ch_1">
+         <property name="text">
+          <string>cfg_modbus_2_addr_1_ch_1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="cfg_modbus_2_addr_0_ch_3">
+         <property name="text">
+          <string>cfg_modbus_2_addr_0_ch_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_1_ch_1">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = out_rel_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = out_rel_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = out_rel_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = out_rel_4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = out_led_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = out_led_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = out_led_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = out_led_4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_0_ch_0">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = out_rel_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = out_rel_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = out_rel_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = out_rel_4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = out_led_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = out_led_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = out_led_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = out_led_4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="cfg_modbus_2_addr_0_ch_0">
+         <property name="text">
+          <string>cfg_modbus_2_addr_0_ch_0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_0_ch_1">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = out_rel_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = out_rel_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = out_rel_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = out_rel_4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = out_led_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = out_led_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = out_led_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = out_led_4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_1_ch_2">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = out_rel_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = out_rel_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = out_rel_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = out_rel_4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = out_led_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = out_led_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = out_led_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = out_led_4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_0_ch_2">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = out_rel_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = out_rel_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = out_rel_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = out_rel_4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = out_led_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = out_led_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = out_led_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = out_led_4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_0_ch_3">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = out_rel_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = out_rel_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = out_rel_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = out_rel_4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = out_led_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = out_led_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = out_led_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = out_led_4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="cfg_modbus_2_addr_1_ch_3">
+         <property name="text">
+          <string>cfg_modbus_2_addr_1_ch_3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_1_ch_3">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = out_rel_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = out_rel_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = out_rel_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = out_rel_4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = out_led_1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = out_led_2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = out_led_3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = out_led_4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tab">
       <attribute name="title">
        <string>config.ini</string>
