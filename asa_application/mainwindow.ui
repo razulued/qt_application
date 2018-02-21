@@ -607,8 +607,8 @@ background-position: center;
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>190</y>
+      <x>40</x>
+      <y>330</y>
       <width>81</width>
       <height>61</height>
      </rect>
@@ -617,8 +617,8 @@ background-position: center;
    <widget class="QWidget" name="widget_2" native="true">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>350</y>
+      <x>50</x>
+      <y>170</y>
       <width>81</width>
       <height>61</height>
      </rect>
@@ -627,7 +627,7 @@ background-position: center;
    <widget class="QWidget" name="widget_3" native="true">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>150</x>
       <y>160</y>
       <width>81</width>
       <height>61</height>
@@ -637,18 +637,8 @@ background-position: center;
    <widget class="QWidget" name="widget_4" native="true">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>80</y>
-      <width>81</width>
-      <height>61</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="widget_5" native="true">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>90</y>
+      <x>340</x>
+      <y>330</y>
       <width>81</width>
       <height>61</height>
      </rect>
@@ -657,8 +647,8 @@ background-position: center;
    <widget class="QWidget" name="widget_6" native="true">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>60</y>
+      <x>400</x>
+      <y>100</y>
       <width>81</width>
       <height>61</height>
      </rect>
@@ -667,8 +657,68 @@ background-position: center;
    <widget class="QWidget" name="widget_7" native="true">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>520</x>
+      <y>80</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_8" native="true">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>40</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_9" native="true">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>160</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_10" native="true">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
       <y>30</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_11" native="true">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>20</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_12" native="true">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>100</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_5" native="true">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>100</y>
       <width>81</width>
       <height>61</height>
      </rect>
@@ -697,9 +747,14 @@ background-position: center;
    <zorder>widget_2</zorder>
    <zorder>widget_3</zorder>
    <zorder>widget_4</zorder>
-   <zorder>widget_5</zorder>
    <zorder>widget_6</zorder>
    <zorder>widget_7</zorder>
+   <zorder>widget_8</zorder>
+   <zorder>widget_9</zorder>
+   <zorder>widget_10</zorder>
+   <zorder>widget_11</zorder>
+   <zorder>widget_12</zorder>
+   <zorder>widget_5</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

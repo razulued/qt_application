@@ -2,7 +2,7 @@
 #include "parameters.h"
 #include <QDebug>
 
-custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list)
+custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList names)
 {
     QFont font_2("Typo Square Ligth Demo",14,1);
 
@@ -28,18 +28,12 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list)
 
 
     DataList = list;
+    NameList = names;
     init_data();
-
-//    //Setup Timer
-//    timerHandler.setInterval(200);
-//    connect(&timerHandler, SIGNAL(timeout()),this,SLOT(DataTimerUpdate()));
-//    timerHandler.start();
-
 }
 
 void custom_tooltip::init_data()
 {
-    QLabel *label = new QLabel("");
     quint32 i, param_id;
     int items = 0;
 
@@ -49,11 +43,7 @@ void custom_tooltip::init_data()
 
         if(true == getParamActiveShow(param_id))
         {
-//            label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
-//            label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
-            list_widget->addItem(getParamName(param_id) + ": " + getParamValue(param_id));
-//            list_widget->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-//            layout->addWidget(label);
+            list_widget->addItem(NameList[i] + ": " + getParamValue(param_id));
             items++;
         }
     }
@@ -78,7 +68,6 @@ void custom_tooltip::init_data()
 
 void custom_tooltip::update_data()
 {
-    QLabel *label = new QLabel("");
     quint32 i, param_id;
     int items = 0;
 
@@ -90,11 +79,7 @@ void custom_tooltip::update_data()
 
         if(true == getParamActiveShow(param_id))
         {
-//            label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
-//            label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
-            list_widget->addItem(getParamName(param_id) + ": " + getParamValue(param_id));
-//            list_widget->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-//            layout->addWidget(label);
+            list_widget->addItem(NameList[i] + ": " + getParamValue(param_id));
             items++;
         }
     }
@@ -106,7 +91,6 @@ void custom_tooltip::update_data()
         list_widget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
         layout->addWidget(list_widget);
-//        parent_frame->setLayout(layout);
 
         parent_frame->adjustSize();
         parent_frame->show();
@@ -121,7 +105,6 @@ void custom_tooltip::update_data()
 void custom_tooltip::force_show()
 {
 
-    QLabel *label = new QLabel("");
     quint32 i, param_id;
     int items = 0;
 
@@ -131,7 +114,7 @@ void custom_tooltip::force_show()
     {
         param_id = DataList[i];
 
-        list_widget->addItem(getParamName(param_id) + ": " + getParamValue(param_id));
+        list_widget->addItem(NameList[i]  + ": " + getParamValue(param_id));
         items++;
     }
 

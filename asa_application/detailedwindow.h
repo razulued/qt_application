@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QtCore>
+#include "configuration.h"
+
 typedef enum
 {
     ELEMENT_REGULADOR,
@@ -18,9 +20,9 @@ typedef struct
     QString name;
     QString image;
     QString description;
-    QList<int> list_elect;
-    QList<int> list_phys;
-    QList<int> list_chem;
+    configuration_id *list_elect;
+    configuration_id *list_phys;
+    configuration_id *list_chem;
 
 }detailed_window_elements_t;
 

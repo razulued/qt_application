@@ -4,18 +4,30 @@
 #include <QFontDatabase>
 #include "parameters.h"
 #include <QList>
-#include "custom_tooltip.h"
 
-custom_tooltip *tool_tip_regulador_electricos;
-custom_tooltip *tool_tip_regulador_fisicos;
+configuration_id MainWindow::conf_reg_elect;
+configuration_id MainWindow::conf_reg_fisic;
+configuration_id MainWindow::conf_reg_quimic;
 
-custom_tooltip *tool_tip_reactor_electricos;
-custom_tooltip *tool_tip_reactor_fisicos;
-custom_tooltip *tool_tip_reactor_quimicos;
+configuration_id MainWindow::conf_react_elect;
+configuration_id MainWindow::conf_react_fisic;
+configuration_id MainWindow::conf_react_quimi;
 
-custom_tooltip *tool_tip_clarificador_fisicos;
+configuration_id MainWindow::conf_clarif_elect;
+configuration_id MainWindow::conf_clarif_fisic;
+configuration_id MainWindow::conf_clarif_quimi;
 
-custom_tooltip *tool_tip_clorador_fisicos;
+configuration_id MainWindow::conf_clora_elect;
+configuration_id MainWindow::conf_clora_fisic;
+configuration_id MainWindow::conf_clora_quimi;
+
+configuration_id MainWindow::conf_digest_elect;
+configuration_id MainWindow::conf_digest_fisic;
+configuration_id MainWindow::conf_digest_quimi;
+
+configuration_id MainWindow::conf_deshid_elect;
+configuration_id MainWindow::conf_deshid_fisic;
+configuration_id MainWindow::conf_deshid_quimi;
 
 void MainWindow::HideButtons(bool hide)
 {
@@ -39,18 +51,24 @@ void MainWindow::HideButtons(bool hide)
 
 void MainWindow::InitTooltips()
 {
-    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, custom_tooltip::create_list() << 45 << 48 << 53);
-    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, custom_tooltip::create_list() << 43 << 40);
 
-    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_3, custom_tooltip::create_list() << 93 << 96 << 101);
-    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_4, custom_tooltip::create_list() << 165);
-    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_5, custom_tooltip::create_list() << 90 << 160 << 161 << 163);
+    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, conf_reg_elect.ids, conf_reg_elect.names);
+    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, conf_reg_fisic.ids, conf_reg_fisic.names);
+    tool_tip_regulador_quimicos = new custom_tooltip(ui->widget_3, conf_reg_quimic.ids, conf_reg_quimic.names);
 
-    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_6, custom_tooltip::create_list() << 145);
+    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4, conf_react_elect.ids, conf_react_elect.names);
+    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_5, conf_react_fisic.ids, conf_react_fisic.names);
+    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_6, conf_react_quimi.ids, conf_react_quimi.names);
 
-    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_7, custom_tooltip::create_list() << 162);
+    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, conf_clarif_elect.ids, conf_clarif_elect.names);
+    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_8, conf_clarif_fisic.ids, conf_clarif_fisic.names);
+    tool_tip_clarificador_quimicos = new custom_tooltip(ui->widget_9, conf_clarif_quimi.ids, conf_clarif_quimi.names);
 
+    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, conf_clora_elect.ids, conf_clora_elect.names);
+    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_11, conf_clora_fisic.ids, conf_clora_fisic.names);
+    tool_tip_clorador_quimicos = new custom_tooltip(ui->widget_12, conf_clora_quimi.ids, conf_clora_quimi.names);
 
+    init_complete = true;
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -58,6 +76,40 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    settingswindow = NULL;
+
+    //Get config
+    configuration *config;
+
+    config = new configuration("Regulador-Electricos");
+    MainWindow::conf_reg_elect = config->get_config();
+    config = new configuration("Regulador-Fisicos");
+    conf_reg_fisic = config->get_config();
+    config = new configuration("Regulador-Quimicos");
+    conf_reg_quimic = config->get_config();
+
+    config = new configuration("Reactor-Electricos");
+    conf_react_elect = config->get_config();
+    config = new configuration("Reactor-Fisicos");
+    conf_react_fisic = config->get_config();
+    config = new configuration("Reactor-Quimicos");
+    conf_react_quimi = config->get_config();
+
+    config = new configuration("Clarificador-Electricos");
+    conf_clarif_elect = config->get_config();
+    config = new configuration("Clarificador-Fisicos");
+    conf_clarif_fisic = config->get_config();
+    config = new configuration("Clarificador-Quimicos");
+    conf_clarif_quimi = config->get_config();
+
+    config = new configuration("Clorador-Electricos");
+    conf_clora_elect = config->get_config();
+    config = new configuration("Clorador-Fisicos");
+    conf_clora_fisic = config->get_config();
+    config = new configuration("Clorador-Quimicos");
+    conf_clora_quimi = config->get_config();
+
+
 
     //Setup Timer
     dataTimer.setInterval(200);
@@ -148,7 +200,6 @@ void MainWindow::handleDetailedView_1()
     if (detail_window != NULL) {
         delete detail_window;
     }
-    QPushButton *button = new QPushButton(this);
     detail_window = new detailedwindow(ELEMENT_REGULADOR, this);
 }
 void MainWindow::handleDetailedView_2()
@@ -209,53 +260,87 @@ void MainWindow::dataTimerSlot()
         case PARAM_ELECTRIC:
             tool_tip_regulador_electricos->force_show();
             tool_tip_reactor_electricos->force_show();
+            tool_tip_clarificador_electricos->force_show();
+            tool_tip_clorador_electricos->force_show();
 
             tool_tip_regulador_fisicos->force_hide();
             tool_tip_reactor_fisicos->force_hide();
             tool_tip_clarificador_fisicos->force_hide();
             tool_tip_clorador_fisicos->force_hide();
 
+            tool_tip_regulador_quimicos->force_hide();
             tool_tip_reactor_quimicos->force_hide();
+            tool_tip_clarificador_quimicos->force_hide();
+            tool_tip_clorador_quimicos->force_hide();
 
             break;
         case PARAM_PHYSHIC:
+            tool_tip_regulador_electricos->force_hide();
+            tool_tip_reactor_electricos->force_hide();
+            tool_tip_clarificador_electricos->force_hide();
+            tool_tip_clorador_electricos->force_hide();
+
             tool_tip_regulador_fisicos->force_show();
             tool_tip_reactor_fisicos->force_show();
             tool_tip_clarificador_fisicos->force_show();
             tool_tip_clorador_fisicos->force_show();
 
-            tool_tip_regulador_electricos->force_hide();
-            tool_tip_reactor_electricos->force_hide();
-
+            tool_tip_regulador_quimicos->force_hide();
             tool_tip_reactor_quimicos->force_hide();
+            tool_tip_clarificador_quimicos->force_hide();
+            tool_tip_clorador_quimicos->force_hide();
             break;
         case PARAM_CHEMIC:
-            tool_tip_reactor_quimicos->force_show();
-
             tool_tip_regulador_electricos->force_hide();
             tool_tip_reactor_electricos->force_hide();
+            tool_tip_clarificador_electricos->force_hide();
+            tool_tip_clorador_electricos->force_hide();
 
             tool_tip_regulador_fisicos->force_hide();
             tool_tip_reactor_fisicos->force_hide();
             tool_tip_clarificador_fisicos->force_hide();
             tool_tip_clorador_fisicos->force_hide();
+
+            tool_tip_regulador_quimicos->force_show();
+            tool_tip_reactor_quimicos->force_show();
+            tool_tip_clarificador_quimicos->force_show();
+            tool_tip_clorador_quimicos->force_show();
+            break;
+        default:
             break;
         }
     }
     else
     {
-        tool_tip_reactor_quimicos->update_data();
+        if(init_complete)
+        {
+            tool_tip_regulador_electricos->update_data();
+            tool_tip_reactor_electricos->update_data();
+            tool_tip_clarificador_electricos->update_data();
+            tool_tip_clorador_electricos->update_data();
 
-        tool_tip_regulador_electricos->update_data();
-        tool_tip_reactor_electricos->update_data();
+            tool_tip_regulador_fisicos->update_data();
+            tool_tip_reactor_fisicos->update_data();
+            tool_tip_clarificador_fisicos->update_data();
+            tool_tip_clorador_fisicos->update_data();
 
-        tool_tip_regulador_fisicos->update_data();
-        tool_tip_reactor_fisicos->update_data();
-        tool_tip_clarificador_fisicos->update_data();
-        tool_tip_clorador_fisicos->update_data();
+            tool_tip_regulador_quimicos->update_data();
+            tool_tip_reactor_quimicos->update_data();
+            tool_tip_clarificador_quimicos->update_data();
+            tool_tip_clorador_quimicos->update_data();
+        }
+
     }
-    if(detail_window != NULL)
+
+}
+
+void MainWindow::on_top_menu_4_clicked()
+{
+    if(settingswindow != NULL)
     {
-//        detail_window->update_params();
+        delete settingswindow;
     }
+
+    settingswindow = new settings(this);
+
 }

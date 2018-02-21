@@ -22,7 +22,9 @@ SOURCES += main.cpp\
     spicomm.cpp \
     my_crc_api.cpp \
     dataproccess.cpp \
-    custom_tooltip.cpp
+    custom_tooltip.cpp \
+    settings.cpp \
+    configuration.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -33,10 +35,13 @@ HEADERS  += mainwindow.h \
     spicomm.h \
     my_crc_api.h \
     dataproccess.h \
-    custom_tooltip.h
+    custom_tooltip.h \
+    settings.h \
+    configuration.h
 
 FORMS    += mainwindow.ui \
-    detailedwindow.ui
+    detailedwindow.ui \
+    settings.ui
 
 RESOURCES += \
     images.qrc \

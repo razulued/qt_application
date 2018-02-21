@@ -29,11 +29,11 @@ detailed_window_elements_t details_1=
     "igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujo"
     "generado durante las horas pico",
 
-    create_list() << 45 << 48 << 53,
+    &MainWindow::conf_reg_elect,
 
-    create_list() << 43 << 40,
+    &MainWindow::conf_reg_fisic,
 
-    create_list(),
+    &MainWindow::conf_reg_quimic,
 };
 
 detailed_window_elements_t details_2=
@@ -45,11 +45,11 @@ detailed_window_elements_t details_2=
     "Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo "
     "en contacto las aguas residuales con una biomasa de microorganismos que la depuran.",
 
-    create_list() << 93 << 96 << 101,
+    &MainWindow::conf_react_elect,
 
-    create_list() << 165,
+    &MainWindow::conf_react_fisic,
 
-    create_list() << 90 << 160 << 161 << 163,
+    &MainWindow::conf_react_quimi,
 
 };
 
@@ -60,11 +60,11 @@ detailed_window_elements_t details_3=
     "Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos "
     "suspendidos se sedimentan, separandose del agua.",
 
-    create_list(),
+    &MainWindow::conf_clarif_elect,
 
-    create_list() << 145,
+    &MainWindow::conf_clarif_fisic,
 
-    create_list(),
+    &MainWindow::conf_clarif_quimi,
 };
 
 detailed_window_elements_t details_4=
@@ -73,11 +73,11 @@ detailed_window_elements_t details_4=
     ":/images/images/detail_clorador.png",
     "Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes.",
 
-    create_list(),
+    &MainWindow::conf_clora_elect,
 
-    create_list() << 162,
+    &MainWindow::conf_clora_fisic,
 
-    create_list(),
+    &MainWindow::conf_clora_quimi,
 };
 
 detailed_window_elements_t details_5=
@@ -87,11 +87,11 @@ detailed_window_elements_t details_5=
     "Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente"
     " hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos.",
 
-    create_list(),
+    &MainWindow::conf_digest_elect,
 
-    create_list(),
+    &MainWindow::conf_digest_fisic,
 
-    create_list(),
+    &MainWindow::conf_digest_quimi,
 };
 
 detailed_window_elements_t details_6=
@@ -101,11 +101,11 @@ detailed_window_elements_t details_6=
     "Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y "
     "se permite su infiltración, dejando secar los lodos",
 
-    create_list(),
+    &MainWindow::conf_deshid_elect,
 
-    create_list(),
+    &MainWindow::conf_deshid_fisic,
 
-    create_list(),
+    &MainWindow::conf_deshid_quimi,
 };
 
 const detailed_window_elements_t *detailed_elements[]=
@@ -187,35 +187,35 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
     /**** TAB 1 INIT: Evento ***/
     quint32 i, param_id;
     ui->layout_param->setAlignment(Qt::AlignTop);
-    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_elect.size();
-    for(i = 0; i < (quint32)detailed_elements[element]->list_elect.size(); i++)
+    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_elect->ids.size();
+    for(i = 0; i < (quint32)detailed_elements[element]->list_elect->ids.size(); i++)
     {
-        param_id = detailed_elements[element]->list_elect[i];
-        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
+        param_id = detailed_elements[element]->list_elect->ids.at(i);
+//        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
 
-        QLabel *label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
+        QLabel *label = new QLabel(detailed_elements[element]->list_elect->names.at(i) + ": " + getParamValue(param_id));
         label->setFont(font_2);
         ui->layout_param->addWidget(label);
 
     }
-    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_phys.size();
-    for(i = 0; i < (quint32)detailed_elements[element]->list_phys.size(); i++)
+    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_phys->ids.size();
+    for(i = 0; i < (quint32)detailed_elements[element]->list_phys->ids.size(); i++)
     {
-        param_id = detailed_elements[element]->list_phys[i];
-        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
+        param_id = detailed_elements[element]->list_phys->ids.at(i);
+//        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
 
-        QLabel *label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
+        QLabel *label = new QLabel(detailed_elements[element]->list_phys->names.at(i) + ": " + getParamValue(param_id));
         label->setFont(font_2);
         ui->layout_param->addWidget(label);
 
     }
-    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_chem.size();
-    for(i = 0; i < (quint32)detailed_elements[element]->list_chem.size(); i++)
+    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_chem->ids.size();
+    for(i = 0; i < (quint32)detailed_elements[element]->list_chem->ids.size(); i++)
     {
-        param_id = detailed_elements[element]->list_chem[i];
-        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
+        param_id = detailed_elements[element]->list_chem->ids.at(i);
+//        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
 
-        QLabel *label = new QLabel(getParamName(param_id) + ": " + getParamValue(param_id));
+        QLabel *label = new QLabel(detailed_elements[element]->list_chem->names.at(i) + ": " + getParamValue(param_id));
         label->setFont(font_2);
         ui->layout_param->addWidget(label);
 
@@ -238,11 +238,11 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
 
     QCheckBox *box;
 
-    for(i = 0; i < (quint32)detailed_elements[element]->list_elect.size(); i++)
+    for(i = 0; i < (quint32)detailed_elements[element]->list_elect->ids.size(); i++)
     {
-        param_id = detailed_elements[element]->list_elect[i];
+        param_id = detailed_elements[element]->list_elect->ids.at(i);
 
-        box = new QCheckBox(getParamName(param_id));
+        box = new QCheckBox(detailed_elements[element]->list_elect->names.at(i));
         if(true == getParamActiveShow(param_id))
         {
             box->setChecked(true);
@@ -257,11 +257,11 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
         checkboxMapper->setMapping(box, param_id);
     }
 
-    for(i = 0; i < (quint32)detailed_elements[element]->list_phys.size(); i++)
+    for(i = 0; i < (quint32)detailed_elements[element]->list_phys->ids.size(); i++)
     {
-        param_id = detailed_elements[element]->list_phys[i];
+        param_id = detailed_elements[element]->list_phys->ids.at(i);
 
-        box = new QCheckBox(getParamName(param_id));
+        box = new QCheckBox(detailed_elements[element]->list_phys->names.at(i));
         if(true == getParamActiveShow(param_id))
         {
             box->setChecked(true);
@@ -274,11 +274,11 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
         checkboxMapper->setMapping(box, param_id);
     }
 
-    for(i = 0; i < (quint32)detailed_elements[element]->list_chem.size(); i++)
+    for(i = 0; i < (quint32)detailed_elements[element]->list_chem->ids.size(); i++)
     {
-        param_id = detailed_elements[element]->list_chem[i];
+        param_id = detailed_elements[element]->list_chem->ids.at(i);
 
-        box = new QCheckBox(getParamName(param_id));
+        box = new QCheckBox(detailed_elements[element]->list_chem->names.at(i));
         if(true == getParamActiveShow(param_id))
         {
             box->setChecked(true);

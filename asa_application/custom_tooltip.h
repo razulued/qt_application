@@ -18,7 +18,7 @@ public:
         return list;
     }
 
-    custom_tooltip(QWidget *frame, QList<int> list);
+    custom_tooltip(QWidget *frame, QList<int> list, QStringList names);
 
     void update_data();
     void init_data();
@@ -26,8 +26,8 @@ public:
     void force_hide();
 
 private:
-    QTimer timerHandler;
     QList<int> DataList;
+    QStringList NameList;
     QWidget *parent_frame;
     QLayout *layout;
     QListWidget *list_widget;

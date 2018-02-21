@@ -133,7 +133,7 @@ parameter_config_t  all_parameters[]=
     {42,	false,	"car_stat_sens_sst_in",         &car_stat_sens_sst_in,             TYPE_HEX},
     {43,	false,	"Q",                            &car_stat_sens_caudal_in,          TYPE_HEX},
     {44,	false,	"car_stat_diag_mot1",           &car_stat_diag_mot1,               TYPE_HEX},
-    {45,	true,	"Vp",                           &car_stat_mot1_volt12,             TYPE_HEX},
+    {45,	false,	"Vp",                           &car_stat_mot1_volt12,             TYPE_HEX},
     {46,	false,	"car_stat_mot1_volt23",         &car_stat_mot1_volt23,             TYPE_HEX},
     {47,	false,	"car_stat_mot1_volt13",         &car_stat_mot1_volt13,             TYPE_HEX},
     {48,	false,	"Ap",                           &car_stat_mot1_amp1,               TYPE_HEX},
@@ -141,7 +141,7 @@ parameter_config_t  all_parameters[]=
     {50,	false,	"car_stat_mot1_amp3",           &car_stat_mot1_amp3,               TYPE_HEX},
     {51,	false,	"car_stat_mot1_freq",           &car_stat_mot1_freq,               TYPE_HEX},
     {52,	false,	"car_stat_mot1_cosphi",         &car_stat_mot1_cosphi,             TYPE_HEX},
-    {53,	true,	"FP",                           &car_stat_mot1_pfac,               TYPE_HEX},
+    {53,	false,	"FP",                           &car_stat_mot1_pfac,               TYPE_HEX},
     {54,	false,	"car_stat_diag_mot2",           &car_stat_diag_mot2,               TYPE_HEX},
     {55,	false,	"car_stat_mot2_volt12",         &car_stat_mot2_volt12,             TYPE_HEX},
     {56,	false,	"car_stat_mot2_volt23",         &car_stat_mot2_volt23,             TYPE_HEX},
@@ -234,7 +234,7 @@ void InitRandomParameters()
             a = qrand() % 50;
             *uint_ptr = a;
             *uint_ptr = std::trunc(100 * *uint_ptr) / 100;
-            qDebug() << "Param: "<< all_parameters[i].name <<*uint_ptr;
+//            qDebug() << "Param: "<< all_parameters[i].name <<*uint_ptr;
         }
     }
 }

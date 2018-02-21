@@ -6,7 +6,9 @@
 #include "detailedwindow.h"
 #include "multistatebutton.h"
 #include "parameters.h"
-
+#include "settings.h"
+#include "custom_tooltip.h"
+#include "configuration.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +31,46 @@ public:
     ~MainWindow();
     void InitTooltips();
 
+    static configuration_id conf_reg_elect;
+    static configuration_id conf_reg_fisic;
+    static configuration_id conf_reg_quimic;
+
+    static configuration_id conf_react_elect;
+    static configuration_id conf_react_fisic;
+    static configuration_id conf_react_quimi;
+
+    static configuration_id conf_clarif_elect;
+    static configuration_id conf_clarif_fisic;
+    static configuration_id conf_clarif_quimi;
+
+    static configuration_id conf_clora_elect;
+    static configuration_id conf_clora_fisic;
+    static configuration_id conf_clora_quimi;
+
+    static configuration_id conf_digest_elect;
+    static configuration_id conf_digest_fisic;
+    static configuration_id conf_digest_quimi;
+
+    static configuration_id conf_deshid_elect;
+    static configuration_id conf_deshid_fisic;
+    static configuration_id conf_deshid_quimi;
+
+//    configuration * conf_regulador_electricos;
+//    configuration * conf_regulador_fisicos;
+//    configuration * conf_regulador_quimicos;
+
+//    configuration * conf_reactor_electricos;
+//    configuration * conf_reactor_fisicos;
+//    configuration * conf_reactor_quimicos;
+
+//    configuration * conf_clarificador_electricos;
+//    configuration * conf_clarificador_fisicos;
+//    configuration * conf_clarificador_quimicos;
+
+//    configuration * conf_clorador_electricos;
+//    configuration * conf_clorador_fisicos;
+//    configuration * conf_clorador_quimicos;
+
 public slots:
     void handleMenuButton();
     void handleParametrosElectricosButton();
@@ -45,16 +87,40 @@ private slots:
     void on_asa_logo_clicked();
     void dataTimerSlot();
 
+    void on_top_menu_4_clicked();
+
 private:
     QTimer dataTimer;
 
     Ui::MainWindow *ui;
     bool display_parameters;
     detailedwindow *detail_window;
+    settings    *settingswindow;
     void HideButtons(bool show);
     parameter_state_t electric_state;
     parameter_state_t chemic_state;
     parameter_state_t physic_state;
+    bool init_complete = false;
+
+
+    custom_tooltip *tool_tip_regulador_electricos;
+    custom_tooltip *tool_tip_regulador_fisicos;
+    custom_tooltip *tool_tip_regulador_quimicos;
+
+    custom_tooltip *tool_tip_reactor_electricos;
+    custom_tooltip *tool_tip_reactor_fisicos;
+    custom_tooltip *tool_tip_reactor_quimicos;
+
+
+    custom_tooltip *tool_tip_clarificador_electricos;
+    custom_tooltip *tool_tip_clarificador_fisicos;
+    custom_tooltip *tool_tip_clarificador_quimicos;
+
+
+    custom_tooltip *tool_tip_clorador_electricos;
+    custom_tooltip *tool_tip_clorador_fisicos;
+    custom_tooltip *tool_tip_clorador_quimicos;
 };
+
 
 #endif // MAINWINDOW_H
