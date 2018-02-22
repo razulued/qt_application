@@ -24,6 +24,8 @@ private slots:
     void on_settings_accepted();
     void on_settings_rejected();
 
+    void on_buttonBox_accepted();
+
 private:
     Ui::settings *ui;
     QFile *config_file;

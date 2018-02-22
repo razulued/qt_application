@@ -55,21 +55,7 @@ public:
     static configuration_id conf_deshid_fisic;
     static configuration_id conf_deshid_quimi;
 
-//    configuration * conf_regulador_electricos;
-//    configuration * conf_regulador_fisicos;
-//    configuration * conf_regulador_quimicos;
-
-//    configuration * conf_reactor_electricos;
-//    configuration * conf_reactor_fisicos;
-//    configuration * conf_reactor_quimicos;
-
-//    configuration * conf_clarificador_electricos;
-//    configuration * conf_clarificador_fisicos;
-//    configuration * conf_clarificador_quimicos;
-
-//    configuration * conf_clorador_electricos;
-//    configuration * conf_clorador_fisicos;
-//    configuration * conf_clorador_quimicos;
+    static QString ASA_conf_string;
 
 public slots:
     void handleMenuButton();
@@ -120,6 +106,8 @@ private:
     custom_tooltip *tool_tip_clorador_electricos;
     custom_tooltip *tool_tip_clorador_fisicos;
     custom_tooltip *tool_tip_clorador_quimicos;
+
+    void get_ASA_string(void);
 };
 
 

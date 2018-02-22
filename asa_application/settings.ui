@@ -34,7 +34,7 @@
    <item row="1" column="0" colspan="2">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
@@ -145,6 +145,104 @@
          </property>
         </widget>
        </item>
+       <item row="4" column="2">
+        <widget class="QComboBox" name="cfg_out_led_1_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QComboBox" name="cfg_out_led_2_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
        <item row="2" column="0">
         <widget class="QLabel" name="cfg_out_rel_3">
          <property name="text">
@@ -199,6 +297,13 @@
            <string>8 = Tablero</string>
           </property>
          </item>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="cfg_out_led_3">
+         <property name="text">
+          <string>cgf_out_led_3</string>
+         </property>
         </widget>
        </item>
        <item row="3" column="1">
@@ -280,6 +385,81 @@
          <item>
           <property name="text">
            <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="cfg_out_led_1_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Bomba Monofásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Alerta sonora</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Bomba trifásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = LED</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Electrovalvula</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="cfg_out_led_2">
+         <property name="text">
+          <string>cgf_out_led_2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="cfg_out_led_3_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Bomba Monofásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Alerta sonora</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Bomba trifásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = LED</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Electrovalvula</string>
           </property>
          </item>
         </widget>
@@ -408,8 +588,57 @@
          </item>
         </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="cfg_out_led_1_MSB">
+       <item row="6" column="2">
+        <widget class="QComboBox" name="cfg_out_led_3_LSB">
+         <item>
+          <property name="text">
+           <string>0 = No definido</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Carcamo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Reactores</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Clarificador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = Clorador</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Filtrado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>6 = Digestor</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>7 = Secado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>8 = Tablero</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="cfg_out_led_2_MSB">
          <item>
           <property name="text">
            <string>0 = No Connect</string>
@@ -442,8 +671,49 @@
          </item>
         </widget>
        </item>
-       <item row="4" column="2">
-        <widget class="QComboBox" name="cfg_out_led_1_LSB">
+       <item row="7" column="0">
+        <widget class="QLabel" name="cfg_out_led_4">
+         <property name="text">
+          <string>cgf_out_led_4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="cfg_out_led_4_MSB">
+         <item>
+          <property name="text">
+           <string>0 = No Connect</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 = Bomba Monofásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 = Alerta sonora</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 = Bomba trifásica</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 = LED</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5 = Electrovalvula</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QComboBox" name="cfg_out_led_4_LSB">
          <item>
           <property name="text">
            <string>0 = No definido</string>

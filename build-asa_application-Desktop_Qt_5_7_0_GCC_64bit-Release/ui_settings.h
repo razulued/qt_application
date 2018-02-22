@@ -39,16 +39,25 @@ public:
     QComboBox *cfg_out_rel_1_LSB;
     QLabel *cfg_out_rel_4;
     QLabel *cfg_out_rel_2;
+    QComboBox *cfg_out_led_1_LSB;
+    QComboBox *cfg_out_led_2_LSB;
     QLabel *cfg_out_rel_3;
     QComboBox *cfg_out_rel_3_LSB;
+    QLabel *cfg_out_led_3;
     QComboBox *cfg_out_rel_4_MSB;
     QComboBox *cfg_out_rel_2_LSB;
+    QComboBox *cfg_out_led_1_MSB;
+    QLabel *cfg_out_led_2;
+    QComboBox *cfg_out_led_3_MSB;
     QComboBox *cfg_out_rel_3_MSB;
     QComboBox *cfg_out_rel_4_LSB;
     QLabel *cfg_out_led_1;
     QComboBox *cfg_out_rel_2_MSB;
-    QComboBox *cfg_out_led_1_MSB;
-    QComboBox *cfg_out_led_1_LSB;
+    QComboBox *cfg_out_led_3_LSB;
+    QComboBox *cfg_out_led_2_MSB;
+    QLabel *cfg_out_led_4;
+    QComboBox *cfg_out_led_4_MSB;
+    QComboBox *cfg_out_led_4_LSB;
     QWidget *tab_3;
     QGridLayout *gridLayout_4;
     QComboBox *cfg_ana_7_LSB;
@@ -200,6 +209,16 @@ public:
 
         gridLayout_3->addWidget(cfg_out_rel_2, 1, 0, 1, 1);
 
+        cfg_out_led_1_LSB = new QComboBox(tab_2);
+        cfg_out_led_1_LSB->setObjectName(QStringLiteral("cfg_out_led_1_LSB"));
+
+        gridLayout_3->addWidget(cfg_out_led_1_LSB, 4, 2, 1, 1);
+
+        cfg_out_led_2_LSB = new QComboBox(tab_2);
+        cfg_out_led_2_LSB->setObjectName(QStringLiteral("cfg_out_led_2_LSB"));
+
+        gridLayout_3->addWidget(cfg_out_led_2_LSB, 5, 2, 1, 1);
+
         cfg_out_rel_3 = new QLabel(tab_2);
         cfg_out_rel_3->setObjectName(QStringLiteral("cfg_out_rel_3"));
 
@@ -210,6 +229,11 @@ public:
 
         gridLayout_3->addWidget(cfg_out_rel_3_LSB, 2, 2, 1, 1);
 
+        cfg_out_led_3 = new QLabel(tab_2);
+        cfg_out_led_3->setObjectName(QStringLiteral("cfg_out_led_3"));
+
+        gridLayout_3->addWidget(cfg_out_led_3, 6, 0, 1, 1);
+
         cfg_out_rel_4_MSB = new QComboBox(tab_2);
         cfg_out_rel_4_MSB->setObjectName(QStringLiteral("cfg_out_rel_4_MSB"));
 
@@ -219,6 +243,21 @@ public:
         cfg_out_rel_2_LSB->setObjectName(QStringLiteral("cfg_out_rel_2_LSB"));
 
         gridLayout_3->addWidget(cfg_out_rel_2_LSB, 1, 2, 1, 1);
+
+        cfg_out_led_1_MSB = new QComboBox(tab_2);
+        cfg_out_led_1_MSB->setObjectName(QStringLiteral("cfg_out_led_1_MSB"));
+
+        gridLayout_3->addWidget(cfg_out_led_1_MSB, 4, 1, 1, 1);
+
+        cfg_out_led_2 = new QLabel(tab_2);
+        cfg_out_led_2->setObjectName(QStringLiteral("cfg_out_led_2"));
+
+        gridLayout_3->addWidget(cfg_out_led_2, 5, 0, 1, 1);
+
+        cfg_out_led_3_MSB = new QComboBox(tab_2);
+        cfg_out_led_3_MSB->setObjectName(QStringLiteral("cfg_out_led_3_MSB"));
+
+        gridLayout_3->addWidget(cfg_out_led_3_MSB, 6, 1, 1, 1);
 
         cfg_out_rel_3_MSB = new QComboBox(tab_2);
         cfg_out_rel_3_MSB->setObjectName(QStringLiteral("cfg_out_rel_3_MSB"));
@@ -240,15 +279,30 @@ public:
 
         gridLayout_3->addWidget(cfg_out_rel_2_MSB, 1, 1, 1, 1);
 
-        cfg_out_led_1_MSB = new QComboBox(tab_2);
-        cfg_out_led_1_MSB->setObjectName(QStringLiteral("cfg_out_led_1_MSB"));
+        cfg_out_led_3_LSB = new QComboBox(tab_2);
+        cfg_out_led_3_LSB->setObjectName(QStringLiteral("cfg_out_led_3_LSB"));
 
-        gridLayout_3->addWidget(cfg_out_led_1_MSB, 4, 1, 1, 1);
+        gridLayout_3->addWidget(cfg_out_led_3_LSB, 6, 2, 1, 1);
 
-        cfg_out_led_1_LSB = new QComboBox(tab_2);
-        cfg_out_led_1_LSB->setObjectName(QStringLiteral("cfg_out_led_1_LSB"));
+        cfg_out_led_2_MSB = new QComboBox(tab_2);
+        cfg_out_led_2_MSB->setObjectName(QStringLiteral("cfg_out_led_2_MSB"));
 
-        gridLayout_3->addWidget(cfg_out_led_1_LSB, 4, 2, 1, 1);
+        gridLayout_3->addWidget(cfg_out_led_2_MSB, 5, 1, 1, 1);
+
+        cfg_out_led_4 = new QLabel(tab_2);
+        cfg_out_led_4->setObjectName(QStringLiteral("cfg_out_led_4"));
+
+        gridLayout_3->addWidget(cfg_out_led_4, 7, 0, 1, 1);
+
+        cfg_out_led_4_MSB = new QComboBox(tab_2);
+        cfg_out_led_4_MSB->setObjectName(QStringLiteral("cfg_out_led_4_MSB"));
+
+        gridLayout_3->addWidget(cfg_out_led_4_MSB, 7, 1, 1, 1);
+
+        cfg_out_led_4_LSB = new QComboBox(tab_2);
+        cfg_out_led_4_LSB->setObjectName(QStringLiteral("cfg_out_led_4_LSB"));
+
+        gridLayout_3->addWidget(cfg_out_led_4_LSB, 7, 2, 1, 1);
 
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
@@ -742,7 +796,7 @@ public:
         QObject::connect(buttonBox, SIGNAL(accepted()), settings, SLOT(accept()));
         QObject::connect(buttonBox, SIGNAL(rejected()), settings, SLOT(reject()));
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(settings);
@@ -776,6 +830,30 @@ public:
         );
         cfg_out_rel_4->setText(QApplication::translate("settings", "cgf_out_rel_4", 0));
         cfg_out_rel_2->setText(QApplication::translate("settings", "cgf_out_rel_2", 0));
+        cfg_out_led_1_LSB->clear();
+        cfg_out_led_1_LSB->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 = No definido", 0)
+         << QApplication::translate("settings", "1 = Carcamo", 0)
+         << QApplication::translate("settings", "2 = Reactores", 0)
+         << QApplication::translate("settings", "3 = Clarificador", 0)
+         << QApplication::translate("settings", "4 = Clorador", 0)
+         << QApplication::translate("settings", "5 = Filtrado", 0)
+         << QApplication::translate("settings", "6 = Digestor", 0)
+         << QApplication::translate("settings", "7 = Secado", 0)
+         << QApplication::translate("settings", "8 = Tablero", 0)
+        );
+        cfg_out_led_2_LSB->clear();
+        cfg_out_led_2_LSB->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 = No definido", 0)
+         << QApplication::translate("settings", "1 = Carcamo", 0)
+         << QApplication::translate("settings", "2 = Reactores", 0)
+         << QApplication::translate("settings", "3 = Clarificador", 0)
+         << QApplication::translate("settings", "4 = Clorador", 0)
+         << QApplication::translate("settings", "5 = Filtrado", 0)
+         << QApplication::translate("settings", "6 = Digestor", 0)
+         << QApplication::translate("settings", "7 = Secado", 0)
+         << QApplication::translate("settings", "8 = Tablero", 0)
+        );
         cfg_out_rel_3->setText(QApplication::translate("settings", "cgf_out_rel_3", 0));
         cfg_out_rel_3_LSB->clear();
         cfg_out_rel_3_LSB->insertItems(0, QStringList()
@@ -789,6 +867,7 @@ public:
          << QApplication::translate("settings", "7 = Secado", 0)
          << QApplication::translate("settings", "8 = Tablero", 0)
         );
+        cfg_out_led_3->setText(QApplication::translate("settings", "cgf_out_led_3", 0));
         cfg_out_rel_4_MSB->clear();
         cfg_out_rel_4_MSB->insertItems(0, QStringList()
          << QApplication::translate("settings", "0 = No Connect", 0)
@@ -809,6 +888,25 @@ public:
          << QApplication::translate("settings", "6 = Digestor", 0)
          << QApplication::translate("settings", "7 = Secado", 0)
          << QApplication::translate("settings", "8 = Tablero", 0)
+        );
+        cfg_out_led_1_MSB->clear();
+        cfg_out_led_1_MSB->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 = No Connect", 0)
+         << QApplication::translate("settings", "1 = Bomba Monof\303\241sica", 0)
+         << QApplication::translate("settings", "2 = Alerta sonora", 0)
+         << QApplication::translate("settings", "3 = Bomba trif\303\241sica", 0)
+         << QApplication::translate("settings", "4 = LED", 0)
+         << QApplication::translate("settings", "5 = Electrovalvula", 0)
+        );
+        cfg_out_led_2->setText(QApplication::translate("settings", "cgf_out_led_2", 0));
+        cfg_out_led_3_MSB->clear();
+        cfg_out_led_3_MSB->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 = No Connect", 0)
+         << QApplication::translate("settings", "1 = Bomba Monof\303\241sica", 0)
+         << QApplication::translate("settings", "2 = Alerta sonora", 0)
+         << QApplication::translate("settings", "3 = Bomba trif\303\241sica", 0)
+         << QApplication::translate("settings", "4 = LED", 0)
+         << QApplication::translate("settings", "5 = Electrovalvula", 0)
         );
         cfg_out_rel_3_MSB->clear();
         cfg_out_rel_3_MSB->insertItems(0, QStringList()
@@ -841,8 +939,20 @@ public:
          << QApplication::translate("settings", "4 = LED", 0)
          << QApplication::translate("settings", "5 = Electrovalvula", 0)
         );
-        cfg_out_led_1_MSB->clear();
-        cfg_out_led_1_MSB->insertItems(0, QStringList()
+        cfg_out_led_3_LSB->clear();
+        cfg_out_led_3_LSB->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 = No definido", 0)
+         << QApplication::translate("settings", "1 = Carcamo", 0)
+         << QApplication::translate("settings", "2 = Reactores", 0)
+         << QApplication::translate("settings", "3 = Clarificador", 0)
+         << QApplication::translate("settings", "4 = Clorador", 0)
+         << QApplication::translate("settings", "5 = Filtrado", 0)
+         << QApplication::translate("settings", "6 = Digestor", 0)
+         << QApplication::translate("settings", "7 = Secado", 0)
+         << QApplication::translate("settings", "8 = Tablero", 0)
+        );
+        cfg_out_led_2_MSB->clear();
+        cfg_out_led_2_MSB->insertItems(0, QStringList()
          << QApplication::translate("settings", "0 = No Connect", 0)
          << QApplication::translate("settings", "1 = Bomba Monof\303\241sica", 0)
          << QApplication::translate("settings", "2 = Alerta sonora", 0)
@@ -850,8 +960,18 @@ public:
          << QApplication::translate("settings", "4 = LED", 0)
          << QApplication::translate("settings", "5 = Electrovalvula", 0)
         );
-        cfg_out_led_1_LSB->clear();
-        cfg_out_led_1_LSB->insertItems(0, QStringList()
+        cfg_out_led_4->setText(QApplication::translate("settings", "cgf_out_led_4", 0));
+        cfg_out_led_4_MSB->clear();
+        cfg_out_led_4_MSB->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 = No Connect", 0)
+         << QApplication::translate("settings", "1 = Bomba Monof\303\241sica", 0)
+         << QApplication::translate("settings", "2 = Alerta sonora", 0)
+         << QApplication::translate("settings", "3 = Bomba trif\303\241sica", 0)
+         << QApplication::translate("settings", "4 = LED", 0)
+         << QApplication::translate("settings", "5 = Electrovalvula", 0)
+        );
+        cfg_out_led_4_LSB->clear();
+        cfg_out_led_4_LSB->insertItems(0, QStringList()
          << QApplication::translate("settings", "0 = No definido", 0)
          << QApplication::translate("settings", "1 = Carcamo", 0)
          << QApplication::translate("settings", "2 = Reactores", 0)

@@ -15,6 +15,7 @@ public:
     void endSPICommuniction(void);
     void configureSPICommunication(void);
     char* getSPIdata();
+    void sendSPIdata();
     void msDelay(unsigned int delay);
 
     //uint16_t CalculateCRC16(uint16_t crc, uint8_t *c_ptr, int len);

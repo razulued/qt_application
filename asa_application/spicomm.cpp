@@ -4,6 +4,7 @@
 #include "my_crc_api.h"
 #include <stdint.h>
 #include <stdlib.h>
+#include "mainwindow.h"
 
 #define SPI_STX 0x02
 #define SPI_ETX 0x03
@@ -73,8 +74,49 @@ void SPICOMM::endSPICommuniction()
 
 }
 
+void SPICOMM::sendSPIdata()
+{
+    int i = 0;
+    uint8_t checksum_string[1024];
+    uint8_t temp = 0;
+    uint16_t CRCvalue = 0;
+    uint8_t ch = 0;
+
+    /*Do this only if there is data in the configuration*/
+
+    if(MainWindow::ASA_conf_string.size() > 1)
+    {
+        //Send start of TX
+        temp = bcm2835_spi_transfer(SPI_STX);
+        msDelay(10U);
+
+        //Send ASA conf string
+        qDebug() << MainWindow::ASA_conf_string;
+        for(i = 0; i < MainWindow::ASA_conf_string.size(); i++)
+        {
+            ch = (uint8_t)MainWindow::ASA_conf_string[i].unicode();
+            temp = bcm2835_spi_transfer(ch);
+            checksum_string[i] = ch;
+            msDelay(10U);
+        }
+
+        //Send end of TX
+        bcm2835_spi_transfer(SPI_ETX);
+        msDelay(10U);
+
+        // CRC
+        CRCvalue = ::CalculateCRC16(0xFFFF, checksum_string, (MainWindow::ASA_conf_string.size() -1));
+
+        temp = bcm2835_spi_transfer((uint8_t)((CRCvalue >> 8) & 0x00FF));
+        msDelay(10U);
+        temp = bcm2835_spi_transfer((uint8_t)((CRCvalue) & 0x00FF));
+        msDelay(10U);
+    }
+}
+
 char *SPICOMM::getSPIdata()
 {
+
 
     uint8_t dataReadFromSPI[1024];
     char dataCharReadFromSPI[1024];
