@@ -4,6 +4,8 @@
 #include <QFontDatabase>
 #include "parameters.h"
 #include <QList>
+#include <QPainter>
+#include <QColor>
 
 configuration_id MainWindow::conf_reg_elect;
 configuration_id MainWindow::conf_reg_fisic;
@@ -29,7 +31,19 @@ configuration_id MainWindow::conf_deshid_elect;
 configuration_id MainWindow::conf_deshid_fisic;
 configuration_id MainWindow::conf_deshid_quimi;
 
+configuration_id MainWindow::reg_outputs;
+configuration_id MainWindow::react_outputs;
+configuration_id MainWindow::clarif_outputs;
+configuration_id MainWindow::clora_outputs;
+configuration_id MainWindow::digest_outputs;
+configuration_id MainWindow::deshid_outputs;
+
+int MainWindow::reg_op_mode;
+int MainWindow::reg_mot_1;
+int MainWindow::reg_mot_2;
+
 QString MainWindow::ASA_conf_string;
+QString MainWindow::ASA_conf_only_string;
 
 void MainWindow::HideButtons(bool hide)
 {
@@ -54,21 +68,21 @@ void MainWindow::HideButtons(bool hide)
 void MainWindow::InitTooltips()
 {
 
-    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, conf_reg_elect.ids, conf_reg_elect.names);
-    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, conf_reg_fisic.ids, conf_reg_fisic.names);
-    tool_tip_regulador_quimicos = new custom_tooltip(ui->widget_3, conf_reg_quimic.ids, conf_reg_quimic.names);
+    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, conf_reg_elect.ids, conf_reg_elect.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1);
+    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, conf_reg_fisic.ids, conf_reg_fisic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1);
+    tool_tip_regulador_quimicos = new custom_tooltip(ui->widget_3, conf_reg_quimic.ids, conf_reg_quimic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1);
 
-    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4, conf_react_elect.ids, conf_react_elect.names);
-    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_5, conf_react_fisic.ids, conf_react_fisic.names);
-    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_6, conf_react_quimi.ids, conf_react_quimi.names);
+    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4, conf_react_elect.ids, conf_react_elect.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2);
+    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_5, conf_react_fisic.ids, conf_react_fisic.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2);
+    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_6, conf_react_quimi.ids, conf_react_quimi.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2);
 
-    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, conf_clarif_elect.ids, conf_clarif_elect.names);
-    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_8, conf_clarif_fisic.ids, conf_clarif_fisic.names);
-    tool_tip_clarificador_quimicos = new custom_tooltip(ui->widget_9, conf_clarif_quimi.ids, conf_clarif_quimi.names);
+    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, conf_clarif_elect.ids, conf_clarif_elect.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3);
+    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_8, conf_clarif_fisic.ids, conf_clarif_fisic.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3);
+    tool_tip_clarificador_quimicos = new custom_tooltip(ui->widget_9, conf_clarif_quimi.ids, conf_clarif_quimi.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3);
 
-    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, conf_clora_elect.ids, conf_clora_elect.names);
-    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_11, conf_clora_fisic.ids, conf_clora_fisic.names);
-    tool_tip_clorador_quimicos = new custom_tooltip(ui->widget_12, conf_clora_quimi.ids, conf_clora_quimi.names);
+    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, conf_clora_elect.ids, conf_clora_elect.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4);
+    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_11, conf_clora_fisic.ids, conf_clora_fisic.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4);
+    tool_tip_clorador_quimicos = new custom_tooltip(ui->widget_12, conf_clora_quimi.ids, conf_clora_quimi.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4);
 
     init_complete = true;
 }
@@ -86,7 +100,7 @@ MainWindow::MainWindow(QWidget *parent) :
     configuration *config;
 
     config = new configuration("Regulador-Electricos");
-    MainWindow::conf_reg_elect = config->get_config();
+    conf_reg_elect = config->get_config();
     config = new configuration("Regulador-Fisicos");
     conf_reg_fisic = config->get_config();
     config = new configuration("Regulador-Quimicos");
@@ -113,6 +127,16 @@ MainWindow::MainWindow(QWidget *parent) :
     config = new configuration("Clorador-Quimicos");
     conf_clora_quimi = config->get_config();
 
+    //Get outputs
+    config = new configuration("Regulador-Out");
+    reg_outputs = config->get_config();
+    config = new configuration("Reactor-Out");
+    react_outputs = config->get_config();
+    config = new configuration("Clarificador-Out");
+    clarif_outputs = config->get_config();
+    config = new configuration("Clorador-Out");
+    clora_outputs = config->get_config();
+
     //Setup Timer
     dataTimer.setInterval(200);
     connect(&dataTimer, SIGNAL(timeout()),this,SLOT(dataTimerSlot()));
@@ -128,6 +152,7 @@ MainWindow::MainWindow(QWidget *parent) :
     display_parameters = false;
     HideButtons(true);
 //    InitRandomParameters();
+
     InitTooltips();
 
     //Set connect buttons to signals
@@ -255,6 +280,8 @@ void MainWindow::dataTimerSlot()
 //        a = 0;
 //    }
 
+    update_ASA_string();
+
     if(true == display_parameters)
     {
         switch(GetParemeter())
@@ -333,7 +360,6 @@ void MainWindow::dataTimerSlot()
         }
 
     }
-
 }
 
 void MainWindow::on_top_menu_4_clicked()
@@ -513,7 +539,97 @@ void MainWindow::get_ASA_string()
     config_data += "267:";
     config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_3"),2,16, QChar('0'));
 
-    MainWindow::ASA_conf_string = config_data;
-    qDebug() << ASA_conf_string;
+    MainWindow::ASA_conf_only_string = config_data;
+    qDebug() << ASA_conf_only_string;
+
+}
+
+void MainWindow::update_ASA_string(void)
+{
+    QString out_data;
+
+    out_data += "|";
+    out_data += "80:";
+    out_data += QString("%1").arg(reg_op_mode,2,16, QChar('0'));
+    out_data += "|";
+    out_data += "81:";
+    out_data += QString("%1").arg(reg_mot_1,2,16, QChar('0'));
+    out_data += "|";
+    out_data += "82:";
+    out_data += QString("%1").arg(reg_mot_2,2,16, QChar('0'));
+
+    ASA_conf_string = ASA_conf_only_string + out_data;
+//    qDebug() << ASA_conf_string;
+}
+
+void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &painter)
+{
+    if(false == tooltip->isHidden())
+    {
+        if((tooltip->geometry().bottom() + 50) <  module->geometry().top())
+        {
+            //Hacia abajo
+            painter.drawLine((tooltip->geometry().x() + tooltip->geometry().width()/2), tooltip->geometry().bottom(),
+                             (tooltip->geometry().x() + tooltip->geometry().width()/2), tooltip->geometry().bottom()+20);
+           // Hacia el modulo
+            painter.drawLine((tooltip->geometry().x() + tooltip->geometry().width()/2), tooltip->geometry().bottom()+20,
+                             (module->geometry().x() + module->geometry().width()/2), module->geometry().bottom());
+                //         painter.drawLine((start->x() + start->width()/2), start->bottom(), end->x(), end->y());
+        }
+        else if((tooltip->geometry().top() - 50) >  module->geometry().bottom())
+        {
+            //Hacia arriba desde la esquina
+            painter.drawLine((tooltip->geometry().x() + tooltip->geometry().width()*0.9), tooltip->geometry().top(),
+                             (tooltip->geometry().x() + tooltip->geometry().width()*0.9), tooltip->geometry().top()-20);
+           // Hacia el modulo
+            painter.drawLine((tooltip->geometry().x() + tooltip->geometry().width()*0.9), tooltip->geometry().top()-20,
+                             (module->geometry().x() + module->geometry().width()/2), module->geometry().bottom());
+        }
+        else
+        {
+            //Widget is too close in vertical. Check horizontal
+            if((tooltip->geometry().x() - 70) > (module->geometry().x() + module->geometry().width()) )
+            {
+                painter.drawLine(tooltip->geometry().x() , tooltip->geometry().top(),
+                                  module->geometry().center().x() , module->geometry().center().y());
+            }
+            else if((tooltip->geometry().x() + tooltip->geometry().width() + 30) < (module->geometry().x()) )
+            {
+                painter.drawLine((tooltip->geometry().x() + tooltip->geometry().width()*0.9), tooltip->geometry().top(),
+                                 (module->geometry().x() + module->geometry().width()/2), module->geometry().bottom());
+            }
+        }
+    }
+}
+
+void MainWindow::paintEvent(QPaintEvent *)
+{
+     QPainter painter(this);
+
+     QColor line_color;
+     line_color.setRgb(0, 167, 250,150);
+
+     QPen pen;
+     pen.setColor(line_color);
+     pen.setCapStyle(Qt::RoundCap);
+     pen.setWidth(3);
+     painter.setPen(pen);
+
+     this->update();
+     trace_lines(ui->widget, ui->modulo_1, painter);
+     trace_lines(ui->widget_2, ui->modulo_1, painter);
+     trace_lines(ui->widget_3, ui->modulo_1, painter);
+
+     trace_lines(ui->widget_4, ui->modulo_2, painter);
+     trace_lines(ui->widget_5, ui->modulo_2, painter);
+     trace_lines(ui->widget_6, ui->modulo_2, painter);
+
+     trace_lines(ui->widget_7, ui->modulo_3, painter);
+     trace_lines(ui->widget_8, ui->modulo_3, painter);
+     trace_lines(ui->widget_9, ui->modulo_3, painter);
+
+     trace_lines(ui->widget_10, ui->modulo_4, painter);
+     trace_lines(ui->widget_11, ui->modulo_4, painter);
+     trace_lines(ui->widget_12, ui->modulo_4, painter);
 
 }

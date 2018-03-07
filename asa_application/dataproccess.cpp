@@ -405,6 +405,7 @@ void DataProccess::dataSPI()
                     break;
 
                 default:
+                    realValue = intString2Int(realParameters[0]);
                     break;
                 }
                 setParamValue(intString2Int(realParameters[0]), realValue);

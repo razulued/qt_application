@@ -261,7 +261,7 @@ background-position: center;
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="button_visualizacion_2">
+  <widget class="QPushButton" name="button_control">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -274,13 +274,12 @@ background-position: center;
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="styleSheet">
-    <string notr="true">#button_visualizacion_2{ 
-background-color: transparent;
-border-image: none;
-background: none; 
-border: none; 
+    <string notr="true">#button_control{ 
+background-image: url(:/iconos/images/Iconos/Encendido_azul.png);
+border: none;
 background-repeat: none;
- } </string>
+background-position: center;
+}</string>
    </property>
    <property name="text">
     <string/>
@@ -328,7 +327,7 @@ border: none;
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>4</number>
    </property>
    <property name="elideMode">
     <enum>Qt::ElideNone</enum>
@@ -401,6 +400,17 @@ border: none;
     <attribute name="title">
      <string>Tab 5</string>
     </attribute>
+    <widget class="QWidget" name="verticalLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>19</x>
+       <y>19</y>
+       <width>261</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2"/>
+    </widget>
    </widget>
   </widget>
   <zorder>nombre</zorder>
@@ -410,7 +420,7 @@ border: none;
   <zorder>button_evento</zorder>
   <zorder>button_descripcion</zorder>
   <zorder>button_visualizacion</zorder>
-  <zorder>button_visualizacion_2</zorder>
+  <zorder>button_control</zorder>
   <zorder>tabWidget</zorder>
   <zorder>label</zorder>
  </widget>

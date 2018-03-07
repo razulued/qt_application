@@ -63,8 +63,8 @@ public:
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1024, 768);
         MainWindow->setMinimumSize(QSize(1024, 768));
-        MainWindow->setMaximumSize(QSize(1024, 769));
-        MainWindow->setAutoFillBackground(false);
+        MainWindow->setMaximumSize(QSize(1024, 768));
+        MainWindow->setAutoFillBackground(true);
         MainWindow->setStyleSheet(QLatin1String("#modulo_1{  \n"
 "background-color: transparent;\n"
 "border: none;\n"
@@ -335,6 +335,7 @@ public:
         widget_2 = new QWidget(centralWidget);
         widget_2->setObjectName(QStringLiteral("widget_2"));
         widget_2->setGeometry(QRect(50, 170, 81, 61));
+        widget_2->setStyleSheet(QStringLiteral(""));
         widget_3 = new QWidget(centralWidget);
         widget_3->setObjectName(QStringLiteral("widget_3"));
         widget_3->setGeometry(QRect(150, 160, 81, 61));

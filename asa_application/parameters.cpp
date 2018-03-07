@@ -107,7 +107,7 @@ double misc_stat_sens_caudal_out;
 double misc_stat_sens_turbidez_out;
 double misc_stat_sens_presion_2;
 double misc_stat_sens_presion_3;
-
+char* NO_DATA = "NO DATA";
 
 parameter_config_t  all_parameters[]=
 {
@@ -218,8 +218,10 @@ parameter_config_t  all_parameters[]=
     {163,	false,	"Turbidez",                     &misc_stat_sens_turbidez_out,      TYPE_HEX},
     {165,	false,	"P",                            &misc_stat_sens_presion_2,         TYPE_HEX},
     {166,	false,	"misc_stat_sens_presion_3",     &misc_stat_sens_presion_3,         TYPE_HEX},
+    {255,	false,	"NO DATA",                      &NO_DATA,                          TYPE_STRING},
+
 };
-#define SIZE_OF_TABLE   (sizeof(all_parameters)/sizeof (parameter_config_t))
+#define SIZE_OF_TABLE   (int)(sizeof(all_parameters)/sizeof(parameter_config_t))
 void InitRandomParameters()
 {
     unsigned int i,a;
@@ -242,11 +244,30 @@ void InitRandomParameters()
 int getParamIndex(unsigned int id)
 {
     int i;
-    for(i = 0; SIZE_OF_TABLE; i++)
+    bool parameter_found = false;
+    for(i = 0; i < SIZE_OF_TABLE; i++)
     {
         if(all_parameters[i].id == id)
         {
+            parameter_found = true;
             break;
+        }
+    }
+
+    if(parameter_found == false)
+    {
+        qDebug() << "Parameter" << id << "not found";
+
+        id = 255;
+
+        for(i = 0; i < SIZE_OF_TABLE; i++)
+        {
+            if(all_parameters[i].id == id)
+            {
+                qDebug() << "Set 255";
+                parameter_found = true;
+                break;
+            }
         }
     }
 
@@ -266,6 +287,7 @@ QString getParamName(unsigned int id)
 QString getParamValue(unsigned int id)
 {
     QString str;
+    QString *strptr;
     double *uint_ptr;
 
     switch(getParamType(id))
@@ -273,7 +295,8 @@ QString getParamValue(unsigned int id)
     case TYPE_NONE:
         break;
     case TYPE_STRING:
-        str = "hola";
+        strptr = new QString((char*)all_parameters[getParamIndex(id)].param);
+        str = *strptr;
         break;
     case TYPE_DECIMAL:
     case TYPE_HEX:

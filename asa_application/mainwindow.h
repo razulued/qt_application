@@ -55,6 +55,18 @@ public:
     static configuration_id conf_deshid_fisic;
     static configuration_id conf_deshid_quimi;
 
+    static configuration_id reg_outputs;
+    static configuration_id react_outputs;
+    static configuration_id clarif_outputs;
+    static configuration_id clora_outputs;
+    static configuration_id digest_outputs;
+    static configuration_id deshid_outputs;
+
+    static int reg_op_mode;
+    static int reg_mot_1;
+    static int reg_mot_2;
+
+    static QString ASA_conf_only_string;
     static QString ASA_conf_string;
 
 public slots:
@@ -108,6 +120,14 @@ private:
     custom_tooltip *tool_tip_clorador_quimicos;
 
     void get_ASA_string(void);
+    void update_ASA_string(void);
+
+    void trace_lines(QWidget *tooltip, QPushButton *module, QPainter &painter);
+
+
+protected:
+    void paintEvent(QPaintEvent *);
+
 };
 
 

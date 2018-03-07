@@ -34,6 +34,8 @@ detailed_window_elements_t details_1=
     &MainWindow::conf_reg_fisic,
 
     &MainWindow::conf_reg_quimic,
+
+    &MainWindow::reg_outputs,
 };
 
 detailed_window_elements_t details_2=
@@ -51,6 +53,7 @@ detailed_window_elements_t details_2=
 
     &MainWindow::conf_react_quimi,
 
+    &MainWindow::react_outputs,
 };
 
 detailed_window_elements_t details_3=
@@ -65,6 +68,8 @@ detailed_window_elements_t details_3=
     &MainWindow::conf_clarif_fisic,
 
     &MainWindow::conf_clarif_quimi,
+
+    &MainWindow::clarif_outputs,
 };
 
 detailed_window_elements_t details_4=
@@ -78,6 +83,8 @@ detailed_window_elements_t details_4=
     &MainWindow::conf_clora_fisic,
 
     &MainWindow::conf_clora_quimi,
+
+    &MainWindow::clora_outputs,
 };
 
 detailed_window_elements_t details_5=
@@ -92,6 +99,8 @@ detailed_window_elements_t details_5=
     &MainWindow::conf_digest_fisic,
 
     &MainWindow::conf_digest_quimi,
+
+    &MainWindow::digest_outputs,
 };
 
 detailed_window_elements_t details_6=
@@ -106,6 +115,8 @@ detailed_window_elements_t details_6=
     &MainWindow::conf_deshid_fisic,
 
     &MainWindow::conf_deshid_quimi,
+
+    &MainWindow::deshid_outputs,
 };
 
 const detailed_window_elements_t *detailed_elements[]=
@@ -139,6 +150,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
                             "border-radius: 5px;"
                             "width: 20px;"
                             "height: 20px;"
+                            "image: url(:/iconos/images/Iconos/Punto_contrasena.png);"
                         "}"
                         "QCheckBox::indicator:unchecked{"
                         "border-width: 3px;"
@@ -180,6 +192,16 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
     ui->tab_3->setStyleSheet("background:black");
     ui->tab_4->setStyleSheet("background:black");
     ui->tab_5->setStyleSheet("background:black");
+
+
+    //TODO THIS IS TEMPORAL
+    if(detailed_elements[element]->out_config->ids.size() == 0)
+    {
+        ui->button_control->setStyleSheet("background-image: none;"
+                        "border: none;"
+                        "background-repeat: none;"
+                        "background-position: center;");
+    }
 
     /**** TAB 0 INIT: Parametros ***/
     //List of parameters
@@ -294,6 +316,45 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
     // Connect all checkboxes to mapper
     connect(checkboxMapper, SIGNAL(mapped(int)), this, SLOT(checkBoxStateChanged(int)));
 
+
+    //TAB 5
+    QCheckBox *box_motores;
+    QSignalMapper *out_checkboxMapper = new QSignalMapper(this);
+
+    for(i = 0; i < (quint32)detailed_elements[element]->out_config->ids.size(); i++)
+    {
+        box_motores = new QCheckBox(detailed_elements[element]->out_config->names.at(i));
+
+        box_motores->setFont(font_2);
+        box_motores->setLayoutDirection(Qt::RightToLeft);
+        box_motores->setStyleSheet("QCheckBox{"
+                                   "width: 40px;"
+                                   "height: 40px;"
+                                   "border: none;"
+                                   "}"
+                                   "QCheckBox::indicator:checked{"
+                                   "image: url(:/iconos/images/Iconos/Encendido_blanco.png);"
+                                   "border-width: 0px;"
+                                   "width: 40px;"
+                                   "height: 40px;"
+                                   "}"
+                                   "QCheckBox::indicator:unchecked{"
+                                   "image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+                                   "border-width: 0px;"
+                                   "width: 40px;"
+                                   "height: 40px;"
+                                   "}");
+
+        ui->verticalLayout_2->addWidget(box_motores);
+
+        connect(box_motores, SIGNAL(clicked(bool)), out_checkboxMapper, SLOT(map()));
+        out_checkboxMapper->setMapping(box_motores, detailed_elements[element]->out_config->ids.at(i));
+    }
+
+    // Connect all checkboxes to mapper
+    connect(out_checkboxMapper, SIGNAL(mapped(int)), this, SLOT(out_checkBoxStateChanged(int)));
+
+    //Init with elements selected
     ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_blanco.png);"
                     "border: none;"
                     "background-repeat: none;"
@@ -334,6 +395,22 @@ void detailedwindow::on_button_parametros_clicked()
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
+
+    //TODO THIS IS TEMPORAL
+    if(ELEMENT_REGULADOR != what_element)
+    {
+        ui->button_control->setStyleSheet("background-image: none;"
+                        "border: none;"
+                        "background-repeat: none;"
+                        "background-position: center;");
+    }
+    else
+    {
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+                         "border: none;"
+                         "background-repeat: none;"
+                         "background-position: center;");
+    }
 }
 
 void detailedwindow::on_button_evento_clicked()
@@ -356,6 +433,22 @@ void detailedwindow::on_button_evento_clicked()
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
+
+    //TODO THIS IS TEMPORAL
+    if(ELEMENT_REGULADOR != what_element)
+    {
+        ui->button_control->setStyleSheet("background-image: none;"
+                        "border: none;"
+                        "background-repeat: none;"
+                        "background-position: center;");
+    }
+    else
+    {
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+                         "border: none;"
+                         "background-repeat: none;"
+                         "background-position: center;");
+    }
 }
 
 void detailedwindow::on_button_descripcion_clicked()
@@ -378,6 +471,22 @@ void detailedwindow::on_button_descripcion_clicked()
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
+
+    //TODO THIS IS TEMPORAL
+    if(ELEMENT_REGULADOR != what_element)
+    {
+        ui->button_control->setStyleSheet("background-image: none;"
+                        "border: none;"
+                        "background-repeat: none;"
+                        "background-position: center;");
+    }
+    else
+    {
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+                         "border: none;"
+                         "background-repeat: none;"
+                         "background-position: center;");
+    }
 }
 
 void detailedwindow::on_button_visualizacion_clicked()
@@ -401,12 +510,105 @@ void detailedwindow::on_button_visualizacion_clicked()
                      "background-repeat: none;"
                      "background-position: center;");
 
+    //TODO THIS IS TEMPORAL
+    if(ELEMENT_REGULADOR != what_element)
+    {
+        ui->button_control->setStyleSheet("background-image: none;"
+                        "border: none;"
+                        "background-repeat: none;"
+                        "background-position: center;");
+    }
+    else
+    {
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+                         "border: none;"
+                         "background-repeat: none;"
+                         "background-position: center;");
+    }
+
+}
+
+void detailedwindow::on_button_control_clicked()
+{
+    //TODO THIS IS TEMPORAL
+    if(ELEMENT_REGULADOR != what_element)
+    {
+        ui->button_control->setStyleSheet("background-image: none;"
+                        "border: none;"
+                        "background-repeat: none;"
+                        "background-position: center;");
+    }
+    else
+    {
+        ui->label->setText("Encendido de Motores");
+        ui->tabWidget->setCurrentIndex(4);
+        ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);"
+                        "border: none;"
+                        "background-repeat: none;"
+                        "background-position: center;");
+        ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);;"
+                         "border: none;"
+                         "background-repeat: none;"
+                         "background-position: center;");
+        ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_azul.png);"
+                         "border: none;"
+                         "background-repeat: none;"
+                         "background-position: center;");
+        ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);"
+                         "border: none;"
+                         "background-repeat: none;"
+                         "background-position: center;");
+
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_blanco.png);"
+                         "border: none;"
+                         "background-repeat: none;"
+                         "background-position: center;");
+    }
+
 }
 
 void detailedwindow::checkBoxStateChanged(int a)
 {
     qDebug() << "Toggle active show " << a;
     toggleParamActiveShow(a);
+}
+
+void detailedwindow::out_checkBoxStateChanged(int a)
+{
+    qDebug() << "Toggle output " << a;
+    switch(a)
+    {
+        case 80:
+            if(MainWindow::reg_op_mode == 3)
+            {
+                MainWindow::reg_op_mode = 1;
+            }
+            else
+            {
+                MainWindow::reg_op_mode = 3;
+            }
+            break;
+        case 81:
+            if(MainWindow::reg_mot_1 == 0)
+            {
+                MainWindow::reg_mot_1 = 1;
+            }
+            else
+            {
+                MainWindow::reg_mot_1 = 0;
+            }
+            break;
+        case 82:
+            if(MainWindow::reg_mot_2 == 0)
+            {
+                MainWindow::reg_mot_2 = 1;
+            }
+            else
+            {
+                MainWindow::reg_mot_2 = 0;
+            }
+            break;
+    }
 }
 
 void detailedwindow::update_params()
@@ -449,3 +651,5 @@ void detailedwindow::update_params()
 
 //    }
 }
+
+

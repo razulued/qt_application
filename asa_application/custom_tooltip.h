@@ -6,7 +6,10 @@
 #include <QList>
 #include <QTimer>
 #include <QListWidget>
-class custom_tooltip: public QObject
+#include <Qt>
+#include <QMouseEvent>
+
+class custom_tooltip: public QWidget
 {
     Q_OBJECT
 
@@ -18,7 +21,7 @@ public:
         return list;
     }
 
-    custom_tooltip(QWidget *frame, QList<int> list, QStringList names);
+    custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QWidget *connect_to);
 
     void update_data();
     void init_data();
@@ -28,12 +31,26 @@ public:
 private:
     QList<int> DataList;
     QStringList NameList;
+    QList<int> OutDataList;
+    QStringList OutNameList;
+
     QWidget *parent_frame;
+    QWidget *parent_window;
+    QWidget *connect_here;
+
     QLayout *layout;
     QListWidget *list_widget;
 
+    bool item_is_pressed;
+
 private slots:
-    void DataTimerUpdate();
+    void ListPressed();
+    void ListReleased();
+
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+
 };
 
 #endif // CUSTOM_TOOLTIP_H

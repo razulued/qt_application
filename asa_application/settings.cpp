@@ -3,12 +3,29 @@
 #include <QDebug>
 #include <QDir>
 #include "configuration.h"
+#include <QProcess>
+#include <QDir>
 
 settings::settings(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::settings)
 {
     ui->setupUi(this);
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+    QFont font_1("Typo Square Ligth Demo",18,1);
+
+    this->setObjectName("SettingsWindow");
+    this->setStyleSheet("settings#SettingsWindow{"
+                        "border-style: solid;"
+                        "border-width: 6px;"
+                        "border-radius: 6px;"
+                        "border-color: gray;"
+                        "color: white;"
+                        "}");
+
+    //                        "background-color:black;"
+
+//    ui->label->setStyleSheet("color:white");
 
 //    ui->ID_regulador_Ap->setText(conf.value("Ap", 0).toString());
 //    ui->ID_regulador_FP->setText(conf.value("FP", 0).toString());
@@ -127,6 +144,7 @@ settings::settings(QWidget *parent) :
     ui->cfg_modbus_2_byte_addr_1_ch_3->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_3"));
 
     this->show();
+
 }
 
 settings::~settings()
@@ -265,3 +283,58 @@ void settings::on_buttonBox_accepted()
 {
 
 }
+void settings::on_key_0_clicked() {ui->textEdit->insertPlainText("0");}
+void settings::on_key_1_clicked() {ui->textEdit->insertPlainText("1");}
+void settings::on_key_2_clicked() {ui->textEdit->insertPlainText("2");}
+void settings::on_key_3_clicked() {ui->textEdit->insertPlainText("3");}
+void settings::on_key_4_clicked() {ui->textEdit->insertPlainText("4");}
+void settings::on_key_5_clicked() {ui->textEdit->insertPlainText("5");}
+void settings::on_key_6_clicked() {ui->textEdit->insertPlainText("6");}
+void settings::on_key_7_clicked() {ui->textEdit->insertPlainText("7");}
+void settings::on_key_8_clicked() {ui->textEdit->insertPlainText("8");}
+void settings::on_key_9_clicked() {ui->textEdit->insertPlainText("9");}
+void settings::on_key_Q_clicked() {ui->textEdit->insertPlainText("Q");}
+void settings::on_key_W_clicked() {ui->textEdit->insertPlainText("W");}
+void settings::on_key_E_clicked() {ui->textEdit->insertPlainText("E");}
+void settings::on_key_R_clicked() {ui->textEdit->insertPlainText("R");}
+void settings::on_key_T_clicked() {ui->textEdit->insertPlainText("T");}
+void settings::on_key_Y_clicked() {ui->textEdit->insertPlainText("Y");}
+void settings::on_key_U_clicked() {ui->textEdit->insertPlainText("U");}
+void settings::on_key_I_clicked() {ui->textEdit->insertPlainText("I");}
+void settings::on_key_O_clicked() {ui->textEdit->insertPlainText("O");}
+void settings::on_key_P_clicked() {ui->textEdit->insertPlainText("P");}
+void settings::on_key_A_clicked() {ui->textEdit->insertPlainText("A");}
+void settings::on_key_S_clicked() {ui->textEdit->insertPlainText("S");}
+void settings::on_key_D_clicked() {ui->textEdit->insertPlainText("D");}
+void settings::on_key_F_clicked() {ui->textEdit->insertPlainText("F");}
+void settings::on_key_G_clicked() {ui->textEdit->insertPlainText("G");}
+void settings::on_key_H_clicked() {ui->textEdit->insertPlainText("H");}
+void settings::on_key_J_clicked() {ui->textEdit->insertPlainText("J");}
+void settings::on_key_K_clicked() {ui->textEdit->insertPlainText("K");}
+void settings::on_key_L_clicked() {ui->textEdit->insertPlainText("L");}
+void settings::on_key_Z_clicked() {ui->textEdit->insertPlainText("Z");}
+void settings::on_key_X_clicked() {ui->textEdit->insertPlainText("X");}
+void settings::on_key_C_clicked() {ui->textEdit->insertPlainText("C");}
+void settings::on_key_V_clicked() {ui->textEdit->insertPlainText("V");}
+void settings::on_key_B_clicked() {ui->textEdit->insertPlainText("B");}
+void settings::on_key_N_clicked() {ui->textEdit->insertPlainText("N");}
+void settings::on_key_M_clicked() {ui->textEdit->insertPlainText("M");}
+
+void settings::on_key_up_clicked() {ui->textEdit->moveCursor(QTextCursor::Up);}
+void settings::on_key_down_clicked() {ui->textEdit->moveCursor(QTextCursor::Down);}
+void settings::on_key_left_clicked() {ui->textEdit->moveCursor(QTextCursor::Left);}
+void settings::on_key_right_clicked() {ui->textEdit->moveCursor(QTextCursor::Right);}
+
+void settings::on_key_guion_clicked() {ui->textEdit->insertPlainText("-");}
+void settings::on_key_equal_clicked() {ui->textEdit->insertPlainText("=");}
+void settings::on_key_space_clicked() {ui->textEdit->insertPlainText(" ");}
+
+void settings::on_key_back_clicked()
+{
+    ui->textEdit->textCursor().deletePreviousChar();
+}
+void settings::on_key_enter_clicked() {ui->textEdit->insertPlainText("\n");}
+
+
+
+

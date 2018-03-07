@@ -14,11 +14,11 @@ int main(int argc, char *argv[])
     w.setObjectName("MyMainWindow");
 //    w.setStyleSheet("MainWindow#MyMainWindow{background-image:url(:/images/images/main_window_background.jpg)}");
     w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
-//    w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+    //w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
-//    DataProccess *dataObj = new DataProccess;
-//    w.showFullScreen();
-    w.show();
+    //DataProccess *dataObj = new DataProccess;
+    w.showFullScreen();
+//    w.show();
 
 
 

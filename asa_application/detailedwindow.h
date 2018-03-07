@@ -23,6 +23,7 @@ typedef struct
     configuration_id *list_elect;
     configuration_id *list_phys;
     configuration_id *list_chem;
+    configuration_id *out_config;
 
 }detailed_window_elements_t;
 
@@ -51,6 +52,10 @@ private slots:
     void on_button_visualizacion_clicked();
 
     void checkBoxStateChanged(int);
+
+    void out_checkBoxStateChanged(int);
+
+    void on_button_control_clicked();
 
 private:
     Ui::detailedwindow *ui;

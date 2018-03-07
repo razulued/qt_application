@@ -48,7 +48,6 @@ public:
     QWidget *widget_2;
     QWidget *widget_3;
     QWidget *widget_4;
-    QWidget *widget_5;
     QWidget *widget_6;
     QWidget *widget_7;
     QWidget *widget_8;
@@ -56,6 +55,7 @@ public:
     QWidget *widget_10;
     QWidget *widget_11;
     QWidget *widget_12;
+    QWidget *widget_5;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -63,8 +63,8 @@ public:
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1024, 768);
         MainWindow->setMinimumSize(QSize(1024, 768));
-        MainWindow->setMaximumSize(QSize(1024, 769));
-        MainWindow->setAutoFillBackground(false);
+        MainWindow->setMaximumSize(QSize(1024, 768));
+        MainWindow->setAutoFillBackground(true);
         MainWindow->setStyleSheet(QLatin1String("#modulo_1{  \n"
 "background-color: transparent;\n"
 "border: none;\n"
@@ -335,18 +335,16 @@ public:
         widget_2 = new QWidget(centralWidget);
         widget_2->setObjectName(QStringLiteral("widget_2"));
         widget_2->setGeometry(QRect(50, 170, 81, 61));
+        widget_2->setStyleSheet(QStringLiteral(""));
         widget_3 = new QWidget(centralWidget);
         widget_3->setObjectName(QStringLiteral("widget_3"));
-        widget_3->setGeometry(QRect(160, 160, 81, 61));
+        widget_3->setGeometry(QRect(150, 160, 81, 61));
         widget_4 = new QWidget(centralWidget);
         widget_4->setObjectName(QStringLiteral("widget_4"));
-        widget_4->setGeometry(QRect(270, 140, 81, 61));
-        widget_5 = new QWidget(centralWidget);
-        widget_5->setObjectName(QStringLiteral("widget_5"));
-        widget_5->setGeometry(QRect(330, 60, 81, 61));
+        widget_4->setGeometry(QRect(340, 330, 81, 61));
         widget_6 = new QWidget(centralWidget);
         widget_6->setObjectName(QStringLiteral("widget_6"));
-        widget_6->setGeometry(QRect(420, 120, 81, 61));
+        widget_6->setGeometry(QRect(400, 100, 81, 61));
         widget_7 = new QWidget(centralWidget);
         widget_7->setObjectName(QStringLiteral("widget_7"));
         widget_7->setGeometry(QRect(520, 80, 81, 61));
@@ -365,6 +363,9 @@ public:
         widget_12 = new QWidget(centralWidget);
         widget_12->setObjectName(QStringLiteral("widget_12"));
         widget_12->setGeometry(QRect(890, 100, 81, 61));
+        widget_5 = new QWidget(centralWidget);
+        widget_5->setObjectName(QStringLiteral("widget_5"));
+        widget_5->setGeometry(QRect(290, 100, 81, 61));
         MainWindow->setCentralWidget(centralWidget);
         bottom_bar->raise();
         pushButton->raise();
@@ -389,7 +390,6 @@ public:
         widget_2->raise();
         widget_3->raise();
         widget_4->raise();
-        widget_5->raise();
         widget_6->raise();
         widget_7->raise();
         widget_8->raise();
@@ -397,6 +397,7 @@ public:
         widget_10->raise();
         widget_11->raise();
         widget_12->raise();
+        widget_5->raise();
 
         retranslateUi(MainWindow);
 

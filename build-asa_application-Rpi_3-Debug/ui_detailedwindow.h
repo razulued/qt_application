@@ -34,7 +34,7 @@ public:
     QPushButton *button_evento;
     QPushButton *button_descripcion;
     QPushButton *button_visualizacion;
-    QPushButton *button_visualizacion_2;
+    QPushButton *button_control;
     QTabWidget *tabWidget;
     QWidget *tab_1;
     QWidget *verticalLayoutWidget_2;
@@ -46,6 +46,8 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QWidget *tab_5;
+    QWidget *verticalLayoutWidget_3;
+    QVBoxLayout *verticalLayout_2;
 
     void setupUi(QDialog *detailedwindow)
     {
@@ -151,18 +153,17 @@ public:
 "background-position: center;\n"
 "}"));
         button_visualizacion->setCheckable(false);
-        button_visualizacion_2 = new QPushButton(detailedwindow);
-        button_visualizacion_2->setObjectName(QStringLiteral("button_visualizacion_2"));
-        button_visualizacion_2->setGeometry(QRect(220, 270, 40, 60));
-        button_visualizacion_2->setFocusPolicy(Qt::NoFocus);
-        button_visualizacion_2->setStyleSheet(QLatin1String("#button_visualizacion_2{ \n"
-"background-color: transparent;\n"
-"border-image: none;\n"
-"background: none; \n"
-"border: none; \n"
+        button_control = new QPushButton(detailedwindow);
+        button_control->setObjectName(QStringLiteral("button_control"));
+        button_control->setGeometry(QRect(220, 270, 40, 60));
+        button_control->setFocusPolicy(Qt::NoFocus);
+        button_control->setStyleSheet(QLatin1String("#button_control{ \n"
+"background-image: url(:/iconos/images/Iconos/Encendido_azul.png);\n"
+"border: none;\n"
 "background-repeat: none;\n"
-" } "));
-        button_visualizacion_2->setCheckable(false);
+"background-position: center;\n"
+"}"));
+        button_control->setCheckable(false);
         tabWidget = new QTabWidget(detailedwindow);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setEnabled(true);
@@ -216,6 +217,12 @@ public:
         tabWidget->addTab(tab_4, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QStringLiteral("tab_5"));
+        verticalLayoutWidget_3 = new QWidget(tab_5);
+        verticalLayoutWidget_3->setObjectName(QStringLiteral("verticalLayoutWidget_3"));
+        verticalLayoutWidget_3->setGeometry(QRect(19, 19, 261, 251));
+        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_3);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         tabWidget->addTab(tab_5, QString());
         nombre->raise();
         imagen->raise();
@@ -224,13 +231,13 @@ public:
         button_evento->raise();
         button_descripcion->raise();
         button_visualizacion->raise();
-        button_visualizacion_2->raise();
+        button_control->raise();
         tabWidget->raise();
         label->raise();
 
         retranslateUi(detailedwindow);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(detailedwindow);
@@ -247,7 +254,7 @@ public:
         button_evento->setText(QString());
         button_descripcion->setText(QString());
         button_visualizacion->setText(QString());
-        button_visualizacion_2->setText(QString());
+        button_control->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("detailedwindow", "Tab 1", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("detailedwindow", "Tab 2", 0));
         description_label->setText(QApplication::translate("detailedwindow", "Descripcion", 0));

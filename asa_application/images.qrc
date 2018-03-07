@@ -95,5 +95,8 @@
         <file>images/Iconos/Bitacora_azul.png</file>
         <file>images/Iconos/Ajustes_blanco.png</file>
         <file>images/Iconos/Ajustes_azul.png</file>
+        <file>images/Iconos/Encendido_blanco.png</file>
+        <file>images/Iconos/Encendido_azul.png</file>
+        <file>images/Iconos/Globo_azul.png</file>
     </qresource>
 </RCC>
