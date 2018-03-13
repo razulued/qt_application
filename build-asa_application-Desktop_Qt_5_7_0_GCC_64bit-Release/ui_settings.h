@@ -206,12 +206,62 @@ public:
     QPushButton *key_down;
     QPushButton *key_enter;
     QPushButton *key_space;
+    QWidget *tab_6;
+    QGridLayout *gridLayout_7;
+    QLabel *label_5;
+    QComboBox *comboBox_16;
+    QLabel *label_18;
+    QComboBox *comboBox_15;
+    QComboBox *comboBox_13;
+    QLabel *label_9;
+    QComboBox *comboBox_9;
+    QLabel *label_8;
+    QComboBox *comboBox_12;
+    QLabel *label_4;
+    QLabel *label_17;
+    QComboBox *comboBox;
+    QComboBox *comboBox_2;
+    QLabel *label_10;
+    QLabel *label_12;
+    QLabel *label_13;
+    QComboBox *comboBox_11;
+    QLabel *label_15;
+    QLabel *label_7;
+    QComboBox *comboBox_6;
+    QLabel *label_3;
+    QComboBox *comboBox_4;
+    QComboBox *comboBox_3;
+    QComboBox *comboBox_18;
+    QLabel *label_21;
+    QLabel *label_6;
+    QComboBox *comboBox_5;
+    QComboBox *comboBox_21;
+    QLabel *label_23;
+    QComboBox *comboBox_7;
+    QLabel *label_11;
+    QComboBox *comboBox_8;
+    QLabel *label_14;
+    QComboBox *comboBox_10;
+    QLabel *label_16;
+    QComboBox *comboBox_17;
+    QLabel *label_22;
+    QLabel *label_25;
+    QLabel *label_20;
+    QLabel *label_19;
+    QComboBox *comboBox_14;
+    QLabel *label_26;
+    QLabel *label_24;
+    QComboBox *comboBox_22;
+    QComboBox *comboBox_20;
+    QComboBox *comboBox_19;
+    QComboBox *comboBox_23;
+    QComboBox *comboBox_24;
 
     void setupUi(QDialog *settings)
     {
         if (settings->objectName().isEmpty())
             settings->setObjectName(QStringLiteral("settings"));
-        settings->resize(745, 559);
+        settings->resize(1024, 768);
         gridLayout = new QGridLayout(settings);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         label = new QLabel(settings);
@@ -827,17 +877,17 @@ public:
         tab->setObjectName(QStringLiteral("tab"));
         textEdit = new QTextEdit(tab);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(20, 10, 381, 211));
+        textEdit->setGeometry(QRect(20, 10, 641, 211));
         label_2 = new QLabel(tab);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(420, 30, 231, 71));
+        label_2->setGeometry(QRect(670, 10, 231, 71));
         QFont font;
         font.setPointSize(14);
         label_2->setFont(font);
         label_2->setWordWrap(true);
         gridLayoutWidget = new QWidget(tab);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(20, 240, 671, 161));
+        gridLayoutWidget->setGeometry(QRect(20, 240, 831, 231));
         gridLayout_2 = new QGridLayout(gridLayoutWidget);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         gridLayout_2->setHorizontalSpacing(0);
@@ -1108,8 +1158,253 @@ public:
 
         key_space = new QPushButton(tab);
         key_space->setObjectName(QStringLiteral("key_space"));
-        key_space->setGeometry(QRect(100, 410, 271, 22));
+        key_space->setGeometry(QRect(50, 480, 561, 22));
         tabWidget->addTab(tab, QString());
+        tab_6 = new QWidget();
+        tab_6->setObjectName(QStringLiteral("tab_6"));
+        gridLayout_7 = new QGridLayout(tab_6);
+        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
+        label_5 = new QLabel(tab_6);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout_7->addWidget(label_5, 2, 0, 1, 1);
+
+        comboBox_16 = new QComboBox(tab_6);
+        comboBox_16->setObjectName(QStringLiteral("comboBox_16"));
+
+        gridLayout_7->addWidget(comboBox_16, 3, 3, 1, 1);
+
+        label_18 = new QLabel(tab_6);
+        label_18->setObjectName(QStringLiteral("label_18"));
+
+        gridLayout_7->addWidget(label_18, 3, 2, 1, 1);
+
+        comboBox_15 = new QComboBox(tab_6);
+        comboBox_15->setObjectName(QStringLiteral("comboBox_15"));
+
+        gridLayout_7->addWidget(comboBox_15, 2, 3, 1, 1);
+
+        comboBox_13 = new QComboBox(tab_6);
+        comboBox_13->setObjectName(QStringLiteral("comboBox_13"));
+
+        gridLayout_7->addWidget(comboBox_13, 0, 3, 1, 1);
+
+        label_9 = new QLabel(tab_6);
+        label_9->setObjectName(QStringLiteral("label_9"));
+
+        gridLayout_7->addWidget(label_9, 6, 0, 1, 1);
+
+        comboBox_9 = new QComboBox(tab_6);
+        comboBox_9->setObjectName(QStringLiteral("comboBox_9"));
+
+        gridLayout_7->addWidget(comboBox_9, 8, 1, 1, 1);
+
+        label_8 = new QLabel(tab_6);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        gridLayout_7->addWidget(label_8, 5, 0, 1, 1);
+
+        comboBox_12 = new QComboBox(tab_6);
+        comboBox_12->setObjectName(QStringLiteral("comboBox_12"));
+
+        gridLayout_7->addWidget(comboBox_12, 11, 1, 1, 1);
+
+        label_4 = new QLabel(tab_6);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        gridLayout_7->addWidget(label_4, 1, 0, 1, 1);
+
+        label_17 = new QLabel(tab_6);
+        label_17->setObjectName(QStringLiteral("label_17"));
+
+        gridLayout_7->addWidget(label_17, 2, 2, 1, 1);
+
+        comboBox = new QComboBox(tab_6);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+
+        gridLayout_7->addWidget(comboBox, 0, 1, 1, 1);
+
+        comboBox_2 = new QComboBox(tab_6);
+        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+
+        gridLayout_7->addWidget(comboBox_2, 1, 1, 1, 1);
+
+        label_10 = new QLabel(tab_6);
+        label_10->setObjectName(QStringLiteral("label_10"));
+
+        gridLayout_7->addWidget(label_10, 7, 0, 1, 1);
+
+        label_12 = new QLabel(tab_6);
+        label_12->setObjectName(QStringLiteral("label_12"));
+
+        gridLayout_7->addWidget(label_12, 9, 0, 1, 1);
+
+        label_13 = new QLabel(tab_6);
+        label_13->setObjectName(QStringLiteral("label_13"));
+
+        gridLayout_7->addWidget(label_13, 10, 0, 1, 1);
+
+        comboBox_11 = new QComboBox(tab_6);
+        comboBox_11->setObjectName(QStringLiteral("comboBox_11"));
+
+        gridLayout_7->addWidget(comboBox_11, 10, 1, 1, 1);
+
+        label_15 = new QLabel(tab_6);
+        label_15->setObjectName(QStringLiteral("label_15"));
+
+        gridLayout_7->addWidget(label_15, 0, 2, 1, 1);
+
+        label_7 = new QLabel(tab_6);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        gridLayout_7->addWidget(label_7, 4, 0, 1, 1);
+
+        comboBox_6 = new QComboBox(tab_6);
+        comboBox_6->setObjectName(QStringLiteral("comboBox_6"));
+
+        gridLayout_7->addWidget(comboBox_6, 5, 1, 1, 1);
+
+        label_3 = new QLabel(tab_6);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout_7->addWidget(label_3, 0, 0, 1, 1);
+
+        comboBox_4 = new QComboBox(tab_6);
+        comboBox_4->setObjectName(QStringLiteral("comboBox_4"));
+
+        gridLayout_7->addWidget(comboBox_4, 3, 1, 1, 1);
+
+        comboBox_3 = new QComboBox(tab_6);
+        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
+
+        gridLayout_7->addWidget(comboBox_3, 2, 1, 1, 1);
+
+        comboBox_18 = new QComboBox(tab_6);
+        comboBox_18->setObjectName(QStringLiteral("comboBox_18"));
+
+        gridLayout_7->addWidget(comboBox_18, 5, 3, 1, 1);
+
+        label_21 = new QLabel(tab_6);
+        label_21->setObjectName(QStringLiteral("label_21"));
+
+        gridLayout_7->addWidget(label_21, 6, 2, 1, 1);
+
+        label_6 = new QLabel(tab_6);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        gridLayout_7->addWidget(label_6, 3, 0, 1, 1);
+
+        comboBox_5 = new QComboBox(tab_6);
+        comboBox_5->setObjectName(QStringLiteral("comboBox_5"));
+
+        gridLayout_7->addWidget(comboBox_5, 4, 1, 1, 1);
+
+        comboBox_21 = new QComboBox(tab_6);
+        comboBox_21->setObjectName(QStringLiteral("comboBox_21"));
+
+        gridLayout_7->addWidget(comboBox_21, 8, 3, 1, 1);
+
+        label_23 = new QLabel(tab_6);
+        label_23->setObjectName(QStringLiteral("label_23"));
+
+        gridLayout_7->addWidget(label_23, 8, 2, 1, 1);
+
+        comboBox_7 = new QComboBox(tab_6);
+        comboBox_7->setObjectName(QStringLiteral("comboBox_7"));
+
+        gridLayout_7->addWidget(comboBox_7, 6, 1, 1, 1);
+
+        label_11 = new QLabel(tab_6);
+        label_11->setObjectName(QStringLiteral("label_11"));
+
+        gridLayout_7->addWidget(label_11, 8, 0, 1, 1);
+
+        comboBox_8 = new QComboBox(tab_6);
+        comboBox_8->setObjectName(QStringLiteral("comboBox_8"));
+
+        gridLayout_7->addWidget(comboBox_8, 7, 1, 1, 1);
+
+        label_14 = new QLabel(tab_6);
+        label_14->setObjectName(QStringLiteral("label_14"));
+
+        gridLayout_7->addWidget(label_14, 11, 0, 1, 1);
+
+        comboBox_10 = new QComboBox(tab_6);
+        comboBox_10->setObjectName(QStringLiteral("comboBox_10"));
+
+        gridLayout_7->addWidget(comboBox_10, 9, 1, 1, 1);
+
+        label_16 = new QLabel(tab_6);
+        label_16->setObjectName(QStringLiteral("label_16"));
+
+        gridLayout_7->addWidget(label_16, 1, 2, 1, 1);
+
+        comboBox_17 = new QComboBox(tab_6);
+        comboBox_17->setObjectName(QStringLiteral("comboBox_17"));
+
+        gridLayout_7->addWidget(comboBox_17, 4, 3, 1, 1);
+
+        label_22 = new QLabel(tab_6);
+        label_22->setObjectName(QStringLiteral("label_22"));
+
+        gridLayout_7->addWidget(label_22, 7, 2, 1, 1);
+
+        label_25 = new QLabel(tab_6);
+        label_25->setObjectName(QStringLiteral("label_25"));
+
+        gridLayout_7->addWidget(label_25, 10, 2, 1, 1);
+
+        label_20 = new QLabel(tab_6);
+        label_20->setObjectName(QStringLiteral("label_20"));
+
+        gridLayout_7->addWidget(label_20, 5, 2, 1, 1);
+
+        label_19 = new QLabel(tab_6);
+        label_19->setObjectName(QStringLiteral("label_19"));
+
+        gridLayout_7->addWidget(label_19, 4, 2, 1, 1);
+
+        comboBox_14 = new QComboBox(tab_6);
+        comboBox_14->setObjectName(QStringLiteral("comboBox_14"));
+
+        gridLayout_7->addWidget(comboBox_14, 1, 3, 1, 1);
+
+        label_26 = new QLabel(tab_6);
+        label_26->setObjectName(QStringLiteral("label_26"));
+
+        gridLayout_7->addWidget(label_26, 11, 2, 1, 1);
+
+        label_24 = new QLabel(tab_6);
+        label_24->setObjectName(QStringLiteral("label_24"));
+
+        gridLayout_7->addWidget(label_24, 9, 2, 1, 1);
+
+        comboBox_22 = new QComboBox(tab_6);
+        comboBox_22->setObjectName(QStringLiteral("comboBox_22"));
+
+        gridLayout_7->addWidget(comboBox_22, 9, 3, 1, 1);
+
+        comboBox_20 = new QComboBox(tab_6);
+        comboBox_20->setObjectName(QStringLiteral("comboBox_20"));
+
+        gridLayout_7->addWidget(comboBox_20, 7, 3, 1, 1);
+
+        comboBox_19 = new QComboBox(tab_6);
+        comboBox_19->setObjectName(QStringLiteral("comboBox_19"));
+
+        gridLayout_7->addWidget(comboBox_19, 6, 3, 1, 1);
+
+        comboBox_23 = new QComboBox(tab_6);
+        comboBox_23->setObjectName(QStringLiteral("comboBox_23"));
+
+        gridLayout_7->addWidget(comboBox_23, 10, 3, 1, 1);
+
+        comboBox_24 = new QComboBox(tab_6);
+        comboBox_24->setObjectName(QStringLiteral("comboBox_24"));
+
+        gridLayout_7->addWidget(comboBox_24, 11, 3, 1, 1);
+
+        tabWidget->addTab(tab_6, QString());
 
         gridLayout->addWidget(tabWidget, 1, 0, 1, 2);
 
@@ -1991,6 +2286,223 @@ public:
         key_enter->setText(QApplication::translate("settings", "Enter", 0));
         key_space->setText(QApplication::translate("settings", "Space", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("settings", "config.ini", 0));
+        label_5->setText(QApplication::translate("settings", "Revisar y limpiar Vertedero Efluente", 0));
+        comboBox_16->clear();
+        comboBox_16->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_18->setText(QApplication::translate("settings", "Revisar Tensi\303\263n y Desgaste en Bandas", 0));
+        comboBox_15->clear();
+        comboBox_15->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_13->clear();
+        comboBox_13->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_9->setText(QApplication::translate("settings", "Verificar Medidor de Flujo", 0));
+        comboBox_9->clear();
+        comboBox_9->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_8->setText(QApplication::translate("settings", "Realizar Pruebas de Sedimentacion", 0));
+        comboBox_12->clear();
+        comboBox_12->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_4->setText(QApplication::translate("settings", "Revisar Promedio Retorno de Lodo", 0));
+        label_17->setText(QApplication::translate("settings", "Lubricar Candados", 0));
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_2->clear();
+        comboBox_2->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_10->setText(QApplication::translate("settings", "Verificar Operaci\303\263n de Relojes", 0));
+        label_12->setText(QApplication::translate("settings", "Limpieza en Pretratamiento", 0));
+        label_13->setText(QApplication::translate("settings", "Limpieza General de la Planta", 0));
+        comboBox_11->clear();
+        comboBox_11->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_15->setText(QApplication::translate("settings", "Tomar Muestra en el Efluente", 0));
+        label_7->setText(QApplication::translate("settings", "Limpiar Superficie del Sedimentador", 0));
+        comboBox_6->clear();
+        comboBox_6->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_3->setText(QApplication::translate("settings", "Revisar Balance de Aire en Difusores", 0));
+        comboBox_4->clear();
+        comboBox_4->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_3->clear();
+        comboBox_3->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_18->clear();
+        comboBox_18->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_21->setText(QApplication::translate("settings", "Limpiar Ventilaci\303\263n de Motores", 0));
+        label_6->setText(QApplication::translate("settings", "Raspar la tolva", 0));
+        comboBox_5->clear();
+        comboBox_5->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_21->clear();
+        comboBox_21->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_23->setText(QApplication::translate("settings", "Limpiar Filtros de Aire", 0));
+        comboBox_7->clear();
+        comboBox_7->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_11->setText(QApplication::translate("settings", "Revisar Bloqueo de Pretratamiento", 0));
+        comboBox_8->clear();
+        comboBox_8->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_14->setText(QApplication::translate("settings", "Revisar Fugas en V\303\241lvulas", 0));
+        comboBox_10->clear();
+        comboBox_10->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_16->setText(QApplication::translate("settings", "Verificar y Reemplazar Fusibles", 0));
+        comboBox_17->clear();
+        comboBox_17->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_22->setText(QApplication::translate("settings", "Verificar Nivel de Aceite en Sopladores", 0));
+        label_25->setText(QApplication::translate("settings", "Limpiar y Pintar Partes Met\303\241licas", 0));
+        label_20->setText(QApplication::translate("settings", "Lubricar Chumaceras", 0));
+        label_19->setText(QApplication::translate("settings", "Verificar Alineacion de Poleas", 0));
+        comboBox_14->clear();
+        comboBox_14->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        label_26->setText(QApplication::translate("settings", "Revisar Terminales y Disparadores", 0));
+        label_24->setText(QApplication::translate("settings", "Limpiar Valvulas de Alivio", 0));
+        comboBox_22->clear();
+        comboBox_22->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_20->clear();
+        comboBox_20->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_19->clear();
+        comboBox_19->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_23->clear();
+        comboBox_23->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        comboBox_24->clear();
+        comboBox_24->insertItems(0, QStringList()
+         << QApplication::translate("settings", "0 - Desactivado", 0)
+         << QApplication::translate("settings", "1 - Diario", 0)
+         << QApplication::translate("settings", "2 - Semanal", 0)
+         << QApplication::translate("settings", "3 - Mensual", 0)
+         << QApplication::translate("settings", "4 - Anual", 0)
+        );
+        tabWidget->setTabText(tabWidget->indexOf(tab_6), QApplication::translate("settings", "Rutinas Mantenimiento", 0));
     } // retranslateUi
 
 };

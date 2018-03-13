@@ -16,8 +16,10 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -40,6 +42,23 @@ public:
     QWidget *verticalLayoutWidget_2;
     QVBoxLayout *layout_param;
     QWidget *tab_2;
+    QPushButton *key_0;
+    QPushButton *key_1;
+    QPushButton *key_2;
+    QPushButton *key_3;
+    QPushButton *key_4;
+    QPushButton *key_5;
+    QPushButton *key_6;
+    QPushButton *key_7;
+    QPushButton *key_8;
+    QPushButton *key_9;
+    QPushButton *key_dot;
+    QPushButton *key_back;
+    QPushButton *key_OK;
+    QPushButton *key_Reschedule;
+    QLabel *label_horas;
+    QTableWidget *tableWidget;
+    QPlainTextEdit *textEdit;
     QWidget *tab_3;
     QLabel *description_label;
     QWidget *tab_4;
@@ -197,6 +216,267 @@ public:
         tabWidget->addTab(tab_1, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
+        key_0 = new QPushButton(tab_2);
+        key_0->setObjectName(QStringLiteral("key_0"));
+        key_0->setGeometry(QRect(154, 235, 40, 40));
+        key_0->setFocusPolicy(Qt::NoFocus);
+        key_0->setStyleSheet(QLatin1String("#key_0{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/0_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_0::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/0_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_0->setCheckable(false);
+        key_1 = new QPushButton(tab_2);
+        key_1->setObjectName(QStringLiteral("key_1"));
+        key_1->setGeometry(QRect(6, 192, 40, 40));
+        key_1->setFocusPolicy(Qt::NoFocus);
+        key_1->setStyleSheet(QLatin1String("#key_1{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/1_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_1::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/1_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_1->setCheckable(false);
+        key_2 = new QPushButton(tab_2);
+        key_2->setObjectName(QStringLiteral("key_2"));
+        key_2->setGeometry(QRect(56, 192, 40, 40));
+        key_2->setFocusPolicy(Qt::NoFocus);
+        key_2->setStyleSheet(QLatin1String("#key_2{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/2_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_2::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/2_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_2->setCheckable(false);
+        key_3 = new QPushButton(tab_2);
+        key_3->setObjectName(QStringLiteral("key_3"));
+        key_3->setGeometry(QRect(105, 192, 40, 40));
+        key_3->setFocusPolicy(Qt::NoFocus);
+        key_3->setStyleSheet(QLatin1String("#key_3{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/3_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_3::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/3_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_3->setCheckable(false);
+        key_4 = new QPushButton(tab_2);
+        key_4->setObjectName(QStringLiteral("key_4"));
+        key_4->setGeometry(QRect(154, 192, 40, 40));
+        key_4->setFocusPolicy(Qt::NoFocus);
+        key_4->setStyleSheet(QLatin1String("#key_4{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/4_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_4::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/4_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_4->setCheckable(false);
+        key_5 = new QPushButton(tab_2);
+        key_5->setObjectName(QStringLiteral("key_5"));
+        key_5->setGeometry(QRect(202, 192, 40, 40));
+        key_5->setFocusPolicy(Qt::NoFocus);
+        key_5->setStyleSheet(QLatin1String("#key_5{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/5_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_5::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/5_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_5->setCheckable(false);
+        key_6 = new QPushButton(tab_2);
+        key_6->setObjectName(QStringLiteral("key_6"));
+        key_6->setGeometry(QRect(250, 192, 40, 40));
+        key_6->setFocusPolicy(Qt::NoFocus);
+        key_6->setStyleSheet(QLatin1String("#key_6{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/6_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_6::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/6_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_6->setCheckable(false);
+        key_7 = new QPushButton(tab_2);
+        key_7->setObjectName(QStringLiteral("key_7"));
+        key_7->setGeometry(QRect(6, 235, 40, 40));
+        key_7->setFocusPolicy(Qt::NoFocus);
+        key_7->setStyleSheet(QLatin1String("#key_7{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/7_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_7::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/7_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_7->setCheckable(false);
+        key_8 = new QPushButton(tab_2);
+        key_8->setObjectName(QStringLiteral("key_8"));
+        key_8->setGeometry(QRect(56, 235, 40, 40));
+        key_8->setFocusPolicy(Qt::NoFocus);
+        key_8->setStyleSheet(QLatin1String("#key_8{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/8_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_8::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/8_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_8->setCheckable(false);
+        key_9 = new QPushButton(tab_2);
+        key_9->setObjectName(QStringLiteral("key_9"));
+        key_9->setGeometry(QRect(105, 235, 40, 40));
+        key_9->setFocusPolicy(Qt::NoFocus);
+        key_9->setStyleSheet(QLatin1String("#key_9{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/9_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_9::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/9_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_9->setCheckable(false);
+        key_dot = new QPushButton(tab_2);
+        key_dot->setObjectName(QStringLiteral("key_dot"));
+        key_dot->setGeometry(QRect(202, 235, 40, 40));
+        key_dot->setFocusPolicy(Qt::NoFocus);
+        key_dot->setStyleSheet(QLatin1String("#key_dot{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/punto_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_dot::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/punto_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_dot->setCheckable(false);
+        key_back = new QPushButton(tab_2);
+        key_back->setObjectName(QStringLiteral("key_back"));
+        key_back->setGeometry(QRect(250, 235, 41, 40));
+        key_back->setFocusPolicy(Qt::NoFocus);
+        key_back->setStyleSheet(QLatin1String("#key_back{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/Backspace_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_back::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/Backspace_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_back->setCheckable(false);
+        key_OK = new QPushButton(tab_2);
+        key_OK->setObjectName(QStringLiteral("key_OK"));
+        key_OK->setGeometry(QRect(7, 149, 81, 41));
+        key_OK->setFocusPolicy(Qt::NoFocus);
+        key_OK->setStyleSheet(QLatin1String("#key_OK{ \n"
+"background-image: url(:/iconos/images/Iconos/Ok_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_OK::pressed{ \n"
+"background-image: url(:/iconos/images/Iconos/Ok_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_OK->setCheckable(false);
+        key_Reschedule = new QPushButton(tab_2);
+        key_Reschedule->setObjectName(QStringLiteral("key_Reschedule"));
+        key_Reschedule->setGeometry(QRect(252, 145, 41, 41));
+        key_Reschedule->setFocusPolicy(Qt::NoFocus);
+        key_Reschedule->setStyleSheet(QLatin1String("#key_Reschedule{ \n"
+"background-image: url(:/iconos/images/Iconos/Posponer_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_Reschedule::pressed{ \n"
+"background-image: url(:/iconos/images/Iconos/Posponer_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_Reschedule->setCheckable(false);
+        label_horas = new QLabel(tab_2);
+        label_horas->setObjectName(QStringLiteral("label_horas"));
+        label_horas->setGeometry(QRect(137, 154, 61, 21));
+        tableWidget = new QTableWidget(tab_2);
+        tableWidget->setObjectName(QStringLiteral("tableWidget"));
+        tableWidget->setGeometry(QRect(0, 0, 291, 141));
+        textEdit = new QPlainTextEdit(tab_2);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(200, 149, 41, 31));
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
@@ -237,7 +517,7 @@ public:
 
         retranslateUi(detailedwindow);
 
-        tabWidget->setCurrentIndex(4);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(detailedwindow);
@@ -256,6 +536,21 @@ public:
         button_visualizacion->setText(QString());
         button_control->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("detailedwindow", "Tab 1", 0));
+        key_0->setText(QString());
+        key_1->setText(QString());
+        key_2->setText(QString());
+        key_3->setText(QString());
+        key_4->setText(QString());
+        key_5->setText(QString());
+        key_6->setText(QString());
+        key_7->setText(QString());
+        key_8->setText(QString());
+        key_9->setText(QString());
+        key_dot->setText(QString());
+        key_back->setText(QString());
+        key_OK->setText(QString());
+        key_Reschedule->setText(QString());
+        label_horas->setText(QApplication::translate("detailedwindow", "Horas:", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("detailedwindow", "Tab 2", 0));
         description_label->setText(QApplication::translate("detailedwindow", "Descripcion", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("detailedwindow", "Tab 3", 0));

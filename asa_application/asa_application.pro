@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,7 +16,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     detailedwindow.cpp \
     multistatebutton.cpp \
-    demo.cpp \
     bcm2835.c \
     parameters.cpp \
     spicomm.cpp \
@@ -24,12 +23,13 @@ SOURCES += main.cpp\
     dataproccess.cpp \
     custom_tooltip.cpp \
     settings.cpp \
-    configuration.cpp
+    configuration.cpp \
+    bitacora.cpp \
+    rutinas_mantenimiento.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
     multistatebutton.h \
-    demo.h \
     parameters.h \
     bcm2835.h \
     spicomm.h \
@@ -37,11 +37,14 @@ HEADERS  += mainwindow.h \
     dataproccess.h \
     custom_tooltip.h \
     settings.h \
-    configuration.h
+    configuration.h \
+    bitacora.h \
+    rutinas_mantenimiento.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
-    settings.ui
+    settings.ui \
+    bitacora.ui
 
 RESOURCES += \
     images.qrc \

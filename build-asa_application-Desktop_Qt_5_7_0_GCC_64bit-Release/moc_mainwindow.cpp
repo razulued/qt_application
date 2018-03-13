@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[15];
-    char stringdata0[305];
+    QByteArrayData data[19];
+    char stringdata0[391];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,9 +41,13 @@ QT_MOC_LITERAL(8, 165, 20), // "handleDetailedView_3"
 QT_MOC_LITERAL(9, 186, 20), // "handleDetailedView_4"
 QT_MOC_LITERAL(10, 207, 20), // "handleDetailedView_5"
 QT_MOC_LITERAL(11, 228, 20), // "handleDetailedView_6"
-QT_MOC_LITERAL(12, 249, 19), // "on_asa_logo_clicked"
-QT_MOC_LITERAL(13, 269, 13), // "dataTimerSlot"
-QT_MOC_LITERAL(14, 283, 21) // "on_top_menu_4_clicked"
+QT_MOC_LITERAL(12, 249, 20), // "handleDetailedView_7"
+QT_MOC_LITERAL(13, 270, 20), // "handleDetailedView_8"
+QT_MOC_LITERAL(14, 291, 19), // "on_asa_logo_clicked"
+QT_MOC_LITERAL(15, 311, 13), // "dataTimerSlot"
+QT_MOC_LITERAL(16, 325, 21), // "on_top_menu_5_clicked"
+QT_MOC_LITERAL(17, 347, 21), // "on_top_menu_4_clicked"
+QT_MOC_LITERAL(18, 369, 21) // "on_top_menu_2_clicked"
 
     },
     "MainWindow\0handleMenuButton\0\0"
@@ -53,8 +57,10 @@ QT_MOC_LITERAL(14, 283, 21) // "on_top_menu_4_clicked"
     "handleDetailedView_1\0handleDetailedView_2\0"
     "handleDetailedView_3\0handleDetailedView_4\0"
     "handleDetailedView_5\0handleDetailedView_6\0"
+    "handleDetailedView_7\0handleDetailedView_8\0"
     "on_asa_logo_clicked\0dataTimerSlot\0"
-    "on_top_menu_4_clicked"
+    "on_top_menu_5_clicked\0on_top_menu_4_clicked\0"
+    "on_top_menu_2_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -64,7 +70,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -72,21 +78,29 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   79,    2, 0x0a /* Public */,
-       3,    0,   80,    2, 0x0a /* Public */,
-       4,    0,   81,    2, 0x0a /* Public */,
-       5,    0,   82,    2, 0x0a /* Public */,
-       6,    0,   83,    2, 0x0a /* Public */,
-       7,    0,   84,    2, 0x0a /* Public */,
-       8,    0,   85,    2, 0x0a /* Public */,
-       9,    0,   86,    2, 0x0a /* Public */,
-      10,    0,   87,    2, 0x0a /* Public */,
-      11,    0,   88,    2, 0x0a /* Public */,
-      12,    0,   89,    2, 0x08 /* Private */,
-      13,    0,   90,    2, 0x08 /* Private */,
-      14,    0,   91,    2, 0x08 /* Private */,
+       1,    0,   99,    2, 0x0a /* Public */,
+       3,    0,  100,    2, 0x0a /* Public */,
+       4,    0,  101,    2, 0x0a /* Public */,
+       5,    0,  102,    2, 0x0a /* Public */,
+       6,    0,  103,    2, 0x0a /* Public */,
+       7,    0,  104,    2, 0x0a /* Public */,
+       8,    0,  105,    2, 0x0a /* Public */,
+       9,    0,  106,    2, 0x0a /* Public */,
+      10,    0,  107,    2, 0x0a /* Public */,
+      11,    0,  108,    2, 0x0a /* Public */,
+      12,    0,  109,    2, 0x0a /* Public */,
+      13,    0,  110,    2, 0x0a /* Public */,
+      14,    0,  111,    2, 0x08 /* Private */,
+      15,    0,  112,    2, 0x08 /* Private */,
+      16,    0,  113,    2, 0x08 /* Private */,
+      17,    0,  114,    2, 0x08 /* Private */,
+      18,    0,  115,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -120,9 +134,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 7: _t->handleDetailedView_4(); break;
         case 8: _t->handleDetailedView_5(); break;
         case 9: _t->handleDetailedView_6(); break;
-        case 10: _t->on_asa_logo_clicked(); break;
-        case 11: _t->dataTimerSlot(); break;
-        case 12: _t->on_top_menu_4_clicked(); break;
+        case 10: _t->handleDetailedView_7(); break;
+        case 11: _t->handleDetailedView_8(); break;
+        case 12: _t->on_asa_logo_clicked(); break;
+        case 13: _t->dataTimerSlot(); break;
+        case 14: _t->on_top_menu_5_clicked(); break;
+        case 15: _t->on_top_menu_4_clicked(); break;
+        case 16: _t->on_top_menu_2_clicked(); break;
         default: ;
         }
     }
@@ -154,13 +172,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 17;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 17)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 13;
+        _id -= 17;
     }
     return _id;
 }

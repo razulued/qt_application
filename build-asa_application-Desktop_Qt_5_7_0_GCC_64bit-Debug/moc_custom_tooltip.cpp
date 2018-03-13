@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_custom_tooltip_t {
-    QByteArrayData data[6];
-    char stringdata0[52];
+    QByteArrayData data[4];
+    char stringdata0[41];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,13 +32,10 @@ static const qt_meta_stringdata_custom_tooltip_t qt_meta_stringdata_custom_toolt
 QT_MOC_LITERAL(0, 0, 14), // "custom_tooltip"
 QT_MOC_LITERAL(1, 15, 11), // "ListPressed"
 QT_MOC_LITERAL(2, 27, 0), // ""
-QT_MOC_LITERAL(3, 28, 13), // "generic_event"
-QT_MOC_LITERAL(4, 42, 7), // "QEvent*"
-QT_MOC_LITERAL(5, 50, 1) // "e"
+QT_MOC_LITERAL(3, 28, 12) // "ListReleased"
 
     },
-    "custom_tooltip\0ListPressed\0\0generic_event\0"
-    "QEvent*\0e"
+    "custom_tooltip\0ListPressed\0\0ListReleased"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,11 +54,11 @@ static const uint qt_meta_data_custom_tooltip[] = {
 
  // slots: name, argc, parameters, tag, flags
        1,    0,   24,    2, 0x08 /* Private */,
-       3,    1,   25,    2, 0x08 /* Private */,
+       3,    0,   25,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 4,    5,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -73,10 +70,11 @@ void custom_tooltip::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->ListPressed(); break;
-        case 1: _t->generic_event((*reinterpret_cast< QEvent*(*)>(_a[1]))); break;
+        case 1: _t->ListReleased(); break;
         default: ;
         }
     }
+    Q_UNUSED(_a);
 }
 
 const QMetaObject custom_tooltip::staticMetaObject = {

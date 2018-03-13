@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>745</width>
-    <height>559</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -3401,7 +3401,7 @@
         <rect>
          <x>20</x>
          <y>10</y>
-         <width>381</width>
+         <width>641</width>
          <height>211</height>
         </rect>
        </property>
@@ -3409,8 +3409,8 @@
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>420</x>
-         <y>30</y>
+         <x>670</x>
+         <y>10</y>
          <width>231</width>
          <height>71</height>
         </rect>
@@ -3432,8 +3432,8 @@
         <rect>
          <x>20</x>
          <y>240</y>
-         <width>671</width>
-         <height>161</height>
+         <width>831</width>
+         <height>231</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -4017,9 +4017,9 @@
       <widget class="QPushButton" name="key_space">
        <property name="geometry">
         <rect>
-         <x>100</x>
-         <y>410</y>
-         <width>271</width>
+         <x>50</x>
+         <y>480</y>
+         <width>561</width>
          <height>22</height>
         </rect>
        </property>
@@ -4027,6 +4027,877 @@
         <string>Space</string>
        </property>
       </widget>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>Rutinas Mantenimiento</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Revisar y limpiar Vertedero Efluente</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QComboBox" name="comboBox_16">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>Revisar Tensión y Desgaste en Bandas</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QComboBox" name="comboBox_15">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QComboBox" name="comboBox_13">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Verificar Medidor de Flujo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QComboBox" name="comboBox_9">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Realizar Pruebas de Sedimentacion</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="1">
+        <widget class="QComboBox" name="comboBox_12">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Revisar Promedio Retorno de Lodo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_17">
+         <property name="text">
+          <string>Lubricar Candados</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comboBox_2">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Verificar Operación de Relojes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>Limpieza en Pretratamiento</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Limpieza General de la Planta</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QComboBox" name="comboBox_11">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>Tomar Muestra en el Efluente</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Limpiar Superficie del Sedimentador</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="comboBox_6">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Revisar Balance de Aire en Difusores</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="comboBox_4">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboBox_3">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QComboBox" name="comboBox_18">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>Limpiar Ventilación de Motores</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Raspar la tolva</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="comboBox_5">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="3">
+        <widget class="QComboBox" name="comboBox_21">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QLabel" name="label_23">
+         <property name="text">
+          <string>Limpiar Filtros de Aire</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="comboBox_7">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Revisar Bloqueo de Pretratamiento</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="comboBox_8">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Revisar Fugas en Válvulas</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QComboBox" name="comboBox_10">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Verificar y Reemplazar Fusibles</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QComboBox" name="comboBox_17">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QLabel" name="label_22">
+         <property name="text">
+          <string>Verificar Nivel de Aceite en Sopladores</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="2">
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string>Limpiar y Pintar Partes Metálicas</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="label_20">
+         <property name="text">
+          <string>Lubricar Chumaceras</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_19">
+         <property name="text">
+          <string>Verificar Alineacion de Poleas</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QComboBox" name="comboBox_14">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="11" column="2">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>Revisar Terminales y Disparadores</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <widget class="QLabel" name="label_24">
+         <property name="text">
+          <string>Limpiar Valvulas de Alivio</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="3">
+        <widget class="QComboBox" name="comboBox_22">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="3">
+        <widget class="QComboBox" name="comboBox_20">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="3">
+        <widget class="QComboBox" name="comboBox_19">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="10" column="3">
+        <widget class="QComboBox" name="comboBox_23">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="11" column="3">
+        <widget class="QComboBox" name="comboBox_24">
+         <item>
+          <property name="text">
+           <string>0 - Desactivado</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - Diario</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Semanal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Mensual</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Anual</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>

@@ -9,6 +9,8 @@
 #include "settings.h"
 #include "custom_tooltip.h"
 #include "configuration.h"
+#include "bitacora.h"
+#include "rutinas_mantenimiento.h"
 
 namespace Ui {
 class MainWindow;
@@ -55,12 +57,22 @@ public:
     static configuration_id conf_deshid_fisic;
     static configuration_id conf_deshid_quimi;
 
+    static configuration_id conf_afluente_elect;
+    static configuration_id conf_afluente_fisic;
+    static configuration_id conf_afluente_quimi;
+
+    static configuration_id conf_efluente_elect;
+    static configuration_id conf_efluente_fisic;
+    static configuration_id conf_efluente_quimi;
+
     static configuration_id reg_outputs;
     static configuration_id react_outputs;
     static configuration_id clarif_outputs;
     static configuration_id clora_outputs;
     static configuration_id digest_outputs;
     static configuration_id deshid_outputs;
+    static configuration_id afluente_outputs;
+    static configuration_id efluente_outputs;
 
     static int reg_op_mode;
     static int reg_mot_1;
@@ -68,6 +80,8 @@ public:
 
     static QString ASA_conf_only_string;
     static QString ASA_conf_string;
+
+    rutinas_mantenimiento *rutinas;
 
 public slots:
     void handleMenuButton();
@@ -80,20 +94,31 @@ public slots:
     void handleDetailedView_4();
     void handleDetailedView_5();
     void handleDetailedView_6();
+    void handleDetailedView_7();
+    void handleDetailedView_8();
+
 
 private slots:
     void on_asa_logo_clicked();
     void dataTimerSlot();
 
+    void on_top_menu_5_clicked();
+
     void on_top_menu_4_clicked();
+
+    void on_top_menu_2_clicked();
 
 private:
     QTimer dataTimer;
 
     Ui::MainWindow *ui;
     bool display_parameters;
-    detailedwindow *detail_window;
-    settings    *settingswindow;
+
+    /* Windows */
+    detailedwindow *detail_window = NULL;
+    settings    *settingswindow = NULL;
+    bitacora    *bitacorawindow = NULL;
+
     void HideButtons(bool show);
     parameter_state_t electric_state;
     parameter_state_t chemic_state;
@@ -118,6 +143,22 @@ private:
     custom_tooltip *tool_tip_clorador_electricos;
     custom_tooltip *tool_tip_clorador_fisicos;
     custom_tooltip *tool_tip_clorador_quimicos;
+
+    custom_tooltip *tool_tip_digestor_electricos;
+    custom_tooltip *tool_tip_digestor_fisicos;
+    custom_tooltip *tool_tip_digestor_quimicos;
+
+    custom_tooltip *tool_tip_deshidratador_electricos;
+    custom_tooltip *tool_tip_deshidratador_fisicos;
+    custom_tooltip *tool_tip_deshidratador_quimicos;
+
+    custom_tooltip *tool_tip_afluente_electricos;
+    custom_tooltip *tool_tip_afluente_fisicos;
+    custom_tooltip *tool_tip_afluente_quimicos;
+
+    custom_tooltip *tool_tip_efluente_electricos;
+    custom_tooltip *tool_tip_efluente_fisicos;
+    custom_tooltip *tool_tip_efluente_quimicos;
 
     void get_ASA_string(void);
     void update_ASA_string(void);

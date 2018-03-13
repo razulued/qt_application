@@ -230,6 +230,7 @@ void DataProccess::dataSPI()
         double FPAVG = 0;
 
         double realValue = 0;
+        bool is_string = false;
 
 
         send_ASA_Conf = true;
@@ -241,6 +242,9 @@ void DataProccess::dataSPI()
 
         for(int i = 0; i < ID_Parameters.length() ; i++)
         {
+
+            is_string = false;
+
             realParameters = ID_Parameters[i].split(":");
 
 
@@ -281,6 +285,10 @@ void DataProccess::dataSPI()
                     //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
                     break;
 
+                case 44:
+                    realValue  = hexString2Int(realParameters[1]);
+                    break;
+
                 case 45:
                     realValue  = raw2modbus(VOLTS_RAWMIN, VOLTS_RAWMAX, hexString2Int(realParameters[1]), 10);
     //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
@@ -309,6 +317,10 @@ void DataProccess::dataSPI()
                     currentAVG = currentAVG + (realValue/3);
                     break;
 
+                case 51:
+                    realValue  = hexString2Int(realParameters[1])/ 10;
+                    break;
+
                 case 52:
                     realValue  = raw2modbus(FP_RAWMIN, FP_RAWMAX, hexString2Int(realParameters[1]), 100);
     //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
@@ -317,13 +329,42 @@ void DataProccess::dataSPI()
                     //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
                     FPAVG = FPAVG + (realValue/2);
                     break;
+
                 case 53:
                     realValue  = hexString2Int(realParameters[1])/ 100;
                     break;
+
+                case 54:
+                    realValue  = hexString2Int(realParameters[1]);
+                    break;
+
+                case 55:
+                case 56:
+                case 57:
+                    realValue  = hexString2Int(realParameters[1])/ 10;
+                    break;
+
+                case 58:
+                case 59:
+                case 60:
+                    realValue  = hexString2Int(realParameters[1])/ 1000;
+                    break;
+
+                case 61:
+                    realValue  = hexString2Int(realParameters[1])/ 10;
+                    break;
+
+                case 62:
+                    realValue  = hexString2Int(realParameters[1])/ 100;
+                    break;
+
                 case 63:
                     realValue  = raw2modbus(FP_RAWMIN, FP_RAWMAX, hexString2Int(realParameters[1]), 10);
                     FPAVG = FPAVG + (realValue/2);
+                    break;
 
+                case 64:
+                    realValue  = hexString2Int(realParameters[1]);
                     break;
 
                 case 65:
@@ -335,20 +376,90 @@ void DataProccess::dataSPI()
 
 
                 case 90:
+                case 91:
                     realValue  = raw2modbus(DO2_RAWMIN, DO2_RAWMAX, hexString2Int(realParameters[1]), 100);
     //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
                     dataProccessing[8] = realValue;
                     //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
                     break;
+
+                case 92:
+                    realValue  = hexString2Int(realParameters[1]);
+                    break;
+
                 case 93:
+                case 94:
+                case 95:
                     realValue  = raw2modbus(VOLTS_RAWMIN, VOLTS_RAWMAX, hexString2Int(realParameters[1]), 10);
                     break;
                 case 96:
+                case 97:
+                case 98:
                     realValue  = raw2modbus(CURRENT_RAWMIN, CURRENT_RAWMAX, hexString2Int(realParameters[1]), 1000);
                     break;
+
+                case 99:
+                    realValue  = hexString2Int(realParameters[1])/10;
+                    break;
+
+                case 100:
+                    realValue  = hexString2Int(realParameters[1])/100;
+                    break;
+
                 case 101:
                     realValue  = hexString2Int(realParameters[1])/ 100;
                     break;
+
+                case 102:
+                    realValue  = hexString2Int(realParameters[1]);
+                    break;
+
+                case 103:
+                case 104:
+                case 105:
+                    realValue  = hexString2Int(realParameters[1])/10;
+                    break;
+
+                case 106:
+                case 107:
+                case 108:
+                    realValue  = hexString2Int(realParameters[1])/1000;
+                    break;
+
+                case 109:
+                    realValue  = hexString2Int(realParameters[1])/10;
+                    break;
+
+                case 110:
+                case 111:
+                    realValue  = hexString2Int(realParameters[1])/10;
+                    break;
+
+                case 112:
+                    realValue  = hexString2Int(realParameters[1]);
+                    break;
+
+                case 113:
+                case 114:
+                case 115:
+                    realValue  = hexString2Int(realParameters[1])/10;
+                    break;
+
+                case 116:
+                case 117:
+                case 118:
+                    realValue  = hexString2Int(realParameters[1])/1000;
+                    break;
+
+                case 119:
+                    realValue  = hexString2Int(realParameters[1])/10;
+                    break;
+
+                case 120:
+                case 121:
+                    realValue  = hexString2Int(realParameters[1])/100;
+                    break;
+
                 case 122:
                     realValue  = calcPSIfromADC(PSI_RAWMIN, PSI_RAWMAX, PSI_PHYSMIN, PSI_PHYSMAX, hexString2Int(realParameters[1]));
     //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
@@ -398,17 +509,34 @@ void DataProccess::dataSPI()
                     break;
 
                 case 165:
+                case 166:
                     realValue  = calcPSIfromADC(0x194, CAUDAL_RAWMAX, CAUDAL_PHYSMIN, 147, hexString2Int(realParameters[1]));
     //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
                     dataProccessing[4] = realValue;
                     //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
                     break;
 
+                case 16:
+//                    realValue  = calcPSIfromADC(0x194, CAUDAL_RAWMAX, CAUDAL_PHYSMIN, 147, hexString2Int(realParameters[1]));
+    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[4] = realValue;
+                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    qDebug() << "***TIME: " << realParameters[1];
+                    is_string = true;
+                    break;
+
                 default:
                     realValue = intString2Int(realParameters[0]);
                     break;
                 }
-                setParamValue(intString2Int(realParameters[0]), realValue);
+                if(true == is_string)
+                {
+                    setParamString(intString2Int(realParameters[0]), realParameters[1]);
+                }
+                else
+                {
+                    setParamValue(intString2Int(realParameters[0]), realValue);
+                }
             }
 
         }

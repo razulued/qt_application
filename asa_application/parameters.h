@@ -6,8 +6,9 @@ typedef enum
 {
     TYPE_NONE,
     TYPE_STRING,
+    TYPE_HEX,
+
     TYPE_DECIMAL,
-    TYPE_HEX
 }data_type_t;
 
 typedef struct
@@ -22,6 +23,7 @@ typedef struct
 data_type_t getParamType(unsigned int id);
 QString getParamValue(unsigned int id);
 void setParamValue(unsigned int id, double value);
+void setParamString(unsigned int id, QString value);
 
 QString getParamName(unsigned int id);
 bool getParamActiveShow(unsigned int id);

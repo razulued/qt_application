@@ -105,7 +105,7 @@ void SPICOMM::sendSPIdata()
         msDelay(10U);
 
         // CRC
-        CRCvalue = ::CalculateCRC16(0xFFFF, checksum_string, (MainWindow::ASA_conf_string.size() -1));
+        CRCvalue = ::CalculateCRC16(0xFFFF, checksum_string, (MainWindow::ASA_conf_string.size()));
 
         temp = bcm2835_spi_transfer((uint8_t)((CRCvalue >> 8) & 0x00FF));
         msDelay(10U);
@@ -149,6 +149,7 @@ char *SPICOMM::getSPIdata()
         if (SPI_STX == temp1)
         {
             validData = true;
+//            qDebug() << "[SOF]";
             break;  //Not continue with FOR statement
         }
     }

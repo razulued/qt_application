@@ -7,6 +7,7 @@
 #include <QPainter>
 #include <QColor>
 
+
 configuration_id MainWindow::conf_reg_elect;
 configuration_id MainWindow::conf_reg_fisic;
 configuration_id MainWindow::conf_reg_quimic;
@@ -31,12 +32,22 @@ configuration_id MainWindow::conf_deshid_elect;
 configuration_id MainWindow::conf_deshid_fisic;
 configuration_id MainWindow::conf_deshid_quimi;
 
+configuration_id MainWindow::conf_afluente_elect;
+configuration_id MainWindow::conf_afluente_fisic;
+configuration_id MainWindow::conf_afluente_quimi;
+
+configuration_id MainWindow::conf_efluente_elect;
+configuration_id MainWindow::conf_efluente_fisic;
+configuration_id MainWindow::conf_efluente_quimi;
+
 configuration_id MainWindow::reg_outputs;
 configuration_id MainWindow::react_outputs;
 configuration_id MainWindow::clarif_outputs;
 configuration_id MainWindow::clora_outputs;
 configuration_id MainWindow::digest_outputs;
 configuration_id MainWindow::deshid_outputs;
+configuration_id MainWindow::afluente_outputs;
+configuration_id MainWindow::efluente_outputs;
 
 int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
@@ -84,6 +95,22 @@ void MainWindow::InitTooltips()
     tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_11, conf_clora_fisic.ids, conf_clora_fisic.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4);
     tool_tip_clorador_quimicos = new custom_tooltip(ui->widget_12, conf_clora_quimi.ids, conf_clora_quimi.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4);
 
+    tool_tip_digestor_electricos = new custom_tooltip(ui->widget_13, conf_digest_elect.ids, conf_digest_elect.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5);
+    tool_tip_digestor_fisicos = new custom_tooltip(ui->widget_14, conf_digest_fisic.ids, conf_digest_fisic.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5);
+    tool_tip_digestor_quimicos = new custom_tooltip(ui->widget_15, conf_digest_quimi.ids, conf_digest_quimi.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5);
+
+    tool_tip_deshidratador_electricos = new custom_tooltip(ui->widget_16, conf_deshid_elect.ids, conf_deshid_elect.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6);
+    tool_tip_deshidratador_fisicos = new custom_tooltip(ui->widget_17, conf_deshid_fisic.ids, conf_deshid_fisic.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6);
+    tool_tip_deshidratador_quimicos = new custom_tooltip(ui->widget_18, conf_deshid_quimi.ids, conf_deshid_quimi.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6);
+
+    tool_tip_afluente_electricos = new custom_tooltip(ui->widget_19, conf_afluente_elect.ids, conf_afluente_elect.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7);
+    tool_tip_afluente_fisicos = new custom_tooltip(ui->widget_20, conf_afluente_fisic.ids, conf_afluente_fisic.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7);
+    tool_tip_afluente_quimicos = new custom_tooltip(ui->widget_21, conf_afluente_quimi.ids, conf_afluente_quimi.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7);
+
+    tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, conf_efluente_elect.ids, conf_efluente_elect.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8);
+    tool_tip_efluente_fisicos = new custom_tooltip(ui->widget_23, conf_efluente_fisic.ids, conf_efluente_fisic.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8);
+    tool_tip_efluente_quimicos = new custom_tooltip(ui->widget_24, conf_efluente_quimi.ids, conf_efluente_quimi.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8);
+
     init_complete = true;
 }
 
@@ -92,7 +119,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    settingswindow = NULL;
+//    settingswindow = NULL;
+
+    // Rutinas y DB
+    rutinas = new rutinas_mantenimiento("rutinas.db");
 
     //Get config
     get_ASA_string();
@@ -127,6 +157,34 @@ MainWindow::MainWindow(QWidget *parent) :
     config = new configuration("Clorador-Quimicos");
     conf_clora_quimi = config->get_config();
 
+    config = new configuration("Digestor-Electricos");
+    conf_digest_elect = config->get_config();
+    config = new configuration("Digestor-Fisicos");
+    conf_digest_fisic = config->get_config();
+    config = new configuration("Digestor-Quimicos");
+    conf_digest_quimi = config->get_config();
+
+    config = new configuration("Deshidratador-Electricos");
+    conf_deshid_elect = config->get_config();
+    config = new configuration("Deshidratador-Fisicos");
+    conf_deshid_fisic = config->get_config();
+    config = new configuration("Deshidratador-Quimicos");
+    conf_deshid_quimi = config->get_config();
+
+    config = new configuration("Afluente-Electricos");
+    conf_afluente_elect = config->get_config();
+    config = new configuration("Afluente-Fisicos");
+    conf_afluente_fisic = config->get_config();
+    config = new configuration("Afluente-Quimicos");
+    conf_afluente_quimi = config->get_config();
+
+    config = new configuration("Efluente-Electricos");
+    conf_efluente_elect = config->get_config();
+    config = new configuration("Efluente-Fisicos");
+    conf_efluente_fisic = config->get_config();
+    config = new configuration("Efluente-Quimicos");
+    conf_efluente_quimi = config->get_config();
+
     //Get outputs
     config = new configuration("Regulador-Out");
     reg_outputs = config->get_config();
@@ -136,6 +194,14 @@ MainWindow::MainWindow(QWidget *parent) :
     clarif_outputs = config->get_config();
     config = new configuration("Clorador-Out");
     clora_outputs = config->get_config();
+    config = new configuration("Digestor-Out");
+    digest_outputs = config->get_config();
+    config = new configuration("Deshidratador-Out");
+    deshid_outputs = config->get_config();
+    config = new configuration("Afluente-Out");
+    afluente_outputs = config->get_config();
+    config = new configuration("Efluente-Out");
+    efluente_outputs = config->get_config();
 
     //Setup Timer
     dataTimer.setInterval(200);
@@ -169,6 +235,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->modulo_4, SIGNAL (released()),this, SLOT (handleDetailedView_4()));
     connect(ui->modulo_5, SIGNAL (released()),this, SLOT (handleDetailedView_5()));
     connect(ui->modulo_6, SIGNAL (released()),this, SLOT (handleDetailedView_6()));
+    connect(ui->modulo_7, SIGNAL (released()),this, SLOT (handleDetailedView_7()));
+    connect(ui->modulo_8, SIGNAL (released()),this, SLOT (handleDetailedView_8()));
 
     QFont active_parameter_font("Typo Square Bold Demo",20,1);
     ui->active_param_label->setFont(active_parameter_font);
@@ -176,8 +244,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->active_param_label->setStyleSheet("color:black");
     ui->active_param_label->setText("Parametros Eléctricos");
 
-
-
+    QFont hora_font("Typo Square Regular Demo",20,1);
+    ui->label_hora->setStyleSheet("color: white");
+    ui->label_hora->setFont(hora_font);
 //    button.setStyleSheet( FormStyleSheetString( "button" ) );
 //     button.setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 //     button.setIconSize(QSize(200,200));
@@ -227,44 +296,59 @@ void MainWindow::handleDetailedView_1()
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_REGULADOR, this);
+    detail_window = new detailedwindow(ELEMENT_REGULADOR, rutinas);
 }
 void MainWindow::handleDetailedView_2()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_REACTOR);
+    detail_window = new detailedwindow(ELEMENT_REACTOR, rutinas);
 }
 void MainWindow::handleDetailedView_3()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_CLARIFICADOR);
+    detail_window = new detailedwindow(ELEMENT_CLARIFICADOR, rutinas);
 }
 void MainWindow::handleDetailedView_4()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_CLORADOR);
+    detail_window = new detailedwindow(ELEMENT_CLORADOR, rutinas);
 }
 void MainWindow::handleDetailedView_5()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_DIGESTOR);
+    detail_window = new detailedwindow(ELEMENT_DIGESTOR, rutinas);
 }
 void MainWindow::handleDetailedView_6()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_DESHIDRATADOR);
+    detail_window = new detailedwindow(ELEMENT_DESHIDRATADOR, rutinas);
 }
 
+void MainWindow::handleDetailedView_7()
+{
+    if (detail_window != NULL) {
+        delete detail_window;
+    }
+    detail_window = new detailedwindow(ELEMENT_AFLUENTE, rutinas);
+}
+
+void MainWindow::handleDetailedView_8()
+{
+    if (detail_window != NULL) {
+        delete detail_window;
+    }
+    detail_window = new detailedwindow(ELEMENT_EFLUENTE, rutinas);
+}
 
 void MainWindow::on_asa_logo_clicked()
 {
@@ -280,7 +364,31 @@ void MainWindow::dataTimerSlot()
 //        a = 0;
 //    }
 
+    /* Update Hora */
+    //"18/03/06,13:34:55"
+
     update_ASA_string();
+
+    QString dos_mil = "20";
+    QString time_format = "yyyy/MM/dd,HH.mm.ss";
+    QString hora =  dos_mil+ getParamValue(16);
+
+    QDateTime time = QDateTime::fromString(hora, time_format);
+
+    QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
+    ui->label_hora->setText(display_time);
+
+    if(NULL != rutinas)
+    {
+
+        rutinas->set_time(time);
+        rutinas->check_rutinas();
+    }
+
+    if((NULL != bitacorawindow) && bitacorawindow->isActiveWindow())
+    {
+        bitacorawindow->update_table();
+    }
 
     if(true == display_parameters)
     {
@@ -291,16 +399,28 @@ void MainWindow::dataTimerSlot()
             tool_tip_reactor_electricos->force_show();
             tool_tip_clarificador_electricos->force_show();
             tool_tip_clorador_electricos->force_show();
+            tool_tip_digestor_electricos->force_show();
+            tool_tip_deshidratador_electricos->force_show();
+            tool_tip_afluente_electricos->force_show();
+            tool_tip_efluente_electricos->force_show();
 
             tool_tip_regulador_fisicos->force_hide();
             tool_tip_reactor_fisicos->force_hide();
             tool_tip_clarificador_fisicos->force_hide();
             tool_tip_clorador_fisicos->force_hide();
+            tool_tip_digestor_fisicos->force_hide();
+            tool_tip_deshidratador_fisicos->force_hide();
+            tool_tip_afluente_fisicos->force_hide();
+            tool_tip_efluente_fisicos->force_hide();
 
             tool_tip_regulador_quimicos->force_hide();
             tool_tip_reactor_quimicos->force_hide();
             tool_tip_clarificador_quimicos->force_hide();
             tool_tip_clorador_quimicos->force_hide();
+            tool_tip_digestor_quimicos->force_hide();
+            tool_tip_deshidratador_quimicos->force_hide();
+            tool_tip_afluente_quimicos->force_hide();
+            tool_tip_efluente_quimicos->force_hide();
 
             break;
         case PARAM_PHYSHIC:
@@ -308,32 +428,58 @@ void MainWindow::dataTimerSlot()
             tool_tip_reactor_electricos->force_hide();
             tool_tip_clarificador_electricos->force_hide();
             tool_tip_clorador_electricos->force_hide();
+            tool_tip_digestor_electricos->force_hide();
+            tool_tip_deshidratador_electricos->force_hide();
+            tool_tip_afluente_electricos->force_hide();
+            tool_tip_efluente_electricos->force_hide();
 
             tool_tip_regulador_fisicos->force_show();
             tool_tip_reactor_fisicos->force_show();
             tool_tip_clarificador_fisicos->force_show();
             tool_tip_clorador_fisicos->force_show();
+            tool_tip_digestor_fisicos->force_show();
+            tool_tip_deshidratador_fisicos->force_show();
+            tool_tip_afluente_fisicos->force_show();
+            tool_tip_efluente_fisicos->force_show();
 
             tool_tip_regulador_quimicos->force_hide();
             tool_tip_reactor_quimicos->force_hide();
             tool_tip_clarificador_quimicos->force_hide();
             tool_tip_clorador_quimicos->force_hide();
+            tool_tip_digestor_quimicos->force_hide();
+            tool_tip_deshidratador_quimicos->force_hide();
+            tool_tip_afluente_quimicos->force_hide();
+            tool_tip_efluente_quimicos->force_hide();
+
             break;
         case PARAM_CHEMIC:
             tool_tip_regulador_electricos->force_hide();
             tool_tip_reactor_electricos->force_hide();
             tool_tip_clarificador_electricos->force_hide();
             tool_tip_clorador_electricos->force_hide();
+            tool_tip_digestor_electricos->force_hide();
+            tool_tip_deshidratador_electricos->force_hide();
+            tool_tip_afluente_electricos->force_hide();
+            tool_tip_efluente_electricos->force_hide();
 
             tool_tip_regulador_fisicos->force_hide();
             tool_tip_reactor_fisicos->force_hide();
             tool_tip_clarificador_fisicos->force_hide();
             tool_tip_clorador_fisicos->force_hide();
+            tool_tip_digestor_fisicos->force_hide();
+            tool_tip_deshidratador_fisicos->force_hide();
+            tool_tip_afluente_fisicos->force_hide();
+            tool_tip_efluente_fisicos->force_hide();
 
             tool_tip_regulador_quimicos->force_show();
             tool_tip_reactor_quimicos->force_show();
             tool_tip_clarificador_quimicos->force_show();
             tool_tip_clorador_quimicos->force_show();
+            tool_tip_digestor_quimicos->force_show();
+            tool_tip_deshidratador_quimicos->force_show();
+            tool_tip_afluente_quimicos->force_show();
+            tool_tip_efluente_quimicos->force_show();
+
             break;
         default:
             break;
@@ -347,31 +493,34 @@ void MainWindow::dataTimerSlot()
             tool_tip_reactor_electricos->update_data();
             tool_tip_clarificador_electricos->update_data();
             tool_tip_clorador_electricos->update_data();
+            tool_tip_digestor_electricos->update_data();
+            tool_tip_deshidratador_electricos->update_data();
+            tool_tip_afluente_electricos->update_data();
+            tool_tip_efluente_electricos->update_data();
 
             tool_tip_regulador_fisicos->update_data();
             tool_tip_reactor_fisicos->update_data();
             tool_tip_clarificador_fisicos->update_data();
             tool_tip_clorador_fisicos->update_data();
+            tool_tip_digestor_fisicos->update_data();
+            tool_tip_deshidratador_fisicos->update_data();
+            tool_tip_afluente_fisicos->update_data();
+            tool_tip_efluente_fisicos->update_data();
 
             tool_tip_regulador_quimicos->update_data();
             tool_tip_reactor_quimicos->update_data();
             tool_tip_clarificador_quimicos->update_data();
             tool_tip_clorador_quimicos->update_data();
+            tool_tip_digestor_quimicos->update_data();
+            tool_tip_deshidratador_quimicos->update_data();
+            tool_tip_afluente_quimicos->update_data();
+            tool_tip_efluente_quimicos->update_data();
+
         }
 
     }
 }
 
-void MainWindow::on_top_menu_4_clicked()
-{
-    if(settingswindow != NULL)
-    {
-        delete settingswindow;
-    }
-
-    settingswindow = new settings(this);
-
-}
 
 void MainWindow::get_ASA_string()
 {
@@ -631,5 +780,37 @@ void MainWindow::paintEvent(QPaintEvent *)
      trace_lines(ui->widget_10, ui->modulo_4, painter);
      trace_lines(ui->widget_11, ui->modulo_4, painter);
      trace_lines(ui->widget_12, ui->modulo_4, painter);
+
+}
+
+/* WINDOWS */
+void MainWindow::on_top_menu_4_clicked()
+{
+
+}
+
+void MainWindow::on_top_menu_5_clicked()
+{
+    if(settingswindow != NULL)
+    {
+        delete settingswindow;
+    }
+
+    settingswindow = new settings(this);
+
+}
+
+void MainWindow::on_top_menu_2_clicked()
+{
+    if(bitacorawindow !=NULL)
+    {
+        delete bitacorawindow;
+    }
+    bitacorawindow = new bitacora(rutinas, this);
+
+//    if(detail_window !=NULL)
+//    {
+//        delete detail_window;
+//    }
 
 }

@@ -1,6 +1,6 @@
 #include "parameters.h"
 #include <QtDebug>
-char* gen_stat_ecuid;
+QString gen_stat_ecuid;
 double gen_stat_prodtype;
 double gen_stat_msgtype;
 double gen_stat_swver;
@@ -11,10 +11,11 @@ double gen_stat_gpslat;
 double gen_stat_gpslong;
 double gen_stat_gprs_rssi;
 double gen_stat_batlevel;
-char* gen_stat_debugmsg;
+QString gen_stat_debugmsg;
 double gen_stat_numresets;
 double gen_stat_databyaddr;
 double gen_stat_gprs_ber;
+QString gen_stat_datetime;
 double gen_stat_authlevel;
 double gen_parm_sec_challenge;
 double car_stat_shit_level;
@@ -126,6 +127,7 @@ parameter_config_t  all_parameters[]=
     {12,	false,	"gen_stat_numresets",           &gen_stat_numresets,               TYPE_HEX},
     {13,	false,	"gen_stat_databyaddr",          &gen_stat_databyaddr,              TYPE_HEX},
     {15,	false,	"gen_stat_gprs_ber",            &gen_stat_gprs_ber,                TYPE_HEX},
+    {16,	false,	"gen_stat_datetime",            &gen_stat_datetime,                TYPE_STRING},
     {22,	false,	"gen_stat_authlevel",           &gen_stat_authlevel,               TYPE_HEX},
     {23,	false,	"gen_parm_sec_challenge",       &gen_parm_sec_challenge,           TYPE_HEX},
     {40,	false,	"ND",                           &car_stat_shit_level,              TYPE_HEX},
@@ -287,7 +289,6 @@ QString getParamName(unsigned int id)
 QString getParamValue(unsigned int id)
 {
     QString str;
-    QString *strptr;
     double *uint_ptr;
 
     switch(getParamType(id))
@@ -295,8 +296,7 @@ QString getParamValue(unsigned int id)
     case TYPE_NONE:
         break;
     case TYPE_STRING:
-        strptr = new QString((char*)all_parameters[getParamIndex(id)].param);
-        str = *strptr;
+        str = *(QString*)all_parameters[getParamIndex(id)].param;
         break;
     case TYPE_DECIMAL:
     case TYPE_HEX:
@@ -313,6 +313,14 @@ void setParamValue(unsigned int id,double value)
 
     uint_ptr = (double *)all_parameters[getParamIndex(id)].param;
     *uint_ptr = value;
+}
+
+void setParamString(unsigned int id, QString value)
+{
+    QString *char_ptr;
+
+    char_ptr = (QString *)all_parameters[getParamIndex(id)].param;
+    *char_ptr = value;
 }
 
 bool getParamActiveShow(unsigned int id)

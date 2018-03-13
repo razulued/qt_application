@@ -19,6 +19,8 @@
         <file>images/parametros_quimicos_off.png</file>
         <file>images/parametros_quimicos_on.png</file>
         <file>images/planta.png</file>
+        <file>images/afluente.png</file>
+        <file>images/efluente.png</file>
     </qresource>
     <qresource prefix="/barras">
         <file>images/Barras/Base_1_amarilla.png</file>
@@ -98,5 +100,99 @@
         <file>images/Iconos/Encendido_blanco.png</file>
         <file>images/Iconos/Encendido_azul.png</file>
         <file>images/Iconos/Globo_azul.png</file>
+        <file>images/Iconos/Ok_azul.png</file>
+        <file>images/Iconos/Ok_blanco.png</file>
+        <file>images/Iconos/Posponer_azul.png</file>
+        <file>images/Iconos/Posponer_blanco.png</file>
+    </qresource>
+    <qresource prefix="/teclado">
+        <file>images/Texto/Teclado/- azul.png</file>
+        <file>images/Texto/Teclado/- blanco.png</file>
+        <file>images/Texto/Teclado/+_azul.png</file>
+        <file>images/Texto/Teclado/+_blanco.png</file>
+        <file>images/Texto/Teclado/0_azul.png</file>
+        <file>images/Texto/Teclado/0_blanco.png</file>
+        <file>images/Texto/Teclado/1_azul.png</file>
+        <file>images/Texto/Teclado/1_blanco.png</file>
+        <file>images/Texto/Teclado/2_azul.png</file>
+        <file>images/Texto/Teclado/2_blanco.png</file>
+        <file>images/Texto/Teclado/3_azul.png</file>
+        <file>images/Texto/Teclado/3_blanco.png</file>
+        <file>images/Texto/Teclado/4_azul.png</file>
+        <file>images/Texto/Teclado/4_blanco.png</file>
+        <file>images/Texto/Teclado/5_azul.png</file>
+        <file>images/Texto/Teclado/5_blanco.png</file>
+        <file>images/Texto/Teclado/6_azul.png</file>
+        <file>images/Texto/Teclado/6_blanco.png</file>
+        <file>images/Texto/Teclado/7_azul.png</file>
+        <file>images/Texto/Teclado/7_blanco.png</file>
+        <file>images/Texto/Teclado/8_azul.png</file>
+        <file>images/Texto/Teclado/8_blanco.png</file>
+        <file>images/Texto/Teclado/9_azul.png</file>
+        <file>images/Texto/Teclado/9_blanco.png</file>
+        <file>images/Texto/Teclado/A_azul.png</file>
+        <file>images/Texto/Teclado/A_blanco.png</file>
+        <file>images/Texto/Teclado/B_azul.png</file>
+        <file>images/Texto/Teclado/B_blanco.png</file>
+        <file>images/Texto/Teclado/Backspace_azul.png</file>
+        <file>images/Texto/Teclado/Backspace_blanco.png</file>
+        <file>images/Texto/Teclado/C_azul.png</file>
+        <file>images/Texto/Teclado/C_blanco.png</file>
+        <file>images/Texto/Teclado/coma_azul.png</file>
+        <file>images/Texto/Teclado/Coma_blanco.png</file>
+        <file>images/Texto/Teclado/D_azul.png</file>
+        <file>images/Texto/Teclado/D_blanco.png</file>
+        <file>images/Texto/Teclado/E_azul.png</file>
+        <file>images/Texto/Teclado/E_blanco.png</file>
+        <file>images/Texto/Teclado/F_azul.png</file>
+        <file>images/Texto/Teclado/F_blanco.png</file>
+        <file>images/Texto/Teclado/Flecha_inferior_azul.png</file>
+        <file>images/Texto/Teclado/Flecha_inferior_blanco.png</file>
+        <file>images/Texto/Teclado/Flecha_superior_azul.png</file>
+        <file>images/Texto/Teclado/Flecha_superior_blanco.png</file>
+        <file>images/Texto/Teclado/G_azul.png</file>
+        <file>images/Texto/Teclado/G_blanco.png</file>
+        <file>images/Texto/Teclado/H_azul.png</file>
+        <file>images/Texto/Teclado/H_blanco.png</file>
+        <file>images/Texto/Teclado/I_azul.png</file>
+        <file>images/Texto/Teclado/I_blanco.png</file>
+        <file>images/Texto/Teclado/J_azul.png</file>
+        <file>images/Texto/Teclado/J_blanco.png</file>
+        <file>images/Texto/Teclado/K_azul.png</file>
+        <file>images/Texto/Teclado/K_blanco.png</file>
+        <file>images/Texto/Teclado/L_azul.png</file>
+        <file>images/Texto/Teclado/L_blanco.png</file>
+        <file>images/Texto/Teclado/M_azul.png</file>
+        <file>images/Texto/Teclado/M_blanco.png</file>
+        <file>images/Texto/Teclado/N_azul.png</file>
+        <file>images/Texto/Teclado/N_blanco.png</file>
+        <file>images/Texto/Teclado/O_azul.png</file>
+        <file>images/Texto/Teclado/O_blanco.png</file>
+        <file>images/Texto/Teclado/P_azul.png</file>
+        <file>images/Texto/Teclado/P_blanco.png</file>
+        <file>images/Texto/Teclado/punto_azul.png</file>
+        <file>images/Texto/Teclado/punto_blanco.png</file>
+        <file>images/Texto/Teclado/Q_azul.png</file>
+        <file>images/Texto/Teclado/Q_blanco.png</file>
+        <file>images/Texto/Teclado/R_azul.png</file>
+        <file>images/Texto/Teclado/R_blanco.png</file>
+        <file>images/Texto/Teclado/S_azul.png</file>
+        <file>images/Texto/Teclado/S_blanco.png</file>
+        <file>images/Texto/Teclado/slash_azul.png</file>
+        <file>images/Texto/Teclado/slash_blanco.png</file>
+        <file>images/Texto/Teclado/T_azul.png</file>
+        <file>images/Texto/Teclado/T_blanco.png</file>
+        <file>images/Texto/Teclado/U_azul.png</file>
+        <file>images/Texto/Teclado/U_blanco.png</file>
+        <file>images/Texto/Teclado/V_azul.png</file>
+        <file>images/Texto/Teclado/V_blanco.png</file>
+        <file>images/Texto/Teclado/W_azul.png</file>
+        <file>images/Texto/Teclado/W_blanco.png</file>
+        <file>images/Texto/Teclado/X_azul.png</file>
+        <file>images/Texto/Teclado/X_blanco.png</file>
+        <file>images/Texto/Teclado/Y_azul.png</file>
+        <file>images/Texto/Teclado/Y_blanco.png</file>
+        <file>images/Texto/Teclado/Z_azul.png</file>
+        <file>images/Texto/Teclado/Z_blanco.png</file>
     </qresource>
 </RCC>
