@@ -24,6 +24,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     QFont font0("Typo Square Bold Demo",20,1);
     QFont font1("Typo Square Regular Demo",16,1);
     QFont font2("Typo Square Regular Demo",12,1);
+    QFont font3("Typo Square Bold Demo",16,1);
 
     ui->label->setFont(font0);
 
@@ -68,7 +69,13 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     ui->tableWidget_2->horizontalHeader()->setStretchLastSection(true);
     ui->tableWidget_2->setWordWrap(true);
 
-    ui->button_OK->setStyleSheet("border: 2px solid rgb(0, 167, 250);");
+    ui->label_2->setFont(font3);
+    ui->label_2->setAlignment(Qt::AlignCenter);
+
+    ui->label_horas->setFont(font3);
+    ui->label_horas->setAlignment(Qt::AlignRight);
+
+//    ui->button_OK->setStyleSheet("border: 2px solid rgb(0, 167, 250);");
 //    ui->button_STOP->setStyleSheet("border: 2px solid red;");
 //    ui->button_Reschedule->setStyleSheet("border: 2px solid rgb(0, 167, 250);");
 
@@ -110,20 +117,21 @@ void bitacora::update_table()
     }
 }
 
-void bitacora::on_key_0_clicked() {ui->textEdit->insertPlainText("0");}
-void bitacora::on_key_1_clicked() {ui->textEdit->insertPlainText("1");}
-void bitacora::on_key_2_clicked() {ui->textEdit->insertPlainText("2");}
-void bitacora::on_key_3_clicked() {ui->textEdit->insertPlainText("3");}
-void bitacora::on_key_4_clicked() {ui->textEdit->insertPlainText("4");}
-void bitacora::on_key_5_clicked() {ui->textEdit->insertPlainText("5");}
-void bitacora::on_key_6_clicked() {ui->textEdit->insertPlainText("6");}
-void bitacora::on_key_7_clicked() {ui->textEdit->insertPlainText("7");}
-void bitacora::on_key_8_clicked() {ui->textEdit->insertPlainText("8");}
-void bitacora::on_key_9_clicked() {ui->textEdit->insertPlainText("9");}
+void bitacora::on_key_0_clicked() {insert_amount("0");}
+void bitacora::on_key_1_clicked() {insert_amount("1");}
+void bitacora::on_key_2_clicked() {insert_amount("2");}
+void bitacora::on_key_3_clicked() {insert_amount("3");}
+void bitacora::on_key_4_clicked() {insert_amount("4");}
+void bitacora::on_key_5_clicked() {insert_amount("5");}
+void bitacora::on_key_6_clicked() {insert_amount("6");}
+void bitacora::on_key_7_clicked() {insert_amount("7");}
+void bitacora::on_key_8_clicked() {insert_amount("8");}
+void bitacora::on_key_9_clicked() {insert_amount("9");}
 
 void bitacora::on_key_back_clicked()
 {
-    ui->textEdit->textCursor().deletePreviousChar();
+    posponer_amount.chop(1);
+    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
 }
 
 void bitacora::init_full_table()
@@ -415,67 +423,7 @@ void bitacora::item_selected(QTableWidgetItem* item)
     qDebug() << "ID " << selected_id;
 }
 
-void bitacora::on_button_OK_clicked()
-{
-    uint i = 0;
-    if(0 != selected_id)
-    {
-        qDebug() << "Button clicked ID: " << selected_id;
-        for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
-        {
-            if(rutina_ptr->id(i) == selected_id)
-            {
-                qDebug() << "ID match at: " << i;
-                rutina_ptr->complete_rutina(i);
-                break;
-            }
-        }
-        selected_id = 0;
-    }
-    else
-    {
-        ui->label_2->setText("SELECIONAR UNA RUTINA EN LA PESTAÑA DE MANTENIMIENTO");
-    }
-}
-
-void bitacora::on_button_Reschedule_clicked()
-{
-    uint i = 0;
-    uint time = 0;
-
-    time = ui->textEdit->toPlainText().toInt();
-
-    if(0 != selected_id)
-    {
-        if(time == 0)
-        {
-            ui->label_2->setText("Tiembo debe ser  mayor a 0");
-            return;
-        }
-        else
-        {
-            time = time * base_mult;
-        }
-
-        for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
-        {
-            if(rutina_ptr->id(i) == selected_id)
-            {
-                qDebug() << "ID match at: " << i;
-                rutina_ptr->add_seconds_rutina(i, time);
-                ui->textEdit->clear();
-                break;
-            }
-        }
-        selected_id = 0;
-    }
-    else
-    {
-        ui->label_2->setText("SELECIONAR UNA RUTINA EN LA PESTAÑA DE MANTENIMIENTO");
-    }
-}
-
-void bitacora::on_key_dot_clicked()
+void bitacora::on_key_Reschedule_clicked()
 {
     if(++add_base == BASE_LAST)
     {
@@ -485,24 +433,74 @@ void bitacora::on_key_dot_clicked()
     switch(add_base)
     {
     case BASE_SEC:
-        ui->label_horas->setText("Seg:");
+        posponer_amount_units = "s";
         base_mult = 1;
         break;
     case BASE_MIN:
-        ui->label_horas->setText("Min:");
+        posponer_amount_units = "m";
         base_mult = 60;
         break;
     case BASE_HOUR:
-        ui->label_horas->setText("Horas:");
+        posponer_amount_units = "h";
         base_mult = 3600;
         break;
     case BASE_DAY:
-        ui->label_horas->setText("Dias:");
+        posponer_amount_units = "d";
         base_mult = 3600 * 24;
         break;
-    case BASE_MON:
-        ui->label_horas->setText("Meses:");
-        base_mult = 3600 * 24 * 30;
-        break;
+//    case BASE_MON:
+//        ui->label_horas->setText("Meses:");
+//        base_mult = 3600 * 24 * 30;
+//        break;
     }
+
+    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
+}
+
+void bitacora::on_key_OK_clicked()
+{
+    uint i = 0;
+    uint time = 0;
+
+    time = posponer_amount.toInt();
+
+    if(0 != selected_id)
+    {
+        qDebug() << "Button clicked ID: " << selected_id;
+        for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
+        {
+            if(rutina_ptr->id(i) == selected_id)
+            {
+                qDebug() << "ID match at: " << i;
+
+                if(time > 0)
+                {
+                    time = time * base_mult;
+                    rutina_ptr->add_seconds_rutina(i, time);
+                }
+                else
+                {
+                    rutina_ptr->complete_rutina(i);
+                }
+            }
+        }
+
+//        for(i = 0; i < ui->tableWidget->rowCount() ; i++)
+//        {
+//            if(ui->tableWidget->item(i,0)->text().toInt() == selected_id)
+//            {
+//                ui->tableWidget->removeRow(i);
+//                break;
+//            }
+//        }
+    }
+
+    ui->label_2->setText("SELECIONAR UNA RUTINA DE LA LISTA");
+}
+
+void bitacora::insert_amount(QString ins)
+{
+    posponer_amount += ins;
+
+    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
 }

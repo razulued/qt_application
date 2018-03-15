@@ -4,6 +4,7 @@
 #include <QMimeData>
 #include <QDrag>
 #include <QPainter>
+#include <QSettings>
 
 QPoint offset;
 
@@ -41,6 +42,11 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
     OutNameList = out_names;
 
     item_is_pressed = false;
+
+//    parent_frame->setGeometry(30, 30, parent_frame->x(), parent_frame->y());
+////    QSettings settings("ASA_app", "tool_tip_geometry");
+////        restoreGeometry(settings.value("geometry").toByteArray());
+
     init_data();
 }
 
@@ -189,6 +195,10 @@ void custom_tooltip::ListPressed()
     {
         item_is_pressed = false;
         qDebug() << "click false";
+
+        //Save tool tip position
+//        QSettings settings("ASA_app", "tool_tip_geometry");
+//        settings.setValue("geometry", saveGeometry());
     }
 
 //    QCursor::setPos(p);

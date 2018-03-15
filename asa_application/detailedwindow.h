@@ -78,8 +78,6 @@ private slots:
 
     void on_key_OK_clicked();
 
-    void on_key_dot_clicked();
-
 private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;
@@ -88,8 +86,12 @@ private:
 
     enum
     {
-        BASE_SEC, BASE_MIN, BASE_HOUR, BASE_DAY, BASE_MON, BASE_LAST
+        BASE_SEC, BASE_MIN, BASE_HOUR, BASE_DAY, BASE_LAST
     };
+
+    void insert_amount(QString ins);
+    QString posponer_amount;
+    QString posponer_amount_units = "h";
 
     uint add_base = BASE_HOUR;
     uint base_mult = 3600;

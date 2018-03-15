@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
     w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
-    DataProccess *dataObj = new DataProccess;
+//    DataProccess *dataObj = new DataProccess;
     w.showFullScreen();
 //    w.show();
 

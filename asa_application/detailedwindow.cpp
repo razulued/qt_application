@@ -202,7 +202,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     QFont font("Typo Square Italic Demo",20,1);
     QFont font_2("Typo Square Ligth Demo",14,1);
     QFont font_3("Typo Square Ligth Demo",12,1);
-    QFont font_4("Typo Square Ligth Demo",12,1);
+    QFont font_4("Typo Square Bold Demo",16,1);
 
 
     // Nombre Del elemento
@@ -281,9 +281,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     }
 
     /**** TAB 1 INIT: Evento ***/
-    ui->textEdit->setStyleSheet("color: white;"
-                                "border: 1px solid white;");
-    ui->textEdit->setFont(font_4);
+//    ui->textEdit->setStyleSheet("color: white;"
+//                                "border: 1px solid white;");
     ui->label_horas->setFont(font_4);
     ui->label_horas->setAlignment(Qt::AlignRight);
 
@@ -332,7 +331,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
         }
     }
 
-    qDebug() << "THIS IS FILA: " << fila;
 
     if(fila > 0)
     {
@@ -394,7 +392,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 
     /**** TAB 2 INIT: Descripcion ***/
     //Texto
-    qDebug() << "INIT 2";
     ui->description_label->setFont(font_3);
     ui->description_label->setText(detailed_elements[element]->description);
     ui->description_label->setStyleSheet("color: white");
@@ -463,10 +460,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 
     // Connect all checkboxes to mapper
     connect(checkboxMapper, SIGNAL(mapped(int)), this, SLOT(checkBoxStateChanged(int)));
-    qDebug() << "END 3";
 
     //TAB 5
-    qDebug() << "INIT 5";
     QCheckBox *box_motores;
     QSignalMapper *out_checkboxMapper = new QSignalMapper(this);
 
@@ -509,7 +504,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
                     "background-repeat: none;"
                     "background-position: center;");
 
-    qDebug() << "END 5";
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
     this->show();
@@ -803,20 +797,21 @@ void detailedwindow::update_params()
 }
 
 
-void detailedwindow::on_key_0_clicked() {ui->textEdit->insertPlainText("0");}
-void detailedwindow::on_key_1_clicked() {ui->textEdit->insertPlainText("1");}
-void detailedwindow::on_key_2_clicked() {ui->textEdit->insertPlainText("2");}
-void detailedwindow::on_key_3_clicked() {ui->textEdit->insertPlainText("3");}
-void detailedwindow::on_key_4_clicked() {ui->textEdit->insertPlainText("4");}
-void detailedwindow::on_key_5_clicked() {ui->textEdit->insertPlainText("5");}
-void detailedwindow::on_key_6_clicked() {ui->textEdit->insertPlainText("6");}
-void detailedwindow::on_key_7_clicked() {ui->textEdit->insertPlainText("7");}
-void detailedwindow::on_key_8_clicked() {ui->textEdit->insertPlainText("8");}
-void detailedwindow::on_key_9_clicked() {ui->textEdit->insertPlainText("9");}
+void detailedwindow::on_key_0_clicked() {insert_amount("0");}
+void detailedwindow::on_key_1_clicked() {insert_amount("1");}
+void detailedwindow::on_key_2_clicked() {insert_amount("2");}
+void detailedwindow::on_key_3_clicked() {insert_amount("3");}
+void detailedwindow::on_key_4_clicked() {insert_amount("4");}
+void detailedwindow::on_key_5_clicked() {insert_amount("5");}
+void detailedwindow::on_key_6_clicked() {insert_amount("6");}
+void detailedwindow::on_key_7_clicked() {insert_amount("7");}
+void detailedwindow::on_key_8_clicked() {insert_amount("8");}
+void detailedwindow::on_key_9_clicked() {insert_amount("9");}
 
 void detailedwindow::on_key_back_clicked()
 {
-    ui->textEdit->textCursor().deletePreviousChar();
+    posponer_amount.chop(1);
+    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
 }
 
 
@@ -832,74 +827,6 @@ void detailedwindow::item_selected(QTableWidgetItem* item)
 
 void detailedwindow::on_key_Reschedule_clicked()
 {
-    uint i = 0;
-    uint time = 0;
-
-    time = ui->textEdit->toPlainText().toInt();
-
-    if(0 != selected_id)
-    {
-        if(time == 0)
-        {
-//            ui->label_2->setText("Horas debe ser  mayor a 0");
-            return;
-        }
-        else
-        {
-            time = time * base_mult;
-        }
-
-        for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-        {
-            if(rutinas_ptr->id(i) == selected_id)
-            {
-                qDebug() << "ID match at: " << i;
-                rutinas_ptr->add_seconds_rutina(i, time);
-                ui->textEdit->clear();
-                break;
-            }
-        }
-
-        for(i = 0; i < ui->tableWidget->rowCount() ; i++)
-        {
-            if(ui->tableWidget->item(i,0)->text().toInt() == selected_id)
-            {
-                ui->tableWidget->removeRow(i);
-                break;
-            }
-        }
-        selected_id = 0;
-    }
-}
-
-void detailedwindow::on_key_OK_clicked()
-{
-    uint i = 0;
-    if(0 != selected_id)
-    {
-        qDebug() << "Button clicked ID: " << selected_id;
-        for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-        {
-            if(rutinas_ptr->id(i) == selected_id)
-            {
-                qDebug() << "ID match at: " << i;
-                rutinas_ptr->complete_rutina(i);
-            }
-        }
-
-        for(i = 0; i < ui->tableWidget->rowCount() ; i++)
-        {
-            if(ui->tableWidget->item(i,0)->text().toInt() == selected_id)
-            {
-                ui->tableWidget->removeRow(i);
-                break;
-            }
-        }
-    }
-}
-
-void detailedwindow::on_key_dot_clicked()
-{
     if(++add_base == BASE_LAST)
     {
         add_base = 0;
@@ -908,24 +835,72 @@ void detailedwindow::on_key_dot_clicked()
     switch(add_base)
     {
     case BASE_SEC:
-        ui->label_horas->setText("Seg:");
+        posponer_amount_units = "s";
         base_mult = 1;
         break;
     case BASE_MIN:
-        ui->label_horas->setText("Min:");
+        posponer_amount_units = "m";
         base_mult = 60;
         break;
     case BASE_HOUR:
-        ui->label_horas->setText("Horas:");
+        posponer_amount_units = "h";
         base_mult = 3600;
         break;
     case BASE_DAY:
-        ui->label_horas->setText("Dias:");
+        posponer_amount_units = "d";
         base_mult = 3600 * 24;
         break;
-    case BASE_MON:
-        ui->label_horas->setText("Meses:");
-        base_mult = 3600 * 24 * 30;
-        break;
+//    case BASE_MON:
+//        ui->label_horas->setText("Meses:");
+//        base_mult = 3600 * 24 * 30;
+//        break;
     }
+
+    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
+}
+
+void detailedwindow::on_key_OK_clicked()
+{
+    uint i = 0;
+    uint time = 0;
+
+    time = posponer_amount.toInt();
+
+    if(0 != selected_id)
+    {
+        qDebug() << "Button clicked ID: " << selected_id;
+        for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
+        {
+            if(rutinas_ptr->id(i) == selected_id)
+            {
+                qDebug() << "ID match at: " << i;
+
+                if(time > 0)
+                {
+                    time = time * base_mult;
+                    rutinas_ptr->add_seconds_rutina(i, time);
+                }
+                else
+                {
+                    rutinas_ptr->complete_rutina(i);
+                }
+            }
+        }
+
+        for(i = 0; i < ui->tableWidget->rowCount() ; i++)
+        {
+            if(ui->tableWidget->item(i,0)->text().toInt() == selected_id)
+            {
+                ui->tableWidget->removeRow(i);
+                break;
+            }
+        }
+    }
+}
+
+void detailedwindow::insert_amount(QString ins)
+{
+    posponer_amount += ins;
+
+    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
 }

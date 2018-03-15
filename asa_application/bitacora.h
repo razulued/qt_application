@@ -38,11 +38,9 @@ private slots:
 
     void item_selected(QTableWidgetItem *item);
 
-    void on_button_OK_clicked();
+    void on_key_Reschedule_clicked();
 
-    void on_button_Reschedule_clicked();
-
-    void on_key_dot_clicked();
+    void on_key_OK_clicked();
 
 private:
     Ui::bitacora *ui;
@@ -67,11 +65,16 @@ private:
 
     enum
     {
-        BASE_SEC, BASE_MIN, BASE_HOUR, BASE_DAY, BASE_MON, BASE_LAST
+        BASE_SEC, BASE_MIN, BASE_HOUR, BASE_DAY, BASE_LAST
     };
+
+    void insert_amount(QString ins);
+    QString posponer_amount;
+    QString posponer_amount_units = "h";
 
     uint add_base = BASE_HOUR;
     uint base_mult = 3600;
+
 };
 
 #endif // BITACORA_H

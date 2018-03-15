@@ -16,7 +16,6 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
@@ -52,13 +51,11 @@ public:
     QPushButton *key_7;
     QPushButton *key_8;
     QPushButton *key_9;
-    QPushButton *key_dot;
     QPushButton *key_back;
     QPushButton *key_OK;
     QPushButton *key_Reschedule;
-    QLabel *label_horas;
     QTableWidget *tableWidget;
-    QPlainTextEdit *textEdit;
+    QLabel *label_horas;
     QWidget *tab_3;
     QLabel *description_label;
     QWidget *tab_4;
@@ -396,27 +393,9 @@ public:
 "background-position: center;\n"
 "}"));
         key_9->setCheckable(false);
-        key_dot = new QPushButton(tab_2);
-        key_dot->setObjectName(QStringLiteral("key_dot"));
-        key_dot->setGeometry(QRect(202, 235, 40, 40));
-        key_dot->setFocusPolicy(Qt::NoFocus);
-        key_dot->setStyleSheet(QLatin1String("#key_dot{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/punto_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_dot::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/punto_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_dot->setCheckable(false);
         key_back = new QPushButton(tab_2);
         key_back->setObjectName(QStringLiteral("key_back"));
-        key_back->setGeometry(QRect(250, 235, 41, 40));
+        key_back->setGeometry(QRect(202, 235, 88, 40));
         key_back->setFocusPolicy(Qt::NoFocus);
         key_back->setStyleSheet(QLatin1String("#key_back{ \n"
 "border-image: url(:/teclado/images/Texto/Teclado/Backspace_azul.png);\n"
@@ -434,7 +413,7 @@ public:
         key_back->setCheckable(false);
         key_OK = new QPushButton(tab_2);
         key_OK->setObjectName(QStringLiteral("key_OK"));
-        key_OK->setGeometry(QRect(7, 149, 81, 41));
+        key_OK->setGeometry(QRect(211, 146, 81, 41));
         key_OK->setFocusPolicy(Qt::NoFocus);
         key_OK->setStyleSheet(QLatin1String("#key_OK{ \n"
 "background-image: url(:/iconos/images/Iconos/Ok_azul.png);\n"
@@ -452,7 +431,7 @@ public:
         key_OK->setCheckable(false);
         key_Reschedule = new QPushButton(tab_2);
         key_Reschedule->setObjectName(QStringLiteral("key_Reschedule"));
-        key_Reschedule->setGeometry(QRect(252, 145, 41, 41));
+        key_Reschedule->setGeometry(QRect(100, 144, 41, 41));
         key_Reschedule->setFocusPolicy(Qt::NoFocus);
         key_Reschedule->setStyleSheet(QLatin1String("#key_Reschedule{ \n"
 "background-image: url(:/iconos/images/Iconos/Posponer_azul.png);\n"
@@ -468,15 +447,12 @@ public:
 "background-position: center;\n"
 "}"));
         key_Reschedule->setCheckable(false);
-        label_horas = new QLabel(tab_2);
-        label_horas->setObjectName(QStringLiteral("label_horas"));
-        label_horas->setGeometry(QRect(137, 154, 61, 21));
         tableWidget = new QTableWidget(tab_2);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
         tableWidget->setGeometry(QRect(0, 0, 291, 141));
-        textEdit = new QPlainTextEdit(tab_2);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(200, 149, 41, 31));
+        label_horas = new QLabel(tab_2);
+        label_horas->setObjectName(QStringLiteral("label_horas"));
+        label_horas->setGeometry(QRect(10, 153, 91, 31));
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
@@ -546,11 +522,10 @@ public:
         key_7->setText(QString());
         key_8->setText(QString());
         key_9->setText(QString());
-        key_dot->setText(QString());
         key_back->setText(QString());
         key_OK->setText(QString());
         key_Reschedule->setText(QString());
-        label_horas->setText(QApplication::translate("detailedwindow", "Horas:", 0));
+        label_horas->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("detailedwindow", "Tab 2", 0));
         description_label->setText(QApplication::translate("detailedwindow", "Descripcion", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("detailedwindow", "Tab 3", 0));

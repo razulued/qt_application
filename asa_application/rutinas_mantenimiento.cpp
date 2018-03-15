@@ -329,7 +329,12 @@ uint rutinas_mantenimiento::next_event(uint rutina)
 
 QDateTime rutinas_mantenimiento::get_current_time()
 {
-    return global_time;/*QDateTime::currentDateTime();*/
+#if (1 == USE_DEBUG)
+    return QDateTime::currentDateTime();
+#else
+#define MULTIPLICADOR (3600 * 24)  /* Seconds in a day */
+    return global_time;
+#endif
 }
 
 void rutinas_mantenimiento::load_to_table(uint id)

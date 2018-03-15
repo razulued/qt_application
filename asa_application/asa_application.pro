@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     settings.cpp \
     configuration.cpp \
     bitacora.cpp \
-    rutinas_mantenimiento.cpp
+    rutinas_mantenimiento.cpp \
+    blur.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -39,12 +40,14 @@ HEADERS  += mainwindow.h \
     settings.h \
     configuration.h \
     bitacora.h \
-    rutinas_mantenimiento.h
+    rutinas_mantenimiento.h \
+    blur.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
     settings.ui \
-    bitacora.ui
+    bitacora.ui \
+    blur.ui
 
 RESOURCES += \
     images.qrc \

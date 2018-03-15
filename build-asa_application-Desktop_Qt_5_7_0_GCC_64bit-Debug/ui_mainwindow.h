@@ -370,6 +370,7 @@ public:
         widget_9 = new QWidget(centralWidget);
         widget_9->setObjectName(QStringLiteral("widget_9"));
         widget_9->setGeometry(QRect(670, 160, 81, 61));
+        widget_9->setStyleSheet(QStringLiteral(""));
         widget_10 = new QWidget(centralWidget);
         widget_10->setObjectName(QStringLiteral("widget_10"));
         widget_10->setGeometry(QRect(760, 100, 81, 61));

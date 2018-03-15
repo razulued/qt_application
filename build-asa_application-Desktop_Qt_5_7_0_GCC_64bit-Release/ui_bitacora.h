@@ -16,7 +16,6 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
@@ -35,24 +34,21 @@ public:
     QTabWidget *tabWidget;
     QWidget *tab;
     QTableWidget *tableWidget_2;
-    QPlainTextEdit *textEdit;
     QLabel *label_2;
-    QLabel *label_horas;
-    QPushButton *button_OK;
-    QPushButton *button_Reschedule;
-    QPushButton *key_2;
-    QPushButton *key_back;
-    QPushButton *key_5;
-    QPushButton *key_1;
     QPushButton *key_6;
-    QPushButton *key_9;
-    QPushButton *key_dot;
-    QPushButton *key_4;
     QPushButton *key_0;
-    QPushButton *key_8;
+    QLabel *label_horas;
+    QPushButton *key_2;
     QPushButton *key_3;
+    QPushButton *key_9;
+    QPushButton *key_Reschedule;
     QPushButton *key_7;
-    QLabel *label_3;
+    QPushButton *key_4;
+    QPushButton *key_5;
+    QPushButton *key_OK;
+    QPushButton *key_8;
+    QPushButton *key_1;
+    QPushButton *key_back;
     QWidget *tab_2;
     QTableWidget *tableWidget;
 
@@ -140,123 +136,14 @@ public:
         tab->setObjectName(QStringLiteral("tab"));
         tableWidget_2 = new QTableWidget(tab);
         tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
-        tableWidget_2->setGeometry(QRect(3, 0, 1011, 601));
-        textEdit = new QPlainTextEdit(tab);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(900, 665, 71, 31));
+        tableWidget_2->setGeometry(QRect(3, 0, 1011, 571));
         label_2 = new QLabel(tab);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(220, 640, 281, 51));
+        label_2->setGeometry(QRect(100, 640, 401, 51));
         label_2->setWordWrap(true);
-        label_horas = new QLabel(tab);
-        label_horas->setObjectName(QStringLiteral("label_horas"));
-        label_horas->setGeometry(QRect(845, 667, 51, 21));
-        label_horas->setLayoutDirection(Qt::LeftToRight);
-        label_horas->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        button_OK = new QPushButton(tab);
-        button_OK->setObjectName(QStringLiteral("button_OK"));
-        button_OK->setGeometry(QRect(70, 630, 121, 71));
-        button_OK->setFocusPolicy(Qt::NoFocus);
-        button_OK->setStyleSheet(QLatin1String("#key_1{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/1_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        button_OK->setCheckable(false);
-        button_Reschedule = new QPushButton(tab);
-        button_Reschedule->setObjectName(QStringLiteral("button_Reschedule"));
-        button_Reschedule->setGeometry(QRect(890, 620, 71, 41));
-        button_Reschedule->setFocusPolicy(Qt::NoFocus);
-        button_Reschedule->setStyleSheet(QLatin1String("#button_Reschedule{ \n"
-"background-image: url(:/iconos/images/Iconos/Posponer_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#button_Reschedule::pressed{ \n"
-"background-image: url(:/iconos/images/Iconos/Posponer_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        button_Reschedule->setCheckable(false);
-        key_2 = new QPushButton(tab);
-        key_2->setObjectName(QStringLiteral("key_2"));
-        key_2->setGeometry(QRect(600, 620, 40, 40));
-        key_2->setFocusPolicy(Qt::NoFocus);
-        key_2->setStyleSheet(QLatin1String("#key_2{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/2_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_2::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/2_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_2->setCheckable(false);
-        key_back = new QPushButton(tab);
-        key_back->setObjectName(QStringLiteral("key_back"));
-        key_back->setGeometry(QRect(794, 663, 41, 40));
-        key_back->setFocusPolicy(Qt::NoFocus);
-        key_back->setStyleSheet(QLatin1String("#key_back{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Backspace_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_back::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Backspace_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_back->setCheckable(false);
-        key_5 = new QPushButton(tab);
-        key_5->setObjectName(QStringLiteral("key_5"));
-        key_5->setGeometry(QRect(746, 620, 40, 40));
-        key_5->setFocusPolicy(Qt::NoFocus);
-        key_5->setStyleSheet(QLatin1String("#key_5{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/5_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_5::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/5_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_5->setCheckable(false);
-        key_1 = new QPushButton(tab);
-        key_1->setObjectName(QStringLiteral("key_1"));
-        key_1->setGeometry(QRect(550, 620, 40, 40));
-        key_1->setFocusPolicy(Qt::NoFocus);
-        key_1->setStyleSheet(QLatin1String("#key_1{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/1_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_1::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/1_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_1->setCheckable(false);
         key_6 = new QPushButton(tab);
         key_6->setObjectName(QStringLiteral("key_6"));
-        key_6->setGeometry(QRect(794, 620, 40, 40));
+        key_6->setGeometry(QRect(848, 617, 40, 40));
         key_6->setFocusPolicy(Qt::NoFocus);
         key_6->setStyleSheet(QLatin1String("#key_6{ \n"
 "border-image: url(:/teclado/images/Texto/Teclado/6_azul.png);\n"
@@ -272,63 +159,9 @@ public:
 "background-position: center;\n"
 "}"));
         key_6->setCheckable(false);
-        key_9 = new QPushButton(tab);
-        key_9->setObjectName(QStringLiteral("key_9"));
-        key_9->setGeometry(QRect(649, 663, 40, 40));
-        key_9->setFocusPolicy(Qt::NoFocus);
-        key_9->setStyleSheet(QLatin1String("#key_9{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/9_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_9::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/9_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_9->setCheckable(false);
-        key_dot = new QPushButton(tab);
-        key_dot->setObjectName(QStringLiteral("key_dot"));
-        key_dot->setGeometry(QRect(746, 663, 40, 40));
-        key_dot->setFocusPolicy(Qt::NoFocus);
-        key_dot->setStyleSheet(QLatin1String("#key_dot{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/punto_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_dot::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/punto_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_dot->setCheckable(false);
-        key_4 = new QPushButton(tab);
-        key_4->setObjectName(QStringLiteral("key_4"));
-        key_4->setGeometry(QRect(698, 620, 40, 40));
-        key_4->setFocusPolicy(Qt::NoFocus);
-        key_4->setStyleSheet(QLatin1String("#key_4{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/4_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_4::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/4_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_4->setCheckable(false);
         key_0 = new QPushButton(tab);
         key_0->setObjectName(QStringLiteral("key_0"));
-        key_0->setGeometry(QRect(698, 663, 40, 40));
+        key_0->setGeometry(QRect(752, 660, 40, 40));
         key_0->setFocusPolicy(Qt::NoFocus);
         key_0->setStyleSheet(QLatin1String("#key_0{ \n"
 "border-image: url(:/teclado/images/Texto/Teclado/0_azul.png);\n"
@@ -344,27 +177,30 @@ public:
 "background-position: center;\n"
 "}"));
         key_0->setCheckable(false);
-        key_8 = new QPushButton(tab);
-        key_8->setObjectName(QStringLiteral("key_8"));
-        key_8->setGeometry(QRect(600, 663, 40, 40));
-        key_8->setFocusPolicy(Qt::NoFocus);
-        key_8->setStyleSheet(QLatin1String("#key_8{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/8_azul.png);\n"
+        label_horas = new QLabel(tab);
+        label_horas->setObjectName(QStringLiteral("label_horas"));
+        label_horas->setGeometry(QRect(608, 578, 91, 31));
+        key_2 = new QPushButton(tab);
+        key_2->setObjectName(QStringLiteral("key_2"));
+        key_2->setGeometry(QRect(654, 617, 40, 40));
+        key_2->setFocusPolicy(Qt::NoFocus);
+        key_2->setStyleSheet(QLatin1String("#key_2{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/2_azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
-"#key_8::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/8_blanco.png);\n"
+"#key_2::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/2_blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}"));
-        key_8->setCheckable(false);
+        key_2->setCheckable(false);
         key_3 = new QPushButton(tab);
         key_3->setObjectName(QStringLiteral("key_3"));
-        key_3->setGeometry(QRect(649, 620, 40, 40));
+        key_3->setGeometry(QRect(703, 617, 40, 40));
         key_3->setFocusPolicy(Qt::NoFocus);
         key_3->setStyleSheet(QLatin1String("#key_3{ \n"
 "border-image: url(:/teclado/images/Texto/Teclado/3_azul.png);\n"
@@ -380,9 +216,45 @@ public:
 "background-position: center;\n"
 "}"));
         key_3->setCheckable(false);
+        key_9 = new QPushButton(tab);
+        key_9->setObjectName(QStringLiteral("key_9"));
+        key_9->setGeometry(QRect(703, 660, 40, 40));
+        key_9->setFocusPolicy(Qt::NoFocus);
+        key_9->setStyleSheet(QLatin1String("#key_9{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/9_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_9::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/9_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_9->setCheckable(false);
+        key_Reschedule = new QPushButton(tab);
+        key_Reschedule->setObjectName(QStringLiteral("key_Reschedule"));
+        key_Reschedule->setGeometry(QRect(698, 569, 41, 41));
+        key_Reschedule->setFocusPolicy(Qt::NoFocus);
+        key_Reschedule->setStyleSheet(QLatin1String("#key_Reschedule{ \n"
+"background-image: url(:/iconos/images/Iconos/Posponer_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_Reschedule::pressed{ \n"
+"background-image: url(:/iconos/images/Iconos/Posponer_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_Reschedule->setCheckable(false);
         key_7 = new QPushButton(tab);
         key_7->setObjectName(QStringLiteral("key_7"));
-        key_7->setGeometry(QRect(550, 663, 40, 40));
+        key_7->setGeometry(QRect(604, 660, 40, 40));
         key_7->setFocusPolicy(Qt::NoFocus);
         key_7->setStyleSheet(QLatin1String("#key_7{ \n"
 "border-image: url(:/teclado/images/Texto/Teclado/7_azul.png);\n"
@@ -398,30 +270,115 @@ public:
 "background-position: center;\n"
 "}"));
         key_7->setCheckable(false);
-        label_3 = new QLabel(tab);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(883, 600, 81, 21));
-        label_3->setWordWrap(true);
+        key_4 = new QPushButton(tab);
+        key_4->setObjectName(QStringLiteral("key_4"));
+        key_4->setGeometry(QRect(752, 617, 40, 40));
+        key_4->setFocusPolicy(Qt::NoFocus);
+        key_4->setStyleSheet(QLatin1String("#key_4{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/4_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_4::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/4_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_4->setCheckable(false);
+        key_5 = new QPushButton(tab);
+        key_5->setObjectName(QStringLiteral("key_5"));
+        key_5->setGeometry(QRect(800, 617, 40, 40));
+        key_5->setFocusPolicy(Qt::NoFocus);
+        key_5->setStyleSheet(QLatin1String("#key_5{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/5_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_5::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/5_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_5->setCheckable(false);
+        key_OK = new QPushButton(tab);
+        key_OK->setObjectName(QStringLiteral("key_OK"));
+        key_OK->setGeometry(QRect(809, 571, 81, 41));
+        key_OK->setFocusPolicy(Qt::NoFocus);
+        key_OK->setStyleSheet(QLatin1String("#key_OK{ \n"
+"background-image: url(:/iconos/images/Iconos/Ok_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_OK::pressed{ \n"
+"background-image: url(:/iconos/images/Iconos/Ok_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_OK->setCheckable(false);
+        key_8 = new QPushButton(tab);
+        key_8->setObjectName(QStringLiteral("key_8"));
+        key_8->setGeometry(QRect(654, 660, 40, 40));
+        key_8->setFocusPolicy(Qt::NoFocus);
+        key_8->setStyleSheet(QLatin1String("#key_8{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/8_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_8::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/8_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_8->setCheckable(false);
+        key_1 = new QPushButton(tab);
+        key_1->setObjectName(QStringLiteral("key_1"));
+        key_1->setGeometry(QRect(604, 617, 40, 40));
+        key_1->setFocusPolicy(Qt::NoFocus);
+        key_1->setStyleSheet(QLatin1String("#key_1{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/1_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_1::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/1_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_1->setCheckable(false);
+        key_back = new QPushButton(tab);
+        key_back->setObjectName(QStringLiteral("key_back"));
+        key_back->setGeometry(QRect(800, 660, 88, 40));
+        key_back->setFocusPolicy(Qt::NoFocus);
+        key_back->setStyleSheet(QLatin1String("#key_back{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/Backspace_azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"#key_back::pressed{ \n"
+"border-image: url(:/teclado/images/Texto/Teclado/Backspace_blanco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        key_back->setCheckable(false);
         tabWidget->addTab(tab, QString());
-        tableWidget_2->raise();
-        textEdit->raise();
-        label_2->raise();
-        label_horas->raise();
-        button_OK->raise();
-        key_2->raise();
-        key_back->raise();
-        key_5->raise();
-        key_1->raise();
-        key_6->raise();
-        key_9->raise();
-        key_dot->raise();
-        key_4->raise();
-        key_0->raise();
-        key_8->raise();
-        key_3->raise();
-        key_7->raise();
-        label_3->raise();
-        button_Reschedule->raise();
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         tableWidget = new QTableWidget(tab_2);
@@ -451,23 +408,21 @@ public:
         top_menu_1->setText(QString());
         top_menu_2->setText(QString());
         label->setText(QApplication::translate("bitacora", "Bit\303\241cora", 0));
-        label_2->setText(QApplication::translate("bitacora", "SELECIONAR UNA RUTINA", 0));
-        label_horas->setText(QApplication::translate("bitacora", "Horas:", 0));
-        button_OK->setText(QApplication::translate("bitacora", "COMPLETADO", 0));
-        button_Reschedule->setText(QString());
-        key_2->setText(QString());
-        key_back->setText(QString());
-        key_5->setText(QString());
-        key_1->setText(QString());
+        label_2->setText(QApplication::translate("bitacora", "SELECIONAR UNA RUTINA DE LA LISTA", 0));
         key_6->setText(QString());
-        key_9->setText(QString());
-        key_dot->setText(QString());
-        key_4->setText(QString());
         key_0->setText(QString());
-        key_8->setText(QString());
+        label_horas->setText(QString());
+        key_2->setText(QString());
         key_3->setText(QString());
+        key_9->setText(QString());
+        key_Reschedule->setText(QString());
         key_7->setText(QString());
-        label_3->setText(QApplication::translate("bitacora", "REAGENDAR", 0));
+        key_4->setText(QString());
+        key_5->setText(QString());
+        key_OK->setText(QString());
+        key_8->setText(QString());
+        key_1->setText(QString());
+        key_back->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("bitacora", "Mantenimientos", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("bitacora", "Todas las rutinas", 0));
     } // retranslateUi

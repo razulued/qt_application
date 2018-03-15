@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_bitacora_t {
-    QByteArrayData data[20];
-    char stringdata0[328];
+    QByteArrayData data[19];
+    char stringdata0[303];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,9 +46,8 @@ QT_MOC_LITERAL(13, 202, 19), // "on_key_back_clicked"
 QT_MOC_LITERAL(14, 222, 13), // "item_selected"
 QT_MOC_LITERAL(15, 236, 17), // "QTableWidgetItem*"
 QT_MOC_LITERAL(16, 254, 4), // "item"
-QT_MOC_LITERAL(17, 259, 20), // "on_button_OK_clicked"
-QT_MOC_LITERAL(18, 280, 28), // "on_button_Reschedule_clicked"
-QT_MOC_LITERAL(19, 309, 18) // "on_key_dot_clicked"
+QT_MOC_LITERAL(17, 259, 25), // "on_key_Reschedule_clicked"
+QT_MOC_LITERAL(18, 285, 17) // "on_key_OK_clicked"
 
     },
     "bitacora\0on_top_menu_3_clicked\0\0"
@@ -58,9 +57,8 @@ QT_MOC_LITERAL(19, 309, 18) // "on_key_dot_clicked"
     "on_key_6_clicked\0on_key_7_clicked\0"
     "on_key_8_clicked\0on_key_9_clicked\0"
     "on_key_back_clicked\0item_selected\0"
-    "QTableWidgetItem*\0item\0on_button_OK_clicked\0"
-    "on_button_Reschedule_clicked\0"
-    "on_key_dot_clicked"
+    "QTableWidgetItem*\0item\0on_key_Reschedule_clicked\0"
+    "on_key_OK_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,7 +68,7 @@ static const uint qt_meta_data_bitacora[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      15,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -78,22 +76,21 @@ static const uint qt_meta_data_bitacora[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   94,    2, 0x08 /* Private */,
-       3,    0,   95,    2, 0x08 /* Private */,
-       4,    0,   96,    2, 0x08 /* Private */,
-       5,    0,   97,    2, 0x08 /* Private */,
-       6,    0,   98,    2, 0x08 /* Private */,
-       7,    0,   99,    2, 0x08 /* Private */,
-       8,    0,  100,    2, 0x08 /* Private */,
-       9,    0,  101,    2, 0x08 /* Private */,
-      10,    0,  102,    2, 0x08 /* Private */,
-      11,    0,  103,    2, 0x08 /* Private */,
-      12,    0,  104,    2, 0x08 /* Private */,
-      13,    0,  105,    2, 0x08 /* Private */,
-      14,    1,  106,    2, 0x08 /* Private */,
-      17,    0,  109,    2, 0x08 /* Private */,
-      18,    0,  110,    2, 0x08 /* Private */,
-      19,    0,  111,    2, 0x08 /* Private */,
+       1,    0,   89,    2, 0x08 /* Private */,
+       3,    0,   90,    2, 0x08 /* Private */,
+       4,    0,   91,    2, 0x08 /* Private */,
+       5,    0,   92,    2, 0x08 /* Private */,
+       6,    0,   93,    2, 0x08 /* Private */,
+       7,    0,   94,    2, 0x08 /* Private */,
+       8,    0,   95,    2, 0x08 /* Private */,
+       9,    0,   96,    2, 0x08 /* Private */,
+      10,    0,   97,    2, 0x08 /* Private */,
+      11,    0,   98,    2, 0x08 /* Private */,
+      12,    0,   99,    2, 0x08 /* Private */,
+      13,    0,  100,    2, 0x08 /* Private */,
+      14,    1,  101,    2, 0x08 /* Private */,
+      17,    0,  104,    2, 0x08 /* Private */,
+      18,    0,  105,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -109,7 +106,6 @@ static const uint qt_meta_data_bitacora[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 15,   16,
-    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -135,9 +131,8 @@ void bitacora::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 10: _t->on_key_9_clicked(); break;
         case 11: _t->on_key_back_clicked(); break;
         case 12: _t->item_selected((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
-        case 13: _t->on_button_OK_clicked(); break;
-        case 14: _t->on_button_Reschedule_clicked(); break;
-        case 15: _t->on_key_dot_clicked(); break;
+        case 13: _t->on_key_Reschedule_clicked(); break;
+        case 14: _t->on_key_OK_clicked(); break;
         default: ;
         }
     }
@@ -168,13 +163,13 @@ int bitacora::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 15;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 15)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 16;
+        _id -= 15;
     }
     return _id;
 }

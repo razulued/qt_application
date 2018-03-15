@@ -23,21 +23,6 @@ settings::settings(QWidget *parent) :
                         "color: white;"
                         "}");
 
-    //                        "background-color:black;"
-
-//    ui->label->setStyleSheet("color:white");
-
-//    ui->ID_regulador_Ap->setText(conf.value("Ap", 0).toString());
-//    ui->ID_regulador_FP->setText(conf.value("FP", 0).toString());
-//    ui->ID_regulador_ND->setText(conf.value("ND", 0).toString());
-//    ui->ID_regulador_Q->setText(conf.value("Q", 0).toString());
-//    ui->ID_regulador_SST->setText(conf.value("SST", 0).toString());
-//    ui->ID_regulador_turbidez->setText(conf.value("Turbidez", 0).toString());
-//    ui->ID_regulador_Vp->setText(conf.value("Vp", 0).toString());
-//    ui->ID_regulador_pH->setText(conf.value("pH", 0).toString());
-//    conf.endGroup();
-//    conf.sync();
-
     QString filename="config.ini";
     config_file = new QFile(filename);
 
