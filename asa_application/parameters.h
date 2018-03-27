@@ -30,4 +30,5 @@ bool getParamActiveShow(unsigned int id);
 void toggleParamActiveShow(unsigned int id);
 
 void InitRandomParameters();
+void run_simulation();
 #endif // PARAMETERS_H

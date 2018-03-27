@@ -42,14 +42,14 @@ private:
     QListWidget *list_widget;
 
     bool item_is_pressed;
+    uint item_pressed_counter = 0;
 
 private slots:
     void ListPressed();
-    void ListReleased();
 
 protected:
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+//    void mousePressEvent(QMouseEvent *event);
+//    void mouseMoveEvent(QMouseEvent *event);
 
 };
 

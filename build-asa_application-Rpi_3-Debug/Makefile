@@ -61,14 +61,16 @@ SOURCES       = ../asa_application/main.cpp \
 		../asa_application/settings.cpp \
 		../asa_application/configuration.cpp \
 		../asa_application/bitacora.cpp \
-		../asa_application/rutinas_mantenimiento.cpp qrc_images.cpp \
+		../asa_application/rutinas_mantenimiento.cpp \
+		../asa_application/blur.cpp qrc_images.cpp \
 		qrc_fonts.cpp \
 		moc_mainwindow.cpp \
 		moc_detailedwindow.cpp \
 		moc_dataproccess.cpp \
 		moc_custom_tooltip.cpp \
 		moc_settings.cpp \
-		moc_bitacora.cpp
+		moc_bitacora.cpp \
+		moc_blur.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		detailedwindow.o \
@@ -83,6 +85,7 @@ OBJECTS       = main.o \
 		configuration.o \
 		bitacora.o \
 		rutinas_mantenimiento.o \
+		blur.o \
 		qrc_images.o \
 		qrc_fonts.o \
 		moc_mainwindow.o \
@@ -90,7 +93,8 @@ OBJECTS       = main.o \
 		moc_dataproccess.o \
 		moc_custom_tooltip.o \
 		moc_settings.o \
-		moc_bitacora.o
+		moc_bitacora.o \
+		moc_blur.o
 DIST          = /opt/qtrpi/raspi/qt5/mkspecs/features/spec_pre.prf \
 		/opt/qtrpi/raspi/qt5/mkspecs/common/unix.conf \
 		/opt/qtrpi/raspi/qt5/mkspecs/common/linux.conf \
@@ -205,7 +209,8 @@ DIST          = /opt/qtrpi/raspi/qt5/mkspecs/features/spec_pre.prf \
 		../asa_application/settings.h \
 		../asa_application/configuration.h \
 		../asa_application/bitacora.h \
-		../asa_application/rutinas_mantenimiento.h ../asa_application/main.cpp \
+		../asa_application/rutinas_mantenimiento.h \
+		../asa_application/blur.h ../asa_application/main.cpp \
 		../asa_application/mainwindow.cpp \
 		../asa_application/detailedwindow.cpp \
 		../asa_application/multistatebutton.cpp \
@@ -218,7 +223,8 @@ DIST          = /opt/qtrpi/raspi/qt5/mkspecs/features/spec_pre.prf \
 		../asa_application/settings.cpp \
 		../asa_application/configuration.cpp \
 		../asa_application/bitacora.cpp \
-		../asa_application/rutinas_mantenimiento.cpp
+		../asa_application/rutinas_mantenimiento.cpp \
+		../asa_application/blur.cpp
 QMAKE_TARGET  = asa_application
 DESTDIR       = 
 TARGET        = asa_application
@@ -227,7 +233,7 @@ TARGET        = asa_application
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_detailedwindow.h ui_settings.h ui_bitacora.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_detailedwindow.h ui_settings.h ui_bitacora.h ui_blur.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../asa_application/asa_application.pro /opt/qtrpi/raspi/qt5/mkspecs/devices/linux-rpi3-g++/qmake.conf /opt/qtrpi/raspi/qt5/mkspecs/features/spec_pre.prf \
@@ -464,9 +470,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../asa_application/images.qrc ../asa_application/fonts.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../asa_application/mainwindow.h ../asa_application/detailedwindow.h ../asa_application/multistatebutton.h ../asa_application/parameters.h ../asa_application/bcm2835.h ../asa_application/spicomm.h ../asa_application/my_crc_api.h ../asa_application/dataproccess.h ../asa_application/custom_tooltip.h ../asa_application/settings.h ../asa_application/configuration.h ../asa_application/bitacora.h ../asa_application/rutinas_mantenimiento.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../asa_application/main.cpp ../asa_application/mainwindow.cpp ../asa_application/detailedwindow.cpp ../asa_application/multistatebutton.cpp ../asa_application/bcm2835.c ../asa_application/parameters.cpp ../asa_application/spicomm.cpp ../asa_application/my_crc_api.cpp ../asa_application/dataproccess.cpp ../asa_application/custom_tooltip.cpp ../asa_application/settings.cpp ../asa_application/configuration.cpp ../asa_application/bitacora.cpp ../asa_application/rutinas_mantenimiento.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../asa_application/mainwindow.ui ../asa_application/detailedwindow.ui ../asa_application/settings.ui ../asa_application/bitacora.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../asa_application/mainwindow.h ../asa_application/detailedwindow.h ../asa_application/multistatebutton.h ../asa_application/parameters.h ../asa_application/bcm2835.h ../asa_application/spicomm.h ../asa_application/my_crc_api.h ../asa_application/dataproccess.h ../asa_application/custom_tooltip.h ../asa_application/settings.h ../asa_application/configuration.h ../asa_application/bitacora.h ../asa_application/rutinas_mantenimiento.h ../asa_application/blur.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../asa_application/main.cpp ../asa_application/mainwindow.cpp ../asa_application/detailedwindow.cpp ../asa_application/multistatebutton.cpp ../asa_application/bcm2835.c ../asa_application/parameters.cpp ../asa_application/spicomm.cpp ../asa_application/my_crc_api.cpp ../asa_application/dataproccess.cpp ../asa_application/custom_tooltip.cpp ../asa_application/settings.cpp ../asa_application/configuration.cpp ../asa_application/bitacora.cpp ../asa_application/rutinas_mantenimiento.cpp ../asa_application/blur.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../asa_application/mainwindow.ui ../asa_application/detailedwindow.ui ../asa_application/settings.ui ../asa_application/bitacora.ui ../asa_application/blur.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -688,9 +694,9 @@ qrc_fonts.cpp: ../asa_application/fonts.qrc \
 		../asa_application/fonts/TypoSquare_1024.png
 	/opt/qtrpi/raspi/qt5/bin/rcc -name fonts ../asa_application/fonts.qrc -o qrc_fonts.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_detailedwindow.cpp moc_dataproccess.cpp moc_custom_tooltip.cpp moc_settings.cpp moc_bitacora.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_detailedwindow.cpp moc_dataproccess.cpp moc_custom_tooltip.cpp moc_settings.cpp moc_bitacora.cpp moc_blur.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_detailedwindow.cpp moc_dataproccess.cpp moc_custom_tooltip.cpp moc_settings.cpp moc_bitacora.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_detailedwindow.cpp moc_dataproccess.cpp moc_custom_tooltip.cpp moc_settings.cpp moc_bitacora.cpp moc_blur.cpp
 moc_mainwindow.cpp: /opt/qtrpi/raspi/qt5pi/include/QtWidgets/QMainWindow \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qmainwindow.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qwidget.h \
@@ -930,6 +936,7 @@ moc_mainwindow.cpp: /opt/qtrpi/raspi/qt5pi/include/QtWidgets/QMainWindow \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qstyle.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabbar.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qrubberband.h \
+		../asa_application/blur.h \
 		../asa_application/multistatebutton.h \
 		../asa_application/parameters.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QtGlobal \
@@ -1189,6 +1196,7 @@ moc_detailedwindow.cpp: /opt/qtrpi/raspi/qt5pi/include/QtWidgets/QDialog \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabbar.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabwidget.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qrubberband.h \
+		../asa_application/blur.h \
 		../asa_application/detailedwindow.h \
 		/opt/qtrpi/raspi/qt5/bin/moc
 	/opt/qtrpi/raspi/qt5/bin/moc $(DEFINES) -I/opt/qtrpi/raspi/qt5/mkspecs/devices/linux-rpi3-g++ -I/home/luis/qt_application/asa_application -I/opt/qtrpi/raspbian/sysroot/opt/vc/include -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vcos -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vcos/pthreads -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vmcs_host/linux -I/opt/qtrpi/raspi/qt5pi/include -I/opt/qtrpi/raspi/qt5pi/include/QtWidgets -I/opt/qtrpi/raspi/qt5pi/include/QtGui -I/opt/qtrpi/raspi/qt5pi/include/QtSql -I/opt/qtrpi/raspi/qt5pi/include/QtCore -I. -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3 -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3/arm-linux-gnueabihf -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3/backward -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/lib/gcc/arm-linux-gnueabihf/4.8.3/include -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/lib/gcc/arm-linux-gnueabihf/4.8.3/include-fixed -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include -I/opt/qtrpi/raspbian/sysroot/usr/include -I/opt/qtrpi/raspbian/sysroot/usr/include/arm-linux-gnueabihf ../asa_application/detailedwindow.h -o moc_detailedwindow.cpp
@@ -1723,11 +1731,113 @@ moc_bitacora.cpp: /opt/qtrpi/raspi/qt5pi/include/QtWidgets/QDialog \
 		/opt/qtrpi/raspi/qt5/bin/moc
 	/opt/qtrpi/raspi/qt5/bin/moc $(DEFINES) -I/opt/qtrpi/raspi/qt5/mkspecs/devices/linux-rpi3-g++ -I/home/luis/qt_application/asa_application -I/opt/qtrpi/raspbian/sysroot/opt/vc/include -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vcos -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vcos/pthreads -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vmcs_host/linux -I/opt/qtrpi/raspi/qt5pi/include -I/opt/qtrpi/raspi/qt5pi/include/QtWidgets -I/opt/qtrpi/raspi/qt5pi/include/QtGui -I/opt/qtrpi/raspi/qt5pi/include/QtSql -I/opt/qtrpi/raspi/qt5pi/include/QtCore -I. -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3 -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3/arm-linux-gnueabihf -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3/backward -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/lib/gcc/arm-linux-gnueabihf/4.8.3/include -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/lib/gcc/arm-linux-gnueabihf/4.8.3/include-fixed -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include -I/opt/qtrpi/raspbian/sysroot/usr/include -I/opt/qtrpi/raspbian/sysroot/usr/include/arm-linux-gnueabihf ../asa_application/bitacora.h -o moc_bitacora.cpp
 
+moc_blur.cpp: /opt/qtrpi/raspi/qt5pi/include/QtWidgets/QDialog \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qdialog.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qwidget.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qwindowdefs.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qglobal.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qconfig.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qfeatures.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsystemdetection.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qprocessordetection.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcompilerdetection.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qtypeinfo.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qtypetraits.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qisenum.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsysinfo.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qlogging.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qflags.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qatomic.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qbasicatomic.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qatomic_bootstrap.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qgenericatomic.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qatomic_cxx11.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qatomic_msvc.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qglobalstatic.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qmutex.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qnumeric.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qversiontagging.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qobjectdefs.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qnamespace.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qobjectdefs_impl.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qwindowdefs_win.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qobject.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qstring.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qchar.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qbytearray.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qrefcount.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qarraydata.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qstringbuilder.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qlist.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qalgorithms.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qiterator.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qhashfunctions.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qpair.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qbytearraylist.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qstringlist.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qregexp.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qstringmatcher.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcoreevent.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qscopedpointer.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qmetatype.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qvarlengtharray.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcontainerfwd.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qobject_impl.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qmargins.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpaintdevice.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qrect.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsize.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qpoint.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpalette.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qcolor.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qrgb.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qrgba64.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qbrush.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qvector.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qmatrix.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpolygon.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qregion.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qdatastream.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qiodevice.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qline.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtransform.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpainterpath.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qimage.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpixelformat.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpixmap.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsharedpointer.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qshareddata.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qhash.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsharedpointer_impl.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfont.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontmetrics.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontinfo.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qsizepolicy.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qcursor.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qkeysequence.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qevent.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qvariant.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qmap.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qdebug.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qtextstream.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qlocale.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qset.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcontiguouscache.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qurl.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qurlquery.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qfile.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qfiledevice.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qvector2d.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtouchdevice.h \
+		../asa_application/blur.h \
+		/opt/qtrpi/raspi/qt5/bin/moc
+	/opt/qtrpi/raspi/qt5/bin/moc $(DEFINES) -I/opt/qtrpi/raspi/qt5/mkspecs/devices/linux-rpi3-g++ -I/home/luis/qt_application/asa_application -I/opt/qtrpi/raspbian/sysroot/opt/vc/include -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vcos -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vcos/pthreads -I/opt/qtrpi/raspbian/sysroot/opt/vc/include/interface/vmcs_host/linux -I/opt/qtrpi/raspi/qt5pi/include -I/opt/qtrpi/raspi/qt5pi/include/QtWidgets -I/opt/qtrpi/raspi/qt5pi/include/QtGui -I/opt/qtrpi/raspi/qt5pi/include/QtSql -I/opt/qtrpi/raspi/qt5pi/include/QtCore -I. -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3 -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3/arm-linux-gnueabihf -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include/c++/4.8.3/backward -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/lib/gcc/arm-linux-gnueabihf/4.8.3/include -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/lib/gcc/arm-linux-gnueabihf/4.8.3/include-fixed -I/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/arm-linux-gnueabihf/include -I/opt/qtrpi/raspbian/sysroot/usr/include -I/opt/qtrpi/raspbian/sysroot/usr/include/arm-linux-gnueabihf ../asa_application/blur.h -o moc_blur.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_detailedwindow.h ui_settings.h ui_bitacora.h
+compiler_uic_make_all: ui_mainwindow.h ui_detailedwindow.h ui_settings.h ui_bitacora.h ui_blur.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_detailedwindow.h ui_settings.h ui_bitacora.h
+	-$(DEL_FILE) ui_mainwindow.h ui_detailedwindow.h ui_settings.h ui_bitacora.h ui_blur.h
 ui_mainwindow.h: ../asa_application/mainwindow.ui \
 		/opt/qtrpi/raspi/qt5/bin/uic
 	/opt/qtrpi/raspi/qt5/bin/uic ../asa_application/mainwindow.ui -o ui_mainwindow.h
@@ -1743,6 +1853,10 @@ ui_settings.h: ../asa_application/settings.ui \
 ui_bitacora.h: ../asa_application/bitacora.ui \
 		/opt/qtrpi/raspi/qt5/bin/uic
 	/opt/qtrpi/raspi/qt5/bin/uic ../asa_application/bitacora.ui -o ui_bitacora.h
+
+ui_blur.h: ../asa_application/blur.ui \
+		/opt/qtrpi/raspi/qt5/bin/uic
+	/opt/qtrpi/raspi/qt5/bin/uic ../asa_application/blur.ui -o ui_blur.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1994,6 +2108,7 @@ main.o: ../asa_application/main.cpp ../asa_application/mainwindow.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qstyle.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabbar.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qrubberband.h \
+		../asa_application/blur.h \
 		../asa_application/multistatebutton.h \
 		../asa_application/parameters.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QtGlobal \
@@ -2265,6 +2380,7 @@ mainwindow.o: ../asa_application/mainwindow.cpp ../asa_application/mainwindow.h 
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qstyle.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabbar.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qrubberband.h \
+		../asa_application/blur.h \
 		../asa_application/multistatebutton.h \
 		../asa_application/parameters.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QtGlobal \
@@ -2545,6 +2661,7 @@ detailedwindow.o: ../asa_application/detailedwindow.cpp ../asa_application/detai
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabbar.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabwidget.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qrubberband.h \
+		../asa_application/blur.h \
 		ui_detailedwindow.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QVariant \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QAction \
@@ -2561,19 +2678,6 @@ detailedwindow.o: ../asa_application/detailedwindow.cpp ../asa_application/detai
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qheaderview.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QLabel \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlabel.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QPlainTextEdit \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qplaintextedit.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtextedit.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextdocument.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextoption.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextcursor.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextformat.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpen.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qabstracttextdocumentlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qglyphrun.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qrawfont.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontdatabase.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QPushButton \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qpushbutton.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractbutton.h \
@@ -2588,6 +2692,7 @@ detailedwindow.o: ../asa_application/detailedwindow.cpp ../asa_application/detai
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QListView \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlistview.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/QFontDatabase \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontdatabase.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QCheckBox \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qcheckbox.h \
 		../asa_application/parameters.h \
@@ -3029,6 +3134,7 @@ spicomm.o: ../asa_application/spicomm.cpp ../asa_application/spicomm.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qstyle.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabbar.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qrubberband.h \
+		../asa_application/blur.h \
 		../asa_application/multistatebutton.h \
 		../asa_application/parameters.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QtGlobal \
@@ -3270,7 +3376,9 @@ custom_tooltip.o: ../asa_application/custom_tooltip.cpp ../asa_application/custo
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/QPainter \
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpainter.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextoption.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpen.h
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpen.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/QSettings \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsettings.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o custom_tooltip.o ../asa_application/custom_tooltip.cpp
 
 settings.o: ../asa_application/settings.cpp ../asa_application/settings.h \
@@ -3762,19 +3870,6 @@ bitacora.o: ../asa_application/bitacora.cpp ../asa_application/bitacora.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qheaderview.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QLabel \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlabel.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QPlainTextEdit \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qplaintextedit.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtextedit.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextdocument.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextoption.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextcursor.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextformat.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpen.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qabstracttextdocumentlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qglyphrun.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qrawfont.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontdatabase.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QPushButton \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qpushbutton.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractbutton.h \
@@ -3863,6 +3958,110 @@ rutinas_mantenimiento.o: ../asa_application/rutinas_mantenimiento.cpp ../asa_app
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rutinas_mantenimiento.o ../asa_application/rutinas_mantenimiento.cpp
 
+blur.o: ../asa_application/blur.cpp ../asa_application/blur.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QDialog \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qdialog.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qwidget.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qwindowdefs.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qglobal.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qconfig.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qfeatures.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsystemdetection.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qprocessordetection.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcompilerdetection.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qtypeinfo.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qtypetraits.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qisenum.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsysinfo.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qlogging.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qflags.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qatomic.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qbasicatomic.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qatomic_bootstrap.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qgenericatomic.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qatomic_cxx11.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qatomic_msvc.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qglobalstatic.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qmutex.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qnumeric.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qversiontagging.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qobjectdefs.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qnamespace.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qobjectdefs_impl.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qwindowdefs_win.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qobject.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qstring.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qchar.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qbytearray.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qrefcount.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qarraydata.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qstringbuilder.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qlist.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qalgorithms.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qiterator.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qhashfunctions.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qpair.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qbytearraylist.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qstringlist.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qregexp.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qstringmatcher.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcoreevent.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qscopedpointer.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qmetatype.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qvarlengtharray.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcontainerfwd.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qobject_impl.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qmargins.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpaintdevice.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qrect.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsize.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qpoint.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpalette.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qcolor.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qrgb.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qrgba64.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qbrush.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qvector.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qmatrix.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpolygon.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qregion.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qdatastream.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qiodevice.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qline.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtransform.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpainterpath.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qimage.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpixelformat.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpixmap.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsharedpointer.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qshareddata.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qhash.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsharedpointer_impl.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfont.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontmetrics.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontinfo.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qsizepolicy.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qcursor.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qkeysequence.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qevent.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qvariant.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qmap.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qdebug.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qtextstream.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qlocale.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qset.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcontiguouscache.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qurl.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qurlquery.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qfile.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/qfiledevice.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qvector2d.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtouchdevice.h \
+		ui_blur.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QGraphicsBlurEffect \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qgraphicseffect.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o blur.o ../asa_application/blur.cpp
+
 qrc_images.o: qrc_images.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_images.o qrc_images.cpp
 
@@ -3886,6 +4085,9 @@ moc_settings.o: moc_settings.cpp
 
 moc_bitacora.o: moc_bitacora.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_bitacora.o moc_bitacora.cpp
+
+moc_blur.o: moc_blur.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_blur.o moc_blur.cpp
 
 ####### Install
 

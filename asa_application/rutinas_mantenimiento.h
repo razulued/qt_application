@@ -4,7 +4,7 @@
 #include <QSqlDatabase>
 #include <QDateTime>
 
-#define USE_DEBUG (0)
+#define USE_DEBUG (1)
 
 #if (1 == USE_DEBUG)
 #define MULTIPLICADOR (10)  /* Seconds in a day */
@@ -57,6 +57,8 @@ typedef struct
     uint synch_date;
     uint last_event;
     uint next_event;
+    QString explicacion;
+    QString texto_ayuda;
 }def_rutina_t;
 
 class rutinas_mantenimiento
@@ -77,6 +79,8 @@ public:
     uint last_event(uint rutina);
     uint next_event(uint rutina);
     QString nombre(uint rutina);
+    QString explicacion(uint rutina);
+    QString texto_ayuda(uint rutina);
 
     void complete_rutina(uint rutina);
     void add_seconds_rutina(uint rutina, uint seconds);

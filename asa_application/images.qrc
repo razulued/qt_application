@@ -21,6 +21,12 @@
         <file>images/planta.png</file>
         <file>images/afluente.png</file>
         <file>images/efluente.png</file>
+        <file>images/Cuadro_pantalla.png</file>
+        <file>images/efluente_2.png</file>
+        <file>images/retorno_1.png</file>
+        <file>images/retorno_2.png</file>
+        <file>images/retorno_3.png</file>
+        <file>images/retorno_4.png</file>
     </qresource>
     <qresource prefix="/barras">
         <file>images/Barras/Base_1_amarilla.png</file>
@@ -104,6 +110,12 @@
         <file>images/Iconos/Ok_blanco.png</file>
         <file>images/Iconos/Posponer_azul.png</file>
         <file>images/Iconos/Posponer_blanco.png</file>
+        <file>images/Iconos/Listo_azul.png</file>
+        <file>images/Iconos/Listo_blanco.png</file>
+        <file>images/Iconos/Play_blanco.png</file>
+        <file>images/Iconos/Play_azul.png</file>
+        <file>images/Iconos/Ayuda_azul.png</file>
+        <file>images/Iconos/Ayuda_blanco.png</file>
     </qresource>
     <qresource prefix="/teclado">
         <file>images/Texto/Teclado/- azul.png</file>
@@ -194,5 +206,97 @@
         <file>images/Texto/Teclado/Y_blanco.png</file>
         <file>images/Texto/Teclado/Z_azul.png</file>
         <file>images/Texto/Teclado/Z_blanco.png</file>
+        <file>images/Texto/Teclado/Teclado_back.png</file>
+        <file>images/Texto/Teclado/Enter_azul.png</file>
+        <file>images/Texto/Teclado/Enter_blanco.png</file>
+        <file>images/Texto/Teclado/Espacio_azul.png</file>
+        <file>images/Texto/Teclado/Espacio_blanco.png</file>
+    </qresource>
+    <qresource prefix="/carcamo">
+        <file>images/1_Carcamo/carcamo_hi_mov_water.gif</file>
+        <file>images/1_Carcamo/carcamo_hi_quiet_water.png</file>
+        <file>images/1_Carcamo/carcamo_low_mov_water.gif</file>
+        <file>images/1_Carcamo/carcamo_low_quiet_water.png</file>
+        <file>images/1_Carcamo/carcamo_med_mov water.gif</file>
+        <file>images/1_Carcamo/carcamo_med_quiet water.png</file>
+        <file>images/1_Carcamo/carcamo_vacio.png</file>
+    </qresource>
+    <qresource prefix="/reactor">
+        <file>images/2_Reactor/reac_hi_mov_water.gif</file>
+        <file>images/2_Reactor/reac_hi_quiet_water.png</file>
+        <file>images/2_Reactor/reac_low_mov_water_01.gif</file>
+        <file>images/2_Reactor/reac_low_quiet_water_01.png</file>
+        <file>images/2_Reactor/reac_med_mov_water_02.gif</file>
+        <file>images/2_Reactor/reac_med_quiet_water_02.png</file>
+        <file>images/2_Reactor/reactor.png</file>
+    </qresource>
+    <qresource prefix="/clarificador">
+        <file>images/3_Clarificador/clarifier_complete.png</file>
+        <file>images/3_Clarificador/clarifier_full_mov.gif</file>
+        <file>images/3_Clarificador/clarifier_full_quiet.png</file>
+        <file>images/3_Clarificador/clarifier.png</file>
+    </qresource>
+    <qresource prefix="/clorador">
+        <file>images/4_Clorador/chlorination_mov.gif</file>
+        <file>images/4_Clorador/chlorination_empty.png</file>
+        <file>images/4_Clorador/chlorination_quiet.png</file>
+    </qresource>
+    <qresource prefix="/digestor">
+        <file>images/5_Digestor/digester_empty.png</file>
+        <file>images/5_Digestor/digester_hi_mov_water.gif</file>
+        <file>images/5_Digestor/digester_hi_quiet.png</file>
+        <file>images/5_Digestor/digester_low_mov_water.gif</file>
+        <file>images/5_Digestor/digester_low_quiet.png</file>
+        <file>images/5_Digestor/digester_med_mov_water.gif</file>
+        <file>images/5_Digestor/digester_med_quiet.png</file>
+    </qresource>
+    <qresource prefix="/flechas">
+        <file>images/0_Flechas_de_flujo/sludge_flow_01_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_01_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_02_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_02_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_03_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_03_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_04_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_04_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_02_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_02_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_return_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_return.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_01_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_01_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_02_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_02_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_03_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_03_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_04_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_04_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_effluent_01_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_mov_small.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_mov_small.gif</file>
+        <file>images/0_Flechas_de_flujo/none.png</file>
+    </qresource>
+    <qresource prefix="/lechos">
+        <file>images/6_Lechos/sand_bed_01.png</file>
+        <file>images/6_Lechos/sand_bed_02.png</file>
+        <file>images/6_Lechos/sand_bed_03.png</file>
+    </qresource>
+    <qresource prefix="/equipos">
+        <file>images/0_Equipos/Blower_Jet_fail_mov.gif</file>
+        <file>images/0_Equipos/Blower_Jet_fail_quiet.png</file>
+        <file>images/0_Equipos/Blower_Jet_off.png</file>
+        <file>images/0_Equipos/Blower_Jet_On.png</file>
+        <file>images/0_Equipos/Blower_Kaeser_fail_mov.gif</file>
+        <file>images/0_Equipos/Blower_Kaeser_fail_quiet.png</file>
+        <file>images/0_Equipos/Blower_Kaeser_off.png</file>
+        <file>images/0_Equipos/Blower_Kaeser_on.png</file>
+        <file>images/0_Equipos/pump_fail_mov.gif</file>
+        <file>images/0_Equipos/pump_fail_quiet.png</file>
+        <file>images/0_Equipos/pump_off.png</file>
+        <file>images/0_Equipos/pump_on.png</file>
     </qresource>
 </RCC>

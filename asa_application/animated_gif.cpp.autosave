@@ -1,0 +1,6 @@
+#include "animated_gif.h"
+
+animated_gif::animated_gif(QLabel *attach_to)
+{
+
+}

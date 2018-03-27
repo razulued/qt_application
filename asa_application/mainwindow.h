@@ -12,6 +12,14 @@
 #include "bitacora.h"
 #include "rutinas_mantenimiento.h"
 
+#include "mod_1_carcamo.h"
+#include "mod_2_reactor.h"
+#include "mod_3_clarificador.h"
+#include "mod_4_clorador.h"
+#include "mod_5_digestor.h"
+#include "mod_6_lechos.h"
+#include "mod_flechas.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -162,9 +170,24 @@ private:
 
     void get_ASA_string(void);
     void update_ASA_string(void);
+    void update_tooltips(void);
 
     void trace_lines(QWidget *tooltip, QPushButton *module, QPainter &painter);
 
+    mod_1_carcamo *mod_1;
+    mod_2_reactor *mod_2;
+    mod_3_clarificador *mod_3;
+    mod_4_clorador *mod_4;
+    mod_5_digestor *mod_5;
+    mod_6_lechos *mod_6;
+    mod_flechas *mod_afluente;
+    mod_flechas *mod_efluente;
+    mod_flechas *mod_sludge_a;
+    mod_flechas *mod_sludge_b;
+    mod_flechas *mod_water_flown_a;
+    mod_flechas *mod_sludge_return;
+    mod_flechas *mod_blower;
+    mod_flechas *mod_bomba;
 
 protected:
     void paintEvent(QPaintEvent *);

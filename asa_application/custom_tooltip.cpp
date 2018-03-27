@@ -31,9 +31,8 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
                                   "color: rgb(0, 167, 250);"
                                     "border: none;"
                                "border-image: none;");
-    connect(list_widget, SIGNAL (itemPressed(QListWidgetItem *)),this, SLOT (ListPressed()));
-    connect(list_widget, SIGNAL (itemClicked(QListWidgetItem *)),this, SLOT (ListReleased()));
 
+    connect(list_widget, SIGNAL (itemPressed(QListWidgetItem *)),this, SLOT (ListPressed()));
 
     DataList = list;
     NameList = names;
@@ -65,6 +64,7 @@ void custom_tooltip::init_data()
         if(true == getParamActiveShow(param_id))
         {
             list_widget->addItem(NameList[i] + ": " + getParamValue(param_id));
+//            list_widget->item(i)->setFlags(Qt::ItemIsEnabled);
             items++;
         }
     }
@@ -133,7 +133,7 @@ void custom_tooltip::update_data()
 
 void custom_tooltip::force_show()
 {
-
+    static QPoint last_position;
     quint32 i, param_id;
     int items = 0;
 
@@ -143,6 +143,21 @@ void custom_tooltip::force_show()
     if(true == item_is_pressed)
     {
         parent_frame->move(mapTo(parent_window, mapFromGlobal(QCursor::pos()) - offset));
+
+        if(0 == item_pressed_counter)
+        {
+            item_is_pressed = false;
+            list_widget->setStyleSheet("background: transparent;"
+                                          "color: rgb(0, 167, 250);"
+                                            "border: none;"
+                                       "border-image: none;");
+        }
+        else if(last_position == parent_frame->pos())
+        {
+            item_pressed_counter--;
+        }
+
+        last_position = parent_frame->pos();
     }
 
 
@@ -151,6 +166,7 @@ void custom_tooltip::force_show()
         param_id = DataList[i];
 
         list_widget->addItem(NameList[i]  + ": " + getParamValue(param_id));
+//        list_widget->item(i)->setFlags(Qt::ItemIsEnabled);
         items++;
     }
 
@@ -179,47 +195,39 @@ void custom_tooltip::force_hide()
 
 void custom_tooltip::ListPressed()
 {
-//    update_data();
-//    qDebug() << "HOLA MUNDO";
-//    QPoint offset = parent_window->mapFromGlobal(QCursor::pos());
-//    QPoint p = parent_frame->mapFromGlobal(QCursor::pos());
-//    qDebug() << offset;
-//    parent_frame->move(mapTo(parent_window, event->pos() - offset));
     if(item_is_pressed == false)
     {
         item_is_pressed = true;
-        qDebug() << "click true";
+//        qDebug() << "click true";
         offset = mapFromGlobal(QCursor::pos());
+        list_widget->setStyleSheet("background: white;"
+                                      "color: rgb(0, 167, 250);"
+                                        "border: none;"
+                                   "border-image: none;");
+        item_pressed_counter = 20;
     }
     else
     {
+//        qDebug() << "click false";
         item_is_pressed = false;
-        qDebug() << "click false";
-
-        //Save tool tip position
-//        QSettings settings("ASA_app", "tool_tip_geometry");
-//        settings.setValue("geometry", saveGeometry());
-    }
-
-//    QCursor::setPos(p);
-//    QMouseEvent *event = new QMouseEvent((QEvent)5,p,2,0,0);
-//    custom_tooltip.mouseMoveEvent();
-}
-
-void custom_tooltip::ListReleased()
-{
-//    qDebug() << "Released";
-}
-
-void custom_tooltip::mousePressEvent(QMouseEvent *event)
-{
-    offset = event->pos();
-}
-
-void custom_tooltip::mouseMoveEvent(QMouseEvent *event)
-{
-    if (event->buttons() & Qt::LeftButton)
-    {
-        parent_frame->move(mapTo(parent_window, event->pos() - offset));
+        list_widget->setStyleSheet("background: transparent;"
+                                      "color: rgb(0, 167, 250);"
+                                        "border: none;"
+                                   "border-image: none;");
+        item_pressed_counter = 0;
     }
 }
+
+
+//void custom_tooltip::mousePressEvent(QMouseEvent *event)
+//{
+//    offset = event->pos();
+//}
+
+//void custom_tooltip::mouseMoveEvent(QMouseEvent *event)
+//{
+//    if (event->buttons() & Qt::LeftButton)
+//    {
+//        parent_frame->move(mapTo(parent_window, event->pos() - offset));
+//    }
+//}

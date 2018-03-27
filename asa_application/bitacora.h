@@ -42,6 +42,8 @@ private slots:
 
     void on_key_OK_clicked();
 
+    void on_top_menu_2_clicked();
+
 private:
     Ui::bitacora *ui;
     void init_tables(void);

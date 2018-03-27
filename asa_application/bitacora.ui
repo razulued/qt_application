@@ -59,10 +59,10 @@ background-repeat: none;
   <widget class="QPushButton" name="top_menu_3">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>10</y>
-     <width>37</width>
-     <height>43</height>
+     <x>122</x>
+     <y>2</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="focusPolicy">
@@ -71,8 +71,8 @@ background-repeat: none;
    <property name="styleSheet">
     <string notr="true">#top_menu_3 { 
 background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Diagrama.png);
-background: none; 
+background-image: url(:/iconos/images/Iconos/Diagrama.png);
+background-position: center;
 border: none; 
 background-repeat: none;
  } </string>
@@ -115,10 +115,10 @@ background-repeat: none;
   <widget class="QPushButton" name="top_menu_2">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>15</y>
-     <width>35</width>
-     <height>28</height>
+     <x>60</x>
+     <y>2</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="focusPolicy">
@@ -127,8 +127,8 @@ background-repeat: none;
    <property name="styleSheet">
     <string notr="true">#top_menu_2 { 
 background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Libro.png);
-background: none; 
+background-image: url(:/iconos/images/Iconos/Libro.png);
+background-position: center;
 border: none; 
 background-repeat: none;
  } </string>
@@ -288,10 +288,10 @@ background-position: center;
     <widget class="QLabel" name="label_horas">
      <property name="geometry">
       <rect>
-       <x>608</x>
-       <y>578</y>
-       <width>91</width>
-       <height>31</height>
+       <x>638</x>
+       <y>581</y>
+       <width>61</width>
+       <height>25</height>
       </rect>
      </property>
      <property name="text">
@@ -403,9 +403,9 @@ background-position: center;
     <widget class="QPushButton" name="key_Reschedule">
      <property name="geometry">
       <rect>
-       <x>698</x>
-       <y>569</y>
-       <width>41</width>
+       <x>618</x>
+       <y>573</y>
+       <width>121</width>
        <height>41</height>
       </rect>
      </property>
@@ -672,6 +672,22 @@ background-position: center;
       <bool>false</bool>
      </property>
     </widget>
+    <zorder>tableWidget_2</zorder>
+    <zorder>label_2</zorder>
+    <zorder>key_6</zorder>
+    <zorder>key_0</zorder>
+    <zorder>key_2</zorder>
+    <zorder>key_3</zorder>
+    <zorder>key_9</zorder>
+    <zorder>key_Reschedule</zorder>
+    <zorder>key_7</zorder>
+    <zorder>key_4</zorder>
+    <zorder>key_5</zorder>
+    <zorder>key_OK</zorder>
+    <zorder>key_8</zorder>
+    <zorder>key_1</zorder>
+    <zorder>key_back</zorder>
+    <zorder>label_horas</zorder>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">

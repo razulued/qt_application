@@ -38,8 +38,7 @@ public:
     QPushButton *button_control;
     QTabWidget *tabWidget;
     QWidget *tab_1;
-    QWidget *verticalLayoutWidget_2;
-    QVBoxLayout *layout_param;
+    QTableWidget *tableWidget_tab_1;
     QWidget *tab_2;
     QPushButton *key_0;
     QPushButton *key_1;
@@ -204,12 +203,9 @@ public:
         tabWidget->setTabBarAutoHide(false);
         tab_1 = new QWidget();
         tab_1->setObjectName(QStringLiteral("tab_1"));
-        verticalLayoutWidget_2 = new QWidget(tab_1);
-        verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 261, 201));
-        layout_param = new QVBoxLayout(verticalLayoutWidget_2);
-        layout_param->setObjectName(QStringLiteral("layout_param"));
-        layout_param->setContentsMargins(0, 0, 0, 0);
+        tableWidget_tab_1 = new QTableWidget(tab_1);
+        tableWidget_tab_1->setObjectName(QStringLiteral("tableWidget_tab_1"));
+        tableWidget_tab_1->setGeometry(QRect(10, 0, 281, 271));
         tabWidget->addTab(tab_1, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
@@ -493,7 +489,7 @@ public:
 
         retranslateUi(detailedwindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(detailedwindow);

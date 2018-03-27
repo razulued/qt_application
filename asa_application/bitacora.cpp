@@ -2,6 +2,8 @@
 #include "ui_bitacora.h"
 #include <QDateTime>
 #include <QLabel>
+#include <QScroller>
+#include <QScrollerProperties>
 
 // rgb(0, 167, 250)
 
@@ -86,6 +88,34 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
 //    connect(ui->tableWidget, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected(QTableWidgetItem*)));
     connect(ui->tableWidget_2, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected(QTableWidgetItem*)));
 
+    //Scroll
+    QScroller *scroller = QScroller::scroller(ui->tableWidget);
+    ui->tableWidget->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
+    ui->tableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerItem);
+
+    QScrollerProperties properties = QScroller::scroller(scroller)->scrollerProperties();
+    QVariant overshootPolicy = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy);
+    scroller->setScrollerProperties(properties);
+    properties.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, overshootPolicy);
+    scroller->setScrollerProperties(properties);
+    //Scrolling Gesture
+    scroller->grabGesture(ui->tableWidget,QScroller::LeftMouseButtonGesture);
+
+    //Scroll
+    QScroller *scroller_2 = QScroller::scroller(ui->tableWidget_2);
+    ui->tableWidget_2->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
+    ui->tableWidget_2->setHorizontalScrollMode(QAbstractItemView::ScrollPerItem);
+
+    QScrollerProperties properties_2 = QScroller::scroller(scroller_2)->scrollerProperties();
+    QVariant overshootPolicy_2 = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties_2.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy_2);
+    scroller_2->setScrollerProperties(properties_2);
+    properties_2.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, overshootPolicy_2);
+    scroller_2->setScrollerProperties(properties_2);
+    //Scrolling Gesture
+    scroller_2->grabGesture(ui->tableWidget_2,QScroller::LeftMouseButtonGesture);
+
     this->show();
 }
 
@@ -95,6 +125,10 @@ bitacora::~bitacora()
 }
 
 void bitacora::on_top_menu_3_clicked()
+{
+    this->close();
+}
+void bitacora::on_top_menu_2_clicked()
 {
     this->close();
 }
@@ -504,3 +538,5 @@ void bitacora::insert_amount(QString ins)
 
     ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
 }
+
+

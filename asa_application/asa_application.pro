@@ -26,7 +26,13 @@ SOURCES += main.cpp\
     configuration.cpp \
     bitacora.cpp \
     rutinas_mantenimiento.cpp \
-    blur.cpp
+    mod_1_carcamo.cpp \
+    mod_2_reactor.cpp \
+    mod_3_clarificador.cpp \
+    mod_4_clorador.cpp \
+    mod_5_digestor.cpp \
+    mod_flechas.cpp \
+    mod_6_lechos.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -41,13 +47,18 @@ HEADERS  += mainwindow.h \
     configuration.h \
     bitacora.h \
     rutinas_mantenimiento.h \
-    blur.h
+    mod_1_carcamo.h \
+    mod_2_reactor.h \
+    mod_3_clarificador.h \
+    mod_4_clorador.h \
+    mod_5_digestor.h \
+    mod_flechas.h \
+    mod_6_lechos.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
     settings.ui \
-    bitacora.ui \
-    blur.ui
+    bitacora.ui
 
 RESOURCES += \
     images.qrc \

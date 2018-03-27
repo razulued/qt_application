@@ -1,5 +1,9 @@
 #include "parameters.h"
 #include <QtDebug>
+#include <QDateTime>
+
+#define SIMULATION (1)
+
 QString gen_stat_ecuid;
 double gen_stat_prodtype;
 double gen_stat_msgtype;
@@ -109,6 +113,8 @@ double misc_stat_sens_turbidez_out;
 double misc_stat_sens_presion_2;
 double misc_stat_sens_presion_3;
 char* NO_DATA = "NO DATA";
+
+int getParamIndex(unsigned int id);
 
 parameter_config_t  all_parameters[]=
 {
@@ -243,6 +249,114 @@ void InitRandomParameters()
     }
 }
 
+void run_simulation()
+{
+    static uint state = 0;
+    static uint last_time = 0;
+
+    if(last_time == 0)
+    {
+        last_time = QDateTime::currentDateTime().toTime_t();
+    }
+
+    switch(state)
+    {
+    case 0:
+        //Todo apagado
+        *(double *)all_parameters[getParamIndex(44)].param = 0;
+        *(double *)all_parameters[getParamIndex(92)].param = 0;
+
+        //Caudal in (43)
+        *(double *)all_parameters[getParamIndex(43)].param = 0;
+        // Nivel
+        *(double *)all_parameters[getParamIndex(40)].param = 5;
+        break;
+    case 1:
+        // Entra flujo
+
+        // Caudal in (43)
+        *(double *)all_parameters[getParamIndex(43)].param = 10;
+        break;
+
+    case 2:
+        // Sube Nivel carcamo
+        *(double *)all_parameters[getParamIndex(40)].param = 20; //low
+        break;
+    case 3:
+        *(double *)all_parameters[getParamIndex(40)].param = 40; // med
+        break;
+    case 4:
+        *(double *)all_parameters[getParamIndex(40)].param = 80; // full
+        break;
+
+    case 5:
+        // Se prenden motor
+        *(double *)all_parameters[getParamIndex(44)].param = 1;
+        break;
+
+    case 6:
+        // Se prende aereador en reactor
+        *(double *)all_parameters[getParamIndex(92)].param = 1;
+        break;
+
+    case 7:
+        // Retorno de lodo
+        *(double *)all_parameters[getParamIndex(145)].param = 40;
+        break;
+
+    case 8:
+        // Caudal out
+        *(double *)all_parameters[getParamIndex(162)].param = 50;
+        break;
+
+    case 9:
+        // Caudal in
+        *(double *)all_parameters[getParamIndex(43)].param = 0;
+        break;
+
+    case 10:
+        // Nivel de carcamo
+        *(double *)all_parameters[getParamIndex(40)].param = 40; // med
+        break;
+
+    case 11:
+        // Nivel de carcamo
+        *(double *)all_parameters[getParamIndex(40)].param = 20; // low
+        break;
+
+    case 12:
+        // Apagar carcamo
+        *(double *)all_parameters[getParamIndex(44)].param = 0;
+        // Apagar retorno de lodos
+        *(double *)all_parameters[getParamIndex(145)].param = 0;
+        break;
+
+    case 13:
+        // Se apaga aereador en reactor
+        *(double *)all_parameters[getParamIndex(92)].param = 0;
+        break;
+
+    case 14:
+        // Caudal out
+        *(double *)all_parameters[getParamIndex(162)].param = 0;
+        break;
+
+    default:
+        //back to 0
+        state = 0;
+        break;
+    }
+
+
+    if((QDateTime::currentDateTime().toTime_t() - last_time) > 4)
+    {
+        // Move to next state
+        state++;
+        last_time = QDateTime::currentDateTime().toTime_t();
+        qDebug() << "Next state " << state;
+    }
+}
+
 int getParamIndex(unsigned int id)
 {
     int i;
@@ -311,8 +425,10 @@ void setParamValue(unsigned int id,double value)
 {
     double *uint_ptr;
 
+#if (0 == SIMULATION)
     uint_ptr = (double *)all_parameters[getParamIndex(id)].param;
     *uint_ptr = value;
+#endif
 }
 
 void setParamString(unsigned int id, QString value)

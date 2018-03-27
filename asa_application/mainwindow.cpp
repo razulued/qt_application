@@ -7,6 +7,8 @@
 #include <QPainter>
 #include <QColor>
 
+#define ENABLE_TEST (1)
+#define BUILD_FOR_RPI (0)
 
 configuration_id MainWindow::conf_reg_elect;
 configuration_id MainWindow::conf_reg_fisic;
@@ -204,7 +206,7 @@ MainWindow::MainWindow(QWidget *parent) :
     efluente_outputs = config->get_config();
 
     //Setup Timer
-    dataTimer.setInterval(200);
+    dataTimer.setInterval(10);
     connect(&dataTimer, SIGNAL(timeout()),this,SLOT(dataTimerSlot()));
     dataTimer.start();
 
@@ -212,12 +214,16 @@ MainWindow::MainWindow(QWidget *parent) :
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Bold Demo.otf");
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Ligth Demo.otf");
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Italic Demo.otf");
+    QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Bold_Italic Demo.otf");
 
     //Setup Buttons and link to images
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
     display_parameters = false;
     HideButtons(true);
+
+#if (1 == ENABLE_TEST)
 //    InitRandomParameters();
+#endif
 
     InitTooltips();
 
@@ -251,6 +257,31 @@ MainWindow::MainWindow(QWidget *parent) :
 //     button.setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 //     button.setIconSize(QSize(200,200));
 //     button.show();
+
+    mod_1 = new mod_1_carcamo(ui->gif_modulo_1);
+    mod_2 = new mod_2_reactor(ui->gif_modulo_2);
+    mod_3 = new mod_3_clarificador(ui->gif_modulo_3);
+    mod_4 = new mod_4_clorador(ui->gif_modulo_4);
+    mod_5 = new mod_5_digestor(ui->gif_modulo_5);
+    mod_6 = new mod_6_lechos(ui->gif_modulo_6);
+    mod_afluente = new mod_flechas(AFLUENTE_1, ARRW_AFLUENTE_GIF_STATE_QUIET, ui->gif_modulo_7);
+    mod_efluente = new mod_flechas(EFLUENTE_1, ARRW_EFLUENTE_GIF_STATE_QUIET, ui->gif_modulo_8);
+    mod_sludge_a = new mod_flechas(SLUDGE_1,  ARRW_SLUDGE_GIF_STATE_QUIET, ui->gif_sludge_a);
+    mod_sludge_b = new mod_flechas(SLUDGE_1,  ARRW_SLUDGE_GIF_STATE_QUIET, ui->gif_sludge_b);
+    mod_water_flown_a = new mod_flechas(WATER_FLOWN_1,  ARRW_WATER_FLOWN_GIF_STATE_QUIET, ui->gif_water_flown_a);
+    mod_sludge_return = new mod_flechas(SLUDGE_RETURN,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_sludge_return_a);
+    mod_blower = new mod_flechas(BLOWER,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_blower);
+    mod_bomba = new mod_flechas(CARCAMO_MOTOR,  0, ui->gif_car_mot);
+
+#if BUILD_FOR_RPI
+    system("echo 17 >/sys/class/gpio/export");
+    system("chmod 777 -R /sys/class/gpio/gpio17 ");
+    system("echo out >/sys/class/gpio/gpio17/direction");
+
+    system("echo 27 >/sys/class/gpio/export");
+    system("chmod 777 -R /sys/class/gpio/gpio27 ");
+    system("echo out >/sys/class/gpio/gpio27/direction");
+#endif
 }
 
 
@@ -357,168 +388,93 @@ void MainWindow::on_asa_logo_clicked()
 
 void MainWindow::dataTimerSlot()
 {
+    static uint count = 0;
+#if (1 == ENABLE_TEST)
 //    static int a = 0;
-//    if(a++ > 10)
+//    if(a++ > 100)
 //    {
 //        InitRandomParameters();
 //        a = 0;
 //    }
+    if(0 == (count % 10)) /* 1 segundo */
+    {
+        run_simulation();
+    }
+#endif
+
 
     /* Update Hora */
     //"18/03/06,13:34:55"
-
-    update_ASA_string();
-
+    /* Update reloj */
     QString dos_mil = "20";
     QString time_format = "yyyy/MM/dd,HH.mm.ss";
     QString hora =  dos_mil+ getParamValue(16);
-
+#if (1 == ENABLE_TEST)
+    QDateTime time = QDateTime::currentDateTime();
+#else
     QDateTime time = QDateTime::fromString(hora, time_format);
-
-    QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
-    ui->label_hora->setText(display_time);
-
-    if(NULL != rutinas)
+#endif
+    if(0 == (count % 100)) /* 1 segundo */
     {
-
-        rutinas->set_time(time);
-        rutinas->check_rutinas();
-    }
-
-    if((NULL != bitacorawindow) && bitacorawindow->isActiveWindow())
-    {
-        bitacorawindow->update_table();
-    }
-
-    if(true == display_parameters)
-    {
-        switch(GetParemeter())
+        /* Check rutinas (new events have occurred?) */
+        if(NULL != rutinas)
         {
-        case PARAM_ELECTRIC:
-            tool_tip_regulador_electricos->force_show();
-            tool_tip_reactor_electricos->force_show();
-            tool_tip_clarificador_electricos->force_show();
-            tool_tip_clorador_electricos->force_show();
-            tool_tip_digestor_electricos->force_show();
-            tool_tip_deshidratador_electricos->force_show();
-            tool_tip_afluente_electricos->force_show();
-            tool_tip_efluente_electricos->force_show();
 
-            tool_tip_regulador_fisicos->force_hide();
-            tool_tip_reactor_fisicos->force_hide();
-            tool_tip_clarificador_fisicos->force_hide();
-            tool_tip_clorador_fisicos->force_hide();
-            tool_tip_digestor_fisicos->force_hide();
-            tool_tip_deshidratador_fisicos->force_hide();
-            tool_tip_afluente_fisicos->force_hide();
-            tool_tip_efluente_fisicos->force_hide();
-
-            tool_tip_regulador_quimicos->force_hide();
-            tool_tip_reactor_quimicos->force_hide();
-            tool_tip_clarificador_quimicos->force_hide();
-            tool_tip_clorador_quimicos->force_hide();
-            tool_tip_digestor_quimicos->force_hide();
-            tool_tip_deshidratador_quimicos->force_hide();
-            tool_tip_afluente_quimicos->force_hide();
-            tool_tip_efluente_quimicos->force_hide();
-
-            break;
-        case PARAM_PHYSHIC:
-            tool_tip_regulador_electricos->force_hide();
-            tool_tip_reactor_electricos->force_hide();
-            tool_tip_clarificador_electricos->force_hide();
-            tool_tip_clorador_electricos->force_hide();
-            tool_tip_digestor_electricos->force_hide();
-            tool_tip_deshidratador_electricos->force_hide();
-            tool_tip_afluente_electricos->force_hide();
-            tool_tip_efluente_electricos->force_hide();
-
-            tool_tip_regulador_fisicos->force_show();
-            tool_tip_reactor_fisicos->force_show();
-            tool_tip_clarificador_fisicos->force_show();
-            tool_tip_clorador_fisicos->force_show();
-            tool_tip_digestor_fisicos->force_show();
-            tool_tip_deshidratador_fisicos->force_show();
-            tool_tip_afluente_fisicos->force_show();
-            tool_tip_efluente_fisicos->force_show();
-
-            tool_tip_regulador_quimicos->force_hide();
-            tool_tip_reactor_quimicos->force_hide();
-            tool_tip_clarificador_quimicos->force_hide();
-            tool_tip_clorador_quimicos->force_hide();
-            tool_tip_digestor_quimicos->force_hide();
-            tool_tip_deshidratador_quimicos->force_hide();
-            tool_tip_afluente_quimicos->force_hide();
-            tool_tip_efluente_quimicos->force_hide();
-
-            break;
-        case PARAM_CHEMIC:
-            tool_tip_regulador_electricos->force_hide();
-            tool_tip_reactor_electricos->force_hide();
-            tool_tip_clarificador_electricos->force_hide();
-            tool_tip_clorador_electricos->force_hide();
-            tool_tip_digestor_electricos->force_hide();
-            tool_tip_deshidratador_electricos->force_hide();
-            tool_tip_afluente_electricos->force_hide();
-            tool_tip_efluente_electricos->force_hide();
-
-            tool_tip_regulador_fisicos->force_hide();
-            tool_tip_reactor_fisicos->force_hide();
-            tool_tip_clarificador_fisicos->force_hide();
-            tool_tip_clorador_fisicos->force_hide();
-            tool_tip_digestor_fisicos->force_hide();
-            tool_tip_deshidratador_fisicos->force_hide();
-            tool_tip_afluente_fisicos->force_hide();
-            tool_tip_efluente_fisicos->force_hide();
-
-            tool_tip_regulador_quimicos->force_show();
-            tool_tip_reactor_quimicos->force_show();
-            tool_tip_clarificador_quimicos->force_show();
-            tool_tip_clorador_quimicos->force_show();
-            tool_tip_digestor_quimicos->force_show();
-            tool_tip_deshidratador_quimicos->force_show();
-            tool_tip_afluente_quimicos->force_show();
-            tool_tip_efluente_quimicos->force_show();
-
-            break;
-        default:
-            break;
-        }
-    }
-    else
-    {
-        if(init_complete)
-        {
-            tool_tip_regulador_electricos->update_data();
-            tool_tip_reactor_electricos->update_data();
-            tool_tip_clarificador_electricos->update_data();
-            tool_tip_clorador_electricos->update_data();
-            tool_tip_digestor_electricos->update_data();
-            tool_tip_deshidratador_electricos->update_data();
-            tool_tip_afluente_electricos->update_data();
-            tool_tip_efluente_electricos->update_data();
-
-            tool_tip_regulador_fisicos->update_data();
-            tool_tip_reactor_fisicos->update_data();
-            tool_tip_clarificador_fisicos->update_data();
-            tool_tip_clorador_fisicos->update_data();
-            tool_tip_digestor_fisicos->update_data();
-            tool_tip_deshidratador_fisicos->update_data();
-            tool_tip_afluente_fisicos->update_data();
-            tool_tip_efluente_fisicos->update_data();
-
-            tool_tip_regulador_quimicos->update_data();
-            tool_tip_reactor_quimicos->update_data();
-            tool_tip_clarificador_quimicos->update_data();
-            tool_tip_clorador_quimicos->update_data();
-            tool_tip_digestor_quimicos->update_data();
-            tool_tip_deshidratador_quimicos->update_data();
-            tool_tip_afluente_quimicos->update_data();
-            tool_tip_efluente_quimicos->update_data();
-
+            rutinas->set_time(time);
+            rutinas->check_rutinas();
         }
 
+        /* Check update values in bitacora window (if open) */
+        if((NULL != bitacorawindow) && bitacorawindow->isActiveWindow())
+        {
+            bitacorawindow->update_table();
+        }
     }
+
+    if(0 == (count % 2)) /* 20 ms */
+    {
+        // Fastest time for smooth transition when moving
+        update_tooltips();
+    }
+
+
+    if(0 == (count % 200)) /* 2 segundo */
+    {
+        update_ASA_string();
+
+#if (1 ==ENABLE_TEST)
+        /***** DEMO *****/
+        mod_1->check_update_animation();
+        mod_2->check_update_animation();
+        mod_3->check_update_animation();
+        mod_4->check_update_animation();
+        mod_5->check_update_animation();
+
+        mod_afluente->check_update_animation();
+        mod_efluente->check_update_animation();
+        mod_sludge_return->check_update_animation();
+        mod_blower->check_update_animation();
+        mod_bomba->check_update_animation();
+#endif
+    }
+
+    if(0 == (count % 15)) /* 150 ms */
+    {
+        /* Update data in detailed window (if open) */
+        if((NULL != detail_window) && detail_window->isActiveWindow())
+        {
+            detail_window->update_params();
+        }
+    }
+
+    if(0 == (count % 10)) /* 100 ms */
+    {
+        QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
+        ui->label_hora->setText(display_time);
+    }
+
+    count++;
+
 }
 
 
@@ -713,6 +669,8 @@ void MainWindow::update_ASA_string(void)
 
 void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &painter)
 {
+    static uint i = 0;
+
     if(false == tooltip->isHidden())
     {
         if((tooltip->geometry().bottom() + 50) <  module->geometry().top())
@@ -753,34 +711,33 @@ void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &p
 
 void MainWindow::paintEvent(QPaintEvent *)
 {
-     QPainter painter(this);
+//     QPainter painter(this);
 
-     QColor line_color;
-     line_color.setRgb(0, 167, 250,150);
+//     QColor line_color;
+//     line_color.setRgb(0, 167, 250,150);
 
-     QPen pen;
-     pen.setColor(line_color);
-     pen.setCapStyle(Qt::RoundCap);
-     pen.setWidth(3);
-     painter.setPen(pen);
+//     QPen pen;
+//     pen.setColor(line_color);
+//     pen.setCapStyle(Qt::RoundCap);
+//     pen.setWidth(3);
+//     painter.setPen(pen);
 
-     this->update();
-     trace_lines(ui->widget, ui->modulo_1, painter);
-     trace_lines(ui->widget_2, ui->modulo_1, painter);
-     trace_lines(ui->widget_3, ui->modulo_1, painter);
+//     this->update();
+//     trace_lines(ui->widget, ui->modulo_1, painter);
+//     trace_lines(ui->widget_2, ui->modulo_1, painter);
+//     trace_lines(ui->widget_3, ui->modulo_1, painter);
 
-     trace_lines(ui->widget_4, ui->modulo_2, painter);
-     trace_lines(ui->widget_5, ui->modulo_2, painter);
-     trace_lines(ui->widget_6, ui->modulo_2, painter);
+//     trace_lines(ui->widget_4, ui->modulo_2, painter);
+//     trace_lines(ui->widget_5, ui->modulo_2, painter);
+//     trace_lines(ui->widget_6, ui->modulo_2, painter);
 
-     trace_lines(ui->widget_7, ui->modulo_3, painter);
-     trace_lines(ui->widget_8, ui->modulo_3, painter);
-     trace_lines(ui->widget_9, ui->modulo_3, painter);
+//     trace_lines(ui->widget_7, ui->modulo_3, painter);
+//     trace_lines(ui->widget_8, ui->modulo_3, painter);
+//     trace_lines(ui->widget_9, ui->modulo_3, painter);
 
-     trace_lines(ui->widget_10, ui->modulo_4, painter);
-     trace_lines(ui->widget_11, ui->modulo_4, painter);
-     trace_lines(ui->widget_12, ui->modulo_4, painter);
-
+//     trace_lines(ui->widget_10, ui->modulo_4, painter);
+//     trace_lines(ui->widget_11, ui->modulo_4, painter);
+//     trace_lines(ui->widget_12, ui->modulo_4, painter);
 }
 
 /* WINDOWS */
@@ -813,4 +770,137 @@ void MainWindow::on_top_menu_2_clicked()
 //        delete detail_window;
 //    }
 
+}
+
+void MainWindow::update_tooltips(void)
+{
+    if(true == display_parameters)
+    {
+        switch(GetParemeter())
+        {
+        case PARAM_ELECTRIC:
+            tool_tip_regulador_electricos->force_show();
+            tool_tip_reactor_electricos->force_show();
+            tool_tip_clarificador_electricos->force_show();
+            tool_tip_clorador_electricos->force_show();
+            tool_tip_digestor_electricos->force_show();
+            tool_tip_deshidratador_electricos->force_show();
+            tool_tip_afluente_electricos->force_show();
+            tool_tip_efluente_electricos->force_show();
+
+            tool_tip_regulador_fisicos->force_hide();
+            tool_tip_reactor_fisicos->force_hide();
+            tool_tip_clarificador_fisicos->force_hide();
+            tool_tip_clorador_fisicos->force_hide();
+            tool_tip_digestor_fisicos->force_hide();
+            tool_tip_deshidratador_fisicos->force_hide();
+            tool_tip_afluente_fisicos->force_hide();
+            tool_tip_efluente_fisicos->force_hide();
+
+            tool_tip_regulador_quimicos->force_hide();
+            tool_tip_reactor_quimicos->force_hide();
+            tool_tip_clarificador_quimicos->force_hide();
+            tool_tip_clorador_quimicos->force_hide();
+            tool_tip_digestor_quimicos->force_hide();
+            tool_tip_deshidratador_quimicos->force_hide();
+            tool_tip_afluente_quimicos->force_hide();
+            tool_tip_efluente_quimicos->force_hide();
+
+            break;
+        case PARAM_PHYSHIC:
+            tool_tip_regulador_electricos->force_hide();
+            tool_tip_reactor_electricos->force_hide();
+            tool_tip_clarificador_electricos->force_hide();
+            tool_tip_clorador_electricos->force_hide();
+            tool_tip_digestor_electricos->force_hide();
+            tool_tip_deshidratador_electricos->force_hide();
+            tool_tip_afluente_electricos->force_hide();
+            tool_tip_efluente_electricos->force_hide();
+
+            tool_tip_regulador_fisicos->force_show();
+            tool_tip_reactor_fisicos->force_show();
+            tool_tip_clarificador_fisicos->force_show();
+            tool_tip_clorador_fisicos->force_show();
+            tool_tip_digestor_fisicos->force_show();
+            tool_tip_deshidratador_fisicos->force_show();
+            tool_tip_afluente_fisicos->force_show();
+            tool_tip_efluente_fisicos->force_show();
+
+            tool_tip_regulador_quimicos->force_hide();
+            tool_tip_reactor_quimicos->force_hide();
+            tool_tip_clarificador_quimicos->force_hide();
+            tool_tip_clorador_quimicos->force_hide();
+            tool_tip_digestor_quimicos->force_hide();
+            tool_tip_deshidratador_quimicos->force_hide();
+            tool_tip_afluente_quimicos->force_hide();
+            tool_tip_efluente_quimicos->force_hide();
+
+            break;
+        case PARAM_CHEMIC:
+            tool_tip_regulador_electricos->force_hide();
+            tool_tip_reactor_electricos->force_hide();
+            tool_tip_clarificador_electricos->force_hide();
+            tool_tip_clorador_electricos->force_hide();
+            tool_tip_digestor_electricos->force_hide();
+            tool_tip_deshidratador_electricos->force_hide();
+            tool_tip_afluente_electricos->force_hide();
+            tool_tip_efluente_electricos->force_hide();
+
+            tool_tip_regulador_fisicos->force_hide();
+            tool_tip_reactor_fisicos->force_hide();
+            tool_tip_clarificador_fisicos->force_hide();
+            tool_tip_clorador_fisicos->force_hide();
+            tool_tip_digestor_fisicos->force_hide();
+            tool_tip_deshidratador_fisicos->force_hide();
+            tool_tip_afluente_fisicos->force_hide();
+            tool_tip_efluente_fisicos->force_hide();
+
+            tool_tip_regulador_quimicos->force_show();
+            tool_tip_reactor_quimicos->force_show();
+            tool_tip_clarificador_quimicos->force_show();
+            tool_tip_clorador_quimicos->force_show();
+            tool_tip_digestor_quimicos->force_show();
+            tool_tip_deshidratador_quimicos->force_show();
+            tool_tip_afluente_quimicos->force_show();
+            tool_tip_efluente_quimicos->force_show();
+
+            break;
+        default:
+            break;
+        }
+    }
+    else
+    {
+        if(init_complete)
+        {
+            tool_tip_regulador_electricos->update_data();
+            tool_tip_reactor_electricos->update_data();
+            tool_tip_clarificador_electricos->update_data();
+            tool_tip_clorador_electricos->update_data();
+            tool_tip_digestor_electricos->update_data();
+            tool_tip_deshidratador_electricos->update_data();
+            tool_tip_afluente_electricos->update_data();
+            tool_tip_efluente_electricos->update_data();
+
+            tool_tip_regulador_fisicos->update_data();
+            tool_tip_reactor_fisicos->update_data();
+            tool_tip_clarificador_fisicos->update_data();
+            tool_tip_clorador_fisicos->update_data();
+            tool_tip_digestor_fisicos->update_data();
+            tool_tip_deshidratador_fisicos->update_data();
+            tool_tip_afluente_fisicos->update_data();
+            tool_tip_efluente_fisicos->update_data();
+
+            tool_tip_regulador_quimicos->update_data();
+            tool_tip_reactor_quimicos->update_data();
+            tool_tip_clarificador_quimicos->update_data();
+            tool_tip_clorador_quimicos->update_data();
+            tool_tip_digestor_quimicos->update_data();
+            tool_tip_deshidratador_quimicos->update_data();
+            tool_tip_afluente_quimicos->update_data();
+            tool_tip_efluente_quimicos->update_data();
+
+        }
+
+    }
 }
