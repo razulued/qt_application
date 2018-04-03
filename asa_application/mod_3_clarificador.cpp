@@ -25,27 +25,32 @@ void mod_3_clarificador::load_new_gif(uint state)
 {
     QMovie *mv;
 
-    switch (state)
+    if(last_state != state)
     {
-    case CLARIFICADOR_GIF_STATE_NONE:
-        mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier.png");
-        break;
-    case CLARIFICADOR_GIF_STATE_FULL_MOV:
-        mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier_full_mov.gif");
-        parent_label->setGeometry(original_pos.x()-7, original_pos.y()-2, parent_label->width(), parent_label->height());
-        break;
-    case CLARIFICADOR_GIF_STATE_FULL_QUIET:
-        mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier_full_quiet.png");
-        parent_label->setGeometry(original_pos.x()-7, original_pos.y()-2, parent_label->width(), parent_label->height());
-        break;
-    default:
-        mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier.png");
-        break;
-    }
+        switch (state)
+        {
+        case CLARIFICADOR_GIF_STATE_NONE:
+            mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier.png");
+            break;
+        case CLARIFICADOR_GIF_STATE_FULL_MOV:
+            mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier_full_mov.gif");
+            parent_label->setGeometry(original_pos.x()-7, original_pos.y()-2, parent_label->width(), parent_label->height());
+            break;
+        case CLARIFICADOR_GIF_STATE_FULL_QUIET:
+            mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier_full_quiet.png");
+            parent_label->setGeometry(original_pos.x()-7, original_pos.y()-2, parent_label->width(), parent_label->height());
+            break;
+        default:
+            mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier.png");
+            break;
+        }
 
-    parent_label->setAttribute(Qt::WA_NoSystemBackground);
-    mv->start();
-    parent_label->setMovie(mv);
+        parent_label->setAttribute(Qt::WA_NoSystemBackground);
+        mv->start();
+        parent_label->setMovie(mv);
+
+        last_state = state;
+    }
 
 }
 

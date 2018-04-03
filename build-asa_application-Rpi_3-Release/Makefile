@@ -3164,20 +3164,6 @@ mainwindow.o: ../asa_application/mainwindow.cpp ../asa_application/mainwindow.h 
 		../asa_application/mod_6_lechos.h \
 		../asa_application/mod_flechas.h \
 		ui_mainwindow.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/QVariant \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QAction \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qaction.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qactiongroup.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QApplication \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qdesktopwidget.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qguiapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qinputmethod.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QButtonGroup \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qbuttongroup.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QHeaderView \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qheaderview.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QWidget \
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/QFontDatabase \
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontdatabase.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/QPainter \
@@ -3422,58 +3408,35 @@ detailedwindow.o: ../asa_application/detailedwindow.cpp ../asa_application/detai
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabwidget.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qrubberband.h \
 		ui_detailedwindow.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/QVariant \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QAction \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qaction.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qactiongroup.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QApplication \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qdesktopwidget.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qguiapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qinputmethod.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QButtonGroup \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qbuttongroup.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QFrame \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QHeaderView \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qheaderview.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QLabel \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlabel.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QPushButton \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qpushbutton.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractbutton.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QTabWidget \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QTableWidget \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QTextEdit \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtextedit.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextdocument.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextoption.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextcursor.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextformat.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpen.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QVBoxLayout \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qboxlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlayoutitem.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qgridlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QWidget \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QListView \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlistview.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/QFontDatabase \
 		/opt/qtrpi/raspi/qt5pi/include/QtGui/qfontdatabase.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QCheckBox \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qcheckbox.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractbutton.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QTableWidget \
 		../asa_application/parameters.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QtGlobal \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QDebug \
 		../asa_application/mainwindow.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QMainWindow \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qmainwindow.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QPushButton \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qpushbutton.h \
 		../asa_application/multistatebutton.h \
 		../asa_application/settings.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QSettings \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QFile \
 		../asa_application/custom_tooltip.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QFrame \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QLabel \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlabel.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QLayout \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlayout.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlayoutitem.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qboxlayout.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qgridlayout.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QTimer \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QListWidget \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlistwidget.h \
@@ -4269,61 +4232,6 @@ settings.o: ../asa_application/settings.cpp ../asa_application/settings.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/qsettings.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QFile \
 		ui_settings.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/QVariant \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QAction \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qaction.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qicon.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qactiongroup.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QApplication \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/qcoreapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/qeventloop.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qdesktopwidget.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qguiapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qinputmethod.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QButtonGroup \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qbuttongroup.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QComboBox \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qcombobox.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractitemdelegate.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qstyleoption.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractspinbox.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qvalidator.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/qregularexpression.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qslider.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractslider.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qstyle.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabbar.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtabwidget.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qrubberband.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qframe.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/qabstractitemmodel.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QDialogButtonBox \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qdialogbuttonbox.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QGridLayout \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qgridlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlayoutitem.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qboxlayout.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QHeaderView \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qheaderview.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractitemview.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractscrollarea.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/qitemselectionmodel.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QLabel \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlabel.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QPushButton \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qpushbutton.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractbutton.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QTabWidget \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QTextEdit \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qtextedit.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextdocument.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextoption.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextcursor.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qtextformat.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qpen.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QWidget \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QDebug \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QDir \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/qdir.h \
@@ -4640,33 +4548,15 @@ bitacora.o: ../asa_application/bitacora.cpp ../asa_application/bitacora.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtSql/qsql.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QDateTime \
 		ui_bitacora.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/QVariant \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QAction \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qaction.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qactiongroup.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QApplication \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qdesktopwidget.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qguiapplication.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtGui/qinputmethod.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QButtonGroup \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qbuttongroup.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QHeaderView \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qheaderview.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QLabel \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qlabel.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QPushButton \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qpushbutton.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qabstractbutton.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QTabWidget \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QTableWidget \
-		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QWidget \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QScroller \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qscroller.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QPointF \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/QScrollerProperties \
 		/opt/qtrpi/raspi/qt5pi/include/QtWidgets/qscrollerproperties.h \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/QMetaType
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/QMetaType \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/QVariant
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bitacora.o ../asa_application/bitacora.cpp
 
 rutinas_mantenimiento.o: ../asa_application/rutinas_mantenimiento.cpp ../asa_application/rutinas_mantenimiento.h \
@@ -5473,7 +5363,8 @@ mod_flechas.o: ../asa_application/mod_flechas.cpp ../asa_application/mod_flechas
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/qfactoryinterface.h \
 		../asa_application/parameters.h \
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QtGlobal \
-		/opt/qtrpi/raspi/qt5pi/include/QtCore/QObject
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/QObject \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mod_flechas.o ../asa_application/mod_flechas.cpp
 
 mod_6_lechos.o: ../asa_application/mod_6_lechos.cpp ../asa_application/mod_6_lechos.h \
@@ -5644,8 +5535,7 @@ moc_mod_6_lechos.o: moc_mod_6_lechos.cpp
 
 install_target: first FORCE
 	@test -d $(INSTALL_ROOT)/home/pi || mkdir -p $(INSTALL_ROOT)/home/pi
-	-$(INSTALL_PROGRAM) /home/luis/qt_application/build-asa_application-Rpi_3-Release/asa_application $(INSTALL_ROOT)/home/pi/
-	-/opt/qtrpi/raspi/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf-strip $(INSTALL_ROOT)/home/pi/asa_application
+	-$(INSTALL_PROGRAM) /home/luis/qt_application/asa_application/asa_application $(INSTALL_ROOT)/home/pi/
 
 uninstall_target: FORCE
 	-$(DEL_FILE) -r $(INSTALL_ROOT)/home/pi/asa_application

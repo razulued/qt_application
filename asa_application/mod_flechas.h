@@ -65,6 +65,9 @@ private:
     arrow_type_t arrow_type;
     QLabel *parent_label;
     QPoint original_pos;
+    uint last_state = 0xFF;
+    QMovie *mv = NULL;
+
 };
 
 #endif // MOD_FLECHAS_H

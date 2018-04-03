@@ -37,8 +37,6 @@ public:
     QWidget *tab_1;
     QTableWidget *tableWidget_tab_1;
     QWidget *tab_2;
-    QPushButton *key_OK_icon;
-    QPushButton *key_Reschedule_icon;
     QTableWidget *tableWidget;
     QWidget *tab_3;
     QLabel *description_label;
@@ -195,45 +193,9 @@ public:
         tabWidget->addTab(tab_1, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
-        key_OK_icon = new QPushButton(tab_2);
-        key_OK_icon->setObjectName(QStringLiteral("key_OK_icon"));
-        key_OK_icon->setGeometry(QRect(211, 250, 81, 31));
-        key_OK_icon->setFocusPolicy(Qt::NoFocus);
-        key_OK_icon->setStyleSheet(QLatin1String("#key_OK_icon{ \n"
-"background-image: url(:/iconos/images/Iconos/Listo_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_OK_icon::pressed{ \n"
-"background-image: url(:/iconos/images/Iconos/Listo_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_OK_icon->setCheckable(false);
-        key_Reschedule_icon = new QPushButton(tab_2);
-        key_Reschedule_icon->setObjectName(QStringLiteral("key_Reschedule_icon"));
-        key_Reschedule_icon->setGeometry(QRect(20, 247, 111, 41));
-        key_Reschedule_icon->setFocusPolicy(Qt::NoFocus);
-        key_Reschedule_icon->setStyleSheet(QLatin1String("#key_Reschedule_icon{ \n"
-"background-image: url(:/iconos/images/Iconos/Posponer_azul.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}\n"
-"\n"
-"#key_Reschedule_icon::pressed{ \n"
-"background-image: url(:/iconos/images/Iconos/Posponer_blanco.png);\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"background-position: center;\n"
-"}"));
-        key_Reschedule_icon->setCheckable(false);
         tableWidget = new QTableWidget(tab_2);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(0, 0, 311, 241));
+        tableWidget->setGeometry(QRect(0, 0, 311, 291));
         tableWidget->setGridStyle(Qt::SolidLine);
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
@@ -1330,7 +1292,7 @@ public:
         alphabackground->setObjectName(QStringLiteral("alphabackground"));
         alphabackground->setGeometry(QRect(-10, 3, 1041, 771));
         alphabackground->setStyleSheet(QLatin1String("#alphabackground{\n"
-"background-color: rgb(0, 0, 0,140);\n"
+"background-color: rgb(0, 0, 0,120);\n"
 "}"));
         alphabackground->raise();
         frame->raise();
@@ -1339,7 +1301,7 @@ public:
 
         retranslateUi(detailedwindow);
 
-        tabWidget->setCurrentIndex(4);
+        tabWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(detailedwindow);
@@ -1352,8 +1314,6 @@ public:
         button_parametros->setText(QString());
         button_evento->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("detailedwindow", "Tab 1", 0));
-        key_OK_icon->setText(QString());
-        key_Reschedule_icon->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("detailedwindow", "Tab 2", 0));
         description_label->setText(QApplication::translate("detailedwindow", "Descripcion", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("detailedwindow", "Tab 3", 0));

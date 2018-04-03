@@ -327,6 +327,7 @@ void run_simulation()
     case 12:
         // Apagar carcamo
         *(double *)all_parameters[getParamIndex(44)].param = 0;
+        *(double *)all_parameters[getParamIndex(40)].param = 0;
         // Apagar retorno de lodos
         *(double *)all_parameters[getParamIndex(145)].param = 0;
         break;
@@ -353,7 +354,7 @@ void run_simulation()
         // Move to next state
         state++;
         last_time = QDateTime::currentDateTime().toTime_t();
-        qDebug() << "Next state " << state;
+//        qDebug() << "Next state " << state;
     }
 }
 

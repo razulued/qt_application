@@ -25,37 +25,42 @@ void mod_1_carcamo::load_new_gif(uint state)
 {
     QMovie *mv;
 
-    switch (state)
+    if(last_state != state)
     {
-    case CARCAMO_GIF_STATE_NONE:
-        mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_vacio.png");
-        break;
-    case CARCAMO_GIF_STATE_HI_QUIET:
-        mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_hi_quiet_water.png");
-        break;
-    case CARCAMO_GIF_STATE_HI_MOV:
-        mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_hi_mov_water.gif");
-        break;
-    case CARCAMO_GIF_STATE_MED_QUIET:
-        mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_med_quiet water.png");
-        break;
-    case CARCAMO_GIF_STATE_MED_MOV:
-        mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_med_mov water.gif");
-        break;
-    case CARCAMO_GIF_STATE_LOW_QUIET:
-        mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_low_quiet_water.png");
-        break;
-    case CARCAMO_GIF_STATE_LOW_MOV:
-        mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_low_mov_water.gif");
-        break;
-    default:
-        mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_vacio.png");
-        break;
-    }
+        switch (state)
+        {
+        case CARCAMO_GIF_STATE_NONE:
+            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_vacio.png");
+            break;
+        case CARCAMO_GIF_STATE_HI_QUIET:
+            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_hi_quiet_water.png");
+            break;
+        case CARCAMO_GIF_STATE_HI_MOV:
+            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_hi_mov_water.gif");
+            break;
+        case CARCAMO_GIF_STATE_MED_QUIET:
+            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_med_quiet water.png");
+            break;
+        case CARCAMO_GIF_STATE_MED_MOV:
+            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_med_mov water.gif");
+            break;
+        case CARCAMO_GIF_STATE_LOW_QUIET:
+            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_low_quiet_water.png");
+            break;
+        case CARCAMO_GIF_STATE_LOW_MOV:
+            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_low_mov_water.gif");
+            break;
+        default:
+            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_vacio.png");
+            break;
+        }
 
-    parent_label->setAttribute(Qt::WA_NoSystemBackground);
-    mv->start();
-    parent_label->setMovie(mv);
+        parent_label->setAttribute(Qt::WA_NoSystemBackground);
+        mv->start();
+        parent_label->setMovie(mv);
+
+        last_state = state;
+    }
 
 }
 

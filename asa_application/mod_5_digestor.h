@@ -29,6 +29,7 @@ private:
 
     QLabel *parent_label;
     QPoint original_pos;
+    uint last_state = 0xFF;
 };
 
 #endif // MOD_5_DIGESTOR_H

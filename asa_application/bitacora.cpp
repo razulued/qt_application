@@ -24,15 +24,29 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
     QFont font0("Typo Square Bold Demo",20,1);
-    QFont font1("Typo Square Regular Demo",16,1);
-    QFont font2("Typo Square Regular Demo",12,1);
+    QFont font1("Typo Square Italic Demo",14,1);
+    QFont font2("Typo Square Italic Demo",12,1);
     QFont font3("Typo Square Bold Demo",16,1);
 
     ui->label->setFont(font0);
 
-    ui->tableWidget->setStyleSheet("color: white;"
+//    ui->tableWidget->setStyleSheet("color: white;"
+//                                   "background-color: black;"
+//                                   "gridline-color: rgb(0, 167, 250);");
+
+    ui->tableWidget->setAlternatingRowColors(true);
+    ui->tableWidget->setStyleSheet("color: rgb(0, 167, 250);;"
+                                   "alternate-background-color: rgb(50, 50, 50);"
                                    "background-color: black;"
-                                   "gridline-color: rgb(0, 167, 250);");
+                                   "border-style: none;"
+                                   "gridline-color: none;"
+                                   "QHeaderView::section:vertical{"
+                                   "border-left: none;"
+                                   "}"
+                                   "QHeaderView::section:horizontal{"
+                                   "border-top: none;"
+                                   "}"
+                                   );
     ui->tableWidget->horizontalHeader()->setFont(font1);
     ui->tableWidget->horizontalHeader()->setStyleSheet("border-style: none;"
                                                        "border-bottom: 1px solid #00a7fa;"
@@ -51,9 +65,22 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     ui->tableWidget->setWordWrap(true);
 
 
-    ui->tableWidget_2->setStyleSheet("color: white;"
+    ui->tableWidget_2->setAlternatingRowColors(true);
+    ui->tableWidget_2->setStyleSheet("color: rgb(0, 167, 250);;"
+                                   "alternate-background-color: rgb(50, 50, 50);"
                                    "background-color: black;"
-                                   "gridline-color: rgb(0, 167, 250);");
+                                     "gridline-color: none;"
+                                   "border-style: none;"
+                                   "QHeaderView::section:vertical{"
+                                   "border-left: none;"
+                                   "}"
+                                   "QHeaderView::section:horizontal{"
+                                   "border-top: none;"
+                                   "}"
+                                   );
+//    ui->tableWidget_2->setStyleSheet("color: white;"
+//                                   "background-color: black;"
+//                                   "gridline-color: rgb(0, 167, 250);");
     ui->tableWidget_2->horizontalHeader()->setFont(font1);
     ui->tableWidget_2->horizontalHeader()->setStyleSheet("border-style: none;"
                                                        "border-bottom: 1px solid #00a7fa;"

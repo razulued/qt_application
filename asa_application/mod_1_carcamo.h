@@ -27,6 +27,8 @@ private:
     void load_new_gif(uint state);
 
     QLabel *parent_label;
+    uint last_state = 0xFF;
+
 };
 
 #endif // MOD_1_CARCAMO_H

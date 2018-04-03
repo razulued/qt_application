@@ -23,24 +23,29 @@ void mod_6_lechos::load_new_gif(uint state)
 {
     QMovie *mv;
 
-    switch (state)
+    if(last_state != state)
     {
-    case LECHOS_GIF_STATE_BED_1:
-        mv = new QMovie(":/lechos/images/6_Lechos/sand_bed_01.png");
-        break;
-    case LECHOS_GIF_STATE_BED_2:
-        mv = new QMovie(":/lechos/images/6_Lechos/sand_bed_02.png");
-        break;
-    case LECHOS_GIF_STATE_BED_3:
-        mv = new QMovie(":/lechos/images/6_Lechos/sand_bed_03.png");
-        break;
-    default:
-        mv = new QMovie(":/lechos/images/6_Lechos/sand_bed_01.png");
-        break;
-    }
+        switch (state)
+        {
+        case LECHOS_GIF_STATE_BED_1:
+            mv = new QMovie(":/lechos/images/6_Lechos/sand_bed_01.png");
+            break;
+        case LECHOS_GIF_STATE_BED_2:
+            mv = new QMovie(":/lechos/images/6_Lechos/sand_bed_02.png");
+            break;
+        case LECHOS_GIF_STATE_BED_3:
+            mv = new QMovie(":/lechos/images/6_Lechos/sand_bed_03.png");
+            break;
+        default:
+            mv = new QMovie(":/lechos/images/6_Lechos/sand_bed_01.png");
+            break;
+        }
 
-    parent_label->setAttribute(Qt::WA_NoSystemBackground);
-    mv->start();
-    parent_label->setMovie(mv);
+        parent_label->setAttribute(Qt::WA_NoSystemBackground);
+        mv->start();
+        parent_label->setMovie(mv);
+
+        last_state = state;
+    }
 
 }

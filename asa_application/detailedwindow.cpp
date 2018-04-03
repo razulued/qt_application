@@ -800,16 +800,22 @@ void detailedwindow::tab_2_init()
 
     ui->tableWidget->setStyleSheet("color: rgb(0, 167, 250);;"
                                    "alternate-background-color: rgb(50, 50, 50);"
-                                   "background-color: black;");
+                                   "background-color: black;"
+                                   "gridline-color: none;"
+                                   "border-style: none;"
+                                   "QHeaderView::section:vertical{"
+                                   "border-left: none;"
+                                   "}"
+                                   "QHeaderView::section:horizontal{"
+                                   "border-top: none;"
+                                   "}"
+                                   );
     ui->tableWidget->horizontalHeader()->setFont(font1);
 //    ui->tableWidget->horizontalHeader()->setStyleSheet("border-style: none;"
 //                                                       "border-bottom: 1px solid #00a7fa;"
 //                                                       "border-top: 1px solid #00a7fa;"
 //                                                       "border-left: 1px solid #00a7fa;"
 //                                                       "border-right: 1px solid #00a7fa;"
-//                                                       "QHeaderView::section:vertical{"
-//                                                       "border-left: 1px solid #00a7fa;"
-//                                                       "}"
 //                                                       "QHeaderView::section:horizontal{"
 //                                                       "border-top: 1px solid #00a7fa;"
 //                                                       "}");
@@ -1024,6 +1030,21 @@ void detailedwindow::tab_5_init()
                                    "width: 40px;"
                                    "height: 40px;"
                                    "}");
+
+        if(0 == i)
+        {
+            if(1 ==MainWindow::reg_mot_1)
+            {
+                box_motores->setChecked(true);
+            }
+        }
+        else if(1 == i)
+        {
+            if(1 ==MainWindow::reg_mot_2)
+            {
+                box_motores->setChecked(true);
+            }
+        }
 
         ui->verticalLayout_2->addWidget(box_motores);
 

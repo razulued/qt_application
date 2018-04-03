@@ -438,7 +438,7 @@ void MainWindow::dataTimerSlot()
     }
 
 
-    if(0 == (count % 200)) /* 2 segundo */
+    if(0 == (count % 10)) /* 2 segundo */
     {
         update_ASA_string();
 
@@ -670,9 +670,12 @@ void MainWindow::update_ASA_string(void)
 void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &painter)
 {
     static uint i = 0;
+    static QPoint last_position;
 
-    if(false == tooltip->isHidden())
+    if(true == tooltip->isVisible() && (last_position != tooltip->pos()))
     {
+        this->update();
+
         if((tooltip->geometry().bottom() + 50) <  module->geometry().top())
         {
             //Hacia abajo
@@ -706,11 +709,14 @@ void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &p
                                  (module->geometry().x() + module->geometry().width()/2), module->geometry().bottom());
             }
         }
+
+        last_position = tooltip->pos();
     }
 }
 
 void MainWindow::paintEvent(QPaintEvent *)
 {
+    this->update();
 //     QPainter painter(this);
 
 //     QColor line_color;
@@ -722,7 +728,6 @@ void MainWindow::paintEvent(QPaintEvent *)
 //     pen.setWidth(3);
 //     painter.setPen(pen);
 
-//     this->update();
 //     trace_lines(ui->widget, ui->modulo_1, painter);
 //     trace_lines(ui->widget_2, ui->modulo_1, painter);
 //     trace_lines(ui->widget_3, ui->modulo_1, painter);

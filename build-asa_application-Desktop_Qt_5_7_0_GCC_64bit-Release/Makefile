@@ -5614,7 +5614,8 @@ mod_flechas.o: ../asa_application/mod_flechas.cpp ../asa_application/mod_flechas
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfactoryinterface.h \
 		../asa_application/parameters.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtGlobal \
-		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mod_flechas.o ../asa_application/mod_flechas.cpp
 
 mod_6_lechos.o: ../asa_application/mod_6_lechos.cpp ../asa_application/mod_6_lechos.h \
