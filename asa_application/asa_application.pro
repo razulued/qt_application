@@ -32,7 +32,10 @@ SOURCES += main.cpp\
     mod_4_clorador.cpp \
     mod_5_digestor.cpp \
     mod_flechas.cpp \
-    mod_6_lechos.cpp
+    mod_6_lechos.cpp \
+    asa_protocol.cpp \
+    asa_conversions.cpp \
+    clickeablelabel.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -53,7 +56,10 @@ HEADERS  += mainwindow.h \
     mod_4_clorador.h \
     mod_5_digestor.h \
     mod_flechas.h \
-    mod_6_lechos.h
+    mod_6_lechos.h \
+    asa_protocol.h \
+    asa_conversions.h \
+    clickeablelabel.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \

@@ -1,7 +1,9 @@
 #include "dataproccess.h"
 #include <QDebug>
 #include "parameters.h"
+#include "asa_protocol.h"
 
+#define RELEASE_FOR_RPI (0)
 
 #define PSI_RAWMIN   0x0194         //ADC 415  == 0
 #define PSI_RAWMAX   0x08E7         //2294     == 1.82
@@ -66,19 +68,32 @@
 #define DSS_PHYSMAX  100
 
 
-DataProccess::DataProccess(QObject *parent) : QObject(parent)
+DataProccess::DataProccess(QObject *parent)
 {
-    dataProccessing = QList<double>() << 0.0 << 0.0 << 0.0  << 0.0 << 0.0  << 0.0 << 0.0 << 0.0 << 0.0  << 0.0 << 0.0 << 0.0  << 0.0 << 0.0  << 0.0 << 0.0  << 0.0 << 0.0 ;
-    //dataProccessing.append(0.0);
+#if (1 == RELEASE_FOR_RPI)
     spiObj = spiObj->SPInstance();
-    dataTimer.setInterval(200);
-    connect(&dataTimer, SIGNAL(timeout()),this,SLOT(dataTimerSlot()));
-    dataTimer.start();
+#else
+    // Will use random numbers
+#endif
 }
 
 DataProccess::~DataProccess()
 {
     delete spiObj;
+}
+
+void DataProccess::run()
+{
+    while(1)
+    {
+#if (1 == RELEASE_FOR_RPI)
+        this->dataSPI();
+#else
+        this->dataRandom();
+#endif
+        spi_read_completed();
+        QThread::msleep(200);
+    }
 }
 
 double DataProccess::raw2phys(int rawmin, int rawmax, int physmin, int phymax, int sensor)
@@ -198,13 +213,12 @@ int DataProccess::intString2Int(QString inputString)
     return temp;
 }
 
-void DataProccess::dataTimerSlot()
-{
-    this->dataSPI();
-    ////qDebug() << sizeof(int);
-    ////qDebug() << "Hola Eslava";
-    ////qDebug() << "We are printing someting";
-}
+
+
+//void DataProccess::dataTimerSlot()
+//{
+//    this->dataSPI();
+//}
 
 void DataProccess::dataSPI()
 {
@@ -225,13 +239,6 @@ void DataProccess::dataSPI()
         //    QStringList initial = str.split(separator);
         bufferString =  QString(SPIinfo);   //Cast Char array to STRING
 
-        double currentAVG = 0;
-        double voltajeAVG = 0;
-        double FPAVG = 0;
-
-        double realValue = 0;
-        bool is_string = false;
-
 
         send_ASA_Conf = true;
         qDebug() << "Receive data";
@@ -242,309 +249,334 @@ void DataProccess::dataSPI()
 
         for(int i = 0; i < ID_Parameters.length() ; i++)
         {
-
-            is_string = false;
-
             realParameters = ID_Parameters[i].split(":");
-
-
-            //for (int j = 0; j < realParameters.length(); ++j) {
-               // temp = realParameters[j];
-                ////qDebug() << "Los valore [" << i << "][" << j << "] = " <<  realParameters[j]  << " len = " << realParameters[j].size();
 
             if(realParameters.length() > 1)
             {
-                switch (intString2Int(realParameters[0])) {
-
-                case 40:
-                    realValue = raw2modbus(DSS_RAWMIN, DSS_RAWMAX, hexString2Int(realParameters[1]), 1);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[1] = realValue;
-    //                qDebug() << "Value in CASE 40 : " <<  realParameters[1];
-                    break;
-
-                case 41:
-                    realValue  = raw2modbus(DPH_RAWMIN, DPH_RAWMIN, hexString2Int(realParameters[1]), 100);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[5] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-                case 42:
-                    realValue  = raw2modbus(DSS_RAWMIN, DSS_RAWMAX, hexString2Int(realParameters[1]), 100);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[6] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-
-                case 43:
-                    realValue  = calcCAUfromADC(hexString2Int(realParameters[1]));
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[0] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-                case 44:
-                    realValue  = hexString2Int(realParameters[1]);
-                    break;
-
-                case 45:
-                    realValue  = raw2modbus(VOLTS_RAWMIN, VOLTS_RAWMAX, hexString2Int(realParameters[1]), 10);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[12] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    voltajeAVG = voltajeAVG + (realValue/3);
-                    break;
-
-                case 46:
-                case 47:
-                    realValue  = raw2modbus(VOLTS_RAWMIN, VOLTS_RAWMAX, hexString2Int(realParameters[1]), 10);
-                    voltajeAVG = voltajeAVG + (realValue/3);
-                    break;
-
-                case 48:
-                    realValue  = raw2modbus(CURRENT_RAWMIN, CURRENT_RAWMAX, hexString2Int(realParameters[1]), 1000);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[13] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    currentAVG = currentAVG + (realValue/3);
-                    break;
-
-                case 49:
-                case 50:
-                    realValue  = raw2modbus(CURRENT_RAWMIN, CURRENT_RAWMAX, hexString2Int(realParameters[1]), 1000);
-                    currentAVG = currentAVG + (realValue/3);
-                    break;
-
-                case 51:
-                    realValue  = hexString2Int(realParameters[1])/ 10;
-                    break;
-
-                case 52:
-                    realValue  = raw2modbus(FP_RAWMIN, FP_RAWMAX, hexString2Int(realParameters[1]), 100);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[14] = realValue;
-                    dataProccessing[17] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    FPAVG = FPAVG + (realValue/2);
-                    break;
-
-                case 53:
-                    realValue  = hexString2Int(realParameters[1])/ 100;
-                    break;
-
-                case 54:
-                    realValue  = hexString2Int(realParameters[1]);
-                    break;
-
-                case 55:
-                case 56:
-                case 57:
-                    realValue  = hexString2Int(realParameters[1])/ 10;
-                    break;
-
-                case 58:
-                case 59:
-                case 60:
-                    realValue  = hexString2Int(realParameters[1])/ 1000;
-                    break;
-
-                case 61:
-                    realValue  = hexString2Int(realParameters[1])/ 10;
-                    break;
-
-                case 62:
-                    realValue  = hexString2Int(realParameters[1])/ 100;
-                    break;
-
-                case 63:
-                    realValue  = raw2modbus(FP_RAWMIN, FP_RAWMAX, hexString2Int(realParameters[1]), 10);
-                    FPAVG = FPAVG + (realValue/2);
-                    break;
-
-                case 64:
-                    realValue  = hexString2Int(realParameters[1]);
-                    break;
-
-                case 65:
-                    realValue  = raw2modbus(DTU_RAWMIN, DTU_RAWMAX, hexString2Int(realParameters[1]), 10);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[7] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-
-                case 90:
-                case 91:
-                    realValue  = raw2modbus(DO2_RAWMIN, DO2_RAWMAX, hexString2Int(realParameters[1]), 100);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[8] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-                case 92:
-                    realValue  = hexString2Int(realParameters[1]);
-                    break;
-
-                case 93:
-                case 94:
-                case 95:
-                    realValue  = raw2modbus(VOLTS_RAWMIN, VOLTS_RAWMAX, hexString2Int(realParameters[1]), 10);
-                    break;
-                case 96:
-                case 97:
-                case 98:
-                    realValue  = raw2modbus(CURRENT_RAWMIN, CURRENT_RAWMAX, hexString2Int(realParameters[1]), 1000);
-                    break;
-
-                case 99:
-                    realValue  = hexString2Int(realParameters[1])/10;
-                    break;
-
-                case 100:
-                    realValue  = hexString2Int(realParameters[1])/100;
-                    break;
-
-                case 101:
-                    realValue  = hexString2Int(realParameters[1])/ 100;
-                    break;
-
-                case 102:
-                    realValue  = hexString2Int(realParameters[1]);
-                    break;
-
-                case 103:
-                case 104:
-                case 105:
-                    realValue  = hexString2Int(realParameters[1])/10;
-                    break;
-
-                case 106:
-                case 107:
-                case 108:
-                    realValue  = hexString2Int(realParameters[1])/1000;
-                    break;
-
-                case 109:
-                    realValue  = hexString2Int(realParameters[1])/10;
-                    break;
-
-                case 110:
-                case 111:
-                    realValue  = hexString2Int(realParameters[1])/10;
-                    break;
-
-                case 112:
-                    realValue  = hexString2Int(realParameters[1]);
-                    break;
-
-                case 113:
-                case 114:
-                case 115:
-                    realValue  = hexString2Int(realParameters[1])/10;
-                    break;
-
-                case 116:
-                case 117:
-                case 118:
-                    realValue  = hexString2Int(realParameters[1])/1000;
-                    break;
-
-                case 119:
-                    realValue  = hexString2Int(realParameters[1])/10;
-                    break;
-
-                case 120:
-                case 121:
-                    realValue  = hexString2Int(realParameters[1])/100;
-                    break;
-
-                case 122:
-                    realValue  = calcPSIfromADC(PSI_RAWMIN, PSI_RAWMAX, PSI_PHYSMIN, PSI_PHYSMAX, hexString2Int(realParameters[1]));
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[2] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-                    ////qDebug() << "Value in CASE 1 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-                case 145:
-
-                    //Nivel Dinamico
-                    realValue  = raw2modbus(DO2_RAWMIN, DO2_RAWMAX, hexString2Int(realParameters[1]), 1);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[3] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-                case 160:
-                    realValue  = raw2modbus(DPH_RAWMIN, DPH_RAWMIN, hexString2Int(realParameters[1]), 100);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[9] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-
-                case 161:
-                    realValue  = raw2modbus(DSS_RAWMIN, DSS_RAWMIN, hexString2Int(realParameters[1]), 100);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[10] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-
-                case 162:
-                    realValue  = calcPSIfromADC(CAUDAL_RAWMIN, CAUDAL_RAWMAX, CAUDAL_PHYSMIN, CAUDAL_PHYSMAX, hexString2Int(realParameters[1]));
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[4] = realValue;
-                    //qDebug() << "Value in CASE 162 : " <<  hexString2Int(realParameters[1]);
-                    break;
-
-                case 163:
-                    realValue  = raw2modbus(DTU_RAWMIN, DTU_RAWMAX, hexString2Int(realParameters[1]), 10);
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[11] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-                case 165:
-                case 166:
-                    realValue  = calcPSIfromADC(0x194, CAUDAL_RAWMAX, CAUDAL_PHYSMIN, 147, hexString2Int(realParameters[1]));
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-                    dataProccessing[4] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-                    break;
-
-                case 16:
-//                    realValue  = calcPSIfromADC(0x194, CAUDAL_RAWMAX, CAUDAL_PHYSMIN, 147, hexString2Int(realParameters[1]));
-    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
-//                    dataProccessing[4] = realValue;
-                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
-//                    qDebug() << "***TIME: " << realParameters[1];
-                    is_string = true;
-                    break;
-
-                default:
-                    realValue = intString2Int(realParameters[0]);
-                    break;
-                }
-                if(true == is_string)
-                {
-                    setParamString(intString2Int(realParameters[0]), realParameters[1]);
-                }
-                else
-                {
-                    setParamValue(intString2Int(realParameters[0]), realValue);
-                }
+                store_value_by_ID(intString2Int(realParameters[0]) , realParameters[1]);
             }
-
+            else
+            {
+                // only one part was found, this could be a zero lengh ID
+            }
         }
-        dataProccessing[15] = voltajeAVG;
-        dataProccessing[16] = currentAVG;
+    }
+//        for(int i = 0; i < ID_Parameters.length() ; i++)
+//        {
+
+//            is_string = false;
+
+//            realParameters = ID_Parameters[i].split(":");
+
+//            if(realParameters.length() > 1)
+//            {
+//                switch (intString2Int(realParameters[0])) {
+
+//                case 40:
+//                    realValue = raw2modbus(DSS_RAWMIN, DSS_RAWMAX, hexString2Int(realParameters[1]), 1);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[1] = realValue;
+//    //                qDebug() << "Value in CASE 40 : " <<  realParameters[1];
+//                    break;
+
+//                case 41:
+//                    realValue  = raw2modbus(DPH_RAWMIN, DPH_RAWMIN, hexString2Int(realParameters[1]), 100);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[5] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+//                case 42:
+//                    realValue  = raw2modbus(DSS_RAWMIN, DSS_RAWMAX, hexString2Int(realParameters[1]), 100);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[6] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+
+//                case 43:
+//                    realValue  = calcCAUfromADC(hexString2Int(realParameters[1]));
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[0] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+//                case 44:
+//                    realValue  = hexString2Int(realParameters[1]);
+//                    break;
+
+//                case 45:
+//                    realValue  = raw2modbus(VOLTS_RAWMIN, VOLTS_RAWMAX, hexString2Int(realParameters[1]), 10);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[12] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    voltajeAVG = voltajeAVG + (realValue/3);
+//                    break;
+
+//                case 46:
+//                case 47:
+//                    realValue  = raw2modbus(VOLTS_RAWMIN, VOLTS_RAWMAX, hexString2Int(realParameters[1]), 10);
+//                    voltajeAVG = voltajeAVG + (realValue/3);
+//                    break;
+
+//                case 48:
+//                    realValue  = raw2modbus(CURRENT_RAWMIN, CURRENT_RAWMAX, hexString2Int(realParameters[1]), 1000);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[13] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    currentAVG = currentAVG + (realValue/3);
+//                    break;
+
+//                case 49:
+//                case 50:
+//                    realValue  = raw2modbus(CURRENT_RAWMIN, CURRENT_RAWMAX, hexString2Int(realParameters[1]), 1000);
+//                    currentAVG = currentAVG + (realValue/3);
+//                    break;
+
+//                case 51:
+//                    realValue  = hexString2Int(realParameters[1])/ 10;
+//                    break;
+
+//                case 52:
+//                    realValue  = raw2modbus(FP_RAWMIN, FP_RAWMAX, hexString2Int(realParameters[1]), 100);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[14] = realValue;
+//                    dataProccessing[17] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    FPAVG = FPAVG + (realValue/2);
+//                    break;
+
+//                case 53:
+//                    realValue  = hexString2Int(realParameters[1])/ 100;
+//                    break;
+
+//                case 54:
+//                    realValue  = hexString2Int(realParameters[1]);
+//                    break;
+
+//                case 55:
+//                case 56:
+//                case 57:
+//                    realValue  = hexString2Int(realParameters[1])/ 10;
+//                    break;
+
+//                case 58:
+//                case 59:
+//                case 60:
+//                    realValue  = hexString2Int(realParameters[1])/ 1000;
+//                    break;
+
+//                case 61:
+//                    realValue  = hexString2Int(realParameters[1])/ 10;
+//                    break;
+
+//                case 62:
+//                    realValue  = hexString2Int(realParameters[1])/ 100;
+//                    break;
+
+//                case 63:
+//                    realValue  = raw2modbus(FP_RAWMIN, FP_RAWMAX, hexString2Int(realParameters[1]), 10);
+//                    FPAVG = FPAVG + (realValue/2);
+//                    break;
+
+//                case 64:
+//                    realValue  = hexString2Int(realParameters[1]);
+//                    break;
+
+//                case 65:
+//                    realValue  = raw2modbus(DTU_RAWMIN, DTU_RAWMAX, hexString2Int(realParameters[1]), 10);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[7] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+
+//                case 90:
+//                case 91:
+//                    realValue  = raw2modbus(DO2_RAWMIN, DO2_RAWMAX, hexString2Int(realParameters[1]), 100);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[8] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+//                case 92:
+//                    realValue  = hexString2Int(realParameters[1]);
+//                    break;
+
+//                case 93:
+//                case 94:
+//                case 95:
+//                    realValue  = raw2modbus(VOLTS_RAWMIN, VOLTS_RAWMAX, hexString2Int(realParameters[1]), 10);
+//                    break;
+//                case 96:
+//                case 97:
+//                case 98:
+//                    realValue  = raw2modbus(CURRENT_RAWMIN, CURRENT_RAWMAX, hexString2Int(realParameters[1]), 1000);
+//                    break;
+
+//                case 99:
+//                    realValue  = hexString2Int(realParameters[1])/10;
+//                    break;
+
+//                case 100:
+//                    realValue  = hexString2Int(realParameters[1])/100;
+//                    break;
+
+//                case 101:
+//                    realValue  = hexString2Int(realParameters[1])/ 100;
+//                    break;
+
+//                case 102:
+//                    realValue  = hexString2Int(realParameters[1]);
+//                    break;
+
+//                case 103:
+//                case 104:
+//                case 105:
+//                    realValue  = hexString2Int(realParameters[1])/10;
+//                    break;
+
+//                case 106:
+//                case 107:
+//                case 108:
+//                    realValue  = hexString2Int(realParameters[1])/1000;
+//                    break;
+
+//                case 109:
+//                    realValue  = hexString2Int(realParameters[1])/10;
+//                    break;
+
+//                case 110:
+//                case 111:
+//                    realValue  = hexString2Int(realParameters[1])/10;
+//                    break;
+
+//                case 112:
+//                    realValue  = hexString2Int(realParameters[1]);
+//                    break;
+
+//                case 113:
+//                case 114:
+//                case 115:
+//                    realValue  = hexString2Int(realParameters[1])/10;
+//                    break;
+
+//                case 116:
+//                case 117:
+//                case 118:
+//                    realValue  = hexString2Int(realParameters[1])/1000;
+//                    break;
+
+//                case 119:
+//                    realValue  = hexString2Int(realParameters[1])/10;
+//                    break;
+
+//                case 120:
+//                case 121:
+//                    realValue  = hexString2Int(realParameters[1])/100;
+//                    break;
+
+//                case 122:
+//                    realValue  = calcPSIfromADC(PSI_RAWMIN, PSI_RAWMAX, PSI_PHYSMIN, PSI_PHYSMAX, hexString2Int(realParameters[1]));
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[2] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+//                    ////qDebug() << "Value in CASE 1 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+//                case 145:
+
+//                    //Nivel Dinamico
+//                    realValue  = raw2modbus(DO2_RAWMIN, DO2_RAWMAX, hexString2Int(realParameters[1]), 1);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[3] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+//                case 160:
+//                    realValue  = raw2modbus(DPH_RAWMIN, DPH_RAWMIN, hexString2Int(realParameters[1]), 100);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[9] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+
+//                case 161:
+//                    realValue  = raw2modbus(DSS_RAWMIN, DSS_RAWMIN, hexString2Int(realParameters[1]), 100);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[10] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+
+//                case 162:
+//                    realValue  = calcPSIfromADC(CAUDAL_RAWMIN, CAUDAL_RAWMAX, CAUDAL_PHYSMIN, CAUDAL_PHYSMAX, hexString2Int(realParameters[1]));
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[4] = realValue;
+//                    //qDebug() << "Value in CASE 162 : " <<  hexString2Int(realParameters[1]);
+//                    break;
+
+//                case 163:
+//                    realValue  = raw2modbus(DTU_RAWMIN, DTU_RAWMAX, hexString2Int(realParameters[1]), 10);
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[11] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+//                case 165:
+//                case 166:
+//                    realValue  = calcPSIfromADC(0x194, CAUDAL_RAWMAX, CAUDAL_PHYSMIN, 147, hexString2Int(realParameters[1]));
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+//                    dataProccessing[4] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+//                    break;
+
+//                case 16:
+////                    realValue  = calcPSIfromADC(0x194, CAUDAL_RAWMAX, CAUDAL_PHYSMIN, 147, hexString2Int(realParameters[1]));
+//    //                realValue = static_cast<double>(hexString2Int(realParameters[1]));
+////                    dataProccessing[4] = realValue;
+//                    //qDebug() << "Value in CASE 43 : " <<  intString2Int(realParameters[1]);
+////                    qDebug() << "***TIME: " << realParameters[1];
+//                    is_string = true;
+//                    break;
+
+//                default:
+//                    realValue = intString2Int(realParameters[0]);
+//                    break;
+//                }
+//                if(true == is_string)
+//                {
+//                    setParamString(intString2Int(realParameters[0]), realParameters[1]);
+//                }
+//                else
+//                {
+//                    setParamValue(intString2Int(realParameters[0]), realValue);
+//                }
+//            }
+
+//        }
+//        dataProccessing[15] = voltajeAVG;
+//        dataProccessing[16] = currentAVG;
     //    dataProccessing[17] = FPAVG;
 
+    //    }
+}
+
+void DataProccess::dataRandom()
+{
+    int i = 0;
+    uint random = 0;
+    //Add here IDs to generate random numbers
+    QList<int> id_list = QList<int>() << 0x2 << 0x3 << 0x4;
+
+    for(i = 0; i < id_list.size(); i++)
+    {
+        random = qrand() % 50;
+        store_value_by_ID(id_list.at(i), QString::number(random));
     }
+
+    store_value_by_ID(0x3301, "12345");
 }
 
 QList<double> DataProccess::getDataProcessing()

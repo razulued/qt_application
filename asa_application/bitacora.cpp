@@ -117,8 +117,8 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
 
     //Scroll
     QScroller *scroller = QScroller::scroller(ui->tableWidget);
-    ui->tableWidget->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
-    ui->tableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerItem);
+    ui->tableWidget->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    ui->tableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
 
     QScrollerProperties properties = QScroller::scroller(scroller)->scrollerProperties();
     QVariant overshootPolicy = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
@@ -131,8 +131,8 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
 
     //Scroll
     QScroller *scroller_2 = QScroller::scroller(ui->tableWidget_2);
-    ui->tableWidget_2->setVerticalScrollMode(QAbstractItemView::ScrollPerItem);
-    ui->tableWidget_2->setHorizontalScrollMode(QAbstractItemView::ScrollPerItem);
+    ui->tableWidget_2->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    ui->tableWidget_2->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
 
     QScrollerProperties properties_2 = QScroller::scroller(scroller_2)->scrollerProperties();
     QVariant overshootPolicy_2 = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);

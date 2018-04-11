@@ -1,22 +1,25 @@
 #ifndef DATAPROCCESS_H
 #define DATAPROCCESS_H
 
-#include <QObject>
+#include <QtCore>
 #include "spicomm.h"
 #include<QTimer>
 
-class DataProccess : public QObject
+class DataProccess : public QThread
 {
     Q_OBJECT
-public:
+    public:
     explicit DataProccess(QObject *parent = nullptr);
-    void dataSPI();
     QList<double> getDataProcessing(void);
      ~DataProccess();
+    void run();
 
 signals:
+    void spi_read_completed();
 
 private:
+    void dataSPI();
+    void dataRandom();
     QTimer dataTimer;
     QList<double> dataProccessing;
     SPICOMM* spiObj;
@@ -32,7 +35,7 @@ private:
     int intString2Int(QString inputString);
 
 public slots:
-    void dataTimerSlot();
+//    void dataTimerSlot();
 };
 
 #endif // DATAPROCCESS_H

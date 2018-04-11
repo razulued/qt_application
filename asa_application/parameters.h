@@ -28,6 +28,7 @@ void setParamString(unsigned int id, QString value);
 QString getParamName(unsigned int id);
 bool getParamActiveShow(unsigned int id);
 void toggleParamActiveShow(unsigned int id);
+QHash<uint,uint> load_active_parameters();
 
 void InitRandomParameters();
 void run_simulation();

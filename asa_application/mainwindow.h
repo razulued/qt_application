@@ -19,6 +19,7 @@
 #include "mod_5_digestor.h"
 #include "mod_6_lechos.h"
 #include "mod_flechas.h"
+#include "dataproccess.h"
 
 namespace Ui {
 class MainWindow;
@@ -91,6 +92,8 @@ public:
 
     rutinas_mantenimiento *rutinas;
 
+    DataProccess *dataObj;
+
 public slots:
     void handleMenuButton();
     void handleParametrosElectricosButton();
@@ -115,6 +118,8 @@ private slots:
     void on_top_menu_4_clicked();
 
     void on_top_menu_2_clicked();
+
+    void new_spi_data();
 
 private:
     QTimer dataTimer;
@@ -189,6 +194,8 @@ private:
     mod_flechas *mod_blower;
     mod_flechas *mod_bomba;
 
+    void update_system_time();
+    QDateTime time;
 protected:
     void paintEvent(QPaintEvent *);
 

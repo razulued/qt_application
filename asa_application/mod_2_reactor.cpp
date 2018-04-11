@@ -12,7 +12,7 @@ mod_2_reactor::mod_2_reactor(QLabel *parent) :
     original_pos = parent->pos();
 //    parent_label->setStyleSheet("background-image: url(:/reactor/images/2_Reactor/reactor.png); ");
 
-    load_new_gif(REACTOR_GIF_STATE_HI_QUIET);
+    load_new_gif(REACTOR_GIF_STATE_HI_MOV);
 
     this->show();
 }

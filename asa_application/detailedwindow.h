@@ -125,6 +125,7 @@ private slots:
 
     void on_key_slash_clicked();
 
+    void background_clicked();
 private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;

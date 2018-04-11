@@ -8,6 +8,10 @@
 #include <QDebug>
 #include "mainwindow.h"
 #include <QScrollBar>
+#include <QScrollArea>
+#include <QScroller>
+#include <QScrollerProperties>
+#include "clickeablelabel.h"
 
 #define BUILD_FOR_RPI (0)
 
@@ -171,6 +175,12 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 {
     ui->setupUi(this);
 
+    clickeablelabel *alphabackground = new clickeablelabel(this);
+    alphabackground->setGeometry(this->geometry());
+    alphabackground->setStyleSheet("background-color: rgb(0,0,0,120);");
+    alphabackground->lower();
+    connect(alphabackground,SIGNAL(clicked()),this,SLOT(background_clicked()));
+
     rutinas_ptr = rutina;
 
     this->setObjectName("DetailedWindow");
@@ -183,8 +193,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
                             "border-style: solid;"
                             "border-color: rgb(0, 167, 250);"
                             "border-radius: 5px;"
-                            "width: 20px;"
-                            "height: 20px;"
+                            "width: 24px;"
+                            "height: 24px;"
                             "image: url(:/iconos/images/Iconos/Punto_contrasena.png);"
                         "}"
                         "QCheckBox::indicator:unchecked{"
@@ -192,8 +202,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
                         "border-style: solid;"
                         "border-color: gray;"
                         "border-radius: 5px;"
-                        "width: 20px;"
-                        "height: 20px;"
+                        "width: 24px;"
+                        "height: 24px;"
                          "}"
                         "QLabel{color:white}"
                         );
@@ -266,6 +276,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
+
 
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
@@ -776,6 +787,20 @@ void detailedwindow::tab_1_init()
     }
 
     ui->tableWidget_tab_1->setColumnWidth(0,150);
+
+    //Scroll
+    QScroller *scroller = QScroller::scroller(ui->tableWidget_tab_1);
+    ui->tableWidget_tab_1->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    ui->tableWidget_tab_1->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+    QScrollerProperties properties = QScroller::scroller(scroller)->scrollerProperties();
+    QVariant overshootPolicy = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy);
+    scroller->setScrollerProperties(properties);
+    properties.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, overshootPolicy);
+    scroller->setScrollerProperties(properties);
+    //Scrolling Gesture
+    scroller->grabGesture(ui->tableWidget_tab_1,QScroller::LeftMouseButtonGesture);
 }
 
 void detailedwindow::tab_2_init()
@@ -938,7 +963,18 @@ void detailedwindow::tab_4_init()
 
     QSignalMapper *checkboxMapper = new QSignalMapper(this);
 
-    ui->verticalLayout->setAlignment(Qt::AlignTop);
+//    QScrollArea* scrollArea = new QScrollArea;
+//    scrollArea->setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
+//    scrollArea->setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
+//    scrollArea->setWidget(ui->tab_4);
+//    scrollArea->setWidgetResizable (true);
+
+//    QVBoxLayout *layout = new QVBoxLayout(ui->tab_4);
+    QVBoxLayout *layout = new QVBoxLayout;
+    ui->scrollArea->widget()->setLayout(layout);
+    ui->scrollArea->setWidgetResizable(true);
+    layout->setAlignment(Qt::AlignTop);
+
 
     QCheckBox *box;
 
@@ -953,7 +989,7 @@ void detailedwindow::tab_4_init()
         }
         box->setFont(font_2);
 //        box->setLayoutDirection(Qt::RightToLeft);
-        ui->verticalLayout->addWidget(box);
+        layout->addWidget(box);
 
 
         //Connect checkbox to parameter active show
@@ -972,7 +1008,7 @@ void detailedwindow::tab_4_init()
         }
         box->setFont(font_2);
 //        box->setLayoutDirection(Qt::RightToLeft);
-        ui->verticalLayout->addWidget(box);
+        layout->addWidget(box);
         //Connect checkbox to parameter active show
         connect(box, SIGNAL(clicked(bool)), checkboxMapper, SLOT(map()));
         checkboxMapper->setMapping(box, param_id);
@@ -989,7 +1025,8 @@ void detailedwindow::tab_4_init()
         }
         box->setFont(font_2);
 //        box->setLayoutDirection(Qt::RightToLeft);
-        ui->verticalLayout->addWidget(box);
+        layout->addWidget(box);
+
         //Connect checkbox to parameter active show
         connect(box, SIGNAL(clicked(bool)), checkboxMapper, SLOT(map()));
         checkboxMapper->setMapping(box, param_id);
@@ -997,6 +1034,16 @@ void detailedwindow::tab_4_init()
 
     // Connect all checkboxes to mapper
     connect(checkboxMapper, SIGNAL(mapped(int)), this, SLOT(checkBoxStateChanged(int)));
+
+    //Scroll
+//    QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture);
+    QScroller *scroller = QScroller::scroller(ui->scrollArea);
+    QScrollerProperties properties = QScroller::scroller(scroller)->scrollerProperties();
+    QVariant overshootPolicy = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy);
+    scroller->setScrollerProperties(properties);
+    //Scrolling Gesture
+    scroller->grabGesture(ui->scrollArea,QScroller::LeftMouseButtonGesture);
 }
 
 void detailedwindow::tab_5_init()
@@ -1230,11 +1277,12 @@ void detailedwindow::on_key_plus_clicked(){ui->textEdit->insertPlainText("+");}
 void detailedwindow::on_key_minus_clicked(){ui->textEdit->insertPlainText("-");}
 void detailedwindow::on_key_slash_clicked(){ui->textEdit->insertPlainText("/");}
 
+void detailedwindow::background_clicked()
+{
+    this->close();
+}
+
 void detailedwindow::on_textEdit_selectionChanged()
 {
     ui->key_Reschedule->setChecked(false);
 }
-
-
-
-

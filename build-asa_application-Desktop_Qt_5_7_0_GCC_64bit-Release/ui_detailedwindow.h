@@ -18,6 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
@@ -41,8 +42,8 @@ public:
     QWidget *tab_3;
     QLabel *description_label;
     QWidget *tab_4;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
     QWidget *tab_5;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *verticalLayout_2;
@@ -108,7 +109,7 @@ public:
     QPushButton *key_mayus;
     QLabel *key_back_6;
     QTextEdit *textEdit;
-    QLabel *alphabackground;
+    QWidget *widget;
 
     void setupUi(QDialog *detailedwindow)
     {
@@ -208,12 +209,14 @@ public:
         tabWidget->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QStringLiteral("tab_4"));
-        verticalLayoutWidget = new QWidget(tab_4);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 10, 271, 271));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        scrollArea = new QScrollArea(tab_4);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setGeometry(QRect(0, 0, 311, 281));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 309, 279));
+        scrollArea->setWidget(scrollAreaWidgetContents);
         tabWidget->addTab(tab_4, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QStringLiteral("tab_5"));
@@ -380,17 +383,6 @@ public:
 "background-position: center;\n"
 "}"));
         button_descripcion->setCheckable(false);
-        label->raise();
-        button_parametros->raise();
-        button_evento->raise();
-        tabWidget->raise();
-        button_visualizacion->raise();
-        closeButton->raise();
-        button_control->raise();
-        nombre->raise();
-        imagen->raise();
-        button_descripcion->raise();
-        tableWidget_2->raise();
         key_frame = new QFrame(detailedwindow);
         key_frame->setObjectName(QStringLiteral("key_frame"));
         key_frame->setGeometry(QRect(40, 510, 941, 251));
@@ -1288,20 +1280,16 @@ public:
 "border-radius: 8px;\n"
 "border-color: rgb(0, 167, 250);;\n"
 "}"));
-        alphabackground = new QLabel(detailedwindow);
-        alphabackground->setObjectName(QStringLiteral("alphabackground"));
-        alphabackground->setGeometry(QRect(-10, 3, 1041, 771));
-        alphabackground->setStyleSheet(QLatin1String("#alphabackground{\n"
+        widget = new QWidget(detailedwindow);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(900, 190, 120, 80));
+        widget->setStyleSheet(QLatin1String("#widget{\n"
 "background-color: rgb(0, 0, 0,120);\n"
 "}"));
-        alphabackground->raise();
-        frame->raise();
-        key_frame->raise();
-        textEdit->raise();
 
         retranslateUi(detailedwindow);
 
-        tabWidget->setCurrentIndex(5);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(detailedwindow);
@@ -1378,7 +1366,6 @@ public:
         key_enter->setText(QString());
         key_mayus->setText(QApplication::translate("detailedwindow", "MAYUSCULAS", 0));
         key_back_6->setText(QString());
-        alphabackground->setText(QString());
     } // retranslateUi
 
 };

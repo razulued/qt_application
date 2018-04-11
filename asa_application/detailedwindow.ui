@@ -174,7 +174,7 @@ border: none;
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>3</number>
     </property>
     <property name="elideMode">
      <enum>Qt::ElideNone</enum>
@@ -243,16 +243,28 @@ border: none;
      <attribute name="title">
       <string>Tab 4</string>
      </attribute>
-     <widget class="QWidget" name="verticalLayoutWidget">
+     <widget class="QScrollArea" name="scrollArea">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>271</width>
-        <height>271</height>
+        <x>0</x>
+        <y>0</y>
+        <width>311</width>
+        <height>281</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout"/>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>309</width>
+         <height>279</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_5">
@@ -622,17 +634,6 @@ background-position: center;
      <bool>false</bool>
     </property>
    </widget>
-   <zorder>label</zorder>
-   <zorder>button_parametros</zorder>
-   <zorder>button_evento</zorder>
-   <zorder>tabWidget</zorder>
-   <zorder>button_visualizacion</zorder>
-   <zorder>closeButton</zorder>
-   <zorder>button_control</zorder>
-   <zorder>nombre</zorder>
-   <zorder>imagen</zorder>
-   <zorder>button_descripcion</zorder>
-   <zorder>tableWidget_2</zorder>
   </widget>
   <widget class="QFrame" name="key_frame">
    <property name="geometry">
@@ -2287,28 +2288,21 @@ border-color: rgb(0, 167, 250);;
 }</string>
    </property>
   </widget>
-  <widget class="QLabel" name="alphabackground">
+  <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>-10</x>
-     <y>3</y>
-     <width>1041</width>
-     <height>771</height>
+     <x>900</x>
+     <y>190</y>
+     <width>120</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#alphabackground{
+    <string notr="true">#widget{
 background-color: rgb(0, 0, 0,120);
 }</string>
    </property>
-   <property name="text">
-    <string/>
-   </property>
   </widget>
-  <zorder>alphabackground</zorder>
-  <zorder>frame</zorder>
-  <zorder>key_frame</zorder>
-  <zorder>textEdit</zorder>
  </widget>
  <resources/>
  <connections/>

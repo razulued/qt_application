@@ -6,6 +6,7 @@
 #include <QList>
 #include <QPainter>
 #include <QColor>
+#include "asa_protocol.h"
 
 #define ENABLE_TEST (1)
 #define BUILD_FOR_RPI (0)
@@ -57,6 +58,7 @@ int MainWindow::reg_mot_2;
 
 QString MainWindow::ASA_conf_string;
 QString MainWindow::ASA_conf_only_string;
+
 
 void MainWindow::HideButtons(bool hide)
 {
@@ -122,6 +124,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 //    settingswindow = NULL;
+
+    // Init SPI
+    dataObj = new DataProccess;
+    dataObj->start();
 
     // Rutinas y DB
     rutinas = new rutinas_mantenimiento("rutinas.db");
@@ -210,6 +216,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&dataTimer, SIGNAL(timeout()),this,SLOT(dataTimerSlot()));
     dataTimer.start();
 
+    connect(dataObj, SIGNAL(spi_read_completed()), this, SLOT(new_spi_data()));
+//    new_spi_data
+
     //Add fonts
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Bold Demo.otf");
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Ligth Demo.otf");
@@ -272,6 +281,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mod_sludge_return = new mod_flechas(SLUDGE_RETURN,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_sludge_return_a);
     mod_blower = new mod_flechas(BLOWER,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_blower);
     mod_bomba = new mod_flechas(CARCAMO_MOTOR,  0, ui->gif_car_mot);
+
+    ASA_protocol_init();
 
 #if BUILD_FOR_RPI
     system("echo 17 >/sys/class/gpio/export");
@@ -403,34 +414,6 @@ void MainWindow::dataTimerSlot()
 #endif
 
 
-    /* Update Hora */
-    //"18/03/06,13:34:55"
-    /* Update reloj */
-    QString dos_mil = "20";
-    QString time_format = "yyyy/MM/dd,HH.mm.ss";
-    QString hora =  dos_mil+ getParamValue(16);
-#if (1 == ENABLE_TEST)
-    QDateTime time = QDateTime::currentDateTime();
-#else
-    QDateTime time = QDateTime::fromString(hora, time_format);
-#endif
-    if(0 == (count % 100)) /* 1 segundo */
-    {
-        /* Check rutinas (new events have occurred?) */
-        if(NULL != rutinas)
-        {
-
-            rutinas->set_time(time);
-            rutinas->check_rutinas();
-        }
-
-        /* Check update values in bitacora window (if open) */
-        if((NULL != bitacorawindow) && bitacorawindow->isActiveWindow())
-        {
-            bitacorawindow->update_table();
-        }
-    }
-
     if(0 == (count % 2)) /* 20 ms */
     {
         // Fastest time for smooth transition when moving
@@ -444,11 +427,11 @@ void MainWindow::dataTimerSlot()
 
 #if (1 ==ENABLE_TEST)
         /***** DEMO *****/
-        mod_1->check_update_animation();
-        mod_2->check_update_animation();
-        mod_3->check_update_animation();
-        mod_4->check_update_animation();
-        mod_5->check_update_animation();
+//        mod_1->check_update_animation();
+//        mod_2->check_update_animation();
+//        mod_3->check_update_animation();
+//        mod_4->check_update_animation();
+//        mod_5->check_update_animation();
 
         mod_afluente->check_update_animation();
         mod_efluente->check_update_animation();
@@ -456,21 +439,6 @@ void MainWindow::dataTimerSlot()
         mod_blower->check_update_animation();
         mod_bomba->check_update_animation();
 #endif
-    }
-
-    if(0 == (count % 15)) /* 150 ms */
-    {
-        /* Update data in detailed window (if open) */
-        if((NULL != detail_window) && detail_window->isActiveWindow())
-        {
-            detail_window->update_params();
-        }
-    }
-
-    if(0 == (count % 10)) /* 100 ms */
-    {
-        QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
-        ui->label_hora->setText(display_time);
     }
 
     count++;
@@ -674,7 +642,7 @@ void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &p
 
     if(true == tooltip->isVisible() && (last_position != tooltip->pos()))
     {
-        this->update();
+//        this->update();
 
         if((tooltip->geometry().bottom() + 50) <  module->geometry().top())
         {
@@ -716,7 +684,7 @@ void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &p
 
 void MainWindow::paintEvent(QPaintEvent *)
 {
-    this->update();
+//    this->update();
 //     QPainter painter(this);
 
 //     QColor line_color;
@@ -776,6 +744,7 @@ void MainWindow::on_top_menu_2_clicked()
 //    }
 
 }
+
 
 void MainWindow::update_tooltips(void)
 {
@@ -908,4 +877,56 @@ void MainWindow::update_tooltips(void)
         }
 
     }
+}
+
+void MainWindow::new_spi_data()
+{
+    /* Update data in detailed window (if open) */
+    if((NULL != detail_window) && detail_window->isActiveWindow())
+    {
+        detail_window->update_params();
+    }
+
+    update_system_time();
+}
+
+void MainWindow::update_system_time()
+{
+    /* Update Hora */
+    //"18/03/06,13:34:55"
+    /* Update reloj */
+    QString dos_mil = "20";
+    QString time_format = "yyyy/MM/dd,HH.mm.ss";
+    QString hora =  dos_mil+ getParamValue(16);
+    QDateTime temp_time;
+#if (1 == ENABLE_TEST)
+    temp_time = QDateTime::currentDateTime();
+#else
+    QDateTime time = QDateTime::fromString(hora, time_format);
+#endif
+
+    if(temp_time.toTime_t() != time.toTime_t())
+    {
+        time = temp_time;
+
+        //Update bitacora and rutinas
+        /* Check rutinas (new events have occurred?) */
+        if(NULL != rutinas)
+        {
+
+            rutinas->set_time(time);
+            rutinas->check_rutinas();
+        }
+
+        /* Check update values in bitacora window (if open) */
+        if((NULL != bitacorawindow) && bitacorawindow->isActiveWindow())
+        {
+            bitacorawindow->update_table();
+        }
+
+        //Update text on screen
+        QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
+        ui->label_hora->setText(display_time);
+    }
+
 }
