@@ -26,6 +26,8 @@ settings::settings(QWidget *parent) :
     QString filename="config.ini";
     config_file = new QFile(filename);
 
+    active_text_edit = ui->textEdit;
+
     if(!config_file->exists())
     {
         qDebug() << "No existe el archivo";
@@ -36,7 +38,7 @@ settings::settings(QWidget *parent) :
     }
 
     QString line;
-    ui->textEdit->clear();
+    active_text_edit->clear();
 
     if(config_file->open(QIODevice::ReadWrite | QIODevice::Text))
     {
@@ -44,89 +46,10 @@ settings::settings(QWidget *parent) :
         while(!stream.atEnd())
         {
             line = stream.readLine();
-            ui->textEdit->setText(ui->textEdit->toPlainText()+line+"\n");
+            active_text_edit->setText(active_text_edit->toPlainText()+line+"\n");
         }
     }
 
-    ui->cfg_out_rel_1_MSB->setCurrentIndex(load_ASA_conf("out","cfg_out_rel_1_MSB"));
-    ui->cfg_out_rel_1_LSB->setCurrentIndex(load_ASA_conf("out","cfg_out_rel_1_LSB"));
-    ui->cfg_out_rel_2_MSB->setCurrentIndex(load_ASA_conf("out","cfg_out_rel_2_MSB"));
-    ui->cfg_out_rel_2_LSB->setCurrentIndex(load_ASA_conf("out","cfg_out_rel_2_LSB"));
-    ui->cfg_out_rel_3_MSB->setCurrentIndex(load_ASA_conf("out","cfg_out_rel_3_MSB"));
-    ui->cfg_out_rel_3_LSB->setCurrentIndex(load_ASA_conf("out","cfg_out_rel_3_LSB"));
-    ui->cfg_out_rel_4_MSB->setCurrentIndex(load_ASA_conf("out","cfg_out_rel_4_MSB"));
-    ui->cfg_out_rel_4_LSB->setCurrentIndex(load_ASA_conf("out","cfg_out_rel_4_LSB"));
-
-    ui->cfg_out_led_1_MSB->setCurrentIndex(load_ASA_conf("out","cfg_out_led_1_MSB"));
-    ui->cfg_out_led_1_LSB->setCurrentIndex(load_ASA_conf("out","cfg_out_led_1_LSB"));
-    ui->cfg_out_led_2_MSB->setCurrentIndex(load_ASA_conf("out","cfg_out_led_2_MSB"));
-    ui->cfg_out_led_2_LSB->setCurrentIndex(load_ASA_conf("out","cfg_out_led_2_LSB"));
-    ui->cfg_out_led_3_MSB->setCurrentIndex(load_ASA_conf("out","cfg_out_led_3_MSB"));
-    ui->cfg_out_led_3_LSB->setCurrentIndex(load_ASA_conf("out","cfg_out_led_3_LSB"));
-    ui->cfg_out_led_4_MSB->setCurrentIndex(load_ASA_conf("out","cfg_out_led_4_MSB"));
-    ui->cfg_out_led_4_LSB->setCurrentIndex(load_ASA_conf("out","cfg_out_led_4_LSB"));
-
-    ui->cfg_ana_1_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_1_MSB"));
-    ui->cfg_ana_1_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_1_LSB"));
-    ui->cfg_ana_2_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_2_MSB"));
-    ui->cfg_ana_2_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_2_LSB"));
-    ui->cfg_ana_3_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_3_MSB"));
-    ui->cfg_ana_3_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_3_LSB"));
-    ui->cfg_ana_4_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_4_MSB"));
-    ui->cfg_ana_4_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_4_LSB"));
-    ui->cfg_ana_5_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_5_MSB"));
-    ui->cfg_ana_5_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_5_LSB"));
-    ui->cfg_ana_6_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_6_MSB"));
-    ui->cfg_ana_6_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_6_LSB"));
-    ui->cfg_ana_7_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_7_MSB"));
-    ui->cfg_ana_7_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_7_LSB"));
-    ui->cfg_ana_8_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_8_MSB"));
-    ui->cfg_ana_8_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_8_LSB"));
-    ui->cfg_ana_9_MSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_9_MSB"));
-    ui->cfg_ana_9_LSB->setCurrentIndex(load_ASA_conf("in","cfg_ana_9_LSB"));
-
-
-    ui->cfg_modbus_MSB_0->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_0"));
-    ui->cfg_modbus_LSB_0->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_0"));
-    ui->cfg_modbus_MSB_1->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_1"));
-    ui->cfg_modbus_LSB_1->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_1"));
-    ui->cfg_modbus_MSB_2->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_2"));
-    ui->cfg_modbus_LSB_2->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_2"));
-    ui->cfg_modbus_MSB_3->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_3"));
-    ui->cfg_modbus_LSB_3->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_3"));
-    ui->cfg_modbus_MSB_4->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_4"));
-    ui->cfg_modbus_LSB_4->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_4"));
-    ui->cfg_modbus_MSB_5->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_5"));
-    ui->cfg_modbus_LSB_5->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_5"));
-    ui->cfg_modbus_MSB_6->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_6"));
-    ui->cfg_modbus_LSB_6->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_6"));
-    ui->cfg_modbus_MSB_7->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_7"));
-    ui->cfg_modbus_LSB_7->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_7"));
-    ui->cfg_modbus_MSB_8->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_8"));
-    ui->cfg_modbus_LSB_8->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_8"));
-    ui->cfg_modbus_MSB_9->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_9"));
-    ui->cfg_modbus_LSB_9->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_9"));
-    ui->cfg_modbus_MSB_10->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_10"));
-    ui->cfg_modbus_LSB_10->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_10"));
-    ui->cfg_modbus_MSB_11->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_11"));
-    ui->cfg_modbus_LSB_11->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_11"));
-    ui->cfg_modbus_MSB_12->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_12"));
-    ui->cfg_modbus_LSB_12->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_12"));
-    ui->cfg_modbus_MSB_13->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_13"));
-    ui->cfg_modbus_LSB_13->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_13"));
-    ui->cfg_modbus_MSB_14->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_14"));
-    ui->cfg_modbus_LSB_14->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_14"));
-    ui->cfg_modbus_MSB_15->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_MSB_15"));
-    ui->cfg_modbus_LSB_15->setCurrentIndex(load_ASA_conf("modbus1","cfg_modbus_LSB_15"));
-
-    ui->cfg_modbus_2_byte_addr_0_ch_0->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_0"));
-    ui->cfg_modbus_2_byte_addr_0_ch_1->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_1"));
-    ui->cfg_modbus_2_byte_addr_0_ch_2->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_2"));
-    ui->cfg_modbus_2_byte_addr_0_ch_3->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_3"));
-    ui->cfg_modbus_2_byte_addr_1_ch_0->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_0"));
-    ui->cfg_modbus_2_byte_addr_1_ch_1->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_1"));
-    ui->cfg_modbus_2_byte_addr_1_ch_2->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_2"));
-    ui->cfg_modbus_2_byte_addr_1_ch_3->setCurrentIndex(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_3"));
 
     this->show();
 
@@ -163,90 +86,9 @@ void settings::on_settings_accepted()
 //    saveSettings("Regulador", ui->regulador_ND_label->text(), ui->ID_regulador_ND->text().toInt());
     QTextStream stream(config_file);
     config_file->resize(0);
-    stream << ui->textEdit->toPlainText();
+    stream << active_text_edit->toPlainText();
     config_file->flush();
     config_file->close();
-
-    /*Store ASA conf*/
-    store_ASA_conf("out","cfg_out_rel_1_MSB", ui->cfg_out_rel_1_MSB->currentIndex());
-    store_ASA_conf("out","cfg_out_rel_1_LSB", ui->cfg_out_rel_1_LSB->currentIndex());
-    store_ASA_conf("out","cfg_out_rel_2_MSB", ui->cfg_out_rel_2_MSB->currentIndex());
-    store_ASA_conf("out","cfg_out_rel_2_LSB", ui->cfg_out_rel_2_LSB->currentIndex());
-    store_ASA_conf("out","cfg_out_rel_3_MSB", ui->cfg_out_rel_3_MSB->currentIndex());
-    store_ASA_conf("out","cfg_out_rel_3_LSB", ui->cfg_out_rel_3_LSB->currentIndex());
-    store_ASA_conf("out","cfg_out_rel_4_MSB", ui->cfg_out_rel_4_MSB->currentIndex());
-    store_ASA_conf("out","cfg_out_rel_4_LSB", ui->cfg_out_rel_4_LSB->currentIndex());
-
-    store_ASA_conf("out","cfg_out_led_1_MSB", ui->cfg_out_led_1_MSB->currentIndex());
-    store_ASA_conf("out","cfg_out_led_1_LSB", ui->cfg_out_led_1_LSB->currentIndex());
-    store_ASA_conf("out","cfg_out_led_2_MSB", ui->cfg_out_led_2_MSB->currentIndex());
-    store_ASA_conf("out","cfg_out_led_2_LSB", ui->cfg_out_led_2_LSB->currentIndex());
-    store_ASA_conf("out","cfg_out_led_3_MSB", ui->cfg_out_led_3_MSB->currentIndex());
-    store_ASA_conf("out","cfg_out_led_3_LSB", ui->cfg_out_led_3_LSB->currentIndex());
-    store_ASA_conf("out","cfg_out_led_4_MSB", ui->cfg_out_led_4_MSB->currentIndex());
-    store_ASA_conf("out","cfg_out_led_4_LSB", ui->cfg_out_led_4_LSB->currentIndex());
-
-    store_ASA_conf("in","cfg_ana_1_MSB", ui->cfg_ana_1_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_1_LSB", ui->cfg_ana_1_LSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_2_MSB", ui->cfg_ana_2_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_2_LSB", ui->cfg_ana_2_LSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_3_MSB", ui->cfg_ana_3_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_3_LSB", ui->cfg_ana_3_LSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_4_MSB", ui->cfg_ana_4_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_4_LSB", ui->cfg_ana_4_LSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_5_MSB", ui->cfg_ana_5_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_5_LSB", ui->cfg_ana_5_LSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_6_MSB", ui->cfg_ana_6_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_6_LSB", ui->cfg_ana_6_LSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_7_MSB", ui->cfg_ana_7_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_7_LSB", ui->cfg_ana_7_LSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_8_MSB", ui->cfg_ana_8_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_8_LSB", ui->cfg_ana_8_LSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_9_MSB", ui->cfg_ana_9_MSB->currentIndex());
-    store_ASA_conf("in","cfg_ana_9_LSB", ui->cfg_ana_9_LSB->currentIndex());
-
-
-    store_ASA_conf("modbus1","cfg_modbus_MSB_0", ui->cfg_modbus_MSB_0->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_0", ui->cfg_modbus_LSB_0->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_1", ui->cfg_modbus_MSB_1->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_1", ui->cfg_modbus_LSB_1->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_2", ui->cfg_modbus_MSB_2->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_2", ui->cfg_modbus_LSB_2->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_3", ui->cfg_modbus_MSB_3->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_3", ui->cfg_modbus_LSB_3->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_4", ui->cfg_modbus_MSB_4->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_4", ui->cfg_modbus_LSB_4->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_5", ui->cfg_modbus_MSB_5->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_5", ui->cfg_modbus_LSB_5->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_6", ui->cfg_modbus_MSB_6->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_6", ui->cfg_modbus_LSB_6->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_7", ui->cfg_modbus_MSB_7->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_7", ui->cfg_modbus_LSB_7->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_8", ui->cfg_modbus_MSB_8->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_8", ui->cfg_modbus_LSB_8->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_9", ui->cfg_modbus_MSB_9->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_9", ui->cfg_modbus_LSB_9->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_10", ui->cfg_modbus_MSB_10->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_10", ui->cfg_modbus_LSB_10->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_11", ui->cfg_modbus_MSB_11->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_11", ui->cfg_modbus_LSB_11->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_12", ui->cfg_modbus_MSB_12->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_12", ui->cfg_modbus_LSB_12->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_13", ui->cfg_modbus_MSB_13->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_13", ui->cfg_modbus_LSB_13->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_14", ui->cfg_modbus_MSB_14->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_14", ui->cfg_modbus_LSB_14->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_MSB_15", ui->cfg_modbus_MSB_15->currentIndex());
-    store_ASA_conf("modbus1","cfg_modbus_LSB_15", ui->cfg_modbus_LSB_15->currentIndex());
-
-    store_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_0", ui->cfg_modbus_2_byte_addr_0_ch_0->currentIndex());
-    store_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_1", ui->cfg_modbus_2_byte_addr_0_ch_1->currentIndex());
-    store_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_2", ui->cfg_modbus_2_byte_addr_0_ch_2->currentIndex());
-    store_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_3", ui->cfg_modbus_2_byte_addr_0_ch_3->currentIndex());
-    store_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_0", ui->cfg_modbus_2_byte_addr_1_ch_0->currentIndex());
-    store_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_1", ui->cfg_modbus_2_byte_addr_1_ch_1->currentIndex());
-    store_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_2", ui->cfg_modbus_2_byte_addr_1_ch_2->currentIndex());
-    store_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_3", ui->cfg_modbus_2_byte_addr_1_ch_3->currentIndex());
 }
 
 void settings::on_settings_rejected()
@@ -268,58 +110,54 @@ void settings::on_buttonBox_accepted()
 {
 
 }
-void settings::on_key_0_clicked() {ui->textEdit->insertPlainText("0");}
-void settings::on_key_1_clicked() {ui->textEdit->insertPlainText("1");}
-void settings::on_key_2_clicked() {ui->textEdit->insertPlainText("2");}
-void settings::on_key_3_clicked() {ui->textEdit->insertPlainText("3");}
-void settings::on_key_4_clicked() {ui->textEdit->insertPlainText("4");}
-void settings::on_key_5_clicked() {ui->textEdit->insertPlainText("5");}
-void settings::on_key_6_clicked() {ui->textEdit->insertPlainText("6");}
-void settings::on_key_7_clicked() {ui->textEdit->insertPlainText("7");}
-void settings::on_key_8_clicked() {ui->textEdit->insertPlainText("8");}
-void settings::on_key_9_clicked() {ui->textEdit->insertPlainText("9");}
-void settings::on_key_Q_clicked() {ui->textEdit->insertPlainText("Q");}
-void settings::on_key_W_clicked() {ui->textEdit->insertPlainText("W");}
-void settings::on_key_E_clicked() {ui->textEdit->insertPlainText("E");}
-void settings::on_key_R_clicked() {ui->textEdit->insertPlainText("R");}
-void settings::on_key_T_clicked() {ui->textEdit->insertPlainText("T");}
-void settings::on_key_Y_clicked() {ui->textEdit->insertPlainText("Y");}
-void settings::on_key_U_clicked() {ui->textEdit->insertPlainText("U");}
-void settings::on_key_I_clicked() {ui->textEdit->insertPlainText("I");}
-void settings::on_key_O_clicked() {ui->textEdit->insertPlainText("O");}
-void settings::on_key_P_clicked() {ui->textEdit->insertPlainText("P");}
-void settings::on_key_A_clicked() {ui->textEdit->insertPlainText("A");}
-void settings::on_key_S_clicked() {ui->textEdit->insertPlainText("S");}
-void settings::on_key_D_clicked() {ui->textEdit->insertPlainText("D");}
-void settings::on_key_F_clicked() {ui->textEdit->insertPlainText("F");}
-void settings::on_key_G_clicked() {ui->textEdit->insertPlainText("G");}
-void settings::on_key_H_clicked() {ui->textEdit->insertPlainText("H");}
-void settings::on_key_J_clicked() {ui->textEdit->insertPlainText("J");}
-void settings::on_key_K_clicked() {ui->textEdit->insertPlainText("K");}
-void settings::on_key_L_clicked() {ui->textEdit->insertPlainText("L");}
-void settings::on_key_Z_clicked() {ui->textEdit->insertPlainText("Z");}
-void settings::on_key_X_clicked() {ui->textEdit->insertPlainText("X");}
-void settings::on_key_C_clicked() {ui->textEdit->insertPlainText("C");}
-void settings::on_key_V_clicked() {ui->textEdit->insertPlainText("V");}
-void settings::on_key_B_clicked() {ui->textEdit->insertPlainText("B");}
-void settings::on_key_N_clicked() {ui->textEdit->insertPlainText("N");}
-void settings::on_key_M_clicked() {ui->textEdit->insertPlainText("M");}
+void settings::on_key_0_clicked() {active_text_edit->insertPlainText("0");}
+void settings::on_key_1_clicked() {active_text_edit->insertPlainText("1");}
+void settings::on_key_2_clicked() {active_text_edit->insertPlainText("2");}
+void settings::on_key_3_clicked() {active_text_edit->insertPlainText("3");}
+void settings::on_key_4_clicked() {active_text_edit->insertPlainText("4");}
+void settings::on_key_5_clicked() {active_text_edit->insertPlainText("5");}
+void settings::on_key_6_clicked() {active_text_edit->insertPlainText("6");}
+void settings::on_key_7_clicked() {active_text_edit->insertPlainText("7");}
+void settings::on_key_8_clicked() {active_text_edit->insertPlainText("8");}
+void settings::on_key_9_clicked() {active_text_edit->insertPlainText("9");}
+void settings::on_key_Q_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("Q");}else{active_text_edit->insertPlainText("q");}}
+void settings::on_key_W_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("W");}else{active_text_edit->insertPlainText("w");}}
+void settings::on_key_E_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("E");}else{active_text_edit->insertPlainText("e");}}
+void settings::on_key_R_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("R");}else{active_text_edit->insertPlainText("r");}}
+void settings::on_key_T_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("T");}else{active_text_edit->insertPlainText("t");}}
+void settings::on_key_Y_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("Y");}else{active_text_edit->insertPlainText("y");}}
+void settings::on_key_U_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("U");}else{active_text_edit->insertPlainText("u");}}
+void settings::on_key_I_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("I");}else{active_text_edit->insertPlainText("i");}}
+void settings::on_key_O_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("O");}else{active_text_edit->insertPlainText("o");}}
+void settings::on_key_P_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("P");}else{active_text_edit->insertPlainText("p");}}
+void settings::on_key_A_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("A");}else{active_text_edit->insertPlainText("a");}}
+void settings::on_key_S_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("S");}else{active_text_edit->insertPlainText("s");}}
+void settings::on_key_D_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("D");}else{active_text_edit->insertPlainText("d");}}
+void settings::on_key_F_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("F");}else{active_text_edit->insertPlainText("f");}}
+void settings::on_key_G_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("G");}else{active_text_edit->insertPlainText("g");}}
+void settings::on_key_H_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("H");}else{active_text_edit->insertPlainText("h");}}
+void settings::on_key_J_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("J");}else{active_text_edit->insertPlainText("j");}}
+void settings::on_key_K_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("K");}else{active_text_edit->insertPlainText("k");}}
+void settings::on_key_L_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("L");}else{active_text_edit->insertPlainText("l");}}
+void settings::on_key_Z_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("Z");}else{active_text_edit->insertPlainText("z");}}
+void settings::on_key_X_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("X");}else{active_text_edit->insertPlainText("x");}}
+void settings::on_key_C_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("C");}else{active_text_edit->insertPlainText("c");}}
+void settings::on_key_V_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("V");}else{active_text_edit->insertPlainText("v");}}
+void settings::on_key_B_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("B");}else{active_text_edit->insertPlainText("b");}}
+void settings::on_key_N_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("N");}else{active_text_edit->insertPlainText("n");}}
+void settings::on_key_M_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("M");}else{active_text_edit->insertPlainText("m");}}
 
-void settings::on_key_up_clicked() {ui->textEdit->moveCursor(QTextCursor::Up);}
-void settings::on_key_down_clicked() {ui->textEdit->moveCursor(QTextCursor::Down);}
-void settings::on_key_left_clicked() {ui->textEdit->moveCursor(QTextCursor::Left);}
-void settings::on_key_right_clicked() {ui->textEdit->moveCursor(QTextCursor::Right);}
+void settings::on_key_up_clicked()    {active_text_edit->moveCursor(QTextCursor::Up);}
+void settings::on_key_down_clicked()  {active_text_edit->moveCursor(QTextCursor::Down);}
+void settings::on_key_left_clicked()  {active_text_edit->moveCursor(QTextCursor::Left);}
+void settings::on_key_right_clicked() {active_text_edit->moveCursor(QTextCursor::Right);}
 
-void settings::on_key_guion_clicked() {ui->textEdit->insertPlainText("-");}
-void settings::on_key_equal_clicked() {ui->textEdit->insertPlainText("=");}
-void settings::on_key_space_clicked() {ui->textEdit->insertPlainText(" ");}
+void settings::on_key_guion_clicked() {active_text_edit->insertPlainText("-");}
+void settings::on_key_equal_clicked() {active_text_edit->insertPlainText("=");}
+void settings::on_key_space_clicked() {active_text_edit->insertPlainText(" ");}
 
 void settings::on_key_back_clicked()
 {
-    ui->textEdit->textCursor().deletePreviousChar();
+    active_text_edit->textCursor().deletePreviousChar();
 }
-void settings::on_key_enter_clicked() {ui->textEdit->insertPlainText("\n");}
-
-
-
-
+void settings::on_key_enter_clicked() {active_text_edit->insertPlainText("\n");}

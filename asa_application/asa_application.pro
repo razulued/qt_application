@@ -35,7 +35,10 @@ SOURCES += main.cpp\
     mod_6_lechos.cpp \
     asa_protocol.cpp \
     asa_conversions.cpp \
-    clickeablelabel.cpp
+    clickeablelabel.cpp \
+    login_dialog.cpp \
+    token_auth.cpp \
+    asa_conf_string.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -59,12 +62,16 @@ HEADERS  += mainwindow.h \
     mod_6_lechos.h \
     asa_protocol.h \
     asa_conversions.h \
-    clickeablelabel.h
+    clickeablelabel.h \
+    login_dialog.h \
+    token_auth.h \
+    asa_conf_string.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
     settings.ui \
-    bitacora.ui
+    bitacora.ui \
+    login_dialog.ui
 
 RESOURCES += \
     images.qrc \

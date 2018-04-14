@@ -146,7 +146,7 @@ QHash<uint,uint> load_active_parameters()
 
     if (!myFile.open(QIODevice::ReadOnly))
     {
-        qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
+        //qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
         return active_parameter;
     }
 

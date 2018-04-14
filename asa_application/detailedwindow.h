@@ -6,6 +6,7 @@
 #include "configuration.h"
 #include "rutinas_mantenimiento.h"
 #include <QTableWidgetItem>
+#include "login_dialog.h"
 
 typedef enum
 {
@@ -43,6 +44,7 @@ public:
     explicit detailedwindow(detailed_elements_t element, rutinas_mantenimiento *rutina, QWidget *parent = 0);
     ~detailedwindow();
     void update_params();
+    static bool user_lock;
 
 private slots:
     void on_closeButton_clicked();
@@ -126,6 +128,8 @@ private slots:
     void on_key_slash_clicked();
 
     void background_clicked();
+    void on_pushButton_clicked();
+
 private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;
@@ -163,6 +167,7 @@ private:
     void delete_row(uint row, QTableWidget *table);
     void add_row_rutina(uint row, uint rutina, QTableWidget *table);
 
+    login_dialog *login_d;
 };
 
 #endif // DETAILEDWINDOW_H

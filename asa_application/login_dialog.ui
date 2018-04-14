@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>login_dialog</class>
+ <widget class="QDialog" name="login_dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>213</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#login_dialog
+{
+background-color: black;
+}</string>
+  </property>
+  <widget class="QPushButton" name="key_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>141</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_4{ 
+border-image: url(:/teclado/images/Texto/Teclado/4_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_4::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/4_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_0">
+   <property name="geometry">
+    <rect>
+     <x>21</x>
+     <y>261</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_0{ 
+border-image: url(:/teclado/images/Texto/Teclado/0_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_0::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/0_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_1">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>203</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_1{ 
+border-image: url(:/teclado/images/Texto/Teclado/1_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_1::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/1_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_5">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>141</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_5{ 
+border-image: url(:/teclado/images/Texto/Teclado/5_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_5::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/5_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>203</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_2{ 
+border-image: url(:/teclado/images/Texto/Teclado/2_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_2::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/2_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_6">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>141</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_6{ 
+border-image: url(:/teclado/images/Texto/Teclado/6_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_6::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/6_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_8">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>79</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_8{ 
+border-image: url(:/teclado/images/Texto/Teclado/8_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_8::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/8_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_7">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>79</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_7{ 
+border-image: url(:/teclado/images/Texto/Teclado/7_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_7::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/7_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_9">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>79</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_9{ 
+border-image: url(:/teclado/images/Texto/Teclado/9_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_9::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/9_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_3">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>203</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_3{ 
+border-image: url(:/teclado/images/Texto/Teclado/3_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_3::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/3_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="key_enter">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>260</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_enter{ 
+border-image: url(:/teclado/images/Texto/Teclado/Enter_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_enter::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/Enter_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="textedit">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

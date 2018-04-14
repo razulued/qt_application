@@ -33,29 +33,6 @@ void configuration::load_configuration(QString name)
     }
 }
 
-void store_ASA_conf(QString gpo, QString name, int value)
-{
-    QSettings conf(QDir::currentPath() + "/ASA_conf.ini", QSettings::IniFormat);
-    conf.sync();
-    conf.beginGroup(gpo);
-    conf.setValue(name, value);
-    conf.endGroup();
-    conf.sync();
-}
-
-int load_ASA_conf(QString gpo, QString name)
-{
-    int ret = 0;
-    QSettings conf(QDir::currentPath() + "/ASA_conf.ini", QSettings::IniFormat);
-    conf.sync();
-    conf.beginGroup(gpo);
-    ret = conf.value(name, 0).toInt();
-    conf.endGroup();
-    conf.sync();
-
-    return ret;
-}
-
 
 configuration_id configuration::get_config()
 {

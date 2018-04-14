@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSettings>
 #include <QFile>
+#include <QTextEdit>
 
 namespace Ui {
 class settings;
@@ -77,9 +78,11 @@ private slots:
     void on_key_enter_clicked();
 
 
+
 private:
     Ui::settings *ui;
     QFile *config_file;
+    QTextEdit *active_text_edit;
 
 };
 

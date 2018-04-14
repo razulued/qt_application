@@ -7,6 +7,7 @@
 #include <QPainter>
 #include <QColor>
 #include "asa_protocol.h"
+#include "asa_conf_string.h"
 
 #define ENABLE_TEST (1)
 #define BUILD_FOR_RPI (0)
@@ -133,7 +134,8 @@ MainWindow::MainWindow(QWidget *parent) :
     rutinas = new rutinas_mantenimiento("rutinas.db");
 
     //Get config
-    get_ASA_string();
+    init_plat_config();
+//    get_ASA_string();
 
     configuration *config;
 
@@ -259,7 +261,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->active_param_label->setStyleSheet("color:black");
     ui->active_param_label->setText("Parametros Eléctricos");
 
-    QFont hora_font("Typo Square Regular Demo",20,1);
+    QFont hora_font("Typo Square Regular Demo",18,1);
     ui->label_hora->setStyleSheet("color: white");
     ui->label_hora->setFont(hora_font);
 //    button.setStyleSheet( FormStyleSheetString( "button" ) );
@@ -338,42 +340,42 @@ void MainWindow::handleDetailedView_1()
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_REGULADOR, rutinas);
+    detail_window = new detailedwindow(ELEMENT_REGULADOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_2()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_REACTOR, rutinas);
+    detail_window = new detailedwindow(ELEMENT_REACTOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_3()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_CLARIFICADOR, rutinas);
+    detail_window = new detailedwindow(ELEMENT_CLARIFICADOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_4()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_CLORADOR, rutinas);
+    detail_window = new detailedwindow(ELEMENT_CLORADOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_5()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_DIGESTOR, rutinas);
+    detail_window = new detailedwindow(ELEMENT_DIGESTOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_6()
 {
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_DESHIDRATADOR, rutinas);
+    detail_window = new detailedwindow(ELEMENT_DESHIDRATADOR, rutinas, this);
 }
 
 void MainWindow::handleDetailedView_7()
@@ -381,7 +383,7 @@ void MainWindow::handleDetailedView_7()
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_AFLUENTE, rutinas);
+    detail_window = new detailedwindow(ELEMENT_AFLUENTE, rutinas, this);
 }
 
 void MainWindow::handleDetailedView_8()
@@ -389,7 +391,7 @@ void MainWindow::handleDetailedView_8()
     if (detail_window != NULL) {
         delete detail_window;
     }
-    detail_window = new detailedwindow(ELEMENT_EFLUENTE, rutinas);
+    detail_window = new detailedwindow(ELEMENT_EFLUENTE, rutinas, this);
 }
 
 void MainWindow::on_asa_logo_clicked()
@@ -450,170 +452,170 @@ void MainWindow::get_ASA_string()
 {
     QString config_data;
 
-    config_data += "200:";
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_1_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_1_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "201:";
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_2_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_2_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "202:";
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_3_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_3_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "203:";
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_4_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_4_LSB"),2,16, QChar('0'));
+//    config_data += "200:";
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_1_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_1_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "201:";
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_2_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_2_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "202:";
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_3_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_3_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "203:";
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_4_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_rel_4_LSB"),2,16, QChar('0'));
 
-    config_data += "|";
-    config_data += "210:";
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_1_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_1_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "211:";
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_2_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_2_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "212:";
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_3_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_3_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "213:";
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_4_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_4_LSB"),2,16, QChar('0'));
-
-
-    config_data += "|";
-    config_data += "220:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_1_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_1_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "221:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_2_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_2_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "222:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_3_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_3_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "223:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_4_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_4_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "224:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_5_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_5_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "225:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_6_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_6_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "226:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_7_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_7_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "227:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_8_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_8_LSB"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "228:";
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_9_MSB"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_9_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "210:";
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_1_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_1_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "211:";
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_2_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_2_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "212:";
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_3_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_3_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "213:";
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_4_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("out","cfg_out_led_4_LSB"),2,16, QChar('0'));
 
 
-    config_data += "|";
-    config_data += "240:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_0"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_0"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "241:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_1"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_1"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "242:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_2"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_2"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "243:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_3"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_3"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "244:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_4"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_4"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "245:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_5"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_5"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "246:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_6"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_6"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "247:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_7"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_7"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "248:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_8"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_8"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "249:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_9"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_9"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "250:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_10"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_10"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "251:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_11"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_11"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "252:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_12"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_12"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "253:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_13"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_13"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "254:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_14"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_14"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "255:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_15"),2,16, QChar('0'));
-    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_15"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "220:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_1_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_1_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "221:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_2_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_2_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "222:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_3_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_3_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "223:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_4_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_4_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "224:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_5_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_5_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "225:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_6_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_6_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "226:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_7_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_7_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "227:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_8_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_8_LSB"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "228:";
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_9_MSB"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("in","cfg_ana_9_LSB"),2,16, QChar('0'));
 
-    config_data += "|";
-    config_data += "260:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_0"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "261:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_1"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "262:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_2"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "263:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_3"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "264:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_0"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "265:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_1"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "266:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_2"),2,16, QChar('0'));
-    config_data += "|";
-    config_data += "267:";
-    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_3"),2,16, QChar('0'));
 
-    MainWindow::ASA_conf_only_string = config_data;
-    qDebug() << ASA_conf_only_string;
+//    config_data += "|";
+//    config_data += "240:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_0"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_0"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "241:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_1"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_1"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "242:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_2"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_2"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "243:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_3"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_3"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "244:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_4"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_4"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "245:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_5"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_5"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "246:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_6"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_6"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "247:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_7"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_7"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "248:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_8"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_8"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "249:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_9"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_9"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "250:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_10"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_10"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "251:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_11"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_11"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "252:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_12"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_12"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "253:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_13"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_13"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "254:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_14"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_14"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "255:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_MSB_15"),2,16, QChar('0'));
+//    config_data += QString("%1").arg(load_ASA_conf("modbus1","cfg_modbus_LSB_15"),2,16, QChar('0'));
+
+//    config_data += "|";
+//    config_data += "260:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_0"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "261:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_1"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "262:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_2"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "263:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_0_ch_3"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "264:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_0"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "265:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_1"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "266:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_2"),2,16, QChar('0'));
+//    config_data += "|";
+//    config_data += "267:";
+//    config_data += QString("%1").arg(load_ASA_conf("modbus2","cfg_modbus_2_byte_addr_1_ch_3"),2,16, QChar('0'));
+
+//    MainWindow::ASA_conf_only_string = config_data;
+//    qDebug() << ASA_conf_only_string;
 
 }
 

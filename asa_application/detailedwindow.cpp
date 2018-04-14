@@ -15,6 +15,8 @@
 
 #define BUILD_FOR_RPI (0)
 
+bool detailedwindow::user_lock;
+
 typedef struct
 {
     QString name;
@@ -281,6 +283,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),200,ui->frame->width(),ui->frame->height());
+
+    this->move(parent->pos());
     this->show();
 }
 
@@ -1285,4 +1289,13 @@ void detailedwindow::background_clicked()
 void detailedwindow::on_textEdit_selectionChanged()
 {
     ui->key_Reschedule->setChecked(false);
+}
+
+void detailedwindow::on_pushButton_clicked()
+{
+    if(NULL != login_d)
+    {
+        delete login_d;
+    }
+    login_d = new login_dialog(this);
 }

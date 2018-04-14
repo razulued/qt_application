@@ -13,4895 +13,1680 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>ADVERTENCIA: NO MODIFICAR ESTAS CONFIGURACIONES SIN CONOCIMIENTO DEL SISTEMA</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="currentIndex">
-      <number>4</number>
-     </property>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>ASA Protocol (out)</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
-        <widget class="QLabel" name="cfg_out_rel_1">
-         <property name="text">
-          <string>cgf_out_rel_1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="cfg_out_rel_1_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Bomba Monofásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Alerta sonora</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Bomba trifásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = LED</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Electrovalvula</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QComboBox" name="cfg_out_rel_1_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="cfg_out_rel_4">
-         <property name="text">
-          <string>cgf_out_rel_4</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="cfg_out_rel_2">
-         <property name="text">
-          <string>cgf_out_rel_2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QComboBox" name="cfg_out_led_1_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QComboBox" name="cfg_out_led_2_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="cfg_out_rel_3">
-         <property name="text">
-          <string>cgf_out_rel_3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QComboBox" name="cfg_out_rel_3_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="cfg_out_led_3">
-         <property name="text">
-          <string>cgf_out_led_3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="cfg_out_rel_4_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Bomba Monofásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Alerta sonora</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Bomba trifásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = LED</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Electrovalvula</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QComboBox" name="cfg_out_rel_2_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="cfg_out_led_1_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Bomba Monofásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Alerta sonora</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Bomba trifásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = LED</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Electrovalvula</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="cfg_out_led_2">
-         <property name="text">
-          <string>cgf_out_led_2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="cfg_out_led_3_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Bomba Monofásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Alerta sonora</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Bomba trifásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = LED</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Electrovalvula</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="cfg_out_rel_3_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Bomba Monofásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Alerta sonora</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Bomba trifásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = LED</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Electrovalvula</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QComboBox" name="cfg_out_rel_4_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="cfg_out_led_1">
-         <property name="text">
-          <string>cgf_out_led_1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="cfg_out_rel_2_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Bomba Monofásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Alerta sonora</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Bomba trifásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = LED</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Electrovalvula</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="2">
-        <widget class="QComboBox" name="cfg_out_led_3_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QComboBox" name="cfg_out_led_2_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Bomba Monofásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Alerta sonora</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Bomba trifásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = LED</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Electrovalvula</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="cfg_out_led_4">
-         <property name="text">
-          <string>cgf_out_led_4</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QComboBox" name="cfg_out_led_4_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Bomba Monofásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Alerta sonora</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Bomba trifásica</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = LED</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Electrovalvula</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="2">
-        <widget class="QComboBox" name="cfg_out_led_4_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_3">
-      <attribute name="title">
-       <string>ASA Protocol (in)</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="6" column="2">
-        <widget class="QComboBox" name="cfg_ana_7_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QComboBox" name="cfg_ana_5_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="cfg_ana_1">
-         <property name="text">
-          <string>cfg_ana_1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="cfg_ana_4">
-         <property name="text">
-          <string>cfg_ana_4</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="cfg_ana_3">
-         <property name="text">
-          <string>cfg_ana_3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2">
-        <widget class="QComboBox" name="cfg_ana_8_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="cfg_ana_5_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="cfg_ana_7_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QComboBox" name="cfg_ana_6_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="cfg_ana_1_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="cfg_ana_2_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QComboBox" name="cfg_ana_2_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="cfg_ana_2">
-         <property name="text">
-          <string>cfg_ana_2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="cfg_ana_6">
-         <property name="text">
-          <string>cfg_ana_6</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="cfg_ana_8">
-         <property name="text">
-          <string>cfg_ana_8</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="cfg_ana_5">
-         <property name="text">
-          <string>cfg_ana_5</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QComboBox" name="cfg_ana_3_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QComboBox" name="cfg_ana_4_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="cfg_ana_7">
-         <property name="text">
-          <string>cfg_ana_7</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QComboBox" name="cfg_ana_6_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="cfg_ana_4_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="cfg_ana_3_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QComboBox" name="cfg_ana_8_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QComboBox" name="cfg_ana_1_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="cfg_ana_9">
-         <property name="text">
-          <string>cfg_ana_9</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QComboBox" name="cfg_ana_9_MSB">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Nivel Lineal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Presion</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Caudal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="2">
-        <widget class="QComboBox" name="cfg_ana_9_LSB">
-         <item>
-          <property name="text">
-           <string>0 = No Definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_4">
-      <attribute name="title">
-       <string>ASA Protocol (modbus 1)</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_5">
-       <item row="4" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_4">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_6">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_7">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="13" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_13">
-         <property name="text">
-          <string>cfg_modbus_addr_D</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_1">
-         <property name="text">
-          <string>cfg_modbus_addr_1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_9">
-         <property name="text">
-          <string>cfg_modbus_addr_9</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_5">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="12" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_12">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="13" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_13">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_6">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_3">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_1">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_14">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_10">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_4">
-         <property name="text">
-          <string>cfg_modbus_addr_4</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_2">
-         <property name="text">
-          <string>cfg_modbus_addr_2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_10">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_0">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="13" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_13">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_5">
-         <property name="text">
-          <string>cfg_modbus_addr_5</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_3">
-         <property name="text">
-          <string>cfg_modbus_addr_3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_3">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_5">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_0">
-         <property name="text">
-          <string>cfg_modbus_addr_0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_2">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_9">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_8">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="14" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_14">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="11" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_11">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="11" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_11">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="14" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_14">
-         <property name="text">
-          <string>cfg_modbus_addr_E</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_12">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="9" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_9">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_7">
-         <property name="text">
-          <string>cfg_modbus_addr_7</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_8">
-         <property name="text">
-          <string>cfg_modbus_addr_8</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_6">
-         <property name="text">
-          <string>cfg_modbus_addr_6</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_1">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_4">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="11" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_11">
-         <property name="text">
-          <string>cfg_modbus_addr_B</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_12">
-         <property name="text">
-          <string>cfg_modbus_addr_C</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_7">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_10">
-         <property name="text">
-          <string>cfg_modbus_addr_A</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_8">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_0">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_2">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="15" column="0">
-        <widget class="QLabel" name="cfg_modbus_addr_15">
-         <property name="text">
-          <string>cfg_modbus_addr_F</string>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="1">
-        <widget class="QComboBox" name="cfg_modbus_MSB_15">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = ph</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = solidos suspendidos</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = turbidez</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = oxigeno</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = temperatura</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="15" column="2">
-        <widget class="QComboBox" name="cfg_modbus_LSB_15">
-         <item>
-          <property name="text">
-           <string>0 = NO definido</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = Carcamo</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = Reactores</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = Clarificador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = Clorador</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = Filtrado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = Digestor</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = Secado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = Tablero</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_5">
-      <attribute name="title">
-       <string>ASA Protocol (modbus 2)</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_6">
-       <item row="4" column="1">
-        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_1_ch_0">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = out_rel_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = out_rel_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = out_rel_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = out_rel_4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = out_led_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = out_led_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = out_led_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = out_led_4</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="cfg_modbus_2_addr_1_ch_2">
-         <property name="text">
-          <string>cfg_modbus_2_addr_1_ch_2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="cfg_modbus_2_addr_0_ch_1">
-         <property name="text">
-          <string>cfg_modbus_2_addr_0_ch_1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="cfg_modbus_2_addr_1_ch_0">
-         <property name="text">
-          <string>cfg_modbus_2_addr_1_ch_0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="cfg_modbus_2_addr_0_ch_2">
-         <property name="text">
-          <string>cfg_modbus_2_addr_0_ch_2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="cfg_modbus_2_addr_1_ch_1">
-         <property name="text">
-          <string>cfg_modbus_2_addr_1_ch_1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="cfg_modbus_2_addr_0_ch_3">
-         <property name="text">
-          <string>cfg_modbus_2_addr_0_ch_3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_1_ch_1">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = out_rel_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = out_rel_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = out_rel_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = out_rel_4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = out_led_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = out_led_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = out_led_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = out_led_4</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_0_ch_0">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = out_rel_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = out_rel_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = out_rel_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = out_rel_4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = out_led_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = out_led_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = out_led_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = out_led_4</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="cfg_modbus_2_addr_0_ch_0">
-         <property name="text">
-          <string>cfg_modbus_2_addr_0_ch_0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_0_ch_1">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = out_rel_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = out_rel_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = out_rel_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = out_rel_4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = out_led_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = out_led_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = out_led_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = out_led_4</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_1_ch_2">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = out_rel_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = out_rel_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = out_rel_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = out_rel_4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = out_led_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = out_led_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = out_led_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = out_led_4</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_0_ch_2">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = out_rel_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = out_rel_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = out_rel_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = out_rel_4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = out_led_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = out_led_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = out_led_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = out_led_4</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_0_ch_3">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = out_rel_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = out_rel_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = out_rel_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = out_rel_4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = out_led_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = out_led_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = out_led_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = out_led_4</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="cfg_modbus_2_addr_1_ch_3">
-         <property name="text">
-          <string>cfg_modbus_2_addr_1_ch_3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QComboBox" name="cfg_modbus_2_byte_addr_1_ch_3">
-         <item>
-          <property name="text">
-           <string>0 = No Connect</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 = out_rel_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 = out_rel_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 = out_rel_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 = out_rel_4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5 = out_led_1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>6 = out_led_2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>7 = out_led_3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>8 = out_led_4</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>config.ini</string>
-      </attribute>
-      <widget class="QTextEdit" name="textEdit">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>10</y>
-         <width>641</width>
-         <height>211</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_2">
-       <property name="geometry">
-        <rect>
-         <x>670</x>
-         <y>10</y>
-         <width>231</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>RECUERDA REINICIAR EL PROGRAMA PARA APLICAR CAMBIOS</string>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QWidget" name="gridLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>240</y>
-         <width>831</width>
-         <height>231</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <property name="horizontalSpacing">
-         <number>0</number>
-        </property>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="key_E">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>E</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="key_Q">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Q</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QPushButton" name="key_R">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>R</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QPushButton" name="key_Z">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Z</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="8">
-         <widget class="QPushButton" name="key_9">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>9</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QPushButton" name="key_S">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>S</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="6">
-         <widget class="QPushButton" name="key_M">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>M</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QPushButton" name="key_3">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>3</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="10">
-         <widget class="QPushButton" name="key_equal">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>=</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="key_1">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>1</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="5">
-         <widget class="QPushButton" name="key_N">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>N</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="3">
-         <widget class="QPushButton" name="key_V">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>V</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="8">
-         <widget class="QPushButton" name="key_O">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>O</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="4">
-         <widget class="QPushButton" name="key_B">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>B</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="key_2">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>2</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="key_C">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>C</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="8">
-         <widget class="QPushButton" name="key_L">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>L</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QPushButton" name="key_X">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>X</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="7">
-         <widget class="QPushButton" name="key_K">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>K</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="6">
-         <widget class="QPushButton" name="key_U">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>U</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="4">
-         <widget class="QPushButton" name="key_G">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>G</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="6">
-         <widget class="QPushButton" name="key_J">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>J</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="7">
-         <widget class="QPushButton" name="key_I">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>I</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="9">
-         <widget class="QPushButton" name="key_P">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>P</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QPushButton" name="key_D">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>D</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="4">
-         <widget class="QPushButton" name="key_T">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>T</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="key_W">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>W</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5">
-         <widget class="QPushButton" name="key_6">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>6</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QPushButton" name="key_5">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>5</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QPushButton" name="key_4">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>4</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="9">
-         <widget class="QPushButton" name="key_left">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>&lt;-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="9">
-         <widget class="QPushButton" name="key_0">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>0</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="6">
-         <widget class="QPushButton" name="key_7">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>7</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="7">
-         <widget class="QPushButton" name="key_8">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>8</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="7">
-         <widget class="QPushButton" name="key_guion">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>-</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="11">
-         <widget class="QPushButton" name="key_right">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>-&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="10">
-         <widget class="QPushButton" name="key_up">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>^</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="key_A">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>A</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="5">
-         <widget class="QPushButton" name="key_H">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>H</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="3">
-         <widget class="QPushButton" name="key_F">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>F</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="5">
-         <widget class="QPushButton" name="key_Y">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Y</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="10">
-         <widget class="QPushButton" name="key_back">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Back</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="10">
-         <widget class="QPushButton" name="key_down">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>V</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="11">
-         <widget class="QPushButton" name="key_enter">
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Enter</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QPushButton" name="key_space">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>480</y>
-         <width>561</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Space</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="tab_6">
-      <attribute name="title">
-       <string>Rutinas Mantenimiento</string>
-      </attribute>
-      <layout class="QGridLayout" name="gridLayout_7">
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Revisar y limpiar Vertedero Efluente</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="3">
-        <widget class="QComboBox" name="comboBox_16">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QLabel" name="label_18">
-         <property name="text">
-          <string>Revisar Tensión y Desgaste en Bandas</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <widget class="QComboBox" name="comboBox_15">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QComboBox" name="comboBox_13">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>Verificar Medidor de Flujo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QComboBox" name="comboBox_9">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Realizar Pruebas de Sedimentacion</string>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="1">
-        <widget class="QComboBox" name="comboBox_12">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Revisar Promedio Retorno de Lodo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QLabel" name="label_17">
-         <property name="text">
-          <string>Lubricar Candados</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="comboBox">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="comboBox_2">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label_10">
-         <property name="text">
-          <string>Verificar Operación de Relojes</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0">
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>Limpieza en Pretratamiento</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="label_13">
-         <property name="text">
-          <string>Limpieza General de la Planta</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QComboBox" name="comboBox_11">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLabel" name="label_15">
-         <property name="text">
-          <string>Tomar Muestra en el Efluente</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Limpiar Superficie del Sedimentador</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QComboBox" name="comboBox_6">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Revisar Balance de Aire en Difusores</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="comboBox_4">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="comboBox_3">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="5" column="3">
-        <widget class="QComboBox" name="comboBox_18">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="2">
-        <widget class="QLabel" name="label_21">
-         <property name="text">
-          <string>Limpiar Ventilación de Motores</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Raspar la tolva</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="comboBox_5">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="3">
-        <widget class="QComboBox" name="comboBox_21">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="2">
-        <widget class="QLabel" name="label_23">
-         <property name="text">
-          <string>Limpiar Filtros de Aire</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="comboBox_7">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label_11">
-         <property name="text">
-          <string>Revisar Bloqueo de Pretratamiento</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QComboBox" name="comboBox_8">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="11" column="0">
-        <widget class="QLabel" name="label_14">
-         <property name="text">
-          <string>Revisar Fugas en Válvulas</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QComboBox" name="comboBox_10">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QLabel" name="label_16">
-         <property name="text">
-          <string>Verificar y Reemplazar Fusibles</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="3">
-        <widget class="QComboBox" name="comboBox_17">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="2">
-        <widget class="QLabel" name="label_22">
-         <property name="text">
-          <string>Verificar Nivel de Aceite en Sopladores</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="2">
-        <widget class="QLabel" name="label_25">
-         <property name="text">
-          <string>Limpiar y Pintar Partes Metálicas</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QLabel" name="label_20">
-         <property name="text">
-          <string>Lubricar Chumaceras</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QLabel" name="label_19">
-         <property name="text">
-          <string>Verificar Alineacion de Poleas</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <widget class="QComboBox" name="comboBox_14">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="11" column="2">
-        <widget class="QLabel" name="label_26">
-         <property name="text">
-          <string>Revisar Terminales y Disparadores</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="2">
-        <widget class="QLabel" name="label_24">
-         <property name="text">
-          <string>Limpiar Valvulas de Alivio</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="3">
-        <widget class="QComboBox" name="comboBox_22">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="3">
-        <widget class="QComboBox" name="comboBox_20">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="6" column="3">
-        <widget class="QComboBox" name="comboBox_19">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="10" column="3">
-        <widget class="QComboBox" name="comboBox_23">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="11" column="3">
-        <widget class="QComboBox" name="comboBox_24">
-         <item>
-          <property name="text">
-           <string>0 - Desactivado</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1 - Diario</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2 - Semanal</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3 - Mensual</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4 - Anual</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </item>
-  </layout>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>961</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>ADVERTENCIA: NO MODIFICAR ESTAS CONFIGURACIONES SIN CONOCIMIENTO DEL SISTEMA. RECUERDA REINICIAR EL PROGRAMA PARA APLICAR CAMBIOS</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>800</x>
+     <y>700</y>
+     <width>166</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QFrame" name="key_frame">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>420</y>
+     <width>941</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_frame
+{
+border-image: url(:/teclado/images/Texto/Teclado/Teclado_back.png);
+background-repeat:none;
+/*background-color: black;*/
+border:none;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="key_0">
+    <property name="geometry">
+     <rect>
+      <x>759</x>
+      <y>192</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_0{ 
+border-image: url(:/teclado/images/Texto/Teclado/0_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_0::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/0_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_4">
+    <property name="geometry">
+     <rect>
+      <x>699</x>
+      <y>72</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_4{ 
+border-image: url(:/teclado/images/Texto/Teclado/4_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_4::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/4_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_5">
+    <property name="geometry">
+     <rect>
+      <x>759</x>
+      <y>72</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_5{ 
+border-image: url(:/teclado/images/Texto/Teclado/5_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_5::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/5_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_7">
+    <property name="geometry">
+     <rect>
+      <x>699</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_7{ 
+border-image: url(:/teclado/images/Texto/Teclado/7_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_7::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/7_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_8">
+    <property name="geometry">
+     <rect>
+      <x>759</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_8{ 
+border-image: url(:/teclado/images/Texto/Teclado/8_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_8::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/8_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_1">
+    <property name="geometry">
+     <rect>
+      <x>699</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_1{ 
+border-image: url(:/teclado/images/Texto/Teclado/1_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_1::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/1_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_6">
+    <property name="geometry">
+     <rect>
+      <x>819</x>
+      <y>72</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_6{ 
+border-image: url(:/teclado/images/Texto/Teclado/6_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_6::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/6_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_back">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>10</y>
+      <width>70</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_back{ 
+border-image: url(:/teclado/images/Texto/Teclado/Backspace_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+
+}
+
+#key_back::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/Backspace_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_3">
+    <property name="geometry">
+     <rect>
+      <x>819</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_3{ 
+border-image: url(:/teclado/images/Texto/Teclado/3_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_3::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/3_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_9">
+    <property name="geometry">
+     <rect>
+      <x>819</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_9{ 
+border-image: url(:/teclado/images/Texto/Teclado/9_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_9::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/9_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_2">
+    <property name="geometry">
+     <rect>
+      <x>759</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_2{ 
+border-image: url(:/teclado/images/Texto/Teclado/2_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_2::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/2_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_Q">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_Q{ 
+border-image: url(:/teclado/images/Texto/Teclado/Q_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_Q::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/Q_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_W">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_W{ 
+border-image: url(:/teclado/images/Texto/Teclado/W_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_W::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/W_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_E">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_E{ 
+border-image: url(:/teclado/images/Texto/Teclado/E_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_E::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/E_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_R">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_R{ 
+border-image: url(:/teclado/images/Texto/Teclado/R_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_R::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/R_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_T">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_T{ 
+border-image: url(:/teclado/images/Texto/Teclado/T_azul.png);
+border:none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_T::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/T_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_Y">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_Y{ 
+border-image: url(:/teclado/images/Texto/Teclado/Y_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_Y::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/Y_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_U">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_U{ 
+border-image: url(:/teclado/images/Texto/Teclado/U_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_U::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/U_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_I">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_I{ 
+border-image: url(:/teclado/images/Texto/Teclado/I_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_I::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/I_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_P">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_P{ 
+border-image: url(:/teclado/images/Texto/Teclado/P_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_P::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/P_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_O">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_O{ 
+border-image: url(:/teclado/images/Texto/Teclado/O_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_O::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/O_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_A">
+    <property name="geometry">
+     <rect>
+      <x>45</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_A{ 
+border-image: url(:/teclado/images/Texto/Teclado/A_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_A::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/A_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_L">
+    <property name="geometry">
+     <rect>
+      <x>525</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_L{ 
+border-image: url(:/teclado/images/Texto/Teclado/L_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_L::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/L_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_H">
+    <property name="geometry">
+     <rect>
+      <x>345</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_H{ 
+border-image: url(:/teclado/images/Texto/Teclado/H_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_H::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/H_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_G">
+    <property name="geometry">
+     <rect>
+      <x>285</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_G{ 
+border-image: url(:/teclado/images/Texto/Teclado/G_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_G::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/G_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_F">
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_F{ 
+border-image: url(:/teclado/images/Texto/Teclado/F_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_F::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/F_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_S">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_S{ 
+border-image: url(:/teclado/images/Texto/Teclado/S_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_S::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/S_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_D">
+    <property name="geometry">
+     <rect>
+      <x>165</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_D{ 
+border-image: url(:/teclado/images/Texto/Teclado/D_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_D::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/D_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_J">
+    <property name="geometry">
+     <rect>
+      <x>405</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_J{ 
+border-image: url(:/teclado/images/Texto/Teclado/J_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_J::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/J_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_K">
+    <property name="geometry">
+     <rect>
+      <x>465</x>
+      <y>75</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_K{ 
+border-image: url(:/teclado/images/Texto/Teclado/K_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_K::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/K_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_dot">
+    <property name="geometry">
+     <rect>
+      <x>819</x>
+      <y>192</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_dot{ 
+border-image: url(:/teclado/images/Texto/Teclado/punto_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_dot::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/punto_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_slash">
+    <property name="geometry">
+     <rect>
+      <x>879</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_slash{ 
+border-image: url(:/teclado/images/Texto/Teclado/slash_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_slash::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/slash_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_plus">
+    <property name="geometry">
+     <rect>
+      <x>879</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_plus{ 
+border-image: url(:/teclado/images/Texto/Teclado/+_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_plus::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/+_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_minus">
+    <property name="geometry">
+     <rect>
+      <x>879</x>
+      <y>72</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_minus{ 
+border-image: url(:/teclado/images/Texto/Teclado/- azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_minus::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/- blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_X">
+    <property name="geometry">
+     <rect>
+      <x>128</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_X{ 
+border-image: url(:/teclado/images/Texto/Teclado/X_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_X::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/X_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_Z">
+    <property name="geometry">
+     <rect>
+      <x>68</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_Z{ 
+border-image: url(:/teclado/images/Texto/Teclado/Z_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_Z::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/Z_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_M">
+    <property name="geometry">
+     <rect>
+      <x>428</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_M{ 
+border-image: url(:/teclado/images/Texto/Teclado/M_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_M::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/M_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_C">
+    <property name="geometry">
+     <rect>
+      <x>188</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_C{ 
+border-image: url(:/teclado/images/Texto/Teclado/C_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_C::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/C_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_V">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_V{ 
+border-image: url(:/teclado/images/Texto/Teclado/V_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_V::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/V_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_B">
+    <property name="geometry">
+     <rect>
+      <x>308</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_B{ 
+border-image: url(:/teclado/images/Texto/Teclado/B_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_B::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/B_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_N">
+    <property name="geometry">
+     <rect>
+      <x>368</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_N{ 
+border-image: url(:/teclado/images/Texto/Teclado/N_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_N::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/N_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_comma">
+    <property name="geometry">
+     <rect>
+      <x>488</x>
+      <y>134</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_comma{ 
+border-image: url(:/teclado/images/Texto/Teclado/coma_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_comma::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/coma_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_space">
+    <property name="geometry">
+     <rect>
+      <x>219</x>
+      <y>190</y>
+      <width>381</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_space{ 
+border-image: url(:/teclado/images/Texto/Teclado/Espacio_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_space::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/Espacio_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_enter">
+    <property name="geometry">
+     <rect>
+      <x>585</x>
+      <y>75</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_enter{ 
+border-image: url(:/teclado/images/Texto/Teclado/Enter_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_enter::pressed{ 
+border-image: url(:/teclado/images/Texto/Teclado/Enter_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_mayus">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>190</y>
+      <width>111</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_mayus{ 
+background-color:none;
+border-style: solid;
+border-width: 2px;
+border-radius: 8px;
+border-color: rgb(0, 167, 250);
+color: rgb(0, 167, 250);
+
+}
+
+#key_mayus::checked{ 
+background-color:none;
+border-style: solid;
+border-width: 2px;
+border-radius: 8px;
+border-color: white;
+color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>MAYUSCULAS</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="key_back_6">
+    <property name="geometry">
+     <rect>
+      <x>88</x>
+      <y>188</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_back_6
+{
+background-color: balck;
+border-style: solid;
+border-width: 1px;
+border-radius: 10px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>key_back_6</zorder>
+   <zorder>key_0</zorder>
+   <zorder>key_4</zorder>
+   <zorder>key_5</zorder>
+   <zorder>key_7</zorder>
+   <zorder>key_8</zorder>
+   <zorder>key_1</zorder>
+   <zorder>key_6</zorder>
+   <zorder>key_back</zorder>
+   <zorder>key_3</zorder>
+   <zorder>key_9</zorder>
+   <zorder>key_2</zorder>
+   <zorder>key_Q</zorder>
+   <zorder>key_W</zorder>
+   <zorder>key_E</zorder>
+   <zorder>key_R</zorder>
+   <zorder>key_T</zorder>
+   <zorder>key_Y</zorder>
+   <zorder>key_U</zorder>
+   <zorder>key_I</zorder>
+   <zorder>key_P</zorder>
+   <zorder>key_O</zorder>
+   <zorder>key_A</zorder>
+   <zorder>key_L</zorder>
+   <zorder>key_H</zorder>
+   <zorder>key_G</zorder>
+   <zorder>key_F</zorder>
+   <zorder>key_S</zorder>
+   <zorder>key_D</zorder>
+   <zorder>key_J</zorder>
+   <zorder>key_K</zorder>
+   <zorder>key_dot</zorder>
+   <zorder>key_slash</zorder>
+   <zorder>key_plus</zorder>
+   <zorder>key_minus</zorder>
+   <zorder>key_X</zorder>
+   <zorder>key_Z</zorder>
+   <zorder>key_M</zorder>
+   <zorder>key_C</zorder>
+   <zorder>key_V</zorder>
+   <zorder>key_B</zorder>
+   <zorder>key_N</zorder>
+   <zorder>key_comma</zorder>
+   <zorder>key_space</zorder>
+   <zorder>key_enter</zorder>
+   <zorder>key_mayus</zorder>
+  </widget>
+  <widget class="QTextEdit" name="textEdit">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>961</width>
+     <height>311</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
