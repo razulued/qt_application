@@ -1,5 +1,6 @@
 #include "token_auth.h"
 #include <QDebug>
+#include "asa_conf_string.h"
 QString valid_key = "1234";
 
 bool token_validity = false;
@@ -19,5 +20,11 @@ bool check_user_password(QString str)
 void validate_token(bool val)
 {
     token_validity = val;
+    output_token_transfer(val);
     qDebug() << "token_validity " << token_validity;
+}
+
+bool get_validity_state()
+{
+    return token_validity;
 }

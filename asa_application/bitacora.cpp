@@ -23,10 +23,10 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
-    QFont font0("Typo Square Bold Demo",20,1);
-    QFont font1("Typo Square Italic Demo",14,1);
-    QFont font2("Typo Square Italic Demo",12,1);
-    QFont font3("Typo Square Bold Demo",16,1);
+    QFont font0("Typo Square Bold Demo",18,1);
+    QFont font1("Typo Square Italic Demo",12,1);
+    QFont font2("Typo Square Italic Demo",10,1);
+    QFont font3("Typo Square Bold Demo",14,1);
 
     ui->label->setFont(font0);
 
@@ -143,6 +143,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     //Scrolling Gesture
     scroller_2->grabGesture(ui->tableWidget_2,QScroller::LeftMouseButtonGesture);
 
+    this->move(parent->pos());
     this->show();
 }
 
@@ -210,11 +211,11 @@ void bitacora::init_full_table()
         add_row_rutina(i, i, ui->tableWidget);
 
         ui->tableWidget->resizeRowsToContents();
-        ui->tableWidget->setColumnWidth(0, 45);
-        ui->tableWidget->setColumnWidth(1, 450);
-        ui->tableWidget->setColumnWidth(2, 90);
-        ui->tableWidget->setColumnWidth(3, 120);
-        ui->tableWidget->setColumnWidth(4, 120);
+        ui->tableWidget->setColumnWidth(0, 35);
+        ui->tableWidget->setColumnWidth(1, 350);
+        ui->tableWidget->setColumnWidth(2, 70);
+        ui->tableWidget->setColumnWidth(3, 90);
+        ui->tableWidget->setColumnWidth(4, 90);
     }
 }
 
@@ -248,11 +249,11 @@ void bitacora::init_active_table()
     ui->tableWidget_2->setColumnCount(titulos.size());
     ui->tableWidget_2->setHorizontalHeaderLabels(titulos);
 
-    ui->tableWidget_2->setColumnWidth(0, 45);
-    ui->tableWidget_2->setColumnWidth(1, 450);
-    ui->tableWidget_2->setColumnWidth(2, 90);
-    ui->tableWidget_2->setColumnWidth(3, 120);
-    ui->tableWidget_2->setColumnWidth(4, 120);
+    ui->tableWidget_2->setColumnWidth(0, 35);
+    ui->tableWidget_2->setColumnWidth(1, 350);
+    ui->tableWidget_2->setColumnWidth(2, 70);
+    ui->tableWidget_2->setColumnWidth(3, 90);
+    ui->tableWidget_2->setColumnWidth(4, 90);
 
     uint fila = 0;
     for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
@@ -332,11 +333,11 @@ void bitacora::init_active_table()
     }
 
     ui->tableWidget_2->resizeRowsToContents();
-    ui->tableWidget_2->setColumnWidth(0, 45);
-    ui->tableWidget_2->setColumnWidth(1, 450);
-    ui->tableWidget_2->setColumnWidth(2, 90);
-    ui->tableWidget_2->setColumnWidth(3, 120);
-    ui->tableWidget_2->setColumnWidth(4, 120);
+    ui->tableWidget_2->setColumnWidth(0, 35);
+    ui->tableWidget_2->setColumnWidth(1, 350);
+    ui->tableWidget_2->setColumnWidth(2, 70);
+    ui->tableWidget_2->setColumnWidth(3, 90);
+    ui->tableWidget_2->setColumnWidth(4, 90);
 }
 
 void bitacora::update_active_table()
@@ -463,11 +464,11 @@ void bitacora::add_row_rutina(uint row, uint rutina, QTableWidget *table)
     table->setItem(row, ORIGEN, new QTableWidgetItem(*temp_name));
 
     table->resizeRowsToContents();
-    table->setColumnWidth(0, 45);
-    table->setColumnWidth(1, 450);
-    table->setColumnWidth(2, 90);
-    table->setColumnWidth(3, 120);
-    table->setColumnWidth(4, 120);
+    table->setColumnWidth(0, 35);
+    table->setColumnWidth(1, 350);
+    table->setColumnWidth(2, 70);
+    table->setColumnWidth(3, 90);
+    table->setColumnWidth(4, 90);
 }
 
 void bitacora::delete_row(uint row, QTableWidget *table)

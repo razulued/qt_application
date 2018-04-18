@@ -1,0 +1,214 @@
+<RCC>
+    <qresource prefix="/barras">
+        <file>screen800x600/barras/Base 1 amarilla.png</file>
+        <file>screen800x600/barras/Base 1 azul.png</file>
+        <file>screen800x600/barras/Base 1 roja.png</file>
+        <file>screen800x600/barras/Base 2 amarillo.png</file>
+        <file>screen800x600/barras/Base 2 azul.png</file>
+        <file>screen800x600/barras/Base 2 rojo.png</file>
+        <file>screen800x600/barras/Base 3 amarillo.png</file>
+        <file>screen800x600/barras/Base 3 azul.png</file>
+        <file>screen800x600/barras/Base 3 rojo.png</file>
+        <file>screen800x600/barras/Indice diagrama.png</file>
+        <file>screen800x600/barras/Linea configuracion azul.png</file>
+        <file>screen800x600/barras/Linea configuracion gris.png</file>
+        <file>screen800x600/barras/Parametros electricos amarillo.png</file>
+        <file>screen800x600/barras/Parametros electricos azul.png</file>
+        <file>screen800x600/barras/Parametros electricos rojo.png</file>
+        <file>screen800x600/barras/Parametros fisicos amarillo.png</file>
+        <file>screen800x600/barras/Parametros fisicos azul.png</file>
+        <file>screen800x600/barras/Parametros fisicos rojo.png</file>
+        <file>screen800x600/barras/Parametros quimicos amarillo.png</file>
+        <file>screen800x600/barras/Parametros quimicos azul.png</file>
+        <file>screen800x600/barras/Parametros quimicos rojo.png</file>
+        <file>screen800x600/barras/PE_bar.png</file>
+        <file>screen800x600/barras/PF_bar.png</file>
+        <file>screen800x600/barras/PQ_bar.png</file>
+    </qresource>
+    <qresource prefix="/iconos">
+        <file>screen800x600/iconos/Ajustes azul.png</file>
+        <file>screen800x600/iconos/Ajustes blanco.png</file>
+        <file>screen800x600/iconos/ASA logo.png</file>
+        <file>screen800x600/iconos/Ayuda azul.png</file>
+        <file>screen800x600/iconos/Ayuda blanco.png</file>
+        <file>screen800x600/iconos/Bitacora azul.png</file>
+        <file>screen800x600/iconos/Bitacora blanco.png</file>
+        <file>screen800x600/iconos/Campana.png</file>
+        <file>screen800x600/iconos/Cerrar blanco.png</file>
+        <file>screen800x600/iconos/Clavija amarillo.png</file>
+        <file>screen800x600/iconos/Clavija azul.png</file>
+        <file>screen800x600/iconos/Clavija blanco.png</file>
+        <file>screen800x600/iconos/Clavija rojo.png</file>
+        <file>screen800x600/iconos/Cuadro de preguntas.png</file>
+        <file>screen800x600/iconos/Cuadro pantalla.png</file>
+        <file>screen800x600/iconos/Cuadro posponer.png</file>
+        <file>screen800x600/iconos/Cuadro seleccion relleno.png</file>
+        <file>screen800x600/iconos/Cuadro seleccion vacio.png</file>
+        <file>screen800x600/iconos/Diagrama.png</file>
+        <file>screen800x600/iconos/Encendido azul.png</file>
+        <file>screen800x600/iconos/Encendido blanco.png</file>
+        <file>screen800x600/iconos/Espaciadores gris.png</file>
+        <file>screen800x600/iconos/Evento 1.png</file>
+        <file>screen800x600/iconos/Evento 2.png</file>
+        <file>screen800x600/iconos/Evento 3.png</file>
+        <file>screen800x600/iconos/Globo 1 amarillo.png</file>
+        <file>screen800x600/iconos/Globo 1 azul.png</file>
+        <file>screen800x600/iconos/Globo 1 rojo.png</file>
+        <file>screen800x600/iconos/Globo 2 amarillo.png</file>
+        <file>screen800x600/iconos/Globo 2 azul.png</file>
+        <file>screen800x600/iconos/Globo 2 rojo.png</file>
+        <file>screen800x600/iconos/Globo 3 amarillo.png</file>
+        <file>screen800x600/iconos/Globo 3 azul.png</file>
+        <file>screen800x600/iconos/Globo 3 rojo.png</file>
+        <file>screen800x600/iconos/Globo 4 amarillo.png</file>
+        <file>screen800x600/iconos/Globo 4 azul.png</file>
+        <file>screen800x600/iconos/Globo 4 rojo.png</file>
+        <file>screen800x600/iconos/Globo 5 amarillo.png</file>
+        <file>screen800x600/iconos/Globo 5 azul.png</file>
+        <file>screen800x600/iconos/Globo 5 rojo.png</file>
+        <file>screen800x600/iconos/ID 1.png</file>
+        <file>screen800x600/iconos/ID 2.png</file>
+        <file>screen800x600/iconos/ID 3.png</file>
+        <file>screen800x600/iconos/Info azul.png</file>
+        <file>screen800x600/iconos/Info blanco.png</file>
+        <file>screen800x600/iconos/Libro.png</file>
+        <file>screen800x600/iconos/Linea graficos.png</file>
+        <file>screen800x600/iconos/Listo azul.png</file>
+        <file>screen800x600/iconos/Listo blanco.png</file>
+        <file>screen800x600/iconos/Matraz amarillo.png</file>
+        <file>screen800x600/iconos/Matraz azul.png</file>
+        <file>screen800x600/iconos/Matraz blanco.png</file>
+        <file>screen800x600/iconos/Matraz rojo.png</file>
+        <file>screen800x600/iconos/Medidor amarillo.png</file>
+        <file>screen800x600/iconos/Medidor azul.png</file>
+        <file>screen800x600/iconos/Medidor blanco.png</file>
+        <file>screen800x600/iconos/Medidor rojo.png</file>
+        <file>screen800x600/iconos/Menu amarillo.png</file>
+        <file>screen800x600/iconos/Menu azul.png</file>
+        <file>screen800x600/iconos/Menu rojo.png</file>
+        <file>screen800x600/iconos/Ok azul.png</file>
+        <file>screen800x600/iconos/Ok blanco.png</file>
+        <file>screen800x600/iconos/Play azul.png</file>
+        <file>screen800x600/iconos/Play blanco.png</file>
+        <file>screen800x600/iconos/Posponer azul.png</file>
+        <file>screen800x600/iconos/Posponer blanco.png</file>
+        <file>screen800x600/iconos/Punto contrasena.png</file>
+        <file>screen800x600/iconos/Punto linea de tiempo.png</file>
+        <file>screen800x600/iconos/Visualizar azul.png</file>
+        <file>screen800x600/iconos/Visualizar blanco.png</file>
+        <file>screen800x600/iconos/locked.png</file>
+        <file>screen800x600/iconos/unlocked.png</file>
+        <file>screen800x600/iconos/Encendido gris.png</file>
+    </qresource>
+    <qresource prefix="/texto">
+        <file>screen800x600/texto/Teclado 1.1/0 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/0 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/1 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/1 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/2 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/2 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/3 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/3 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/4 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/4 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/5 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/5 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/6 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/6 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/7 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/7 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/8 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/8 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/9 azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/9 blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/A azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/A blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/B azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/B blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Backspace azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Backspace blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Borrar azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Borrar blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/C azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/C blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/coma azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Coma blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/D azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/D blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/E azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/E blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Enter azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Enter blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Espacio azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Espacio blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/F azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/F blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Flecha inferior azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Flecha inferior blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Flecha superior azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Flecha superior blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/G azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/G blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/H azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/H blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/I azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/I blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/J azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/J blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/K azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/K blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/L azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/L blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/M azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/M blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/minus_azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/minus_blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/N azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/N blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/O azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/O blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/P azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/P blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/plus_azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/plus_blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Punto azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Punto blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Q azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Q blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/R azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/R blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/S azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/S blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/slash azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/slash blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/T azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/T blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Teclado.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Tecladofondo.png</file>
+        <file>screen800x600/texto/Teclado 1.1/U azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/U blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/V azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/V blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/W azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/W blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/X azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/X blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Y azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Y blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Z azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Z blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/fondo teclado.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Mayus azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Mayus bco.png</file>
+    </qresource>
+    <qresource prefix="/diagrama">
+        <file>screen800x600/diagrama/Afluente.png</file>
+        <file>screen800x600/diagrama/Carcamo.png</file>
+        <file>screen800x600/diagrama/Clarificador.png</file>
+        <file>screen800x600/diagrama/Clorador.png</file>
+        <file>screen800x600/diagrama/Diagrama.png</file>
+        <file>screen800x600/diagrama/Digestor de lodos.png</file>
+        <file>screen800x600/diagrama/Efluente.png</file>
+        <file>screen800x600/diagrama/Reactor.png</file>
+    </qresource>
+</RCC>

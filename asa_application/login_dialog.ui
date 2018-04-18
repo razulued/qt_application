@@ -33,14 +33,14 @@ background-color: black;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_4{ 
-border-image: url(:/teclado/images/Texto/Teclado/4_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/4 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_4::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/4_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/4 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -67,14 +67,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_0{ 
-border-image: url(:/teclado/images/Texto/Teclado/0_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/0 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_0::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/0_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/0 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -101,14 +101,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_1{ 
-border-image: url(:/teclado/images/Texto/Teclado/1_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/1 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_1::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/1_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/1 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -135,14 +135,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_5{ 
-border-image: url(:/teclado/images/Texto/Teclado/5_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/5 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_5::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/5_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/5 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -169,14 +169,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_2{ 
-border-image: url(:/teclado/images/Texto/Teclado/2_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/2 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_2::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/2_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/2 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -203,14 +203,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_6{ 
-border-image: url(:/teclado/images/Texto/Teclado/6_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/6 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_6::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/6_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/6 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -237,14 +237,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_8{ 
-border-image: url(:/teclado/images/Texto/Teclado/8_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/8 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_8::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/8_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/8 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -271,14 +271,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_7{ 
-border-image: url(:/teclado/images/Texto/Teclado/7_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/7 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_7::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/7_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/7 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -305,14 +305,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_9{ 
-border-image: url(:/teclado/images/Texto/Teclado/9_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/9 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_9::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/9_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/9 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -339,14 +339,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_3{ 
-border-image: url(:/teclado/images/Texto/Teclado/3_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/3 azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_3::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/3_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/3 blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -373,14 +373,14 @@ background-position: center;
    </property>
    <property name="styleSheet">
     <string notr="true">#key_enter{ 
-border-image: url(:/teclado/images/Texto/Teclado/Enter_azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Enter azul.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_enter::pressed{ 
-border-image: url(:/teclado/images/Texto/Teclado/Enter_blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Enter blanco.png);
 border: none;
 background-repeat: none;
 background-position: center;

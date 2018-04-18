@@ -12,24 +12,24 @@ static void setState(multi_button_state_t state, parameters_t parameter);
 const multi_button_icons_t icon_path[TOTAL_TYPES_PARAM]=
 {
     /*Electrical*/
-    {   ":/iconos/images/Iconos/Clavija_azul.png",
-        ":/iconos/images/Iconos/Clavija_blanco.png",
-        ":/iconos/images/Iconos/Clavija_amarillo.png",
-        ":/iconos/images/Iconos/Clavija_rojo.png",
+    {   ":/iconos/screen800x600/iconos/Clavija azul.png",
+        ":/iconos/screen800x600/iconos/Clavija blanco.png",
+        ":/iconos/screen800x600/iconos/Clavija amarillo.png",
+        ":/iconos/screen800x600/iconos/Clavija rojo.png",
     },
     /*Physical*/
     {
-        ":/iconos/images/Iconos/Medidor_azul.png",
-        ":/iconos/images/Iconos/Medidor_blanco.png",
-        ":/iconos/images/Iconos/Medidor_amarillo.png",
-        ":/iconos/images/Iconos/Medidor_rojo.png",
+        ":/iconos/screen800x600/iconos/Medidor azul.png",
+        ":/iconos/screen800x600/iconos/Medidor blanco.png",
+        ":/iconos/screen800x600/iconos/Medidor amarillo.png",
+        ":/iconos/screen800x600/iconos/Matraz rojo.png",
     },
     /*Chemical*/
     {
-        ":/iconos/images/Iconos/Matraz_azul.png",
-        ":/iconos/images/Iconos/Matraz_blanco.png",
-        ":/iconos/images/Iconos/Matraz_amarillo.png",
-        ":/iconos/images/Iconos/Matraz_rojo.png",
+        ":/iconos/screen800x600/iconos/Matraz azul.png",
+        ":/iconos/screen800x600/iconos/Matraz blanco.png",
+        ":/iconos/screen800x600/iconos/Matraz amarillo.png",
+        ":/iconos/screen800x600/iconos/Matraz rojo.png",
     },
 };
 

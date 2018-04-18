@@ -38,7 +38,9 @@ SOURCES += main.cpp\
     clickeablelabel.cpp \
     login_dialog.cpp \
     token_auth.cpp \
-    asa_conf_string.cpp
+    asa_conf_string.cpp \
+    graphwindow.cpp \
+    statistics.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -65,17 +67,21 @@ HEADERS  += mainwindow.h \
     clickeablelabel.h \
     login_dialog.h \
     token_auth.h \
-    asa_conf_string.h
+    asa_conf_string.h \
+    graphwindow.h \
+    statistics.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
     settings.ui \
     bitacora.ui \
-    login_dialog.ui
+    login_dialog.ui \
+    graphwindow.ui
 
 RESOURCES += \
-    images.qrc \
-    fonts.qrc
+    fonts.qrc \
+    screen800x600.qrc \
+    images.qrc
 
 INSTALLS = target
 

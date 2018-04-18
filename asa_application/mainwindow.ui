@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>768</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1024</width>
-    <height>768</height>
+    <width>800</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1024</width>
-    <height>768</height>
+    <width>800</width>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -81,10 +81,10 @@ border-width: 1px;
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>680</y>
-      <width>90</width>
-      <height>86</height>
+      <x>7</x>
+      <y>530</y>
+      <width>70</width>
+      <height>67</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -122,9 +122,9 @@ border-image: url(:/iconos/images/Iconos/Menu_azul.png);
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>680</y>
-      <width>974</width>
-      <height>87</height>
+      <y>529</y>
+      <width>766</width>
+      <height>70</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -145,10 +145,10 @@ background-repeat: none;
    <widget class="QPushButton" name="pb_fisicos">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>716</y>
-      <width>91</width>
-      <height>51</height>
+      <x>450</x>
+      <y>560</y>
+      <width>51</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -156,7 +156,7 @@ background-repeat: none;
     </property>
     <property name="styleSheet">
      <string notr="true">#pb_fisicos { 
-background-image: url(:/iconos/images/Iconos/Medidor_azul.png);
+background-image: url(:/iconos/screen800x600/iconos/Medidor azul.png);
 border: none; 
 background-repeat: none;
 background-position: center;
@@ -172,10 +172,10 @@ background-position: center;
    <widget class="QPushButton" name="pb_quimicos">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>716</y>
+      <x>530</x>
+      <y>560</y>
       <width>71</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -183,7 +183,7 @@ background-position: center;
     </property>
     <property name="styleSheet">
      <string notr="true">#pb_quimicos { 
-background-image: url(:/iconos/images/Iconos/Matraz_azul.png);
+background-image: url(:/iconos/screen800x600/iconos/Matraz azul.png);
 border: none; 
 background-repeat: none;
 background-position: center;
@@ -199,10 +199,10 @@ background-position: center;
    <widget class="QPushButton" name="pb_electricos">
     <property name="geometry">
      <rect>
-      <x>810</x>
-      <y>716</y>
-      <width>91</width>
-      <height>51</height>
+      <x>610</x>
+      <y>560</y>
+      <width>81</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -210,7 +210,7 @@ background-position: center;
     </property>
     <property name="styleSheet">
      <string notr="true">#pb_electricos { 
-background-image: url(:/iconos/images/Iconos/Clavija_azul.png);
+background-image: url(:/iconos/screen800x600/iconos/Clavija azul.png);
 border: none; 
 background-repeat: none;
 background-position: center;
@@ -229,8 +229,8 @@ background-position: center;
     </property>
     <property name="geometry">
      <rect>
-      <x>106</x>
-      <y>747</y>
+      <x>82</x>
+      <y>580</y>
       <width>341</width>
       <height>20</height>
      </rect>
@@ -238,7 +238,7 @@ background-position: center;
     <property name="font">
      <font>
       <family>Phetsarath OT</family>
-      <pointsize>18</pointsize>
+      <pointsize>16</pointsize>
       <weight>50</weight>
       <bold>false</bold>
      </font>
@@ -263,10 +263,10 @@ background-repeat: none;
    <widget class="QPushButton" name="modulo_1">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>330</y>
-      <width>101</width>
-      <height>71</height>
+      <x>109</x>
+      <y>226</y>
+      <width>111</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -292,10 +292,10 @@ background-position: center;
    <widget class="QPushButton" name="modulo_2">
     <property name="geometry">
      <rect>
-      <x>348</x>
-      <y>295</y>
-      <width>101</width>
-      <height>71</height>
+      <x>259</x>
+      <y>186</y>
+      <width>111</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -318,10 +318,10 @@ background-position: center;
    <widget class="QPushButton" name="modulo_3">
     <property name="geometry">
      <rect>
-      <x>509</x>
-      <y>256</y>
-      <width>91</width>
-      <height>71</height>
+      <x>409</x>
+      <y>146</y>
+      <width>111</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -344,10 +344,10 @@ background-position: center;
    <widget class="QPushButton" name="modulo_4">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>220</y>
-      <width>110</width>
-      <height>71</height>
+      <x>569</x>
+      <y>106</y>
+      <width>101</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -370,8 +370,8 @@ background-position: center;
    <widget class="QPushButton" name="modulo_5">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>380</y>
+      <x>586</x>
+      <y>299</y>
       <width>100</width>
       <height>71</height>
      </rect>
@@ -396,8 +396,8 @@ background-position: center;
    <widget class="QPushButton" name="modulo_6">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>500</y>
+      <x>331</x>
+      <y>411</y>
       <width>121</width>
       <height>61</height>
      </rect>
@@ -424,8 +424,8 @@ background-position: center;
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>974</width>
-      <height>35</height>
+      <width>759</width>
+      <height>27</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -434,7 +434,7 @@ background-position: center;
     <property name="styleSheet">
      <string notr="true">#top_bar { 
 background-color: transparent;
-border-image: url(:/barras/images/Barras/Indice_diagrama.png); background: none; 
+background-image: url(:/barras/screen800x600/barras/Indice diagrama.png);
 border: none; 
 background-repeat: none;
  } </string>
@@ -446,10 +446,10 @@ background-repeat: none;
    <widget class="QPushButton" name="top_menu_1">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>15</y>
-      <width>23</width>
-      <height>28</height>
+      <x>10</x>
+      <y>0</y>
+      <width>31</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -458,38 +458,11 @@ background-repeat: none;
     <property name="styleSheet">
      <string notr="true">#top_menu_1 { 
 background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Campana.png);
-background: none; 
+background-image: url(:/iconos/screen800x600/iconos/Campana.png);
 border: none; 
 background-repeat: none;
- } </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="top_menu_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>41</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#top_menu_4 { 
-background-color: transparent;
-border-image: none;
-background: none; 
-border: none; 
-background-repeat: none;
+background-position: center;
+
  } </string>
     </property>
     <property name="text">
@@ -502,10 +475,10 @@ background-repeat: none;
    <widget class="QPushButton" name="asa_logo">
     <property name="geometry">
      <rect>
-      <x>930</x>
-      <y>700</y>
-      <width>91</width>
-      <height>71</height>
+      <x>740</x>
+      <y>550</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -513,7 +486,7 @@ background-repeat: none;
     </property>
     <property name="styleSheet">
      <string notr="true">#asa_logo{ 
-background-image: url(:/iconos/images/Iconos/ASA_logo.png);
+background-image: url(:/iconos/screen800x600/iconos/ASA logo.png);
 border: none; 
 background-repeat: none;
 background-position: center;
@@ -529,8 +502,8 @@ background-position: center;
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>220</y>
+      <x>20</x>
+      <y>80</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -539,8 +512,8 @@ background-position: center;
    <widget class="QWidget" name="widget_2" native="true">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>140</y>
+      <x>70</x>
+      <y>80</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -552,8 +525,8 @@ background-position: center;
    <widget class="QWidget" name="widget_3" native="true">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>140</y>
+      <x>119</x>
+      <y>80</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -562,8 +535,8 @@ background-position: center;
    <widget class="QWidget" name="widget_4" native="true">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>530</y>
+      <x>240</x>
+      <y>40</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -572,8 +545,8 @@ background-position: center;
    <widget class="QWidget" name="widget_6" native="true">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>80</y>
+      <x>340</x>
+      <y>40</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -582,8 +555,8 @@ background-position: center;
    <widget class="QWidget" name="widget_7" native="true">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>80</y>
+      <x>450</x>
+      <y>40</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -592,8 +565,8 @@ background-position: center;
    <widget class="QWidget" name="widget_8" native="true">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>80</y>
+      <x>500</x>
+      <y>40</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -602,8 +575,8 @@ background-position: center;
    <widget class="QWidget" name="widget_9" native="true">
     <property name="geometry">
      <rect>
-      <x>545</x>
-      <y>420</y>
+      <x>550</x>
+      <y>40</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -611,13 +584,12 @@ background-position: center;
     <property name="styleSheet">
      <string notr="true"/>
     </property>
-    <zorder>bck_retorno_4</zorder>
    </widget>
    <widget class="QWidget" name="widget_10" native="true">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>80</y>
+      <x>640</x>
+      <y>50</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -626,8 +598,8 @@ background-position: center;
    <widget class="QWidget" name="widget_11" native="true">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>80</y>
+      <x>690</x>
+      <y>50</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -636,8 +608,8 @@ background-position: center;
    <widget class="QWidget" name="widget_12" native="true">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>80</y>
+      <x>740</x>
+      <y>50</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -646,21 +618,20 @@ background-position: center;
    <widget class="QWidget" name="widget_5" native="true">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>80</y>
+      <x>290</x>
+      <y>40</y>
       <width>41</width>
       <height>31</height>
      </rect>
     </property>
-    <zorder>bck_retorno_3</zorder>
    </widget>
    <widget class="QPushButton" name="top_menu_5">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>15</y>
+      <x>148</x>
+      <y>0</y>
       <width>34</width>
-      <height>30</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -669,8 +640,8 @@ background-position: center;
     <property name="styleSheet">
      <string notr="true">#top_menu_5 { 
 background-color: transparent;
-border-image: url(:/iconos/images/Iconos/Ajustes_azul.png);
-background: none; 
+background-image: url(:/iconos/screen800x600/iconos/Ajustes azul.png);
+background-position: center;
 border: none; 
 background-repeat: none;
  } </string>
@@ -685,10 +656,10 @@ background-repeat: none;
    <widget class="QPushButton" name="modulo_7">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>350</y>
-      <width>101</width>
-      <height>51</height>
+      <x>19</x>
+      <y>248</y>
+      <width>91</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -711,10 +682,10 @@ background-position: center;
    <widget class="QPushButton" name="modulo_8">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>280</y>
-      <width>91</width>
-      <height>61</height>
+      <x>690</x>
+      <y>191</y>
+      <width>71</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -737,9 +708,9 @@ background-position: center;
    <widget class="QLabel" name="label_hora">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>10</y>
-      <width>251</width>
+      <x>600</x>
+      <y>5</y>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
@@ -750,8 +721,8 @@ background-position: center;
    <widget class="QWidget" name="widget_13" native="true">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>460</y>
+      <x>600</x>
+      <y>390</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -760,8 +731,8 @@ background-position: center;
    <widget class="QWidget" name="widget_14" native="true">
     <property name="geometry">
      <rect>
-      <x>860</x>
-      <y>510</y>
+      <x>550</x>
+      <y>390</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -770,8 +741,8 @@ background-position: center;
    <widget class="QWidget" name="widget_15" native="true">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>550</y>
+      <x>500</x>
+      <y>390</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -780,8 +751,8 @@ background-position: center;
    <widget class="QWidget" name="widget_16" native="true">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>600</y>
+      <x>240</x>
+      <y>430</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -790,8 +761,8 @@ background-position: center;
    <widget class="QWidget" name="widget_17" native="true">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>600</y>
+      <x>189</x>
+      <y>430</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -800,8 +771,8 @@ background-position: center;
    <widget class="QWidget" name="widget_18" native="true">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>600</y>
+      <x>140</x>
+      <y>430</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -810,8 +781,8 @@ background-position: center;
    <widget class="QWidget" name="widget_19" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>460</y>
+      <x>10</x>
+      <y>340</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -820,8 +791,8 @@ background-position: center;
    <widget class="QWidget" name="widget_20" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>510</y>
+      <x>10</x>
+      <y>380</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -830,8 +801,8 @@ background-position: center;
    <widget class="QWidget" name="widget_21" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>560</y>
+      <x>10</x>
+      <y>430</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -840,8 +811,8 @@ background-position: center;
    <widget class="QWidget" name="widget_22" native="true">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>180</y>
+      <x>730</x>
+      <y>250</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -850,8 +821,8 @@ background-position: center;
    <widget class="QWidget" name="widget_23" native="true">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>250</y>
+      <x>730</x>
+      <y>290</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -860,8 +831,8 @@ background-position: center;
    <widget class="QWidget" name="widget_24" native="true">
     <property name="geometry">
      <rect>
-      <x>920</x>
-      <y>320</y>
+      <x>730</x>
+      <y>330</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -870,10 +841,10 @@ background-position: center;
    <widget class="QLabel" name="gif_modulo_1">
     <property name="geometry">
      <rect>
-      <x>154</x>
-      <y>278</y>
-      <width>180</width>
-      <height>180</height>
+      <x>529</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -886,10 +857,10 @@ background-position: center;
    <widget class="QLabel" name="gif_modulo_2">
     <property name="geometry">
      <rect>
-      <x>308</x>
-      <y>236</y>
-      <width>180</width>
-      <height>180</height>
+      <x>549</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -918,10 +889,10 @@ background-position: center;
    <widget class="QLabel" name="gif_modulo_3">
     <property name="geometry">
      <rect>
-      <x>464</x>
-      <y>201</y>
-      <width>180</width>
-      <height>180</height>
+      <x>569</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -950,10 +921,10 @@ background-position: center;
    <widget class="QLabel" name="gif_modulo_4">
     <property name="geometry">
      <rect>
-      <x>617</x>
-      <y>163</y>
-      <width>180</width>
-      <height>180</height>
+      <x>589</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -982,10 +953,10 @@ background-position: center;
    <widget class="QLabel" name="gif_modulo_5">
     <property name="geometry">
      <rect>
-      <x>644</x>
-      <y>319</y>
-      <width>180</width>
-      <height>180</height>
+      <x>609</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1014,8 +985,8 @@ background-position: center;
    <widget class="QLabel" name="gif_sludge_a">
     <property name="geometry">
      <rect>
-      <x>274</x>
-      <y>290</y>
+      <x>189</x>
+      <y>186</y>
       <width>100</width>
       <height>100</height>
      </rect>
@@ -1026,6 +997,7 @@ background-position: center;
 /* x = 639 y = 373 */
 background-image: url(:/flechas/images/0_Flechas_de_flujo/sludge_flow_01_mov.gif);
 background-repeat: none;
+border:none;
 /*x= 663 y = 195:  x-2, y-1 */
 /*background-image: url(:/clorador/images/4_Clorador/chlorination_mov.gif);*/
 
@@ -1046,8 +1018,8 @@ background-repeat: none;
    <widget class="QLabel" name="gif_sludge_b">
     <property name="geometry">
      <rect>
-      <x>427</x>
-      <y>253</y>
+      <x>341</x>
+      <y>148</y>
       <width>100</width>
       <height>100</height>
      </rect>
@@ -1058,6 +1030,7 @@ background-repeat: none;
 /* x = 639 y = 373 */
 background-image: url(:/flechas/images/0_Flechas_de_flujo/sludge_flow_01_mov.gif);
 background-repeat: none;
+border:none;
 /*x= 663 y = 195:  x-2, y-1 */
 /*background-image: url(:/clorador/images/4_Clorador/chlorination_mov.gif);*/
 
@@ -1078,8 +1051,8 @@ background-repeat: none;
    <widget class="QLabel" name="gif_water_flown_a">
     <property name="geometry">
      <rect>
-      <x>584</x>
-      <y>218</y>
+      <x>496</x>
+      <y>111</y>
       <width>100</width>
       <height>100</height>
      </rect>
@@ -1088,8 +1061,9 @@ background-repeat: none;
      <string notr="true">#gif_water_flown_a{
 
 /* x = 639 y = 373 */
-	border-image: url(:/flechas/images/0_Flechas_de_flujo/water_flow_01_mov.gif);
+background-image: url(:/flechas/images/0_Flechas_de_flujo/water_flow_01_mov.gif);
 background-repeat: none;
+border:none;
 /*x= 663 y = 195:  x-2, y-1 */
 /*background-image: url(:/clorador/images/4_Clorador/chlorination_mov.gif);*/
 
@@ -1110,18 +1084,18 @@ background-repeat: none;
    <widget class="QLabel" name="gif_sludge_return_a">
     <property name="geometry">
      <rect>
-      <x>375</x>
-      <y>315</y>
-      <width>220</width>
-      <height>90</height>
+      <x>294</x>
+      <y>229</y>
+      <width>211</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#gif_sludge_return_a{
 
 /* x = 639 y = 373 */
-	background-image: url(:/flechas/images/0_Flechas_de_flujo/sludge_return_mov.gif);
-	background-repeat: none;
+border-image: url(:/flechas/images/0_Flechas_de_flujo/sludge_return_mov.gif);
+background-repeat: none;
 }</string>
     </property>
     <property name="text">
@@ -1131,16 +1105,21 @@ background-repeat: none;
    <widget class="QLabel" name="bck_modulo_1">
     <property name="geometry">
      <rect>
-      <x>154</x>
-      <y>278</y>
-      <width>180</width>
-      <height>180</height>
+      <x>99</x>
+      <y>193</y>
+      <width>131</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#bck_modulo_1
 {
-background-image: url(:/carcamo/images/1_Carcamo/carcamo_vacio.png);
+/*background-image: url(:/carcamo/images/1_Carcamo/carcamo_vacio.png);*/
+background-image: url(:/diagrama/screen800x600/diagrama/Carcamo.png);
+background-position: center;
+background-repeat: none;
+border:none;
+
 }</string>
     </property>
     <property name="text">
@@ -1150,16 +1129,20 @@ background-image: url(:/carcamo/images/1_Carcamo/carcamo_vacio.png);
    <widget class="QLabel" name="bck_modulo_2">
     <property name="geometry">
      <rect>
-      <x>308</x>
-      <y>236</y>
-      <width>180</width>
-      <height>180</height>
+      <x>249</x>
+      <y>176</y>
+      <width>131</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#bck_modulo_2
 {
-background-image: url(:/reactor/images/2_Reactor/reactor.png);
+/*background-image: url(:/reactor/images/2_Reactor/reactor.png);*/
+background-image: url(:/diagrama/screen800x600/diagrama/Reactor.png);
+background-position: center;
+background-repeat: none;
+border:none;
 }</string>
     </property>
     <property name="text">
@@ -1169,16 +1152,21 @@ background-image: url(:/reactor/images/2_Reactor/reactor.png);
    <widget class="QLabel" name="bck_modulo_3">
     <property name="geometry">
      <rect>
-      <x>464</x>
-      <y>201</y>
-      <width>180</width>
-      <height>180</height>
+      <x>399</x>
+      <y>136</y>
+      <width>131</width>
+      <height>121</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#bck_modulo_3
 {
-background-image: url(:/clarificador/images/3_Clarificador/clarifier.png);
+/*background-image: url(:/clarificador/images/3_Clarificador/clarifier.png);*/
+background-image: url(:/diagrama/screen800x600/diagrama/Clarificador.png);
+background-position: center;
+background-repeat: none;
+border:none;
+
 }</string>
     </property>
     <property name="text">
@@ -1188,16 +1176,20 @@ background-image: url(:/clarificador/images/3_Clarificador/clarifier.png);
    <widget class="QLabel" name="bck_modulo_4">
     <property name="geometry">
      <rect>
-      <x>617</x>
-      <y>163</y>
-      <width>180</width>
-      <height>180</height>
+      <x>559</x>
+      <y>96</y>
+      <width>121</width>
+      <height>131</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#bck_modulo_4
 {
-background-image: url(:/clorador/images/4_Clorador/chlorination_empty.png);
+/*background-image: url(:/clorador/images/4_Clorador/chlorination_empty.png);*/
+background-image: url(:/diagrama/screen800x600/diagrama/Clorador.png);
+background-position: center;
+background-repeat: none;
+border:none;
 }</string>
     </property>
     <property name="text">
@@ -1207,16 +1199,20 @@ background-image: url(:/clorador/images/4_Clorador/chlorination_empty.png);
    <widget class="QLabel" name="bck_modulo_5">
     <property name="geometry">
      <rect>
-      <x>644</x>
-      <y>319</y>
-      <width>180</width>
+      <x>569</x>
+      <y>238</y>
+      <width>131</width>
       <height>180</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#bck_modulo_5
 {
-background-image: url(:/digestor/images/5_Digestor/digester_empty.png);
+/*background-image: url(:/digestor/images/5_Digestor/digester_empty.png);*/
+background-image: url(:/diagrama/screen800x600/diagrama/Reactor.png);
+background-position: center;
+background-repeat: none;
+border:none;
 }</string>
     </property>
     <property name="text">
@@ -1226,8 +1222,8 @@ background-image: url(:/digestor/images/5_Digestor/digester_empty.png);
    <widget class="QLabel" name="bck_modulo_6">
     <property name="geometry">
      <rect>
-      <x>411</x>
-      <y>481</y>
+      <x>312</x>
+      <y>392</y>
       <width>160</width>
       <height>100</height>
      </rect>
@@ -1236,6 +1232,7 @@ background-image: url(:/digestor/images/5_Digestor/digester_empty.png);
      <string notr="true">#bck_modulo_6
 {
 background-image: url(:/lechos/images/6_Lechos/sand_bed_01.png);
+border: none;
 }</string>
     </property>
     <property name="text">
@@ -1245,10 +1242,10 @@ background-image: url(:/lechos/images/6_Lechos/sand_bed_01.png);
    <widget class="QLabel" name="gif_modulo_6">
     <property name="geometry">
      <rect>
-      <x>411</x>
-      <y>481</y>
-      <width>160</width>
-      <height>100</height>
+      <x>629</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1277,10 +1274,10 @@ background-image: url(:/lechos/images/6_Lechos/sand_bed_01.png);
    <widget class="QLabel" name="gif_modulo_7">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>300</y>
-      <width>55</width>
-      <height>55</height>
+      <x>649</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1309,10 +1306,10 @@ background-image: url(:/lechos/images/6_Lechos/sand_bed_01.png);
    <widget class="QLabel" name="gif_modulo_8">
     <property name="geometry">
      <rect>
-      <x>790</x>
-      <y>230</y>
-      <width>55</width>
-      <height>55</height>
+      <x>669</x>
+      <y>457</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1341,10 +1338,10 @@ background-image: url(:/lechos/images/6_Lechos/sand_bed_01.png);
    <widget class="QPushButton" name="top_menu_2">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>2</y>
-      <width>51</width>
-      <height>51</height>
+      <x>50</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -1353,7 +1350,7 @@ background-image: url(:/lechos/images/6_Lechos/sand_bed_01.png);
     <property name="styleSheet">
      <string notr="true">#top_menu_2 { 
 background-color: transparent;
-background-image: url(:/iconos/images/Iconos/Libro.png);
+background-image: url(:/iconos/screen800x600/iconos/Bitacora azul.png);
 background-position: center;
 border: none; 
 background-repeat: none;
@@ -1369,10 +1366,10 @@ background-repeat: none;
    <widget class="QPushButton" name="top_menu_3">
     <property name="geometry">
      <rect>
-      <x>122</x>
+      <x>100</x>
       <y>2</y>
-      <width>51</width>
-      <height>51</height>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -1381,7 +1378,7 @@ background-repeat: none;
     <property name="styleSheet">
      <string notr="true">#top_menu_3 { 
 background-color: transparent;
-background-image: url(:/iconos/images/Iconos/Diagrama.png);
+background-image: url(:/iconos/screen800x600/iconos/Diagrama.png);
 background-position: center;
 border: none; 
 background-repeat: none;
@@ -1397,16 +1394,20 @@ background-repeat: none;
    <widget class="QLabel" name="bck_modulo_7">
     <property name="geometry">
      <rect>
-      <x>108</x>
-      <y>330</y>
-      <width>111</width>
-      <height>100</height>
+      <x>30</x>
+      <y>250</y>
+      <width>90</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#bck_modulo_7
 {
-border-image: url(:/images/images/afluente.png);
+/*border-image: url(:/images/images/afluente.png);*/
+border-image: url(:/diagrama/screen800x600/diagrama/Afluente.png);
+background-position: center;
+background-repeat: none;
+
 }</string>
     </property>
     <property name="text">
@@ -1416,8 +1417,8 @@ border-image: url(:/images/images/afluente.png);
    <widget class="QLabel" name="bck_modulo_8">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>230</y>
+      <x>649</x>
+      <y>136</y>
       <width>111</width>
       <height>100</height>
      </rect>
@@ -1435,8 +1436,8 @@ border-image: url(:/images/images/efluente_2.png);
    <widget class="QLabel" name="bck_retorno_1">
     <property name="geometry">
      <rect>
-      <x>570</x>
-      <y>300</y>
+      <x>469</x>
+      <y>216</y>
       <width>191</width>
       <height>91</height>
      </rect>
@@ -1456,8 +1457,8 @@ border:none;
    <widget class="QLabel" name="bck_retorno_2">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>520</y>
+      <x>129</x>
+      <y>436</y>
       <width>241</width>
       <height>101</height>
      </rect>
@@ -1477,8 +1478,8 @@ border:none;
    <widget class="QLabel" name="bck_retorno_3">
     <property name="geometry">
      <rect>
-      <x>320</x>
-      <y>339</y>
+      <x>231</x>
+      <y>233</y>
       <width>121</width>
       <height>221</height>
      </rect>
@@ -1498,8 +1499,8 @@ border:none;
    <widget class="QLabel" name="bck_retorno_4">
     <property name="geometry">
      <rect>
-      <x>444</x>
-      <y>396</y>
+      <x>347</x>
+      <y>306</y>
       <width>251</width>
       <height>121</height>
      </rect>
@@ -1519,17 +1520,17 @@ border:none;
    <widget class="QLabel" name="gif_blower">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>230</y>
-      <width>101</width>
-      <height>101</height>
+      <x>689</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#gif_blower{
-background-image: url(:/equipos/images/0_Equipos/Blower_Jet_off.png);
+/*background-image: url(:/equipos/images/0_Equipos/Blower_Jet_off.png);
 background-repeat: none;
-border:none;
+border:none;*/
 }</string>
     </property>
     <property name="text">
@@ -1539,26 +1540,51 @@ border:none;
    <widget class="QLabel" name="gif_car_mot">
     <property name="geometry">
      <rect>
-      <x>213</x>
-      <y>331</y>
-      <width>101</width>
-      <height>101</height>
+      <x>709</x>
+      <y>456</y>
+      <width>16</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#gif_car_mot{
-background-image: url(:/equipos/images/0_Equipos/pump_off.png);
+/*background-image: url(:/equipos/images/0_Equipos/pump_off.png);
 background-repeat: none;
-border:none;
+border:none;*/
 }</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <zorder>bck_modulo_5</zorder>
-   <zorder>bck_modulo_3</zorder>
+   <widget class="QPushButton" name="lock_button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#lock_button { 
+border-image: url(:/iconos/screen800x600/iconos/locked.png);
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>lock_button</zorder>
    <zorder>bck_modulo_4</zorder>
+   <zorder>gif_water_flown_a</zorder>
+   <zorder>bck_modulo_3</zorder>
    <zorder>bottom_bar</zorder>
    <zorder>pushButton</zorder>
    <zorder>pb_fisicos</zorder>
@@ -1567,11 +1593,9 @@ border:none;
    <zorder>active_param_label</zorder>
    <zorder>top_bar</zorder>
    <zorder>top_menu_1</zorder>
-   <zorder>top_menu_4</zorder>
    <zorder>asa_logo</zorder>
    <zorder>top_menu_5</zorder>
    <zorder>label_hora</zorder>
-   <zorder>gif_water_flown_a</zorder>
    <zorder>gif_sludge_b</zorder>
    <zorder>bck_modulo_2</zorder>
    <zorder>gif_sludge_a</zorder>
@@ -1591,43 +1615,44 @@ border:none;
    <zorder>gif_modulo_6</zorder>
    <zorder>gif_modulo_8</zorder>
    <zorder>gif_modulo_1</zorder>
-   <zorder>bck_retorno_4</zorder>
    <zorder>gif_sludge_return_a</zorder>
    <zorder>bck_modulo_7</zorder>
    <zorder>gif_blower</zorder>
    <zorder>gif_car_mot</zorder>
    <zorder>modulo_8</zorder>
-   <zorder>modulo_5</zorder>
    <zorder>modulo_2</zorder>
    <zorder>modulo_3</zorder>
-   <zorder>modulo_6</zorder>
    <zorder>modulo_4</zorder>
    <zorder>modulo_7</zorder>
    <zorder>modulo_1</zorder>
-   <zorder>widget_22</zorder>
-   <zorder>widget_19</zorder>
-   <zorder>widget_13</zorder>
-   <zorder>widget_7</zorder>
-   <zorder>widget_11</zorder>
+   <zorder>bck_modulo_5</zorder>
+   <zorder>modulo_5</zorder>
+   <zorder>bck_retorno_4</zorder>
+   <zorder>modulo_6</zorder>
    <zorder>widget_9</zorder>
-   <zorder>widget_8</zorder>
-   <zorder>widget</zorder>
-   <zorder>widget_18</zorder>
-   <zorder>widget_20</zorder>
-   <zorder>widget_23</zorder>
-   <zorder>widget_14</zorder>
+   <zorder>widget_3</zorder>
+   <zorder>widget_13</zorder>
+   <zorder>widget_5</zorder>
+   <zorder>widget_17</zorder>
    <zorder>widget_16</zorder>
+   <zorder>widget_22</zorder>
+   <zorder>widget_18</zorder>
+   <zorder>widget</zorder>
+   <zorder>widget_11</zorder>
+   <zorder>widget_12</zorder>
+   <zorder>widget_7</zorder>
+   <zorder>widget_8</zorder>
+   <zorder>widget_14</zorder>
    <zorder>widget_24</zorder>
    <zorder>widget_15</zorder>
-   <zorder>widget_21</zorder>
-   <zorder>widget_5</zorder>
    <zorder>widget_10</zorder>
-   <zorder>widget_6</zorder>
-   <zorder>widget_12</zorder>
-   <zorder>widget_3</zorder>
-   <zorder>widget_2</zorder>
-   <zorder>widget_17</zorder>
+   <zorder>widget_20</zorder>
+   <zorder>widget_21</zorder>
+   <zorder>widget_19</zorder>
+   <zorder>widget_23</zorder>
    <zorder>widget_4</zorder>
+   <zorder>widget_6</zorder>
+   <zorder>widget_2</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

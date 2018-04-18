@@ -7,4 +7,6 @@ bool check_user_password(QString str);
 
 void validate_token(bool val);
 
+bool get_validity_state();
+
 #endif // TOKEN_AUTH_H

@@ -12,8 +12,10 @@
 #include <QScroller>
 #include <QScrollerProperties>
 #include "clickeablelabel.h"
+#include "asa_conf_string.h"
+#include "token_auth.h"
 
-#define BUILD_FOR_RPI (0)
+#define BUILD_FOR_RPI (1)
 
 bool detailedwindow::user_lock;
 
@@ -195,23 +197,23 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
                             "border-style: solid;"
                             "border-color: rgb(0, 167, 250);"
                             "border-radius: 5px;"
-                            "width: 24px;"
-                            "height: 24px;"
-                            "image: url(:/iconos/images/Iconos/Punto_contrasena.png);"
+                            "width: 18px;"
+                            "height: 18px;"
+                            "image: url(:/iconos/screen800x600/iconos/Punto contrasena.png);"
                         "}"
                         "QCheckBox::indicator:unchecked{"
                         "border-width: 3px;"
                         "border-style: solid;"
                         "border-color: gray;"
                         "border-radius: 5px;"
-                        "width: 24px;"
-                        "height: 24px;"
+                        "width: 18px;"
+                        "height: 18px;"
                          "}"
                         "QLabel{color:white}"
                         );
     // Fonts
-    QFont font("Typo Square Italic Demo",16,1);
-    QFont font_2("Typo Square Bold Italic Demo",18,1);
+    QFont font("Typo Square Italic Demo",12,1);
+    QFont font_2("Typo Square Bold Italic Demo",14,1);
 
 //    ui->frame->setObjectName("DetailFrame");
 //    ui->frame->setStyleSheet("detailedwindow#DetailFrame{"
@@ -259,6 +261,12 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
                         "border: none;"
                         "background-repeat: none;"
                         "background-position: center;");
+
+        has_output_control = false;
+    }
+    else
+    {
+        has_output_control = true;
     }
 
     tab_1_init();
@@ -282,7 +290,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
-    ui->frame->setGeometry(ui->frame->pos().x(),200,ui->frame->width(),ui->frame->height());
+    ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
 
     this->move(parent->pos());
     this->show();
@@ -303,25 +311,24 @@ void detailedwindow::on_button_parametros_clicked()
 {
     ui->label->setText("Parámetros");
     ui->tabWidget->setCurrentIndex(0);
-    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_blanco.png);"
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar blanco.png);"
                     "border: none;"
                     "background-repeat: none;"
                     "background-position: center;");
-    ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);;"
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Bitacora azul.png);;"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
-    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_azul.png);"
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Info azul.png);"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
-    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);"
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Ajustes azul.png);"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
 
-    //TODO THIS IS TEMPORAL
-    if(ELEMENT_REGULADOR != what_element)
+    if(false == has_output_control)
     {
         ui->button_control->setStyleSheet("background-image: none;"
                         "border: none;"
@@ -330,7 +337,7 @@ void detailedwindow::on_button_parametros_clicked()
     }
     else
     {
-        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                          "border: none;"
                          "background-repeat: none;"
                          "background-position: center;");
@@ -339,32 +346,31 @@ void detailedwindow::on_button_parametros_clicked()
     /* Hide keyboard and text edit */
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
-    ui->frame->setGeometry(ui->frame->pos().x(),200,ui->frame->width(),ui->frame->height());
+    ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
 }
 
 void detailedwindow::on_button_evento_clicked()
 {
     ui->label->setText("Evento");
     ui->tabWidget->setCurrentIndex(1);
-    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);"
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
                     "border: none;"
                     "background-repeat: none;"
                     "background-position: center;");
-    ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_blanco.png);;"
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Bitacora blanco.png);;"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
-    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_azul.png);"
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Info azul.png);"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
-    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);"
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Ajustes azul.png);"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
 
-    //TODO THIS IS TEMPORAL
-    if(ELEMENT_REGULADOR != what_element)
+    if(false == has_output_control)
     {
         ui->button_control->setStyleSheet("background-image: none;"
                         "border: none;"
@@ -373,7 +379,7 @@ void detailedwindow::on_button_evento_clicked()
     }
     else
     {
-        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                          "border: none;"
                          "background-repeat: none;"
                          "background-position: center;");
@@ -382,32 +388,31 @@ void detailedwindow::on_button_evento_clicked()
     /* Hide keyboard and text edit */
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
-    ui->frame->setGeometry(ui->frame->pos().x(),200,ui->frame->width(),ui->frame->height());
+    ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
 }
 
 void detailedwindow::on_button_descripcion_clicked()
 {
     ui->label->setText("Descripción");
     ui->tabWidget->setCurrentIndex(2);
-    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);"
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
                     "border: none;"
                     "background-repeat: none;"
                     "background-position: center;");
-    ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);;"
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Bitacora azul.png);;"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
-    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_blanco.png);"
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Info blanco.png);"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
-    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);"
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Ajustes azul.png);"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
 
-    //TODO THIS IS TEMPORAL
-    if(ELEMENT_REGULADOR != what_element)
+    if(false == has_output_control)
     {
         ui->button_control->setStyleSheet("background-image: none;"
                         "border: none;"
@@ -416,7 +421,7 @@ void detailedwindow::on_button_descripcion_clicked()
     }
     else
     {
-        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                          "border: none;"
                          "background-repeat: none;"
                          "background-position: center;");
@@ -425,32 +430,32 @@ void detailedwindow::on_button_descripcion_clicked()
     /* Hide keyboard and text edit */
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
-    ui->frame->setGeometry(ui->frame->pos().x(),200,ui->frame->width(),ui->frame->height());
+    ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
 }
 
 void detailedwindow::on_button_visualizacion_clicked()
 {
     ui->label->setText("Visualización de Parámetros");
     ui->tabWidget->setCurrentIndex(3);
-    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);"
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
                     "border: none;"
                     "background-repeat: none;"
                     "background-position: center;");
-    ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);;"
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Bitacora azul.png);;"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
-    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_azul.png);"
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Info azul.png);"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
-    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_blanco.png);"
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Ajustes blanco.png);"
                      "border: none;"
                      "background-repeat: none;"
                      "background-position: center;");
 
-    //TODO THIS IS TEMPORAL
-    if(ELEMENT_REGULADOR != what_element)
+
+    if(false == has_output_control)
     {
         ui->button_control->setStyleSheet("background-image: none;"
                         "border: none;"
@@ -459,7 +464,7 @@ void detailedwindow::on_button_visualizacion_clicked()
     }
     else
     {
-        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                          "border: none;"
                          "background-repeat: none;"
                          "background-position: center;");
@@ -468,13 +473,48 @@ void detailedwindow::on_button_visualizacion_clicked()
     /* Hide keyboard and text edit */
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
-    ui->frame->setGeometry(ui->frame->pos().x(),200,ui->frame->width(),ui->frame->height());
+    ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
 }
 
 void detailedwindow::on_button_control_clicked()
 {
-    //TODO THIS IS TEMPORAL
-    if(ELEMENT_REGULADOR != what_element)
+    switch(what_element)
+    {
+    case ELEMENT_REGULADOR:
+        output_op_mode(3600, "03");
+        break;
+    case ELEMENT_REACTOR:
+//        output_op_mode(0x4600, "03");
+        break;
+    case ELEMENT_CLORADOR:
+        break;
+    default:
+        break;
+    }
+
+    if(false == has_output_control)
+    {
+        return;
+    }
+
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
+                    "border: none;"
+                    "background-repeat: none;"
+                    "background-position: center;");
+    ui->button_evento->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Bitacora azul.png);;"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Info azul.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+    ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Ajustes azul.png);"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;");
+
+    if(false == has_output_control)
     {
         ui->button_control->setStyleSheet("background-image: none;"
                         "border: none;"
@@ -483,35 +523,19 @@ void detailedwindow::on_button_control_clicked()
     }
     else
     {
-        ui->label->setText("Encendido de Motores");
-        ui->tabWidget->setCurrentIndex(4);
-        ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_azul.png);"
-                        "border: none;"
-                        "background-repeat: none;"
-                        "background-position: center;");
-        ui->button_evento->setStyleSheet("background-image: url(:/iconos/images/Iconos/Bitacora_azul.png);;"
-                         "border: none;"
-                         "background-repeat: none;"
-                         "background-position: center;");
-        ui->button_descripcion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Info_azul.png);"
-                         "border: none;"
-                         "background-repeat: none;"
-                         "background-position: center;");
-        ui->button_visualizacion->setStyleSheet("background-image: url(:/iconos/images/Iconos/Ajustes_azul.png);"
+        ui->button_control->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Encendido blanco.png);"
                          "border: none;"
                          "background-repeat: none;"
                          "background-position: center;");
 
-        ui->button_control->setStyleSheet("background-image: url(:/iconos/images/Iconos/Encendido_blanco.png);"
-                         "border: none;"
-                         "background-repeat: none;"
-                         "background-position: center;");
+        ui->label->setText("Encendido de Motores");
+        ui->tabWidget->setCurrentIndex(4);
     }
 
     /* Hide keyboard and text edit */
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
-    ui->frame->setGeometry(ui->frame->pos().x(),200,ui->frame->width(),ui->frame->height());
+    ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
 }
 
 void detailedwindow::checkBoxStateChanged(int a)
@@ -523,51 +547,7 @@ void detailedwindow::checkBoxStateChanged(int a)
 void detailedwindow::out_checkBoxStateChanged(int a)
 {
     qDebug() << "Toggle output " << a;
-    switch(a)
-    {
-        case 80:
-            if(MainWindow::reg_op_mode == 3)
-            {
-                MainWindow::reg_op_mode = 1;
-            }
-            else
-            {
-                MainWindow::reg_op_mode = 3;
-            }
-            break;
-        case 81:
-            if(MainWindow::reg_mot_1 == 0)
-            {
-                MainWindow::reg_mot_1 = 1;
-#if BUILD_FOR_RPI
-                system("echo 1 >/sys/class/gpio/gpio17/value");
-#endif
-            }
-            else
-            {
-                MainWindow::reg_mot_1 = 0;
-#if BUILD_FOR_RPI
-                system("echo 0 >/sys/class/gpio/gpio17/value");
-#endif
-            }
-            break;
-        case 82:
-            if(MainWindow::reg_mot_2 == 0)
-            {
-                MainWindow::reg_mot_2 = 1;
-#if BUILD_FOR_RPI
-                system("echo 1 >/sys/class/gpio/gpio27/value");
-#endif
-            }
-            else
-            {
-                MainWindow::reg_mot_2 = 0;
-#if BUILD_FOR_RPI
-                system("echo 0 >/sys/class/gpio/gpio27/value");
-#endif
-            }
-            break;
-    }
+    output_control_toggle(a);
 }
 
 void detailedwindow::update_params()
@@ -647,7 +627,7 @@ void detailedwindow::on_key_Reschedule_clicked()
         /* Show keyboard and text edit */
         ui->textEdit->setVisible(true);
         ui->key_frame->setVisible(true);
-        ui->frame->setGeometry(ui->frame->pos().x(),10,ui->frame->width(),ui->frame->height());
+        ui->frame->setGeometry(ui->frame->pos().x(),3,ui->frame->width(),ui->frame->height());
 
         ui->textEdit->clear();
 
@@ -732,7 +712,7 @@ void detailedwindow::on_key_OK_clicked()
 
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
-    ui->frame->setGeometry(ui->frame->pos().x(),200,ui->frame->width(),ui->frame->height());
+    ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
     ui->tabWidget->setCurrentIndex(1);
 }
 
@@ -745,7 +725,7 @@ void detailedwindow::insert_amount(QString ins)
 
 void detailedwindow::tab_1_init()
 {
-    QFont font_2("Typo Square Ligth Demo",14,1);
+    QFont font_2("Typo Square Ligth Demo",10,1);
 
     uint i, param_id;
     uint fila = 0;
@@ -810,15 +790,15 @@ void detailedwindow::tab_1_init()
 void detailedwindow::tab_2_init()
 {
     uint i = 0;
-    QFont font("Typo Square Bold Demo",14,1);
+    QFont font("Typo Square Bold Demo",12,1);
     QStringList titulos;
     titulos << "ID" << "Rutina"; // Fecha is next
 
-    QFont font1("Typo Square Italic Demo",14,1);
+    QFont font1("Typo Square Italic Demo",12,1);
 
-    QFont font2("Typo Square Italic Demo",12,1);
-    QFont font3("Typo Square Regular Demo",10,1);
-    QFont font4("Typo Square Regular Demo",12,1);
+    QFont font2("Typo Square Italic Demo",10,1);
+    QFont font3("Typo Square Regular Demo",8,1);
+    QFont font4("Typo Square Regular Demo",10,1);
 
 
 //    ui->key_OK->setStyleSheet("border: 2px solid rgb(0, 167, 250); color: white");
@@ -880,6 +860,7 @@ void detailedwindow::tab_2_init()
 
     ui->label_horas->setFont(font);
     ui->label_horas->setAlignment(Qt::AlignRight);
+    ui->label_horas->setStyleSheet("color:white;");
 
 
     connect(ui->tableWidget, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected(QTableWidgetItem*)));
@@ -952,7 +933,7 @@ void detailedwindow::tab_2_init()
 
 void detailedwindow::tab_3_init()
 {
-    QFont font("Typo Square Ligth Demo",12,1);
+    QFont font("Typo Square Ligth Demo",10,1);
 
     ui->description_label->setFont(font);
     ui->description_label->setText(detailed_elements[what_element]->description);
@@ -963,7 +944,7 @@ void detailedwindow::tab_4_init()
 {
     uint i = 0;
     uint param_id;
-    QFont font_2("Typo Square Ligth Demo",14,1);
+    QFont font_2("Typo Square Ligth Demo",10,1);
 
     QSignalMapper *checkboxMapper = new QSignalMapper(this);
 
@@ -1053,7 +1034,7 @@ void detailedwindow::tab_4_init()
 void detailedwindow::tab_5_init()
 {
     uint i = 0;
-    QFont font_2("Typo Square Ligth Demo",14,1);
+    QFont font_2("Typo Square Ligth Demo",12,1);
 
     QCheckBox *box_motores;
     QSignalMapper *out_checkboxMapper = new QSignalMapper(this);
@@ -1070,31 +1051,31 @@ void detailedwindow::tab_5_init()
                                    "border: none;"
                                    "}"
                                    "QCheckBox::indicator:checked{"
-                                   "image: url(:/iconos/images/Iconos/Encendido_blanco.png);"
+                                   "image: url(:/iconos/screen800x600/iconos/Encendido blanco.png);"
                                    "border-width: 0px;"
                                    "width: 40px;"
                                    "height: 40px;"
                                    "}"
                                    "QCheckBox::indicator:unchecked{"
-                                   "image: url(:/iconos/images/Iconos/Encendido_azul.png);"
+                                   "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                                    "border-width: 0px;"
                                    "width: 40px;"
                                    "height: 40px;"
-                                   "}");
-
-        if(0 == i)
+                                   "}"
+                                   "QCheckBox::indicator:disabled{"
+                                   "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
+                                   "border-width: 0px;"
+                                   "width: 40px;"
+                                   "height: 40px;"
+                                   "}"
+                                   );
+        if(true == get_validity_state())
         {
-            if(1 ==MainWindow::reg_mot_1)
-            {
-                box_motores->setChecked(true);
-            }
+            box_motores->setEnabled(true);
         }
-        else if(1 == i)
+        else
         {
-            if(1 ==MainWindow::reg_mot_2)
-            {
-                box_motores->setChecked(true);
-            }
+            box_motores->setEnabled(false);
         }
 
         ui->verticalLayout_2->addWidget(box_motores);
@@ -1103,11 +1084,12 @@ void detailedwindow::tab_5_init()
         out_checkboxMapper->setMapping(box_motores, detailed_elements[what_element]->out_config->ids.at(i));
     }
 
+
     // Connect all checkboxes to mapper
     connect(out_checkboxMapper, SIGNAL(mapped(int)), this, SLOT(out_checkBoxStateChanged(int)));
 
     //Init with elements selected
-    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/images/Iconos/Visualizar_blanco.png);"
+    ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar blanco.png);"
                     "border: none;"
                     "background-repeat: none;"
                     "background-position: center;");
@@ -1233,7 +1215,7 @@ void detailedwindow::on_ayuda_btn_clicked()
     /* Show keyboard and text edit */
     ui->textEdit->setVisible(true);
     ui->key_frame->setVisible(true);
-    ui->frame->setGeometry(ui->frame->pos().x(),10,ui->frame->width(),ui->frame->height());
+    ui->frame->setGeometry(ui->frame->pos().x(),70,ui->frame->width(),ui->frame->height());
 
     ui->textEdit->clear();
 
@@ -1291,11 +1273,3 @@ void detailedwindow::on_textEdit_selectionChanged()
     ui->key_Reschedule->setChecked(false);
 }
 
-void detailedwindow::on_pushButton_clicked()
-{
-    if(NULL != login_d)
-    {
-        delete login_d;
-    }
-    login_d = new login_dialog(this);
-}

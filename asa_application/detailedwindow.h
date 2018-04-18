@@ -128,7 +128,6 @@ private slots:
     void on_key_slash_clicked();
 
     void background_clicked();
-    void on_pushButton_clicked();
 
 private:
     Ui::detailedwindow *ui;
@@ -167,7 +166,8 @@ private:
     void delete_row(uint row, QTableWidget *table);
     void add_row_rutina(uint row, uint rutina, QTableWidget *table);
 
-    login_dialog *login_d;
+
+    bool has_output_control = false;
 };
 
 #endif // DETAILEDWINDOW_H

@@ -28,6 +28,7 @@ class Ui_settings
 public:
     QLabel *label;
     QDialogButtonBox *buttonBox;
+    QTextEdit *textEdit;
     QFrame *key_frame;
     QPushButton *key_0;
     QPushButton *key_4;
@@ -74,29 +75,30 @@ public:
     QPushButton *key_space;
     QPushButton *key_enter;
     QPushButton *key_mayus;
-    QLabel *key_back_6;
-    QTextEdit *textEdit;
 
     void setupUi(QDialog *settings)
     {
         if (settings->objectName().isEmpty())
             settings->setObjectName(QStringLiteral("settings"));
-        settings->resize(1024, 768);
+        settings->resize(800, 600);
         label = new QLabel(settings);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(9, 9, 961, 41));
+        label->setGeometry(QRect(100, 9, 561, 41));
         label->setWordWrap(true);
         buttonBox = new QDialogButtonBox(settings);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setGeometry(QRect(800, 700, 166, 61));
+        buttonBox->setGeometry(QRect(620, 530, 166, 61));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        textEdit = new QTextEdit(settings);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(40, 60, 721, 181));
         key_frame = new QFrame(settings);
         key_frame->setObjectName(QStringLiteral("key_frame"));
-        key_frame->setGeometry(QRect(30, 420, 941, 251));
+        key_frame->setGeometry(QRect(50, 330, 691, 181));
         key_frame->setStyleSheet(QLatin1String("#key_frame\n"
 "{\n"
-"border-image: url(:/teclado/images/Texto/Teclado/Teclado_back.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/fondo teclado.png);\n"
 "background-repeat:none;\n"
 "/*background-color: black;*/\n"
 "border:none;\n"
@@ -105,17 +107,17 @@ public:
         key_frame->setFrameShadow(QFrame::Raised);
         key_0 = new QPushButton(key_frame);
         key_0->setObjectName(QStringLiteral("key_0"));
-        key_0->setGeometry(QRect(759, 192, 50, 50));
+        key_0->setGeometry(QRect(556, 132, 41, 41));
         key_0->setFocusPolicy(Qt::NoFocus);
         key_0->setStyleSheet(QLatin1String("#key_0{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/0_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/0 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_0::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/0_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/0 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -123,17 +125,17 @@ public:
         key_0->setCheckable(false);
         key_4 = new QPushButton(key_frame);
         key_4->setObjectName(QStringLiteral("key_4"));
-        key_4->setGeometry(QRect(699, 72, 50, 50));
+        key_4->setGeometry(QRect(511, 49, 41, 41));
         key_4->setFocusPolicy(Qt::NoFocus);
         key_4->setStyleSheet(QLatin1String("#key_4{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/4_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/4 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_4::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/4_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/4 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -141,17 +143,17 @@ public:
         key_4->setCheckable(false);
         key_5 = new QPushButton(key_frame);
         key_5->setObjectName(QStringLiteral("key_5"));
-        key_5->setGeometry(QRect(759, 72, 50, 50));
+        key_5->setGeometry(QRect(554, 49, 41, 41));
         key_5->setFocusPolicy(Qt::NoFocus);
         key_5->setStyleSheet(QLatin1String("#key_5{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/5_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/5 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_5::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/5_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/5 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -159,17 +161,17 @@ public:
         key_5->setCheckable(false);
         key_7 = new QPushButton(key_frame);
         key_7->setObjectName(QStringLiteral("key_7"));
-        key_7->setGeometry(QRect(699, 10, 50, 50));
+        key_7->setGeometry(QRect(511, 8, 41, 41));
         key_7->setFocusPolicy(Qt::NoFocus);
         key_7->setStyleSheet(QLatin1String("#key_7{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/7_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/7 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_7::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/7_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/7 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -177,17 +179,17 @@ public:
         key_7->setCheckable(false);
         key_8 = new QPushButton(key_frame);
         key_8->setObjectName(QStringLiteral("key_8"));
-        key_8->setGeometry(QRect(759, 10, 50, 50));
+        key_8->setGeometry(QRect(555, 8, 41, 41));
         key_8->setFocusPolicy(Qt::NoFocus);
         key_8->setStyleSheet(QLatin1String("#key_8{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/8_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/8 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_8::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/8_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/8 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -195,17 +197,17 @@ public:
         key_8->setCheckable(false);
         key_1 = new QPushButton(key_frame);
         key_1->setObjectName(QStringLiteral("key_1"));
-        key_1->setGeometry(QRect(699, 134, 50, 50));
+        key_1->setGeometry(QRect(512, 90, 41, 41));
         key_1->setFocusPolicy(Qt::NoFocus);
         key_1->setStyleSheet(QLatin1String("#key_1{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/1_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/1 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_1::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/1_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/1 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -213,17 +215,17 @@ public:
         key_1->setCheckable(false);
         key_6 = new QPushButton(key_frame);
         key_6->setObjectName(QStringLiteral("key_6"));
-        key_6->setGeometry(QRect(819, 72, 50, 50));
+        key_6->setGeometry(QRect(599, 49, 41, 41));
         key_6->setFocusPolicy(Qt::NoFocus);
         key_6->setStyleSheet(QLatin1String("#key_6{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/6_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/6 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_6::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/6_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/6 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -231,10 +233,10 @@ public:
         key_6->setCheckable(false);
         key_back = new QPushButton(key_frame);
         key_back->setObjectName(QStringLiteral("key_back"));
-        key_back->setGeometry(QRect(610, 10, 70, 50));
+        key_back->setGeometry(QRect(443, 7, 61, 41));
         key_back->setFocusPolicy(Qt::NoFocus);
         key_back->setStyleSheet(QLatin1String("#key_back{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Backspace_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Backspace azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -242,7 +244,7 @@ public:
 "}\n"
 "\n"
 "#key_back::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Backspace_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Backspace blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -250,17 +252,17 @@ public:
         key_back->setCheckable(false);
         key_3 = new QPushButton(key_frame);
         key_3->setObjectName(QStringLiteral("key_3"));
-        key_3->setGeometry(QRect(819, 134, 50, 50));
+        key_3->setGeometry(QRect(593, 86, 50, 50));
         key_3->setFocusPolicy(Qt::NoFocus);
         key_3->setStyleSheet(QLatin1String("#key_3{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/3_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/3 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_3::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/3_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/3 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -268,17 +270,17 @@ public:
         key_3->setCheckable(false);
         key_9 = new QPushButton(key_frame);
         key_9->setObjectName(QStringLiteral("key_9"));
-        key_9->setGeometry(QRect(819, 10, 50, 50));
+        key_9->setGeometry(QRect(598, 6, 41, 41));
         key_9->setFocusPolicy(Qt::NoFocus);
         key_9->setStyleSheet(QLatin1String("#key_9{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/9_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/9 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_9::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/9_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/9 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -286,17 +288,17 @@ public:
         key_9->setCheckable(false);
         key_2 = new QPushButton(key_frame);
         key_2->setObjectName(QStringLiteral("key_2"));
-        key_2->setGeometry(QRect(759, 134, 50, 50));
+        key_2->setGeometry(QRect(556, 91, 41, 41));
         key_2->setFocusPolicy(Qt::NoFocus);
         key_2->setStyleSheet(QLatin1String("#key_2{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/2_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/2 azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_2::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/2_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/2 blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -304,17 +306,17 @@ public:
         key_2->setCheckable(false);
         key_Q = new QPushButton(key_frame);
         key_Q->setObjectName(QStringLiteral("key_Q"));
-        key_Q->setGeometry(QRect(10, 10, 50, 50));
+        key_Q->setGeometry(QRect(8, 8, 41, 41));
         key_Q->setFocusPolicy(Qt::NoFocus);
         key_Q->setStyleSheet(QLatin1String("#key_Q{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Q_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Q azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_Q::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Q_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Q blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -322,17 +324,17 @@ public:
         key_Q->setCheckable(false);
         key_W = new QPushButton(key_frame);
         key_W->setObjectName(QStringLiteral("key_W"));
-        key_W->setGeometry(QRect(70, 10, 50, 50));
+        key_W->setGeometry(QRect(52, 7, 41, 41));
         key_W->setFocusPolicy(Qt::NoFocus);
         key_W->setStyleSheet(QLatin1String("#key_W{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/W_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/W azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_W::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/W_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/W blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -340,17 +342,17 @@ public:
         key_W->setCheckable(false);
         key_E = new QPushButton(key_frame);
         key_E->setObjectName(QStringLiteral("key_E"));
-        key_E->setGeometry(QRect(130, 10, 50, 50));
+        key_E->setGeometry(QRect(95, 7, 41, 41));
         key_E->setFocusPolicy(Qt::NoFocus);
         key_E->setStyleSheet(QLatin1String("#key_E{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/E_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/E azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_E::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/E_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/E blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -358,17 +360,17 @@ public:
         key_E->setCheckable(false);
         key_R = new QPushButton(key_frame);
         key_R->setObjectName(QStringLiteral("key_R"));
-        key_R->setGeometry(QRect(190, 10, 50, 50));
+        key_R->setGeometry(QRect(140, 8, 41, 41));
         key_R->setFocusPolicy(Qt::NoFocus);
         key_R->setStyleSheet(QLatin1String("#key_R{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/R_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/R azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_R::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/R_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/R blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -376,17 +378,17 @@ public:
         key_R->setCheckable(false);
         key_T = new QPushButton(key_frame);
         key_T->setObjectName(QStringLiteral("key_T"));
-        key_T->setGeometry(QRect(250, 10, 50, 50));
+        key_T->setGeometry(QRect(183, 8, 41, 41));
         key_T->setFocusPolicy(Qt::NoFocus);
         key_T->setStyleSheet(QLatin1String("#key_T{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/T_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/T azul.png);\n"
 "border:none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_T::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/T_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/T blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -394,17 +396,17 @@ public:
         key_T->setCheckable(false);
         key_Y = new QPushButton(key_frame);
         key_Y->setObjectName(QStringLiteral("key_Y"));
-        key_Y->setGeometry(QRect(310, 10, 50, 50));
+        key_Y->setGeometry(QRect(226, 7, 41, 41));
         key_Y->setFocusPolicy(Qt::NoFocus);
         key_Y->setStyleSheet(QLatin1String("#key_Y{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Y_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Y azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_Y::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Y_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Y blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -412,17 +414,17 @@ public:
         key_Y->setCheckable(false);
         key_U = new QPushButton(key_frame);
         key_U->setObjectName(QStringLiteral("key_U"));
-        key_U->setGeometry(QRect(370, 10, 50, 50));
+        key_U->setGeometry(QRect(270, 7, 41, 41));
         key_U->setFocusPolicy(Qt::NoFocus);
         key_U->setStyleSheet(QLatin1String("#key_U{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/U_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/U azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_U::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/U_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/U blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -430,17 +432,17 @@ public:
         key_U->setCheckable(false);
         key_I = new QPushButton(key_frame);
         key_I->setObjectName(QStringLiteral("key_I"));
-        key_I->setGeometry(QRect(430, 10, 50, 50));
+        key_I->setGeometry(QRect(313, 7, 41, 41));
         key_I->setFocusPolicy(Qt::NoFocus);
         key_I->setStyleSheet(QLatin1String("#key_I{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/I_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/I azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_I::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/I_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/I blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -448,17 +450,17 @@ public:
         key_I->setCheckable(false);
         key_P = new QPushButton(key_frame);
         key_P->setObjectName(QStringLiteral("key_P"));
-        key_P->setGeometry(QRect(550, 10, 50, 50));
+        key_P->setGeometry(QRect(400, 8, 41, 41));
         key_P->setFocusPolicy(Qt::NoFocus);
         key_P->setStyleSheet(QLatin1String("#key_P{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/P_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/P azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_P::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/P_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/P blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -466,17 +468,17 @@ public:
         key_P->setCheckable(false);
         key_O = new QPushButton(key_frame);
         key_O->setObjectName(QStringLiteral("key_O"));
-        key_O->setGeometry(QRect(490, 10, 50, 50));
+        key_O->setGeometry(QRect(357, 8, 41, 41));
         key_O->setFocusPolicy(Qt::NoFocus);
         key_O->setStyleSheet(QLatin1String("#key_O{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/O_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/O azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_O::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/O_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/O blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -484,17 +486,17 @@ public:
         key_O->setCheckable(false);
         key_A = new QPushButton(key_frame);
         key_A->setObjectName(QStringLiteral("key_A"));
-        key_A->setGeometry(QRect(45, 75, 50, 50));
+        key_A->setGeometry(QRect(34, 49, 41, 41));
         key_A->setFocusPolicy(Qt::NoFocus);
         key_A->setStyleSheet(QLatin1String("#key_A{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/A_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/A azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_A::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/A_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/A blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -502,17 +504,17 @@ public:
         key_A->setCheckable(false);
         key_L = new QPushButton(key_frame);
         key_L->setObjectName(QStringLiteral("key_L"));
-        key_L->setGeometry(QRect(525, 75, 50, 50));
+        key_L->setGeometry(QRect(382, 48, 41, 41));
         key_L->setFocusPolicy(Qt::NoFocus);
         key_L->setStyleSheet(QLatin1String("#key_L{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/L_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/L azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_L::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/L_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/L blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -520,17 +522,17 @@ public:
         key_L->setCheckable(false);
         key_H = new QPushButton(key_frame);
         key_H->setObjectName(QStringLiteral("key_H"));
-        key_H->setGeometry(QRect(345, 75, 50, 50));
+        key_H->setGeometry(QRect(251, 49, 41, 41));
         key_H->setFocusPolicy(Qt::NoFocus);
         key_H->setStyleSheet(QLatin1String("#key_H{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/H_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/H azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_H::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/H_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/H blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -538,17 +540,17 @@ public:
         key_H->setCheckable(false);
         key_G = new QPushButton(key_frame);
         key_G->setObjectName(QStringLiteral("key_G"));
-        key_G->setGeometry(QRect(285, 75, 50, 50));
+        key_G->setGeometry(QRect(207, 49, 41, 41));
         key_G->setFocusPolicy(Qt::NoFocus);
         key_G->setStyleSheet(QLatin1String("#key_G{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/G_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/G azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_G::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/G_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/G blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -556,17 +558,17 @@ public:
         key_G->setCheckable(false);
         key_F = new QPushButton(key_frame);
         key_F->setObjectName(QStringLiteral("key_F"));
-        key_F->setGeometry(QRect(225, 75, 50, 50));
+        key_F->setGeometry(QRect(165, 49, 41, 41));
         key_F->setFocusPolicy(Qt::NoFocus);
         key_F->setStyleSheet(QLatin1String("#key_F{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/F_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/F azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_F::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/F_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/F blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -574,17 +576,17 @@ public:
         key_F->setCheckable(false);
         key_S = new QPushButton(key_frame);
         key_S->setObjectName(QStringLiteral("key_S"));
-        key_S->setGeometry(QRect(105, 75, 50, 50));
+        key_S->setGeometry(QRect(78, 49, 41, 41));
         key_S->setFocusPolicy(Qt::NoFocus);
         key_S->setStyleSheet(QLatin1String("#key_S{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/S_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/S azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_S::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/S_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/S blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -592,17 +594,17 @@ public:
         key_S->setCheckable(false);
         key_D = new QPushButton(key_frame);
         key_D->setObjectName(QStringLiteral("key_D"));
-        key_D->setGeometry(QRect(165, 75, 50, 50));
+        key_D->setGeometry(QRect(121, 50, 41, 41));
         key_D->setFocusPolicy(Qt::NoFocus);
         key_D->setStyleSheet(QLatin1String("#key_D{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/D_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/D azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_D::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/D_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/D blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -610,17 +612,17 @@ public:
         key_D->setCheckable(false);
         key_J = new QPushButton(key_frame);
         key_J->setObjectName(QStringLiteral("key_J"));
-        key_J->setGeometry(QRect(405, 75, 50, 50));
+        key_J->setGeometry(QRect(294, 49, 41, 41));
         key_J->setFocusPolicy(Qt::NoFocus);
         key_J->setStyleSheet(QLatin1String("#key_J{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/J_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/J azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_J::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/J_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/J blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -628,17 +630,17 @@ public:
         key_J->setCheckable(false);
         key_K = new QPushButton(key_frame);
         key_K->setObjectName(QStringLiteral("key_K"));
-        key_K->setGeometry(QRect(465, 75, 50, 50));
+        key_K->setGeometry(QRect(339, 49, 41, 41));
         key_K->setFocusPolicy(Qt::NoFocus);
         key_K->setStyleSheet(QLatin1String("#key_K{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/K_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/K azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_K::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/K_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/K blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -646,17 +648,17 @@ public:
         key_K->setCheckable(false);
         key_dot = new QPushButton(key_frame);
         key_dot->setObjectName(QStringLiteral("key_dot"));
-        key_dot->setGeometry(QRect(819, 192, 50, 50));
+        key_dot->setGeometry(QRect(599, 132, 41, 41));
         key_dot->setFocusPolicy(Qt::NoFocus);
         key_dot->setStyleSheet(QLatin1String("#key_dot{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/punto_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_dot::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/punto_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -664,17 +666,17 @@ public:
         key_dot->setCheckable(false);
         key_slash = new QPushButton(key_frame);
         key_slash->setObjectName(QStringLiteral("key_slash"));
-        key_slash->setGeometry(QRect(879, 10, 50, 50));
+        key_slash->setGeometry(QRect(642, 7, 41, 41));
         key_slash->setFocusPolicy(Qt::NoFocus);
         key_slash->setStyleSheet(QLatin1String("#key_slash{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/slash_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/slash azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_slash::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/slash_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/slash blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -682,17 +684,17 @@ public:
         key_slash->setCheckable(false);
         key_plus = new QPushButton(key_frame);
         key_plus->setObjectName(QStringLiteral("key_plus"));
-        key_plus->setGeometry(QRect(879, 134, 50, 50));
+        key_plus->setGeometry(QRect(642, 90, 41, 41));
         key_plus->setFocusPolicy(Qt::NoFocus);
         key_plus->setStyleSheet(QLatin1String("#key_plus{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/+_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/plus_azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_plus::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/+_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/plus_blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -700,17 +702,17 @@ public:
         key_plus->setCheckable(false);
         key_minus = new QPushButton(key_frame);
         key_minus->setObjectName(QStringLiteral("key_minus"));
-        key_minus->setGeometry(QRect(879, 72, 50, 50));
+        key_minus->setGeometry(QRect(642, 49, 41, 41));
         key_minus->setFocusPolicy(Qt::NoFocus);
         key_minus->setStyleSheet(QLatin1String("#key_minus{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/- azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/minus_azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_minus::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/- blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/minus_blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -718,17 +720,17 @@ public:
         key_minus->setCheckable(false);
         key_X = new QPushButton(key_frame);
         key_X->setObjectName(QStringLiteral("key_X"));
-        key_X->setGeometry(QRect(128, 134, 50, 50));
+        key_X->setGeometry(QRect(95, 91, 41, 41));
         key_X->setFocusPolicy(Qt::NoFocus);
         key_X->setStyleSheet(QLatin1String("#key_X{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/X_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/X azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_X::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/X_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/X blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -736,17 +738,17 @@ public:
         key_X->setCheckable(false);
         key_Z = new QPushButton(key_frame);
         key_Z->setObjectName(QStringLiteral("key_Z"));
-        key_Z->setGeometry(QRect(68, 134, 50, 50));
+        key_Z->setGeometry(QRect(52, 91, 41, 41));
         key_Z->setFocusPolicy(Qt::NoFocus);
         key_Z->setStyleSheet(QLatin1String("#key_Z{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Z_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Z azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_Z::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Z_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Z blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -754,17 +756,17 @@ public:
         key_Z->setCheckable(false);
         key_M = new QPushButton(key_frame);
         key_M->setObjectName(QStringLiteral("key_M"));
-        key_M->setGeometry(QRect(428, 134, 50, 50));
+        key_M->setGeometry(QRect(313, 90, 41, 41));
         key_M->setFocusPolicy(Qt::NoFocus);
         key_M->setStyleSheet(QLatin1String("#key_M{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/M_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/M azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_M::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/M_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/M blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -772,17 +774,17 @@ public:
         key_M->setCheckable(false);
         key_C = new QPushButton(key_frame);
         key_C->setObjectName(QStringLiteral("key_C"));
-        key_C->setGeometry(QRect(188, 134, 50, 50));
+        key_C->setGeometry(QRect(139, 90, 41, 41));
         key_C->setFocusPolicy(Qt::NoFocus);
         key_C->setStyleSheet(QLatin1String("#key_C{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/C_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/C azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_C::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/C_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/C blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -790,17 +792,17 @@ public:
         key_C->setCheckable(false);
         key_V = new QPushButton(key_frame);
         key_V->setObjectName(QStringLiteral("key_V"));
-        key_V->setGeometry(QRect(248, 134, 50, 50));
+        key_V->setGeometry(QRect(183, 90, 41, 41));
         key_V->setFocusPolicy(Qt::NoFocus);
         key_V->setStyleSheet(QLatin1String("#key_V{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/V_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/V azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_V::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/V_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/V blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -808,17 +810,17 @@ public:
         key_V->setCheckable(false);
         key_B = new QPushButton(key_frame);
         key_B->setObjectName(QStringLiteral("key_B"));
-        key_B->setGeometry(QRect(308, 134, 50, 50));
+        key_B->setGeometry(QRect(226, 90, 41, 41));
         key_B->setFocusPolicy(Qt::NoFocus);
         key_B->setStyleSheet(QLatin1String("#key_B{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/B_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/B azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_B::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/B_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/B blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -826,17 +828,17 @@ public:
         key_B->setCheckable(false);
         key_N = new QPushButton(key_frame);
         key_N->setObjectName(QStringLiteral("key_N"));
-        key_N->setGeometry(QRect(368, 134, 50, 50));
+        key_N->setGeometry(QRect(270, 90, 41, 41));
         key_N->setFocusPolicy(Qt::NoFocus);
         key_N->setStyleSheet(QLatin1String("#key_N{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/N_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/N azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_N::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/N_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/N blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -844,17 +846,17 @@ public:
         key_N->setCheckable(false);
         key_comma = new QPushButton(key_frame);
         key_comma->setObjectName(QStringLiteral("key_comma"));
-        key_comma->setGeometry(QRect(488, 134, 50, 50));
+        key_comma->setGeometry(QRect(357, 91, 41, 41));
         key_comma->setFocusPolicy(Qt::NoFocus);
         key_comma->setStyleSheet(QLatin1String("#key_comma{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/coma_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/coma azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_comma::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/coma_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/coma blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -862,17 +864,17 @@ public:
         key_comma->setCheckable(false);
         key_space = new QPushButton(key_frame);
         key_space->setObjectName(QStringLiteral("key_space"));
-        key_space->setGeometry(QRect(219, 190, 381, 50));
+        key_space->setGeometry(QRect(161, 128, 281, 50));
         key_space->setFocusPolicy(Qt::NoFocus);
         key_space->setStyleSheet(QLatin1String("#key_space{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Espacio_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Espacio azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_space::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Espacio_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Espacio blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -880,105 +882,41 @@ public:
         key_space->setCheckable(false);
         key_enter = new QPushButton(key_frame);
         key_enter->setObjectName(QStringLiteral("key_enter"));
-        key_enter->setGeometry(QRect(585, 75, 91, 51));
+        key_enter->setGeometry(QRect(427, 49, 81, 41));
         key_enter->setFocusPolicy(Qt::NoFocus);
         key_enter->setStyleSheet(QLatin1String("#key_enter{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Enter_azul.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Enter azul.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}\n"
 "\n"
 "#key_enter::pressed{ \n"
-"border-image: url(:/teclado/images/Texto/Teclado/Enter_blanco.png);\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Enter blanco.png);\n"
 "border: none;\n"
 "background-repeat: none;\n"
 "background-position: center;\n"
 "}"));
         key_enter->setCheckable(false);
-        key_mayus = new QPushButton(key_frame);
+        key_mayus = new QPushButton(settings);
         key_mayus->setObjectName(QStringLiteral("key_mayus"));
-        key_mayus->setGeometry(QRect(96, 190, 111, 50));
+        key_mayus->setGeometry(QRect(63, 465, 111, 41));
         key_mayus->setFocusPolicy(Qt::NoFocus);
         key_mayus->setStyleSheet(QLatin1String("#key_mayus{ \n"
-"background-color:none;\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 8px;\n"
-"border-color: rgb(0, 167, 250);\n"
-"color: rgb(0, 167, 250);\n"
-"\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Mayus azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
 "}\n"
 "\n"
 "#key_mayus::checked{ \n"
-"background-color:none;\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 8px;\n"
-"border-color: white;\n"
-"color: white;\n"
+"background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Mayus bco.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
 "}"));
         key_mayus->setCheckable(true);
         key_mayus->setChecked(false);
-        key_back_6 = new QLabel(key_frame);
-        key_back_6->setObjectName(QStringLiteral("key_back_6"));
-        key_back_6->setGeometry(QRect(88, 188, 121, 61));
-        key_back_6->setStyleSheet(QLatin1String("#key_back_6\n"
-"{\n"
-"background-color: balck;\n"
-"border-style: solid;\n"
-"border-width: 1px;\n"
-"border-radius: 10px;\n"
-"}"));
-        key_back_6->raise();
-        key_0->raise();
-        key_4->raise();
-        key_5->raise();
-        key_7->raise();
-        key_8->raise();
-        key_1->raise();
-        key_6->raise();
-        key_back->raise();
-        key_3->raise();
-        key_9->raise();
-        key_2->raise();
-        key_Q->raise();
-        key_W->raise();
-        key_E->raise();
-        key_R->raise();
-        key_T->raise();
-        key_Y->raise();
-        key_U->raise();
-        key_I->raise();
-        key_P->raise();
-        key_O->raise();
-        key_A->raise();
-        key_L->raise();
-        key_H->raise();
-        key_G->raise();
-        key_F->raise();
-        key_S->raise();
-        key_D->raise();
-        key_J->raise();
-        key_K->raise();
-        key_dot->raise();
-        key_slash->raise();
-        key_plus->raise();
-        key_minus->raise();
-        key_X->raise();
-        key_Z->raise();
-        key_M->raise();
-        key_C->raise();
-        key_V->raise();
-        key_B->raise();
-        key_N->raise();
-        key_comma->raise();
-        key_space->raise();
-        key_enter->raise();
-        key_mayus->raise();
-        textEdit = new QTextEdit(settings);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(30, 60, 961, 311));
 
         retranslateUi(settings);
         QObject::connect(buttonBox, SIGNAL(accepted()), settings, SLOT(accept()));
@@ -1035,8 +973,7 @@ public:
         key_comma->setText(QString());
         key_space->setText(QString());
         key_enter->setText(QString());
-        key_mayus->setText(QApplication::translate("settings", "MAYUSCULAS", 0));
-        key_back_6->setText(QString());
+        key_mayus->setText(QString());
     } // retranslateUi
 
 };

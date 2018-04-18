@@ -9,6 +9,14 @@
 #include <Qt>
 #include <QMouseEvent>
 #include <QPushButton>
+#include <graphwindow.h>
+
+enum
+{
+    TYPE_ELECTRICOS,
+    TYPE_FISICOS,
+    TYPE_QUIMICOS
+};
 
 class custom_tooltip: public QWidget
 {
@@ -22,7 +30,7 @@ public:
         return list;
     }
 
-    custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QPushButton *connect_to);
+    custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph);
 
     void update_data();
     void init_data();
@@ -40,6 +48,7 @@ private:
     QWidget *parent_frame;
     QWidget *parent_window;
     QPushButton *connect_here;
+    graphwindow *graph_ptr;
 
     QLayout *layout;
     QListWidget *list_widget;
@@ -51,6 +60,8 @@ private:
     void save_position();
 
     uint number_of_clicks = 0;
+
+    uint element_type = 0;
 
 private slots:
     void ListPressed();

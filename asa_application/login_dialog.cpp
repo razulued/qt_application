@@ -1,6 +1,7 @@
 #include "login_dialog.h"
 #include "ui_login_dialog.h"
 #include "token_auth.h"
+#include "asa_conf_string.h"
 #include <QFont>
 login_dialog::login_dialog(QWidget *parent) :
     QDialog(parent),
@@ -35,11 +36,12 @@ void login_dialog::on_key_enter_clicked()
     if(true == check_user_password(ui->textedit->toPlainText()))
     {
         validate_token(true);
-        this->close();
+        synch_config_string();
     }
     else
     {
         validate_token(false);
-        ui->textedit->clear();
+//        ui->textedit->clear();
     }
+    this->close();
 }

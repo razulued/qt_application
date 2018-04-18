@@ -7,16 +7,20 @@
 #include <QPainter>
 #include <QSettings>
 #include <QDateTime>
+#include <QTouchEvent>
 
 #define HOLD_TIME (40)
 QPoint offset;
 
 uint custom_tooltip::tooltip_number;
 
-custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QPushButton *connect_to) : QWidget(frame)
+custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph) : QWidget(frame)
 {
 
+    element_type = type;
     parent_window = mainwindow;
+    graph_ptr = graph;
+
     parent_frame = frame;
     connect_here = connect_to;
 //    parent_frame->setStyleSheet("color: rgb(0, 167, 250);"
@@ -73,7 +77,7 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
 
 void custom_tooltip::init_data()
 {
-    QFont font_2("Typo Square Ligth Demo",12,1);
+    QFont font_2("Typo Square Ligth Demo",10,1);
     list_widget->setFont(font_2);
 
     quint32 i, param_id;
@@ -110,7 +114,7 @@ void custom_tooltip::init_data()
 
 void custom_tooltip::update_data()
 {
-    QFont font_2("Typo Square Ligth Demo",12,1);
+    QFont font_2("Typo Square Ligth Demo",10,1);
     quint32 i, param_id;
     int items = 0;
 
@@ -287,8 +291,11 @@ void custom_tooltip::checkClick()
     {
         if(item_is_pressed == false)
         {
-            //Emit signal for detailed view
-            connect_here->released();
+            //Emit signal for graph
+            if(graph_ptr->isHidden())
+            {
+                graph_ptr->show_graph(element_type);
+            }
         }
         else
         {

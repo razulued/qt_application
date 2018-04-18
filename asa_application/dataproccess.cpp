@@ -3,7 +3,7 @@
 #include "parameters.h"
 #include "asa_protocol.h"
 
-#define RELEASE_FOR_RPI (0)
+#define RELEASE_FOR_RPI (1)
 
 #define PSI_RAWMIN   0x0194         //ADC 415  == 0
 #define PSI_RAWMAX   0x08E7         //2294     == 1.82
@@ -209,7 +209,14 @@ int DataProccess::hexString2Int(QString inputString)
 int DataProccess::intString2Int(QString inputString)
 {
     int temp;
-    temp = inputString.toInt(); //Casting from String to Int (Hexadecimal representation)
+    bool ok;
+//    temp = inputString.toInt(); //Casting from String to Int (Hexadecimal representation)
+    temp = inputString.toInt(&ok,16); //Casting from String to Int (Hexadecimal representation)
+
+    if(false == ok)
+    {
+        temp = 0;
+    }
     return temp;
 }
 
@@ -253,6 +260,7 @@ void DataProccess::dataSPI()
 
             if(realParameters.length() > 1)
             {
+//                qDebug() << "+++++++" << realParameters[0] << realParameters[1];
                 store_value_by_ID(intString2Int(realParameters[0]) , realParameters[1]);
             }
             else
@@ -568,7 +576,7 @@ void DataProccess::dataRandom()
     int i = 0;
     uint random = 0;
     //Add here IDs to generate random numbers
-    QList<int> id_list = QList<int>() << 0x2 << 0x3 << 0x4;
+    QList<int> id_list = QList<int>() << 0x3001 << 0x3002 << 0x3003;
 
     for(i = 0; i < id_list.size(); i++)
     {
@@ -577,6 +585,12 @@ void DataProccess::dataRandom()
     }
 
     store_value_by_ID(0x3301, "12345");
+    store_value_by_ID(0x2000, "1234");
+    store_value_by_ID(0x2001, "0001");
+    store_value_by_ID(0x0402, "hola");
+
+
+
 }
 
 QList<double> DataProccess::getDataProcessing()

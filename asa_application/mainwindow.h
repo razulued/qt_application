@@ -20,7 +20,8 @@
 #include "mod_6_lechos.h"
 #include "mod_flechas.h"
 #include "dataproccess.h"
-
+#include "graphwindow.h"
+#include "login_dialog.h"
 namespace Ui {
 class MainWindow;
 }
@@ -93,6 +94,8 @@ public:
     rutinas_mantenimiento *rutinas;
 
     DataProccess *dataObj;
+    graphwindow *graph = NULL;
+
 
 public slots:
     void handleMenuButton();
@@ -121,6 +124,8 @@ private slots:
 
     void new_spi_data();
 
+    void on_lock_button_clicked();
+
 private:
     QTimer dataTimer;
 
@@ -131,6 +136,7 @@ private:
     detailedwindow *detail_window = NULL;
     settings    *settingswindow = NULL;
     bitacora    *bitacorawindow = NULL;
+    login_dialog *login_d = NULL;
 
     void HideButtons(bool show);
     parameter_state_t electric_state;
@@ -173,8 +179,8 @@ private:
     custom_tooltip *tool_tip_efluente_fisicos;
     custom_tooltip *tool_tip_efluente_quimicos;
 
-    void get_ASA_string(void);
-    void update_ASA_string(void);
+//    void get_ASA_string(void);
+//    void update_ASA_string(void);
     void update_tooltips(void);
 
     void trace_lines(QWidget *tooltip, QPushButton *module, QPainter &painter);
@@ -196,9 +202,10 @@ private:
 
     void update_system_time();
     QDateTime time;
+
+    void check_lock();
 protected:
     void paintEvent(QPaintEvent *);
-
 };
 
 

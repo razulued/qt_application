@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.0.2, 2018-04-12T23:04:08. -->
+<!-- Written by QtCreator 4.0.2, 2018-04-16T21:24:35. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -539,15 +539,15 @@
       </valuelist>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedHosts">
        <value type="QString">192.168.1.71</value>
-       <value type="QString">192.168.1.71</value>
        <value type="QString">192.168.0.4</value>
+       <value type="QString">192.168.1.71</value>
        <value type="QString">192.168.1.71</value>
       </valuelist>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedRemotePaths">
+       <value type="QString">/home/pi/asa_application</value>
        <value type="QString">/home/pi</value>
        <value type="QString">/home/pi/</value>
        <value type="QString">/home/pi</value>
-       <value type="QString">/home/pi/asa_application</value>
       </valuelist>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedSysroots">
        <value type="QString">/opt/qtrpi/raspbian/sysroot</value>
@@ -556,10 +556,10 @@
        <value type="QString">/opt/qtrpi/raspbian/sysroot</value>
       </valuelist>
       <valuelist type="QVariantList" key="Qt4ProjectManager.MaemoRunConfiguration.LastDeployedTimes">
-       <value type="QDateTime">2018-02-10T21:59:57</value>
-       <value type="QDateTime">2018-02-10T12:13:02</value>
-       <value type="QDateTime">2018-02-12T20:49:34</value>
        <value type="QDateTime">2018-02-10T12:28:27</value>
+       <value type="QDateTime">2018-02-12T20:49:34</value>
+       <value type="QDateTime">2018-02-10T12:13:02</value>
+       <value type="QDateTime">2018-02-10T21:59:57</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>

@@ -1,14 +1,18 @@
 <RCC>
     <qresource prefix="/images">
+        <file>images/afluente.png</file>
         <file>images/asa_logo.png</file>
         <file>images/barra_inferior.png</file>
         <file>images/compu_logo.png</file>
+        <file>images/Cuadro_pantalla.png</file>
         <file>images/detail_clarificador.png</file>
         <file>images/detail_clorador.png</file>
         <file>images/detail_deshidratador.png</file>
         <file>images/detail_digestor.png</file>
         <file>images/detail_reactor_biologico.png</file>
         <file>images/detail_regulador.png</file>
+        <file>images/efluente_2.png</file>
+        <file>images/efluente.png</file>
         <file>images/main_window_background.jpg</file>
         <file>images/menu_off.png</file>
         <file>images/menu_on.png</file>
@@ -18,15 +22,43 @@
         <file>images/parametros_fisicos_on.png</file>
         <file>images/parametros_quimicos_off.png</file>
         <file>images/parametros_quimicos_on.png</file>
+        <file>images/planta_old.png</file>
         <file>images/planta.png</file>
-        <file>images/afluente.png</file>
-        <file>images/efluente.png</file>
-        <file>images/Cuadro_pantalla.png</file>
-        <file>images/efluente_2.png</file>
         <file>images/retorno_1.png</file>
         <file>images/retorno_2.png</file>
         <file>images/retorno_3.png</file>
         <file>images/retorno_4.png</file>
+    </qresource>
+    <qresource prefix="/flechas">
+        <file>images/0_Flechas_de_flujo/none.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_01_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_01_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_02_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_02_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_03_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_03_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_04_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_04_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_mov (copy).gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_mov_small.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_02_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_flow_influent_02_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/sludge_return_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/sludge_return.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_01_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_01_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_02_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_02_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_03_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_03_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_04_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_04_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_effluent_01_quiet.png</file>
+        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_mov_small.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_mov.gif</file>
+        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_quiet.png</file>
     </qresource>
     <qresource prefix="/barras">
         <file>images/Barras/Base_1_amarilla.png</file>
@@ -41,6 +73,7 @@
         <file>images/Barras/Indice_diagrama.png</file>
         <file>images/Barras/Linea_configuracion_azul.png</file>
         <file>images/Barras/Linea_configuracion_gris.png</file>
+        <file>images/Barras/Parametros_azul.png</file>
         <file>images/Barras/Parametros_electricos_amarillo.png</file>
         <file>images/Barras/Parametros_electricos_azul.png</file>
         <file>images/Barras/Parametros_electricos_rojo.png</file>
@@ -50,18 +83,27 @@
         <file>images/Barras/Parametros_quimicos_amarillo.png</file>
         <file>images/Barras/Parametros_quimicos_azul.png</file>
         <file>images/Barras/Parametros_quimicos_rojo.png</file>
-        <file>images/Barras/Parametros_azul.png</file>
     </qresource>
     <qresource prefix="/iconos">
+        <file>images/Iconos/Ajustes_azul.png</file>
+        <file>images/Iconos/Ajustes_blanco.png</file>
         <file>images/Iconos/ASA_logo.png</file>
+        <file>images/Iconos/Ayuda_azul.png</file>
+        <file>images/Iconos/Ayuda_blanco.png</file>
+        <file>images/Iconos/Bitacora_azul.png</file>
+        <file>images/Iconos/Bitacora_blanco.png</file>
         <file>images/Iconos/Campana.png</file>
         <file>images/Iconos/Clavija_amarillo.png</file>
         <file>images/Iconos/Clavija_azul.png</file>
         <file>images/Iconos/Clavija_blanco.png</file>
         <file>images/Iconos/Clavija_rojo.png</file>
+        <file>images/Iconos/close-x.png</file>
+        <file>images/Iconos/compu_logo.png</file>
         <file>images/Iconos/Cuadro_seleccion_relleno.png</file>
         <file>images/Iconos/Cuadro_seleccion_vacio.png</file>
         <file>images/Iconos/Diagrama.png</file>
+        <file>images/Iconos/Encendido_azul.png</file>
+        <file>images/Iconos/Encendido_blanco.png</file>
         <file>images/Iconos/Espaciadores_gris.png</file>
         <file>images/Iconos/Globo_1_amarillo.png</file>
         <file>images/Iconos/Globo_1_azul.png</file>
@@ -78,8 +120,13 @@
         <file>images/Iconos/Globo_5_amarillo.png</file>
         <file>images/Iconos/Globo_5_azul.png</file>
         <file>images/Iconos/Globo_5_rojo.png</file>
+        <file>images/Iconos/Globo_azul.png</file>
+        <file>images/Iconos/Info_azul.png</file>
+        <file>images/Iconos/Info_blanco.png</file>
         <file>images/Iconos/Libro.png</file>
         <file>images/Iconos/Linea_graficos.png</file>
+        <file>images/Iconos/Listo_azul.png</file>
+        <file>images/Iconos/Listo_blanco.png</file>
         <file>images/Iconos/Matraz_amarillo.png</file>
         <file>images/Iconos/Matraz_azul.png</file>
         <file>images/Iconos/Matraz_blanco.png</file>
@@ -91,212 +138,22 @@
         <file>images/Iconos/Menu_amarillo.png</file>
         <file>images/Iconos/Menu_azul.png</file>
         <file>images/Iconos/Menu_rojo.png</file>
-        <file>images/Iconos/Punto_contrasena.png</file>
-        <file>images/Iconos/Punto_linea_de_tiempo.png</file>
-        <file>images/Iconos/compu_logo.png</file>
-        <file>images/Iconos/close-x.png</file>
-        <file>images/Iconos/Visualizar_blanco.png</file>
-        <file>images/Iconos/Visualizar_azul.png</file>
-        <file>images/Iconos/Info_blanco.png</file>
-        <file>images/Iconos/Info_azul.png</file>
-        <file>images/Iconos/Bitacora_blanco.png</file>
-        <file>images/Iconos/Bitacora_azul.png</file>
-        <file>images/Iconos/Ajustes_blanco.png</file>
-        <file>images/Iconos/Ajustes_azul.png</file>
-        <file>images/Iconos/Encendido_blanco.png</file>
-        <file>images/Iconos/Encendido_azul.png</file>
-        <file>images/Iconos/Globo_azul.png</file>
         <file>images/Iconos/Ok_azul.png</file>
         <file>images/Iconos/Ok_blanco.png</file>
-        <file>images/Iconos/Posponer_azul.png</file>
-        <file>images/Iconos/Posponer_blanco.png</file>
-        <file>images/Iconos/Listo_azul.png</file>
-        <file>images/Iconos/Listo_blanco.png</file>
-        <file>images/Iconos/Play_blanco.png</file>
         <file>images/Iconos/Play_azul.png</file>
-        <file>images/Iconos/Ayuda_azul.png</file>
-        <file>images/Iconos/Ayuda_blanco.png</file>
-    </qresource>
-    <qresource prefix="/teclado">
-        <file>images/Texto/Teclado/- azul.png</file>
-        <file>images/Texto/Teclado/- blanco.png</file>
-        <file>images/Texto/Teclado/+_azul.png</file>
-        <file>images/Texto/Teclado/+_blanco.png</file>
-        <file>images/Texto/Teclado/0_azul.png</file>
-        <file>images/Texto/Teclado/0_blanco.png</file>
-        <file>images/Texto/Teclado/1_azul.png</file>
-        <file>images/Texto/Teclado/1_blanco.png</file>
-        <file>images/Texto/Teclado/2_azul.png</file>
-        <file>images/Texto/Teclado/2_blanco.png</file>
-        <file>images/Texto/Teclado/3_azul.png</file>
-        <file>images/Texto/Teclado/3_blanco.png</file>
-        <file>images/Texto/Teclado/4_azul.png</file>
-        <file>images/Texto/Teclado/4_blanco.png</file>
-        <file>images/Texto/Teclado/5_azul.png</file>
-        <file>images/Texto/Teclado/5_blanco.png</file>
-        <file>images/Texto/Teclado/6_azul.png</file>
-        <file>images/Texto/Teclado/6_blanco.png</file>
-        <file>images/Texto/Teclado/7_azul.png</file>
-        <file>images/Texto/Teclado/7_blanco.png</file>
-        <file>images/Texto/Teclado/8_azul.png</file>
-        <file>images/Texto/Teclado/8_blanco.png</file>
-        <file>images/Texto/Teclado/9_azul.png</file>
-        <file>images/Texto/Teclado/9_blanco.png</file>
-        <file>images/Texto/Teclado/A_azul.png</file>
-        <file>images/Texto/Teclado/A_blanco.png</file>
-        <file>images/Texto/Teclado/B_azul.png</file>
-        <file>images/Texto/Teclado/B_blanco.png</file>
-        <file>images/Texto/Teclado/Backspace_azul.png</file>
-        <file>images/Texto/Teclado/Backspace_blanco.png</file>
-        <file>images/Texto/Teclado/C_azul.png</file>
-        <file>images/Texto/Teclado/C_blanco.png</file>
-        <file>images/Texto/Teclado/coma_azul.png</file>
-        <file>images/Texto/Teclado/Coma_blanco.png</file>
-        <file>images/Texto/Teclado/D_azul.png</file>
-        <file>images/Texto/Teclado/D_blanco.png</file>
-        <file>images/Texto/Teclado/E_azul.png</file>
-        <file>images/Texto/Teclado/E_blanco.png</file>
-        <file>images/Texto/Teclado/F_azul.png</file>
-        <file>images/Texto/Teclado/F_blanco.png</file>
-        <file>images/Texto/Teclado/Flecha_inferior_azul.png</file>
-        <file>images/Texto/Teclado/Flecha_inferior_blanco.png</file>
-        <file>images/Texto/Teclado/Flecha_superior_azul.png</file>
-        <file>images/Texto/Teclado/Flecha_superior_blanco.png</file>
-        <file>images/Texto/Teclado/G_azul.png</file>
-        <file>images/Texto/Teclado/G_blanco.png</file>
-        <file>images/Texto/Teclado/H_azul.png</file>
-        <file>images/Texto/Teclado/H_blanco.png</file>
-        <file>images/Texto/Teclado/I_azul.png</file>
-        <file>images/Texto/Teclado/I_blanco.png</file>
-        <file>images/Texto/Teclado/J_azul.png</file>
-        <file>images/Texto/Teclado/J_blanco.png</file>
-        <file>images/Texto/Teclado/K_azul.png</file>
-        <file>images/Texto/Teclado/K_blanco.png</file>
-        <file>images/Texto/Teclado/L_azul.png</file>
-        <file>images/Texto/Teclado/L_blanco.png</file>
-        <file>images/Texto/Teclado/M_azul.png</file>
-        <file>images/Texto/Teclado/M_blanco.png</file>
-        <file>images/Texto/Teclado/N_azul.png</file>
-        <file>images/Texto/Teclado/N_blanco.png</file>
-        <file>images/Texto/Teclado/O_azul.png</file>
-        <file>images/Texto/Teclado/O_blanco.png</file>
-        <file>images/Texto/Teclado/P_azul.png</file>
-        <file>images/Texto/Teclado/P_blanco.png</file>
-        <file>images/Texto/Teclado/punto_azul.png</file>
-        <file>images/Texto/Teclado/punto_blanco.png</file>
-        <file>images/Texto/Teclado/Q_azul.png</file>
-        <file>images/Texto/Teclado/Q_blanco.png</file>
-        <file>images/Texto/Teclado/R_azul.png</file>
-        <file>images/Texto/Teclado/R_blanco.png</file>
-        <file>images/Texto/Teclado/S_azul.png</file>
-        <file>images/Texto/Teclado/S_blanco.png</file>
-        <file>images/Texto/Teclado/slash_azul.png</file>
-        <file>images/Texto/Teclado/slash_blanco.png</file>
-        <file>images/Texto/Teclado/T_azul.png</file>
-        <file>images/Texto/Teclado/T_blanco.png</file>
-        <file>images/Texto/Teclado/U_azul.png</file>
-        <file>images/Texto/Teclado/U_blanco.png</file>
-        <file>images/Texto/Teclado/V_azul.png</file>
-        <file>images/Texto/Teclado/V_blanco.png</file>
-        <file>images/Texto/Teclado/W_azul.png</file>
-        <file>images/Texto/Teclado/W_blanco.png</file>
-        <file>images/Texto/Teclado/X_azul.png</file>
-        <file>images/Texto/Teclado/X_blanco.png</file>
-        <file>images/Texto/Teclado/Y_azul.png</file>
-        <file>images/Texto/Teclado/Y_blanco.png</file>
-        <file>images/Texto/Teclado/Z_azul.png</file>
-        <file>images/Texto/Teclado/Z_blanco.png</file>
-        <file>images/Texto/Teclado/Teclado_back.png</file>
-        <file>images/Texto/Teclado/Enter_azul.png</file>
-        <file>images/Texto/Teclado/Enter_blanco.png</file>
-        <file>images/Texto/Teclado/Espacio_azul.png</file>
-        <file>images/Texto/Teclado/Espacio_blanco.png</file>
-    </qresource>
-    <qresource prefix="/carcamo">
-        <file>images/1_Carcamo/carcamo_hi_mov_water.gif</file>
-        <file>images/1_Carcamo/carcamo_hi_quiet_water.png</file>
-        <file>images/1_Carcamo/carcamo_low_mov_water.gif</file>
-        <file>images/1_Carcamo/carcamo_low_quiet_water.png</file>
-        <file>images/1_Carcamo/carcamo_med_mov water.gif</file>
-        <file>images/1_Carcamo/carcamo_med_quiet water.png</file>
-        <file>images/1_Carcamo/carcamo_vacio.png</file>
-    </qresource>
-    <qresource prefix="/reactor">
-        <file>images/2_Reactor/reac_hi_mov_water.gif</file>
-        <file>images/2_Reactor/reac_hi_quiet_water.png</file>
-        <file>images/2_Reactor/reac_low_mov_water_01.gif</file>
-        <file>images/2_Reactor/reac_low_quiet_water_01.png</file>
-        <file>images/2_Reactor/reac_med_mov_water_02.gif</file>
-        <file>images/2_Reactor/reac_med_quiet_water_02.png</file>
-        <file>images/2_Reactor/reactor.png</file>
-    </qresource>
-    <qresource prefix="/clarificador">
-        <file>images/3_Clarificador/clarifier_complete.png</file>
-        <file>images/3_Clarificador/clarifier_full_mov.gif</file>
-        <file>images/3_Clarificador/clarifier_full_quiet.png</file>
-        <file>images/3_Clarificador/clarifier.png</file>
-    </qresource>
-    <qresource prefix="/clorador">
-        <file>images/4_Clorador/chlorination_mov.gif</file>
-        <file>images/4_Clorador/chlorination_empty.png</file>
-        <file>images/4_Clorador/chlorination_quiet.png</file>
-    </qresource>
-    <qresource prefix="/digestor">
-        <file>images/5_Digestor/digester_empty.png</file>
-        <file>images/5_Digestor/digester_hi_mov_water.gif</file>
-        <file>images/5_Digestor/digester_hi_quiet.png</file>
-        <file>images/5_Digestor/digester_low_mov_water.gif</file>
-        <file>images/5_Digestor/digester_low_quiet.png</file>
-        <file>images/5_Digestor/digester_med_mov_water.gif</file>
-        <file>images/5_Digestor/digester_med_quiet.png</file>
-    </qresource>
-    <qresource prefix="/flechas">
-        <file>images/0_Flechas_de_flujo/sludge_flow_01_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_01_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_02_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_02_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_03_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_03_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_04_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_04_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_influent_02_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_influent_02_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/sludge_return_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/sludge_return.png</file>
-        <file>images/0_Flechas_de_flujo/water_flow_01_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/water_flow_01_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/water_flow_02_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/water_flow_02_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/water_flow_03_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/water_flow_03_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/water_flow_04_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/water_flow_04_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/water_flow_effluent_01_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_mov.gif</file>
-        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_quiet.png</file>
-        <file>images/0_Flechas_de_flujo/sludge_flow_influent_01_mov_small.gif</file>
-        <file>images/0_Flechas_de_flujo/water_flow_effluent_02_mov_small.gif</file>
-        <file>images/0_Flechas_de_flujo/none.png</file>
+        <file>images/Iconos/Play_blanco.png</file>
+        <file>images/Iconos/Posponer_azul_old.png</file>
+        <file>images/Iconos/Posponer_azul.png</file>
+        <file>images/Iconos/Posponer_blanco_old.png</file>
+        <file>images/Iconos/Posponer_blanco.png</file>
+        <file>images/Iconos/Punto_contrasena.png</file>
+        <file>images/Iconos/Punto_linea_de_tiempo.png</file>
+        <file>images/Iconos/Visualizar_azul.png</file>
+        <file>images/Iconos/Visualizar_blanco.png</file>
     </qresource>
     <qresource prefix="/lechos">
         <file>images/6_Lechos/sand_bed_01.png</file>
         <file>images/6_Lechos/sand_bed_02.png</file>
         <file>images/6_Lechos/sand_bed_03.png</file>
-    </qresource>
-    <qresource prefix="/equipos">
-        <file>images/0_Equipos/Blower_Jet_fail_mov.gif</file>
-        <file>images/0_Equipos/Blower_Jet_fail_quiet.png</file>
-        <file>images/0_Equipos/Blower_Jet_off.png</file>
-        <file>images/0_Equipos/Blower_Jet_On.png</file>
-        <file>images/0_Equipos/Blower_Kaeser_fail_mov.gif</file>
-        <file>images/0_Equipos/Blower_Kaeser_fail_quiet.png</file>
-        <file>images/0_Equipos/Blower_Kaeser_off.png</file>
-        <file>images/0_Equipos/Blower_Kaeser_on.png</file>
-        <file>images/0_Equipos/pump_fail_mov.gif</file>
-        <file>images/0_Equipos/pump_fail_quiet.png</file>
-        <file>images/0_Equipos/pump_off.png</file>
-        <file>images/0_Equipos/pump_on.png</file>
     </qresource>
 </RCC>

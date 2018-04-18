@@ -4,7 +4,7 @@
 #include "my_crc_api.h"
 #include <stdint.h>
 #include <stdlib.h>
-#include "mainwindow.h"
+#include "asa_conf_string.h"
 
 #define SPI_STX 0x02
 #define SPI_ETX 0x03
@@ -83,18 +83,18 @@ void SPICOMM::sendSPIdata()
     uint8_t ch = 0;
 
     /*Do this only if there is data in the configuration*/
-
-    if(MainWindow::ASA_conf_string.size() > 1)
+    QString output_str = get_config_string();
+    if(output_str.size() > 1)
     {
         //Send start of TX
         temp = bcm2835_spi_transfer(SPI_STX);
         msDelay(10U);
 
         //Send ASA conf string
-        qDebug() << MainWindow::ASA_conf_string;
-        for(i = 0; i < MainWindow::ASA_conf_string.size(); i++)
+        qDebug() << output_str;
+        for(i = 0; i < output_str.size(); i++)
         {
-            ch = (uint8_t)MainWindow::ASA_conf_string[i].unicode();
+            ch = (uint8_t)output_str[i].unicode();
             temp = bcm2835_spi_transfer(ch);
             checksum_string[i] = ch;
             msDelay(10U);
@@ -105,7 +105,7 @@ void SPICOMM::sendSPIdata()
         msDelay(10U);
 
         // CRC
-        CRCvalue = ::CalculateCRC16(0xFFFF, checksum_string, (MainWindow::ASA_conf_string.size()));
+        CRCvalue = ::CalculateCRC16(0xFFFF, checksum_string, (output_str.size()));
 
         temp = bcm2835_spi_transfer((uint8_t)((CRCvalue >> 8) & 0x00FF));
         msDelay(10U);
