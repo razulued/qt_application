@@ -14,7 +14,8 @@ QPoint offset;
 
 uint custom_tooltip::tooltip_number;
 
-custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph) : QWidget(frame)
+custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list,
+                               QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph) : QWidget(frame)
 {
 
     element_type = type;
@@ -27,8 +28,8 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
 //                                "border-style: solid;"
 //                                "border-color: rgb(0, 167, 250);"
 //                                "border-width: 1px;");
-    parent_frame->setStyleSheet("border-image: url(:/iconos/images/Iconos/Globo_azul.png);"
-                                "");
+    parent_frame->setObjectName("MyCustomTooltip");
+    parent_frame->setStyleSheet("#MyCustomTooltip{border-image: url(:/iconos/images/Iconos/Globo_azul.png);}");
 
     layout = new QVBoxLayout(frame);
     layout->setAlignment(Qt::AlignTop);
@@ -77,7 +78,7 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
 
 void custom_tooltip::init_data()
 {
-    QFont font_2("Typo Square Ligth Demo",10,1);
+    QFont font_2("Typo Square Bold Demo",10,1);
     list_widget->setFont(font_2);
 
     quint32 i, param_id;
@@ -114,7 +115,7 @@ void custom_tooltip::init_data()
 
 void custom_tooltip::update_data()
 {
-    QFont font_2("Typo Square Ligth Demo",10,1);
+    QFont font_2("Typo Square Bold Demo",10,1);
     quint32 i, param_id;
     int items = 0;
 
@@ -122,26 +123,30 @@ void custom_tooltip::update_data()
     list_widget->setFont(font_2);
 
 
-    if(true == item_is_pressed)
+//    if(true == item_is_pressed)
+//    {
+//        parent_frame->move(mapTo(parent_window, mapFromGlobal(QCursor::pos()) - offset));
+
+//        if(0 == item_pressed_counter)
+//        {
+//            item_is_pressed = false;
+//            list_widget->setStyleSheet("background: transparent;"
+//                                          "color: rgb(0, 167, 250);"
+//                                            "border: none;"
+//                                       "border-image: none;");
+
+//            save_position();
+//        }
+//        else if(last_position == parent_frame->pos())
+//        {
+//            item_pressed_counter--;
+//        }
+
+//        last_position = parent_frame->pos();
+//    }
+    if(last_position != parent_frame->pos())
     {
-        parent_frame->move(mapTo(parent_window, mapFromGlobal(QCursor::pos()) - offset));
-
-        if(0 == item_pressed_counter)
-        {
-            item_is_pressed = false;
-            list_widget->setStyleSheet("background: transparent;"
-                                          "color: rgb(0, 167, 250);"
-                                            "border: none;"
-                                       "border-image: none;");
-
-            save_position();
-        }
-        else if(last_position == parent_frame->pos())
-        {
-            item_pressed_counter--;
-        }
-
-        last_position = parent_frame->pos();
+        save_position();
     }
 
 
@@ -181,28 +186,31 @@ void custom_tooltip::force_show()
     list_widget->clear();
 
 
-    if(true == item_is_pressed)
+//    if(true == item_is_pressed)
+//    {
+//        parent_frame->move(mapTo(parent_window, mapFromGlobal(QCursor::pos()) - offset));
+
+//        if(0 == item_pressed_counter)
+//        {
+//            item_is_pressed = false;
+//            list_widget->setStyleSheet("background: transparent;"
+//                                          "color: rgb(0, 167, 250);"
+//                                            "border: none;"
+//                                       "border-image: none;");
+
+//            save_position();
+//        }
+//        else if(last_position == parent_frame->pos())
+//        {
+//            item_pressed_counter--;
+//        }
+
+//        last_position = parent_frame->pos();
+//    }
+    if(last_position != parent_frame->pos())
     {
-        parent_frame->move(mapTo(parent_window, mapFromGlobal(QCursor::pos()) - offset));
-
-        if(0 == item_pressed_counter)
-        {
-            item_is_pressed = false;
-            list_widget->setStyleSheet("background: transparent;"
-                                          "color: rgb(0, 167, 250);"
-                                            "border: none;"
-                                       "border-image: none;");
-
-            save_position();
-        }
-        else if(last_position == parent_frame->pos())
-        {
-            item_pressed_counter--;
-        }
-
-        last_position = parent_frame->pos();
+        save_position();
     }
-
 
     for(i = 0; i < (quint32)DataList.size(); i++)
     {
@@ -264,27 +272,33 @@ void custom_tooltip::checkClick()
 {
     if(number_of_clicks >= 2)
     {
-        if(item_is_pressed == false)
-        {
-            item_is_pressed = true;
-            offset = mapFromGlobal(QCursor::pos());
-            list_widget->setStyleSheet("background: white;"
-                                          "color: rgb(0, 167, 250);"
-                                            "border: none;"
-                                       "border-image: none;");
-            item_pressed_counter = HOLD_TIME;
-        }
-        else
-        {
-            item_is_pressed = false;
-            list_widget->setStyleSheet("background: transparent;"
-                                          "color: rgb(0, 167, 250);"
-                                            "border: none;"
-                                       "border-image: none;");
-            item_pressed_counter = 0;
+//        if(item_is_pressed == false)
+//        {
+//            item_is_pressed = true;
+//            offset = mapFromGlobal(QCursor::pos());
+//            list_widget->setStyleSheet("background: white;"
+//                                          "color: rgb(0, 167, 250);"
+//                                            "border: none;"
+//                                       "border-image: none;");
+//            item_pressed_counter = HOLD_TIME;
+//        }
+//        else
+//        {
+//            item_is_pressed = false;
+//            list_widget->setStyleSheet("background: transparent;"
+//                                          "color: rgb(0, 167, 250);"
+//                                            "border: none;"
+//                                       "border-image: none;");
+//            item_pressed_counter = 0;
 
-            save_position();
+//            save_position();
+//        }
+
+        if(NULL != arrow_key_window)
+        {
+            delete arrow_key_window;
         }
+        arrow_key_window = new arrowkeys(this->parent_frame, this->parent_window);
 
     }
     else

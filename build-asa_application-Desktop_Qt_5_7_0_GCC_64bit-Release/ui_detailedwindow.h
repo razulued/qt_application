@@ -232,10 +232,10 @@ public:
         tab_6->setObjectName(QStringLiteral("tab_6"));
         tableWidget_2 = new QTableWidget(tab_6);
         tableWidget_2->setObjectName(QStringLiteral("tableWidget_2"));
-        tableWidget_2->setGeometry(QRect(0, 0, 301, 71));
+        tableWidget_2->setGeometry(QRect(0, 0, 301, 51));
         evento_gif = new QLabel(tab_6);
         evento_gif->setObjectName(QStringLiteral("evento_gif"));
-        evento_gif->setGeometry(QRect(70, 100, 161, 61));
+        evento_gif->setGeometry(QRect(70, 107, 161, 61));
         evento_gif->setStyleSheet(QLatin1String("#evento_gif\n"
 "{\n"
 "background-image: url(:/iconos/screen800x600/iconos/Play azul.png);\n"
@@ -254,7 +254,7 @@ public:
 "}"));
         explicacion = new QLabel(tab_6);
         explicacion->setObjectName(QStringLiteral("explicacion"));
-        explicacion->setGeometry(QRect(4, 70, 271, 31));
+        explicacion->setGeometry(QRect(4, 53, 271, 51));
         explicacion->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         key_OK = new QPushButton(tab_6);
         key_OK->setObjectName(QStringLiteral("key_OK"));

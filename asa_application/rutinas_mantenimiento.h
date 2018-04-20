@@ -4,13 +4,6 @@
 #include <QSqlDatabase>
 #include <QDateTime>
 
-#define USE_DEBUG (1)
-
-#if (1 == USE_DEBUG)
-#define MULTIPLICADOR (10)  /* Seconds in a day */
-#else
-#define MULTIPLICADOR (3600 * 24)  /* Seconds in a day */
-#endif
 
 enum{
     SIN_RUTINA,

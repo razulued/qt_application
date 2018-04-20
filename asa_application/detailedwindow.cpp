@@ -181,7 +181,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 
     clickeablelabel *alphabackground = new clickeablelabel(this);
     alphabackground->setGeometry(this->geometry());
-    alphabackground->setStyleSheet("background-color: rgb(0,0,0,120);");
+    alphabackground->setStyleSheet("background-color: rgb(0,0,0,180);");
     alphabackground->lower();
     connect(alphabackground,SIGNAL(clicked()),this,SLOT(background_clicked()));
 
@@ -484,7 +484,10 @@ void detailedwindow::on_button_control_clicked()
         output_op_mode(3600, "03");
         break;
     case ELEMENT_REACTOR:
-//        output_op_mode(0x4600, "03");
+        output_op_mode(4600, "03");
+        break;
+    case ELEMENT_CLARIFICADOR:
+        output_op_mode(5600, "03");
         break;
     case ELEMENT_CLORADOR:
         break;

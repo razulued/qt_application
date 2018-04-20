@@ -40,7 +40,8 @@ SOURCES += main.cpp\
     token_auth.cpp \
     asa_conf_string.cpp \
     graphwindow.cpp \
-    statistics.cpp
+    statistics.cpp \
+    arrowkeys.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -69,14 +70,16 @@ HEADERS  += mainwindow.h \
     token_auth.h \
     asa_conf_string.h \
     graphwindow.h \
-    statistics.h
+    statistics.h \
+    arrowkeys.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
     settings.ui \
     bitacora.ui \
     login_dialog.ui \
-    graphwindow.ui
+    graphwindow.ui \
+    arrowkeys.ui
 
 RESOURCES += \
     fonts.qrc \

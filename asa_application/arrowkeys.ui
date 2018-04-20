@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>arrowkeys</class>
+ <widget class="QDialog" name="arrowkeys">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#arrowkeys
+{
+background-color:transparent;
+border-image:none;
+}</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>460</y>
+     <width>141</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#frame
+{
+border:none;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="key_rigth">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_rigth{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_rigth_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_rigth::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_rigth_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_down">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_down{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_down_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_down::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_down_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_up">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_up{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_up_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_up::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_up_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_left">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_left{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_left_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_left::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_left_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

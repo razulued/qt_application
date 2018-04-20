@@ -10,6 +10,7 @@
 #include <QMouseEvent>
 #include <QPushButton>
 #include <graphwindow.h>
+#include "arrowkeys.h"
 
 enum
 {
@@ -39,6 +40,7 @@ public:
 
     static uint tooltip_number;
     uint actual_tooltip_number;
+    QWidget *parent_window;
 private:
     QList<int> DataList;
     QStringList NameList;
@@ -46,7 +48,6 @@ private:
     QStringList OutNameList;
 
     QWidget *parent_frame;
-    QWidget *parent_window;
     QPushButton *connect_here;
     graphwindow *graph_ptr;
 
@@ -63,6 +64,7 @@ private:
 
     uint element_type = 0;
 
+    arrowkeys *arrow_key_window = NULL;
 private slots:
     void ListPressed();
     void checkClick();

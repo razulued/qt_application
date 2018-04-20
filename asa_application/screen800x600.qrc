@@ -24,6 +24,7 @@
         <file>screen800x600/barras/PE_bar.png</file>
         <file>screen800x600/barras/PF_bar.png</file>
         <file>screen800x600/barras/PQ_bar.png</file>
+        <file>screen800x600/barras/barra_grafica.png</file>
     </qresource>
     <qresource prefix="/iconos">
         <file>screen800x600/iconos/Ajustes azul.png</file>
@@ -200,6 +201,14 @@
         <file>screen800x600/texto/Teclado 1.1/fondo teclado.png</file>
         <file>screen800x600/texto/Teclado 1.1/Mayus azul.png</file>
         <file>screen800x600/texto/Teclado 1.1/Mayus bco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/arrow_down_azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/arrow_down_blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/arrow_left_azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/arrow_left_blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/arrow_rigth_azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/arrow_rigth_blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/arrow_up_azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/arrow_up_blanco.png</file>
     </qresource>
     <qresource prefix="/diagrama">
         <file>screen800x600/diagrama/Afluente.png</file>
@@ -210,5 +219,9 @@
         <file>screen800x600/diagrama/Digestor de lodos.png</file>
         <file>screen800x600/diagrama/Efluente.png</file>
         <file>screen800x600/diagrama/Reactor.png</file>
+        <file>screen800x600/diagrama/GPE_preview.png</file>
+        <file>screen800x600/diagrama/PF.png</file>
+        <file>screen800x600/diagrama/PQ.png</file>
+        <file>screen800x600/diagrama/PE.png</file>
     </qresource>
 </RCC>

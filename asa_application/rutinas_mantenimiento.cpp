@@ -5,6 +5,9 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QDateTime>
+#include "mainwindow.h"
+
+int multiplicador = (10);//(3600 * 24);
 
 def_rutina_t rutina_def_table[]=
 {
@@ -343,7 +346,7 @@ void rutinas_mantenimiento::rutina_state_machine(int index)
         break;
 
     case STATE_SET_NEXT_EVENT:
-        rutina_def_table[index].next_event = rutina_def_table[index].last_event + (rutina_def_table[index].periodo * MULTIPLICADOR);
+        rutina_def_table[index].next_event = rutina_def_table[index].last_event + (rutina_def_table[index].periodo * multiplicador);
         time = new QDateTime(QDateTime::fromTime_t(rutina_def_table[index].next_event));
 //        qDebug() << "Rutina " << index << "next time " << *time << "UTC: " << rutina_def_table[index].next_event;
 
@@ -451,12 +454,16 @@ uint rutinas_mantenimiento::next_event(uint rutina)
 
 QDateTime rutinas_mantenimiento::get_current_time()
 {
-#if (1 == USE_DEBUG)
-    return QDateTime::currentDateTime();
-#else
-#define MULTIPLICADOR (3600 * 24)  /* Seconds in a day */
-    return global_time;
-#endif
+    if(true == MainWindow::simulation)
+    {
+        return QDateTime::currentDateTime();
+        multiplicador = 10;
+    }
+    else
+    {
+        return global_time;
+        multiplicador = (3600 * 24);
+    }
 }
 
 void rutinas_mantenimiento::load_to_table(uint id)

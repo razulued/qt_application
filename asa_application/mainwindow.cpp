@@ -11,7 +11,7 @@
 #include "statistics.h"
 #include "token_auth.h"
 
-#define ENABLE_TEST (0)
+#define ENABLE_TEST (1)
 
 configuration_id MainWindow::conf_reg_elect;
 configuration_id MainWindow::conf_reg_fisic;
@@ -58,6 +58,7 @@ int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
 int MainWindow::reg_mot_2;
 
+bool MainWindow::simulation = true;
 //QString MainWindow::ASA_conf_string;
 //QString MainWindow::ASA_conf_only_string;
 
@@ -125,6 +126,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->pb_simulacion->setStyleSheet("color: green;"
+                                     "border: 1px solid green;");
 //    settingswindow = NULL;
 
     graph = new graphwindow(this);
@@ -234,10 +238,6 @@ MainWindow::MainWindow(QWidget *parent) :
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
     display_parameters = false;
     HideButtons(true);
-
-#if (1 == ENABLE_TEST)
-//    InitRandomParameters();
-#endif
 
     InitTooltips();
 
@@ -399,12 +399,6 @@ void MainWindow::dataTimerSlot()
     check_lock();
 
 #if (1 == ENABLE_TEST)
-//    static int a = 0;
-//    if(a++ > 100)
-//    {
-//        InitRandomParameters();
-//        a = 0;
-//    }
     if(0 == (count % 10)) /* 1 segundo */
     {
         run_simulation();
@@ -732,13 +726,16 @@ void MainWindow::update_system_time()
     QString time_format = "yyyy/MM/dd,HH.mm.ss";
 
     QString hora =  dos_mil+ getParamValue(0x0402);
-    QDateTime temp_time;
+    static QDateTime temp_time;
 //    temp_time.setTime_t(1);
-#if (1 == ENABLE_TEST)
-    temp_time = QDateTime::currentDateTime();
-#else
-    QDateTime time = QDateTime::fromString(hora, time_format);
-#endif
+    if(true == simulation)
+    {
+        time = QDateTime::currentDateTime();
+    }
+    else
+    {
+        time = QDateTime::fromString(hora, time_format);
+    }
 
     if(temp_time.toTime_t() != time.toTime_t())
     {
@@ -764,6 +761,29 @@ void MainWindow::update_system_time()
         ui->label_hora->setText(display_time);
 
         add_value_to_stats(0x3001, getParamValue(0x3001).toInt());
+        add_value_to_stats(0x3002, getParamValue(0x3002).toInt());
+        add_value_to_stats(0x3003, getParamValue(0x3003).toInt());
+        add_value_to_stats(0x3004, getParamValue(0x3004).toInt());
+        add_value_to_stats(0x3005, getParamValue(0x3005).toInt());
+        add_value_to_stats(0x3006, getParamValue(0x3006).toInt());
+
+        add_value_to_stats(0x3203, getParamValue(0x3203).toInt());
+        add_value_to_stats(0x4203, getParamValue(0x4203).toInt());
+        add_value_to_stats(0x5201, getParamValue(0x5201).toInt());
+        add_value_to_stats(0x3201, getParamValue(0x3201).toInt());
+        add_value_to_stats(0x4204, getParamValue(0x4204).toInt());
+        add_value_to_stats(0x8204, getParamValue(0x8204).toInt());
+
+
+        add_value_to_stats(0x3307, getParamValue(0x3307).toInt());
+        add_value_to_stats(0x3305, getParamValue(0x3305).toInt());
+        add_value_to_stats(0x3303, getParamValue(0x3303).toInt());
+        add_value_to_stats(0x3301, getParamValue(0x3301).toInt());
+
+        add_value_to_stats(0x5307, getParamValue(0x5307).toInt());
+        add_value_to_stats(0x5305, getParamValue(0x5305).toInt());
+        add_value_to_stats(0x5303, getParamValue(0x5303).toInt());
+        add_value_to_stats(0x5301, getParamValue(0x5301).toInt());
 
         // Update graph if open
         if(false == graph->isHidden())
@@ -813,5 +833,23 @@ void MainWindow::on_lock_button_clicked()
     else
     {
         validate_token(false);
+    }
+}
+
+void MainWindow::on_pb_simulacion_clicked()
+{
+    if(simulation)
+    {
+        simulation = false;
+        ui->pb_simulacion->setText("Simulacion OFF");
+        ui->pb_simulacion->setStyleSheet("color: red;"
+                                         "border: 1px solid red;");
+    }
+    else
+    {
+        simulation = true;
+        ui->pb_simulacion->setText("Simulacion ON");
+        ui->pb_simulacion->setStyleSheet("color: green;"
+                                        "border: 1px solid green;");
     }
 }

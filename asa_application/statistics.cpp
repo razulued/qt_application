@@ -16,12 +16,15 @@ void add_value_to_stats(uint param, int new_value)
     //Add new alement to list and update Hash
     param_list.append(new_value);
     last_60_seconds.insert(param, param_list);
-
-
 //    qDebug() << "param" << param << param_list;
 }
 
 QList<int> get_list_from_param(uint param)
 {
     return last_60_seconds.value(param);
+}
+
+QString get_last_value_from_param(uint param)
+{
+    return QString::number(last_60_seconds.value(param).last());
 }

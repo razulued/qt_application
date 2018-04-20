@@ -2,8 +2,9 @@
 #include <QDebug>
 #include "parameters.h"
 #include "asa_protocol.h"
+#include "mainwindow.h"
 
-#define RELEASE_FOR_RPI (1)
+#define RELEASE_FOR_RPI (0)
 
 #define PSI_RAWMIN   0x0194         //ADC 415  == 0
 #define PSI_RAWMAX   0x08E7         //2294     == 1.82
@@ -86,13 +87,21 @@ void DataProccess::run()
 {
     while(1)
     {
+        if(false == MainWindow::simulation)
+        {
 #if (1 == RELEASE_FOR_RPI)
-        this->dataSPI();
-#else
-        this->dataRandom();
+
+            this->dataSPI();
+            QThread::msleep(200);
 #endif
+        }
+        else
+        {
+            this->dataRandom();
+            QThread::msleep(2000);
+        }
+
         spi_read_completed();
-        QThread::msleep(200);
     }
 }
 
@@ -576,7 +585,9 @@ void DataProccess::dataRandom()
     int i = 0;
     uint random = 0;
     //Add here IDs to generate random numbers
-    QList<int> id_list = QList<int>() << 0x3001 << 0x3002 << 0x3003;
+    QList<int> id_list = QList<int>() << 0x3001 << 0x3002 << 0x3003 << 0x3004 << 0x3005 << 0x3006
+                                      << 0x3203 << 0x4203 << 0x5201 << 0x3201 << 0x4204 << 0x8204
+                                      << 0x3307 << 0x3305 << 0x3303 << 0x3301 << 0x5307 << 0x5305 << 0x5303 << 0x5301;
 
     for(i = 0; i < id_list.size(); i++)
     {
@@ -584,10 +595,10 @@ void DataProccess::dataRandom()
         store_value_by_ID(id_list.at(i), QString::number(random));
     }
 
-    store_value_by_ID(0x3301, "12345");
-    store_value_by_ID(0x2000, "1234");
-    store_value_by_ID(0x2001, "0001");
-    store_value_by_ID(0x0402, "hola");
+//    store_value_by_ID(0x3001, "A");
+//    store_value_by_ID(0x2000, "1234");
+//    store_value_by_ID(0x2001, "0001");
+//    store_value_by_ID(0x0402, "hola");
 
 
 

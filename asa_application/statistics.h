@@ -5,6 +5,7 @@
 
 void add_value_to_stats(uint param, int new_value);
 QList<int> get_list_from_param(uint param);
+QString get_last_value_from_param(uint param);
 
 
 #endif // STATISTICS_H

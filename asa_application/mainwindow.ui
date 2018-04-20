@@ -503,7 +503,7 @@ background-position: center;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>80</y>
+      <y>90</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -513,7 +513,7 @@ background-position: center;
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>80</y>
+      <y>90</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -526,7 +526,7 @@ background-position: center;
     <property name="geometry">
      <rect>
       <x>119</x>
-      <y>80</y>
+      <y>90</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -1106,7 +1106,7 @@ background-repeat: none;
     <property name="geometry">
      <rect>
       <x>99</x>
-      <y>193</y>
+      <y>200</y>
       <width>131</width>
       <height>141</height>
      </rect>
@@ -1115,7 +1115,7 @@ background-repeat: none;
      <string notr="true">#bck_modulo_1
 {
 /*background-image: url(:/carcamo/images/1_Carcamo/carcamo_vacio.png);*/
-background-image: url(:/diagrama/screen800x600/diagrama/Carcamo.png);
+background-image: url(:/diagrama/screen800x600/diagrama/Reactor.png);
 background-position: center;
 background-repeat: none;
 border:none;
@@ -1130,16 +1130,16 @@ border:none;
     <property name="geometry">
      <rect>
       <x>249</x>
-      <y>176</y>
+      <y>160</y>
       <width>131</width>
-      <height>121</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">#bck_modulo_2
 {
 /*background-image: url(:/reactor/images/2_Reactor/reactor.png);*/
-background-image: url(:/diagrama/screen800x600/diagrama/Reactor.png);
+background-image: url(:/diagrama/screen800x600/diagrama/Carcamo.png);
 background-position: center;
 background-repeat: none;
 border:none;
@@ -1581,6 +1581,51 @@ background-position: center;
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="pb_simulacion">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>530</y>
+      <width>111</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#pb_simulacion
+{
+background-color: transparent;
+color: red;
+border-color: red;
+}
+
+#pb_simulacion::checked
+{
+background-color: transparent;
+color: green;
+border-color: green;
+}</string>
+    </property>
+    <property name="text">
+     <string>Simulacion ON</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
    <zorder>lock_button</zorder>
    <zorder>bck_modulo_4</zorder>
    <zorder>gif_water_flown_a</zorder>
@@ -1653,6 +1698,7 @@ background-position: center;
    <zorder>widget_4</zorder>
    <zorder>widget_6</zorder>
    <zorder>widget_2</zorder>
+   <zorder>pb_simulacion</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

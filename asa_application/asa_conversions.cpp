@@ -12,3 +12,11 @@ QString conv_integer_divide_by(QString str, uint param1)
     ret = str.toInt() / param1;
     return QString::number(ret);
 }
+
+QString conv_hex_to_int(QString str, uint param1)
+{
+    bool ok;
+    int value = str.toInt(&ok, 16);
+
+    return QString::number(value);
+}

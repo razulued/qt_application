@@ -96,6 +96,7 @@ public:
     DataProccess *dataObj;
     graphwindow *graph = NULL;
 
+    static bool simulation;
 
 public slots:
     void handleMenuButton();
@@ -125,6 +126,8 @@ private slots:
     void new_spi_data();
 
     void on_lock_button_clicked();
+
+    void on_pb_simulacion_clicked();
 
 private:
     QTimer dataTimer;
