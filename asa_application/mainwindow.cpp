@@ -58,7 +58,7 @@ int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
 int MainWindow::reg_mot_2;
 
-bool MainWindow::simulation = true;
+bool MainWindow::simulation = false;
 //QString MainWindow::ASA_conf_string;
 //QString MainWindow::ASA_conf_only_string;
 
@@ -127,8 +127,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->pb_simulacion->setStyleSheet("color: green;"
-                                     "border: 1px solid green;");
+//    ui->pb_simulacion->setStyleSheet("color: green;"
+//                                     "border: 1px solid green;");
 //    settingswindow = NULL;
 
     graph = new graphwindow(this);
@@ -141,6 +141,7 @@ MainWindow::MainWindow(QWidget *parent) :
     rutinas = new rutinas_mantenimiento("rutinas.db");
 
     //Get config
+    validate_token(false);
     init_plat_config();
 //    get_ASA_string();
 
@@ -288,6 +289,20 @@ MainWindow::MainWindow(QWidget *parent) :
 //    mod_bomba = new mod_flechas(CARCAMO_MOTOR,  0, ui->gif_car_mot);
 
     ASA_protocol_init();
+
+//    int a = 10;
+//    int b;
+//    QScriptEngine interpreter;
+//    QScriptValue input(&interpreter, a);
+//    QScriptValue output(&interpreter, b);
+
+//    interpreter.globalObject().setProperty("input", input);
+//    interpreter.globalObject().setProperty("output", output);
+
+//    QString script("if(input > 5)output := 6;");
+//    QScriptValue result = interpreter.evaluate(script);
+
+//    qDebug() << "*** EXPRESION " << result.property(0).toInteger();
 }
 
 
@@ -822,6 +837,8 @@ void MainWindow::check_lock()
 
 void MainWindow::on_lock_button_clicked()
 {
+    synch_output_state();
+
     if(false == get_validity_state())
     {
         if(NULL != login_d)
@@ -836,20 +853,22 @@ void MainWindow::on_lock_button_clicked()
     }
 }
 
-void MainWindow::on_pb_simulacion_clicked()
-{
-    if(simulation)
-    {
-        simulation = false;
-        ui->pb_simulacion->setText("Simulacion OFF");
-        ui->pb_simulacion->setStyleSheet("color: red;"
-                                         "border: 1px solid red;");
-    }
-    else
-    {
-        simulation = true;
-        ui->pb_simulacion->setText("Simulacion ON");
-        ui->pb_simulacion->setStyleSheet("color: green;"
-                                        "border: 1px solid green;");
-    }
-}
+//void MainWindow::on_pb_simulacion_clicked()
+//{
+////    if(simulation)
+////    {
+////        simulation = false;
+////        ui->pb_simulacion->setText("Simulacion OFF");
+////        ui->pb_simulacion->setStyleSheet("color: red;"
+////                                         "border: 1px solid red;");
+////    }
+////    else
+////    {
+////        simulation = true;
+////        ui->pb_simulacion->setText("Simulacion ON");
+////        ui->pb_simulacion->setStyleSheet("color: green;"
+////                                        "border: 1px solid green;");
+////    }
+//}
+
+

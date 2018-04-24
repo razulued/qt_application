@@ -22,6 +22,7 @@ typedef struct
     ASA_protocol_types_t type;
     QString (*conversion_hanlder) (QString str, uint param1);
     uint param1;
+    QString units;
 }ASA_protocol_element_t;
 
 //class ASA_protocol

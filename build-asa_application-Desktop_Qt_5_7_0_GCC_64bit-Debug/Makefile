@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_SCRIPT_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../asa_application -I. -I../../Qt5.7.0/5.7/gcc_64/include -I../../Qt5.7.0/5.7/gcc_64/include/QtWidgets -I../../Qt5.7.0/5.7/gcc_64/include/QtGui -I../../Qt5.7.0/5.7/gcc_64/include/QtSql -I../../Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I. -I../../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../asa_application -I. -I../../Qt5.7.0/5.7/gcc_64/include -I../../Qt5.7.0/5.7/gcc_64/include/QtWidgets -I../../Qt5.7.0/5.7/gcc_64/include/QtGui -I../../Qt5.7.0/5.7/gcc_64/include/QtSql -I../../Qt5.7.0/5.7/gcc_64/include/QtScript -I../../Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I. -I../../Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/luis/Qt5.7.0/5.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = asa_application1.0.0
 DISTDIR = /home/luis/qt_application/build-asa_application-Desktop_Qt_5_7_0_GCC_64bit-Debug/.tmp/asa_application1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/luis/Qt5.7.0/5.7/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/luis/Qt5.7.0/5.7/gcc_64/lib -lQt5Widgets -L/usr/lib64 -lQt5Gui -lQt5Sql -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/luis/Qt5.7.0/5.7/gcc_64/lib -lQt5Widgets -L/usr/lib64 -lQt5Gui -lQt5Sql -lQt5Script -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -521,6 +521,7 @@ Makefile: ../asa_application/asa_application.pro ../../Qt5.7.0/5.7/gcc_64/mkspec
 		../../Qt5.7.0/5.7/gcc_64/lib/libQt5Widgets.prl \
 		../../Qt5.7.0/5.7/gcc_64/lib/libQt5Gui.prl \
 		../../Qt5.7.0/5.7/gcc_64/lib/libQt5Sql.prl \
+		../../Qt5.7.0/5.7/gcc_64/lib/libQt5Script.prl \
 		../../Qt5.7.0/5.7/gcc_64/lib/libQt5Core.prl
 	$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ../asa_application/asa_application.pro
 ../../Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf:
@@ -679,6 +680,7 @@ Makefile: ../asa_application/asa_application.pro ../../Qt5.7.0/5.7/gcc_64/mkspec
 ../../Qt5.7.0/5.7/gcc_64/lib/libQt5Widgets.prl:
 ../../Qt5.7.0/5.7/gcc_64/lib/libQt5Gui.prl:
 ../../Qt5.7.0/5.7/gcc_64/lib/libQt5Sql.prl:
+../../Qt5.7.0/5.7/gcc_64/lib/libQt5Script.prl:
 ../../Qt5.7.0/5.7/gcc_64/lib/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile ../asa_application/asa_application.pro
@@ -741,13 +743,16 @@ qrc_screen800x600.cpp: ../asa_application/screen800x600.qrc \
 		../asa_application/screen800x600/barras/PQ_bar.png \
 		../asa_application/screen800x600/barras/PE_bar.png \
 		../asa_application/screen800x600/diagrama/Carcamo.png \
+		../asa_application/screen800x600/diagrama/PE.png \
 		../asa_application/screen800x600/diagrama/Clorador.png \
 		../asa_application/screen800x600/diagrama/GPE_preview.png \
+		../asa_application/screen800x600/diagrama/PQ.png \
 		../asa_application/screen800x600/diagrama/Afluente.png \
 		../asa_application/screen800x600/diagrama/Diagrama.png \
 		../asa_application/screen800x600/diagrama/Reactor.png \
 		../asa_application/screen800x600/diagrama/Clarificador.png \
-		../asa_application/screen800x600/diagrama/Efluente.png
+		../asa_application/screen800x600/diagrama/Efluente.png \
+		../asa_application/screen800x600/diagrama/PF.png
 	/home/luis/Qt5.7.0/5.7/gcc_64/bin/rcc -name screen800x600 ../asa_application/screen800x600.qrc -o qrc_screen800x600.cpp
 
 qrc_images.cpp: ../asa_application/images.qrc \
@@ -1187,7 +1192,7 @@ moc_mainwindow.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QMainWindow \
 		../asa_application/spicomm.h \
 		../asa_application/mainwindow.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mainwindow.h -o moc_mainwindow.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mainwindow.h -o moc_mainwindow.cpp
 
 moc_detailedwindow.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
@@ -1425,7 +1430,7 @@ moc_detailedwindow.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../asa_application/login_dialog.h \
 		../asa_application/detailedwindow.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/detailedwindow.h -o moc_detailedwindow.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/detailedwindow.h -o moc_detailedwindow.cpp
 
 moc_dataproccess.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtCore \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtCoreDepends \
@@ -1611,7 +1616,7 @@ moc_dataproccess.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtCore \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimer \
 		../asa_application/dataproccess.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/dataproccess.h -o moc_dataproccess.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/dataproccess.h -o moc_dataproccess.cpp
 
 moc_custom_tooltip.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QFrame \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
@@ -1754,7 +1759,7 @@ moc_custom_tooltip.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QFrame \
 		../asa_application/arrowkeys.h \
 		../asa_application/custom_tooltip.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/custom_tooltip.h -o moc_custom_tooltip.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/custom_tooltip.h -o moc_custom_tooltip.cpp
 
 moc_settings.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
@@ -1868,7 +1873,7 @@ moc_settings.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
 		../asa_application/settings.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/settings.h -o moc_settings.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/settings.h -o moc_settings.cpp
 
 moc_bitacora.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
@@ -2103,7 +2108,7 @@ moc_bitacora.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
 		../asa_application/bitacora.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/bitacora.h -o moc_bitacora.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/bitacora.h -o moc_bitacora.cpp
 
 moc_mod_1_carcamo.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
@@ -2206,7 +2211,7 @@ moc_mod_1_carcamo.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../asa_application/mod_1_carcamo.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_1_carcamo.h -o moc_mod_1_carcamo.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_1_carcamo.h -o moc_mod_1_carcamo.cpp
 
 moc_mod_2_reactor.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
@@ -2310,7 +2315,7 @@ moc_mod_2_reactor.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPoint \
 		../asa_application/mod_2_reactor.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_2_reactor.h -o moc_mod_2_reactor.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_2_reactor.h -o moc_mod_2_reactor.cpp
 
 moc_mod_3_clarificador.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
@@ -2414,7 +2419,7 @@ moc_mod_3_clarificador.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPoint \
 		../asa_application/mod_3_clarificador.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_3_clarificador.h -o moc_mod_3_clarificador.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_3_clarificador.h -o moc_mod_3_clarificador.cpp
 
 moc_mod_4_clorador.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
@@ -2518,7 +2523,7 @@ moc_mod_4_clorador.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPoint \
 		../asa_application/mod_4_clorador.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_4_clorador.h -o moc_mod_4_clorador.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_4_clorador.h -o moc_mod_4_clorador.cpp
 
 moc_mod_5_digestor.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
@@ -2622,7 +2627,7 @@ moc_mod_5_digestor.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPoint \
 		../asa_application/mod_5_digestor.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_5_digestor.h -o moc_mod_5_digestor.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_5_digestor.h -o moc_mod_5_digestor.cpp
 
 moc_mod_flechas.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
@@ -2726,7 +2731,7 @@ moc_mod_flechas.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPoint \
 		../asa_application/mod_flechas.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_flechas.h -o moc_mod_flechas.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_flechas.h -o moc_mod_flechas.cpp
 
 moc_mod_6_lechos.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
@@ -2830,7 +2835,7 @@ moc_mod_6_lechos.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPoint \
 		../asa_application/mod_6_lechos.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_6_lechos.h -o moc_mod_6_lechos.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/mod_6_lechos.h -o moc_mod_6_lechos.cpp
 
 moc_clickeablelabel.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
@@ -2935,7 +2940,7 @@ moc_clickeablelabel.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt \
 		../asa_application/clickeablelabel.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/clickeablelabel.h -o moc_clickeablelabel.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/clickeablelabel.h -o moc_clickeablelabel.cpp
 
 moc_login_dialog.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
@@ -3037,7 +3042,7 @@ moc_login_dialog.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../asa_application/login_dialog.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/login_dialog.h -o moc_login_dialog.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/login_dialog.h -o moc_login_dialog.cpp
 
 moc_graphwindow.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
@@ -3141,7 +3146,7 @@ moc_graphwindow.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
 		../asa_application/graphwindow.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/graphwindow.h -o moc_graphwindow.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/graphwindow.h -o moc_graphwindow.cpp
 
 moc_arrowkeys.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
@@ -3243,7 +3248,7 @@ moc_arrowkeys.cpp: ../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		../asa_application/arrowkeys.h \
 		../../Qt5.7.0/5.7/gcc_64/bin/moc
-	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/arrowkeys.h -o moc_arrowkeys.cpp
+	/home/luis/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/home/luis/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/luis/qt_application/asa_application -I/home/luis/Qt5.7.0/5.7/gcc_64/include -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtGui -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtSql -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtScript -I/home/luis/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../asa_application/arrowkeys.h -o moc_arrowkeys.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -3884,7 +3889,14 @@ mainwindow.o: ../asa_application/mainwindow.cpp ../asa_application/mainwindow.h 
 		../asa_application/asa_protocol.h \
 		../asa_application/asa_conf_string.h \
 		../asa_application/statistics.h \
-		../asa_application/token_auth.h
+		../asa_application/token_auth.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtScript/QScriptEngine \
+		../../Qt5.7.0/5.7/gcc_64/include/QtScript/qscriptengine.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtScript/qscriptvalue.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtScript/qtscriptglobal.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtScript/qscriptcontext.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtScript/qscriptstring.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtScript/qscriptprogram.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../asa_application/mainwindow.cpp
 
 detailedwindow.o: ../asa_application/detailedwindow.cpp ../asa_application/detailedwindow.h \
@@ -4206,7 +4218,8 @@ detailedwindow.o: ../asa_application/detailedwindow.cpp ../asa_application/detai
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaType \
 		../asa_application/clickeablelabel.h \
 		../asa_application/asa_conf_string.h \
-		../asa_application/token_auth.h
+		../asa_application/token_auth.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o detailedwindow.o ../asa_application/detailedwindow.cpp
 
 multistatebutton.o: ../asa_application/multistatebutton.cpp ../asa_application/multistatebutton.h \
@@ -4768,7 +4781,104 @@ dataproccess.o: ../asa_application/dataproccess.cpp ../asa_application/dataprocc
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtGlobal \
 		../asa_application/asa_protocol.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
-		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QString \
+		../asa_application/mainwindow.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QMainWindow \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../asa_application/detailedwindow.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		../asa_application/configuration.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
+		../asa_application/rutinas_mantenimiento.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtSql/QSqlDatabase \
+		../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsqldatabase.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtSql/qsql.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QTableWidgetItem \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtableview.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../asa_application/login_dialog.h \
+		../asa_application/multistatebutton.h \
+		../asa_application/settings.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextdocument.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
+		../asa_application/custom_tooltip.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLayout \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QListWidget \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEvent \
+		../asa_application/graphwindow.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/QPen \
+		../asa_application/arrowkeys.h \
+		../asa_application/bitacora.h \
+		../asa_application/mod_1_carcamo.h \
+		../asa_application/mod_2_reactor.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPoint \
+		../asa_application/mod_3_clarificador.h \
+		../asa_application/mod_4_clorador.h \
+		../asa_application/mod_5_digestor.h \
+		../asa_application/mod_6_lechos.h \
+		../asa_application/mod_flechas.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dataproccess.o ../asa_application/dataproccess.cpp
 
 custom_tooltip.o: ../asa_application/custom_tooltip.cpp ../asa_application/custom_tooltip.h \
@@ -5608,7 +5718,218 @@ rutinas_mantenimiento.o: ../asa_application/rutinas_mantenimiento.cpp ../asa_app
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QFileInfo \
-		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		../asa_application/mainwindow.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QMainWindow \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qurl.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qurlquery.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../asa_application/detailedwindow.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtCore \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtCoreDepends \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractanimation.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qanimationgroup.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qparallelanimationgroup.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpauseanimation.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qvariantanimation.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeasingcurve.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtextcodec.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qendian.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlibraryinfo.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbuffer.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdir.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qdiriterator.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfileselector.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QStringList \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfilesystemwatcher.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlockfile.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qloggingcategory.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qprocess.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qresource.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsavefile.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstandardpaths.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstorageinfo.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtemporarydir.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QScopedPointer \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtemporaryfile.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractproxymodel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qidentityproxymodel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsortfilterproxymodel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlistmodel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qjsonarray.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qjsonvalue.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qjsondocument.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qjsonobject.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbasictimer.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmath.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmetaobject.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmimedata.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectcleanuphandler.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpointer.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedmemory.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsignalmapper.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsocketnotifier.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemsemaphore.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtimer.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtranslator.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qwineventnotifier.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmimedatabase.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmimetype.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfactoryinterface.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlibrary.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qplugin.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qpluginloader.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/quuid.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractstate.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstracttransition.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeventtransition.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfinalstate.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qhistorystate.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsignaltransition.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstate.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstatemachine.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qexception.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfuture.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfutureinterface.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qrunnable.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qresultstore.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfuturesynchronizer.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qfuturewatcher.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qreadwritelock.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qsemaphore.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthreadpool.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qthreadstorage.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qwaitcondition.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydataops.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbitarray.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraymatcher.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcache.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcollator.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcommandlineoption.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcommandlineparser.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcryptographichash.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qlinkedlist.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qmessageauthenticationcode.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qqueue.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedvaluerollback.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qstack.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtextboundaryfinder.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtimeline.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtimezone.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qversionnumber.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qxmlstream.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qtcoreversion.h \
+		../asa_application/configuration.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QList \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QTableWidgetItem \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtablewidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtableview.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../asa_application/login_dialog.h \
+		../asa_application/multistatebutton.h \
+		../asa_application/parameters.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtGlobal \
+		../asa_application/settings.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QTextEdit \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtextedit.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextdocument.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextcursor.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtextformat.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
+		../asa_application/custom_tooltip.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLayout \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayout.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QTimer \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QListWidget \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlistview.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEvent \
+		../asa_application/graphwindow.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/QPen \
+		../asa_application/arrowkeys.h \
+		../asa_application/bitacora.h \
+		../asa_application/mod_1_carcamo.h \
+		../asa_application/mod_2_reactor.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QPoint \
+		../asa_application/mod_3_clarificador.h \
+		../asa_application/mod_4_clorador.h \
+		../asa_application/mod_5_digestor.h \
+		../asa_application/mod_6_lechos.h \
+		../asa_application/mod_flechas.h \
+		../asa_application/dataproccess.h \
+		../asa_application/spicomm.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rutinas_mantenimiento.o ../asa_application/rutinas_mantenimiento.cpp
 
 mod_1_carcamo.o: ../asa_application/mod_1_carcamo.cpp ../asa_application/mod_1_carcamo.h \
@@ -7389,6 +7710,8 @@ graphwindow.o: ../asa_application/graphwindow.cpp ../asa_application/graphwindow
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QTabWidget \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QGraphicsScene \
 		../asa_application/statistics.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt \
@@ -7397,7 +7720,8 @@ graphwindow.o: ../asa_application/graphwindow.cpp ../asa_application/graphwindow
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QDebug \
 		../asa_application/parameters.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QtGlobal \
-		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QMutex
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphwindow.o ../asa_application/graphwindow.cpp
 
 statistics.o: ../asa_application/statistics.cpp ../asa_application/statistics.h \
@@ -7568,10 +7892,45 @@ arrowkeys.o: ../asa_application/arrowkeys.cpp ../asa_application/arrowkeys.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		ui_arrowkeys.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/QVariant \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QAction \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qaction.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qicon.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QFrame \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtGui/qvalidator.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qslider.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QPushButton \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../asa_application/clickeablelabel.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
-		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
 		../../Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		../../Qt5.7.0/5.7/gcc_64/include/QtCore/Qt
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o arrowkeys.o ../asa_application/arrowkeys.cpp

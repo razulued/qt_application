@@ -126,7 +126,7 @@ void output_token_transfer(bool val)
     if(true == val)
     {
         conf.setValue("0D03", "02");
-        conf.setValue("0D04", "02");
+        conf.setValue("0D04", "01");
     }
     else
     {
@@ -170,6 +170,31 @@ void synch_config_string()
     conf.endGroup();
 }
 
+void synch_output_state()
+{
+    configuration_id temp_config;
+    conf.sync();
+    conf.beginGroup("Plant-Cfg");
+
+    //Update String
+    temp_config.names = conf.childKeys();
+
+    //SYNCH
+    conf.setValue("3602", getParamValue(0x3000));
+
+    //Update String
+    temp_config.names = conf.childKeys();
+    foreach(const QString &key, temp_config.names)
+    {
+        temp_config.ids_string << conf.value(key).toString();
+    }
+    conf.endGroup();
+
+    conf_string = build_string(&temp_config);
+
+    qDebug() << conf_string;
+}
+
 QString get_config_string()
 {
     QString ret;
@@ -177,4 +202,20 @@ QString get_config_string()
     ret = conf_string;
     mutex.unlock();
     return ret;
+}
+
+QString get_id_state(uint id)
+{
+    QString value;
+
+    configuration_id temp_config;
+    conf.sync();
+    conf.beginGroup("Plant-Cfg");
+
+    //Update String
+    value = conf.value(QString::number(id)).toString();
+    conf.endGroup();
+
+
+    return value;
 }

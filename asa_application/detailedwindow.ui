@@ -195,10 +195,91 @@ border: none;
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>0</y>
+        <y>30</y>
         <width>281</width>
-        <height>191</height>
+        <height>161</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="filtro_fisicos">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>0</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#filtro_fisicos{
+background-image: url(:/iconos/screen800x600/iconos/Medidor azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="filtro_quimicos">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>0</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#filtro_quimicos{
+background-image: url(:/iconos/screen800x600/iconos/Matraz azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="filtro_electricos">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>0</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#filtro_electricos{
+background-image: url(:/iconos/screen800x600/iconos/Clavija azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -280,9 +361,9 @@ border: none;
       <property name="geometry">
        <rect>
         <x>9</x>
-        <y>9</y>
+        <y>40</y>
         <width>291</width>
-        <height>171</height>
+        <height>151</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2"/>

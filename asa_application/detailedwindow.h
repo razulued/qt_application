@@ -129,6 +129,12 @@ private slots:
 
     void background_clicked();
 
+    void on_filtro_fisicos_clicked();
+
+    void on_filtro_quimicos_clicked();
+
+    void on_filtro_electricos_clicked();
+
 private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;
@@ -151,7 +157,9 @@ private:
     bool init_completed = false;
     uint origentype;
 
-    void tab_1_init();
+    void tab_1_init(uint selected_type);
+    uint type_to_update;
+
     void tab_2_init();
     void tab_3_init();
     void tab_4_init();
@@ -166,6 +174,8 @@ private:
     void delete_row(uint row, QTableWidget *table);
     void add_row_rutina(uint row, uint rutina, QTableWidget *table);
 
+    login_dialog *login_d = NULL;
+    void check_lock();
 
     bool has_output_control = false;
 };

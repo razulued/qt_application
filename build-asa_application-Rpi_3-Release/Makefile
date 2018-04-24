@@ -4065,7 +4065,8 @@ detailedwindow.o: ../asa_application/detailedwindow.cpp ../asa_application/detai
 		/opt/qtrpi/raspi/qt5pi/include/QtCore/QMetaType \
 		../asa_application/clickeablelabel.h \
 		../asa_application/asa_conf_string.h \
-		../asa_application/token_auth.h
+		../asa_application/token_auth.h \
+		/opt/qtrpi/raspi/qt5pi/include/QtCore/QMutex
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o detailedwindow.o ../asa_application/detailedwindow.cpp
 
 multistatebutton.o: ../asa_application/multistatebutton.cpp ../asa_application/multistatebutton.h \

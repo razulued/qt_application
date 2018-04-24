@@ -1,7 +1,10 @@
 #include "token_auth.h"
 #include <QDebug>
 #include "asa_conf_string.h"
+#include <QMutex>
 QString valid_key = "1234";
+QMutex key_mutex;
+
 
 bool token_validity = false;
 

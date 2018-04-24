@@ -39,7 +39,8 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
     list_widget->setStyleSheet("background: transparent;"
                                   "color: rgb(0, 167, 250);"
                                     "border: none;"
-                               "border-image: none;");
+                               "border-image: none;"
+                               "font-weight: bold;");
 
     connect(list_widget, SIGNAL(itemPressed(QListWidgetItem*)),this, SLOT (ListPressed()));
 
@@ -78,8 +79,11 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
 
 void custom_tooltip::init_data()
 {
-    QFont font_2("Typo Square Bold Demo",10,1);
+    /*QFont font_2("Typo Square Ligth Demo",10,1);*/
+    QFont font_2("Liberation Mono Bold",10,1);
     list_widget->setFont(font_2);
+    QListWidgetItem *label;
+
 
     quint32 i, param_id;
     int items = 0;
@@ -90,7 +94,10 @@ void custom_tooltip::init_data()
 
         if(true == getParamActiveShow(param_id))
         {
-            list_widget->addItem(NameList[i] + ": " + get_value_by_ID(param_id));
+            label = new QListWidgetItem(NameList[i] + ": " + get_value_by_ID(param_id));
+//            label->setTextFormat(Qt::RichText);
+
+            list_widget->addItem(label);
             items++;
         }
     }
@@ -115,12 +122,14 @@ void custom_tooltip::init_data()
 
 void custom_tooltip::update_data()
 {
-    QFont font_2("Typo Square Bold Demo",10,1);
+//    QFont font_2("Ubuntu Bold",10,1);
+    QFont font_2("Liberation Mono Bold",10,1);
+
     quint32 i, param_id;
     int items = 0;
 
     list_widget->clear();
-    list_widget->setFont(font_2);
+    QListWidgetItem *label;
 
 
 //    if(true == item_is_pressed)
@@ -128,7 +137,8 @@ void custom_tooltip::update_data()
 //        parent_frame->move(mapTo(parent_window, mapFromGlobal(QCursor::pos()) - offset));
 
 //        if(0 == item_pressed_counter)
-//        {
+//        {    QFont font_2("Liberation Mono Bold",10,1);
+
 //            item_is_pressed = false;
 //            list_widget->setStyleSheet("background: transparent;"
 //                                          "color: rgb(0, 167, 250);"
@@ -156,7 +166,10 @@ void custom_tooltip::update_data()
 
         if(true == getParamActiveShow(param_id))
         {
-            list_widget->addItem(NameList[i] + ": " + get_value_by_ID(param_id));
+            label = new QListWidgetItem(NameList[i] + ": " + get_value_by_ID(param_id));
+//            label->setTextFormat(Qt::RichText);
+
+            list_widget->addItem(label);
             items++;
         }
     }

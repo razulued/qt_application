@@ -14,9 +14,12 @@
 #include "clickeablelabel.h"
 #include "asa_conf_string.h"
 #include "token_auth.h"
+#include <QMutex>
 
 #define BUILD_FOR_RPI (1)
 
+
+QMutex parametros_mutex;
 bool detailedwindow::user_lock;
 
 typedef struct
@@ -179,6 +182,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 {
     ui->setupUi(this);
 
+//    synch_output_state();
+
     clickeablelabel *alphabackground = new clickeablelabel(this);
     alphabackground->setGeometry(this->geometry());
     alphabackground->setStyleSheet("background-color: rgb(0,0,0,180);");
@@ -269,7 +274,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
         has_output_control = true;
     }
 
-    tab_1_init();
+    tab_1_init(0);
     tab_2_init();
     tab_3_init();
     tab_4_init();
@@ -303,7 +308,8 @@ detailedwindow::~detailedwindow()
 
 void detailedwindow::on_closeButton_clicked()
 {
-//    blur_window->close();
+//    blur_window->close()
+    validate_token(false);
     this->close();
 }
 
@@ -559,6 +565,7 @@ void detailedwindow::update_params()
     {
         tab_1_update();
         tab_2_update();
+        tab_5_update();
     }
 }
 
@@ -726,14 +733,19 @@ void detailedwindow::insert_amount(QString ins)
     ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
 }
 
-void detailedwindow::tab_1_init()
+void detailedwindow::tab_1_init(uint selected_type)
 {
+    parametros_mutex.lock();
+    type_to_update = selected_type;
+
     QFont font_2("Typo Square Ligth Demo",10,1);
 
     uint i, param_id;
     uint fila = 0;
 
     //Add 2 columns
+    ui->tableWidget_tab_1->clear();
+    ui->tableWidget_tab_1->setRowCount(0);
     ui->tableWidget_tab_1->setColumnCount(2);
     ui->tableWidget_tab_1->setFont(font_2);
     ui->tableWidget_tab_1->setStyleSheet("color: white;"
@@ -742,36 +754,84 @@ void detailedwindow::tab_1_init()
     ui->tableWidget_tab_1->verticalHeader()->setVisible(false);
     ui->tableWidget_tab_1->horizontalHeader()->setVisible(false);
 
-//    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_elect->ids.size();
-    for(i = 0; i < (quint32)detailed_elements[what_element]->list_elect->ids.size(); i++)
+    switch(selected_type)
     {
-        param_id = detailed_elements[what_element]->list_elect->ids.at(i);
-//        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
-        ui->tableWidget_tab_1->insertRow(fila);
-        ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_elect->names.at(i) + ":"));
-        ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
-        fila++;
+    case 0:
+        ui->filtro_fisicos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Medidor azul.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+        ui->filtro_quimicos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Matraz azul.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+        ui->filtro_electricos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Clavija blanco.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+
+        for(i = 0; i < (quint32)detailed_elements[what_element]->list_elect->ids.size(); i++)
+        {
+            param_id = detailed_elements[what_element]->list_elect->ids.at(i);
+    //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
+            ui->tableWidget_tab_1->insertRow(fila);
+            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_elect->names.at(i) + ":"));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            fila++;
+        }
+        break;
+    case 1:
+
+        ui->filtro_fisicos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Medidor blanco.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+        ui->filtro_quimicos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Matraz azul.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+        ui->filtro_electricos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Clavija azul.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+
+        for(i = 0; i < (quint32)detailed_elements[what_element]->list_phys->ids.size(); i++)
+        {
+            param_id = detailed_elements[what_element]->list_phys->ids.at(i);
+    //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
+            ui->tableWidget_tab_1->insertRow(fila);
+            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_phys->names.at(i) + ":"));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            fila++;
+        }
+        break;
+    case 2:
+
+        ui->filtro_fisicos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Medidor azul.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+        ui->filtro_quimicos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Matraz blanco.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+        ui->filtro_electricos->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Clavija azul.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;");
+
+        for(i = 0; i < (quint32)detailed_elements[what_element]->list_chem->ids.size(); i++)
+        {
+            param_id = detailed_elements[what_element]->list_chem->ids.at(i);
+    //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
+            ui->tableWidget_tab_1->insertRow(fila);
+            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_chem->names.at(i) + ":"));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            fila++;
+        }
+        break;
     }
-//    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_phys->ids.size();
-    for(i = 0; i < (quint32)detailed_elements[what_element]->list_phys->ids.size(); i++)
-    {
-        param_id = detailed_elements[what_element]->list_phys->ids.at(i);
-//        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
-        ui->tableWidget_tab_1->insertRow(fila);
-        ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_phys->names.at(i) + ":"));
-        ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
-        fila++;
-    }
-//    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_chem->ids.size();
-    for(i = 0; i < (quint32)detailed_elements[what_element]->list_chem->ids.size(); i++)
-    {
-        param_id = detailed_elements[what_element]->list_chem->ids.at(i);
-//        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
-        ui->tableWidget_tab_1->insertRow(fila);
-        ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_chem->names.at(i) + ":"));
-        ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
-        fila++;
-    }
+
 
     ui->tableWidget_tab_1->setColumnWidth(0,150);
 
@@ -788,6 +848,7 @@ void detailedwindow::tab_1_init()
     scroller->setScrollerProperties(properties);
     //Scrolling Gesture
     scroller->grabGesture(ui->tableWidget_tab_1,QScroller::LeftMouseButtonGesture);
+    parametros_mutex.unlock();
 }
 
 void detailedwindow::tab_2_init()
@@ -1039,9 +1100,10 @@ void detailedwindow::tab_5_init()
     uint i = 0;
     QFont font_2("Typo Square Ligth Demo",12,1);
 
+    check_lock();
+
     QCheckBox *box_motores;
     QSignalMapper *out_checkboxMapper = new QSignalMapper(this);
-
     for(i = 0; i < (quint32)detailed_elements[what_element]->out_config->ids.size(); i++)
     {
         box_motores = new QCheckBox(detailed_elements[what_element]->out_config->names.at(i));
@@ -1075,6 +1137,11 @@ void detailedwindow::tab_5_init()
         if(true == get_validity_state())
         {
             box_motores->setEnabled(true);
+
+            if(1 == get_id_state(detailed_elements[what_element]->out_config->ids.at(i)).toInt())
+            {
+                box_motores->setChecked(true);
+            }
         }
         else
         {
@@ -1101,30 +1168,39 @@ void detailedwindow::tab_5_init()
 
 void detailedwindow::tab_1_update()
 {
+    parametros_mutex.lock();
     uint i, param_id;
     uint fila = 0;
 
-//    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_elect->ids.size();
-    for(i = 0; i < (quint32)detailed_elements[what_element]->list_elect->ids.size(); i++)
-    {
-        param_id = detailed_elements[what_element]->list_elect->ids.at(i);
-        ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
-        fila++;
+    switch (type_to_update) {
+    case 0:
+        for(i = 0; i < (quint32)detailed_elements[what_element]->list_elect->ids.size(); i++)
+        {
+            param_id = detailed_elements[what_element]->list_elect->ids.at(i);
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            fila++;
+        }
+        break;
+    case 1:
+        for(i = 0; i < (quint32)detailed_elements[what_element]->list_phys->ids.size(); i++)
+        {
+            param_id = detailed_elements[what_element]->list_phys->ids.at(i);
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            fila++;
+        }
+        break;
+    case 2:
+        for(i = 0; i < (quint32)detailed_elements[what_element]->list_chem->ids.size(); i++)
+        {
+            param_id = detailed_elements[what_element]->list_chem->ids.at(i);
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            fila++;
+        }
+        break;
+    default:
+        break;
     }
-//    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_phys->ids.size();
-    for(i = 0; i < (quint32)detailed_elements[what_element]->list_phys->ids.size(); i++)
-    {
-        param_id = detailed_elements[what_element]->list_phys->ids.at(i);
-        ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
-        fila++;
-    }
-//    qDebug() << "Number of parameters to display is " << detailed_elements[element]->list_chem->ids.size();
-    for(i = 0; i < (quint32)detailed_elements[what_element]->list_chem->ids.size(); i++)
-    {
-        param_id = detailed_elements[what_element]->list_chem->ids.at(i);
-        ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
-        fila++;
-    }
+    parametros_mutex.unlock();
 }
 
 void detailedwindow::tab_2_update()
@@ -1193,6 +1269,27 @@ void detailedwindow::tab_4_update()
 
 void detailedwindow::tab_5_update()
 {
+//    check_lock();
+
+    uint i = 0;
+
+//    QCheckBox *box_motores;
+//    for(i = 0; i < (quint32)detailed_elements[what_element]->out_config->ids.size(); i++)
+//    {
+//        if(true == get_validity_state())
+//        {
+//            box_motores->setEnabled(true);
+
+//            if(1 == get_id_state(detailed_elements[what_element]->out_config->ids.at(i)).toInt())
+//            {
+//                box_motores->setChecked(true);
+//            }
+//        }
+//        else
+//        {
+//            box_motores->setEnabled(false);
+//        }
+//    }
 
 }
 
@@ -1268,6 +1365,7 @@ void detailedwindow::on_key_slash_clicked(){ui->textEdit->insertPlainText("/");}
 
 void detailedwindow::background_clicked()
 {
+    validate_token(false);
     this->close();
 }
 
@@ -1276,3 +1374,45 @@ void detailedwindow::on_textEdit_selectionChanged()
     ui->key_Reschedule->setChecked(false);
 }
 
+
+void detailedwindow::on_filtro_fisicos_clicked()
+{
+    this->tab_1_init(1);
+}
+
+void detailedwindow::on_filtro_quimicos_clicked()
+{
+    this->tab_1_init(2);
+}
+
+void detailedwindow::on_filtro_electricos_clicked()
+{
+    this->tab_1_init(0);
+}
+
+
+void detailedwindow::check_lock()
+{
+//    static bool last_validity_state = false;
+//    bool state = get_validity_state();
+//    if(last_validity_state != state)
+//    {
+//        if(true == state)
+//        {
+//            ui->button_candado->setStyleSheet("border-image: url(:/iconos/screen800x600/iconos/unlocked.png);"
+//                                           "border: none;"
+//                                           "background-repeat: none;"
+//                                           "background-position: center;");
+//        }
+//        else
+//        {
+//            ui->button_candado->setStyleSheet("border-image: url(:/iconos/screen800x600/iconos/locked.png);"
+//                                           "border: none;"
+//                                           "background-repeat: none;"
+//                                           "background-position: center;");
+//        }
+//    }
+
+
+//    last_validity_state = state;
+}

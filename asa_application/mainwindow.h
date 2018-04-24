@@ -127,7 +127,7 @@ private slots:
 
     void on_lock_button_clicked();
 
-    void on_pb_simulacion_clicked();
+//    void on_pb_simulacion_clicked();
 
 private:
     QTimer dataTimer;

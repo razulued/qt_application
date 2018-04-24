@@ -97,7 +97,6 @@ public:
     QLabel *gif_blower;
     QLabel *gif_car_mot;
     QPushButton *lock_button;
-    QPushButton *pb_simulacion;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -820,29 +819,6 @@ public:
 "background-repeat: none;\n"
 "background-position: center;\n"
 "} "));
-        pb_simulacion = new QPushButton(centralWidget);
-        pb_simulacion->setObjectName(QStringLiteral("pb_simulacion"));
-        pb_simulacion->setGeometry(QRect(330, 530, 111, 22));
-        QFont font1;
-        font1.setPointSize(10);
-        pb_simulacion->setFont(font1);
-        pb_simulacion->setFocusPolicy(Qt::NoFocus);
-        pb_simulacion->setStyleSheet(QLatin1String("#pb_simulacion\n"
-"{\n"
-"background-color: transparent;\n"
-"color: red;\n"
-"border-color: red;\n"
-"}\n"
-"\n"
-"#pb_simulacion::checked\n"
-"{\n"
-"background-color: transparent;\n"
-"color: green;\n"
-"border-color: green;\n"
-"}"));
-        pb_simulacion->setCheckable(true);
-        pb_simulacion->setChecked(true);
-        pb_simulacion->setFlat(true);
         MainWindow->setCentralWidget(centralWidget);
         lock_button->raise();
         bck_modulo_4->raise();
@@ -916,7 +892,6 @@ public:
         widget_4->raise();
         widget_6->raise();
         widget_2->raise();
-        pb_simulacion->raise();
 
         retranslateUi(MainWindow);
 
@@ -977,7 +952,6 @@ public:
         gif_blower->setText(QString());
         gif_car_mot->setText(QString());
         lock_button->setText(QString());
-        pb_simulacion->setText(QApplication::translate("MainWindow", "Simulacion ON", 0));
     } // retranslateUi
 
 };

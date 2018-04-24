@@ -1581,51 +1581,6 @@ background-position: center;
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_simulacion">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>530</y>
-      <width>111</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#pb_simulacion
-{
-background-color: transparent;
-color: red;
-border-color: red;
-}
-
-#pb_simulacion::checked
-{
-background-color: transparent;
-color: green;
-border-color: green;
-}</string>
-    </property>
-    <property name="text">
-     <string>Simulacion ON</string>
-    </property>
-    <property name="checkable">
-     <bool>true</bool>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
    <zorder>lock_button</zorder>
    <zorder>bck_modulo_4</zorder>
    <zorder>gif_water_flown_a</zorder>
@@ -1698,7 +1653,6 @@ border-color: green;
    <zorder>widget_4</zorder>
    <zorder>widget_6</zorder>
    <zorder>widget_2</zorder>
-   <zorder>pb_simulacion</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

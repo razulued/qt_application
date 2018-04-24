@@ -97,6 +97,7 @@ public:
     QLabel *gif_blower;
     QLabel *gif_car_mot;
     QPushButton *lock_button;
+    QPushButton *pb_simulacion;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -327,14 +328,14 @@ public:
         asa_logo->setCheckable(true);
         widget = new QWidget(centralWidget);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(20, 80, 41, 31));
+        widget->setGeometry(QRect(20, 90, 41, 31));
         widget_2 = new QWidget(centralWidget);
         widget_2->setObjectName(QStringLiteral("widget_2"));
-        widget_2->setGeometry(QRect(70, 80, 41, 31));
+        widget_2->setGeometry(QRect(70, 90, 41, 31));
         widget_2->setStyleSheet(QStringLiteral(""));
         widget_3 = new QWidget(centralWidget);
         widget_3->setObjectName(QStringLiteral("widget_3"));
-        widget_3->setGeometry(QRect(119, 80, 41, 31));
+        widget_3->setGeometry(QRect(119, 90, 41, 31));
         widget_4 = new QWidget(centralWidget);
         widget_4->setObjectName(QStringLiteral("widget_4"));
         widget_4->setGeometry(QRect(240, 40, 41, 31));
@@ -592,11 +593,11 @@ public:
 "}"));
         bck_modulo_1 = new QLabel(centralWidget);
         bck_modulo_1->setObjectName(QStringLiteral("bck_modulo_1"));
-        bck_modulo_1->setGeometry(QRect(99, 193, 131, 141));
+        bck_modulo_1->setGeometry(QRect(99, 200, 131, 141));
         bck_modulo_1->setStyleSheet(QLatin1String("#bck_modulo_1\n"
 "{\n"
 "/*background-image: url(:/carcamo/images/1_Carcamo/carcamo_vacio.png);*/\n"
-"background-image: url(:/diagrama/screen800x600/diagrama/Carcamo.png);\n"
+"background-image: url(:/diagrama/screen800x600/diagrama/Reactor.png);\n"
 "background-position: center;\n"
 "background-repeat: none;\n"
 "border:none;\n"
@@ -604,11 +605,11 @@ public:
 "}"));
         bck_modulo_2 = new QLabel(centralWidget);
         bck_modulo_2->setObjectName(QStringLiteral("bck_modulo_2"));
-        bck_modulo_2->setGeometry(QRect(249, 176, 131, 121));
+        bck_modulo_2->setGeometry(QRect(249, 160, 131, 141));
         bck_modulo_2->setStyleSheet(QLatin1String("#bck_modulo_2\n"
 "{\n"
 "/*background-image: url(:/reactor/images/2_Reactor/reactor.png);*/\n"
-"background-image: url(:/diagrama/screen800x600/diagrama/Reactor.png);\n"
+"background-image: url(:/diagrama/screen800x600/diagrama/Carcamo.png);\n"
 "background-position: center;\n"
 "background-repeat: none;\n"
 "border:none;\n"
@@ -819,6 +820,29 @@ public:
 "background-repeat: none;\n"
 "background-position: center;\n"
 "} "));
+        pb_simulacion = new QPushButton(centralWidget);
+        pb_simulacion->setObjectName(QStringLiteral("pb_simulacion"));
+        pb_simulacion->setGeometry(QRect(330, 530, 111, 22));
+        QFont font1;
+        font1.setPointSize(10);
+        pb_simulacion->setFont(font1);
+        pb_simulacion->setFocusPolicy(Qt::NoFocus);
+        pb_simulacion->setStyleSheet(QLatin1String("#pb_simulacion\n"
+"{\n"
+"background-color: transparent;\n"
+"color: red;\n"
+"border-color: red;\n"
+"}\n"
+"\n"
+"#pb_simulacion::checked\n"
+"{\n"
+"background-color: transparent;\n"
+"color: green;\n"
+"border-color: green;\n"
+"}"));
+        pb_simulacion->setCheckable(true);
+        pb_simulacion->setChecked(true);
+        pb_simulacion->setFlat(true);
         MainWindow->setCentralWidget(centralWidget);
         lock_button->raise();
         bck_modulo_4->raise();
@@ -892,6 +916,7 @@ public:
         widget_4->raise();
         widget_6->raise();
         widget_2->raise();
+        pb_simulacion->raise();
 
         retranslateUi(MainWindow);
 
@@ -952,6 +977,7 @@ public:
         gif_blower->setText(QString());
         gif_car_mot->setText(QString());
         lock_button->setText(QString());
+        pb_simulacion->setText(QApplication::translate("MainWindow", "Simulacion ON", 0));
     } // retranslateUi
 
 };

@@ -37,6 +37,9 @@ public:
     QTabWidget *tabWidget;
     QWidget *tab_1;
     QTableWidget *tableWidget_tab_1;
+    QPushButton *filtro_fisicos;
+    QPushButton *filtro_quimicos;
+    QPushButton *filtro_electricos;
     QWidget *tab_2;
     QTableWidget *tableWidget;
     QWidget *tab_3;
@@ -191,7 +194,40 @@ public:
         tab_1->setObjectName(QStringLiteral("tab_1"));
         tableWidget_tab_1 = new QTableWidget(tab_1);
         tableWidget_tab_1->setObjectName(QStringLiteral("tableWidget_tab_1"));
-        tableWidget_tab_1->setGeometry(QRect(10, 0, 281, 191));
+        tableWidget_tab_1->setGeometry(QRect(10, 30, 281, 161));
+        filtro_fisicos = new QPushButton(tab_1);
+        filtro_fisicos->setObjectName(QStringLiteral("filtro_fisicos"));
+        filtro_fisicos->setGeometry(QRect(180, 0, 31, 31));
+        filtro_fisicos->setFocusPolicy(Qt::NoFocus);
+        filtro_fisicos->setStyleSheet(QLatin1String("#filtro_fisicos{\n"
+"background-image: url(:/iconos/screen800x600/iconos/Medidor azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        filtro_fisicos->setCheckable(false);
+        filtro_quimicos = new QPushButton(tab_1);
+        filtro_quimicos->setObjectName(QStringLiteral("filtro_quimicos"));
+        filtro_quimicos->setGeometry(QRect(220, 0, 31, 31));
+        filtro_quimicos->setFocusPolicy(Qt::NoFocus);
+        filtro_quimicos->setStyleSheet(QLatin1String("#filtro_quimicos{\n"
+"background-image: url(:/iconos/screen800x600/iconos/Matraz azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        filtro_quimicos->setCheckable(false);
+        filtro_electricos = new QPushButton(tab_1);
+        filtro_electricos->setObjectName(QStringLiteral("filtro_electricos"));
+        filtro_electricos->setGeometry(QRect(260, 0, 31, 31));
+        filtro_electricos->setFocusPolicy(Qt::NoFocus);
+        filtro_electricos->setStyleSheet(QLatin1String("#filtro_electricos{\n"
+"background-image: url(:/iconos/screen800x600/iconos/Clavija azul.png);\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"}"));
+        filtro_electricos->setCheckable(false);
         tabWidget->addTab(tab_1, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
@@ -223,7 +259,7 @@ public:
         tab_5->setObjectName(QStringLiteral("tab_5"));
         verticalLayoutWidget_3 = new QWidget(tab_5);
         verticalLayoutWidget_3->setObjectName(QStringLiteral("verticalLayoutWidget_3"));
-        verticalLayoutWidget_3->setGeometry(QRect(9, 9, 291, 171));
+        verticalLayoutWidget_3->setGeometry(QRect(9, 40, 291, 151));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_3);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -1240,6 +1276,9 @@ public:
         label->setText(QApplication::translate("detailedwindow", "Par\303\241metros", 0));
         button_parametros->setText(QString());
         button_evento->setText(QString());
+        filtro_fisicos->setText(QString());
+        filtro_quimicos->setText(QString());
+        filtro_electricos->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_1), QApplication::translate("detailedwindow", "Tab 1", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("detailedwindow", "Tab 2", 0));
         description_label->setText(QApplication::translate("detailedwindow", "Descripcion", 0));
