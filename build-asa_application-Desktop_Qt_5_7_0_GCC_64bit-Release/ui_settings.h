@@ -898,9 +898,9 @@ public:
 "background-position: center;\n"
 "}"));
         key_enter->setCheckable(false);
-        key_mayus = new QPushButton(settings);
+        key_mayus = new QPushButton(key_frame);
         key_mayus->setObjectName(QStringLiteral("key_mayus"));
-        key_mayus->setGeometry(QRect(63, 465, 111, 41));
+        key_mayus->setGeometry(QRect(12, 134, 111, 41));
         key_mayus->setFocusPolicy(Qt::NoFocus);
         key_mayus->setStyleSheet(QLatin1String("#key_mayus{ \n"
 "background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Mayus azul.png);\n"

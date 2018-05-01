@@ -33,151 +33,147 @@ void mod_flechas::load_new_gif(arrow_type_t type, uint state)
         case SLUDGE_1:
             if(ARRW_SLUDGE_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_01_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow 01  mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_01_quiet.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow 01 quiet.png");
             }
             break;
         case SLUDGE_2:
             if(ARRW_SLUDGE_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_02_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow 02  mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_02_quiet.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow 02 quiet.png");
             }
             break;
         case SLUDGE_3:
             if(ARRW_SLUDGE_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_03_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow 03  mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_03_quiet.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow 03 quiet.png");
             }
             break;
         case SLUDGE_4:
             if(ARRW_SLUDGE_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_04_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow 04  mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_04_quiet.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow 04 quiet.png");
             }
             break;
         case SLUDGE_RETURN:
             if(ARRW_SLUDGE_RETURN_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_return_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge return mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_return.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge return.png");
             }
             break;
         case WATER_FLOWN_1:
             if(ARRW_WATER_FLOWN_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_01_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow 01  mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_01_quiet.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow 01 quiet.png");
             }
             break;
         case WATER_FLOWN_2:
             if(ARRW_WATER_FLOWN_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_02_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow 02  mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_02_quiet.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow 02 quiet.png");
             }
             break;
         case WATER_FLOWN_3:
             if(ARRW_WATER_FLOWN_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_03_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow 03  mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_03_quiet.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow 03 quiet.png");
             }
             break;
         case WATER_FLOWN_4:
             if(ARRW_WATER_FLOWN_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_04_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow 04  mov.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_04_quiet.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow 04 quiet.png");
             }
             break;
         case AFLUENTE_1:
             if(ARRW_AFLUENTE_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_influent_01_mov_small.gif");
+//                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow influent 01 mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge_flow_influent_01_mov_small.gif");
             }
             else
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/none.png");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png");
             }
             break;
         case AFLUENTE_2:
             if(ARRW_AFLUENTE_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_influent_02_mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/sludge flow influent 02  mov.gif");
             }
             else
             {
-//                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/none.png");
-                parent_label->setStyleSheet("background: none");
-                last_state = state;
-                return;
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png");
             }
             break;
         case EFLUENTE_1:
             if(ARRW_EFLUENTE_GIF_STATE_MOV == state)
             {
-                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/water_flow_effluent_02_mov_small.gif");
+//                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow effluent 02 mov.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water_flow_effluent_02_mov_small.gif");
             }
             else
             {
-//                mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/none.png");
-                parent_label->setStyleSheet("background: none");
-                last_state = state;
-                return;
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png");
             }
             break;
         case BLOWER:
             if(1 == state)
             {
-                mv = new QMovie(":/equipos/images/0_Equipos/Blower_Jet_On.png");
+                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet On.png");
             }
             else
             {
-                mv = new QMovie(":/equipos/images/0_Equipos/Blower_Jet_off.png");
+                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet off.png");
             }
             break;
         case CARCAMO_MOTOR:
             if(1 == state)
             {
-                mv = new QMovie(":/equipos/images/0_Equipos/pump_on.png");
+                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump on.png");
             }
             else
             {
-                mv = new QMovie(":/equipos/images/0_Equipos/pump_off.png");
+                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump off.png");
             }
             break;
         default:
-            mv = new QMovie(":/flechas/images/0_Flechas_de_flujo/sludge_flow_01_quiet.png");
+            mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png");
             break;
         }
 
@@ -186,6 +182,7 @@ void mod_flechas::load_new_gif(arrow_type_t type, uint state)
         parent_label->setMovie(mv);
 
         last_state = state;
+        update_window();
     }
 }
 
@@ -193,8 +190,7 @@ void mod_flechas::check_update_animation()
 {
     if(AFLUENTE_1 == arrow_type)
     {
-        uint caudal_in = getParamValue(43).toInt();
-
+        uint caudal_in = getParamValue(0x3203).toInt();
         if(caudal_in > 0)
         {
             load_new_gif(arrow_type, ARRW_AFLUENTE_GIF_STATE_MOV);
@@ -206,7 +202,7 @@ void mod_flechas::check_update_animation()
     }
     else if(EFLUENTE_1 == arrow_type)
     {
-        uint caudal_out = getParamValue(162).toInt();
+        uint caudal_out = getParamValue(0x6203).toInt();
 
         if(caudal_out > 0)
         {
@@ -219,7 +215,7 @@ void mod_flechas::check_update_animation()
     }
     else if(SLUDGE_RETURN == arrow_type)
     {
-        uint retorno_lodo = getParamValue(145).toInt();
+        uint retorno_lodo = getParamValue(0x5201).toInt();
 
         if(retorno_lodo > 0)
         {
@@ -232,9 +228,13 @@ void mod_flechas::check_update_animation()
     }
     else if(BLOWER == arrow_type)
     {
-        uint retorno_lodo = getParamValue(92).toInt();
+        uint reactor_motores = 0;
+        reactor_motores |= getParamValue(0x4000).toInt();
+        reactor_motores |= getParamValue(0x4010).toInt();
+        reactor_motores |= getParamValue(0x4020).toInt();
+        reactor_motores |= getParamValue(0x4030).toInt();
 
-        if(retorno_lodo > 0)
+        if(reactor_motores > 0)
         {
             load_new_gif(arrow_type, 1);
         }
@@ -245,9 +245,10 @@ void mod_flechas::check_update_animation()
     }
     else if(CARCAMO_MOTOR == arrow_type)
     {
-        uint estado_motor = getParamValue(44).toInt();
-
-        if(estado_motor > 0)
+        uint carcamo_motores = 0;
+        carcamo_motores |= getParamValue(0x3000).toInt();
+        carcamo_motores |= getParamValue(0x3010).toInt();
+        if(carcamo_motores > 0)
         {
             load_new_gif(arrow_type, 1);
         }

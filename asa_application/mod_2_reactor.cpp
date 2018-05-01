@@ -3,7 +3,7 @@
 #include <QLabel>
 #include <QMovie>
 #include "parameters.h"
-
+#include <QDebug>
 mod_2_reactor::mod_2_reactor(QLabel *parent) :
     QWidget(parent)
 {
@@ -30,33 +30,33 @@ void mod_2_reactor::load_new_gif(uint state)
         switch (state)
         {
         case REACTOR_GIF_STATE_NONE:
-            mv = new QMovie(":/reactor/images/2_Reactor/reactor.png");
+            mv = new QMovie(":/gifs/2 Reactor/screen800x600/gifs/2 Reactor/reactor vacio.png");
             break;
         case REACTOR_GIF_STATE_HI_QUIET:
-            mv = new QMovie(":/reactor/images/2_Reactor/reac_hi_quiet_water.png");
-            parent_label->setGeometry(original_pos.x()-2, original_pos.y()-1, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/2 Reactor/screen800x600/gifs/2 Reactor/reac hi quiet water 03.png");
+//            parent_label->setGeometry(original_pos.x()-2, original_pos.y()-1, parent_label->width(), parent_label->height());
             break;
         case REACTOR_GIF_STATE_HI_MOV:
-            mv = new QMovie(":/reactor/images/2_Reactor/reac_hi_mov_water.gif");
-            parent_label->setGeometry(original_pos.x()+10, original_pos.y()+3, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/2 Reactor/screen800x600/gifs/2 Reactor/reac hi mov water 03.gif");
+//            parent_label->setGeometry(original_pos.x()+10, original_pos.y()+3, parent_label->width(), parent_label->height());
             break;
         case REACTOR_GIF_STATE_MED_QUIET:
-            mv = new QMovie(":/reactor/images/2_Reactor/reac_med_quiet_water_02.png");
+            mv = new QMovie(":/gifs/2 Reactor/screen800x600/gifs/2 Reactor/reac med quiet water 02.png");
             break;
         case REACTOR_GIF_STATE_MED_MOV:
-            parent_label->setGeometry(original_pos.x()+7, original_pos.y()+15, parent_label->width(), parent_label->height());
-            mv = new QMovie(":/reactor/images/2_Reactor/reac_med_mov_water_02.gif");
+//            parent_label->setGeometry(original_pos.x()+7, original_pos.y()+15, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/2 Reactor/screen800x600/gifs/2 Reactor/reac med mov water 02.fw.gif");
             break;
         case REACTOR_GIF_STATE_LOW_QUIET:
-            mv = new QMovie(":/reactor/images/2_Reactor/reac_low_quiet_water_01.png");
+            mv = new QMovie(":/gifs/2 Reactor/screen800x600/gifs/2 Reactor/reac low quiet water 01.png");
             //No position change
             break;
         case REACTOR_GIF_STATE_LOW_MOV:
-            mv = new QMovie(":/reactor/images/2_Reactor/reac_low_mov_water_01.gif");
-            parent_label->setGeometry(original_pos.x(), original_pos.y()+20, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/2 Reactor/screen800x600/gifs/2 Reactor/reac low mov water 01.gif");
+//            parent_label->setGeometry(original_pos.x(), original_pos.y()+20, parent_label->width(), parent_label->height());
             break;
         default:
-            mv = new QMovie(":/reactor/images/2_Reactor/reactor.png");
+            mv = new QMovie(":/gifs/2 Reactor/screen800x600/gifs/2 Reactor/reactor vacio.png");
             break;
         }
 
@@ -65,6 +65,7 @@ void mod_2_reactor::load_new_gif(uint state)
         parent_label->setMovie(mv);
 
         last_state = state;
+        update_window();
     }
 
 }
@@ -73,9 +74,10 @@ void mod_2_reactor::check_update_animation()
 {
     uint reactor_motores = 0;
 
-    reactor_motores |= getParamValue(92).toInt();
-    reactor_motores |= getParamValue(102).toInt();
-    reactor_motores |= getParamValue(112).toInt();
+    reactor_motores |= getParamValue(0x4000).toInt();
+    reactor_motores |= getParamValue(0x4010).toInt();
+    reactor_motores |= getParamValue(0x4020).toInt();
+    reactor_motores |= getParamValue(0x4030).toInt();
 
     if(reactor_motores > 0)
     {

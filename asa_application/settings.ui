@@ -1576,21 +1576,20 @@ background-position: center;
      <bool>false</bool>
     </property>
    </widget>
-  </widget>
-  <widget class="QPushButton" name="key_mayus">
-   <property name="geometry">
-    <rect>
-     <x>63</x>
-     <y>465</y>
-     <width>111</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">#key_mayus{ 
+   <widget class="QPushButton" name="key_mayus">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>134</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_mayus{ 
 background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Mayus azul.png);
 border: none;
 background-repeat: none;
@@ -1603,16 +1602,17 @@ border: none;
 background-repeat: none;
 background-position: center;
 }</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

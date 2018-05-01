@@ -4,7 +4,7 @@
 #include "asa_protocol.h"
 #include "mainwindow.h"
 
-#define RELEASE_FOR_RPI (1)
+#define RELEASE_FOR_RPI (0)
 
 #define PSI_RAWMIN   0x0194         //ADC 415  == 0
 #define PSI_RAWMAX   0x08E7         //2294     == 1.82
@@ -582,29 +582,29 @@ void DataProccess::dataSPI()
 
 void DataProccess::dataRandom()
 {
-    int i = 0;
-    uint random = 0;
-    static int count = 0;
-    //Add here IDs to generate random numbers
-    QList<int> id_list = QList<int>() << 0x3001 << 0x3002 << 0x3003 << 0x3004 << 0x3005 << 0x3006
-                                      << 0x3203 << 0x4203 << 0x5201 << 0x3201 << 0x4204 << 0x8204
-                                      << 0x3307 << 0x3305 << 0x3303 << 0x3301 << 0x5307 << 0x5305 << 0x5303 << 0x5301;
+//    int i = 0;
+//    uint random = 0;
+//    static int count = 0;
+//    //Add here IDs to generate random numbers
+//    QList<int> id_list = QList<int>() << 0x3001 << 0x3002 << 0x3003 << 0x3004 << 0x3005 << 0x3006
+//                                      << 0x3203 << 0x4203 << 0x5201 << 0x3201 << 0x4204 << 0x8204
+//                                      << 0x3307 << 0x3305 << 0x3303 << 0x3301 << 0x5307 << 0x5305 << 0x5303 << 0x5301;
 
-    for(i = 0; i < id_list.size(); i++)
-    {
-        random = qrand() % 500;
-        store_value_by_ID(id_list.at(i), QString::number(random));
-    }
+//    for(i = 0; i < id_list.size(); i++)
+//    {
+//        store_value_by_ID(id_list.at(i), QString::number(random));
+//    }
 
+//    store_value_by_ID((0x3201), "64");
 //    if(0 == count)
 //    {
 //        count = 1;
-//        store_value_by_ID(0x3000, "1");
+//        store_value_by_ID((0x3000), "1");
 //    }
 //    else
 //    {
 //        count = 0;
-//        store_value_by_ID(0x3000, "0");
+//        store_value_by_ID(0x3000, "1");
 //    }
 //    qDebug() << "count " << count;
 //    store_value_by_ID(0x3001, "1234");

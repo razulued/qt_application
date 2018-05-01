@@ -15,6 +15,7 @@ typedef enum
 
 void store_value_by_ID(uint id, QString str_value);
 QString get_value_by_ID(uint id);
+QString get_value_units(uint id);
 
 typedef struct
 {

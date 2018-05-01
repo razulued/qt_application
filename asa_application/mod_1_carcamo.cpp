@@ -10,7 +10,7 @@ mod_1_carcamo::mod_1_carcamo(QLabel *parent) :
 {
     parent_label = parent;
 
-    parent_label->setStyleSheet("background-image: url(:/carcamo/images/1_Carcamo/carcamo_vacio.png); ");
+    //parent_label->setStyleSheet("background-image: url(:/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo vacio.png); ");
 
     load_new_gif(CARCAMO_GIF_STATE_NONE);
 
@@ -30,28 +30,28 @@ void mod_1_carcamo::load_new_gif(uint state)
         switch (state)
         {
         case CARCAMO_GIF_STATE_NONE:
-            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_vacio.png");
+            mv = new QMovie(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo vacio.png");
             break;
         case CARCAMO_GIF_STATE_HI_QUIET:
-            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_hi_quiet_water.png");
+            mv = new QMovie(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo hi quiet water.png");
             break;
         case CARCAMO_GIF_STATE_HI_MOV:
-            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_hi_mov_water.gif");
+            mv = new QMovie(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo hi mov water_.gif");
             break;
         case CARCAMO_GIF_STATE_MED_QUIET:
-            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_med_quiet water.png");
+            mv = new QMovie(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo med quiet water_.png");
             break;
         case CARCAMO_GIF_STATE_MED_MOV:
-            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_med_mov water.gif");
+            mv = new QMovie(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo med mov water.gif");
             break;
         case CARCAMO_GIF_STATE_LOW_QUIET:
-            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_low_quiet_water.png");
+            mv = new QMovie(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo low quiet water_.png");
             break;
         case CARCAMO_GIF_STATE_LOW_MOV:
-            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_low_mov_water.gif");
+            mv = new QMovie(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo low mov water.gif");
             break;
         default:
-            mv = new QMovie(":/carcamo/images/1_Carcamo/carcamo_vacio.png");
+            mv = new QMovie(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo vacio.png");
             break;
         }
 
@@ -60,6 +60,7 @@ void mod_1_carcamo::load_new_gif(uint state)
         parent_label->setMovie(mv);
 
         last_state = state;
+        update_window();
     }
 
 }
@@ -69,10 +70,10 @@ void mod_1_carcamo::check_update_animation()
     uint carcamo_motores = 0;
     uint carcamo_nivel = 0;
 
-    carcamo_motores |= getParamValue(44).toInt();
-    carcamo_motores |= getParamValue(54).toInt();
+    carcamo_motores |= getParamValue(0x3000).toInt();
+    carcamo_motores |= getParamValue(0x3010).toInt();
 
-    carcamo_nivel = getParamValue(40).toInt();
+    carcamo_nivel = getParamValue(0x3201).toInt();
 
     if(carcamo_motores)
     {

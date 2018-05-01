@@ -58,7 +58,7 @@ int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
 int MainWindow::reg_mot_2;
 
-bool MainWindow::simulation = false;
+bool MainWindow::simulation = true;
 //QString MainWindow::ASA_conf_string;
 //QString MainWindow::ASA_conf_only_string;
 
@@ -265,31 +265,51 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->active_param_label->setStyleSheet("color:black");
     ui->active_param_label->setText("Parametros Eléctricos");
 
-    QFont hora_font("Typo Square Regular Demo",15,1);
+    QFont hora_font("Typo Square Ligth Demo",18,1);
+    QFont dia_font("Typo Square Ligth Demo",14,1);
+
     ui->label_hora->setStyleSheet("color: white");
     ui->label_hora->setFont(hora_font);
+    ui->label_dia->setStyleSheet("color: white");
+    ui->label_dia->setFont(dia_font);
 //    button.setStyleSheet( FormStyleSheetString( "button" ) );
 //     button.setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 //     button.setIconSize(QSize(200,200));
 //     button.show();
 
-//    mod_1 = new mod_1_carcamo(ui->gif_modulo_1);
-//    mod_2 = new mod_2_reactor(ui->gif_modulo_2);
-//    mod_3 = new mod_3_clarificador(ui->gif_modulo_3);
-//    mod_4 = new mod_4_clorador(ui->gif_modulo_4);
+    mod_1 = new mod_1_carcamo(ui->gif_modulo_1);
+    connect(mod_1, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_2 = new mod_2_reactor(ui->gif_modulo_2);
+    connect(mod_2, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_3 = new mod_3_clarificador(ui->gif_modulo_3);
+    connect(mod_3, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_4 = new mod_4_clorador(ui->gif_modulo_4);
+    connect(mod_4, SIGNAL(update_window()), this, SLOT(update_this()));
 //    mod_5 = new mod_5_digestor(ui->gif_modulo_5);
 //    mod_6 = new mod_6_lechos(ui->gif_modulo_6);
-//    mod_afluente = new mod_flechas(AFLUENTE_1, ARRW_AFLUENTE_GIF_STATE_QUIET, ui->gif_modulo_7);
-//    mod_efluente = new mod_flechas(EFLUENTE_1, ARRW_EFLUENTE_GIF_STATE_QUIET, ui->gif_modulo_8);
-//    mod_sludge_a = new mod_flechas(SLUDGE_1,  ARRW_SLUDGE_GIF_STATE_QUIET, ui->gif_sludge_a);
-//    mod_sludge_b = new mod_flechas(SLUDGE_1,  ARRW_SLUDGE_GIF_STATE_QUIET, ui->gif_sludge_b);
-//    mod_water_flown_a = new mod_flechas(WATER_FLOWN_1,  ARRW_WATER_FLOWN_GIF_STATE_QUIET, ui->gif_water_flown_a);
-//    mod_sludge_return = new mod_flechas(SLUDGE_RETURN,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_sludge_return_a);
-//    mod_blower = new mod_flechas(BLOWER,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_blower);
-//    mod_bomba = new mod_flechas(CARCAMO_MOTOR,  0, ui->gif_car_mot);
+    mod_afluente = new mod_flechas(AFLUENTE_1, ARRW_AFLUENTE_GIF_STATE_QUIET, ui->gif_modulo_7);
+    connect(mod_afluente, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_efluente = new mod_flechas(EFLUENTE_1, ARRW_EFLUENTE_GIF_STATE_QUIET, ui->gif_modulo_8);
+    connect(mod_efluente, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_sludge_a = new mod_flechas(SLUDGE_1,  ARRW_SLUDGE_GIF_STATE_QUIET, ui->gif_sludge_a);
+    connect(mod_sludge_a, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_sludge_b = new mod_flechas(SLUDGE_1,  ARRW_SLUDGE_GIF_STATE_QUIET, ui->gif_sludge_b);
+    connect(mod_sludge_b, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_water_flown_a = new mod_flechas(WATER_FLOWN_1,  ARRW_WATER_FLOWN_GIF_STATE_QUIET, ui->gif_water_flown_a);
+    connect(mod_water_flown_a, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_sludge_return = new mod_flechas(SLUDGE_RETURN,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_sludge_return_a);
+    connect(mod_sludge_return, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_blower = new mod_flechas(BLOWER,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_blower);
+    connect(mod_blower, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_bomba = new mod_flechas(CARCAMO_MOTOR,  0, ui->gif_car_mot);
+    connect(mod_bomba, SIGNAL(update_window()), this, SLOT(update_this()));
 
     ASA_protocol_init();
 
+    if((NULL == sim_window) && simulation)
+    {
+        sim_window = new simulation_input(this);
+    }
 //    int a = 10;
 //    int b;
 //    QScriptEngine interpreter;
@@ -402,6 +422,12 @@ void MainWindow::handleDetailedView_8()
     detail_window = new detailedwindow(ELEMENT_EFLUENTE, rutinas, this);
 }
 
+void MainWindow::update_this()
+{
+    qDebug() << "UPDATING";
+    this->update();
+}
+
 void MainWindow::on_asa_logo_clicked()
 {
     this->close();
@@ -434,17 +460,17 @@ void MainWindow::dataTimerSlot()
 
 #if (1 ==ENABLE_TEST)
         /***** DEMO *****/
-//        mod_1->check_update_animation();
-//        mod_2->check_update_animation();
-//        mod_3->check_update_animation();
-//        mod_4->check_update_animation();
+        mod_1->check_update_animation();
+        mod_2->check_update_animation();
+        mod_3->check_update_animation();
+        mod_4->check_update_animation();
 //        mod_5->check_update_animation();
 
-//        mod_afluente->check_update_animation();
-//        mod_efluente->check_update_animation();
-//        mod_sludge_return->check_update_animation();
-//        mod_blower->check_update_animation();
-//        mod_bomba->check_update_animation();
+        mod_afluente->check_update_animation();
+        mod_efluente->check_update_animation();
+        mod_sludge_return->check_update_animation();
+        mod_blower->check_update_animation();
+        mod_bomba->check_update_animation();
 #endif
     }
 
@@ -526,7 +552,6 @@ void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &p
 
 void MainWindow::paintEvent(QPaintEvent *)
 {
-//    this->update();
 //     QPainter painter(this);
 
 //     QColor line_color;
@@ -772,7 +797,11 @@ void MainWindow::update_system_time()
         }
 
         //Update text on screen
-        QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
+//        QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
+        QString display_time = QString::number(time.time().hour())+":"+QString::number(time.time().minute());
+        QString display_dia = build_date_string(time);
+
+        ui->label_dia->setText(display_dia);
         ui->label_hora->setText(display_time);
 
         add_value_to_stats(0x3001, getParamValue(0x3001).toInt());
@@ -818,14 +847,14 @@ void MainWindow::check_lock()
     {
         if(true == state)
         {
-            ui->lock_button->setStyleSheet("border-image: url(:/iconos/screen800x600/iconos/unlocked.png);"
+            ui->lock_button->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Candado blanco.png);"
                                            "border: none;"
                                            "background-repeat: none;"
                                            "background-position: center;");
         }
         else
         {
-            ui->lock_button->setStyleSheet("border-image: url(:/iconos/screen800x600/iconos/locked.png);"
+            ui->lock_button->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Candado azul.png);"
                                            "border: none;"
                                            "background-repeat: none;"
                                            "background-position: center;");
@@ -833,6 +862,78 @@ void MainWindow::check_lock()
     }
 
     last_validity_state = state;
+}
+
+QString MainWindow::build_date_string(QDateTime time)
+{
+    QString dia_semana;
+    QString mes;
+    switch(time.date().dayOfWeek())
+    {
+    case 1:
+        dia_semana = "Lunes";
+        break;
+    case 2:
+        dia_semana = "Martes";
+        break;
+    case 3:
+        dia_semana = "Miércoles";
+        break;
+    case 4:
+        dia_semana = "Jueves";
+        break;
+    case 5:
+        dia_semana = "Viernes";
+        break;
+    case 6:
+        dia_semana = "Sábado";
+        break;
+    case 7:
+        dia_semana = "Domingo";
+        break;
+    }
+
+    switch(time.date().month())
+    {
+    case 1:
+        mes = "Enero";
+        break;
+    case 2:
+        mes = "Febrero";
+        break;
+    case 3:
+        mes = "Marzo";
+        break;
+    case 4:
+        mes = "Abril";
+        break;
+    case 5:
+        mes = "Mayo";
+        break;
+    case 6:
+        mes = "Junio";
+        break;
+    case 7:
+        mes = "Julio";
+        break;
+    case 8:
+        mes = "Agosto";
+        break;
+    case 9:
+        mes = "Septiembre";
+        break;
+    case 10:
+        mes = "Octubre";
+        break;
+    case 11:
+        mes = "Noviembre";
+        break;
+    case 12:
+        mes = "Diciembre";
+        break;
+    }
+//    QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
+    return dia_semana + " " + QString::number(time.date().day()) + " " + mes + " " + QString::number(time.date().year());
 }
 
 void MainWindow::on_lock_button_clicked()

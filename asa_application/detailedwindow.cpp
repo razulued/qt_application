@@ -776,7 +776,7 @@ void detailedwindow::tab_1_init(uint selected_type)
     //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
             ui->tableWidget_tab_1->insertRow(fila);
             ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_elect->names.at(i) + ":"));
-            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
         break;
@@ -801,7 +801,7 @@ void detailedwindow::tab_1_init(uint selected_type)
     //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
             ui->tableWidget_tab_1->insertRow(fila);
             ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_phys->names.at(i) + ":"));
-            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
         break;
@@ -826,7 +826,7 @@ void detailedwindow::tab_1_init(uint selected_type)
     //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
             ui->tableWidget_tab_1->insertRow(fila);
             ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_chem->names.at(i) + ":"));
-            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
         break;
@@ -1116,7 +1116,7 @@ void detailedwindow::tab_5_init()
                                    "border: none;"
                                    "}"
                                    "QCheckBox::indicator:checked{"
-                                   "image: url(:/iconos/screen800x600/iconos/Encendido blanco.png);"
+                                   "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
                                    "border-width: 0px;"
                                    "width: 40px;"
                                    "height: 40px;"
@@ -1177,7 +1177,7 @@ void detailedwindow::tab_1_update()
         for(i = 0; i < (quint32)detailed_elements[what_element]->list_elect->ids.size(); i++)
         {
             param_id = detailed_elements[what_element]->list_elect->ids.at(i);
-            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
         break;
@@ -1185,7 +1185,7 @@ void detailedwindow::tab_1_update()
         for(i = 0; i < (quint32)detailed_elements[what_element]->list_phys->ids.size(); i++)
         {
             param_id = detailed_elements[what_element]->list_phys->ids.at(i);
-            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
         break;
@@ -1193,7 +1193,7 @@ void detailedwindow::tab_1_update()
         for(i = 0; i < (quint32)detailed_elements[what_element]->list_chem->ids.size(); i++)
         {
             param_id = detailed_elements[what_element]->list_chem->ids.at(i);
-            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue(param_id)));
+            ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
         break;

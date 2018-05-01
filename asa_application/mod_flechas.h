@@ -68,6 +68,9 @@ private:
     uint last_state = 0xFF;
     QMovie *mv = NULL;
 
+signals:
+    void update_window();
+
 };
 
 #endif // MOD_FLECHAS_H

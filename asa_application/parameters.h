@@ -22,6 +22,8 @@ typedef struct
 
 data_type_t getParamType(unsigned int id);
 QString getParamValue(unsigned int id);
+QString getParamValue_and_units(unsigned int id);
+
 void setParamValue(unsigned int id, double value);
 void setParamString(unsigned int id, QString value);
 

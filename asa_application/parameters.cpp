@@ -159,6 +159,10 @@ QString getParamValue(unsigned int id)
     return get_value_by_ID(id);
 }
 
+QString getParamValue_and_units(unsigned int id)
+{
+    return get_value_by_ID(id) + get_value_units(id);
+}
 
 bool getParamActiveShow(unsigned int id)
 {

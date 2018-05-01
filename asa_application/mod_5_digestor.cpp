@@ -45,7 +45,7 @@ void mod_5_digestor::load_new_gif(uint state)
             break;
         case DIGESTOR_GIF_STATE_MED_MOV:
             mv = new QMovie(":/digestor/images/5_Digestor/digester_med_mov_water.gif");
-            parent_label->setGeometry(original_pos.x(), original_pos.y()-8, parent_label->width(), parent_label->height());
+//            parent_label->setGeometry(original_pos.x(), original_pos.y()-8, parent_label->width(), parent_label->height());
             break;
         case DIGESTOR_GIF_STATE_LOW_QUIET:
             mv = new QMovie(":/digestor/images/5_Digestor/digester_low_quiet.png");
@@ -73,9 +73,10 @@ void mod_5_digestor::check_update_animation()
 {
     uint reactor_motores = 0;
 
-    reactor_motores |= getParamValue(92).toInt();
-    reactor_motores |= getParamValue(102).toInt();
-    reactor_motores |= getParamValue(112).toInt();
+    reactor_motores |= getParamValue(0x4000).toInt();
+    reactor_motores |= getParamValue(0x4010).toInt();
+    reactor_motores |= getParamValue(0x4020).toInt();
+    reactor_motores |= getParamValue(0x4030).toInt();
 
     if(reactor_motores > 0)
     {

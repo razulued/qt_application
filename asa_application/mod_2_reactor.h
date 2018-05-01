@@ -29,6 +29,9 @@ private:
     QLabel *parent_label;
     QPoint original_pos;
     uint last_state = 0xFF;
+
+signals:
+    void update_window();
 };
 
 #endif // MOD_2_REACTOR_H

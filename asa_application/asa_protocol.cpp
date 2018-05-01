@@ -391,8 +391,22 @@ QString get_value_by_ID(uint id)
     //Index in table (for conversions)
     index = hash_indices.value(id);
     str = supported_ASA_IDs[index].conversion_hanlder(hash_values[id].value<QString>(), supported_ASA_IDs[index].param1);
-    str = str + supported_ASA_IDs[index].units;
     //qDebug() << "Id: " << QString::number(id, 16) << ": " << hash_values[id].value<QString>() << "at index " << hash_indices.value(id);
+    data_mutex.unlock();
+
+    return str;
+}
+
+QString get_value_units(uint id)
+{
+    QString str;
+    uint index = 0;
+    //Debug
+    data_mutex.lock();
+
+    //Index in table (for conversions)
+    index = hash_indices.value(id);
+    str = supported_ASA_IDs[index].units;
     data_mutex.unlock();
 
     return str;

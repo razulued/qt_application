@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     asa_conf_string.cpp \
     graphwindow.cpp \
     statistics.cpp \
-    arrowkeys.cpp
+    arrowkeys.cpp \
+    simulation_input.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -71,7 +72,8 @@ HEADERS  += mainwindow.h \
     asa_conf_string.h \
     graphwindow.h \
     statistics.h \
-    arrowkeys.h
+    arrowkeys.h \
+    simulation_input.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -79,7 +81,8 @@ FORMS    += mainwindow.ui \
     bitacora.ui \
     login_dialog.ui \
     graphwindow.ui \
-    arrowkeys.ui
+    arrowkeys.ui \
+    simulation_input.ui
 
 RESOURCES += \
     fonts.qrc \

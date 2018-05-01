@@ -30,15 +30,15 @@ void mod_3_clarificador::load_new_gif(uint state)
         switch (state)
         {
         case CLARIFICADOR_GIF_STATE_NONE:
-            mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier.png");
+            mv = new QMovie(":/gifs/3 Clarificador/screen800x600/gifs/3 Clarificador/clarifier vacio.png");
             break;
         case CLARIFICADOR_GIF_STATE_FULL_MOV:
-            mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier_full_mov.gif");
-            parent_label->setGeometry(original_pos.x()-7, original_pos.y()-2, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/3 Clarificador/screen800x600/gifs/3 Clarificador/clarifier mov.gif");
+//            parent_label->setGeometry(original_pos.x()-7, original_pos.y()-2, parent_label->width(), parent_label->height());
             break;
         case CLARIFICADOR_GIF_STATE_FULL_QUIET:
-            mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier_full_quiet.png");
-            parent_label->setGeometry(original_pos.x()-7, original_pos.y()-2, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/3 Clarificador/screen800x600/gifs/3 Clarificador/clarifier quiet.png");
+//            parent_label->setGeometry(original_pos.x()-7, original_pos.y()-2, parent_label->width(), parent_label->height());
             break;
         default:
             mv = new QMovie(":/clarificador/images/3_Clarificador/clarifier.png");
@@ -50,6 +50,7 @@ void mod_3_clarificador::load_new_gif(uint state)
         parent_label->setMovie(mv);
 
         last_state = state;
+        update_window();
     }
 
 }
@@ -58,9 +59,10 @@ void mod_3_clarificador::check_update_animation()
 {
     uint reactor_motores = 0;
 
-    reactor_motores |= getParamValue(92).toInt();
-    reactor_motores |= getParamValue(102).toInt();
-    reactor_motores |= getParamValue(112).toInt();
+    reactor_motores |= getParamValue(0x4000).toInt();
+    reactor_motores |= getParamValue(0x4010).toInt();
+    reactor_motores |= getParamValue(0x4020).toInt();
+    reactor_motores |= getParamValue(0x4030).toInt();
 
     if(reactor_motores > 0)
     {

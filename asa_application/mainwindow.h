@@ -22,6 +22,8 @@
 #include "dataproccess.h"
 #include "graphwindow.h"
 #include "login_dialog.h"
+#include "simulation_input.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -112,6 +114,7 @@ public slots:
     void handleDetailedView_7();
     void handleDetailedView_8();
 
+    void update_this();
 
 private slots:
     void on_asa_logo_clicked();
@@ -207,6 +210,9 @@ private:
     QDateTime time;
 
     void check_lock();
+    QString build_date_string(QDateTime);
+
+    simulation_input *sim_window = NULL;
 protected:
     void paintEvent(QPaintEvent *);
 };
