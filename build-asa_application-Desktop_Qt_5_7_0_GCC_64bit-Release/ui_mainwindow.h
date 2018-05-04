@@ -94,6 +94,7 @@ public:
     QLabel *label_dia;
     QPushButton *prof_pic;
     QLabel *prof_label;
+    QPushButton *top_menu_6;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -362,7 +363,7 @@ public:
         widget_5->setGeometry(QRect(290, 100, 41, 31));
         top_menu_5 = new QPushButton(centralWidget);
         top_menu_5->setObjectName(QStringLiteral("top_menu_5"));
-        top_menu_5->setGeometry(QRect(130, 1, 34, 41));
+        top_menu_5->setGeometry(QRect(760, 1, 34, 41));
         top_menu_5->setFocusPolicy(Qt::NoFocus);
         top_menu_5->setStyleSheet(QLatin1String("#top_menu_5 { \n"
 "background-color: transparent;\n"
@@ -682,6 +683,18 @@ public:
         prof_label = new QLabel(centralWidget);
         prof_label->setObjectName(QStringLiteral("prof_label"));
         prof_label->setGeometry(QRect(580, 20, 151, 21));
+        top_menu_6 = new QPushButton(centralWidget);
+        top_menu_6->setObjectName(QStringLiteral("top_menu_6"));
+        top_menu_6->setGeometry(QRect(130, 0, 34, 41));
+        top_menu_6->setFocusPolicy(Qt::NoFocus);
+        top_menu_6->setStyleSheet(QLatin1String("#top_menu_6 { \n"
+"background-color: transparent;\n"
+"background-image: url(:/iconos/screen800x600/iconos/Encendido azul.png);\n"
+"background-position: center;\n"
+"border: none; \n"
+"background-repeat: none;\n"
+" } "));
+        top_menu_6->setCheckable(true);
         MainWindow->setCentralWidget(centralWidget);
         top_bar->raise();
         gif_modulo_4->raise();
@@ -752,6 +765,7 @@ public:
         label_dia->raise();
         prof_pic->raise();
         prof_label->raise();
+        top_menu_6->raise();
 
         retranslateUi(MainWindow);
 
@@ -809,6 +823,7 @@ public:
         label_dia->setText(QApplication::translate("MainWindow", "Dia", 0));
         prof_pic->setText(QString());
         prof_label->setText(QApplication::translate("MainWindow", "Sin usuario", 0));
+        top_menu_6->setText(QString());
     } // retranslateUi
 
 };

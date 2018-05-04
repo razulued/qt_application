@@ -58,7 +58,7 @@ int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
 int MainWindow::reg_mot_2;
 
-bool MainWindow::simulation = true;
+bool MainWindow::simulation = false;
 //QString MainWindow::ASA_conf_string;
 //QString MainWindow::ASA_conf_only_string;
 
@@ -438,13 +438,6 @@ void MainWindow::dataTimerSlot()
     static uint count = 0;
 
     check_lock();
-
-#if (1 == ENABLE_TEST)
-    if(0 == (count % 10)) /* 1 segundo */
-    {
-        run_simulation();
-    }
-#endif
 
 
     if(0 == (count % 2)) /* 20 ms */
@@ -973,3 +966,12 @@ void MainWindow::on_lock_button_clicked()
 //}
 
 
+
+void MainWindow::on_top_menu_6_clicked()
+{
+    if(NULL != motrores_window)
+    {
+        delete motrores_window;
+    }
+    motrores_window = new motores(this);
+}

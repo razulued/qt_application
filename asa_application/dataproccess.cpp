@@ -4,7 +4,7 @@
 #include "asa_protocol.h"
 #include "mainwindow.h"
 
-#define RELEASE_FOR_RPI (0)
+#define RELEASE_FOR_RPI (1)
 
 #define PSI_RAWMIN   0x0194         //ADC 415  == 0
 #define PSI_RAWMAX   0x08E7         //2294     == 1.82

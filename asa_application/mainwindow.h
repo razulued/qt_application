@@ -23,6 +23,7 @@
 #include "graphwindow.h"
 #include "login_dialog.h"
 #include "simulation_input.h"
+#include "motores.h"
 
 namespace Ui {
 class MainWindow;
@@ -132,6 +133,8 @@ private slots:
 
 //    void on_pb_simulacion_clicked();
 
+    void on_top_menu_6_clicked();
+
 private:
     QTimer dataTimer;
 
@@ -213,6 +216,7 @@ private:
     QString build_date_string(QDateTime);
 
     simulation_input *sim_window = NULL;
+    motores *motrores_window = NULL;
 protected:
     void paintEvent(QPaintEvent *);
 };

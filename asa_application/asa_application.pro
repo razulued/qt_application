@@ -42,7 +42,8 @@ SOURCES += main.cpp\
     graphwindow.cpp \
     statistics.cpp \
     arrowkeys.cpp \
-    simulation_input.cpp
+    simulation_input.cpp \
+    motores.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -73,7 +74,8 @@ HEADERS  += mainwindow.h \
     graphwindow.h \
     statistics.h \
     arrowkeys.h \
-    simulation_input.h
+    simulation_input.h \
+    motores.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -82,7 +84,8 @@ FORMS    += mainwindow.ui \
     login_dialog.ui \
     graphwindow.ui \
     arrowkeys.ui \
-    simulation_input.ui
+    simulation_input.ui \
+    motores.ui
 
 RESOURCES += \
     fonts.qrc \
