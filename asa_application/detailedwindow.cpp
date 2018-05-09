@@ -163,6 +163,21 @@ detailed_window_elements_t details_8=
     &MainWindow::efluente_outputs,
 };
 
+detailed_window_elements_t details_9=
+{
+    "Filtro",
+    ":/diagrama/screen800x600/diagrama/Filtro.png",
+    "Agregar descripcion del filtro.",
+
+    &MainWindow::conf_filtro_elect,
+
+    &MainWindow::conf_filtro_fisic,
+
+    &MainWindow::conf_filtro_quimi,
+
+    &MainWindow::filtro_outputs,
+};
+
 
 const detailed_window_elements_t *detailed_elements[]=
 {
@@ -174,6 +189,7 @@ const detailed_window_elements_t *detailed_elements[]=
     &details_6,
     &details_7,
     &details_8,
+    &details_9,
 };
 
 detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimiento *rutina, QWidget *parent) :
@@ -182,7 +198,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 {
     ui->setupUi(this);
 
-//    synch_output_state();
+    synch_output_state();
 
     clickeablelabel *alphabackground = new clickeablelabel(this);
     alphabackground->setGeometry(this->geometry());
@@ -274,6 +290,16 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
         has_output_control = true;
     }
 
+    //Check token
+    if(true == get_validity_state())
+    {
+        output_token_transfer(true);
+    }
+    else
+    {
+        output_token_transfer(false);
+    }
+
     tab_1_init(0);
     tab_2_init();
     tab_3_init();
@@ -309,7 +335,9 @@ detailedwindow::~detailedwindow()
 void detailedwindow::on_closeButton_clicked()
 {
 //    blur_window->close()
-    validate_token(false);
+//    validate_token(false);
+    //Check token
+    output_token_transfer(false);
     this->close();
 }
 
@@ -496,6 +524,9 @@ void detailedwindow::on_button_control_clicked()
         output_op_mode(5600, "03");
         break;
     case ELEMENT_CLORADOR:
+        output_op_mode(9600, "03");
+        break;
+    case ELEMENT_FILTRO:
         break;
     default:
         break;
@@ -956,6 +987,9 @@ void detailedwindow::tab_2_init()
     case ELEMENT_EFLUENTE:
         origentype = ORIGEN_EFLUENTE;
         break;
+    case ELEMENT_FILTRO:
+        origentype = ORIGEN_FILTRO;
+        break;
     default:
         origentype = ORIGEN_GENERAL;
         break;
@@ -1365,7 +1399,8 @@ void detailedwindow::on_key_slash_clicked(){ui->textEdit->insertPlainText("/");}
 
 void detailedwindow::background_clicked()
 {
-    validate_token(false);
+//    validate_token(false);
+    output_token_transfer(false);
     this->close();
 }
 

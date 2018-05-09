@@ -145,7 +145,7 @@ void mod_flechas::load_new_gif(arrow_type_t type, uint state)
             if(ARRW_EFLUENTE_GIF_STATE_MOV == state)
             {
 //                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water flow effluent 02 mov.gif");
-                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/water_flow_effluent_02_mov_small.gif");
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/Flecha-in.gif");
             }
             else
             {
@@ -229,12 +229,24 @@ void mod_flechas::check_update_animation()
     else if(BLOWER == arrow_type)
     {
         uint reactor_motores = 0;
-        reactor_motores |= getParamValue(0x4000).toInt();
-        reactor_motores |= getParamValue(0x4010).toInt();
-        reactor_motores |= getParamValue(0x4020).toInt();
-        reactor_motores |= getParamValue(0x4030).toInt();
+        if(1 == getParamValue(0x4000).toInt())
+        {
+            reactor_motores |=1;
+        }
+        if(1 == getParamValue(0x4010).toInt())
+        {
+            reactor_motores |=1;
+        }
+        if(1 == getParamValue(0x4020).toInt())
+        {
+            reactor_motores |=1;
+        }
+        if(1 == getParamValue(0x4030).toInt())
+        {
+            reactor_motores |=1;
+        }
 
-        if(reactor_motores > 0)
+        if(reactor_motores & 0x01)
         {
             load_new_gif(arrow_type, 1);
         }
@@ -246,9 +258,16 @@ void mod_flechas::check_update_animation()
     else if(CARCAMO_MOTOR == arrow_type)
     {
         uint carcamo_motores = 0;
-        carcamo_motores |= getParamValue(0x3000).toInt();
-        carcamo_motores |= getParamValue(0x3010).toInt();
-        if(carcamo_motores > 0)
+        if(1 == getParamValue(0x3000).toInt())
+        {
+            carcamo_motores |=1;
+        }
+        if(1 == getParamValue(0x3010).toInt())
+        {
+            carcamo_motores |=1;
+        }
+
+        if(carcamo_motores & 0x01)
         {
             load_new_gif(arrow_type, 1);
         }

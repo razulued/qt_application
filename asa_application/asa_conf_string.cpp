@@ -63,7 +63,7 @@ void output_control_toggle(uint id)
     // Modify status in config
     QString value = conf.value(QString::number(id)).toString();
 
-    if("00" == value)
+    if("00" == value || "0" == value)
     {
         conf.setValue(QString::number(id), "01");
     }
@@ -153,17 +153,17 @@ void synch_config_string()
     configuration_id temp_config;
     conf.sync();
     conf.beginGroup("Plant-Cfg");
-
+    bool ok;
     //Update String
     temp_config.names = conf.childKeys();
     foreach(const QString &key, temp_config.names)
     {
-        if("" != getParamValue(key.toInt()))
+        if("" != getParamValue(key.toInt(&ok, 16)))
         {
-            if(conf.value(key).toString() != getParamValue(key.toInt()))
+            if(conf.value(key).toString() != getParamValue(key.toInt(&ok, 16)))
             {
-                qDebug() << "Config values are different " << conf.value(key).toString() << getParamValue(key.toInt());
-                conf.setValue(key, getParamValue(key.toInt()));
+                qDebug() << "Config values are different " << conf.value(key).toString() << getParamValue(key.toInt(&ok, 16));
+                conf.setValue(key, getParamValue(key.toInt(&ok, 16)));
             }
         }
     }
@@ -179,8 +179,14 @@ void synch_output_state()
     //Update String
     temp_config.names = conf.childKeys();
 
-    //SYNCH
+    //SYNCH MOTORS
     conf.setValue("3602", getParamValue(0x3000));
+    conf.setValue("3603", getParamValue(0x3010));
+
+    conf.setValue("9601", getParamValue(0x9000));
+    conf.setValue("9602", getParamValue(0x9010));
+    conf.setValue("9603", getParamValue(0x9020));
+
 
     //Update String
     temp_config.names = conf.childKeys();

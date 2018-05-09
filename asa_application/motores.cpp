@@ -14,6 +14,18 @@ motores::motores(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    synch_output_state();
+
+    //Check token
+    if(true == get_validity_state())
+    {
+        output_token_transfer(true);
+    }
+    else
+    {
+        output_token_transfer(false);
+    }
+
 
     //Hide window bars and buttons
     module_init( &MainWindow::reg_outputs, ui->verticalLayout);
@@ -51,6 +63,7 @@ motores::~motores()
 
 void motores::on_asa_logo_clicked()
 {
+    output_token_transfer(false);
     this->close();
 }
 
@@ -60,6 +73,8 @@ void motores::module_init(configuration_id *conf, QVBoxLayout *layout)
     QFont font_2("Typo Square Ligth Demo",12,1);
     QCheckBox *box_motores;
     QSignalMapper *out_checkboxMapper = new QSignalMapper(this);
+
+
     for(i = 0; i < (quint32)conf->ids.size(); i++)
     {
         box_motores = new QCheckBox(conf->names.at(i));
@@ -95,6 +110,7 @@ void motores::module_init(configuration_id *conf, QVBoxLayout *layout)
         {
             box_motores->setEnabled(true);
 
+            qDebug() << "HEEEEEEEEEYYYY " << i << ":" << conf->ids.at(i) << ":" << get_id_state(conf->ids.at(i)).toInt();
             if(1 == get_id_state(conf->ids.at(i)).toInt())
             {
                 box_motores->setChecked(true);
@@ -124,5 +140,6 @@ void motores::out_checkBoxStateChanged(int a)
 
 void motores::background_clicked()
 {
+    output_token_transfer(false);
     this->close();
 }

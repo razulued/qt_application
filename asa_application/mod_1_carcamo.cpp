@@ -70,12 +70,18 @@ void mod_1_carcamo::check_update_animation()
     uint carcamo_motores = 0;
     uint carcamo_nivel = 0;
 
-    carcamo_motores |= getParamValue(0x3000).toInt();
-    carcamo_motores |= getParamValue(0x3010).toInt();
+    if(1 == getParamValue(0x3000).toInt())
+    {
+        carcamo_motores |=1;
+    }
+    if(1 == getParamValue(0x3010).toInt())
+    {
+        carcamo_motores |=1;
+    }
 
     carcamo_nivel = getParamValue(0x3201).toInt();
 
-    if(carcamo_motores)
+    if(carcamo_motores & 0x01)
     {
         // One or more motors are ON
         if(carcamo_nivel < 10)

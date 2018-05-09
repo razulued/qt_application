@@ -74,12 +74,24 @@ void mod_2_reactor::check_update_animation()
 {
     uint reactor_motores = 0;
 
-    reactor_motores |= getParamValue(0x4000).toInt();
-    reactor_motores |= getParamValue(0x4010).toInt();
-    reactor_motores |= getParamValue(0x4020).toInt();
-    reactor_motores |= getParamValue(0x4030).toInt();
+    if(1 == getParamValue(0x4000).toInt())
+    {
+        reactor_motores |=1;
+    }
+    if(1 == getParamValue(0x4010).toInt())
+    {
+        reactor_motores |=1;
+    }
+    if(1 == getParamValue(0x4020).toInt())
+    {
+        reactor_motores |=1;
+    }
+    if(1 == getParamValue(0x4030).toInt())
+    {
+        reactor_motores |=1;
+    }
 
-    if(reactor_motores > 0)
+    if(reactor_motores & 0x01)
     {
         load_new_gif(REACTOR_GIF_STATE_HI_MOV);
     }

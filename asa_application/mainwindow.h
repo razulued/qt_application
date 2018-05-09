@@ -78,6 +78,10 @@ public:
     static configuration_id conf_efluente_fisic;
     static configuration_id conf_efluente_quimi;
 
+    static configuration_id conf_filtro_elect;
+    static configuration_id conf_filtro_fisic;
+    static configuration_id conf_filtro_quimi;
+
     static configuration_id reg_outputs;
     static configuration_id react_outputs;
     static configuration_id clarif_outputs;
@@ -86,6 +90,7 @@ public:
     static configuration_id deshid_outputs;
     static configuration_id afluente_outputs;
     static configuration_id efluente_outputs;
+    static configuration_id filtro_outputs;
 
     static int reg_op_mode;
     static int reg_mot_1;
@@ -114,6 +119,7 @@ public slots:
     void handleDetailedView_6();
     void handleDetailedView_7();
     void handleDetailedView_8();
+    void handleDetailedView_9();
 
     void update_this();
 
@@ -187,6 +193,10 @@ private:
     custom_tooltip *tool_tip_efluente_electricos;
     custom_tooltip *tool_tip_efluente_fisicos;
     custom_tooltip *tool_tip_efluente_quimicos;
+
+    custom_tooltip *tool_tip_filtro_electricos;
+    custom_tooltip *tool_tip_filtro_fisicos;
+    custom_tooltip *tool_tip_filtro_quimicos;
 
 //    void get_ASA_string(void);
 //    void update_ASA_string(void);

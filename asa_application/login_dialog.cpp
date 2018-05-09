@@ -80,8 +80,10 @@ void login_dialog::on_key_enter_clicked()
     qDebug() << "Password is " << input_password;
     if(true == check_user_password(input_password))
     {
-        validate_token(true);
         synch_config_string();
+        synch_output_state();
+
+        validate_token(true);
     }
     else
     {

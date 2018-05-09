@@ -4,6 +4,8 @@
 #define ONE_MICROSENCONDDELAY 171
 #define TEN_MICROSENCONDDELAY 1710
 
+#define MAX_BUFFER_SIZE (2048)
+
 //This class is a siglenton instance, it just can exist one objectof this class
 class SPICOMM
 {
@@ -24,7 +26,7 @@ public:
 private:
     static SPICOMM* _SPInstance;
     bool SPIsuccess;
-    char dataInfo[1024];
+    char dataInfo[MAX_BUFFER_SIZE];
     //QTimer waitToSendDato;
 
 };

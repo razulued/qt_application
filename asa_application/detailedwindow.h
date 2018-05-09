@@ -17,7 +17,8 @@ typedef enum
     ELEMENT_DIGESTOR,
     ELEMENT_DESHIDRATADOR,
     ELEMENT_AFLUENTE,
-    ELEMENT_EFLUENTE
+    ELEMENT_EFLUENTE,
+    ELEMENT_FILTRO,
 }detailed_elements_t;
 
 typedef struct

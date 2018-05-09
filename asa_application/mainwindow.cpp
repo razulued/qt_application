@@ -45,6 +45,10 @@ configuration_id MainWindow::conf_efluente_elect;
 configuration_id MainWindow::conf_efluente_fisic;
 configuration_id MainWindow::conf_efluente_quimi;
 
+configuration_id MainWindow::conf_filtro_elect;
+configuration_id MainWindow::conf_filtro_fisic;
+configuration_id MainWindow::conf_filtro_quimi;
+
 configuration_id MainWindow::reg_outputs;
 configuration_id MainWindow::react_outputs;
 configuration_id MainWindow::clarif_outputs;
@@ -53,6 +57,7 @@ configuration_id MainWindow::digest_outputs;
 configuration_id MainWindow::deshid_outputs;
 configuration_id MainWindow::afluente_outputs;
 configuration_id MainWindow::efluente_outputs;
+configuration_id MainWindow::filtro_outputs;
 
 int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
@@ -117,6 +122,10 @@ void MainWindow::InitTooltips()
     tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, conf_efluente_elect.ids, conf_efluente_elect.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_ELECTRICOS, graph);
     tool_tip_efluente_fisicos = new custom_tooltip(ui->widget_23, conf_efluente_fisic.ids, conf_efluente_fisic.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_FISICOS, graph);
     tool_tip_efluente_quimicos = new custom_tooltip(ui->widget_24, conf_efluente_quimi.ids, conf_efluente_quimi.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_QUIMICOS, graph);
+
+    tool_tip_filtro_electricos = new custom_tooltip(ui->widget_25, conf_filtro_elect.ids, conf_filtro_elect.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS, graph);
+    tool_tip_filtro_fisicos = new custom_tooltip(ui->widget_26, conf_filtro_fisic.ids, conf_filtro_fisic.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_FISICOS, graph);
+    tool_tip_filtro_quimicos = new custom_tooltip(ui->widget_27, conf_filtro_quimi.ids, conf_filtro_quimi.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_QUIMICOS, graph);
 
     init_complete = true;
 }
@@ -203,6 +212,13 @@ MainWindow::MainWindow(QWidget *parent) :
     config = new configuration("Efluente-Quimicos");
     conf_efluente_quimi = config->get_config();
 
+    config = new configuration("Filtro-Electricos");
+    conf_filtro_elect = config->get_config();
+    config = new configuration("Filtro-Fisicos");
+    conf_filtro_fisic = config->get_config();
+    config = new configuration("Filtro-Quimicos");
+    conf_filtro_quimi = config->get_config();
+
     //Get outputs
     config = new configuration("Regulador-Out");
     reg_outputs = config->get_config();
@@ -220,6 +236,8 @@ MainWindow::MainWindow(QWidget *parent) :
     afluente_outputs = config->get_config();
     config = new configuration("Efluente-Out");
     efluente_outputs = config->get_config();
+    config = new configuration("Filtro-Out");
+    filtro_outputs = config->get_config();
 
     //Setup Timer
     dataTimer.setInterval(10);
@@ -258,6 +276,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->modulo_6, SIGNAL (released()),this, SLOT (handleDetailedView_6()));
     connect(ui->modulo_7, SIGNAL (released()),this, SLOT (handleDetailedView_7()));
     connect(ui->modulo_8, SIGNAL (released()),this, SLOT (handleDetailedView_8()));
+    connect(ui->modulo_9, SIGNAL (released()),this, SLOT (handleDetailedView_9()));
 
     QFont active_parameter_font("Typo Square Bold Demo",16,1);
     ui->active_param_label->setFont(active_parameter_font);
@@ -310,6 +329,7 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         sim_window = new simulation_input(this);
     }
+
 //    int a = 10;
 //    int b;
 //    QScriptEngine interpreter;
@@ -422,6 +442,14 @@ void MainWindow::handleDetailedView_8()
     detail_window = new detailedwindow(ELEMENT_EFLUENTE, rutinas, this);
 }
 
+void MainWindow::handleDetailedView_9()
+{
+    if (detail_window != NULL) {
+        delete detail_window;
+    }
+    detail_window = new detailedwindow(ELEMENT_FILTRO, rutinas, this);
+}
+
 void MainWindow::update_this()
 {
     qDebug() << "UPDATING";
@@ -464,6 +492,8 @@ void MainWindow::dataTimerSlot()
         mod_sludge_return->check_update_animation();
         mod_blower->check_update_animation();
         mod_bomba->check_update_animation();
+
+       update_this();
 #endif
     }
 
@@ -621,6 +651,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_electricos->force_show();
             tool_tip_afluente_electricos->force_show();
             tool_tip_efluente_electricos->force_show();
+            tool_tip_filtro_electricos->force_show();
 
             tool_tip_regulador_fisicos->force_hide();
             tool_tip_reactor_fisicos->force_hide();
@@ -630,6 +661,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_fisicos->force_hide();
             tool_tip_afluente_fisicos->force_hide();
             tool_tip_efluente_fisicos->force_hide();
+            tool_tip_filtro_fisicos->force_hide();
 
             tool_tip_regulador_quimicos->force_hide();
             tool_tip_reactor_quimicos->force_hide();
@@ -639,6 +671,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_quimicos->force_hide();
             tool_tip_afluente_quimicos->force_hide();
             tool_tip_efluente_quimicos->force_hide();
+            tool_tip_filtro_quimicos->force_hide();
 
             break;
         case PARAM_PHYSHIC:
@@ -650,6 +683,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_electricos->force_hide();
             tool_tip_afluente_electricos->force_hide();
             tool_tip_efluente_electricos->force_hide();
+            tool_tip_filtro_electricos->force_hide();
 
             tool_tip_regulador_fisicos->force_show();
             tool_tip_reactor_fisicos->force_show();
@@ -659,6 +693,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_fisicos->force_show();
             tool_tip_afluente_fisicos->force_show();
             tool_tip_efluente_fisicos->force_show();
+            tool_tip_filtro_fisicos->force_show();
 
             tool_tip_regulador_quimicos->force_hide();
             tool_tip_reactor_quimicos->force_hide();
@@ -668,6 +703,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_quimicos->force_hide();
             tool_tip_afluente_quimicos->force_hide();
             tool_tip_efluente_quimicos->force_hide();
+            tool_tip_filtro_quimicos->force_hide();
 
             break;
         case PARAM_CHEMIC:
@@ -679,6 +715,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_electricos->force_hide();
             tool_tip_afluente_electricos->force_hide();
             tool_tip_efluente_electricos->force_hide();
+            tool_tip_filtro_electricos->force_hide();
 
             tool_tip_regulador_fisicos->force_hide();
             tool_tip_reactor_fisicos->force_hide();
@@ -688,6 +725,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_fisicos->force_hide();
             tool_tip_afluente_fisicos->force_hide();
             tool_tip_efluente_fisicos->force_hide();
+            tool_tip_filtro_fisicos->force_hide();
 
             tool_tip_regulador_quimicos->force_show();
             tool_tip_reactor_quimicos->force_show();
@@ -697,6 +735,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_quimicos->force_show();
             tool_tip_afluente_quimicos->force_show();
             tool_tip_efluente_quimicos->force_show();
+            tool_tip_filtro_quimicos->force_show();
 
             break;
         default:
@@ -715,6 +754,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_electricos->update_data();
             tool_tip_afluente_electricos->update_data();
             tool_tip_efluente_electricos->update_data();
+            tool_tip_filtro_electricos->update_data();
 
             tool_tip_regulador_fisicos->update_data();
             tool_tip_reactor_fisicos->update_data();
@@ -724,6 +764,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_fisicos->update_data();
             tool_tip_afluente_fisicos->update_data();
             tool_tip_efluente_fisicos->update_data();
+            tool_tip_filtro_fisicos->update_data();
 
             tool_tip_regulador_quimicos->update_data();
             tool_tip_reactor_quimicos->update_data();
@@ -733,6 +774,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_deshidratador_quimicos->update_data();
             tool_tip_afluente_quimicos->update_data();
             tool_tip_efluente_quimicos->update_data();
+            tool_tip_filtro_quimicos->update_data();
 
         }
 
@@ -791,7 +833,8 @@ void MainWindow::update_system_time()
 
         //Update text on screen
 //        QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
-        QString display_time = QString::number(time.time().hour())+":"+QString::number(time.time().minute());
+//        QString display_time = QString::number(time.time().hour())+":"+QString::number(time.time().minute());
+        QString display_time = QString::number(time.time().hour())+":"+QString("%1").arg(time.time().minute(), 2, 10, QChar('0'));
         QString display_dia = build_date_string(time);
 
         ui->label_dia->setText(display_dia);

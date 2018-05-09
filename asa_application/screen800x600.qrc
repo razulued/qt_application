@@ -228,6 +228,7 @@
         <file>screen800x600/diagrama/PF.png</file>
         <file>screen800x600/diagrama/PQ.png</file>
         <file>screen800x600/diagrama/PE.png</file>
+        <file>screen800x600/diagrama/Filtro.png</file>
     </qresource>
     <qresource prefix="/gifs/0 Equipos">
         <file>screen800x600/gifs/0 Equipos/Blower Jet fail mov.gif</file>
@@ -272,6 +273,7 @@
         <file>screen800x600/gifs/0 Flechas de flujo/none.png</file>
         <file>screen800x600/gifs/0 Flechas de flujo/sludge_flow_influent_01_mov_small.gif</file>
         <file>screen800x600/gifs/0 Flechas de flujo/water_flow_effluent_02_mov_small.gif</file>
+        <file>screen800x600/gifs/0 Flechas de flujo/Flecha-in.gif</file>
     </qresource>
     <qresource prefix="/gifs/1 Carcamo y Regulador">
         <file>screen800x600/gifs/1 Carcamo y Regulador/carcamo hi mov water_.gif</file>

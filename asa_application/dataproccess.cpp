@@ -611,8 +611,6 @@ void DataProccess::dataRandom()
 //    store_value_by_ID(0x2001, "0001");
 //    store_value_by_ID(0x0402, "hola");
 
-
-
 }
 
 QList<double> DataProccess::getDataProcessing()
