@@ -141,6 +141,8 @@ private slots:
 
     void on_top_menu_6_clicked();
 
+    void on_prof_pic_clicked();
+
 private:
     QTimer dataTimer;
 
@@ -216,8 +218,16 @@ private:
     mod_flechas *mod_sludge_b;
     mod_flechas *mod_water_flown_a;
     mod_flechas *mod_sludge_return;
-    mod_flechas *mod_blower;
-    mod_flechas *mod_bomba;
+
+    mod_flechas *mod_blower_1;
+    mod_flechas *mod_blower_2;
+    mod_flechas *mod_blower_3;
+    mod_flechas *mod_blower_4;
+
+    mod_flechas *mod_bomba_1;
+    mod_flechas *mod_bomba_2;
+    mod_flechas *mod_bomba_3;
+    mod_flechas *mod_bomba_4;
 
     void update_system_time();
     QDateTime time;

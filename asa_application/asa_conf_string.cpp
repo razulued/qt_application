@@ -126,7 +126,7 @@ void output_token_transfer(bool val)
     if(true == val)
     {
         conf.setValue("0D03", "02");
-        conf.setValue("0D04", "01");
+        conf.setValue("0D04", "02");
     }
     else
     {
@@ -182,6 +182,11 @@ void synch_output_state()
     //SYNCH MOTORS
     conf.setValue("3602", getParamValue(0x3000));
     conf.setValue("3603", getParamValue(0x3010));
+
+    conf.setValue("4601", getParamValue(0x4000));
+    conf.setValue("4602", getParamValue(0x4010));
+    conf.setValue("4603", getParamValue(0x4020));
+    conf.setValue("4604", getParamValue(0x4030));
 
     conf.setValue("9601", getParamValue(0x9000));
     conf.setValue("9602", getParamValue(0x9010));

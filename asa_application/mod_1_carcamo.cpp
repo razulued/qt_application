@@ -68,7 +68,7 @@ void mod_1_carcamo::load_new_gif(uint state)
 void mod_1_carcamo::check_update_animation()
 {
     uint carcamo_motores = 0;
-    uint carcamo_nivel = 0;
+    float carcamo_nivel = 0;
 
     if(1 == getParamValue(0x3000).toInt())
     {
@@ -79,7 +79,7 @@ void mod_1_carcamo::check_update_animation()
         carcamo_motores |=1;
     }
 
-    carcamo_nivel = getParamValue(0x3201).toInt();
+    carcamo_nivel = getParamValue(0x3201).toFloat();
 
     if(carcamo_motores & 0x01)
     {

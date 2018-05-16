@@ -152,24 +152,46 @@ void mod_flechas::load_new_gif(arrow_type_t type, uint state)
                 mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png");
             }
             break;
-        case BLOWER:
-            if(1 == state)
-            {
-                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet On.png");
-            }
-            else
+        case BLOWER_1:
+        case BLOWER_2:
+        case BLOWER_3:
+        case BLOWER_4:
+            if(0 == state)
             {
                 mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet off.png");
             }
-            break;
-        case CARCAMO_MOTOR:
-            if(1 == state)
+            else if(1 == state)
             {
-                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump on.png");
+                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet On.png");
+            }
+            else if(2 == state)
+            {
+                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet fail mov.gif");
             }
             else
             {
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png");
+            }
+            break;
+        case CARCAMO_MOTOR_1:
+        case CARCAMO_MOTOR_2:
+        case CARCAMO_MOTOR_3:
+        case CARCAMO_MOTOR_4:
+            if(0 == state)
+            {
                 mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump off.png");
+            }
+            else if(1 == state)
+            {
+                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump on.png");
+            }
+            else if(2 == state)
+            {
+                mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump fail mov.gif");
+            }
+            else
+            {
+                mv = new QMovie(":/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png");
             }
             break;
         default:
@@ -188,9 +210,12 @@ void mod_flechas::load_new_gif(arrow_type_t type, uint state)
 
 void mod_flechas::check_update_animation()
 {
+    uint carcamo_motores = 0;
+    uint reactor_motores = 0;
+
     if(AFLUENTE_1 == arrow_type)
     {
-        uint caudal_in = getParamValue(0x3203).toInt();
+        float caudal_in = getParamValue(0x3203).toFloat();
         if(caudal_in > 0)
         {
             load_new_gif(arrow_type, ARRW_AFLUENTE_GIF_STATE_MOV);
@@ -202,7 +227,7 @@ void mod_flechas::check_update_animation()
     }
     else if(EFLUENTE_1 == arrow_type)
     {
-        uint caudal_out = getParamValue(0x6203).toInt();
+        float caudal_out = getParamValue(0x6203).toFloat();
 
         if(caudal_out > 0)
         {
@@ -215,7 +240,7 @@ void mod_flechas::check_update_animation()
     }
     else if(SLUDGE_RETURN == arrow_type)
     {
-        uint retorno_lodo = getParamValue(0x5201).toInt();
+        float retorno_lodo = getParamValue(0x5201).toFloat();
 
         if(retorno_lodo > 0)
         {
@@ -226,54 +251,44 @@ void mod_flechas::check_update_animation()
             load_new_gif(arrow_type, ARRW_SLUDGE_RETURN_GIF_STATE_QUIET);
         }
     }
-    else if(BLOWER == arrow_type)
+    else if(BLOWER_1 == arrow_type)
     {
-        uint reactor_motores = 0;
-        if(1 == getParamValue(0x4000).toInt())
-        {
-            reactor_motores |=1;
-        }
-        if(1 == getParamValue(0x4010).toInt())
-        {
-            reactor_motores |=1;
-        }
-        if(1 == getParamValue(0x4020).toInt())
-        {
-            reactor_motores |=1;
-        }
-        if(1 == getParamValue(0x4030).toInt())
-        {
-            reactor_motores |=1;
-        }
-
-        if(reactor_motores & 0x01)
-        {
-            load_new_gif(arrow_type, 1);
-        }
-        else
-        {
-            load_new_gif(arrow_type, 0);
-        }
+        reactor_motores = getParamValue(0x4000).toInt();
+        load_new_gif(arrow_type, reactor_motores);
     }
-    else if(CARCAMO_MOTOR == arrow_type)
+    else if(BLOWER_2 == arrow_type)
     {
-        uint carcamo_motores = 0;
-        if(1 == getParamValue(0x3000).toInt())
-        {
-            carcamo_motores |=1;
-        }
-        if(1 == getParamValue(0x3010).toInt())
-        {
-            carcamo_motores |=1;
-        }
-
-        if(carcamo_motores & 0x01)
-        {
-            load_new_gif(arrow_type, 1);
-        }
-        else
-        {
-            load_new_gif(arrow_type, 0);
-        }
+        reactor_motores =getParamValue(0x4010).toInt();
+        load_new_gif(arrow_type, reactor_motores);
+    }
+    else if(BLOWER_3 == arrow_type)
+    {
+        reactor_motores =getParamValue(0x4020).toInt();
+        load_new_gif(arrow_type, reactor_motores);
+    }
+    else if(BLOWER_4 == arrow_type)
+    {
+        reactor_motores =getParamValue(0x4030).toInt();
+        load_new_gif(arrow_type, reactor_motores);
+    }
+    else if(CARCAMO_MOTOR_1 == arrow_type)
+    {
+        carcamo_motores =getParamValue(0x3000).toInt();
+        load_new_gif(arrow_type, carcamo_motores);
+    }
+    else if(CARCAMO_MOTOR_2 == arrow_type)
+    {
+        carcamo_motores =getParamValue(0x3010).toInt();
+        load_new_gif(arrow_type, carcamo_motores);
+    }
+    else if(CARCAMO_MOTOR_3 == arrow_type)
+    {
+        carcamo_motores =getParamValue(0x3020).toInt();
+        load_new_gif(arrow_type, carcamo_motores);
+    }
+    else if(CARCAMO_MOTOR_4 == arrow_type)
+    {
+        carcamo_motores =getParamValue(0x3030).toInt();
+        load_new_gif(arrow_type, carcamo_motores);
     }
 }

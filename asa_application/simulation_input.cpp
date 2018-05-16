@@ -25,6 +25,39 @@ void simulation_input::on_checkBox_clicked()
         store_value_by_ID((0x3000), "0");
     }
 }
+void simulation_input::on_checkBox_4_clicked()
+{
+    if(ui->checkBox_4->isChecked())
+    {
+        store_value_by_ID((0x3010), "1");
+    }
+    else
+    {
+        store_value_by_ID((0x3010), "0");
+    }
+}
+void simulation_input::on_checkBox_5_clicked()
+{
+    if(ui->checkBox_5->isChecked())
+    {
+        store_value_by_ID((0x3020), "1");
+    }
+    else
+    {
+        store_value_by_ID((0x3020), "0");
+    }
+}
+void simulation_input::on_checkBox_6_clicked()
+{
+    if(ui->checkBox_6->isChecked())
+    {
+        store_value_by_ID((0x3030), "1");
+    }
+    else
+    {
+        store_value_by_ID((0x3030), "0");
+    }
+}
 
 void simulation_input::on_horizontalScrollBar_actionTriggered(int action)
 {
@@ -59,6 +92,30 @@ void simulation_input::on_checkBox_3_clicked()
     else
     {
         store_value_by_ID((0x4010), "0");
+    }
+}
+
+void simulation_input::on_checkBox_7_clicked()
+{
+    if(ui->checkBox_7->isChecked())
+    {
+        store_value_by_ID((0x4020), "1");
+    }
+    else
+    {
+        store_value_by_ID((0x4020), "0");
+    }
+}
+
+void simulation_input::on_checkBox_8_clicked()
+{
+    if(ui->checkBox_8->isChecked())
+    {
+        store_value_by_ID((0x4030), "1");
+    }
+    else
+    {
+        store_value_by_ID((0x4030), "0");
     }
 }
 

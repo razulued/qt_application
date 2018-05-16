@@ -1296,8 +1296,8 @@ border:none;
    <widget class="QLabel" name="gif_blower">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>140</y>
+      <x>276</x>
+      <y>133</y>
       <width>110</width>
       <height>110</height>
      </rect>
@@ -1318,7 +1318,7 @@ border:none;
    <widget class="QLabel" name="gif_car_mot">
     <property name="geometry">
      <rect>
-      <x>116</x>
+      <x>128</x>
       <y>233</y>
       <width>110</width>
       <height>110</height>
@@ -1331,30 +1331,6 @@ background-repeat: none;
 background-position:center;
 border:none;
 }</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="lock_button">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>0</y>
-      <width>31</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#lock_button { 
-background-image: url(:/iconos/screen800x600/iconos/Candado azul.png);
-border: none; 
-background-repeat: none;
-background-position: center;
-} </string>
     </property>
     <property name="text">
      <string/>
@@ -1537,6 +1513,135 @@ background-position: center;
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="gif_car_mot_2">
+    <property name="geometry">
+     <rect>
+      <x>111</x>
+      <y>237</y>
+      <width>110</width>
+      <height>110</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#gif_car_mot_2{
+background-image: url(:/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump off.png);
+background-repeat: none;
+background-position:center;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gif_car_mot_3">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>241</y>
+      <width>110</width>
+      <height>110</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#gif_car_mot_3{
+background-image: url(:/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump off.png);
+background-repeat: none;
+background-position:center;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gif_car_mot_4">
+    <property name="geometry">
+     <rect>
+      <x>79</x>
+      <y>245</y>
+      <width>110</width>
+      <height>110</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#gif_car_mot_4{
+background-image: url(:/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump off.png);
+background-repeat: none;
+background-position:center;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gif_blower_2">
+    <property name="geometry">
+     <rect>
+      <x>258</x>
+      <y>138</y>
+      <width>110</width>
+      <height>110</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#gif_blower_2
+{
+background-image: url(:/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet off.png);
+background-repeat: none;
+background-position:center;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gif_blower_3">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>143</y>
+      <width>110</width>
+      <height>110</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#gif_blower_3
+{
+background-image: url(:/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet off.png);
+background-repeat: none;
+background-position:center;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="gif_blower_4">
+    <property name="geometry">
+     <rect>
+      <x>222</x>
+      <y>148</y>
+      <width>110</width>
+      <height>110</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#gif_blower_4
+{
+background-image: url(:/gifs/0 Equipos/screen800x600/gifs/0 Equipos/Blower Jet off.png);
+background-repeat: none;
+background-position:center;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>top_bar</zorder>
    <zorder>gif_modulo_4</zorder>
    <zorder>gif_water_flown_a</zorder>
@@ -1544,7 +1649,6 @@ background-position: center;
    <zorder>gif_sludge_b</zorder>
    <zorder>gif_modulo_2</zorder>
    <zorder>gif_sludge_return_a</zorder>
-   <zorder>lock_button</zorder>
    <zorder>bottom_bar</zorder>
    <zorder>pushButton</zorder>
    <zorder>pb_fisicos</zorder>
@@ -1570,49 +1674,55 @@ background-position: center;
    <zorder>gif_car_mot</zorder>
    <zorder>bck_retorno_4</zorder>
    <zorder>bck_retorno_2</zorder>
-   <zorder>modulo_7</zorder>
-   <zorder>modulo_1</zorder>
-   <zorder>modulo_2</zorder>
-   <zorder>modulo_6</zorder>
-   <zorder>modulo_5</zorder>
-   <zorder>modulo_3</zorder>
-   <zorder>widget</zorder>
-   <zorder>widget_14</zorder>
-   <zorder>widget_20</zorder>
-   <zorder>widget_24</zorder>
-   <zorder>widget_22</zorder>
-   <zorder>widget_21</zorder>
-   <zorder>widget_17</zorder>
-   <zorder>widget_18</zorder>
-   <zorder>widget_3</zorder>
-   <zorder>widget_7</zorder>
-   <zorder>widget_15</zorder>
-   <zorder>widget_23</zorder>
-   <zorder>widget_10</zorder>
-   <zorder>widget_6</zorder>
-   <zorder>widget_11</zorder>
-   <zorder>widget_16</zorder>
-   <zorder>widget_13</zorder>
-   <zorder>widget_2</zorder>
-   <zorder>widget_8</zorder>
-   <zorder>widget_5</zorder>
-   <zorder>widget_9</zorder>
-   <zorder>widget_19</zorder>
-   <zorder>widget_4</zorder>
-   <zorder>widget_12</zorder>
    <zorder>label_dia</zorder>
    <zorder>prof_pic</zorder>
    <zorder>prof_label</zorder>
    <zorder>top_menu_6</zorder>
    <zorder>bck_modulo_9</zorder>
    <zorder>bck_modulo_10</zorder>
+   <zorder>gif_modulo_8</zorder>
+   <zorder>gif_car_mot_2</zorder>
+   <zorder>gif_car_mot_3</zorder>
+   <zorder>gif_car_mot_4</zorder>
+   <zorder>gif_blower_2</zorder>
+   <zorder>gif_blower_3</zorder>
+   <zorder>gif_blower_4</zorder>
+   <zorder>modulo_3</zorder>
    <zorder>modulo_8</zorder>
    <zorder>modulo_9</zorder>
-   <zorder>gif_modulo_8</zorder>
    <zorder>modulo_4</zorder>
+   <zorder>modulo_1</zorder>
+   <zorder>modulo_5</zorder>
+   <zorder>modulo_7</zorder>
+   <zorder>modulo_2</zorder>
+   <zorder>modulo_6</zorder>
+   <zorder>widget_14</zorder>
+   <zorder>widget_21</zorder>
    <zorder>widget_25</zorder>
-   <zorder>widget_26</zorder>
+   <zorder>widget_8</zorder>
+   <zorder>widget_3</zorder>
+   <zorder>widget_19</zorder>
+   <zorder>widget_11</zorder>
+   <zorder>widget_15</zorder>
+   <zorder>widget_24</zorder>
+   <zorder>widget_2</zorder>
+   <zorder>widget</zorder>
+   <zorder>widget_17</zorder>
+   <zorder>widget_18</zorder>
    <zorder>widget_27</zorder>
+   <zorder>widget_9</zorder>
+   <zorder>widget_12</zorder>
+   <zorder>widget_23</zorder>
+   <zorder>widget_10</zorder>
+   <zorder>widget_5</zorder>
+   <zorder>widget_26</zorder>
+   <zorder>widget_20</zorder>
+   <zorder>widget_6</zorder>
+   <zorder>widget_4</zorder>
+   <zorder>widget_13</zorder>
+   <zorder>widget_16</zorder>
+   <zorder>widget_7</zorder>
+   <zorder>widget_22</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

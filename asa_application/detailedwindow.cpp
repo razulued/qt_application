@@ -323,6 +323,9 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
 
+    // Start timer
+    QTimer::singleShot(10000, this, SLOT(checkClick()));
+
     this->move(parent->pos());
     this->show();
 }
@@ -512,6 +515,11 @@ void detailedwindow::on_button_visualizacion_clicked()
 
 void detailedwindow::on_button_control_clicked()
 {
+    if(false == has_output_control)
+    {
+        return;
+    }
+
     switch(what_element)
     {
     case ELEMENT_REGULADOR:
@@ -530,11 +538,6 @@ void detailedwindow::on_button_control_clicked()
         break;
     default:
         break;
-    }
-
-    if(false == has_output_control)
-    {
-        return;
     }
 
     ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
@@ -1423,6 +1426,11 @@ void detailedwindow::on_filtro_quimicos_clicked()
 void detailedwindow::on_filtro_electricos_clicked()
 {
     this->tab_1_init(0);
+}
+
+void detailedwindow::checkClick()
+{
+
 }
 
 

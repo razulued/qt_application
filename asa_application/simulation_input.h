@@ -17,6 +17,11 @@ public:
 
 private slots:
     void on_checkBox_clicked();
+    void on_checkBox_4_clicked();
+    void on_checkBox_5_clicked();
+    void on_checkBox_6_clicked();
+    void on_checkBox_7_clicked();
+    void on_checkBox_8_clicked();
 
     void on_horizontalScrollBar_actionTriggered(int action);
 

@@ -19,6 +19,7 @@ QString conv_integer_caudal(QString str, uint param1)
 
     ret = decimal * 0.16312;
     ret = ret - 66.54025;
+
     if(ret < 9.45)
     {
         return "0.0";

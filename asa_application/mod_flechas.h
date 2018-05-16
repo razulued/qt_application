@@ -17,8 +17,14 @@ typedef enum
     AFLUENTE_1,
     AFLUENTE_2,
     EFLUENTE_1,
-    BLOWER,
-    CARCAMO_MOTOR,
+    BLOWER_1,
+    BLOWER_2,
+    BLOWER_3,
+    BLOWER_4,
+    CARCAMO_MOTOR_1,
+    CARCAMO_MOTOR_2,
+    CARCAMO_MOTOR_3,
+    CARCAMO_MOTOR_4,
 }arrow_type_t;
 
 enum

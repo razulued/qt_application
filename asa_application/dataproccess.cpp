@@ -100,7 +100,6 @@ void DataProccess::run()
             this->dataRandom();
             QThread::msleep(2000);
         }
-
         spi_read_completed();
     }
 }
@@ -606,10 +605,10 @@ void DataProccess::dataRandom()
 //        count = 0;
 //        store_value_by_ID(0x3000, "1");
 //    }
-//    qDebug() << "count " << count;
-//    store_value_by_ID(0x3001, "1234");
-//    store_value_by_ID(0x2001, "0001");
-//    store_value_by_ID(0x0402, "hola");
+////    qDebug() << "count " << count;
+    store_value_by_ID(0x3000, "0");
+    store_value_by_ID(0x3010, "3");
+    store_value_by_ID(0x3020, "2");
 
 }
 

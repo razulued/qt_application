@@ -136,6 +136,8 @@ private slots:
 
     void on_filtro_electricos_clicked();
 
+    void checkClick();
+
 private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;

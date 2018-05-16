@@ -2,11 +2,11 @@
 #include <QHash>
 #include <QDebug>
 
-QHash<uint, QList<int> > last_60_seconds;
+QHash<uint, QList<float> > last_60_seconds;
 
-void add_value_to_stats(uint param, int new_value)
+void add_value_to_stats(uint param, float new_value)
 {
-    QList<int> param_list = last_60_seconds.value(param);
+    QList<float> param_list = last_60_seconds.value(param);
 
     if(param_list.length() >= 10)
     {
@@ -19,7 +19,7 @@ void add_value_to_stats(uint param, int new_value)
 //    qDebug() << "param" << param << param_list;
 }
 
-QList<int> get_list_from_param(uint param)
+QList<float> get_list_from_param(uint param)
 {
     return last_60_seconds.value(param);
 }

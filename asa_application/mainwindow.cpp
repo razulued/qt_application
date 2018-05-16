@@ -63,7 +63,7 @@ int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
 int MainWindow::reg_mot_2;
 
-bool MainWindow::simulation = false;
+bool MainWindow::simulation =false;
 //QString MainWindow::ASA_conf_string;
 //QString MainWindow::ASA_conf_only_string;
 
@@ -318,17 +318,32 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mod_water_flown_a, SIGNAL(update_window()), this, SLOT(update_this()));
     mod_sludge_return = new mod_flechas(SLUDGE_RETURN,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_sludge_return_a);
     connect(mod_sludge_return, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_blower = new mod_flechas(BLOWER,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_blower);
-    connect(mod_blower, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_bomba = new mod_flechas(CARCAMO_MOTOR,  0, ui->gif_car_mot);
-    connect(mod_bomba, SIGNAL(update_window()), this, SLOT(update_this()));
 
+    mod_blower_1 = new mod_flechas(BLOWER_1,  3, ui->gif_blower_4);
+    connect(mod_blower_1, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_blower_2 = new mod_flechas(BLOWER_2,  3, ui->gif_blower_3);
+    connect(mod_blower_2, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_blower_3 = new mod_flechas(BLOWER_3,  3, ui->gif_blower_2);
+    connect(mod_blower_3, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_blower_4 = new mod_flechas(BLOWER_4,  3, ui->gif_blower);
+    connect(mod_blower_4, SIGNAL(update_window()), this, SLOT(update_this()));
+
+    mod_bomba_1 = new mod_flechas(CARCAMO_MOTOR_1,  3, ui->gif_car_mot_4);
+    connect(mod_bomba_1, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_bomba_2 = new mod_flechas(CARCAMO_MOTOR_2,  3, ui->gif_car_mot_3);
+    connect(mod_bomba_2, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_bomba_3 = new mod_flechas(CARCAMO_MOTOR_3,  3, ui->gif_car_mot_2);
+    connect(mod_bomba_3, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_bomba_4 = new mod_flechas(CARCAMO_MOTOR_4,  3, ui->gif_car_mot);
+    connect(mod_bomba_4, SIGNAL(update_window()), this, SLOT(update_this()));
     ASA_protocol_init();
 
     if((NULL == sim_window) && simulation)
     {
         sim_window = new simulation_input(this);
     }
+
+    ui->prof_label->setStyleSheet("color:white;");
 
 //    int a = 10;
 //    int b;
@@ -475,6 +490,11 @@ void MainWindow::dataTimerSlot()
     }
 
 
+    if(0 == (count % 30)) /* 2 segundo */
+    {
+        update_this();
+
+    }
     if(0 == (count % 10)) /* 2 segundo */
     {
 //        update_ASA_string();
@@ -490,10 +510,17 @@ void MainWindow::dataTimerSlot()
         mod_afluente->check_update_animation();
         mod_efluente->check_update_animation();
         mod_sludge_return->check_update_animation();
-        mod_blower->check_update_animation();
-        mod_bomba->check_update_animation();
 
-       update_this();
+        mod_blower_1->check_update_animation();
+        mod_blower_2->check_update_animation();
+        mod_blower_3->check_update_animation();
+        mod_blower_4->check_update_animation();
+
+        mod_bomba_1->check_update_animation();
+        mod_bomba_2->check_update_animation();
+        mod_bomba_3->check_update_animation();
+        mod_bomba_4->check_update_animation();
+
 #endif
     }
 
@@ -815,7 +842,6 @@ void MainWindow::update_system_time()
     if(temp_time.toTime_t() != time.toTime_t())
     {
         temp_time = time;
-
         //Update bitacora and rutinas
         /* Check rutinas (new events have occurred?) */
         if(NULL != rutinas)
@@ -840,19 +866,68 @@ void MainWindow::update_system_time()
         ui->label_dia->setText(display_dia);
         ui->label_hora->setText(display_time);
 
-        add_value_to_stats(0x3001, getParamValue(0x3001).toInt());
-        add_value_to_stats(0x3002, getParamValue(0x3002).toInt());
-        add_value_to_stats(0x3003, getParamValue(0x3003).toInt());
-        add_value_to_stats(0x3004, getParamValue(0x3004).toInt());
-        add_value_to_stats(0x3005, getParamValue(0x3005).toInt());
-        add_value_to_stats(0x3006, getParamValue(0x3006).toInt());
+        add_value_to_stats(0x3001, getParamValue(0x3001).toFloat());
+        add_value_to_stats(0x3002, getParamValue(0x3002).toFloat());
+        add_value_to_stats(0x3003, getParamValue(0x3003).toFloat());
+        add_value_to_stats(0x3004, getParamValue(0x3004).toFloat());
+        add_value_to_stats(0x3005, getParamValue(0x3005).toFloat());
+        add_value_to_stats(0x3006, getParamValue(0x3006).toFloat());
 
-        add_value_to_stats(0x3203, getParamValue(0x3203).toInt());
-        add_value_to_stats(0x4203, getParamValue(0x4203).toInt());
-        add_value_to_stats(0x5201, getParamValue(0x5201).toInt());
-        add_value_to_stats(0x3201, getParamValue(0x3201).toInt());
-        add_value_to_stats(0x4204, getParamValue(0x4204).toInt());
-        add_value_to_stats(0x8204, getParamValue(0x8204).toInt());
+        add_value_to_stats(0x3011, getParamValue(0x3011).toFloat());
+        add_value_to_stats(0x3012, getParamValue(0x3012).toFloat());
+        add_value_to_stats(0x3013, getParamValue(0x3013).toFloat());
+        add_value_to_stats(0x3014, getParamValue(0x3014).toFloat());
+        add_value_to_stats(0x3015, getParamValue(0x3015).toFloat());
+        add_value_to_stats(0x3016, getParamValue(0x3016).toFloat());
+
+        add_value_to_stats(0x3021, getParamValue(0x3021).toFloat());
+        add_value_to_stats(0x3022, getParamValue(0x3022).toFloat());
+        add_value_to_stats(0x3023, getParamValue(0x3023).toFloat());
+        add_value_to_stats(0x3024, getParamValue(0x3024).toFloat());
+        add_value_to_stats(0x3025, getParamValue(0x3025).toFloat());
+        add_value_to_stats(0x3026, getParamValue(0x3026).toFloat());
+
+        add_value_to_stats(0x3031, getParamValue(0x3031).toFloat());
+        add_value_to_stats(0x3032, getParamValue(0x3032).toFloat());
+        add_value_to_stats(0x3033, getParamValue(0x3033).toFloat());
+        add_value_to_stats(0x3034, getParamValue(0x3034).toFloat());
+        add_value_to_stats(0x3035, getParamValue(0x3035).toFloat());
+        add_value_to_stats(0x3036, getParamValue(0x3036).toFloat());
+
+        add_value_to_stats(0x4001, getParamValue(0x4001).toFloat());
+        add_value_to_stats(0x4002, getParamValue(0x4002).toFloat());
+        add_value_to_stats(0x4003, getParamValue(0x4003).toFloat());
+        add_value_to_stats(0x4004, getParamValue(0x4004).toFloat());
+        add_value_to_stats(0x4005, getParamValue(0x4005).toFloat());
+        add_value_to_stats(0x4006, getParamValue(0x4006).toFloat());
+
+        add_value_to_stats(0x4011, getParamValue(0x4011).toFloat());
+        add_value_to_stats(0x4012, getParamValue(0x4012).toFloat());
+        add_value_to_stats(0x4013, getParamValue(0x4013).toFloat());
+        add_value_to_stats(0x4014, getParamValue(0x4014).toFloat());
+        add_value_to_stats(0x4015, getParamValue(0x4015).toFloat());
+        add_value_to_stats(0x4016, getParamValue(0x4016).toFloat());
+
+        add_value_to_stats(0x4021, getParamValue(0x4021).toFloat());
+        add_value_to_stats(0x4022, getParamValue(0x4022).toFloat());
+        add_value_to_stats(0x4023, getParamValue(0x4023).toFloat());
+        add_value_to_stats(0x4024, getParamValue(0x4024).toFloat());
+        add_value_to_stats(0x4025, getParamValue(0x4025).toFloat());
+        add_value_to_stats(0x4026, getParamValue(0x4026).toFloat());
+
+        add_value_to_stats(0x4031, getParamValue(0x4031).toFloat());
+        add_value_to_stats(0x4032, getParamValue(0x4032).toFloat());
+        add_value_to_stats(0x4033, getParamValue(0x4033).toFloat());
+        add_value_to_stats(0x4034, getParamValue(0x4034).toFloat());
+        add_value_to_stats(0x4035, getParamValue(0x4035).toFloat());
+        add_value_to_stats(0x4036, getParamValue(0x4036).toFloat());
+
+        add_value_to_stats(0x3203, getParamValue(0x3203).toFloat());
+        add_value_to_stats(0x4203, getParamValue(0x4203).toFloat());
+        add_value_to_stats(0x5201, getParamValue(0x5201).toFloat());
+        add_value_to_stats(0x3201, getParamValue(0x3201).toFloat());
+        add_value_to_stats(0x4205, getParamValue(0x4205).toFloat());
+        add_value_to_stats(0x8205, getParamValue(0x8205).toFloat());
 
 
         add_value_to_stats(0x3307, getParamValue(0x3307).toInt());
@@ -883,18 +958,20 @@ void MainWindow::check_lock()
     {
         if(true == state)
         {
-            ui->lock_button->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Candado blanco.png);"
+            ui->prof_pic->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Prof pic blanco.png);"
                                            "border: none;"
                                            "background-repeat: none;"
                                            "background-position: center;");
         }
         else
         {
-            ui->lock_button->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Candado azul.png);"
+            ui->prof_pic->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Prof pic azul.png);"
                                            "border: none;"
                                            "background-repeat: none;"
                                            "background-position: center;");
         }
+
+        ui->prof_label->setText(get_user_name());
     }
 
     last_validity_state = state;
@@ -974,6 +1051,20 @@ QString MainWindow::build_date_string(QDateTime time)
 
 void MainWindow::on_lock_button_clicked()
 {
+
+}
+
+void MainWindow::on_top_menu_6_clicked()
+{
+    if(NULL != motrores_window)
+    {
+        delete motrores_window;
+    }
+    motrores_window = new motores(this);
+}
+
+void MainWindow::on_prof_pic_clicked()
+{
     synch_output_state();
 
     if(false == get_validity_state())
@@ -988,33 +1079,4 @@ void MainWindow::on_lock_button_clicked()
     {
         validate_token(false);
     }
-}
-
-//void MainWindow::on_pb_simulacion_clicked()
-//{
-////    if(simulation)
-////    {
-////        simulation = false;
-////        ui->pb_simulacion->setText("Simulacion OFF");
-////        ui->pb_simulacion->setStyleSheet("color: red;"
-////                                         "border: 1px solid red;");
-////    }
-////    else
-////    {
-////        simulation = true;
-////        ui->pb_simulacion->setText("Simulacion ON");
-////        ui->pb_simulacion->setStyleSheet("color: green;"
-////                                        "border: 1px solid green;");
-////    }
-//}
-
-
-
-void MainWindow::on_top_menu_6_clicked()
-{
-    if(NULL != motrores_window)
-    {
-        delete motrores_window;
-    }
-    motrores_window = new motores(this);
 }
