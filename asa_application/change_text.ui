@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>settings</class>
- <widget class="QDialog" name="settings">
+ <class>change_text</class>
+ <widget class="QDialog" name="change_text">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,43 +13,38 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QPushButton" name="asa_logo">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>0</y>
-     <width>561</width>
-     <height>41</height>
+     <x>740</x>
+     <y>540</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#asa_logo{ 
+background-image: url(:/iconos/screen800x600/iconos/ASA logo.png);
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
    </property>
    <property name="text">
-    <string>ADVERTENCIA: NO MODIFICAR ESTAS CONFIGURACIONES SIN CONOCIMIENTO DEL SISTEMA. RECUERDA REINICIAR EL PROGRAMA PARA APLICAR CAMBIOS</string>
+    <string/>
    </property>
-   <property name="wordWrap">
+   <property name="checkable">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>620</x>
-     <y>530</y>
-     <width>166</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
   <widget class="QFrame" name="key_frame">
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>360</y>
+     <y>350</y>
      <width>691</width>
      <height>181</height>
     </rect>
@@ -1569,7 +1564,7 @@ background-position: center;
    <widget class="QPushButton" name="key_mayus">
     <property name="geometry">
      <rect>
-      <x>12</x>
+      <x>13</x>
       <y>134</y>
       <width>111</width>
       <height>41</height>
@@ -1604,529 +1599,17 @@ background-position: center;
     </property>
    </widget>
   </widget>
-  <widget class="QTabWidget" name="tabWidget">
+  <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>771</width>
-     <height>311</height>
+     <x>80</x>
+     <y>120</y>
+     <width>641</width>
+     <height>70</height>
     </rect>
    </property>
-   <property name="currentIndex">
-    <number>1</number>
-   </property>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Config.ini</string>
-    </attribute>
-    <widget class="QTextEdit" name="textEdit">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>10</y>
-       <width>721</width>
-       <height>231</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>Calibraciones</string>
-    </attribute>
-    <widget class="QScrollArea" name="scrollArea">
-     <property name="geometry">
-      <rect>
-       <x>1</x>
-       <y>3</y>
-       <width>761</width>
-       <height>281</height>
-      </rect>
-     </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>-295</y>
-        <width>745</width>
-        <height>734</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="1">
-        <widget class="QLabel" name="label_13">
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Reactor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Carcamo/Regulador</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QFrame" name="frame_3">
-         <property name="styleSheet">
-          <string notr="true">QDoubleSpinBox { 
-height: 30;
-}
-
-QDoubleSpinBox::up-button { 
-width: 32px; 
-height: 15;
-}
-QDoubleSpinBox::down-button { 
-width: 32px; 
-height: 15;
-
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QFormLayout" name="formLayout_3">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_15">
-            <property name="text">
-             <string>Level PRESS Opt</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QDoubleSpinBox" name="control_5400"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_16">
-            <property name="text">
-             <string>Level PRESS Max</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QDoubleSpinBox" name="control_5401"/>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLabel" name="label_21">
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Clarificador</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QFrame" name="frame">
-         <property name="styleSheet">
-          <string notr="true">QDoubleSpinBox { 
-height: 30;
-}
-
-QDoubleSpinBox::up-button { 
-width: 32px; 
-height: 15;
-}
-QDoubleSpinBox::down-button { 
-width: 32px; 
-height: 15;
-
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QFormLayout" name="formLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Level Alert</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QDoubleSpinBox" name="control_3400">
-            <property name="prefix">
-             <string/>
-            </property>
-            <property name="suffix">
-             <string/>
-            </property>
-            <property name="minimum">
-             <double>0.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>100.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Level OFF</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QDoubleSpinBox" name="control_3401">
-            <property name="prefix">
-             <string/>
-            </property>
-            <property name="suffix">
-             <string/>
-            </property>
-            <property name="minimum">
-             <double>0.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>100.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QDoubleSpinBox" name="control_3402">
-            <property name="prefix">
-             <string/>
-            </property>
-            <property name="suffix">
-             <string/>
-            </property>
-            <property name="minimum">
-             <double>0.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>100.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Level ON1</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Level ON2</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QDoubleSpinBox" name="control_3403">
-            <property name="prefix">
-             <string/>
-            </property>
-            <property name="suffix">
-             <string/>
-            </property>
-            <property name="minimum">
-             <double>0.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>100.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Time ALTMAX</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QDoubleSpinBox" name="control_3501">
-            <property name="prefix">
-             <string/>
-            </property>
-            <property name="suffix">
-             <string/>
-            </property>
-            <property name="minimum">
-             <double>0.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>100.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_17">
-         <property name="font">
-          <font>
-           <pointsize>11</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Filtro</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QFrame" name="frame_2">
-         <property name="styleSheet">
-          <string notr="true">QDoubleSpinBox { 
-height: 30;
-}
-
-QDoubleSpinBox::up-button { 
-width: 32px; 
-height: 15;
-}
-QDoubleSpinBox::down-button { 
-width: 32px; 
-height: 15;
-
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QFormLayout" name="formLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_8">
-            <property name="text">
-             <string>Level Oxi Min</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QDoubleSpinBox" name="control_4400"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_9">
-            <property name="text">
-             <string>Level Oxi Max</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QDoubleSpinBox" name="control_4401"/>
-          </item>
-          <item row="3" column="1">
-           <widget class="QDoubleSpinBox" name="control_4501"/>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>Time ALT Max</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_11">
-            <property name="text">
-             <string>Time ON Min</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QDoubleSpinBox" name="control_4502"/>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_12">
-            <property name="text">
-             <string>Prog Time ON</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QDoubleSpinBox" name="control_4540"/>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="label_14">
-            <property name="text">
-             <string>Prog Time OFF</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QDoubleSpinBox" name="control_4541"/>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QFrame" name="frame_4">
-         <property name="styleSheet">
-          <string notr="true">QDoubleSpinBox { 
-height: 30;
-}
-
-QDoubleSpinBox::up-button { 
-width: 32px; 
-height: 15;
-}
-QDoubleSpinBox::down-button { 
-width: 32px; 
-height: 15;
-
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QFormLayout" name="formLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_18">
-            <property name="text">
-             <string>Nivel: Activacion</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QDoubleSpinBox" name="control_9400"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_19">
-            <property name="text">
-             <string>Nivel: Emergencia</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QDoubleSpinBox" name="control_9401"/>
-          </item>
-          <item row="3" column="1">
-           <widget class="QDoubleSpinBox" name="control_9402"/>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_20">
-            <property name="text">
-             <string>Nivel: Minimo</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_22">
-            <property name="text">
-             <string>Lim: Turbidez IN</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QDoubleSpinBox" name="control_9403"/>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_23">
-            <property name="text">
-             <string>Lim: Turbidez OUT</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QDoubleSpinBox" name="control_9500"/>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="label_24">
-            <property name="text">
-             <string>Tiempo: Delay RET</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QDoubleSpinBox" name="control_9501"/>
-          </item>
-          <item row="7" column="0">
-           <widget class="QLabel" name="label_25">
-            <property name="text">
-             <string>Tiempo: OP-G</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="1">
-           <widget class="QDoubleSpinBox" name="control_9502"/>
-          </item>
-          <item row="8" column="0">
-           <widget class="QLabel" name="label_26">
-            <property name="text">
-             <string>Hora: S-EXT</string>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="1">
-           <widget class="QTextEdit" name="textEdit_2"/>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </widget>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>settings</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>settings</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

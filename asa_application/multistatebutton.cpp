@@ -76,7 +76,8 @@ static void setBorderImage(QString *img, QPushButton *btn)
     btn->setStyleSheet("background-image: url("+*img+");"
                      "border: none;"
                      "background-repeat: none;"
-                     "background-position: center;");
+                     "background-position: center;"
+                     "background-color: transparent;");
 }
 
 static void setState(multi_button_state_t state, parameters_t parameter)

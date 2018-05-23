@@ -15,9 +15,11 @@
 #include "asa_conf_string.h"
 #include "token_auth.h"
 #include <QMutex>
+#include "login_dialog.h"
 
 #define BUILD_FOR_RPI (1)
 
+#define MAX_INACTIVITY_TIMEOUT (300 * 1000)
 
 QMutex parametros_mutex;
 bool detailedwindow::user_lock;
@@ -197,6 +199,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     ui(new Ui::detailedwindow)
 {
     ui->setupUi(this);
+    init_completed = false;
 
     synch_output_state();
 
@@ -247,7 +250,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 
     // Nombre Del elemento
     ui->nombre->setFont(font_2);
-    ui->nombre->setStyleSheet("color: black");
+    ui->nombre->setStyleSheet("color: black;"
+                              "background-color: transparent;");
     ui->nombre->setText(detailed_elements[element]->name);
 
     ui->imagen->setStyleSheet("border-image: url("+detailed_elements[element]->image+");");
@@ -306,7 +310,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     tab_4_init();
     tab_5_init();
 
-    init_completed = true;
 //    if(NULL != blur_window)
 //    {
 //        delete blur_window;
@@ -324,9 +327,10 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
 
     // Start timer
-    QTimer::singleShot(10000, this, SLOT(checkClick()));
+    QTimer::singleShot(MAX_INACTIVITY_TIMEOUT, this, SLOT(checkActivity()));
 
     this->move(parent->pos());
+    init_completed = true;
     this->show();
 }
 
@@ -384,6 +388,7 @@ void detailedwindow::on_button_parametros_clicked()
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
+    has_activity = true;
 }
 
 void detailedwindow::on_button_evento_clicked()
@@ -426,6 +431,7 @@ void detailedwindow::on_button_evento_clicked()
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
+    has_activity = true;
 }
 
 void detailedwindow::on_button_descripcion_clicked()
@@ -468,6 +474,7 @@ void detailedwindow::on_button_descripcion_clicked()
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
+    has_activity = true;
 }
 
 void detailedwindow::on_button_visualizacion_clicked()
@@ -511,6 +518,7 @@ void detailedwindow::on_button_visualizacion_clicked()
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
+    has_activity = true;
 }
 
 void detailedwindow::on_button_control_clicked()
@@ -573,24 +581,39 @@ void detailedwindow::on_button_control_clicked()
 
         ui->label->setText("Encendido de Motores");
         ui->tabWidget->setCurrentIndex(4);
+
+        //Check token validity
+        synch_output_state();
+
+        if(false == get_validity_state())
+        {
+            if(NULL != login_d)
+            {
+                delete login_d;
+            }
+            login_d = new login_dialog(this);
+        }
     }
 
     /* Hide keyboard and text edit */
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
+    has_activity = true;
 }
 
 void detailedwindow::checkBoxStateChanged(int a)
 {
     qDebug() << "Toggle active show " << a;
     toggleParamActiveShow(a);
+    has_activity = true;
 }
 
 void detailedwindow::out_checkBoxStateChanged(int a)
 {
     qDebug() << "Toggle output " << a;
     output_control_toggle(a);
+    has_activity = true;
 }
 
 void detailedwindow::update_params()
@@ -659,6 +682,7 @@ void detailedwindow::item_selected(QTableWidgetItem* item)
     //Change to special tab
     ui->tabWidget->setCurrentIndex(5);
     qDebug() << "ID " << selected_id;
+    has_activity = true;
 }
 
 void detailedwindow::on_key_Reschedule_clicked()
@@ -713,6 +737,7 @@ void detailedwindow::on_key_Reschedule_clicked()
     }
 
     ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
+    has_activity = true;
 }
 
 void detailedwindow::on_key_OK_clicked()
@@ -758,6 +783,8 @@ void detailedwindow::on_key_OK_clicked()
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
     ui->tabWidget->setCurrentIndex(1);
+    has_activity = true;
+
 }
 
 void detailedwindow::insert_amount(QString ins)
@@ -765,6 +792,8 @@ void detailedwindow::insert_amount(QString ins)
     posponer_amount += ins;
 
     ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
+    has_activity = true;
+
 }
 
 void detailedwindow::tab_1_init(uint selected_type)
@@ -1144,45 +1173,86 @@ void detailedwindow::tab_5_init()
     for(i = 0; i < (quint32)detailed_elements[what_element]->out_config->ids.size(); i++)
     {
         box_motores = new QCheckBox(detailed_elements[what_element]->out_config->names.at(i));
-
+        controls_ptr[i] = box_motores;
         box_motores->setFont(font_2);
         box_motores->setLayoutDirection(Qt::RightToLeft);
-        box_motores->setStyleSheet("QCheckBox{"
-                                   "width: 40px;"
-                                   "height: 40px;"
-                                   "border: none;"
-                                   "}"
-                                   "QCheckBox::indicator:checked{"
-                                   "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
-                                   "border-width: 0px;"
-                                   "width: 40px;"
-                                   "height: 40px;"
-                                   "}"
-                                   "QCheckBox::indicator:unchecked{"
-                                   "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
-                                   "border-width: 0px;"
-                                   "width: 40px;"
-                                   "height: 40px;"
-                                   "}"
-                                   "QCheckBox::indicator:disabled{"
-                                   "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
-                                   "border-width: 0px;"
-                                   "width: 40px;"
-                                   "height: 40px;"
-                                   "}"
-                                   );
+//        box_motores->setStyleSheet("QCheckBox{"
+//                                   "width: 40px;"
+//                                   "height: 40px;"
+//                                   "border: none;"
+//                                   "}"
+//                                   "QCheckBox::indicator:checked{"
+//                                   "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
+//                                   "border-width: 0px;"
+//                                   "width: 40px;"
+//                                   "height: 40px;"
+//                                   "}"
+//                                   "QCheckBox::indicator:unchecked{"
+//                                   "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
+//                                   "border-width: 0px;"
+//                                   "width: 40px;"
+//                                   "height: 40px;"
+//                                   "}"
+//                                   "QCheckBox::indicator:disabled{"
+//                                   "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
+//                                   "border-width: 0px;"
+//                                   "width: 40px;"
+//                                   "height: 40px;"
+//                                   "}"
+//                                   );
+
         if(true == get_validity_state())
         {
             box_motores->setEnabled(true);
 
-            if(1 == get_id_state(detailed_elements[what_element]->out_config->ids.at(i)).toInt())
+//            if(1 == get_id_state(detailed_elements[what_element]->out_config->ids.at(i)).toInt())
+            if(1 == motor_state(detailed_elements[what_element]->out_config->ids_string.at(i)))
             {
-                box_motores->setChecked(true);
+//                box_motores->setChecked(true);
+                box_motores->setStyleSheet("QCheckBox{"
+                                           "color:white;"
+                                           "width: 40px;"
+                                           "height: 40px;"
+                                           "border: none;"
+                                           "}"
+                                           "QCheckBox::indicator{"
+                                           "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
+                                           "border-width: 0px;"
+                                           "width: 40px;"
+                                           "height: 40px;"
+                                           "}");
+            }
+            else
+            {
+                box_motores->setStyleSheet("QCheckBox{"
+                                           "color:white;"
+                                           "width: 40px;"
+                                           "height: 40px;"
+                                           "border: none;"
+                                           "}"
+                                           "QCheckBox::indicator{"
+                                           "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
+                                           "border-width: 0px;"
+                                           "width: 40px;"
+                                           "height: 40px;"
+                                           "}");
             }
         }
         else
         {
             box_motores->setEnabled(false);
+            box_motores->setStyleSheet("QCheckBox{"
+                                       "color:white;"
+                                       "width: 40px;"
+                                       "height: 40px;"
+                                       "border: none;"
+                                       "}"
+                                       "QCheckBox::indicator{"
+                                       "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
+                                       "border-width: 0px;"
+                                       "width: 40px;"
+                                       "height: 40px;"
+                                       "}");
         }
 
         ui->verticalLayout_2->addWidget(box_motores);
@@ -1307,26 +1377,66 @@ void detailedwindow::tab_4_update()
 void detailedwindow::tab_5_update()
 {
 //    check_lock();
-
     uint i = 0;
-
-//    QCheckBox *box_motores;
-//    for(i = 0; i < (quint32)detailed_elements[what_element]->out_config->ids.size(); i++)
-//    {
-//        if(true == get_validity_state())
-//        {
-//            box_motores->setEnabled(true);
+    QCheckBox *box_motores;
+    for(i = 0; i < (quint32)detailed_elements[what_element]->out_config->ids.size(); i++)
+    {
+        box_motores = controls_ptr[i];
+        if(true == get_validity_state())
+        {
+            box_motores->setEnabled(true);
 
 //            if(1 == get_id_state(detailed_elements[what_element]->out_config->ids.at(i)).toInt())
-//            {
+            if(1 == motor_state(detailed_elements[what_element]->out_config->ids_string.at(i)))
+            {
 //                box_motores->setChecked(true);
-//            }
-//        }
-//        else
-//        {
-//            box_motores->setEnabled(false);
-//        }
-//    }
+                box_motores->setStyleSheet("QCheckBox{"
+                                           "color:white;"
+                                           "width: 40px;"
+                                           "height: 40px;"
+                                           "border: none;"
+                                           "}"
+                                           "QCheckBox::indicator{"
+                                           "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
+                                           "border-width: 0px;"
+                                           "width: 40px;"
+                                           "height: 40px;"
+                                           "}");
+            }
+            else
+            {
+                box_motores->setStyleSheet("QCheckBox{"
+                                           "color:white;"
+                                           "width: 40px;"
+                                           "height: 40px;"
+                                           "border: none;"
+                                           "}"
+                                           "QCheckBox::indicator{"
+                                           "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
+                                           "border-width: 0px;"
+                                           "width: 40px;"
+                                           "height: 40px;"
+                                           "}");
+            }
+        }
+        else
+        {
+            box_motores->setEnabled(false);
+            box_motores->setStyleSheet("QCheckBox{"
+                                       "color:white;"
+                                       "width: 40px;"
+                                       "height: 40px;"
+                                       "border: none;"
+                                       "}"
+                                       "QCheckBox::indicator{"
+                                       "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
+                                       "border-width: 0px;"
+                                       "width: 40px;"
+                                       "height: 40px;"
+                                       "}");
+
+        }
+    }
 
 }
 
@@ -1364,6 +1474,8 @@ void detailedwindow::on_ayuda_btn_clicked()
             break;
         }
     }
+    has_activity = true;
+
 }
 
 void detailedwindow::on_key_Q_clicked(){if(ui->key_mayus->isChecked()){ui->textEdit->insertPlainText("Q");}else{ui->textEdit->insertPlainText("q");}}
@@ -1410,6 +1522,8 @@ void detailedwindow::background_clicked()
 void detailedwindow::on_textEdit_selectionChanged()
 {
     ui->key_Reschedule->setChecked(false);
+    has_activity = true;
+
 }
 
 
@@ -1428,9 +1542,19 @@ void detailedwindow::on_filtro_electricos_clicked()
     this->tab_1_init(0);
 }
 
-void detailedwindow::checkClick()
+void detailedwindow::checkActivity()
 {
-
+    if(true == has_activity)
+    {
+        // Hay actividad, rearmar timer
+        has_activity = false;
+        QTimer::singleShot(MAX_INACTIVITY_TIMEOUT, this, SLOT(checkActivity()));
+    }
+    else
+    {
+        output_token_transfer(false);
+        this->close();
+    }
 }
 
 

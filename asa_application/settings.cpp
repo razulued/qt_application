@@ -5,6 +5,8 @@
 #include "configuration.h"
 #include <QProcess>
 #include <QDir>
+#include <QScroller>
+#include "parameters.h"
 
 settings::settings(QWidget *parent) :
     QDialog(parent),
@@ -50,6 +52,16 @@ settings::settings(QWidget *parent) :
         }
     }
 
+
+    QScroller *scroller = QScroller::scroller(ui->scrollArea);
+    QScrollerProperties properties = QScroller::scroller(scroller)->scrollerProperties();
+    QVariant overshootPolicy = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy);
+    scroller->setScrollerProperties(properties);
+    //Scrolling Gesture
+    scroller->grabGesture(ui->scrollArea,QScroller::LeftMouseButtonGesture);
+
+    synch_calibrations();
 
     this->show();
 
@@ -161,3 +173,29 @@ void settings::on_key_back_clicked()
     active_text_edit->textCursor().deletePreviousChar();
 }
 void settings::on_key_enter_clicked() {active_text_edit->insertPlainText("\n");}
+
+void settings::synch_calibrations()
+{
+    ui->control_3400->setValue(getParamValue(0x3400).toDouble());
+    ui->control_3401->setValue(getParamValue(0x3401).toDouble());
+    ui->control_3402->setValue(getParamValue(0x3402).toDouble());
+    ui->control_3403->setValue(getParamValue(0x3403).toDouble());
+    ui->control_3501->setValue(getParamValue(0x3501).toDouble());
+
+    ui->control_4400->setValue(getParamValue(0x4400).toDouble());
+    ui->control_4401->setValue(getParamValue(0x4401).toDouble());
+    ui->control_4501->setValue(getParamValue(0x4501).toDouble());
+    ui->control_4502->setValue(getParamValue(0x4502).toDouble());
+    ui->control_4540->setValue(getParamValue(0x4540).toDouble());
+    ui->control_4541->setValue(getParamValue(0x4541).toDouble());
+
+    ui->control_5400->setValue(getParamValue(0x5400).toDouble());
+    ui->control_5401->setValue(getParamValue(0x5401).toDouble());
+
+    ui->control_9400->setValue(getParamValue(0x9400).toDouble());
+    ui->control_9401->setValue(getParamValue(0x9401).toDouble());
+    ui->control_9402->setValue(getParamValue(0x9402).toDouble());
+    ui->control_9403->setValue(getParamValue(0x9403).toDouble());
+    ui->control_9501->setValue(getParamValue(0x9501).toDouble());
+    ui->control_9502->setValue(getParamValue(0x9502).toDouble());
+}

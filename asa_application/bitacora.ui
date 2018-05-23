@@ -603,7 +603,7 @@ background-position: center;
   <widget class="QPushButton" name="top_menu_1">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>160</x>
      <y>0</y>
      <width>31</width>
      <height>41</height>
@@ -632,7 +632,7 @@ background-position: center;
   <widget class="QPushButton" name="top_menu_3">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>10</x>
      <y>2</y>
      <width>41</width>
      <height>41</height>
@@ -660,7 +660,7 @@ background-repeat: none;
   <widget class="QPushButton" name="top_menu_5">
    <property name="geometry">
     <rect>
-     <x>148</x>
+     <x>60</x>
      <y>0</y>
      <width>34</width>
      <height>41</height>
@@ -688,7 +688,7 @@ background-repeat: none;
   <widget class="QPushButton" name="top_menu_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>110</x>
      <y>0</y>
      <width>41</width>
      <height>41</height>

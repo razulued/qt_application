@@ -12,7 +12,10 @@
 #include <QScrollerProperties>
 QMutex g_mutex;
 
-#define VAL_SEPARATION (ui->graphicsView->width()/10)
+#define VAL_SEC_SEPARATION (ui->graphicsView->width()/60)
+#define VAL_MIN_SEPARATION (ui->graphicsView_2->width()/60)
+#define VAL_HOUR_SEPARATION (ui->graphicsView_3->width()/24)
+
 
 #define VOLT_MAX (500)
 #define VOLT_MIN (0)
@@ -123,6 +126,7 @@ graphwindow::graphwindow(QWidget *parent) :
     ui->label_30->setStyleSheet(ui->label->styleSheet());
     ui->label_31->setStyleSheet(ui->label->styleSheet());
     ui->label_32->setStyleSheet(ui->label->styleSheet());
+    ui->label_33->setStyleSheet(ui->label->styleSheet());
 
     ui->pb_OD_in->setStyleSheet(ui->volts_1->styleSheet());
     ui->pb_OD_out->setStyleSheet(ui->volts_1->styleSheet());
@@ -166,6 +170,11 @@ graphwindow::graphwindow(QWidget *parent) :
 
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView_3->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView_3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 }
 
@@ -201,13 +210,13 @@ void graphwindow::show_graph(uint type)
         break;
     case TYPE_FISICOS:
         ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/PF_bar.png);");
-        parameter_to_graph = 0x3203;
+        parameter_to_graph = GASTO_INS;
         ui->label_graph->setText("Gasto Instantáneo");
 
         break;
     case TYPE_QUIMICOS:
         ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/PQ_bar.png);");
-        parameter_to_graph = 0x3307;
+        parameter_to_graph = OD_IN;
         ui->label_graph->setText("OD entrada");
         break;
 
@@ -236,29 +245,41 @@ void graphwindow::update_graph()
         break;
         // fisicos
     case TYPE_FISICOS:
-        ui->pb_gasto_inst->setText(get_last_value_from_param(0x3203));
-        ui->pb_gasto_acc->setText(get_last_value_from_param(0x4203));
+        ui->pb_gasto_inst->setText(get_last_value_from_param(GASTO_INS));
+        ui->pb_gasto_acc->setText(get_last_value_from_param(GASTO_ACC));
 
-        ui->pb_nivel_clarif->setText(get_last_value_from_param(0x5201));
-        ui->pb_nivel_reg->setText(get_last_value_from_param(0x3201));
+        ui->pb_nivel_clarif->setText(get_last_value_from_param(NIVEL_CL));
+        ui->pb_nivel_reg->setText(get_last_value_from_param(NIVEL_REG));
 
-        ui->pb_presion_aire->setText(get_last_value_from_param(0x4205));
-        ui->pb_presion_filt->setText(get_last_value_from_param(0x8205));
+        ui->pb_presion_aire->setText(get_last_value_from_param(PRES_AIR));
+        ui->pb_presion_filt->setText(get_last_value_from_param(PRES_FIL));
         break;
         // quimicos
     case TYPE_QUIMICOS:
-        ui->pb_OD_in->setText(get_last_value_from_param(0x3307));
-        ui->pb_OD_out->setText(get_last_value_from_param(0x5307));
-        ui->pb_pH_in->setText(get_last_value_from_param(0x3305));
-        ui->pb_pH_out->setText(get_last_value_from_param(0x5305));
-        ui->pb_SST_in->setText(get_last_value_from_param(0x3303));
-        ui->pb_SST_out->setText(get_last_value_from_param(0x5303));
-        ui->pb_Turb_in->setText(get_last_value_from_param(0x3301));
-        ui->pb_Turb_out->setText(get_last_value_from_param(0x5301));
+        ui->pb_OD_in->setText(get_last_value_from_param(OD_IN));
+        ui->pb_OD_out->setText(get_last_value_from_param(OD_OUT));
+        ui->pb_pH_in->setText(get_last_value_from_param(PH_IN));
+        ui->pb_pH_out->setText(get_last_value_from_param(PH_OUT));
+        ui->pb_SST_in->setText(get_last_value_from_param(SST_IN));
+        ui->pb_SST_out->setText(get_last_value_from_param(SST_OUT));
+        ui->pb_Turb_in->setText(get_last_value_from_param(Turb_IN));
+        ui->pb_Turb_out->setText(get_last_value_from_param(Turb_OUT));
         break;
     }
 
     update_graph_window(parameter_to_graph);
+
+    // change color to parameter
+    switch(parameter_to_graph)
+    {
+    case GASTO_INS:
+        ui->volts_1->setStyleSheet("color:white;"
+                                   "background-color: transparent;"
+                                   "border: none;"
+                                   "background-repeat: none;"
+                                   "background-position: center;");
+        break;
+    }
 }
 
 void graphwindow::on_top_menu_3_clicked()
@@ -328,39 +349,109 @@ void graphwindow::on_amps_3_clicked()
 
 void graphwindow::update_graph_window(uint param)
 {
-    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView);
-//    scene->setSceneRect(0,0,100,100);
-    QList<float>values;
+    update_graph_seconds(param);
+    update_graph_minutes(param);
+    update_graph_hour(param);
+}
+
+void graphwindow::update_graph_seconds(uint param)
+{
     int i;
     QPolygon pol;
     QPoint point;
+    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView);
+    QList<float>values_60_seconds;
+
 
     qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
     g_mutex.lock();
-    values = get_list_from_param(param);
+    values_60_seconds = get_list_last_60_sec_from_param(param);
     g_mutex.unlock();
 
+    // 60 SEGUNDOS
     draw_grill(scene);
-    //GET GRAPH LINES
-    for(i = 0; i < (values.length()); i++)
+    // Graph lines
+    for(i = 0; i < (values_60_seconds.length()); i++)
     {
-//        scene->addLine(i*VAL_SEPARATION(num_of_values), values.at(i),(i+1)*VAL_SEPARATION(num_of_values), values.at(i+1), pen);
-        point.setX(i*VAL_SEPARATION);
-//        point.setY(values.at(i)*-1);
-       point.setY(adjusted_y_value(values.at(i))*-1);
-       pol.append(point);
+        point.setX(i*VAL_SEC_SEPARATION);
+        point.setY(adjusted_y_value(values_60_seconds.at(i))*-1);
+        pol.append(point);
     }
     QPainterPath path;
     path.addPolygon(pol);
     scene->addPath(path, pen);
-
     i = i-1;
-    draw_end_ball(scene, i*VAL_SEPARATION, adjusted_y_value(values.at(i)));
-
+    draw_end_ball(scene, i*VAL_SEC_SEPARATION, adjusted_y_value(values_60_seconds.at(i)));
     scene->setSceneRect(0,-ui->graphicsView->height(),500,280);
 
     ui->graphicsView->setScene(scene);
 
+}
+
+void graphwindow::update_graph_minutes(uint param)
+{
+    int i;
+    QPolygon pol;
+    QPoint point;
+    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView_2);
+    QList<float>values_60_minutes;
+
+
+    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
+    g_mutex.lock();
+    values_60_minutes = get_list_last_60_min_from_param(param);
+    g_mutex.unlock();
+
+    // 60 SEGUNDOS
+    draw_grill(scene);
+    // Graph lines
+    for(i = 0; i < (values_60_minutes.length()); i++)
+    {
+        point.setX(i*VAL_MIN_SEPARATION);
+        point.setY(adjusted_y_value(values_60_minutes.at(i))*-1);
+        pol.append(point);
+    }
+    QPainterPath path;
+    path.addPolygon(pol);
+    scene->addPath(path, pen);
+    i = i-1;
+    draw_end_ball(scene, i*VAL_MIN_SEPARATION, adjusted_y_value(values_60_minutes.at(i)));
+    scene->setSceneRect(0,-ui->graphicsView_2->height(),500,280);
+
+    ui->graphicsView_2->setScene(scene);
+}
+
+void graphwindow::update_graph_hour(uint param)
+{
+    int i;
+    QPolygon pol;
+    QPoint point;
+    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView_3);
+    QList<float>values_24_hours;
+
+
+    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
+    g_mutex.lock();
+    values_24_hours = get_list_last_24_hour_from_param(param);
+    g_mutex.unlock();
+
+    // 60 SEGUNDOS
+    draw_grill(scene);
+    // Graph lines
+    for(i = 0; i < (values_24_hours.length()); i++)
+    {
+        point.setX(i*VAL_HOUR_SEPARATION);
+        point.setY(adjusted_y_value(values_24_hours.at(i))*-1);
+        pol.append(point);
+    }
+    QPainterPath path;
+    path.addPolygon(pol);
+    scene->addPath(path, pen);
+    i = i-1;
+    draw_end_ball(scene, i*VAL_HOUR_SEPARATION, adjusted_y_value(values_24_hours.at(i)));
+    scene->setSceneRect(0,-ui->graphicsView_3->height(),500,280);
+
+    ui->graphicsView_3->setScene(scene);
 }
 
 
@@ -383,7 +474,7 @@ void graphwindow::on_tabWidget_currentChanged(int index)
 void graphwindow::on_pb_gasto_inst_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x3203;
+    parameter_to_graph = GASTO_INS;
     g_mutex.unlock();
 
     ui->label_graph->setText("Gasto Instantáneo");
@@ -393,7 +484,7 @@ void graphwindow::on_pb_gasto_inst_clicked()
 void graphwindow::on_pb_gasto_acc_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x4203;
+    parameter_to_graph = GASTO_ACC;
     g_mutex.unlock();
 
     ui->label_graph->setText("Gasto Accumulado");
@@ -403,7 +494,7 @@ void graphwindow::on_pb_gasto_acc_clicked()
 void graphwindow::on_pb_nivel_reg_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x3201;
+    parameter_to_graph = NIVEL_REG;
     g_mutex.unlock();
 
     ui->label_graph->setText("Nivel Regulador");
@@ -413,7 +504,7 @@ void graphwindow::on_pb_nivel_reg_clicked()
 void graphwindow::on_pb_nivel_clarif_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x5201;
+    parameter_to_graph = NIVEL_CL;
     g_mutex.unlock();
 
     ui->label_graph->setText("Nivel Clarificador");
@@ -423,7 +514,7 @@ void graphwindow::on_pb_nivel_clarif_clicked()
 void graphwindow::on_pb_presion_aire_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x4205;
+    parameter_to_graph = PRES_AIR;
     g_mutex.unlock();
 
     ui->label_graph->setText("Presión Aireador");
@@ -433,7 +524,7 @@ void graphwindow::on_pb_presion_aire_clicked()
 void graphwindow::on_pb_presion_filt_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x8205;
+    parameter_to_graph = PRES_FIL;
     g_mutex.unlock();
 
     ui->label_graph->setText("Presión Filtración");
@@ -443,7 +534,7 @@ void graphwindow::on_pb_presion_filt_clicked()
 void graphwindow::on_pb_OD_in_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x3307;
+    parameter_to_graph = OD_IN;
     g_mutex.unlock();
 
     ui->label_graph->setText("OD entrada");
@@ -453,7 +544,7 @@ void graphwindow::on_pb_OD_in_clicked()
 void graphwindow::on_pb_pH_in_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x3305;
+    parameter_to_graph = PH_IN;
     g_mutex.unlock();
 
     ui->label_graph->setText("pH entrada");
@@ -463,7 +554,7 @@ void graphwindow::on_pb_pH_in_clicked()
 void graphwindow::on_pb_SST_in_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x3303;
+    parameter_to_graph = SST_IN;
     g_mutex.unlock();
 
     ui->label_graph->setText("SST entrada");
@@ -473,7 +564,7 @@ void graphwindow::on_pb_SST_in_clicked()
 void graphwindow::on_pb_Turb_in_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x3301;
+    parameter_to_graph = Turb_IN;
     g_mutex.unlock();
 
     ui->label_graph->setText("Turbidez entrada");
@@ -483,7 +574,7 @@ void graphwindow::on_pb_Turb_in_clicked()
 void graphwindow::on_pb_OD_out_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x5307;
+    parameter_to_graph = OD_OUT;
     g_mutex.unlock();
 
     ui->label_graph->setText("OD salida");
@@ -493,7 +584,7 @@ void graphwindow::on_pb_OD_out_clicked()
 void graphwindow::on_pb_pH_out_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x5305;
+    parameter_to_graph = PH_OUT;
     g_mutex.unlock();
 
     ui->label_graph->setText("pH salida");
@@ -503,7 +594,7 @@ void graphwindow::on_pb_pH_out_clicked()
 void graphwindow::on_pb_SST_out_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x5303;
+    parameter_to_graph = SST_OUT;
     g_mutex.unlock();
 
     ui->label_graph->setText("SST salida");
@@ -513,7 +604,7 @@ void graphwindow::on_pb_SST_out_clicked()
 void graphwindow::on_pb_Turb_out_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = 0x5301;
+    parameter_to_graph = Turb_OUT;
     g_mutex.unlock();
 
     ui->label_graph->setText("Turbidez salida");
@@ -575,57 +666,57 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
         break;
     case TYPE_FISICOS:
 
-        if(parameter_to_graph == 0x3203 || parameter_to_graph == 0x4203)
+        if(parameter_to_graph == GASTO_INS || parameter_to_graph == GASTO_ACC)
         {
             min_value = 0;
-            max_value = 400;
-            num_of_lines = 40;
-            ui->div_text->setText("10 LPM/div");
+            max_value = 150;
+            num_of_lines = 10;
+            ui->div_text->setText("15 LPM/div");
         }
-        else if(parameter_to_graph == 0x5201 || parameter_to_graph == 0x3201)
+        else if(parameter_to_graph == NIVEL_REG || parameter_to_graph == NIVEL_CL)
         {
             min_value = 0;
             max_value = 10;
-            num_of_lines = 20;
-            ui->div_text->setText("0.5 m/div");
+            num_of_lines = 10;
+            ui->div_text->setText("1 m/div");
         }
-        else if(parameter_to_graph == 0x4205 || parameter_to_graph == 0x8205)
+        else if(parameter_to_graph == PRES_AIR || parameter_to_graph == PRES_FIL)
         {
             min_value = 0;
-            max_value = 100;
+            max_value = 15;
             num_of_lines = 10;
-            ui->div_text->setText("10 PSI/div");
+            ui->div_text->setText("1.5 PSI/div");
         }
 
         break;
         // quimicos
     case TYPE_QUIMICOS:
-        if(parameter_to_graph == 0x3307 || parameter_to_graph == 0x5307)
+        if(parameter_to_graph == OD_IN || parameter_to_graph == OD_OUT)
         {
             min_value = 0;
-            max_value = 40;
-            num_of_lines = 40;
+            max_value = 8;
+            num_of_lines = 8;
             ui->div_text->setText("1 ppm/div");
         }
-        else if(parameter_to_graph == 0x3305 || parameter_to_graph == 0x5305)
+        else if(parameter_to_graph == SST_IN || parameter_to_graph == SST_OUT)
         {
             min_value = 0;
-            max_value = 1000;
-            num_of_lines = 20;
-            ui->div_text->setText("50 mg/l div");
+            max_value = 800;
+            num_of_lines = 10;
+            ui->div_text->setText("80 mg/l div");
         }
-        else if(parameter_to_graph == 0x3303 || parameter_to_graph == 0x5303)
+        else if(parameter_to_graph == Turb_IN || parameter_to_graph == Turb_OUT)
         {
             min_value = 0;
             max_value = 100;
             num_of_lines = 10;
             ui->div_text->setText("10 NTU/div");
         }
-        else if(parameter_to_graph == 0x3301 || parameter_to_graph == 0x5301)
+        else if(parameter_to_graph == PH_IN || parameter_to_graph == PH_OUT)
         {
             min_value = 0;
-            max_value = 10;
-            num_of_lines = 10;
+            max_value = 14;
+            num_of_lines = 14;
             ui->div_text->setText("1 pH/div");
         }
         break;
@@ -636,9 +727,25 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
 
     ui->min_value->setText(QString::number(min_value));
     ui->max_value->setText(QString::number(max_value));
+
+
     for(i = 0; i < num_of_lines; i++)
     {
         scene->addLine(0, i*separation*-1, ui->graphicsView->width(), i*separation*-1, pen);
+    }
+
+    pen.setColor(QColor(25, 25, 25));
+    pen.setWidth(1);
+    for(i = 0; i < 12; i++)
+    {
+        if(0 == i%2)
+        {
+            scene->addLine(i*ui->graphicsView->width()/12, 0, i*ui->graphicsView->width()/12, -1*ui->graphicsView->height(), pen);
+        }
+        else
+        {
+            scene->addLine(i*ui->graphicsView->width()/12, 0, i*ui->graphicsView->width()/12, -10, pen);
+        }
     }
 
 }
@@ -665,4 +772,24 @@ qreal graphwindow::adjusted_y_value(qreal val)
     new_value = new_value / max_value;
 
     return  new_value;
+}
+
+void graphwindow::color_to_label(QLabel *label, bool active)
+{
+    if(true == active)
+    {
+        label->setStyleSheet("color:yellow;"
+                                   "background-color: transparent;"
+                                   "border: none;"
+                                   "background-repeat: none;"
+                                   "background-position: center;");
+    }
+    else
+    {
+        label->setStyleSheet("color:white;"
+                                   "background-color: transparent;"
+                                   "border: none;"
+                                   "background-repeat: none;"
+                                   "background-position: center;");
+    }
 }

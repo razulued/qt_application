@@ -24,6 +24,8 @@
 #include "login_dialog.h"
 #include "simulation_input.h"
 #include "motores.h"
+#include "filtrowindow.h"
+#include "change_text.h"
 
 namespace Ui {
 class MainWindow;
@@ -143,8 +145,16 @@ private slots:
 
     void on_prof_pic_clicked();
 
+    void on_go_to_filtro_clicked();
+    void update_buttons_from_filter(bool active, parameters_t param);
+    void update_title(QString text);
+
+    void on_label_title_clicked();
+    void check_title_click();
+
 private:
     QTimer dataTimer;
+    uint title_click_count = 0;
 
     Ui::MainWindow *ui;
     bool display_parameters;
@@ -237,6 +247,8 @@ private:
 
     simulation_input *sim_window = NULL;
     motores *motrores_window = NULL;
+    filtrowindow *filt_window = NULL;
+    change_text *change_text_window = NULL;
 protected:
     void paintEvent(QPaintEvent *);
 };

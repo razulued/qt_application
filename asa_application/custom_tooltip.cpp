@@ -64,12 +64,12 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
     QPoint pos = parent_frame->pos();
     if (!myFile.open(QIODevice::ReadOnly))
     {
-        //qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
+//        qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
     }
     else
     {
         in >> pos;
-//        qDebug() << "read pos " << pos;
+//        qDebug() << "tool: " << actual_tooltip_number <<"pos " << pos;
     }
 
     parent_frame->move(pos);

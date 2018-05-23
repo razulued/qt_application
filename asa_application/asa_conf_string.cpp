@@ -230,3 +230,22 @@ QString get_id_state(uint id)
 
     return value;
 }
+
+uint motor_state(QString motor_control)
+{
+    qDebug() << "motor_control " << motor_control;
+    if(motor_control =="3602"){    return getParamValue(0x3000).toInt();}
+    else if(motor_control =="3603"){return getParamValue(0x3010).toInt();}
+
+    else if(motor_control =="4601"){return getParamValue(0x4000).toInt();}
+    else if(motor_control =="4602"){return getParamValue(0x4010).toInt();}
+    else if(motor_control =="4603"){return getParamValue(0x4020).toInt();}
+    else if(motor_control =="4604"){return getParamValue(0x4030).toInt();}
+
+    else if(motor_control =="9601"){return getParamValue(0x9000).toInt();}
+    else if(motor_control =="9602"){return getParamValue(0x9010).toInt();}
+    else if(motor_control =="9603"){return getParamValue(0x9020).toInt();}
+    else if(motor_control =="9604"){return getParamValue(0x9030).toInt();}
+
+    return 0;
+}

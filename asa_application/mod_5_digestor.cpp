@@ -30,33 +30,29 @@ void mod_5_digestor::load_new_gif(uint state)
         switch (state)
         {
         case DIGESTOR_GIF_STATE_NONE:
-            mv = new QMovie(":/digestor/images/5_Digestor/digester_empty.png");
+            mv = new QMovie(":/gifs/5 Digestor/screen800x600/gifs/5 Digestor/digester empty.png");
             break;
         case DIGESTOR_GIF_STATE_HI_QUIET:
-            mv = new QMovie(":/digestor/images/5_Digestor/digester_hi_quiet.png");
-    //        parent_label->setGeometry(original_pos.x()-2, original_pos.y()-1, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/5 Digestor/screen800x600/gifs/5 Digestor/03 digester hi quiet.png");
             break;
         case DIGESTOR_GIF_STATE_HI_MOV:
-            mv = new QMovie(":/digestor/images/5_Digestor/digester_hi_mov_water.gif");
-    //        parent_label->setGeometry(original_pos.x()+10, original_pos.y()+3, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/5 Digestor/screen800x600/gifs/5 Digestor/03 digester hi mov water.gif");
             break;
         case DIGESTOR_GIF_STATE_MED_QUIET:
-            mv = new QMovie(":/digestor/images/5_Digestor/digester_med_quiet.png");
+            mv = new QMovie(":/gifs/5 Digestor/screen800x600/gifs/5 Digestor/02 digester med quiet.png");
             break;
         case DIGESTOR_GIF_STATE_MED_MOV:
-            mv = new QMovie(":/digestor/images/5_Digestor/digester_med_mov_water.gif");
-//            parent_label->setGeometry(original_pos.x(), original_pos.y()-8, parent_label->width(), parent_label->height());
+            mv = new QMovie("::/gifs/5 Digestor/screen800x600/gifs/5 Digestor/02 digester med mov water.gif");
             break;
         case DIGESTOR_GIF_STATE_LOW_QUIET:
-            mv = new QMovie(":/digestor/images/5_Digestor/digester_low_quiet.png");
+            mv = new QMovie(":/gifs/5 Digestor/screen800x600/gifs/5 Digestor/01 digester low quiet.png");
             //No position change
             break;
         case DIGESTOR_GIF_STATE_LOW_MOV:
-            mv = new QMovie(":/digestor/images/5_Digestor/digester_low_mov_water.gif");
-            parent_label->setGeometry(original_pos.x(), original_pos.y()-8, parent_label->width(), parent_label->height());
+            mv = new QMovie(":/gifs/5 Digestor/screen800x600/gifs/5 Digestor/01 digester low mov water.gif");
             break;
         default:
-            mv = new QMovie(":/reactor/images/2_Reactor/reactor.png");
+            mv = new QMovie(":/gifs/5 Digestor/screen800x600/gifs/5 Digestor/03 digester hi quiet.png");
             break;
         }
 
@@ -65,6 +61,7 @@ void mod_5_digestor::load_new_gif(uint state)
         parent_label->setMovie(mv);
 
         last_state = state;
+        update_window();
     }
 
 }

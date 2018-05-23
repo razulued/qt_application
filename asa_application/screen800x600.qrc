@@ -25,6 +25,9 @@
         <file>screen800x600/barras/PF_bar.png</file>
         <file>screen800x600/barras/PQ_bar.png</file>
         <file>screen800x600/barras/barra_grafica.png</file>
+        <file>screen800x600/barras/barra_limpia.png</file>
+        <file>screen800x600/barras/Indice diagrama limpio.png</file>
+        <file>screen800x600/barras/barra_contrasena.png</file>
     </qresource>
     <qresource prefix="/iconos">
         <file>screen800x600/iconos/Ajustes azul.png</file>
@@ -105,6 +108,8 @@
         <file>screen800x600/iconos/Prof pic blanco.png</file>
         <file>screen800x600/iconos/Prof pic azul.png</file>
         <file>screen800x600/iconos/Encendido verde.png</file>
+        <file>images/Iconos/Flecha_derecha.png</file>
+        <file>images/Iconos/Flecha_izquierda.png</file>
     </qresource>
     <qresource prefix="/texto">
         <file>screen800x600/texto/Teclado 1.1/0 azul.png</file>
@@ -229,6 +234,8 @@
         <file>screen800x600/diagrama/PQ.png</file>
         <file>screen800x600/diagrama/PE.png</file>
         <file>screen800x600/diagrama/Filtro.png</file>
+        <file>screen800x600/diagrama/Filtro_medium.png</file>
+        <file>screen800x600/diagrama/Filtro 5SDF portátil_1.png</file>
     </qresource>
     <qresource prefix="/gifs/0 Equipos">
         <file>screen800x600/gifs/0 Equipos/Blower Jet fail mov.gif</file>
@@ -312,6 +319,12 @@
     </qresource>
     <qresource prefix="/gifs/5 Digestor">
         <file>screen800x600/gifs/5 Digestor/digester empty.png</file>
+        <file>screen800x600/gifs/5 Digestor/01 digester low mov water.gif</file>
+        <file>screen800x600/gifs/5 Digestor/01 digester low quiet.png</file>
+        <file>screen800x600/gifs/5 Digestor/02 digester med mov water.gif</file>
+        <file>screen800x600/gifs/5 Digestor/02 digester med quiet.png</file>
+        <file>screen800x600/gifs/5 Digestor/03 digester hi mov water.gif</file>
+        <file>screen800x600/gifs/5 Digestor/03 digester hi quiet.png</file>
     </qresource>
     <qresource prefix="/gifs/6 Lechos">
         <file>screen800x600/gifs/6 Lechos/sand bed 01.png</file>

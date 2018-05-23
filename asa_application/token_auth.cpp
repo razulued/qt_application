@@ -2,44 +2,38 @@
 #include <QDebug>
 #include "asa_conf_string.h"
 #include <QMutex>
-QString valid_key = "1234";
+#include <QSettings>
+#include <QDir>
+#include <QCryptographicHash>
+
 QMutex key_mutex;
 
-uint current_user_index = 0;
-typedef struct
-{
-    QString username;
-    QString password;
-}user_pass;
-
-const user_pass user_pass_table[]=
-{
-    "Sin usuario",   "",
-    "Juan Perez",   "1234",
-    "Luis Ramirez", "abc123",
-};
+QString current_user_key;
 
 bool token_validity = false;
 
 bool check_user_password(QString str)
 {
-    uint i= 0;
     bool ret = false;
 
-    for(i = 0; i < (sizeof(user_pass_table)/sizeof(user_pass)); i++)
+    QString hash_password = QString(QCryptographicHash::hash(str.toLocal8Bit(),QCryptographicHash::Sha1).toHex());
+
+    //Open access.ini
+    QSettings conf(QDir::currentPath() + "/access.ini", QSettings::IniFormat);
+    conf.sync();
+    conf.beginGroup("Passwords");
+    QList<QString> current_passwords = conf.childKeys();
+    foreach(const QString &key, current_passwords)
     {
-        if(str == user_pass_table[i].password)
+        if(key == hash_password)
         {
+//            qDebug() << "KEY FOUND - ID: " << conf.value(key);
+            current_user_key = key;
             ret = true;
-            current_user_index = i;
             break;
         }
-        else
-        {
-            current_user_index = 0;
-        }
-
     }
+    conf.endGroup();
 
     return ret;
 }
@@ -48,7 +42,7 @@ void validate_token(bool val)
 {
     if(false == val)
     {
-        current_user_index = 0;
+        current_user_key = "";
     }
 
     token_validity = val;
@@ -63,5 +57,19 @@ bool get_validity_state()
 
 QString get_user_name()
 {
-    return user_pass_table[current_user_index].username;
+    QString username = "Sin Usuario";
+    QSettings conf(QDir::currentPath() + "/access.ini", QSettings::IniFormat);
+    conf.sync();
+    conf.beginGroup("Passwords");
+    QList<QString> current_passwords = conf.childKeys();
+    foreach(const QString &key, current_passwords)
+    {
+        if(key == current_user_key)
+        {
+            username = conf.value(key).toString();
+            break;
+        }
+    }
+    conf.endGroup();
+    return username;
 }

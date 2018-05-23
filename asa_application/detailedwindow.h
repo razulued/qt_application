@@ -7,6 +7,7 @@
 #include "rutinas_mantenimiento.h"
 #include <QTableWidgetItem>
 #include "login_dialog.h"
+#include <QCheckBox>
 
 typedef enum
 {
@@ -136,7 +137,7 @@ private slots:
 
     void on_filtro_electricos_clicked();
 
-    void checkClick();
+    void checkActivity();
 
 private:
     Ui::detailedwindow *ui;
@@ -181,6 +182,9 @@ private:
     void check_lock();
 
     bool has_output_control = false;
-};
+
+    bool has_activity = false;
+    QCheckBox* controls_ptr[10];
+    };
 
 #endif // DETAILEDWINDOW_H

@@ -434,7 +434,7 @@ background-position: center;
     <property name="styleSheet">
      <string notr="true">#top_bar { 
 background-color: transparent;
-background-image: url(:/barras/screen800x600/barras/Indice diagrama.png);
+background-image: url(:/barras/screen800x600/barras/Indice diagrama limpio.png);
 border: none; 
 background-repeat: none;
  } </string>
@@ -446,7 +446,7 @@ background-repeat: none;
    <widget class="QPushButton" name="top_menu_1">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>150</x>
       <y>0</y>
       <width>31</width>
       <height>41</height>
@@ -682,8 +682,8 @@ background-position: center;
    <widget class="QPushButton" name="modulo_8">
     <property name="geometry">
      <rect>
-      <x>727</x>
-      <y>257</y>
+      <x>670</x>
+      <y>208</y>
       <width>61</width>
       <height>41</height>
      </rect>
@@ -932,10 +932,10 @@ border:none;
    <widget class="QLabel" name="gif_modulo_5">
     <property name="geometry">
      <rect>
-      <x>564</x>
-      <y>264</y>
-      <width>111</width>
-      <height>111</height>
+      <x>520</x>
+      <y>220</y>
+      <width>200</width>
+      <height>200</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1047,7 +1047,7 @@ background-repeat: none;
     <property name="styleSheet">
      <string notr="true">#gif_modulo_6
 {
-background-image: url(:/gifs/6 Lechos/screen800x600/gifs/6 Lechos/sand bed 01.png);
+background-image: url(:/gifs/6 Lechos/screen800x600/gifs/6 Lechos/sand bed 03.png);
 background-repeat: none;
 background-position:center;
 border:none;
@@ -1114,7 +1114,7 @@ border:none;*/
    <widget class="QPushButton" name="top_menu_2">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>100</x>
       <y>0</y>
       <width>31</width>
       <height>41</height>
@@ -1142,7 +1142,7 @@ background-repeat: none;
    <widget class="QPushButton" name="top_menu_3">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>10</x>
       <y>2</y>
       <width>31</width>
       <height>41</height>
@@ -1392,7 +1392,7 @@ background-position: center;
    <widget class="QPushButton" name="top_menu_6">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>50</x>
       <y>0</y>
       <width>34</width>
       <height>41</height>
@@ -1415,102 +1415,6 @@ background-repeat: none;
     </property>
     <property name="checkable">
      <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="bck_modulo_9">
-    <property name="geometry">
-     <rect>
-      <x>614</x>
-      <y>130</y>
-      <width>171</width>
-      <height>150</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#bck_modulo_9
-{
-border-image: url(:/diagrama/screen800x600/diagrama/Filtro.png);
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="bck_modulo_10">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>250</y>
-      <width>61</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#bck_modulo_10
-{
-border-image: url(:/diagrama/screen800x600/diagrama/Efluente.png);
-background-repeat: none;
-background-position:center;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="modulo_9">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>140</y>
-      <width>91</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#modulo_9{ 
-border: none; 
-background-repeat: none;
-background-position: center;
-} </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QWidget" name="widget_25" native="true">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>61</y>
-      <width>41</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="widget_26" native="true">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>95</y>
-      <width>41</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="widget_27" native="true">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>130</y>
-      <width>41</width>
-      <height>31</height>
-     </rect>
     </property>
    </widget>
    <widget class="QLabel" name="gif_car_mot_2">
@@ -1642,6 +1546,52 @@ border:none;
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="go_to_filtro">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>310</y>
+      <width>31</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#go_to_filtro { 
+background-image: url(:/iconos/images/Iconos/Flecha_derecha.png);
+border: none; 
+background-repeat: none;
+background-position: center;
+} </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="label_title">
+    <property name="geometry">
+     <rect>
+      <x>259</x>
+      <y>-1</y>
+      <width>261</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="text">
+     <string>Diagrama</string>
+    </property>
+   </widget>
+   <zorder>gif_modulo_5</zorder>
    <zorder>top_bar</zorder>
    <zorder>gif_modulo_4</zorder>
    <zorder>gif_water_flown_a</zorder>
@@ -1666,7 +1616,6 @@ border:none;
    <zorder>bck_retorno_1</zorder>
    <zorder>bck_retorno_3</zorder>
    <zorder>gif_modulo_7</zorder>
-   <zorder>gif_modulo_5</zorder>
    <zorder>gif_modulo_6</zorder>
    <zorder>gif_modulo_1</zorder>
    <zorder>bck_modulo_7</zorder>
@@ -1678,8 +1627,6 @@ border:none;
    <zorder>prof_pic</zorder>
    <zorder>prof_label</zorder>
    <zorder>top_menu_6</zorder>
-   <zorder>bck_modulo_9</zorder>
-   <zorder>bck_modulo_10</zorder>
    <zorder>gif_modulo_8</zorder>
    <zorder>gif_car_mot_2</zorder>
    <zorder>gif_car_mot_3</zorder>
@@ -1687,42 +1634,40 @@ border:none;
    <zorder>gif_blower_2</zorder>
    <zorder>gif_blower_3</zorder>
    <zorder>gif_blower_4</zorder>
-   <zorder>modulo_3</zorder>
+   <zorder>go_to_filtro</zorder>
+   <zorder>modulo_6</zorder>
    <zorder>modulo_8</zorder>
-   <zorder>modulo_9</zorder>
-   <zorder>modulo_4</zorder>
-   <zorder>modulo_1</zorder>
    <zorder>modulo_5</zorder>
+   <zorder>modulo_3</zorder>
+   <zorder>modulo_4</zorder>
    <zorder>modulo_7</zorder>
    <zorder>modulo_2</zorder>
-   <zorder>modulo_6</zorder>
-   <zorder>widget_14</zorder>
-   <zorder>widget_21</zorder>
-   <zorder>widget_25</zorder>
-   <zorder>widget_8</zorder>
-   <zorder>widget_3</zorder>
-   <zorder>widget_19</zorder>
+   <zorder>modulo_1</zorder>
+   <zorder>widget_10</zorder>
+   <zorder>widget_20</zorder>
+   <zorder>widget_23</zorder>
+   <zorder>widget_2</zorder>
+   <zorder>widget_17</zorder>
+   <zorder>widget_22</zorder>
+   <zorder>widget</zorder>
+   <zorder>widget_18</zorder>
    <zorder>widget_11</zorder>
    <zorder>widget_15</zorder>
-   <zorder>widget_24</zorder>
-   <zorder>widget_2</zorder>
-   <zorder>widget</zorder>
-   <zorder>widget_17</zorder>
-   <zorder>widget_18</zorder>
-   <zorder>widget_27</zorder>
-   <zorder>widget_9</zorder>
-   <zorder>widget_12</zorder>
-   <zorder>widget_23</zorder>
-   <zorder>widget_10</zorder>
-   <zorder>widget_5</zorder>
-   <zorder>widget_26</zorder>
-   <zorder>widget_20</zorder>
-   <zorder>widget_6</zorder>
+   <zorder>widget_14</zorder>
    <zorder>widget_4</zorder>
+   <zorder>widget_12</zorder>
+   <zorder>widget_5</zorder>
+   <zorder>widget_3</zorder>
+   <zorder>widget_6</zorder>
+   <zorder>widget_7</zorder>
+   <zorder>widget_19</zorder>
+   <zorder>widget_9</zorder>
+   <zorder>widget_21</zorder>
+   <zorder>widget_24</zorder>
    <zorder>widget_13</zorder>
    <zorder>widget_16</zorder>
-   <zorder>widget_7</zorder>
-   <zorder>widget_22</zorder>
+   <zorder>widget_8</zorder>
+   <zorder>label_title</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

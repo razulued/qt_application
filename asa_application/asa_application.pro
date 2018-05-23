@@ -43,7 +43,9 @@ SOURCES += main.cpp\
     statistics.cpp \
     arrowkeys.cpp \
     simulation_input.cpp \
-    motores.cpp
+    motores.cpp \
+    filtrowindow.cpp \
+    change_text.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -75,7 +77,9 @@ HEADERS  += mainwindow.h \
     statistics.h \
     arrowkeys.h \
     simulation_input.h \
-    motores.h
+    motores.h \
+    filtrowindow.h \
+    change_text.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -85,7 +89,9 @@ FORMS    += mainwindow.ui \
     graphwindow.ui \
     arrowkeys.ui \
     simulation_input.ui \
-    motores.ui
+    motores.ui \
+    filtrowindow.ui \
+    change_text.ui
 
 RESOURCES += \
     fonts.qrc \

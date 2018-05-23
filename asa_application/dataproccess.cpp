@@ -28,7 +28,7 @@
 
 #define FP_RAWMIN   0x0000
 #define FP_RAWMAX   0x0A28
-#define FP_PHYSMIN  0
+#define FP_PHYSMIN  0r
 #define FP_PHYSMAX  260
 
 
@@ -98,7 +98,7 @@ void DataProccess::run()
         else
         {
             this->dataRandom();
-            QThread::msleep(2000);
+            QThread::msleep(1000);
         }
         spi_read_completed();
     }
@@ -606,10 +606,7 @@ void DataProccess::dataRandom()
 //        store_value_by_ID(0x3000, "1");
 //    }
 ////    qDebug() << "count " << count;
-    store_value_by_ID(0x3000, "0");
-    store_value_by_ID(0x3010, "3");
-    store_value_by_ID(0x3020, "2");
-
+    store_value_by_ID(0x3400, "64");
 }
 
 QList<double> DataProccess::getDataProcessing()

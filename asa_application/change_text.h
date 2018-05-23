@@ -1,33 +1,25 @@
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#ifndef CHANGE_TEXT_H
+#define CHANGE_TEXT_H
 
 #include <QDialog>
-#include <QSettings>
-#include <QFile>
-#include <QTextEdit>
+#include <QString>
 
 namespace Ui {
-class settings;
+class change_text;
 }
 
-class settings : public QDialog
+class change_text : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit settings(QWidget *parent = 0);
-    ~settings();
+    explicit change_text(QWidget *parent = 0);
+    ~change_text();
 
-    void sync_regulador_IDs(void);
-
+private:
+    Ui::change_text *ui;
 
 private slots:
-    void on_settings_accepted();
-    void on_settings_rejected();
-
-    void on_buttonBox_accepted();
-
-
     void on_key_0_clicked();
     void on_key_1_clicked();
     void on_key_2_clicked();
@@ -38,6 +30,7 @@ private slots:
     void on_key_7_clicked();
     void on_key_8_clicked();
     void on_key_9_clicked();
+    void on_key_back_clicked();
 
     void on_key_Q_clicked();
     void on_key_W_clicked();
@@ -66,26 +59,17 @@ private slots:
     void on_key_N_clicked();
     void on_key_M_clicked();
 
-    void on_key_up_clicked();
-    void on_key_down_clicked();
-    void on_key_left_clicked();
-    void on_key_right_clicked();
 
-    void on_key_guion_clicked();
-    void on_key_equal_clicked();
+    void on_key_comma_clicked();
     void on_key_space_clicked();
-    void on_key_back_clicked();
     void on_key_enter_clicked();
-
-
-
-private:
-    Ui::settings *ui;
-    QFile *config_file;
-    QTextEdit *active_text_edit;
-
-    void synch_calibrations();
+    void on_key_dot_clicked();
+    void on_key_plus_clicked();
+    void on_key_minus_clicked();
+    void on_key_slash_clicked();
+    void on_asa_logo_clicked();
+signals:
+    void update_text(QString);
 };
 
-void saveSettings(const QString &group, const QString &key, const QVariant &value);
-#endif // SETTINGS_H
+#endif // CHANGE_TEXT_H

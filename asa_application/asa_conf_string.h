@@ -15,5 +15,6 @@ QString get_id_state(uint id);
 void synch_output_state();
 
 QString get_config_string();
+uint motor_state(QString motor_control);
 
 #endif // ASA_CONF_STRING_H
