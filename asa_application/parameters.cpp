@@ -159,6 +159,11 @@ QString getParamValue(unsigned int id)
     return get_value_by_ID(id);
 }
 
+QString invese_getParamValue(unsigned int id, float_t value)
+{
+    return inverse_value_by_ID(id, value);
+}
+
 QString getParamValue_and_units(unsigned int id)
 {
     return get_value_by_ID(id) + get_value_units(id);

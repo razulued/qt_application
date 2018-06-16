@@ -28,6 +28,10 @@
         <file>screen800x600/barras/barra_limpia.png</file>
         <file>screen800x600/barras/Indice diagrama limpio.png</file>
         <file>screen800x600/barras/barra_contrasena.png</file>
+        <file>screen800x600/barras/Parametros fisicos.png</file>
+        <file>screen800x600/barras/Parametros quimicos.png</file>
+        <file>screen800x600/barras/Parametros electricos.png</file>
+        <file>screen800x600/barras/barra superior contrasena.png</file>
     </qresource>
     <qresource prefix="/iconos">
         <file>screen800x600/iconos/Ajustes azul.png</file>
@@ -110,6 +114,13 @@
         <file>screen800x600/iconos/Encendido verde.png</file>
         <file>images/Iconos/Flecha_derecha.png</file>
         <file>images/Iconos/Flecha_izquierda.png</file>
+        <file>screen800x600/iconos/Posponer azul largo.png</file>
+        <file>screen800x600/iconos/CODIGO-QR-ASA.png</file>
+        <file>screen800x600/iconos/ASA QR.png</file>
+        <file>screen800x600/iconos/STOP- NO ACTIVADO.png</file>
+        <file>screen800x600/iconos/STOP--ACTIVADO.png</file>
+        <file>screen800x600/iconos/BOTON 2.png</file>
+        <file>screen800x600/iconos/BOTON.png</file>
     </qresource>
     <qresource prefix="/texto">
         <file>screen800x600/texto/Teclado 1.1/0 azul.png</file>
@@ -236,6 +247,8 @@
         <file>screen800x600/diagrama/Filtro.png</file>
         <file>screen800x600/diagrama/Filtro_medium.png</file>
         <file>screen800x600/diagrama/Filtro 5SDF portátil_1.png</file>
+        <file>screen800x600/diagrama/Filtro 5SDF portátil_ small.png</file>
+        <file>screen800x600/diagrama/motor_filtro.png</file>
     </qresource>
     <qresource prefix="/gifs/0 Equipos">
         <file>screen800x600/gifs/0 Equipos/Blower Jet fail mov.gif</file>

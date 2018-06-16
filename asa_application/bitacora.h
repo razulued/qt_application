@@ -5,7 +5,7 @@
 #include <QtCore>
 #include <QTableWidgetItem>
 #include "rutinas_mantenimiento.h"
-
+#include "calendar.h"
 
 namespace Ui {
 class bitacora;
@@ -24,18 +24,6 @@ public:
 private slots:
     void on_top_menu_3_clicked();
 
-    void on_key_0_clicked();
-    void on_key_1_clicked();
-    void on_key_2_clicked();
-    void on_key_3_clicked();
-    void on_key_4_clicked();
-    void on_key_5_clicked();
-    void on_key_6_clicked();
-    void on_key_7_clicked();
-    void on_key_8_clicked();
-    void on_key_9_clicked();
-    void on_key_back_clicked();
-
     void item_selected(QTableWidgetItem *item);
 
     void on_key_Reschedule_clicked();
@@ -43,6 +31,8 @@ private slots:
     void on_key_OK_clicked();
 
     void on_top_menu_2_clicked();
+
+    void receive_date(uint hora, QDate date);
 
 private:
     Ui::bitacora *ui;
@@ -70,12 +60,10 @@ private:
         BASE_SEC, BASE_MIN, BASE_HOUR, BASE_DAY, BASE_LAST
     };
 
-    void insert_amount(QString ins);
-    QString posponer_amount;
-    QString posponer_amount_units = "h";
 
-    uint add_base = BASE_HOUR;
-    uint base_mult = 3600;
+    calendar * calendar_window = NULL;
+    uint reschedule_time;
+
 
 };
 

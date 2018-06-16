@@ -1,7 +1,7 @@
 #include "change_text.h"
 #include "ui_change_text.h"
 
-change_text::change_text(QWidget *parent) :
+change_text::change_text(QString initial_text, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::change_text)
 {
@@ -15,6 +15,8 @@ change_text::change_text(QWidget *parent) :
                         );
 
     ui->textEdit->setFont(font);
+    ui->textEdit->setText(initial_text);
+    ui->textEdit->moveCursor(QTextCursor::EndOfLine);
 
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);

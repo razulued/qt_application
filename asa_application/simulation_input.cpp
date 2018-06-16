@@ -1,11 +1,18 @@
 #include "simulation_input.h"
 #include "ui_simulation_input.h"
 #include "asa_protocol.h"
+
+QDateTime simulation_input::simDateTime;
+
 simulation_input::simulation_input(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::simulation_input)
 {
     ui->setupUi(this);
+
+    simDateTime = QDateTime::currentDateTime();
+
+    ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
     this->show();
 }
 
@@ -135,4 +142,45 @@ void simulation_input::on_horizontalScrollBar_4_actionTriggered(int action)
 {
     store_value_by_ID((0x5201), QString::number(ui->horizontalScrollBar_4->value()));
     ui->lineEdit_4->setText(QString::number(ui->horizontalScrollBar_4->value()));
+}
+
+void simulation_input::on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime)
+{
+    simDateTime = dateTime;
+}
+
+void simulation_input::on_pushButton_clicked()
+{
+    simDateTime = simDateTime.addSecs(60*60);
+    ui->dateTimeEdit->setDateTime(simDateTime);
+}
+
+void simulation_input::on_pushButton_2_clicked()
+{
+    simDateTime = simDateTime.addSecs(1);
+    ui->dateTimeEdit->setDateTime(simDateTime);
+}
+
+void simulation_input::on_pushButton_3_clicked()
+{
+    time_running = true;
+    QTimer::singleShot(1000, this, SLOT(add_seconds()));
+
+}
+
+void simulation_input::add_seconds()
+{
+    simDateTime = simDateTime.addSecs(1);
+    ui->dateTimeEdit->setDateTime(simDateTime);
+
+    if(true == time_running)
+    {
+        QTimer::singleShot(1000, this, SLOT(add_seconds()));
+
+    }
+}
+
+void simulation_input::on_pushButton_4_clicked()
+{
+    time_running = false;
 }

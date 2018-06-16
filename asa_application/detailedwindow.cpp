@@ -168,8 +168,12 @@ detailed_window_elements_t details_8=
 detailed_window_elements_t details_9=
 {
     "Filtro",
-    ":/diagrama/screen800x600/diagrama/Filtro.png",
-    "Agregar descripcion del filtro.",
+    ":/diagrama/screen800x600/diagrama/Filtro 5SDF portátil_ small.png",
+    "Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción "
+    "adicional de sólidos así como el color ámbar característico de las aguas tratadas. "
+    "Dadas las características de la tela filtrante, no se requiere la acumulación de material ni la formación de "
+    "una manta filtrante a fin de lograr el pulimento deseado.",
+
 
     &MainWindow::conf_filtro_elect,
 
@@ -254,11 +258,13 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
                               "background-color: transparent;");
     ui->nombre->setText(detailed_elements[element]->name);
 
-    ui->imagen->setStyleSheet("border-image: url("+detailed_elements[element]->image+");");
+    ui->imagen->setStyleSheet("border-image: url("+detailed_elements[element]->image+");"
+                            "background-color: transparent;");
 
     // Nombre del detalle
     ui->label->setFont(font);
-    ui->label->setStyleSheet("color: white");
+    ui->label->setStyleSheet("color: white;"
+                             "background-color: transparent;");
 
     what_element = element;
 
@@ -303,6 +309,9 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     {
         output_token_transfer(false);
     }
+
+    read_op_mode();
+
 
     tab_1_init(0);
     tab_2_init();
@@ -528,25 +537,7 @@ void detailedwindow::on_button_control_clicked()
         return;
     }
 
-    switch(what_element)
-    {
-    case ELEMENT_REGULADOR:
-        output_op_mode(3600, "03");
-        break;
-    case ELEMENT_REACTOR:
-        output_op_mode(4600, "03");
-        break;
-    case ELEMENT_CLARIFICADOR:
-        output_op_mode(5600, "03");
-        break;
-    case ELEMENT_CLORADOR:
-        output_op_mode(9600, "03");
-        break;
-    case ELEMENT_FILTRO:
-        break;
-    default:
-        break;
-    }
+    set_op_mode(ui->comboBox->currentIndex());
 
     ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
                     "border: none;"
@@ -627,28 +618,20 @@ void detailedwindow::update_params()
 }
 
 
-void detailedwindow::on_key_0_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("0");}else{ui->textEdit->insertPlainText("0");}}
-void detailedwindow::on_key_1_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("1");}else{ui->textEdit->insertPlainText("1");}}
-void detailedwindow::on_key_2_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("2");}else{ui->textEdit->insertPlainText("2");}}
-void detailedwindow::on_key_3_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("3");}else{ui->textEdit->insertPlainText("3");}}
-void detailedwindow::on_key_4_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("4");}else{ui->textEdit->insertPlainText("4");}}
-void detailedwindow::on_key_5_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("5");}else{ui->textEdit->insertPlainText("5");}}
-void detailedwindow::on_key_6_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("6");}else{ui->textEdit->insertPlainText("6");}}
-void detailedwindow::on_key_7_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("7");}else{ui->textEdit->insertPlainText("7");}}
-void detailedwindow::on_key_8_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("8");}else{ui->textEdit->insertPlainText("8");}}
-void detailedwindow::on_key_9_clicked() {if(true == ui->key_Reschedule->isChecked()){insert_amount("9");}else{ui->textEdit->insertPlainText("9");}}
+void detailedwindow::on_key_0_clicked() {ui->textEdit->insertPlainText("0");}
+void detailedwindow::on_key_1_clicked() {ui->textEdit->insertPlainText("1");}
+void detailedwindow::on_key_2_clicked() {ui->textEdit->insertPlainText("2");}
+void detailedwindow::on_key_3_clicked() {ui->textEdit->insertPlainText("3");}
+void detailedwindow::on_key_4_clicked() {ui->textEdit->insertPlainText("4");}
+void detailedwindow::on_key_5_clicked() {ui->textEdit->insertPlainText("5");}
+void detailedwindow::on_key_6_clicked() {ui->textEdit->insertPlainText("6");}
+void detailedwindow::on_key_7_clicked() {ui->textEdit->insertPlainText("7");}
+void detailedwindow::on_key_8_clicked() {ui->textEdit->insertPlainText("8");}
+void detailedwindow::on_key_9_clicked() {ui->textEdit->insertPlainText("9");}
 
 void detailedwindow::on_key_back_clicked()
 {
-    if(true == ui->key_Reschedule->isChecked())
-    {
-        posponer_amount.chop(1);
-        ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
-    }
-    else
-    {
-        ui->textEdit->textCursor().deletePreviousChar();
-    }
+    ui->textEdit->textCursor().deletePreviousChar();
 }
 
 
@@ -687,15 +670,14 @@ void detailedwindow::item_selected(QTableWidgetItem* item)
 
 void detailedwindow::on_key_Reschedule_clicked()
 {
-
+    uint i;
+    uint periodo;
     if(false == ui->key_frame->isVisible())
     {
-        uint i = 0;
-
         /* Show keyboard and text edit */
         ui->textEdit->setVisible(true);
         ui->key_frame->setVisible(true);
-        ui->frame->setGeometry(ui->frame->pos().x(),3,ui->frame->width(),ui->frame->height());
+        ui->frame->setGeometry(ui->frame->pos().x(),70,ui->frame->width(),ui->frame->height());
 
         ui->textEdit->clear();
 
@@ -709,43 +691,28 @@ void detailedwindow::on_key_Reschedule_clicked()
         }
     }
 
-    ui->key_Reschedule->setChecked(true);
-
-    if(++add_base == BASE_LAST)
+    if(NULL != calendar_window)
     {
-        add_base = 0;
+        delete calendar_window;
     }
-
-    switch(add_base)
+    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
     {
-    case BASE_SEC:
-        posponer_amount_units = "s";
-        base_mult = 1;
-        break;
-    case BASE_MIN:
-        posponer_amount_units = "m";
-        base_mult = 60;
-        break;
-    case BASE_HOUR:
-        posponer_amount_units = "h";
-        base_mult = 3600;
-        break;
-    case BASE_DAY:
-        posponer_amount_units = "d";
-        base_mult = 3600 * 24;
-        break;
+        if(rutinas_ptr->id(i) == selected_id)
+        {
+            periodo = rutinas_ptr->periodo(i);
+            break;
+        }
     }
+    calendar_window = new calendar(MainWindow::time, periodo, this);
+    connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate)), this, SLOT(receive_date(uint,QDate)));
 
-    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
+
     has_activity = true;
 }
 
 void detailedwindow::on_key_OK_clicked()
 {
     uint i = 0;
-    uint time = 0;
-
-    time = posponer_amount.toInt();
 
     if(0 != selected_id)
     {
@@ -756,10 +723,9 @@ void detailedwindow::on_key_OK_clicked()
             {
                 qDebug() << "ID match at: " << i;
 
-                if(time > 0)
+                if(reschedule_time > 0)
                 {
-                    time = time * base_mult;
-                    rutinas_ptr->add_seconds_rutina(i, time);
+                    rutinas_ptr->reschedule_rutina(i, reschedule_time);
                 }
                 else
                 {
@@ -783,15 +749,6 @@ void detailedwindow::on_key_OK_clicked()
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
     ui->tabWidget->setCurrentIndex(1);
-    has_activity = true;
-
-}
-
-void detailedwindow::insert_amount(QString ins)
-{
-    posponer_amount += ins;
-
-    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
     has_activity = true;
 
 }
@@ -917,7 +874,7 @@ void detailedwindow::tab_1_init(uint selected_type)
 void detailedwindow::tab_2_init()
 {
     uint i = 0;
-    QFont font("Typo Square Bold Demo",12,1);
+    QFont font("Typo Square Bold Demo",10,1);
     QStringList titulos;
     titulos << "ID" << "Rutina"; // Fecha is next
 
@@ -1067,7 +1024,8 @@ void detailedwindow::tab_3_init()
 
     ui->description_label->setFont(font);
     ui->description_label->setText(detailed_elements[what_element]->description);
-    ui->description_label->setStyleSheet("color: white");
+    ui->description_label->setStyleSheet("color: white;"
+                                         "background-color: transparent;");
 }
 
 void detailedwindow::tab_4_init()
@@ -1164,7 +1122,13 @@ void detailedwindow::tab_4_init()
 void detailedwindow::tab_5_init()
 {
     uint i = 0;
+    uint row, column;
+    row = 0;
+    column = 0;
+
     QFont font_2("Typo Square Ligth Demo",12,1);
+
+    ui->comboBox->setStyleSheet("color: white;");
 
     check_lock();
 
@@ -1176,30 +1140,6 @@ void detailedwindow::tab_5_init()
         controls_ptr[i] = box_motores;
         box_motores->setFont(font_2);
         box_motores->setLayoutDirection(Qt::RightToLeft);
-//        box_motores->setStyleSheet("QCheckBox{"
-//                                   "width: 40px;"
-//                                   "height: 40px;"
-//                                   "border: none;"
-//                                   "}"
-//                                   "QCheckBox::indicator:checked{"
-//                                   "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
-//                                   "border-width: 0px;"
-//                                   "width: 40px;"
-//                                   "height: 40px;"
-//                                   "}"
-//                                   "QCheckBox::indicator:unchecked{"
-//                                   "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
-//                                   "border-width: 0px;"
-//                                   "width: 40px;"
-//                                   "height: 40px;"
-//                                   "}"
-//                                   "QCheckBox::indicator:disabled{"
-//                                   "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
-//                                   "border-width: 0px;"
-//                                   "width: 40px;"
-//                                   "height: 40px;"
-//                                   "}"
-//                                   );
 
         if(true == get_validity_state())
         {
@@ -1211,30 +1151,30 @@ void detailedwindow::tab_5_init()
 //                box_motores->setChecked(true);
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "border: none;"
                                            "}"
                                            "QCheckBox::indicator{"
                                            "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
                                            "border-width: 0px;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "}");
             }
             else
             {
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "border: none;"
                                            "}"
                                            "QCheckBox::indicator{"
                                            "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                                            "border-width: 0px;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "}");
             }
         }
@@ -1243,19 +1183,27 @@ void detailedwindow::tab_5_init()
             box_motores->setEnabled(false);
             box_motores->setStyleSheet("QCheckBox{"
                                        "color:white;"
-                                       "width: 40px;"
-                                       "height: 40px;"
+                                       "width: 30px;"
+                                       "height: 30px;"
                                        "border: none;"
                                        "}"
                                        "QCheckBox::indicator{"
                                        "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
                                        "border-width: 0px;"
-                                       "width: 40px;"
-                                       "height: 40px;"
+                                       "width: 30px;"
+                                       "height: 30px;"
                                        "}");
         }
 
-        ui->verticalLayout_2->addWidget(box_motores);
+//        ui->verticalLayout_2->addWidget(box_motores);
+
+        ui->gridLayout->addWidget(box_motores, row, column);
+        row++;
+        if(row >= 3)
+        {
+            row = 0;
+            column++;
+        }
 
         connect(box_motores, SIGNAL(clicked(bool)), out_checkboxMapper, SLOT(map()));
         out_checkboxMapper->setMapping(box_motores, detailed_elements[what_element]->out_config->ids.at(i));
@@ -1392,30 +1340,30 @@ void detailedwindow::tab_5_update()
 //                box_motores->setChecked(true);
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "border: none;"
                                            "}"
                                            "QCheckBox::indicator{"
                                            "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
                                            "border-width: 0px;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "}");
             }
             else
             {
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "border: none;"
                                            "}"
                                            "QCheckBox::indicator{"
                                            "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                                            "border-width: 0px;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "}");
             }
         }
@@ -1424,15 +1372,15 @@ void detailedwindow::tab_5_update()
             box_motores->setEnabled(false);
             box_motores->setStyleSheet("QCheckBox{"
                                        "color:white;"
-                                       "width: 40px;"
-                                       "height: 40px;"
+                                       "width: 30px;"
+                                       "height: 30px;"
                                        "border: none;"
                                        "}"
                                        "QCheckBox::indicator{"
                                        "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
                                        "border-width: 0px;"
-                                       "width: 40px;"
-                                       "height: 40px;"
+                                       "width: 30px;"
+                                       "height: 30px;"
                                        "}");
 
         }
@@ -1557,6 +1505,16 @@ void detailedwindow::checkActivity()
     }
 }
 
+void detailedwindow::receive_date(uint hora, QDate date)
+{
+    QDateTime *temp = new QDateTime(date);
+    ui->label_horas->setText(date.toString("yyyy-MM-dd") + " " + QString::number(hora) + ":00");
+
+    *temp = temp->addSecs(60 * 60 * hora);
+    reschedule_time = temp->toTime_t();
+    delete temp;
+}
+
 
 void detailedwindow::check_lock()
 {
@@ -1581,5 +1539,77 @@ void detailedwindow::check_lock()
 //    }
 
 
-//    last_validity_state = state;
+    //    last_validity_state = state;
+}
+
+void detailedwindow::set_op_mode(uint mode)
+{
+    QString str;
+    if(0 == mode)
+    {
+        str = "03";
+    }
+    else
+    {
+        str = "01";
+    }
+
+    switch(what_element)
+    {
+    case ELEMENT_REGULADOR:
+        output_op_mode(3600, str);
+        break;
+    case ELEMENT_REACTOR:
+        output_op_mode(4600, str);
+        break;
+    case ELEMENT_CLARIFICADOR:
+        output_op_mode(5600, str);
+        break;
+    case ELEMENT_CLORADOR:
+        break;
+    case ELEMENT_FILTRO:
+        output_op_mode(9600, str);
+        break;
+    default:
+        break;
+    }
+}
+
+void detailedwindow::read_op_mode()
+{
+    QString str;
+    switch(what_element)
+    {
+    case ELEMENT_REGULADOR:
+        str = getParamValue(0x3600);
+        break;
+    case ELEMENT_REACTOR:
+        str = getParamValue(0x4600);
+        break;
+    case ELEMENT_CLARIFICADOR:
+        str = getParamValue(0x5600);
+        break;
+    case ELEMENT_CLORADOR:
+        break;
+    case ELEMENT_FILTRO:
+        str = getParamValue(0x9600);
+        break;
+    default:
+        break;
+    }
+
+    if("03" == str | "3" == str)
+    {
+        ui->comboBox->setCurrentIndex(0);
+    }
+    else
+    {
+        ui->comboBox->setCurrentIndex(1);
+    }
+
+}
+
+void detailedwindow::on_comboBox_currentIndexChanged(int index)
+{
+    set_op_mode(index);
 }

@@ -26,7 +26,7 @@
 #include "motores.h"
 #include "filtrowindow.h"
 #include "change_text.h"
-
+#include "contacto.h"
 namespace Ui {
 class MainWindow;
 }
@@ -107,6 +107,8 @@ public:
     graphwindow *graph = NULL;
 
     static bool simulation;
+    static QDateTime time;
+
 
 public slots:
     void handleMenuButton();
@@ -131,13 +133,10 @@ private slots:
 
     void on_top_menu_5_clicked();
 
-    void on_top_menu_4_clicked();
 
     void on_top_menu_2_clicked();
 
     void new_spi_data();
-
-    void on_lock_button_clicked();
 
 //    void on_pb_simulacion_clicked();
 
@@ -179,7 +178,7 @@ private:
     custom_tooltip *tool_tip_reactor_electricos;
     custom_tooltip *tool_tip_reactor_fisicos;
     custom_tooltip *tool_tip_reactor_quimicos;
-
+    QString my_name;
 
     custom_tooltip *tool_tip_clarificador_electricos;
     custom_tooltip *tool_tip_clarificador_fisicos;
@@ -240,7 +239,6 @@ private:
     mod_flechas *mod_bomba_4;
 
     void update_system_time();
-    QDateTime time;
 
     void check_lock();
     QString build_date_string(QDateTime);
@@ -249,6 +247,8 @@ private:
     motores *motrores_window = NULL;
     filtrowindow *filt_window = NULL;
     change_text *change_text_window = NULL;
+
+    contacto *contacto_window = NULL;
 protected:
     void paintEvent(QPaintEvent *);
 };

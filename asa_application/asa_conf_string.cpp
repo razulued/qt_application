@@ -9,6 +9,8 @@ QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
 
 QString conf_string;
 QMutex mutex;
+bool calibration_needed = false;
+QString calib_string;
 
 configuration_id plant_config;
 void init_plat_config()
@@ -191,6 +193,11 @@ void synch_output_state()
     conf.setValue("9601", getParamValue(0x9000));
     conf.setValue("9602", getParamValue(0x9010));
     conf.setValue("9603", getParamValue(0x9020));
+    conf.setValue("9604", getParamValue(0x9030));
+
+    conf.setValue("9640", getParamValue(0x9100));
+    conf.setValue("9641", getParamValue(0x9101));
+    conf.setValue("9642", getParamValue(0x9102));
 
 
     //Update String
@@ -210,7 +217,15 @@ QString get_config_string()
 {
     QString ret;
     mutex.lock();
-    ret = conf_string;
+    if(false == calibration_needed)
+    {
+        ret = conf_string;
+    }
+    else
+    {
+        calibration_needed = false;
+        ret = calib_string;
+    }
     mutex.unlock();
     return ret;
 }
@@ -233,7 +248,7 @@ QString get_id_state(uint id)
 
 uint motor_state(QString motor_control)
 {
-    qDebug() << "motor_control " << motor_control;
+//    qDebug() << "motor_control " << motor_control;
     if(motor_control =="3602"){    return getParamValue(0x3000).toInt();}
     else if(motor_control =="3603"){return getParamValue(0x3010).toInt();}
 
@@ -247,5 +262,14 @@ uint motor_state(QString motor_control)
     else if(motor_control =="9603"){return getParamValue(0x9020).toInt();}
     else if(motor_control =="9604"){return getParamValue(0x9030).toInt();}
 
+    else if(motor_control =="9640"){return getParamValue(0x9100).toInt();}
+    else if(motor_control =="9641"){return getParamValue(0x9101).toInt();}
+    else if(motor_control =="9642"){return getParamValue(0x9102).toInt();}
     return 0;
+}
+
+void set_calibration(QString str)
+{
+    calib_string = str;
+    calibration_needed = true;
 }

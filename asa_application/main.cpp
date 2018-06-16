@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
-
+#include "build_settings.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -15,6 +15,9 @@ int main(int argc, char *argv[])
     w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
     w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
+#if (1 == RELEASE_FOR_RPI)
+    QApplication::setOverrideCursor(Qt::BlankCursor);
+#endif
 
     w.showFullScreen();
 //    w.show();

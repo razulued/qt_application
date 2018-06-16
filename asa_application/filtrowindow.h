@@ -32,6 +32,13 @@ private slots:
 
     void on_modulo_1_clicked();
 
+    void on_prof_pic_clicked();
+
+    void check_lock();
+    void on_top_menu_6_clicked();
+
+    void on_top_menu_2_clicked();
+
 private:
     Ui::filtrowindow *ui;
     void HideButtons(bool hide);
@@ -47,8 +54,14 @@ private:
     graphwindow *graph = NULL;
     detailedwindow *detail_window = NULL;
     rutinas_mantenimiento *rutinas_ptr;
+    bool last_validity_state = false;
+
+    QString my_name;
 signals:
     void forward_param_buttons_state(bool active, parameters_t param);
+    void forward_prof_pic_clicked();
+    void forward_bitacora_clicked();
+    void forward_control_clicked();
 };
 
 #endif // FILTROWINDOW_H

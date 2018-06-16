@@ -65,8 +65,28 @@ const g_elec_settings electric_graph_settings[] =
     /* REACTOR_MOT_2 */{"Reactor 2",    0x4010, 0x4011, 0x4012, 0x4013, 0x4014, 0x4015, 0x4016,  },
     /* REACTOR_MOT_3 */{"Reactor 3",    0x4020, 0x4021, 0x4022, 0x4023, 0x4024, 0x4025, 0x4026,  },
     /* REACTOR_MOT_4 */{"Reactor 4",    0x4030, 0x4031, 0x4032, 0x4033, 0x4034, 0x4035, 0x4036,  },
+    /* FILTRO_MOT_1  */{"Motor Giro",    0x9000, 0x9001, 0x9002, 0x9003, 0x9004, 0x9005, 0x9006,  },
+    /* FILTRO_MOT_2  */{"Bomba Alim",    0x9010, 0x9011, 0x9012, 0x9013, 0x9014, 0x9015, 0x9016,  },
+    /* FILTRO_MOT_3  */{"Bomba Retro",   0x9020, 0x9021, 0x9022, 0x9023, 0x9024, 0x9025, 0x9026,  },
+    /* FILTRO_MOT_4  */{"Filtro 4",    0x9030, 0x9031, 0x9032, 0x9033, 0x9034, 0x9035, 0x9036,  },
 };
 
+uint graphwindow::g_OD_IN       = OD_IN;
+uint graphwindow::g_SST_IN      = SST_IN;
+uint graphwindow::g_Turb_IN     = Turb_IN;
+uint graphwindow::g_PH_IN       = PH_IN;
+
+uint graphwindow::g_OD_OUT      = OD_OUT;
+uint graphwindow::g_SST_OUT     = SST_OUT;
+uint graphwindow::g_Turb_OUT    = Turb_OUT;
+uint graphwindow::g_PH_OUT      = PH_OUT;
+
+uint graphwindow::g_GASTO_INS   = GASTO_INS;
+uint graphwindow::g_GASTO_ACC   = GASTO_ACC;
+uint graphwindow::g_NIVEL_REG   = NIVEL_REG;
+uint graphwindow::g_NIVEL_CL    = NIVEL_CL ;
+uint graphwindow::g_PRES_AIR    = PRES_AIR ;
+uint graphwindow::g_PRES_FIL    = PRES_FIL ;
 
 graphwindow::graphwindow(QWidget *parent) :
     QDialog(parent),
@@ -153,16 +173,6 @@ graphwindow::graphwindow(QWidget *parent) :
 //        pen.setColor(line_color);
     pen.setWidth(5);
 
-
-//    QColor line_color;
-//    line_color.setRgb(0, 167, 250,150);
-
-//    pen.setColor(line_color);
-//    pen.setCapStyle(Qt::RoundCap);
-//    pen.setWidth(3);
-
-    /* Init combo box */
-    ui->comboBox->setStyleSheet("color: white;");
     ui->min_value->setStyleSheet("color: white;");
     ui->max_value->setStyleSheet("color: white;");
     ui->div_text->setStyleSheet("color: white;");
@@ -176,6 +186,8 @@ graphwindow::graphwindow(QWidget *parent) :
     ui->graphicsView_3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+
+
 }
 
 graphwindow::~graphwindow()
@@ -203,25 +215,42 @@ void graphwindow::show_graph(uint type)
     switch(element_type)
     {
     case TYPE_ELECTRICOS:
-        ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/PE_bar.png);");
+        ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/Parametros electricos.png);");
         parameter_to_graph = electric_graph_settings[0].param_v_fase_1;
         ui->label_graph->setText("Voltaje L1-L2");
 
         break;
     case TYPE_FISICOS:
-        ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/PF_bar.png);");
-        parameter_to_graph = GASTO_INS;
-        ui->label_graph->setText("Gasto Instantáneo");
+        ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/Parametros fisicos.png);");
+        if("PTAR" == graph_origin)
+        {
+            parameter_to_graph = g_GASTO_INS;
+            ui->label_graph->setText("Gasto Instantáneo");
+        }
+        else
+        {
+            parameter_to_graph = g_NIVEL_REG;
+            ui->label_graph->setText("Filtro");
+        }
 
         break;
     case TYPE_QUIMICOS:
-        ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/PQ_bar.png);");
-        parameter_to_graph = OD_IN;
-        ui->label_graph->setText("OD entrada");
+        ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/Parametros quimicos.png);");
+        if("PTAR" == graph_origin)
+        {
+            parameter_to_graph = g_OD_IN;
+            ui->label_graph->setText("OD entrada");
+        }
+        else
+        {
+            parameter_to_graph = g_SST_IN;
+            ui->label_graph->setText("SST entrada");
+        }
         break;
 
     }
     g_mutex.unlock();
+    color_to_label(parameter_to_graph);
     ui->tabWidget->setCurrentIndex(element_type);
 
     this->move(parent_window->pos());
@@ -230,56 +259,45 @@ void graphwindow::show_graph(uint type)
 
 void graphwindow::update_graph()
 {
+    uint index_motor = index_of_motor();
     switch(ui->tabWidget->currentIndex())
     {
     case TYPE_ELECTRICOS:
 
         // electricos
-        ui->volts_1->setText(get_last_value_from_param(electric_graph_settings[ui->comboBox->currentIndex()].param_v_fase_1));
-        ui->volts_2->setText(get_last_value_from_param(electric_graph_settings[ui->comboBox->currentIndex()].param_v_fase_2));
-        ui->volts_3->setText(get_last_value_from_param(electric_graph_settings[ui->comboBox->currentIndex()].param_v_fase_3));
+        ui->volts_1->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_v_fase_1));
+        ui->volts_2->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_v_fase_2));
+        ui->volts_3->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_v_fase_3));
 
-        ui->amps_1->setText(get_last_value_from_param(electric_graph_settings[ui->comboBox->currentIndex()].param_a_fase_1));
-        ui->amps_2->setText(get_last_value_from_param(electric_graph_settings[ui->comboBox->currentIndex()].param_a_fase_2));
-        ui->amps_3->setText(get_last_value_from_param(electric_graph_settings[ui->comboBox->currentIndex()].param_a_fase_3));
+        ui->amps_1->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_a_fase_1));
+        ui->amps_2->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_a_fase_2));
+        ui->amps_3->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_a_fase_3));
         break;
         // fisicos
     case TYPE_FISICOS:
-        ui->pb_gasto_inst->setText(get_last_value_from_param(GASTO_INS));
-        ui->pb_gasto_acc->setText(get_last_value_from_param(GASTO_ACC));
+        ui->pb_gasto_inst->setText(get_last_value_from_param(g_GASTO_INS));
+        ui->pb_gasto_acc->setText(get_last_value_from_param(g_GASTO_ACC));
 
-        ui->pb_nivel_clarif->setText(get_last_value_from_param(NIVEL_CL));
-        ui->pb_nivel_reg->setText(get_last_value_from_param(NIVEL_REG));
+        ui->pb_nivel_clarif->setText(get_last_value_from_param(g_NIVEL_CL));
+        ui->pb_nivel_reg->setText(get_last_value_from_param(g_NIVEL_REG));
 
-        ui->pb_presion_aire->setText(get_last_value_from_param(PRES_AIR));
-        ui->pb_presion_filt->setText(get_last_value_from_param(PRES_FIL));
+        ui->pb_presion_aire->setText(get_last_value_from_param(g_PRES_AIR));
+        ui->pb_presion_filt->setText(get_last_value_from_param(g_PRES_FIL));
         break;
         // quimicos
     case TYPE_QUIMICOS:
-        ui->pb_OD_in->setText(get_last_value_from_param(OD_IN));
-        ui->pb_OD_out->setText(get_last_value_from_param(OD_OUT));
-        ui->pb_pH_in->setText(get_last_value_from_param(PH_IN));
-        ui->pb_pH_out->setText(get_last_value_from_param(PH_OUT));
-        ui->pb_SST_in->setText(get_last_value_from_param(SST_IN));
-        ui->pb_SST_out->setText(get_last_value_from_param(SST_OUT));
-        ui->pb_Turb_in->setText(get_last_value_from_param(Turb_IN));
-        ui->pb_Turb_out->setText(get_last_value_from_param(Turb_OUT));
+        ui->pb_OD_in->setText(get_last_value_from_param(g_OD_IN));
+        ui->pb_OD_out->setText(get_last_value_from_param(g_OD_OUT));
+        ui->pb_pH_in->setText(get_last_value_from_param(g_PH_IN));
+        ui->pb_pH_out->setText(get_last_value_from_param(g_PH_OUT));
+        ui->pb_SST_in->setText(get_last_value_from_param(g_SST_IN));
+        ui->pb_SST_out->setText(get_last_value_from_param(g_SST_OUT));
+        ui->pb_Turb_in->setText(get_last_value_from_param(g_Turb_IN));
+        ui->pb_Turb_out->setText(get_last_value_from_param(g_Turb_OUT));
         break;
     }
 
     update_graph_window(parameter_to_graph);
-
-    // change color to parameter
-    switch(parameter_to_graph)
-    {
-    case GASTO_INS:
-        ui->volts_1->setStyleSheet("color:white;"
-                                   "background-color: transparent;"
-                                   "border: none;"
-                                   "background-repeat: none;"
-                                   "background-position: center;");
-        break;
-    }
 }
 
 void graphwindow::on_top_menu_3_clicked()
@@ -290,60 +308,66 @@ void graphwindow::on_top_menu_3_clicked()
 void graphwindow::on_volts_1_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = electric_graph_settings[ui->comboBox->currentIndex()].param_v_fase_1;
+    parameter_to_graph = electric_graph_settings[index_of_motor()].param_v_fase_1;
     g_mutex.unlock();
 
     ui->label_graph->setText("Voltaje L1-L2");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_volts_2_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = electric_graph_settings[ui->comboBox->currentIndex()].param_v_fase_2;
+    parameter_to_graph = electric_graph_settings[index_of_motor()].param_v_fase_2;
     g_mutex.unlock();
 
     ui->label_graph->setText("Voltaje L2-L3");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_volts_3_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = electric_graph_settings[ui->comboBox->currentIndex()].param_v_fase_3;
+    parameter_to_graph = electric_graph_settings[index_of_motor()].param_v_fase_3;
     g_mutex.unlock();
 
     ui->label_graph->setText("Voltaje L3-L1");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_amps_1_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = electric_graph_settings[ui->comboBox->currentIndex()].param_a_fase_1;
+    parameter_to_graph = electric_graph_settings[index_of_motor()].param_a_fase_1;
     g_mutex.unlock();
 
     ui->label_graph->setText("Amps L1-L2");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_amps_2_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = electric_graph_settings[ui->comboBox->currentIndex()].param_a_fase_2;
+    parameter_to_graph = electric_graph_settings[index_of_motor()].param_a_fase_2;
     g_mutex.unlock();
 
     ui->label_graph->setText("Amps L2-L1");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_amps_3_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = electric_graph_settings[ui->comboBox->currentIndex()].param_a_fase_3;
+    parameter_to_graph = electric_graph_settings[index_of_motor()].param_a_fase_3;
     g_mutex.unlock();
 
     ui->label_graph->setText("Amps L3-L1");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
@@ -397,7 +421,7 @@ void graphwindow::update_graph_minutes(uint param)
     QList<float>values_60_minutes;
 
 
-    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
+//    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
     g_mutex.lock();
     values_60_minutes = get_list_last_60_min_from_param(param);
     g_mutex.unlock();
@@ -430,7 +454,7 @@ void graphwindow::update_graph_hour(uint param)
     QList<float>values_24_hours;
 
 
-    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
+//    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
     g_mutex.lock();
     values_24_hours = get_list_last_24_hour_from_param(param);
     g_mutex.unlock();
@@ -474,140 +498,224 @@ void graphwindow::on_tabWidget_currentChanged(int index)
 void graphwindow::on_pb_gasto_inst_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = GASTO_INS;
+    parameter_to_graph = g_GASTO_INS;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Gasto Instantáneo");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("Gasto Instantáneo");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_gasto_acc_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = GASTO_ACC;
+    parameter_to_graph = g_GASTO_ACC;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Gasto Accumulado");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("Gasto Accumulado");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_nivel_reg_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = NIVEL_REG;
+    parameter_to_graph = g_NIVEL_REG;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Nivel Regulador");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("Nivel Regulador");
+    }
+    else
+    {
+        ui->label_graph->setText("Filtro");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_nivel_clarif_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = NIVEL_CL;
+    parameter_to_graph = g_NIVEL_CL;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Nivel Clarificador");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("Nivel Clarificador");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_presion_aire_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = PRES_AIR;
+    parameter_to_graph = g_PRES_AIR;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Presión Aireador");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("Presión Aireador");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_presion_filt_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = PRES_FIL;
+    parameter_to_graph = g_PRES_FIL;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Presión Filtración");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("Presión Filtración");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_OD_in_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = OD_IN;
+    parameter_to_graph = g_OD_IN;
     g_mutex.unlock();
 
-    ui->label_graph->setText("OD entrada");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("OD entrada");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_pH_in_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = PH_IN;
+    parameter_to_graph = g_PH_IN;
     g_mutex.unlock();
 
-    ui->label_graph->setText("pH entrada");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("pH entrada");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_SST_in_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = SST_IN;
+    parameter_to_graph = g_SST_IN;
     g_mutex.unlock();
 
     ui->label_graph->setText("SST entrada");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_Turb_in_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = Turb_IN;
+    parameter_to_graph = g_Turb_IN;
     g_mutex.unlock();
 
     ui->label_graph->setText("Turbidez entrada");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_OD_out_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = OD_OUT;
+    parameter_to_graph = g_OD_OUT;
     g_mutex.unlock();
 
-    ui->label_graph->setText("OD salida");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("OD salida");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_pH_out_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = PH_OUT;
+    parameter_to_graph = g_PH_OUT;
     g_mutex.unlock();
 
-    ui->label_graph->setText("pH salida");
+    if("PTAR" == graph_origin)
+    {
+        ui->label_graph->setText("pH salida");
+    }
+    else
+    {
+        ui->label_graph->setText("");
+    }
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_SST_out_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = SST_OUT;
+    parameter_to_graph = g_SST_OUT;
     g_mutex.unlock();
 
     ui->label_graph->setText("SST salida");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
 void graphwindow::on_pb_Turb_out_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = Turb_OUT;
+    parameter_to_graph = g_Turb_OUT;
     g_mutex.unlock();
 
     ui->label_graph->setText("Turbidez salida");
+    color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
 
@@ -666,21 +774,21 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
         break;
     case TYPE_FISICOS:
 
-        if(parameter_to_graph == GASTO_INS || parameter_to_graph == GASTO_ACC)
+        if(parameter_to_graph == g_GASTO_INS || parameter_to_graph == g_GASTO_ACC)
         {
             min_value = 0;
             max_value = 150;
             num_of_lines = 10;
             ui->div_text->setText("15 LPM/div");
         }
-        else if(parameter_to_graph == NIVEL_REG || parameter_to_graph == NIVEL_CL)
+        else if(parameter_to_graph == g_NIVEL_REG || parameter_to_graph == g_NIVEL_CL)
         {
             min_value = 0;
             max_value = 10;
             num_of_lines = 10;
             ui->div_text->setText("1 m/div");
         }
-        else if(parameter_to_graph == PRES_AIR || parameter_to_graph == PRES_FIL)
+        else if(parameter_to_graph == g_PRES_AIR || parameter_to_graph == g_PRES_FIL)
         {
             min_value = 0;
             max_value = 15;
@@ -691,28 +799,28 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
         break;
         // quimicos
     case TYPE_QUIMICOS:
-        if(parameter_to_graph == OD_IN || parameter_to_graph == OD_OUT)
+        if(parameter_to_graph == g_OD_IN || parameter_to_graph == g_OD_OUT)
         {
             min_value = 0;
             max_value = 8;
             num_of_lines = 8;
             ui->div_text->setText("1 ppm/div");
         }
-        else if(parameter_to_graph == SST_IN || parameter_to_graph == SST_OUT)
+        else if(parameter_to_graph == g_SST_IN || parameter_to_graph == g_SST_OUT)
         {
             min_value = 0;
             max_value = 800;
             num_of_lines = 10;
             ui->div_text->setText("80 mg/l div");
         }
-        else if(parameter_to_graph == Turb_IN || parameter_to_graph == Turb_OUT)
+        else if(parameter_to_graph == g_Turb_IN || parameter_to_graph == g_Turb_OUT)
         {
             min_value = 0;
             max_value = 100;
             num_of_lines = 10;
             ui->div_text->setText("10 NTU/div");
         }
-        else if(parameter_to_graph == PH_IN || parameter_to_graph == PH_OUT)
+        else if(parameter_to_graph == g_PH_IN || parameter_to_graph == g_PH_OUT)
         {
             min_value = 0;
             max_value = 14;
@@ -758,7 +866,7 @@ void graphwindow::on_comboBox_currentIndexChanged(int index)
     i = ui->comboBox->currentData().toInt();
     //on_volts_1_clicked();
 
-    parameter_to_graph = electric_graph_settings[ui->comboBox->currentIndex()].param_v_fase_1;
+    parameter_to_graph = electric_graph_settings[index_of_motor()].param_v_fase_1;
 
     ui->label_graph->setText("Voltaje L1-L2");
 
@@ -774,22 +882,266 @@ qreal graphwindow::adjusted_y_value(qreal val)
     return  new_value;
 }
 
-void graphwindow::color_to_label(QLabel *label, bool active)
+void graphwindow::color_to_label(uint parameter)
 {
-    if(true == active)
+
+    QString inactive = "color:white;"
+                     "background-color: transparent;"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;";
+    QString active = "color:rgb(0, 167, 250);"
+                     "background-color: transparent;"
+                     "border: none;"
+                     "background-repeat: none;"
+                     "background-position: center;";
+
+    //VOLTS_1
+    if(parameter == 0x3001 || parameter == 0x3011 || parameter == 0x3021 || parameter == 0x3031 ||
+       parameter == 0x4001 || parameter == 0x4011 || parameter == 0x4021 || parameter == 0x4031)
+    {ui->volts_1->setStyleSheet(active); }
+    else
+    {ui->volts_1->setStyleSheet(inactive);}
+
+    //VOLTS_2
+    if(parameter == 0x3002 || parameter == 0x3012 || parameter == 0x3022 || parameter == 0x3032 ||
+       parameter == 0x4002 || parameter == 0x4012 || parameter == 0x4022 || parameter == 0x4032)
+    {ui->volts_2->setStyleSheet(active); }
+    else
+    {ui->volts_2->setStyleSheet(inactive);}
+
+    //VOLTS_3
+    if(parameter == 0x3003 || parameter == 0x3013 || parameter == 0x3023 || parameter == 0x3033 ||
+       parameter == 0x4003 || parameter == 0x4013 || parameter == 0x4023 || parameter == 0x4033)
+    {ui->volts_3->setStyleSheet(active); }
+    else
+    {ui->volts_3->setStyleSheet(inactive);}
+
+    //AMPS_1
+    if(parameter == 0x3004 || parameter == 0x3014 || parameter == 0x3024 || parameter == 0x3034 ||
+       parameter == 0x4004 || parameter == 0x4014 || parameter == 0x4024 || parameter == 0x4034)
+    {ui->amps_1->setStyleSheet(active); }
+    else
+    {ui->amps_1->setStyleSheet(inactive);}
+
+    //AMPS_2
+    if(parameter == 0x3005 || parameter == 0x3015 || parameter == 0x3025 || parameter == 0x3035 ||
+       parameter == 0x4005 || parameter == 0x4015 || parameter == 0x4025 || parameter == 0x4035)
+    {ui->amps_2->setStyleSheet(active); }
+    else
+    {ui->amps_2->setStyleSheet(inactive);}
+
+    //AMPS_3
+    if(parameter == 0x3006 || parameter == 0x3016 || parameter == 0x3026 || parameter == 0x3036 ||
+       parameter == 0x4006 || parameter == 0x4016 || parameter == 0x4026 || parameter == 0x4036)
+    {ui->amps_3->setStyleSheet(active); }
+    else
+    {ui->amps_3->setStyleSheet(inactive);}
+
+    //GASTO INS
+    if(parameter == g_GASTO_INS)
+    {ui->pb_gasto_inst->setStyleSheet(active); }
+    else
+    {ui->pb_gasto_inst->setStyleSheet(inactive);}
+    //GASTO ACC
+    if(parameter == g_GASTO_ACC)
+    {ui->pb_gasto_acc->setStyleSheet(active); }
+    else
+    {ui->pb_gasto_acc->setStyleSheet(inactive);}
+    //NIVEL REG
+    if(parameter == g_NIVEL_REG)
+    {ui->pb_nivel_reg->setStyleSheet(active); }
+    else
+    {ui->pb_nivel_reg->setStyleSheet(inactive);}
+    //NIVEL_CL
+    if(parameter == g_NIVEL_CL)
+    {ui->pb_nivel_clarif->setStyleSheet(active); }
+    else
+    {ui->pb_nivel_clarif->setStyleSheet(inactive);}
+    //PRES_AIR
+    if(parameter == g_PRES_AIR)
+    {ui->pb_presion_aire->setStyleSheet(active); }
+    else
+    {ui->pb_presion_aire->setStyleSheet(inactive);}
+    //PRES_FIL
+    if(parameter == g_PRES_FIL)
+    {ui->pb_presion_filt->setStyleSheet(active); }
+    else
+    {ui->pb_presion_filt->setStyleSheet(inactive);}
+
+    //OD_IN
+    if(parameter == g_OD_IN)
+    {ui->pb_OD_in->setStyleSheet(active); }
+    else
+    {ui->pb_OD_in->setStyleSheet(inactive);}
+    //OD_OUT
+    if(parameter == g_OD_OUT)
+    {ui->pb_OD_out->setStyleSheet(active); }
+    else
+    {ui->pb_OD_out->setStyleSheet(inactive);}
+    //OD_OUT
+    if(parameter == g_OD_OUT)
+    {ui->pb_OD_out->setStyleSheet(active); }
+    else
+    {ui->pb_OD_out->setStyleSheet(inactive);}
+    //SST_IN
+    if(parameter == g_SST_IN)
+    {ui->pb_SST_in->setStyleSheet(active); }
+    else
+    {ui->pb_SST_in->setStyleSheet(inactive);}
+    //SST_OUT
+    if(parameter == g_SST_OUT)
+    {ui->pb_SST_out->setStyleSheet(active); }
+    else
+    {ui->pb_SST_out->setStyleSheet(inactive);}
+    //Turb_IN
+    if(parameter == g_Turb_IN)
+    {ui->pb_Turb_in->setStyleSheet(active); }
+    else
+    {ui->pb_Turb_in->setStyleSheet(inactive);}
+    //Turb_OUT
+    if(parameter == g_Turb_OUT)
+    {ui->pb_Turb_out->setStyleSheet(active);}
+    else
+    {ui->pb_Turb_out->setStyleSheet(inactive);}
+    //PH_IN
+    if(parameter == g_PH_IN)
+    {ui->pb_pH_in->setStyleSheet(active);}
+    else
+    {ui->pb_pH_in->setStyleSheet(inactive);}
+    //PH_OUT
+    if(parameter == g_PH_OUT)
+    {ui->pb_pH_out->setStyleSheet(active);}
+    else
+    {ui->pb_pH_out->setStyleSheet(inactive);}
+}
+
+uint graphwindow::index_of_motor()
+{
+    uint ret = 0;
+    if("Carcamo 1" == ui->comboBox->currentText())
     {
-        label->setStyleSheet("color:yellow;"
-                                   "background-color: transparent;"
-                                   "border: none;"
-                                   "background-repeat: none;"
-                                   "background-position: center;");
+        ret = 0;
+    }
+    else if("Carcamo 2" == ui->comboBox->currentText())
+    {
+        ret = 1;
+    }
+    else if("Carcamo 3" == ui->comboBox->currentText())
+    {
+        ret = 2;
+    }
+    else if("Carcamo 4" == ui->comboBox->currentText())
+    {
+        ret = 3;
+    }
+    else if("Reactor 1" == ui->comboBox->currentText())
+    {
+        ret = 4;
+    }
+    else if("Reactor 2" == ui->comboBox->currentText())
+    {
+        ret = 5;
+    }
+    else if("Reactor 3" == ui->comboBox->currentText())
+    {
+        ret = 6;
+    }
+    else if("Reactor 4" == ui->comboBox->currentText())
+    {
+        ret = 7;
+    }
+    else if("Motor Giro" == ui->comboBox->currentText())
+    {
+        ret = 8;
+    }
+    else if("Bomba Alim" == ui->comboBox->currentText())
+    {
+        ret = 9;
+    }
+    else if("Bomba Retro" == ui->comboBox->currentText())
+    {
+        ret = 10;
+    }
+    else if("Filtro 4" == ui->comboBox->currentText())
+    {
+        ret = 11;
+    }
+
+
+
+
+    return ret;
+}
+
+void graphwindow::set_type(QString type)
+{
+    graph_origin = type;
+    if("PTAR" == graph_origin)
+    {
+        g_OD_IN   =  OD_IN   ;
+        g_SST_IN  =  SST_IN  ;
+        g_Turb_IN =  Turb_IN ;
+        g_PH_IN   =  PH_IN   ;
+                              ;
+        g_OD_OUT   = OD_OUT   ;
+        g_SST_OUT  = SST_OUT  ;
+        g_Turb_OUT = Turb_OUT ;
+        g_PH_OUT   = PH_OUT   ;
+                              ;
+        g_GASTO_INS =GASTO_INS;
+        g_GASTO_ACC =GASTO_ACC;
+        g_NIVEL_REG =NIVEL_REG;
+        g_NIVEL_CL  =NIVEL_CL ;
+        g_PRES_AIR  =PRES_AIR ;
+        g_PRES_FIL  =PRES_FIL ;
+
+        // fisicos
+        ui->label_15->setText("Instantáneo");
+        ui->label_16->setText("Acumulado");
+        ui->label_18->setText("Regulador");
+        ui->label_17->setText("Clarificador");
+        ui->label_22->setText("Aireador");
+        ui->label_20->setText("Filtración");
+
+        // quimicos
+        ui->label_30->setText("pH");
+        ui->label_28->setText("pH");
+        ui->label_23->setText("OD");
+        ui->label_24->setText("OD");
     }
     else
     {
-        label->setStyleSheet("color:white;"
-                                   "background-color: transparent;"
-                                   "border: none;"
-                                   "background-repeat: none;"
-                                   "background-position: center;");
+        g_OD_IN   =  Filtro_OD_IN   ;
+        g_SST_IN  =  Filtro_SST_IN  ;
+        g_Turb_IN =  Filtro_Turb_IN ;
+        g_PH_IN   =  Filtro_PH_IN   ;
+                              ;
+        g_OD_OUT   = Filtro_OD_OUT   ;
+        g_SST_OUT  = Filtro_SST_OUT  ;
+        g_Turb_OUT = Filtro_Turb_OUT ;
+        g_PH_OUT   = Filtro_PH_OUT   ;
+
+        g_GASTO_INS =Filtro_GASTO_INS;
+        g_GASTO_ACC =Filtro_GASTO_ACC;
+        g_NIVEL_REG =Filtro_NIVEL_REG;
+        g_NIVEL_CL  =Filtro_NIVEL_CL ;
+        g_PRES_AIR  =Filtro_PRES_AIR ;
+        g_PRES_FIL  =Filtro_PRES_FIL ;
+
+        // fisicos
+        ui->label_15->setText("");
+        ui->label_16->setText("");
+        ui->label_18->setText("Filtro");
+        ui->label_17->setText("");
+        ui->label_22->setText("");
+        ui->label_20->setText("");
+
+        // quimicos
+        ui->label_30->setText("");
+        ui->label_28->setText("");
+        ui->label_23->setText("");
+        ui->label_24->setText("");
+
     }
 }

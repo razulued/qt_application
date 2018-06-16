@@ -1593,9 +1593,9 @@ background-position: center;
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>-5</y>
-     <width>800</width>
-     <height>321</height>
+     <y>2</y>
+     <width>759</width>
+     <height>27</height>
     </rect>
    </property>
    <property name="font">
@@ -1606,7 +1606,7 @@ background-position: center;
    <property name="styleSheet">
     <string notr="true">#label { 
 background-color: transparent;
-background-image: url(:/barras/screen800x600/barras/barra_contrasena.png);
+background-image: url(:/barras/screen800x600/barras/barra superior contrasena.png);
 border: none; 
 background-repeat: none;
  } </string>

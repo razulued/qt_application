@@ -634,6 +634,9 @@ background-position: center;
       <height>41</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
@@ -708,9 +711,9 @@ background-position: center;
    <widget class="QLabel" name="label_hora">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>320</x>
       <y>50</y>
-      <width>81</width>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -1643,31 +1646,31 @@ background-position: center;
    <zorder>modulo_7</zorder>
    <zorder>modulo_2</zorder>
    <zorder>modulo_1</zorder>
-   <zorder>widget_10</zorder>
-   <zorder>widget_20</zorder>
-   <zorder>widget_23</zorder>
-   <zorder>widget_2</zorder>
-   <zorder>widget_17</zorder>
-   <zorder>widget_22</zorder>
-   <zorder>widget</zorder>
-   <zorder>widget_18</zorder>
-   <zorder>widget_11</zorder>
-   <zorder>widget_15</zorder>
-   <zorder>widget_14</zorder>
-   <zorder>widget_4</zorder>
-   <zorder>widget_12</zorder>
-   <zorder>widget_5</zorder>
-   <zorder>widget_3</zorder>
-   <zorder>widget_6</zorder>
-   <zorder>widget_7</zorder>
-   <zorder>widget_19</zorder>
-   <zorder>widget_9</zorder>
-   <zorder>widget_21</zorder>
-   <zorder>widget_24</zorder>
-   <zorder>widget_13</zorder>
-   <zorder>widget_16</zorder>
-   <zorder>widget_8</zorder>
    <zorder>label_title</zorder>
+   <zorder>widget_10</zorder>
+   <zorder>widget_17</zorder>
+   <zorder>widget_13</zorder>
+   <zorder>widget_24</zorder>
+   <zorder>widget_11</zorder>
+   <zorder>widget_8</zorder>
+   <zorder>widget_19</zorder>
+   <zorder>widget_16</zorder>
+   <zorder>widget_18</zorder>
+   <zorder>widget_21</zorder>
+   <zorder>widget_4</zorder>
+   <zorder>widget_23</zorder>
+   <zorder>widget_9</zorder>
+   <zorder>widget_6</zorder>
+   <zorder>widget_2</zorder>
+   <zorder>widget_7</zorder>
+   <zorder>widget_14</zorder>
+   <zorder>widget</zorder>
+   <zorder>widget_3</zorder>
+   <zorder>widget_5</zorder>
+   <zorder>widget_20</zorder>
+   <zorder>widget_15</zorder>
+   <zorder>widget_12</zorder>
+   <zorder>widget_22</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

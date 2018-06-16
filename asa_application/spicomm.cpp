@@ -58,6 +58,7 @@ void SPICOMM::startSPICommunication()
       qDebug() << "bcm2835_spi_begin failed. Are you running as root??\n";
       statusComm = false;
     }
+
     if(statusComm)
     {
         SPIsuccess = true;

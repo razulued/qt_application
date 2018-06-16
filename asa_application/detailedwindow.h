@@ -8,6 +8,7 @@
 #include <QTableWidgetItem>
 #include "login_dialog.h"
 #include <QCheckBox>
+#include "calendar.h"
 
 typedef enum
 {
@@ -139,23 +140,17 @@ private slots:
 
     void checkActivity();
 
+    void receive_date(uint hora, QDate date);
+
+    void on_comboBox_currentIndexChanged(int index);
+
 private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;
     uint selected_id;
     rutinas_mantenimiento *rutinas_ptr;
 
-    enum
-    {
-        BASE_SEC, BASE_MIN, BASE_HOUR, BASE_DAY, BASE_LAST
-    };
-
-    void insert_amount(QString ins);
-    QString posponer_amount;
-    QString posponer_amount_units = "h";
-
-    uint add_base = BASE_HOUR;
-    uint base_mult = 3600;
+    uint reschedule_time;
 
 
     bool init_completed = false;
@@ -185,6 +180,11 @@ private:
 
     bool has_activity = false;
     QCheckBox* controls_ptr[10];
+
+    calendar *calendar_window = NULL;
+
+    void set_op_mode(uint mode);
+    void read_op_mode();
     };
 
 #endif // DETAILEDWINDOW_H

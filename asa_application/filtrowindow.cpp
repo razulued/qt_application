@@ -3,7 +3,7 @@
 #include "mainwindow.h"
 #include <QFont>
 #include <QDebug>
-
+#include "token_auth.h"
 void filtrowindow::HideButtons(bool hide)
 {
     if(false == hide)
@@ -30,6 +30,8 @@ filtrowindow::filtrowindow(bool active_params, parameters_t param, QString dia, 
 {
     ui->setupUi(this);
 
+    my_name = "Filtro";
+
     rutinas_ptr = rutinas;
     this->setStyleSheet("background-color:black;"
                         "color:white"
@@ -46,7 +48,7 @@ filtrowindow::filtrowindow(bool active_params, parameters_t param, QString dia, 
 
     ui->label_dia->setText(dia);
     ui->label_hora->setText(hora);
-    ui->prof_label->setText(user);
+    ui->label_title->setText(user);
 
     if(NULL != graph)
     {
@@ -100,6 +102,16 @@ filtrowindow::filtrowindow(bool active_params, parameters_t param, QString dia, 
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
+    last_validity_state = false;
+
+    QFont label_title_font("Typo Square Bold Demo",17,1);
+
+    ui->label_title->setFont(label_title_font);
+    ui->label_title->setStyleSheet("Text-align:left;"
+                                   "border:none;"
+                                   "color:black;"
+                                   "background-color:transparent;");
+
     this->move(parent->pos());
     this->show();
 }
@@ -150,9 +162,12 @@ void filtrowindow::handleParametrosQuimicosButton()
 
 void filtrowindow::InitTooltips()
 {
-    tool_tip_filtro_electricos = new custom_tooltip(ui->widget, MainWindow::conf_filtro_elect.ids, MainWindow::conf_filtro_elect.names, MainWindow::filtro_outputs.ids, MainWindow::MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_ELECTRICOS, graph);
-    tool_tip_filtro_fisicos = new custom_tooltip(ui->widget_2, MainWindow::conf_filtro_fisic.ids,  MainWindow::conf_filtro_fisic.names, MainWindow::filtro_outputs.ids, MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_FISICOS, graph);
-    tool_tip_filtro_quimicos = new custom_tooltip(ui->widget_3, MainWindow::conf_filtro_quimi.ids, MainWindow::conf_filtro_quimi.names, MainWindow::filtro_outputs.ids, MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_QUIMICOS, graph);
+    tool_tip_filtro_electricos = new custom_tooltip(ui->widget, MainWindow::conf_filtro_elect.ids, MainWindow::conf_filtro_elect.names,
+                                      MainWindow::filtro_outputs.ids, MainWindow::MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_filtro_fisicos = new custom_tooltip(ui->widget_2, MainWindow::conf_filtro_fisic.ids,  MainWindow::conf_filtro_fisic.names,
+                                                 MainWindow::filtro_outputs.ids, MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_filtro_quimicos = new custom_tooltip(ui->widget_3, MainWindow::conf_filtro_quimi.ids, MainWindow::conf_filtro_quimi.names,
+                                                  MainWindow::filtro_outputs.ids, MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_QUIMICOS, graph,  this->my_name);
 
     init_complete = true;
 }
@@ -207,11 +222,53 @@ void filtrowindow::update_tooltips(void)
     }
 }
 
+void filtrowindow::check_lock()
+{
+    bool state = get_validity_state();
+
+    if(last_validity_state != state)
+    {
+        if(true == state)
+        {
+            ui->prof_pic->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Prof pic blanco.png);"
+                                           "border: none;"
+                                           "background-repeat: none;"
+                                           "background-position: center;"
+                                           "background-color: transparent;");
+        }
+        else
+        {
+            ui->prof_pic->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Prof pic azul.png);"
+                                           "border: none;"
+                                           "background-repeat: none;"
+                                           "background-position: center;"
+                                        "background-color: transparent;");
+        }
+
+        ui->prof_label->setText(get_user_name());
+    }
+
+    last_validity_state = state;
+}
+
 void filtrowindow::update_other(QString dia, QString hora, QString user)
 {
     ui->label_dia->setText(dia);
     ui->label_hora->setText(hora);
-    ui->prof_label->setText(user);
+    ui->label_title->setText(user);
+    check_lock();
+
+    /* Update data in detailed window (if open) */
+    if((NULL != detail_window) && detail_window->isActiveWindow())
+    {
+        detail_window->update_params();
+    }
+
+    // Update graph if open
+    if(false == graph->isHidden())
+    {
+        graph->update_graph();
+    }
 }
 
 void filtrowindow::on_modulo_1_clicked()
@@ -220,4 +277,19 @@ void filtrowindow::on_modulo_1_clicked()
         delete detail_window;
     }
     detail_window = new detailedwindow(ELEMENT_FILTRO, rutinas_ptr, this);
+}
+
+void filtrowindow::on_prof_pic_clicked()
+{
+    forward_prof_pic_clicked();
+}
+
+void filtrowindow::on_top_menu_6_clicked()
+{
+    forward_bitacora_clicked();
+}
+
+void filtrowindow::on_top_menu_2_clicked()
+{
+    forward_control_clicked();
 }

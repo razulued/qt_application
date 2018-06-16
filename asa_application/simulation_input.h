@@ -2,6 +2,7 @@
 #define SIMULATION_INPUT_H
 
 #include <QDialog>
+#include <QDateTime>
 
 namespace Ui {
 class simulation_input;
@@ -14,6 +15,8 @@ class simulation_input : public QDialog
 public:
     explicit simulation_input(QWidget *parent = 0);
     ~simulation_input();
+
+    static QDateTime simDateTime;
 
 private slots:
     void on_checkBox_clicked();
@@ -37,8 +40,21 @@ private slots:
 
     void on_horizontalScrollBar_4_actionTriggered(int action);
 
+    void on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime);
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void add_seconds();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::simulation_input *ui;
+    bool time_running = false;
 };
 
 #endif // SIMULATION_INPUT_H

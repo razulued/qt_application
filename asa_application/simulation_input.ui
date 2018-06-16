@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>604</width>
-    <height>300</height>
+    <height>473</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,6 +25,27 @@
     <widget class="QCheckBox" name="checkBox">
      <property name="text">
       <string>Motor 1</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="checkBox_4">
+     <property name="text">
+      <string>Motor 2</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QCheckBox" name="checkBox_5">
+     <property name="text">
+      <string>Motor 3</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QCheckBox" name="checkBox_6">
+     <property name="text">
+      <string>Motor 4</string>
      </property>
     </widget>
    </item>
@@ -52,6 +73,27 @@
      </property>
     </widget>
    </item>
+   <item row="6" column="1">
+    <widget class="QCheckBox" name="checkBox_3">
+     <property name="text">
+      <string>Motor 2</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QCheckBox" name="checkBox_7">
+     <property name="text">
+      <string>Motor 3</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QCheckBox" name="checkBox_8">
+     <property name="text">
+      <string>Motor 4</string>
+     </property>
+    </widget>
+   </item>
    <item row="11" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
@@ -72,6 +114,13 @@
      </property>
     </widget>
    </item>
+   <item row="14" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Caudal out</string>
+     </property>
+    </widget>
+   </item>
    <item row="15" column="0">
     <widget class="QLineEdit" name="lineEdit_3"/>
    </item>
@@ -82,13 +131,6 @@
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Caudal out</string>
      </property>
     </widget>
    </item>
@@ -112,45 +154,45 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QCheckBox" name="checkBox_4">
+   <item row="18" column="0">
+    <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>Motor 2</string>
+      <string>Date Time</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QCheckBox" name="checkBox_5">
-     <property name="text">
-      <string>Motor 3</string>
+   <item row="18" column="1">
+    <widget class="QDateTimeEdit" name="dateTimeEdit">
+     <property name="displayFormat">
+      <string>dd/MM/yy HH:mm:ss</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QCheckBox" name="checkBox_6">
+   <item row="19" column="0">
+    <widget class="QPushButton" name="pushButton">
      <property name="text">
-      <string>Motor 4</string>
+      <string>Add hour</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="QCheckBox" name="checkBox_3">
+   <item row="19" column="1">
+    <widget class="QPushButton" name="pushButton_2">
      <property name="text">
-      <string>Motor 2</string>
+      <string>Add second</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
-    <widget class="QCheckBox" name="checkBox_8">
+   <item row="20" column="0">
+    <widget class="QPushButton" name="pushButton_3">
      <property name="text">
-      <string>Motor 4</string>
+      <string>Run Time</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
-    <widget class="QCheckBox" name="checkBox_7">
+   <item row="20" column="1">
+    <widget class="QPushButton" name="pushButton_4">
      <property name="text">
-      <string>Motor 3</string>
+      <string>Stop time</string>
      </property>
     </widget>
    </item>

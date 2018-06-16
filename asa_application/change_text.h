@@ -13,7 +13,7 @@ class change_text : public QDialog
     Q_OBJECT
 
 public:
-    explicit change_text(QWidget *parent = 0);
+    explicit change_text(QString initial_text, QWidget *parent = 0);
     ~change_text();
 
 private:

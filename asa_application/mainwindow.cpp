@@ -10,6 +10,7 @@
 #include "asa_conf_string.h"
 #include "statistics.h"
 #include "token_auth.h"
+#include "build_settings.h"
 
 #define ENABLE_TEST (1)
 
@@ -63,7 +64,14 @@ int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
 int MainWindow::reg_mot_2;
 
+#if (1 == RELEASE_FOR_RPI)
 bool MainWindow::simulation =false;
+#else
+bool MainWindow::simulation =true;
+#endif
+
+QDateTime MainWindow::time;
+
 //QString MainWindow::ASA_conf_string;
 //QString MainWindow::ASA_conf_only_string;
 
@@ -91,37 +99,37 @@ void MainWindow::HideButtons(bool hide)
 void MainWindow::InitTooltips()
 {
 
-    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, conf_reg_elect.ids, conf_reg_elect.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_ELECTRICOS, graph);
-    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, conf_reg_fisic.ids, conf_reg_fisic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_FISICOS, graph);
-    tool_tip_regulador_quimicos = new custom_tooltip(ui->widget_3, conf_reg_quimic.ids, conf_reg_quimic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_QUIMICOS, graph);
+    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, conf_reg_elect.ids, conf_reg_elect.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, conf_reg_fisic.ids, conf_reg_fisic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_regulador_quimicos = new custom_tooltip(ui->widget_3, conf_reg_quimic.ids, conf_reg_quimic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4, conf_react_elect.ids, conf_react_elect.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_ELECTRICOS, graph);
-    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_5, conf_react_fisic.ids, conf_react_fisic.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_FISICOS, graph);
-    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_6, conf_react_quimi.ids, conf_react_quimi.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_QUIMICOS, graph);
+    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4, conf_react_elect.ids, conf_react_elect.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_5, conf_react_fisic.ids, conf_react_fisic.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_6, conf_react_quimi.ids, conf_react_quimi.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, conf_clarif_elect.ids, conf_clarif_elect.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_ELECTRICOS, graph);
-    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_8, conf_clarif_fisic.ids, conf_clarif_fisic.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_FISICOS, graph);
-    tool_tip_clarificador_quimicos = new custom_tooltip(ui->widget_9, conf_clarif_quimi.ids, conf_clarif_quimi.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_QUIMICOS, graph);
+    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, conf_clarif_elect.ids, conf_clarif_elect.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_8, conf_clarif_fisic.ids, conf_clarif_fisic.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_clarificador_quimicos = new custom_tooltip(ui->widget_9, conf_clarif_quimi.ids, conf_clarif_quimi.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, conf_clora_elect.ids, conf_clora_elect.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_ELECTRICOS, graph);
-    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_11, conf_clora_fisic.ids, conf_clora_fisic.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_FISICOS, graph);
-    tool_tip_clorador_quimicos = new custom_tooltip(ui->widget_12, conf_clora_quimi.ids, conf_clora_quimi.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_QUIMICOS, graph);
+    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, conf_clora_elect.ids, conf_clora_elect.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_11, conf_clora_fisic.ids, conf_clora_fisic.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_clorador_quimicos = new custom_tooltip(ui->widget_12, conf_clora_quimi.ids, conf_clora_quimi.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_digestor_electricos = new custom_tooltip(ui->widget_13, conf_digest_elect.ids, conf_digest_elect.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_ELECTRICOS, graph);
-    tool_tip_digestor_fisicos = new custom_tooltip(ui->widget_14, conf_digest_fisic.ids, conf_digest_fisic.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_FISICOS, graph);
-    tool_tip_digestor_quimicos = new custom_tooltip(ui->widget_15, conf_digest_quimi.ids, conf_digest_quimi.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_QUIMICOS, graph);
+    tool_tip_digestor_electricos = new custom_tooltip(ui->widget_13, conf_digest_elect.ids, conf_digest_elect.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_digestor_fisicos = new custom_tooltip(ui->widget_14, conf_digest_fisic.ids, conf_digest_fisic.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_digestor_quimicos = new custom_tooltip(ui->widget_15, conf_digest_quimi.ids, conf_digest_quimi.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_deshidratador_electricos = new custom_tooltip(ui->widget_16, conf_deshid_elect.ids, conf_deshid_elect.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_ELECTRICOS, graph);
-    tool_tip_deshidratador_fisicos = new custom_tooltip(ui->widget_17, conf_deshid_fisic.ids, conf_deshid_fisic.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_FISICOS, graph);
-    tool_tip_deshidratador_quimicos = new custom_tooltip(ui->widget_18, conf_deshid_quimi.ids, conf_deshid_quimi.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_QUIMICOS, graph);
+    tool_tip_deshidratador_electricos = new custom_tooltip(ui->widget_16, conf_deshid_elect.ids, conf_deshid_elect.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_deshidratador_fisicos = new custom_tooltip(ui->widget_17, conf_deshid_fisic.ids, conf_deshid_fisic.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_deshidratador_quimicos = new custom_tooltip(ui->widget_18, conf_deshid_quimi.ids, conf_deshid_quimi.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_afluente_electricos = new custom_tooltip(ui->widget_19, conf_afluente_elect.ids, conf_afluente_elect.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_ELECTRICOS, graph);
-    tool_tip_afluente_fisicos = new custom_tooltip(ui->widget_20, conf_afluente_fisic.ids, conf_afluente_fisic.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_FISICOS, graph);
-    tool_tip_afluente_quimicos = new custom_tooltip(ui->widget_21, conf_afluente_quimi.ids, conf_afluente_quimi.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_QUIMICOS, graph);
+    tool_tip_afluente_electricos = new custom_tooltip(ui->widget_19, conf_afluente_elect.ids, conf_afluente_elect.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_afluente_fisicos = new custom_tooltip(ui->widget_20, conf_afluente_fisic.ids, conf_afluente_fisic.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_afluente_quimicos = new custom_tooltip(ui->widget_21, conf_afluente_quimi.ids, conf_afluente_quimi.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, conf_efluente_elect.ids, conf_efluente_elect.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_ELECTRICOS, graph);
-    tool_tip_efluente_fisicos = new custom_tooltip(ui->widget_23, conf_efluente_fisic.ids, conf_efluente_fisic.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_FISICOS, graph);
-    tool_tip_efluente_quimicos = new custom_tooltip(ui->widget_24, conf_efluente_quimi.ids, conf_efluente_quimi.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_QUIMICOS, graph);
+    tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, conf_efluente_elect.ids, conf_efluente_elect.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_efluente_fisicos = new custom_tooltip(ui->widget_23, conf_efluente_fisic.ids, conf_efluente_fisic.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_efluente_quimicos = new custom_tooltip(ui->widget_24, conf_efluente_quimi.ids, conf_efluente_quimi.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_QUIMICOS, graph, this->my_name);
 
 //    tool_tip_filtro_electricos = new custom_tooltip(ui->widget_25, conf_filtro_elect.ids, conf_filtro_elect.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS, graph);
 //    tool_tip_filtro_fisicos = new custom_tooltip(ui->widget_26, conf_filtro_fisic.ids, conf_filtro_fisic.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_FISICOS, graph);
@@ -135,11 +143,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-//    ui->pb_simulacion->setStyleSheet("color: green;"
-//                                     "border: 1px solid green;");
-//    settingswindow = NULL;
-
+    my_name = "PTAR";
     graph = new graphwindow(this);
 
     // Init SPI
@@ -240,7 +244,7 @@ MainWindow::MainWindow(QWidget *parent) :
     filtro_outputs = config->get_config();
 
     //Setup Timer
-    dataTimer.setInterval(10);
+    dataTimer.setInterval(100);
     connect(&dataTimer, SIGNAL(timeout()),this,SLOT(dataTimerSlot()));
     dataTimer.start();
 
@@ -471,6 +475,7 @@ void MainWindow::handleDetailedView_9()
 
 void MainWindow::update_this()
 {
+    qDebug() << "update this";
     this->update();
 }
 
@@ -506,7 +511,13 @@ void MainWindow::update_title(QString text)
 
 void MainWindow::on_asa_logo_clicked()
 {
-    this->close();
+    //this->close();
+    if(NULL != contacto_window)
+    {
+        delete contacto_window;
+    }
+    contacto_window = new contacto(this);
+    connect(contacto_window, SIGNAL(close_app()), this, SLOT(close()));
 }
 
 void MainWindow::dataTimerSlot()
@@ -516,7 +527,7 @@ void MainWindow::dataTimerSlot()
     check_lock();
 
 
-    if(0 == (count % 2)) /* 20 ms */
+    if(0 == (count % 10)) /* 20 ms */
     {
         // Fastest time for smooth transition when moving
         update_tooltips();
@@ -529,7 +540,7 @@ void MainWindow::dataTimerSlot()
     }
 
 
-    if(0 == (count % 30)) /* 2 segundo */
+    if(0 == (count % 20)) /* 2 segundo */
     {
         update_this();
 
@@ -669,21 +680,16 @@ void MainWindow::paintEvent(QPaintEvent *)
 //     trace_lines(ui->widget_12, ui->modulo_4, painter);
 }
 
-/* WINDOWS */
-void MainWindow::on_top_menu_4_clicked()
-{
-
-}
-
 void MainWindow::on_top_menu_5_clicked()
 {
-    if(settingswindow != NULL)
+    if(true == get_validity_state())
     {
-        delete settingswindow;
+        if(settingswindow != NULL)
+        {
+            delete settingswindow;
+        }
+        settingswindow = new settings(this);
     }
-
-    settingswindow = new settings(this);
-
 }
 
 void MainWindow::on_top_menu_2_clicked()
@@ -704,11 +710,13 @@ void MainWindow::on_top_menu_2_clicked()
 
 void MainWindow::update_tooltips(void)
 {
+    static uint count = 0;
     if(true == display_parameters)
     {
         switch(GetParemeter())
         {
         case PARAM_ELECTRIC:
+
             tool_tip_regulador_electricos->force_show();
             tool_tip_reactor_electricos->force_show();
             tool_tip_clarificador_electricos->force_show();
@@ -741,6 +749,7 @@ void MainWindow::update_tooltips(void)
 
             break;
         case PARAM_PHYSHIC:
+
             tool_tip_regulador_electricos->force_hide();
             tool_tip_reactor_electricos->force_hide();
             tool_tip_clarificador_electricos->force_hide();
@@ -750,6 +759,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_afluente_electricos->force_hide();
             tool_tip_efluente_electricos->force_hide();
 //            tool_tip_filtro_electricos->force_hide();
+
 
             tool_tip_regulador_fisicos->force_show();
             tool_tip_reactor_fisicos->force_show();
@@ -770,6 +780,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_afluente_quimicos->force_hide();
             tool_tip_efluente_quimicos->force_hide();
 //            tool_tip_filtro_quimicos->force_hide();
+
 
             break;
         case PARAM_CHEMIC:
@@ -812,35 +823,45 @@ void MainWindow::update_tooltips(void)
     {
         if(init_complete)
         {
-            tool_tip_regulador_electricos->update_data();
-            tool_tip_reactor_electricos->update_data();
-            tool_tip_clarificador_electricos->update_data();
-            tool_tip_clorador_electricos->update_data();
-            tool_tip_digestor_electricos->update_data();
-            tool_tip_deshidratador_electricos->update_data();
-            tool_tip_afluente_electricos->update_data();
-            tool_tip_efluente_electricos->update_data();
-//            tool_tip_filtro_electricos->update_data();
-
-            tool_tip_regulador_fisicos->update_data();
-            tool_tip_reactor_fisicos->update_data();
-            tool_tip_clarificador_fisicos->update_data();
-            tool_tip_clorador_fisicos->update_data();
-            tool_tip_digestor_fisicos->update_data();
-            tool_tip_deshidratador_fisicos->update_data();
-            tool_tip_afluente_fisicos->update_data();
-            tool_tip_efluente_fisicos->update_data();
-//            tool_tip_filtro_fisicos->update_data();
-
-            tool_tip_regulador_quimicos->update_data();
-            tool_tip_reactor_quimicos->update_data();
-            tool_tip_clarificador_quimicos->update_data();
-            tool_tip_clorador_quimicos->update_data();
-            tool_tip_digestor_quimicos->update_data();
-            tool_tip_deshidratador_quimicos->update_data();
-            tool_tip_afluente_quimicos->update_data();
-            tool_tip_efluente_quimicos->update_data();
-//            tool_tip_filtro_quimicos->update_data();
+            if(0 == count)
+            {
+                tool_tip_regulador_electricos->update_data();
+                tool_tip_reactor_electricos->update_data();
+                tool_tip_clarificador_electricos->update_data();
+                tool_tip_clorador_electricos->update_data();
+                tool_tip_digestor_electricos->update_data();
+                tool_tip_deshidratador_electricos->update_data();
+                tool_tip_afluente_electricos->update_data();
+                tool_tip_efluente_electricos->update_data();
+    //            tool_tip_filtro_electricos->update_data();
+                count++;
+            }
+            else if(1 == count)
+            {
+                tool_tip_regulador_fisicos->update_data();
+                tool_tip_reactor_fisicos->update_data();
+                tool_tip_clarificador_fisicos->update_data();
+                tool_tip_clorador_fisicos->update_data();
+                tool_tip_digestor_fisicos->update_data();
+                tool_tip_deshidratador_fisicos->update_data();
+                tool_tip_afluente_fisicos->update_data();
+                tool_tip_efluente_fisicos->update_data();
+    //            tool_tip_filtro_fisicos->update_data();
+                count++;
+            }
+            else
+            {
+                tool_tip_regulador_quimicos->update_data();
+                tool_tip_reactor_quimicos->update_data();
+                tool_tip_clarificador_quimicos->update_data();
+                tool_tip_clorador_quimicos->update_data();
+                tool_tip_digestor_quimicos->update_data();
+                tool_tip_deshidratador_quimicos->update_data();
+                tool_tip_afluente_quimicos->update_data();
+                tool_tip_efluente_quimicos->update_data();
+    //            tool_tip_filtro_quimicos->update_data();
+                count = 0;
+            }
 
         }
 
@@ -861,9 +882,9 @@ void MainWindow::new_spi_data()
     }
 
     /* Update filer data if open */
-    if((NULL != filt_window) && filt_window->isActiveWindow())
+    if(NULL != filt_window && filt_window->isVisible())
     {
-        filt_window->update_other(ui->label_dia->text(), ui->label_hora->text(), ui->prof_label->text());
+        filt_window->update_other(ui->label_dia->text(), ui->label_hora->text(), ui->label_title->text());
     }
 
     update_system_time();
@@ -882,7 +903,7 @@ void MainWindow::update_system_time()
 //    temp_time.setTime_t(1);
     if(true == simulation)
     {
-        time = QDateTime::currentDateTime();
+        time = simulation_input::simDateTime;
     }
     else
     {
@@ -910,7 +931,7 @@ void MainWindow::update_system_time()
         //Update text on screen
 //        QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
 //        QString display_time = QString::number(time.time().hour())+":"+QString::number(time.time().minute());
-        QString display_time = QString::number(time.time().hour())+":"+QString("%1").arg(time.time().minute(), 2, 10, QChar('0'));
+        QString display_time = QString::number(time.time().hour())+":"+QString("%1").arg(time.time().minute(), 2, 10, QChar('0'))+":"+QString("%1").arg(time.time().second(), 2, 10, QChar('0'));
         QString display_dia = build_date_string(time);
 
         ui->label_dia->setText(display_dia);
@@ -972,6 +993,42 @@ void MainWindow::update_system_time()
         add_value_to_stats(0x4035, getParamValue(0x4035).toFloat());
         add_value_to_stats(0x4036, getParamValue(0x4036).toFloat());
 
+        add_value_to_stats(0x4031, getParamValue(0x4031).toFloat());
+        add_value_to_stats(0x4032, getParamValue(0x4032).toFloat());
+        add_value_to_stats(0x4033, getParamValue(0x4033).toFloat());
+        add_value_to_stats(0x4034, getParamValue(0x4034).toFloat());
+        add_value_to_stats(0x4035, getParamValue(0x4035).toFloat());
+        add_value_to_stats(0x4036, getParamValue(0x4036).toFloat());
+
+        add_value_to_stats(0x9000, getParamValue(0x9000).toFloat());
+        add_value_to_stats(0x9010, getParamValue(0x9010).toFloat());
+        add_value_to_stats(0x9020, getParamValue(0x9020).toFloat());
+        add_value_to_stats(0x9030, getParamValue(0x9030).toFloat());
+        add_value_to_stats(0x9001, getParamValue(0x9001).toFloat());
+        add_value_to_stats(0x9011, getParamValue(0x9011).toFloat());
+        add_value_to_stats(0x9021, getParamValue(0x9021).toFloat());
+        add_value_to_stats(0x9031, getParamValue(0x9031).toFloat());
+        add_value_to_stats(0x9002, getParamValue(0x9002).toFloat());
+        add_value_to_stats(0x9012, getParamValue(0x9012).toFloat());
+        add_value_to_stats(0x9022, getParamValue(0x9022).toFloat());
+        add_value_to_stats(0x9032, getParamValue(0x9032).toFloat());
+        add_value_to_stats(0x9003, getParamValue(0x9003).toFloat());
+        add_value_to_stats(0x9013, getParamValue(0x9013).toFloat());
+        add_value_to_stats(0x9023, getParamValue(0x9023).toFloat());
+        add_value_to_stats(0x9033, getParamValue(0x9033).toFloat());
+        add_value_to_stats(0x9004, getParamValue(0x9004).toFloat());
+        add_value_to_stats(0x9014, getParamValue(0x9014).toFloat());
+        add_value_to_stats(0x9024, getParamValue(0x9024).toFloat());
+        add_value_to_stats(0x9034, getParamValue(0x9034).toFloat());
+        add_value_to_stats(0x9005, getParamValue(0x9005).toFloat());
+        add_value_to_stats(0x9015, getParamValue(0x9015).toFloat());
+        add_value_to_stats(0x9025, getParamValue(0x9025).toFloat());
+        add_value_to_stats(0x9035, getParamValue(0x9035).toFloat());
+        add_value_to_stats(0x9006, getParamValue(0x9006).toFloat());
+        add_value_to_stats(0x9016, getParamValue(0x9016).toFloat());
+        add_value_to_stats(0x9026, getParamValue(0x9026).toFloat());
+        add_value_to_stats(0x9036, getParamValue(0x9036).toFloat());
+
         //FISICOS
         add_value_to_stats(GASTO_INS, getParamValue(GASTO_INS).toFloat());
         add_value_to_stats(GASTO_ACC, getParamValue(GASTO_ACC).toFloat());
@@ -991,6 +1048,24 @@ void MainWindow::update_system_time()
         add_value_to_stats(Turb_OUT, getParamValue(Turb_OUT).toFloat());
         add_value_to_stats(PH_OUT, getParamValue(PH_OUT).toFloat());
 
+        //FISICOS
+        add_value_to_stats(Filtro_GASTO_INS, getParamValue(Filtro_GASTO_INS).toFloat());
+        add_value_to_stats(Filtro_GASTO_ACC, getParamValue(Filtro_GASTO_ACC).toFloat());
+        add_value_to_stats(Filtro_PRES_AIR, getParamValue(Filtro_PRES_AIR).toFloat());
+        add_value_to_stats(Filtro_PRES_FIL, getParamValue(Filtro_PRES_FIL).toFloat());
+        add_value_to_stats(Filtro_NIVEL_CL, getParamValue(Filtro_NIVEL_CL).toFloat());
+        add_value_to_stats(Filtro_NIVEL_REG, getParamValue(Filtro_NIVEL_REG).toFloat());
+
+        // QUIMICOS
+        add_value_to_stats(Filtro_OD_IN, getParamValue(Filtro_OD_IN).toFloat());    //0x4307
+        add_value_to_stats(Filtro_SST_IN, getParamValue(Filtro_SST_IN).toFloat());  //0x3305
+        add_value_to_stats(Filtro_Turb_IN, getParamValue(Filtro_Turb_IN).toFloat());//0x3303
+        add_value_to_stats(Filtro_PH_IN, getParamValue(Filtro_PH_IN).toFloat());    //0x3301
+
+        add_value_to_stats(Filtro_OD_OUT, getParamValue(Filtro_OD_OUT).toFloat());
+        add_value_to_stats(Filtro_SST_OUT, getParamValue(Filtro_SST_OUT).toFloat());
+        add_value_to_stats(Filtro_Turb_OUT, getParamValue(Filtro_Turb_OUT).toFloat());
+        add_value_to_stats(Filtro_PH_OUT, getParamValue(Filtro_PH_OUT).toFloat());
         // Update graph if open
         if(false == graph->isHidden())
         {
@@ -1100,11 +1175,6 @@ QString MainWindow::build_date_string(QDateTime time)
     return dia_semana + " " + QString::number(time.date().day()) + " " + mes + " " + QString::number(time.date().year());
 }
 
-void MainWindow::on_lock_button_clicked()
-{
-
-}
-
 void MainWindow::on_top_menu_6_clicked()
 {
     if(NULL != motrores_window)
@@ -1139,11 +1209,13 @@ void MainWindow::on_go_to_filtro_clicked()
         delete filt_window;
     }
     filt_window = new filtrowindow(display_parameters, GetParemeter(),
-                                   ui->label_dia->text(), ui->label_hora->text(), ui->prof_label->text(),
+                                   ui->label_dia->text(), ui->label_hora->text(), ui->label_title->text(),
                                    rutinas,
                                    this);
     connect(filt_window, SIGNAL(forward_param_buttons_state(bool,parameters_t)),this, SLOT (update_buttons_from_filter(bool,parameters_t)));
-
+    connect(filt_window, SIGNAL(forward_prof_pic_clicked()),this, SLOT (on_prof_pic_clicked()));
+    connect(filt_window, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_6_clicked()));
+    connect(filt_window, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_2_clicked()));
 }
 
 void MainWindow::on_label_title_clicked()
@@ -1164,7 +1236,7 @@ void MainWindow::check_title_click()
         {
             delete change_text_window;
         }
-        change_text_window = new change_text(this);
+        change_text_window = new change_text(ui->label_title->text(), this);
         connect(change_text_window, SIGNAL(update_text(QString)), this, SLOT(update_title(QString)));
     }
     else

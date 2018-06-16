@@ -45,7 +45,9 @@ SOURCES += main.cpp\
     simulation_input.cpp \
     motores.cpp \
     filtrowindow.cpp \
-    change_text.cpp
+    change_text.cpp \
+    calendar.cpp \
+    contacto.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -79,7 +81,10 @@ HEADERS  += mainwindow.h \
     simulation_input.h \
     motores.h \
     filtrowindow.h \
-    change_text.h
+    change_text.h \
+    calendar.h \
+    contacto.h \
+    build_settings.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -91,7 +96,9 @@ FORMS    += mainwindow.ui \
     simulation_input.ui \
     motores.ui \
     filtrowindow.ui \
-    change_text.ui
+    change_text.ui \
+    calendar.ui \
+    contacto.ui
 
 RESOURCES += \
     fonts.qrc \

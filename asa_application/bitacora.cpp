@@ -4,7 +4,7 @@
 #include <QLabel>
 #include <QScroller>
 #include <QScrollerProperties>
-
+#include "mainwindow.h"
 // rgb(0, 167, 250)
 
 bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
@@ -27,6 +27,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     QFont font1("Typo Square Italic Demo",12,1);
     QFont font2("Typo Square Italic Demo",10,1);
     QFont font3("Typo Square Bold Demo",14,1);
+    QFont font4("Typo Square Bold Demo",10,1);
 
     ui->label->setFont(font0);
 
@@ -101,7 +102,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     ui->label_2->setFont(font3);
     ui->label_2->setAlignment(Qt::AlignCenter);
 
-    ui->label_horas->setFont(font3);
+    ui->label_horas->setFont(font4);
     ui->label_horas->setAlignment(Qt::AlignRight);
 
 //    ui->button_OK->setStyleSheet("border: 2px solid rgb(0, 167, 250);");
@@ -179,22 +180,8 @@ void bitacora::update_table()
     }
 }
 
-void bitacora::on_key_0_clicked() {insert_amount("0");}
-void bitacora::on_key_1_clicked() {insert_amount("1");}
-void bitacora::on_key_2_clicked() {insert_amount("2");}
-void bitacora::on_key_3_clicked() {insert_amount("3");}
-void bitacora::on_key_4_clicked() {insert_amount("4");}
-void bitacora::on_key_5_clicked() {insert_amount("5");}
-void bitacora::on_key_6_clicked() {insert_amount("6");}
-void bitacora::on_key_7_clicked() {insert_amount("7");}
-void bitacora::on_key_8_clicked() {insert_amount("8");}
-void bitacora::on_key_9_clicked() {insert_amount("9");}
 
-void bitacora::on_key_back_clicked()
-{
-    posponer_amount.chop(1);
-    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
-}
+
 
 void bitacora::init_full_table()
 {
@@ -222,7 +209,6 @@ void bitacora::init_full_table()
 void bitacora::update_full_table()
 {
     QDateTime *temp_date;
-    QString *temp_name;
 //    qDebug() << "update_table";
     uint i;
     for(i = 0; i < rutina_ptr->num_of_rutinas; i++)
@@ -321,6 +307,9 @@ void bitacora::init_active_table()
                 break;
             case ORIGEN_EFLUENTE:
                 temp_name = new QString("Efluente");
+                break;
+            case ORIGEN_FILTRO:
+                temp_name = new QString("Filtro");
                 break;
             default:
                 temp_name = new QString("Otro");
@@ -457,6 +446,9 @@ void bitacora::add_row_rutina(uint row, uint rutina, QTableWidget *table)
     case ORIGEN_EFLUENTE:
         temp_name = new QString("Efluente");
         break;
+    case ORIGEN_FILTRO:
+        temp_name = new QString("Filtro");
+        break;
     default:
         temp_name = new QString("Otro");
         break;
@@ -481,90 +473,70 @@ void bitacora::item_selected(QTableWidgetItem* item)
     QTableWidget *table = item->tableWidget();
     ui->label_2->setText(table->item(item->row(), 1)->text());
     selected_id = table->item(item->row(), 0)->text().toInt();
-
-    qDebug() << "ID " << selected_id;
+    reschedule_time = 0;
+    ui->label_horas->setText("");
+//    qDebug() << "ID " << selected_id;
 }
 
 void bitacora::on_key_Reschedule_clicked()
 {
-    if(++add_base == BASE_LAST)
+    uint i = 0;
+    uint periodo;
+    if(NULL != calendar_window)
     {
-        add_base = 0;
+        delete calendar_window;
     }
 
-    switch(add_base)
+    for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
     {
-    case BASE_SEC:
-        posponer_amount_units = "s";
-        base_mult = 1;
-        break;
-    case BASE_MIN:
-        posponer_amount_units = "m";
-        base_mult = 60;
-        break;
-    case BASE_HOUR:
-        posponer_amount_units = "h";
-        base_mult = 3600;
-        break;
-    case BASE_DAY:
-        posponer_amount_units = "d";
-        base_mult = 3600 * 24;
-        break;
-//    case BASE_MON:
-//        ui->label_horas->setText("Meses:");
-//        base_mult = 3600 * 24 * 30;
-//        break;
+        if(rutina_ptr->id(i) == selected_id)
+        {
+            periodo = rutina_ptr->periodo(i);
+            break;
+        }
     }
+    calendar_window = new calendar(MainWindow::time, periodo, this);
+    connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate)), this, SLOT(receive_date(uint,QDate)));
+}
 
-    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
+void bitacora::receive_date(uint hora, QDate date)
+{
+    QDateTime *temp = new QDateTime(date);
+    ui->label_horas->setText(date.toString("yyyy-MM-dd") + " " + QString::number(hora) + ":00");
+
+    *temp = temp->addSecs(60 * 60 * hora);
+    reschedule_time = temp->toTime_t();
+    delete temp;
 }
 
 void bitacora::on_key_OK_clicked()
 {
     uint i = 0;
-    uint time = 0;
-
-    time = posponer_amount.toInt();
 
     if(0 != selected_id)
     {
-        qDebug() << "Button clicked ID: " << selected_id;
+//        qDebug() << "Button clicked ID: " << selected_id;
         for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
         {
             if(rutina_ptr->id(i) == selected_id)
             {
                 qDebug() << "ID match at: " << i;
 
-                if(time > 0)
+                if(reschedule_time > 0)
                 {
-                    time = time * base_mult;
-                    rutina_ptr->add_seconds_rutina(i, time);
+                    rutina_ptr->reschedule_rutina(i, reschedule_time);
                 }
                 else
                 {
                     rutina_ptr->complete_rutina(i);
                 }
+                break;
             }
         }
 
-//        for(i = 0; i < ui->tableWidget->rowCount() ; i++)
-//        {
-//            if(ui->tableWidget->item(i,0)->text().toInt() == selected_id)
-//            {
-//                ui->tableWidget->removeRow(i);
-//                break;
-//            }
-//        }
     }
 
     ui->label_2->setText("SELECIONAR UNA RUTINA DE LA LISTA");
-}
-
-void bitacora::insert_amount(QString ins)
-{
-    posponer_amount += ins;
-
-    ui->label_horas->setText(posponer_amount + " " + posponer_amount_units);
 }
 
 

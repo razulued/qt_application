@@ -29,8 +29,9 @@ motores::motores(QWidget *parent) :
     }
 
     number_of_motors = 0;
-    module_init( &MainWindow::reg_outputs, ui->verticalLayout);
-    module_init( &MainWindow::react_outputs, ui->verticalLayout_2);
+    module_init( &MainWindow::reg_outputs, ui->gridLayout);
+    module_init( &MainWindow::react_outputs, ui->gridLayout_2);
+    module_init( &MainWindow::filtro_outputs, ui->gridLayout_3);
 
     this->setObjectName("MyMotors");
     this->setStyleSheet("#MyMotors{background-color: black;"
@@ -66,6 +67,17 @@ motores::motores(QWidget *parent) :
         login_d = new login_dialog(this);
     }
 
+    ui->comboBox->setStyleSheet("background-color: black;"
+                                "color: white;");
+    ui->comboBox_2->setStyleSheet("background-color: black;"
+                                "color: white;");
+    ui->comboBox_3->setStyleSheet("background-color: black;"
+                                "color: white;");
+    read_op_mode();
+    set_op_mode(ui->comboBox->currentIndex(), ELEMENT_REGULADOR);
+    set_op_mode(ui->comboBox_2->currentIndex(), ELEMENT_REACTOR);
+    set_op_mode(ui->comboBox_3->currentIndex(), ELEMENT_FILTRO);
+
     this->move(parent->pos());
     this->show();
 }
@@ -79,6 +91,7 @@ void motores::update_motors()
 {
     module_update(&MainWindow::reg_outputs);
     module_update(&MainWindow::react_outputs);
+    module_update(&MainWindow::filtro_outputs);
     motor_index = 0;
 }
 
@@ -88,10 +101,14 @@ void motores::on_asa_logo_clicked()
     this->close();
 }
 
-void motores::module_init(configuration_id *conf, QVBoxLayout *layout)
+void motores::module_init(configuration_id *conf, QGridLayout *layout)
 {
+    uint row, column;
+    row = 0;
+    column = 0;
+
     uint i = 0;
-    QFont font_2("Typo Square Ligth Demo",12,1);
+    QFont font_2("Typo Square Ligth Demo",10,1);
     QCheckBox *box_motores;
     QSignalMapper *out_checkboxMapper = new QSignalMapper(this);
 
@@ -102,31 +119,7 @@ void motores::module_init(configuration_id *conf, QVBoxLayout *layout)
 
         box_motores->setFont(font_2);
         box_motores->setLayoutDirection(Qt::RightToLeft);
-//        box_motores->setStyleSheet("QCheckBox{"
-//                                   "color:white;"
-//                                   "width: 40px;"
-//                                   "height: 40px;"
-//                                   "border: none;"
-//                                   "}"
-//                                   "QCheckBox::indicator:checked{"
-//                                   "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
-//                                   "border-width: 0px;"
-//                                   "width: 40px;"
-//                                   "height: 40px;"
-//                                   "}"
-//                                   "QCheckBox::indicator:unchecked{"
-//                                   "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
-//                                   "border-width: 0px;"
-//                                   "width: 40px;"
-//                                   "height: 40px;"
-//                                   "}"
-//                                   "QCheckBox::indicator:disabled{"
-//                                   "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
-//                                   "border-width: 0px;"
-//                                   "width: 40px;"
-//                                   "height: 40px;"
-//                                   "}"
-//                                   );
+
         if(true == get_validity_state())
         {
             box_motores->setEnabled(true);
@@ -137,30 +130,30 @@ void motores::module_init(configuration_id *conf, QVBoxLayout *layout)
 //                box_motores->setChecked(true);
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "border: none;"
                                            "}"
                                            "QCheckBox::indicator{"
                                            "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
                                            "border-width: 0px;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "}");
             }
             else
             {
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "border: none;"
                                            "}"
                                            "QCheckBox::indicator{"
                                            "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                                            "border-width: 0px;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "}");
             }
         }
@@ -169,19 +162,25 @@ void motores::module_init(configuration_id *conf, QVBoxLayout *layout)
             box_motores->setEnabled(false);
             box_motores->setStyleSheet("QCheckBox{"
                                        "color:white;"
-                                       "width: 40px;"
-                                       "height: 40px;"
+                                       "width: 30px;"
+                                       "height: 30px;"
                                        "border: none;"
                                        "}"
                                        "QCheckBox::indicator{"
                                        "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
                                        "border-width: 0px;"
-                                       "width: 40px;"
-                                       "height: 40px;"
+                                       "width: 30px;"
+                                       "height: 30px;"
                                        "}");
         }
 
-        layout->addWidget(box_motores);
+        layout->addWidget(box_motores, row, column);
+        row++;
+        if(row >= 3)
+        {
+            row = 0;
+            column++;
+        }
 
         connect(box_motores, SIGNAL(clicked(bool)), out_checkboxMapper, SLOT(map()));
         out_checkboxMapper->setMapping(box_motores, conf->ids.at(i));
@@ -205,37 +204,37 @@ void motores::module_update(configuration_id *conf)
         {
             box_motores->setEnabled(true);
 
-            qDebug() << "ID " << conf->ids.at(i) << " " << motor_state(conf->ids_string.at(i));
+//            qDebug() << "ID " << conf->ids.at(i) << " " << motor_state(conf->ids_string.at(i));
 //            if(1 == get_id_state(conf->ids.at(i)).toInt())
             if(1 == motor_state(conf->ids_string.at(i)))
             {
 //                box_motores->setChecked(true);
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "border: none;"
                                            "}"
                                            "QCheckBox::indicator{"
                                            "image: url(:/iconos/screen800x600/iconos/Encendido verde.png);"
                                            "border-width: 0px;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "}");
             }
             else
             {
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "border: none;"
                                            "}"
                                            "QCheckBox::indicator{"
                                            "image: url(:/iconos/screen800x600/iconos/Encendido azul.png);"
                                            "border-width: 0px;"
-                                           "width: 40px;"
-                                           "height: 40px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
                                            "}");
             }
         }
@@ -244,15 +243,15 @@ void motores::module_update(configuration_id *conf)
             box_motores->setEnabled(false);
             box_motores->setStyleSheet("QCheckBox{"
                                        "color:white;"
-                                       "width: 40px;"
-                                       "height: 40px;"
+                                       "width: 30px;"
+                                       "height: 30px;"
                                        "border: none;"
                                        "}"
                                        "QCheckBox::indicator{"
                                        "image: url(:/iconos/screen800x600/iconos/Encendido gris.png);"
                                        "border-width: 0px;"
-                                       "width: 40px;"
-                                       "height: 40px;"
+                                       "width: 30px;"
+                                       "height: 30px;"
                                        "}");
         }
     }
@@ -285,4 +284,116 @@ void motores::checkActivity()
         output_token_transfer(false);
         this->close();
     }
+}
+
+
+void motores::on_pushButton_clicked()
+{
+}
+
+void motores::checkStop()
+{
+    if(true == ui->pushButton->isDown() && stop_pressed)
+    {
+        // STOP ALL
+        output_op_mode(3600, "04");
+        output_op_mode(4600, "04");
+        output_op_mode(5600, "04");
+        output_op_mode(9600, "04");
+    }
+    else
+    {
+
+    }
+}
+
+void motores::on_pushButton_pressed()
+{
+    QTimer::singleShot(2500, this, SLOT(checkStop()));
+    stop_pressed = true;
+}
+
+void motores::on_pushButton_released()
+{
+    stop_pressed = false;
+}
+
+void motores::read_op_mode()
+{
+    QString str;
+
+    str = getParamValue(0x3600);
+    if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox->setCurrentIndex(0);
+    }
+    else
+    {
+        ui->comboBox->setCurrentIndex(1);
+    }
+
+    str = getParamValue(0x4600);
+    if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox_2->setCurrentIndex(0);
+    }
+    else
+    {
+        ui->comboBox_2->setCurrentIndex(1);
+    }
+
+    str = getParamValue(0x9600);
+    if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox_3->setCurrentIndex(0);
+    }
+    else
+    {
+        ui->comboBox_3->setCurrentIndex(1);
+    }
+}
+
+void motores::set_op_mode(uint mode, uint what_element)
+{
+    QString str;
+    if(0 == mode)
+    {
+        str = "03";
+    }
+    else
+    {
+        str = "01";
+    }
+
+    switch(what_element)
+    {
+    case ELEMENT_REGULADOR:
+        output_op_mode(3600, str);
+        break;
+    case ELEMENT_REACTOR:
+        output_op_mode(4600, str);
+        break;
+    case ELEMENT_CLARIFICADOR:
+        output_op_mode(5600, str);
+        break;
+    case ELEMENT_FILTRO:
+        output_op_mode(9600, str);
+        break;
+    default:
+        break;
+    }
+}
+void motores::on_comboBox_currentIndexChanged(int index)
+{
+    set_op_mode(index, ELEMENT_REGULADOR);
+}
+
+void motores::on_comboBox_2_currentIndexChanged(int index)
+{
+    set_op_mode(index, ELEMENT_REACTOR);
+}
+
+void motores::on_comboBox_3_currentIndexChanged(int index)
+{
+    set_op_mode(index, ELEMENT_FILTRO);
 }

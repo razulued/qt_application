@@ -12,15 +12,16 @@
 #define HOLD_TIME (40)
 QPoint offset;
 
-uint custom_tooltip::tooltip_number;
+uint custom_tooltip::tooltip_number = 0;
 
 custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list,
-                               QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph) : QWidget(frame)
+                               QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin) : QWidget(frame)
 {
 
     element_type = type;
     parent_window = mainwindow;
     graph_ptr = graph;
+    graph_origin = g_origin;
 
     parent_frame = frame;
     connect_here = connect_to;
@@ -64,17 +65,21 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
     QPoint pos = parent_frame->pos();
     if (!myFile.open(QIODevice::ReadOnly))
     {
-//        qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
+        qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
     }
     else
     {
         in >> pos;
-//        qDebug() << "tool: " << actual_tooltip_number <<"pos " << pos;
+        init_data();
+        qDebug() << "tool: " << actual_tooltip_number <<"pos " << pos;
     }
 
-    parent_frame->move(pos);
+    if(pos.x() != 0 && pos.y() != 0)
+    {
+        parent_frame->move(pos);
+    }
+    myFile.close();
 
-    init_data();
 }
 
 void custom_tooltip::init_data()
@@ -131,29 +136,6 @@ void custom_tooltip::update_data()
     list_widget->clear();
     QListWidgetItem *label;
 
-
-//    if(true == item_is_pressed)
-//    {
-//        parent_frame->move(mapTo(parent_window, mapFromGlobal(QCursor::pos()) - offset));
-
-//        if(0 == item_pressed_counter)
-//        {    QFont font_2("Liberation Mono Bold",10,1);
-
-//            item_is_pressed = false;
-//            list_widget->setStyleSheet("background: transparent;"
-//                                          "color: rgb(0, 167, 250);"
-//                                            "border: none;"
-//                                       "border-image: none;");
-
-//            save_position();
-//        }
-//        else if(last_position == parent_frame->pos())
-//        {
-//            item_pressed_counter--;
-//        }
-
-//        last_position = parent_frame->pos();
-//    }
     if(last_position != parent_frame->pos())
     {
         save_position();
@@ -254,7 +236,10 @@ void custom_tooltip::force_show()
 
 void custom_tooltip::force_hide()
 {
-    parent_frame->hide();
+    if(false == parent_frame->isHidden())
+    {
+        parent_frame->hide();
+    }
 }
 
 void custom_tooltip::save_position()
@@ -277,7 +262,7 @@ void custom_tooltip::ListPressed()
 {
     if(number_of_clicks++ == 0)
     {
-        QTimer::singleShot(300, this, SLOT(checkClick()));
+        QTimer::singleShot(500, this, SLOT(checkClick()));
     }
 }
 
@@ -322,6 +307,7 @@ void custom_tooltip::checkClick()
             if(graph_ptr->isHidden())
             {
                 graph_ptr->show_graph(element_type);
+                graph_ptr->set_type(graph_origin);
             }
         }
         else

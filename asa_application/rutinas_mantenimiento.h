@@ -22,7 +22,7 @@ enum
     STATE_WAIT_FOR_NEXT_EVENT,
     STATE_WAIT_FOR_COMPLETE,
     STATE_COMPLETE,
-    STATE_ADD_HOURS
+    STATE_RESCHEDULE
 };
 
 enum
@@ -51,6 +51,7 @@ typedef struct
     uint synch_date;
     uint last_event;
     uint next_event;
+    uint schedule_to;
     QString explicacion;
     QString texto_ayuda;
 }def_rutina_t;
@@ -75,9 +76,10 @@ public:
     QString nombre(uint rutina);
     QString explicacion(uint rutina);
     QString texto_ayuda(uint rutina);
+    uint schedule_to(uint rutina);
 
     void complete_rutina(uint rutina);
-    void add_seconds_rutina(uint rutina, uint seconds);
+    void reschedule_rutina(uint rutina, uint new_time);
     void set_time(QDateTime time);
 private:
 //    def_rutina_t rutina_def_table[];
@@ -91,6 +93,8 @@ private:
 
     void load_to_table(uint id);
     void load_to_db(uint id);
+
+    uint find_next_schedule(uint periodo, uint last_event, uint schedule_to);
 };
 
 #endif // RUTINAS_MANTENIMIENTO_H

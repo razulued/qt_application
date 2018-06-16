@@ -84,15 +84,15 @@ void mod_1_carcamo::check_update_animation()
     if(carcamo_motores & 0x01)
     {
         // One or more motors are ON
-        if(carcamo_nivel < 10)
+        if(carcamo_nivel < 0.5)
         {
             load_new_gif(CARCAMO_GIF_STATE_NONE);
         }
-        else if(carcamo_nivel < 30)
+        else if(carcamo_nivel < 1)
         {
             load_new_gif(CARCAMO_GIF_STATE_LOW_MOV);
         }
-        else if(carcamo_nivel < 60)
+        else if(carcamo_nivel < 3)
         {
             load_new_gif(CARCAMO_GIF_STATE_MED_MOV);
         }
@@ -104,15 +104,15 @@ void mod_1_carcamo::check_update_animation()
     else
     {
         // One or more motors are ON
-        if(carcamo_nivel < 10)
+        if(carcamo_nivel < 0.5)
         {
             load_new_gif(CARCAMO_GIF_STATE_NONE);
         }
-        else if(carcamo_nivel < 30)
+        else if(carcamo_nivel < 1)
         {
             load_new_gif(CARCAMO_GIF_STATE_LOW_QUIET);
         }
-        else if(carcamo_nivel < 60)
+        else if(carcamo_nivel < 3)
         {
             load_new_gif(CARCAMO_GIF_STATE_MED_QUIET);
         }

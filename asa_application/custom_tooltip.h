@@ -31,7 +31,7 @@ public:
         return list;
     }
 
-    custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph);
+    custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin);
 
     void update_data();
     void init_data();
@@ -65,6 +65,7 @@ private:
     uint element_type = 0;
 
     arrowkeys *arrow_key_window = NULL;
+    QString graph_origin;
 private slots:
     void ListPressed();
     void checkClick();
