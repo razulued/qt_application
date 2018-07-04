@@ -100,6 +100,7 @@ void DataProccess::run()
     store_value_by_ID(0x9010, "3");
     store_value_by_ID(0x9020, "3");
     store_value_by_ID(0x9030, "3");
+    store_value_by_ID(0x9080, "3");
 
     while(1)
     {
@@ -628,12 +629,13 @@ void DataProccess::dataRandom()
     store_value_by_ID(0x4020, "3");
     store_value_by_ID(0x4030, "3");
 
-    store_value_by_ID(0x3000, "1");
+    store_value_by_ID(0x3000, "3");
     store_value_by_ID(0x3010, "3");
     store_value_by_ID(0x3020, "3");
     store_value_by_ID(0x3030, "3");
 
     store_value_by_ID(0x4001, "5DC");
+    store_value_by_ID(0x3004, "4B0");
 
     // /100
     store_value_by_ID(0x3400, "96");
@@ -654,7 +656,7 @@ void DataProccess::dataRandom()
 
     // /1
     store_value_by_ID(0x4540, "75");
-    store_value_by_ID(0x4541, "100");
+    store_value_by_ID(0x9203, "1F4");
 
 //    //presion
 //    store_value_by_ID(0x5400, "123");

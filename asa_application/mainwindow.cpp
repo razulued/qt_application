@@ -50,6 +50,10 @@ configuration_id MainWindow::conf_filtro_elect;
 configuration_id MainWindow::conf_filtro_fisic;
 configuration_id MainWindow::conf_filtro_quimi;
 
+configuration_id MainWindow::conf_filtro_bomba_elect;
+configuration_id MainWindow::conf_filtro_bomba_fisic;
+configuration_id MainWindow::conf_filtro_bomba_quimi;
+
 configuration_id MainWindow::reg_outputs;
 configuration_id MainWindow::react_outputs;
 configuration_id MainWindow::clarif_outputs;
@@ -59,6 +63,7 @@ configuration_id MainWindow::deshid_outputs;
 configuration_id MainWindow::afluente_outputs;
 configuration_id MainWindow::efluente_outputs;
 configuration_id MainWindow::filtro_outputs;
+configuration_id MainWindow::filtro_bomba_outputs;
 
 int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
@@ -145,6 +150,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     my_name = "PTAR";
     graph = new graphwindow(this);
+    connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
+    connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
 
     // Init SPI
     dataObj = new DataProccess;
@@ -223,6 +230,13 @@ MainWindow::MainWindow(QWidget *parent) :
     config = new configuration("Filtro-Quimicos");
     conf_filtro_quimi = config->get_config();
 
+    config = new configuration("Filtro-Bomba-Electricos");
+    conf_filtro_bomba_elect = config->get_config();
+    config = new configuration("Filtro-Bomba-Fisicos");
+    conf_filtro_bomba_fisic = config->get_config();
+    config = new configuration("Filtro-Bomba-Quimicos");
+    conf_filtro_bomba_quimi = config->get_config();
+
     //Get outputs
     config = new configuration("Regulador-Out");
     reg_outputs = config->get_config();
@@ -242,6 +256,14 @@ MainWindow::MainWindow(QWidget *parent) :
     efluente_outputs = config->get_config();
     config = new configuration("Filtro-Out");
     filtro_outputs = config->get_config();
+    config = new configuration("Filtro-Bomba-Out");
+    filtro_bomba_outputs = config->get_config();
+
+    config = new configuration("Product-Config");
+    if("1" == config->get_value("Product-Config", "Filtro"))
+    {
+        filtro_present = true;
+    }
 
     //Setup Timer
     dataTimer.setInterval(100);
@@ -363,6 +385,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                    "background-color:transparent;");
     ui->label_title->setText(title_name);
 
+
 }
 
 
@@ -406,71 +429,130 @@ void MainWindow::handleParametrosQuimicosButton()
     ui->active_param_label->setText("Parametros Químicos");
 }
 
+void MainWindow::window_closed()
+{
+    qDebug() << "release lock";
+    mutex_detailed.unlock();
+}
+
 void MainWindow::handleDetailedView_1()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    qDebug() << "handleDetailedView_1";
+    if(mutex_detailed.tryLock(0))
+    {
+        qDebug() << "lock OK";
+
+        if (detail_window != NULL) {
+            qDebug() << "delete";
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_REGULADOR, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_REGULADOR, rutinas, this);
+    else
+    {
+        qDebug() << "lock NOK";
+    }
 }
 void MainWindow::handleDetailedView_2()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_REACTOR, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_REACTOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_3()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_CLARIFICADOR, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_CLARIFICADOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_4()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_CLORADOR, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_CLORADOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_5()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_DIGESTOR, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_DIGESTOR, rutinas, this);
 }
 void MainWindow::handleDetailedView_6()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_DESHIDRATADOR, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_DESHIDRATADOR, rutinas, this);
 }
 
 void MainWindow::handleDetailedView_7()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_AFLUENTE, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_AFLUENTE, rutinas, this);
 }
 
 void MainWindow::handleDetailedView_8()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_EFLUENTE, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_EFLUENTE, rutinas, this);
 }
 
 void MainWindow::handleDetailedView_9()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_FILTRO, rutinas, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_FILTRO, rutinas, this);
 }
 
 void MainWindow::update_this()
@@ -511,18 +593,32 @@ void MainWindow::update_title(QString text)
 
 void MainWindow::on_asa_logo_clicked()
 {
-    //this->close();
-    if(NULL != contacto_window)
+    if(mutex_detailed.tryLock(0))
     {
-        delete contacto_window;
+        if(NULL != contacto_window)
+        {
+            delete contacto_window;
+        }
+        contacto_window = new contacto(this);
+        connect(contacto_window, SIGNAL(close_app()), this, SLOT(close()));
+
+        connect(contacto_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        contacto_window->show();
     }
-    contacto_window = new contacto(this);
-    connect(contacto_window, SIGNAL(close_app()), this, SLOT(close()));
 }
 
 void MainWindow::dataTimerSlot()
 {
     static uint count = 0;
+    static bool goto_filtro = true;
+
+    // Go to filtro for non-PTAR application
+    if((true == goto_filtro && count > 5) && (true == filtro_present))
+    {
+        //TO FILTRO
+        on_go_to_filtro_clicked();
+        goto_filtro = false;
+    }
 
     check_lock();
 
@@ -684,27 +780,31 @@ void MainWindow::on_top_menu_5_clicked()
 {
     if(true == get_validity_state())
     {
-        if(settingswindow != NULL)
+        if(mutex_detailed.tryLock(0))
         {
-            delete settingswindow;
+            if(settingswindow != NULL)
+            {
+                delete settingswindow;
+            }
+            settingswindow = new settings(this);
+            connect(settingswindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
+            settingswindow->show();
         }
-        settingswindow = new settings(this);
     }
 }
 
 void MainWindow::on_top_menu_2_clicked()
 {
-    if(bitacorawindow !=NULL)
+    if(mutex_detailed.tryLock(0))
     {
-        delete bitacorawindow;
+        if(bitacorawindow !=NULL)
+        {
+            delete bitacorawindow;
+        }
+        bitacorawindow = new bitacora(rutinas, this);
+        connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        bitacorawindow->show();
     }
-    bitacorawindow = new bitacora(rutinas, this);
-
-//    if(detail_window !=NULL)
-//    {
-//        delete detail_window;
-//    }
-
 }
 
 
@@ -887,6 +987,39 @@ void MainWindow::new_spi_data()
         filt_window->update_other(ui->label_dia->text(), ui->label_hora->text(), ui->label_title->text());
     }
 
+    if(0xBB11 == getParamValue(0x0201).toInt())
+    {
+        if(false == update_in_progress)
+        {
+            update_in_progress = true;
+
+            // Update in progress
+            if( NULL != update_window )
+            {
+                delete update_window;
+            }
+            update_window = new earm_update(this);
+            update_window->show();
+        }
+        else
+        {
+            if(NULL != update_window)
+            {
+                update_window->update_data();
+            }
+        }
+    }
+    else
+    {
+        if(NULL != update_window)
+        {
+            if(update_window->isVisible())
+            {
+                update_window->close();
+                update_in_progress = false;
+            }
+        }
+    }
     update_system_time();
 }
 
@@ -1004,30 +1137,43 @@ void MainWindow::update_system_time()
         add_value_to_stats(0x9010, getParamValue(0x9010).toFloat());
         add_value_to_stats(0x9020, getParamValue(0x9020).toFloat());
         add_value_to_stats(0x9030, getParamValue(0x9030).toFloat());
+        add_value_to_stats(0x9080, getParamValue(0x9080).toFloat());
+
         add_value_to_stats(0x9001, getParamValue(0x9001).toFloat());
         add_value_to_stats(0x9011, getParamValue(0x9011).toFloat());
         add_value_to_stats(0x9021, getParamValue(0x9021).toFloat());
         add_value_to_stats(0x9031, getParamValue(0x9031).toFloat());
+        add_value_to_stats(0x9081, getParamValue(0x9081).toFloat());
+
         add_value_to_stats(0x9002, getParamValue(0x9002).toFloat());
         add_value_to_stats(0x9012, getParamValue(0x9012).toFloat());
         add_value_to_stats(0x9022, getParamValue(0x9022).toFloat());
         add_value_to_stats(0x9032, getParamValue(0x9032).toFloat());
+        add_value_to_stats(0x9082, getParamValue(0x9082).toFloat());
+
         add_value_to_stats(0x9003, getParamValue(0x9003).toFloat());
         add_value_to_stats(0x9013, getParamValue(0x9013).toFloat());
         add_value_to_stats(0x9023, getParamValue(0x9023).toFloat());
         add_value_to_stats(0x9033, getParamValue(0x9033).toFloat());
+        add_value_to_stats(0x9083, getParamValue(0x9083).toFloat());
+
         add_value_to_stats(0x9004, getParamValue(0x9004).toFloat());
         add_value_to_stats(0x9014, getParamValue(0x9014).toFloat());
         add_value_to_stats(0x9024, getParamValue(0x9024).toFloat());
         add_value_to_stats(0x9034, getParamValue(0x9034).toFloat());
+        add_value_to_stats(0x9084, getParamValue(0x9084).toFloat());
+
         add_value_to_stats(0x9005, getParamValue(0x9005).toFloat());
         add_value_to_stats(0x9015, getParamValue(0x9015).toFloat());
         add_value_to_stats(0x9025, getParamValue(0x9025).toFloat());
         add_value_to_stats(0x9035, getParamValue(0x9035).toFloat());
+        add_value_to_stats(0x9085, getParamValue(0x9085).toFloat());
+
         add_value_to_stats(0x9006, getParamValue(0x9006).toFloat());
         add_value_to_stats(0x9016, getParamValue(0x9016).toFloat());
         add_value_to_stats(0x9026, getParamValue(0x9026).toFloat());
         add_value_to_stats(0x9036, getParamValue(0x9036).toFloat());
+        add_value_to_stats(0x9086, getParamValue(0x9086).toFloat());
 
         //FISICOS
         add_value_to_stats(GASTO_INS, getParamValue(GASTO_INS).toFloat());
@@ -1177,11 +1323,17 @@ QString MainWindow::build_date_string(QDateTime time)
 
 void MainWindow::on_top_menu_6_clicked()
 {
-    if(NULL != motrores_window)
+    if(mutex_detailed.tryLock(0))
     {
-        delete motrores_window;
+        if(NULL != motrores_window)
+        {
+            delete motrores_window;
+        }
+        motrores_window = new motores(this);
+
+        connect(motrores_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        motrores_window->show();
     }
-    motrores_window = new motores(this);
 }
 
 void MainWindow::on_prof_pic_clicked()
@@ -1204,18 +1356,25 @@ void MainWindow::on_prof_pic_clicked()
 
 void MainWindow::on_go_to_filtro_clicked()
 {
-    if(NULL != filt_window)
-    {
-        delete filt_window;
-    }
-    filt_window = new filtrowindow(display_parameters, GetParemeter(),
-                                   ui->label_dia->text(), ui->label_hora->text(), ui->label_title->text(),
-                                   rutinas,
-                                   this);
-    connect(filt_window, SIGNAL(forward_param_buttons_state(bool,parameters_t)),this, SLOT (update_buttons_from_filter(bool,parameters_t)));
-    connect(filt_window, SIGNAL(forward_prof_pic_clicked()),this, SLOT (on_prof_pic_clicked()));
-    connect(filt_window, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_6_clicked()));
-    connect(filt_window, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_2_clicked()));
+//    if(mutex_detailed.tryLock(0))
+//    {
+        if(NULL != filt_window)
+        {
+            delete filt_window;
+        }
+        filt_window = new filtrowindow(display_parameters, GetParemeter(),
+                                       ui->label_dia->text(), ui->label_hora->text(), ui->label_title->text(),
+                                       rutinas,
+                                       this);
+        connect(filt_window, SIGNAL(forward_param_buttons_state(bool,parameters_t)),this, SLOT (update_buttons_from_filter(bool,parameters_t)));
+        connect(filt_window, SIGNAL(forward_prof_pic_clicked()),this, SLOT (on_prof_pic_clicked()));
+        connect(filt_window, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
+        connect(filt_window, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
+
+//        connect(filt_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        filt_window->show();
+//    }
+
 }
 
 void MainWindow::on_label_title_clicked()

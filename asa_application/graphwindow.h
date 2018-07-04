@@ -33,7 +33,7 @@
 #define Filtro_Turb_OUT (0x9313)
 #define Filtro_PH_OUT   (0xFFFF)
 
-#define Filtro_GASTO_INS  (0xFFFF)
+#define Filtro_GASTO_INS  (0x9203)
 #define Filtro_GASTO_ACC  (0xFFFF)
 #define Filtro_NIVEL_REG  (0x9201)
 #define Filtro_NIVEL_CL   (0xFFFF)
@@ -114,6 +114,10 @@ private slots:
 
     void on_comboBox_currentIndexChanged(int index);
 
+    void on_top_menu_6_clicked();
+
+    void on_top_menu_2_clicked();
+
 private:
     Ui::graphwindow *ui;
     QPen pen;
@@ -138,6 +142,10 @@ private:
 
     uint index_of_motor();
     QString graph_origin;
+
+signals:
+    void forward_bitacora_clicked();
+    void forward_control_clicked();
 };
 
 #endif // GRAPHWINDOW_H

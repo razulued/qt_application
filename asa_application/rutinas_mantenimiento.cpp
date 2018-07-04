@@ -422,6 +422,11 @@ void rutinas_mantenimiento::rutina_state_machine(int index)
     }
 }
 
+void rutinas_mantenimiento::update_rutina(uint rutina)
+{
+    load_to_db(rutina_def_table[rutina].id);
+}
+
 void rutinas_mantenimiento::complete_rutina(uint rutina)
 {
     QDateTime *time;

@@ -6,6 +6,7 @@
 #include "custom_tooltip.h"
 #include "graphwindow.h"
 #include "detailedwindow.h"
+#include <QMutex>
 
 namespace Ui {
 class filtrowindow;
@@ -39,6 +40,9 @@ private slots:
 
     void on_top_menu_2_clicked();
 
+    void on_modulo_2_clicked();
+
+    void detailed_window_closed();
 private:
     Ui::filtrowindow *ui;
     void HideButtons(bool hide);
@@ -51,17 +55,23 @@ private:
     custom_tooltip *tool_tip_filtro_fisicos;
     custom_tooltip *tool_tip_filtro_quimicos;
 
+    custom_tooltip *tool_tip_filtro_bomba_electricos;
+    custom_tooltip *tool_tip_filtro_bomba_fisicos;
+    custom_tooltip *tool_tip_filtro_bomba_quimicos;
+
     graphwindow *graph = NULL;
     detailedwindow *detail_window = NULL;
     rutinas_mantenimiento *rutinas_ptr;
     bool last_validity_state = false;
 
     QString my_name;
+    QMutex mutex_detailed;
 signals:
     void forward_param_buttons_state(bool active, parameters_t param);
     void forward_prof_pic_clicked();
     void forward_bitacora_clicked();
     void forward_control_clicked();
+    void release_lock();
 };
 
 #endif // FILTROWINDOW_H

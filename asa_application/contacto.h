@@ -33,6 +33,7 @@ private:
 
 signals:
     void close_app();
+    void release_lock();
 };
 
 #endif // CONTACTO_H

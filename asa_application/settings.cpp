@@ -8,6 +8,7 @@
 #include <QScroller>
 #include "parameters.h"
 #include "asa_conf_string.h"
+#include "QKeyEvent"
 
 settings::settings(QWidget *parent) :
     QDialog(parent),
@@ -79,9 +80,6 @@ settings::settings(QWidget *parent) :
     scroller_3->grabGesture(ui->scrollArea_3,QScroller::LeftMouseButtonGesture);
 
     synch_calibrations();
-
-    this->show();
-
 }
 
 settings::~settings()
@@ -117,11 +115,13 @@ void settings::on_settings_accepted()
     config_file->resize(0);
     stream << active_text_edit->toPlainText();
     config_file->flush();
+    release_lock();
     config_file->close();
 }
 
 void settings::on_settings_rejected()
 {
+    release_lock();
     config_file->close();
 }
 
@@ -138,6 +138,7 @@ void saveSettings(const QString &group, const QString &key, const QVariant &valu
 void settings::on_buttonBox_accepted()
 {
     //Display calibrations
+    uint mode_4600;
     QString calibrations;
 
     calibrations += "0D03:2";
@@ -160,13 +161,29 @@ void settings::on_buttonBox_accepted()
     {
         // por tiempos
         calibrations += "|4600:2";
+        mode_4600 = 2;
     }
     else
     {
         // por oxigeno
         calibrations += "|4600:1";
+        mode_4600 = 1;
     }
 
+    calibrations += "|9400:" + invese_getParamValue(0x9400, ui->control_9400->value());
+    calibrations += "|9401:" + invese_getParamValue(0x9401, ui->control_9401->value());
+    calibrations += "|9402:" + invese_getParamValue(0x9402, ui->control_9402->value());
+    calibrations += "|9403:" + invese_getParamValue(0x9403, ui->control_9403->value());
+    calibrations += "|9404:" + invese_getParamValue(0x9404, ui->control_9404->value());
+
+    calibrations += "|9500:" + invese_getParamValue(0x9500, ui->control_9500->value());
+    calibrations += "|9501:" + invese_getParamValue(0x9501, ui->control_9501->value());
+    calibrations += "|9502:" + invese_getParamValue(0x9502, ui->control_9502->value());
+    calibrations += "|9503:" + invese_getParamValue(0x9503, ui->control_9503->value());
+    calibrations += "|9504:" + invese_getParamValue(0x9504, ui->control_9504->value());
+
+
+    ///
     calibrations += "|1006:" + invese_getParamValue(0x1006, ui->control_1006->value());
     calibrations += "|1007:" + invese_getParamValue(0x1007, ui->control_1007->value());
     calibrations += "|1008:" + invese_getParamValue(0x1008, ui->control_1008->value());
@@ -297,59 +314,104 @@ void settings::on_buttonBox_accepted()
     set_calibration(calibrations);
 
     qDebug() << calibrations;
+
+    // Save 4600
+    write_parameter("mode4600.bin", mode_4600);
 }
 
-void settings::on_key_0_clicked() {active_text_edit->insertPlainText("0");}
-void settings::on_key_1_clicked() {active_text_edit->insertPlainText("1");}
-void settings::on_key_2_clicked() {active_text_edit->insertPlainText("2");}
-void settings::on_key_3_clicked() {active_text_edit->insertPlainText("3");}
-void settings::on_key_4_clicked() {active_text_edit->insertPlainText("4");}
-void settings::on_key_5_clicked() {active_text_edit->insertPlainText("5");}
-void settings::on_key_6_clicked() {active_text_edit->insertPlainText("6");}
-void settings::on_key_7_clicked() {active_text_edit->insertPlainText("7");}
-void settings::on_key_8_clicked() {active_text_edit->insertPlainText("8");}
-void settings::on_key_9_clicked() {active_text_edit->insertPlainText("9");}
-void settings::on_key_Q_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("Q");}else{active_text_edit->insertPlainText("q");}}
-void settings::on_key_W_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("W");}else{active_text_edit->insertPlainText("w");}}
-void settings::on_key_E_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("E");}else{active_text_edit->insertPlainText("e");}}
-void settings::on_key_R_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("R");}else{active_text_edit->insertPlainText("r");}}
-void settings::on_key_T_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("T");}else{active_text_edit->insertPlainText("t");}}
-void settings::on_key_Y_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("Y");}else{active_text_edit->insertPlainText("y");}}
-void settings::on_key_U_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("U");}else{active_text_edit->insertPlainText("u");}}
-void settings::on_key_I_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("I");}else{active_text_edit->insertPlainText("i");}}
-void settings::on_key_O_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("O");}else{active_text_edit->insertPlainText("o");}}
-void settings::on_key_P_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("P");}else{active_text_edit->insertPlainText("p");}}
-void settings::on_key_A_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("A");}else{active_text_edit->insertPlainText("a");}}
-void settings::on_key_S_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("S");}else{active_text_edit->insertPlainText("s");}}
-void settings::on_key_D_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("D");}else{active_text_edit->insertPlainText("d");}}
-void settings::on_key_F_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("F");}else{active_text_edit->insertPlainText("f");}}
-void settings::on_key_G_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("G");}else{active_text_edit->insertPlainText("g");}}
-void settings::on_key_H_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("H");}else{active_text_edit->insertPlainText("h");}}
-void settings::on_key_J_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("J");}else{active_text_edit->insertPlainText("j");}}
-void settings::on_key_K_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("K");}else{active_text_edit->insertPlainText("k");}}
-void settings::on_key_L_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("L");}else{active_text_edit->insertPlainText("l");}}
-void settings::on_key_Z_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("Z");}else{active_text_edit->insertPlainText("z");}}
-void settings::on_key_X_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("X");}else{active_text_edit->insertPlainText("x");}}
-void settings::on_key_C_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("C");}else{active_text_edit->insertPlainText("c");}}
-void settings::on_key_V_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("V");}else{active_text_edit->insertPlainText("v");}}
-void settings::on_key_B_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("B");}else{active_text_edit->insertPlainText("b");}}
-void settings::on_key_N_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("N");}else{active_text_edit->insertPlainText("n");}}
-void settings::on_key_M_clicked(){if(ui->key_mayus->isChecked()){active_text_edit->insertPlainText("M");}else{active_text_edit->insertPlainText("m");}}
+
+void settings::on_key_0_clicked() {keyboard_handler("0");}
+void settings::on_key_1_clicked() {keyboard_handler("1");}
+void settings::on_key_2_clicked() {keyboard_handler("2");}
+void settings::on_key_3_clicked() {keyboard_handler("3");}
+void settings::on_key_4_clicked() {keyboard_handler("4");}
+void settings::on_key_5_clicked() {keyboard_handler("5");}
+void settings::on_key_6_clicked() {keyboard_handler("6");}
+void settings::on_key_7_clicked() {keyboard_handler("7");}
+void settings::on_key_8_clicked() {keyboard_handler("8");}
+void settings::on_key_9_clicked() {keyboard_handler("9");}
+void settings::on_key_Q_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("Q");}else{keyboard_handler("q");}}
+void settings::on_key_W_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("W");}else{keyboard_handler("w");}}
+void settings::on_key_E_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("E");}else{keyboard_handler("e");}}
+void settings::on_key_R_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("R");}else{keyboard_handler("r");}}
+void settings::on_key_T_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("T");}else{keyboard_handler("t");}}
+void settings::on_key_Y_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("Y");}else{keyboard_handler("y");}}
+void settings::on_key_U_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("U");}else{keyboard_handler("u");}}
+void settings::on_key_I_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("I");}else{keyboard_handler("i");}}
+void settings::on_key_O_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("O");}else{keyboard_handler("o");}}
+void settings::on_key_P_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("P");}else{keyboard_handler("p");}}
+void settings::on_key_A_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("A");}else{keyboard_handler("a");}}
+void settings::on_key_S_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("S");}else{keyboard_handler("s");}}
+void settings::on_key_D_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("D");}else{keyboard_handler("d");}}
+void settings::on_key_F_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("F");}else{keyboard_handler("f");}}
+void settings::on_key_G_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("G");}else{keyboard_handler("g");}}
+void settings::on_key_H_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("H");}else{keyboard_handler("h");}}
+void settings::on_key_J_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("J");}else{keyboard_handler("j");}}
+void settings::on_key_K_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("K");}else{keyboard_handler("k");}}
+void settings::on_key_L_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("L");}else{keyboard_handler("l");}}
+void settings::on_key_Z_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("Z");}else{keyboard_handler("z");}}
+void settings::on_key_X_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("X");}else{keyboard_handler("x");}}
+void settings::on_key_C_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("C");}else{keyboard_handler("c");}}
+void settings::on_key_V_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("V");}else{keyboard_handler("v");}}
+void settings::on_key_B_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("B");}else{keyboard_handler("b");}}
+void settings::on_key_N_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("N");}else{keyboard_handler("n");}}
+void settings::on_key_M_clicked(){if(ui->key_mayus->isChecked()){keyboard_handler("M");}else{keyboard_handler("m");}}
 
 void settings::on_key_up_clicked()    {active_text_edit->moveCursor(QTextCursor::Up);}
 void settings::on_key_down_clicked()  {active_text_edit->moveCursor(QTextCursor::Down);}
 void settings::on_key_left_clicked()  {active_text_edit->moveCursor(QTextCursor::Left);}
 void settings::on_key_right_clicked() {active_text_edit->moveCursor(QTextCursor::Right);}
 
-void settings::on_key_guion_clicked() {active_text_edit->insertPlainText("-");}
-void settings::on_key_equal_clicked() {active_text_edit->insertPlainText("=");}
-void settings::on_key_space_clicked() {active_text_edit->insertPlainText(" ");}
+void settings::on_key_guion_clicked() {keyboard_handler("-");}
+void settings::on_key_equal_clicked() {keyboard_handler("=");}
+void settings::on_key_space_clicked() {keyboard_handler(" ");}
+void settings::on_key_L_corchete_clicked() {keyboard_handler("[");}
+void settings::on_key_R_corchete_clicked() {keyboard_handler("]");}
+void settings::on_key_comma_clicked() {keyboard_handler(",");}
+void settings::on_key_dot_clicked() {keyboard_handler(".");}
+void settings::on_key_slash_clicked() {keyboard_handler("/");}
+void settings::on_key_minus_clicked() {keyboard_handler("-");}
+void settings::on_key_plus_clicked() {keyboard_handler("+");}
 
 void settings::on_key_back_clicked()
 {
-    active_text_edit->textCursor().deletePreviousChar();
+    keyboard_handler("back");
 }
-void settings::on_key_enter_clicked() {active_text_edit->insertPlainText("\n");}
+void settings::on_key_enter_clicked() {keyboard_handler("\n");}
+
+void settings::keyboard_handler(QString key)
+{
+    QWidget * fw = QApplication::focusWidget();
+
+    QString object = fw->metaObject()->className();
+    if(object == "QDoubleSpinBox")
+    {
+        QDoubleSpinBox* spin_ptr = (QDoubleSpinBox*)fw;
+        bool ok;
+        double num = key.toDouble(&ok);
+
+        if(ok)
+        {
+            spin_ptr->setValue((spin_ptr->value()*10)+num);
+        }
+        else
+        {
+            spin_ptr->setValue(0);
+        }
+    }
+    else if(object ==  "QTextEdit")
+    {
+        QTextEdit *text_ptr = (QTextEdit *)fw;
+        if(key == "back")
+        {
+            text_ptr->textCursor().deletePreviousChar();
+        }
+        else
+        {
+            text_ptr->insertPlainText(key);
+        }
+    }
+}
 
 void settings::synch_calibrations()
 {
@@ -370,13 +432,18 @@ void settings::synch_calibrations()
 //    ui->control_5400->setValue(getParamValue(0x5400).toDouble());
 //    ui->control_5401->setValue(getParamValue(0x5401).toDouble());
 
-//    ui->control_9400->setValue(getParamValue(0x9400).toDouble());
-//    ui->control_9401->setValue(getParamValue(0x9401).toDouble());
-//    ui->control_9402->setValue(getParamValue(0x9402).toDouble());
-//    ui->control_9403->setValue(getParamValue(0x9403).toDouble());
-//    ui->control_9501->setValue(getParamValue(0x9501).toDouble());
-//    ui->control_9502->setValue(getParamValue(0x9502).toDouble());
+    ui->control_9400->setValue(getParamValue(0x9400).toDouble());
+    ui->control_9401->setValue(getParamValue(0x9401).toDouble());
+    ui->control_9402->setValue(getParamValue(0x9402).toDouble());
+    ui->control_9403->setValue(getParamValue(0x9403).toDouble());
+    ui->control_9404->setValue(getParamValue(0x9404).toDouble());
+    ui->control_9500->setValue(getParamValue(0x9500).toDouble());
+    ui->control_9501->setValue(getParamValue(0x9501).toDouble());
+    ui->control_9502->setValue(getParamValue(0x9502).toDouble());
+    ui->control_9503->setValue(getParamValue(0x9503).toDouble());
+    ui->control_9504->setValue(getParamValue(0x9504).toDouble());
 
+    // ALARMAS
     ui->control_1006->setValue(getParamValue(0x1006).toDouble());
     ui->control_1007->setValue(getParamValue(0x1007).toDouble());
     ui->control_1008->setValue(getParamValue(0x1008).toDouble());

@@ -184,3 +184,29 @@ void simulation_input::on_pushButton_4_clicked()
 {
     time_running = false;
 }
+
+void simulation_input::on_lineEdit_5_editingFinished()
+{
+    store_value_by_ID((0x0201), ui->lineEdit_5->text());
+}
+
+void simulation_input::on_lineEdit_6_editingFinished()
+{
+    store_value_by_ID((0x0100), ui->lineEdit_6->text());
+
+}
+
+void simulation_input::on_lineEdit_7_editingFinished()
+{
+    store_value_by_ID((0x0601), ui->lineEdit_7->text());
+}
+
+void simulation_input::on_lineEdit_8_editingFinished()
+{
+    store_value_by_ID((0x0303), ui->lineEdit_8->text());
+}
+
+void simulation_input::on_lineEdit_9_editingFinished()
+{
+    store_value_by_ID((0x0B01), ui->lineEdit_9->text());
+}

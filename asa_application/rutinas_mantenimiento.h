@@ -37,6 +37,7 @@ enum
     ORIGEN_AFLUENTE,
     ORIGEN_EFLUENTE,
     ORIGEN_FILTRO,
+    ORIGEN_FILTRO_BOMBA
 };
 
 
@@ -81,6 +82,7 @@ public:
     void complete_rutina(uint rutina);
     void reschedule_rutina(uint rutina, uint new_time);
     void set_time(QDateTime time);
+    void update_rutina(uint rutina);
 private:
 //    def_rutina_t rutina_def_table[];
     QSqlDatabase m_db;

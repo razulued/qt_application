@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
     w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
     w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
+    //Qt::WindowStaysOnTopHint
 #if (1 == RELEASE_FOR_RPI)
     QApplication::setOverrideCursor(Qt::BlankCursor);
 #endif

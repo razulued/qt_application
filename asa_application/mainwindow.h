@@ -27,6 +27,8 @@
 #include "filtrowindow.h"
 #include "change_text.h"
 #include "contacto.h"
+#include "earm_update.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -84,6 +86,10 @@ public:
     static configuration_id conf_filtro_fisic;
     static configuration_id conf_filtro_quimi;
 
+    static configuration_id conf_filtro_bomba_elect;
+    static configuration_id conf_filtro_bomba_fisic;
+    static configuration_id conf_filtro_bomba_quimi;
+
     static configuration_id reg_outputs;
     static configuration_id react_outputs;
     static configuration_id clarif_outputs;
@@ -93,6 +99,7 @@ public:
     static configuration_id afluente_outputs;
     static configuration_id efluente_outputs;
     static configuration_id filtro_outputs;
+    static configuration_id filtro_bomba_outputs;
 
     static int reg_op_mode;
     static int reg_mot_1;
@@ -109,6 +116,7 @@ public:
     static bool simulation;
     static QDateTime time;
 
+    bool filtro_present = false;
 
 public slots:
     void handleMenuButton();
@@ -151,6 +159,7 @@ private slots:
     void on_label_title_clicked();
     void check_title_click();
 
+    void window_closed();
 private:
     QTimer dataTimer;
     uint title_click_count = 0;
@@ -205,9 +214,9 @@ private:
     custom_tooltip *tool_tip_efluente_fisicos;
     custom_tooltip *tool_tip_efluente_quimicos;
 
-    custom_tooltip *tool_tip_filtro_electricos;
-    custom_tooltip *tool_tip_filtro_fisicos;
-    custom_tooltip *tool_tip_filtro_quimicos;
+//    custom_tooltip *tool_tip_filtro_electricos;
+//    custom_tooltip *tool_tip_filtro_fisicos;
+//    custom_tooltip *tool_tip_filtro_quimicos;
 
 //    void get_ASA_string(void);
 //    void update_ASA_string(void);
@@ -249,6 +258,13 @@ private:
     change_text *change_text_window = NULL;
 
     contacto *contacto_window = NULL;
+
+    QMutex mutex_detailed;
+    uint timer_count = 0;
+    uint element_detail = 0;
+
+    earm_update *update_window = NULL;
+    bool update_in_progress = false;
 protected:
     void paintEvent(QPaintEvent *);
 };

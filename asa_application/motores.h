@@ -36,6 +36,8 @@ private slots:
 
     void on_comboBox_3_currentIndexChanged(int index);
 
+    void on_comboBox_4_currentIndexChanged(int index);
+
 private:
     Ui::motores *ui;
     void module_init(configuration_id *conf, QGridLayout *layout);
@@ -48,6 +50,9 @@ private:
     bool stop_pressed = false;
     void read_op_mode();
     void set_op_mode(uint mode, uint what_element);
+    uint mode_4600 = 0;
+signals:
+    void release_lock();
 };
 
 #endif // MOTORES_H

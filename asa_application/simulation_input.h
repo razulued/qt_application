@@ -52,6 +52,16 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_lineEdit_5_editingFinished();
+
+    void on_lineEdit_6_editingFinished();
+
+    void on_lineEdit_7_editingFinished();
+
+    void on_lineEdit_8_editingFinished();
+
+    void on_lineEdit_9_editingFinished();
+
 private:
     Ui::simulation_input *ui;
     bool time_running = false;

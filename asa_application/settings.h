@@ -76,8 +76,15 @@ private slots:
     void on_key_space_clicked();
     void on_key_back_clicked();
     void on_key_enter_clicked();
+    void on_key_L_corchete_clicked();
+    void on_key_R_corchete_clicked();
+    void on_key_comma_clicked();
+    void on_key_dot_clicked();
+    void on_key_slash_clicked();
+    void on_key_minus_clicked();
+    void on_key_plus_clicked();
 
-
+    void keyboard_handler(QString key);
 
 private:
     Ui::settings *ui;
@@ -85,6 +92,9 @@ private:
     QTextEdit *active_text_edit;
 
     void synch_calibrations();
+
+signals:
+    void release_lock();
 };
 
 void saveSettings(const QString &group, const QString &key, const QVariant &value);

@@ -71,7 +71,7 @@ void add_value_to_stats(uint param, float new_value)
             {
                 average_minutes += param_list_minutes.at(i);
             }
-            average_minutes = average_seconds/param_list_minutes.length();
+            average_minutes = average_minutes/param_list_minutes.length();
             //Add new alement to list and update Hash
             param_list_hours.append(average_minutes);
             last_24_hours.insert(param, param_list_hours);

@@ -25,6 +25,7 @@ private slots:
     void on_top_menu_3_clicked();
 
     void item_selected(QTableWidgetItem *item);
+    void item_selected_all(QTableWidgetItem *item);
 
     void on_key_Reschedule_clicked();
 
@@ -33,6 +34,9 @@ private slots:
     void on_top_menu_2_clicked();
 
     void receive_date(uint hora, QDate date);
+    void update_datetime(QDateTime datetime);
+
+    void on_key_Reschedule_2_clicked();
 
 private:
     Ui::bitacora *ui;
@@ -64,6 +68,8 @@ private:
     calendar * calendar_window = NULL;
     uint reschedule_time;
 
+signals:
+    void release_lock();
 
 };
 

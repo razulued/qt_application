@@ -1552,9 +1552,9 @@ border:none;
    <widget class="QPushButton" name="go_to_filtro">
     <property name="geometry">
      <rect>
-      <x>770</x>
+      <x>760</x>
       <y>310</y>
-      <width>31</width>
+      <width>41</width>
       <height>71</height>
      </rect>
     </property>

@@ -66,9 +66,9 @@ const g_elec_settings electric_graph_settings[] =
     /* REACTOR_MOT_3 */{"Reactor 3",    0x4020, 0x4021, 0x4022, 0x4023, 0x4024, 0x4025, 0x4026,  },
     /* REACTOR_MOT_4 */{"Reactor 4",    0x4030, 0x4031, 0x4032, 0x4033, 0x4034, 0x4035, 0x4036,  },
     /* FILTRO_MOT_1  */{"Motor Giro",    0x9000, 0x9001, 0x9002, 0x9003, 0x9004, 0x9005, 0x9006,  },
-    /* FILTRO_MOT_2  */{"Bomba Alim",    0x9010, 0x9011, 0x9012, 0x9013, 0x9014, 0x9015, 0x9016,  },
-    /* FILTRO_MOT_3  */{"Bomba Retro",   0x9020, 0x9021, 0x9022, 0x9023, 0x9024, 0x9025, 0x9026,  },
-    /* FILTRO_MOT_4  */{"Filtro 4",    0x9030, 0x9031, 0x9032, 0x9033, 0x9034, 0x9035, 0x9036,  },
+    /* FILTRO_MOT_2  */{"Bomba Retro 1", 0x9010, 0x9011, 0x9012, 0x9013, 0x9014, 0x9015, 0x9016,  },
+    /* FILTRO_MOT_3  */{"Bomba Retro 2", 0x9020, 0x9021, 0x9022, 0x9023, 0x9024, 0x9025, 0x9026,  },
+    /* FILTRO_MOT_4  */{"Bomba Alim",    0x9080, 0x9081, 0x9082, 0x9083, 0x9084, 0x9085, 0x9086,  },
 };
 
 uint graphwindow::g_OD_IN       = OD_IN;
@@ -429,19 +429,22 @@ void graphwindow::update_graph_minutes(uint param)
     // 60 SEGUNDOS
     draw_grill(scene);
     // Graph lines
-    for(i = 0; i < (values_60_minutes.length()); i++)
+    if(values_60_minutes.length() > 0)
     {
-        point.setX(i*VAL_MIN_SEPARATION);
-        point.setY(adjusted_y_value(values_60_minutes.at(i))*-1);
-        pol.append(point);
-    }
-    QPainterPath path;
-    path.addPolygon(pol);
-    scene->addPath(path, pen);
-    i = i-1;
-    draw_end_ball(scene, i*VAL_MIN_SEPARATION, adjusted_y_value(values_60_minutes.at(i)));
-    scene->setSceneRect(0,-ui->graphicsView_2->height(),500,280);
+        for(i = 0; i < (values_60_minutes.length()); i++)
+        {
+            point.setX(i*VAL_MIN_SEPARATION);
+            point.setY(adjusted_y_value(values_60_minutes.at(i))*-1);
+            pol.append(point);
+        }
+        QPainterPath path;
+        path.addPolygon(pol);
+        scene->addPath(path, pen);
+        i = i-1;
+        draw_end_ball(scene, i*VAL_MIN_SEPARATION, adjusted_y_value(values_60_minutes.at(i)));
+        scene->setSceneRect(0,-ui->graphicsView_2->height(),500,280);
 
+    }
     ui->graphicsView_2->setScene(scene);
 }
 
@@ -461,20 +464,24 @@ void graphwindow::update_graph_hour(uint param)
 
     // 60 SEGUNDOS
     draw_grill(scene);
-    // Graph lines
-    for(i = 0; i < (values_24_hours.length()); i++)
-    {
-        point.setX(i*VAL_HOUR_SEPARATION);
-        point.setY(adjusted_y_value(values_24_hours.at(i))*-1);
-        pol.append(point);
-    }
-    QPainterPath path;
-    path.addPolygon(pol);
-    scene->addPath(path, pen);
-    i = i-1;
-    draw_end_ball(scene, i*VAL_HOUR_SEPARATION, adjusted_y_value(values_24_hours.at(i)));
-    scene->setSceneRect(0,-ui->graphicsView_3->height(),500,280);
 
+    if(values_24_hours.length() > 0)
+    {
+        // Graph lines
+        for(i = 0; i < (values_24_hours.length()); i++)
+        {
+            point.setX(i*VAL_HOUR_SEPARATION);
+            point.setY(adjusted_y_value(values_24_hours.at(i))*-1);
+            pol.append(point);
+        }
+        QPainterPath path;
+        path.addPolygon(pol);
+        scene->addPath(path, pen);
+        i = i-1;
+        draw_end_ball(scene, i*VAL_HOUR_SEPARATION, adjusted_y_value(values_24_hours.at(i)));
+        scene->setSceneRect(0,-ui->graphicsView_3->height(),500,280);
+
+    }
     ui->graphicsView_3->setScene(scene);
 }
 
@@ -774,7 +781,14 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
         break;
     case TYPE_FISICOS:
 
-        if(parameter_to_graph == g_GASTO_INS || parameter_to_graph == g_GASTO_ACC)
+        if(parameter_to_graph == Filtro_GASTO_INS)
+        {
+            min_value = 0;
+            max_value = 600;
+            num_of_lines = 10;
+            ui->div_text->setText("60 LPM/div");
+        }
+        else if(parameter_to_graph == g_GASTO_INS || parameter_to_graph == g_GASTO_ACC)
         {
             min_value = 0;
             max_value = 150;
@@ -898,42 +912,48 @@ void graphwindow::color_to_label(uint parameter)
 
     //VOLTS_1
     if(parameter == 0x3001 || parameter == 0x3011 || parameter == 0x3021 || parameter == 0x3031 ||
-       parameter == 0x4001 || parameter == 0x4011 || parameter == 0x4021 || parameter == 0x4031)
+       parameter == 0x4001 || parameter == 0x4011 || parameter == 0x4021 || parameter == 0x4031 ||
+       parameter == 0x9001 || parameter == 0x9011 || parameter == 0x9021 || parameter == 0x9031 || parameter == 0x9081 )
     {ui->volts_1->setStyleSheet(active); }
     else
     {ui->volts_1->setStyleSheet(inactive);}
 
     //VOLTS_2
     if(parameter == 0x3002 || parameter == 0x3012 || parameter == 0x3022 || parameter == 0x3032 ||
-       parameter == 0x4002 || parameter == 0x4012 || parameter == 0x4022 || parameter == 0x4032)
+       parameter == 0x4002 || parameter == 0x4012 || parameter == 0x4022 || parameter == 0x4032 ||
+       parameter == 0x9002 || parameter == 0x9012 || parameter == 0x9022 || parameter == 0x9032 || parameter == 0x9082)
     {ui->volts_2->setStyleSheet(active); }
     else
     {ui->volts_2->setStyleSheet(inactive);}
 
     //VOLTS_3
     if(parameter == 0x3003 || parameter == 0x3013 || parameter == 0x3023 || parameter == 0x3033 ||
-       parameter == 0x4003 || parameter == 0x4013 || parameter == 0x4023 || parameter == 0x4033)
+       parameter == 0x4003 || parameter == 0x4013 || parameter == 0x4023 || parameter == 0x4033 ||
+       parameter == 0x9003 || parameter == 0x9013 || parameter == 0x9023 || parameter == 0x9033 || parameter == 0x9083)
     {ui->volts_3->setStyleSheet(active); }
     else
     {ui->volts_3->setStyleSheet(inactive);}
 
     //AMPS_1
     if(parameter == 0x3004 || parameter == 0x3014 || parameter == 0x3024 || parameter == 0x3034 ||
-       parameter == 0x4004 || parameter == 0x4014 || parameter == 0x4024 || parameter == 0x4034)
+       parameter == 0x4004 || parameter == 0x4014 || parameter == 0x4024 || parameter == 0x4034 ||
+       parameter == 0x9004 || parameter == 0x9014 || parameter == 0x9024 || parameter == 0x9034 || parameter == 0x9084)
     {ui->amps_1->setStyleSheet(active); }
     else
     {ui->amps_1->setStyleSheet(inactive);}
 
     //AMPS_2
     if(parameter == 0x3005 || parameter == 0x3015 || parameter == 0x3025 || parameter == 0x3035 ||
-       parameter == 0x4005 || parameter == 0x4015 || parameter == 0x4025 || parameter == 0x4035)
+       parameter == 0x4005 || parameter == 0x4015 || parameter == 0x4025 || parameter == 0x4035 ||
+       parameter == 0x9005 || parameter == 0x9015 || parameter == 0x9025 || parameter == 0x9035|| parameter == 0x9085)
     {ui->amps_2->setStyleSheet(active); }
     else
     {ui->amps_2->setStyleSheet(inactive);}
 
     //AMPS_3
     if(parameter == 0x3006 || parameter == 0x3016 || parameter == 0x3026 || parameter == 0x3036 ||
-       parameter == 0x4006 || parameter == 0x4016 || parameter == 0x4026 || parameter == 0x4036)
+       parameter == 0x4006 || parameter == 0x4016 || parameter == 0x4026 || parameter == 0x4036 ||
+       parameter == 0x9006 || parameter == 0x9016 || parameter == 0x9026 || parameter == 0x9036 || parameter == 0x9086)
     {ui->amps_3->setStyleSheet(active); }
     else
     {ui->amps_3->setStyleSheet(inactive);}
@@ -1055,21 +1075,18 @@ uint graphwindow::index_of_motor()
     {
         ret = 8;
     }
-    else if("Bomba Alim" == ui->comboBox->currentText())
+    else if("Bomba Retro 1" == ui->comboBox->currentText())
     {
         ret = 9;
     }
-    else if("Bomba Retro" == ui->comboBox->currentText())
+    else if("Bomba Retro 2" == ui->comboBox->currentText())
     {
         ret = 10;
     }
-    else if("Filtro 4" == ui->comboBox->currentText())
+    else if("Bomba Alim" == ui->comboBox->currentText())
     {
         ret = 11;
     }
-
-
-
 
     return ret;
 }
@@ -1130,7 +1147,7 @@ void graphwindow::set_type(QString type)
         g_PRES_FIL  =Filtro_PRES_FIL ;
 
         // fisicos
-        ui->label_15->setText("");
+        ui->label_15->setText("Caudal");
         ui->label_16->setText("");
         ui->label_18->setText("Filtro");
         ui->label_17->setText("");
@@ -1144,4 +1161,16 @@ void graphwindow::set_type(QString type)
         ui->label_24->setText("");
 
     }
+}
+
+void graphwindow::on_top_menu_6_clicked()
+{
+    // control
+    forward_control_clicked();
+}
+
+void graphwindow::on_top_menu_2_clicked()
+{
+    forward_bitacora_clicked();
+    // bitacora
 }

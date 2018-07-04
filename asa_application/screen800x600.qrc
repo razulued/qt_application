@@ -230,6 +230,15 @@
         <file>screen800x600/texto/Teclado 1.1/arrow_rigth_blanco.png</file>
         <file>screen800x600/texto/Teclado 1.1/arrow_up_azul.png</file>
         <file>screen800x600/texto/Teclado 1.1/arrow_up_blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/fondo teclado 2.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Punto azul 2.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Punto blanco 2.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Corchete der. azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Corchete der. blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Corchete izq. azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Corchete izq. blanco.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Igual azul.png</file>
+        <file>screen800x600/texto/Teclado 1.1/Igual blanco.png</file>
     </qresource>
     <qresource prefix="/diagrama">
         <file>screen800x600/diagrama/Afluente.png</file>
@@ -249,6 +258,7 @@
         <file>screen800x600/diagrama/Filtro 5SDF portátil_1.png</file>
         <file>screen800x600/diagrama/Filtro 5SDF portátil_ small.png</file>
         <file>screen800x600/diagrama/motor_filtro.png</file>
+        <file>screen800x600/diagrama/motor_filtro_small.png</file>
     </qresource>
     <qresource prefix="/gifs/0 Equipos">
         <file>screen800x600/gifs/0 Equipos/Blower Jet fail mov.gif</file>

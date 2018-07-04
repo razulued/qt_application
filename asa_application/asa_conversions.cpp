@@ -42,8 +42,8 @@ QString conv_integer_caudal_inv(QString str, uint param1)
     Si el resultado de la ecuación es MENOR a 9.45, la página deberá mostrar 0.
 */
 
-    ret = decimal / 0.16312;
-    ret = ret + 66.54025;
+    ret = decimal + 66.54025;
+    ret = ret / 0.16312;
 
     uint to_decimal = (uint)ret;
     QString str2 = QString("%1").arg(to_decimal, 0, 16);
@@ -51,6 +51,51 @@ QString conv_integer_caudal_inv(QString str, uint param1)
 
 }
 
+QString conv_integer_caudal_2(QString str, uint param1)
+{
+    float ret = 0;
+    bool ok;
+    float decimal = (float)str.toInt(&ok, 16);
+/*
+ *  Caudal [l/min]= 0.528982*Cuentas [l/m /adc] - 194.969575 [l/m]
+*/
+
+    if(decimal < 463)
+    {
+        return "0";
+    }
+
+    ret = decimal * 0.528982;
+    ret = ret - 194.969575;
+
+    if(ret < 0)
+    {
+        return "0.0";
+    }
+    else
+    {
+        return QString::number(ret,'f',1);
+    }
+
+}
+
+QString conv_integer_caudal_inv_2(QString str, uint param1)
+{
+    float ret = 0;
+    bool ok;
+    float decimal = (float)str.toFloat(&ok);
+/*
+ *  Caudal [l/min]= 0.528982*Cuentas [l/m /adc] - 194.969575 [l/m]
+*/
+
+    ret = decimal + 194.969575;
+    ret = ret / 0.528982;
+
+    uint to_decimal = (uint)ret;
+    QString str2 = QString("%1").arg(to_decimal, 0, 16);
+    return str2;
+
+}
 QString conv_integer_presion(QString str, uint param1)
 {
     float ret = 0;
@@ -91,8 +136,96 @@ QString conv_integer_presion_inv(QString str, uint param1)
     Para el rango de 0 a 145.038psi: PSI=0.080255644*Cuentas [psi/adc] - 36.2594[psi]
 */
 
-    ret = decimal  / 0.080255644;
-    ret = ret + 36.2594;
+    ret = decimal + 36.2594;
+    ret = ret  / 0.080255644;
+
+    uint to_decimal = (uint)ret;
+    QString str2 = QString("%1").arg(to_decimal, 0, 16);
+    return str2;
+}
+
+QString conv_integer_presion_2(QString str, uint param1)
+{
+    float ret = 0;
+    bool ok;
+    float decimal = (float)str.toInt(&ok, 16);
+/*
+    Presión [PSI]= 0.02784*Cuentas [PSI /adc] - 12.8931 [PSI]
+*/
+
+//    if(decimal < 410)
+//    {
+//        return "Falla [cuentas <410]";
+//    }
+
+    ret = decimal *0.02784;
+    ret = ret - 12.8931;
+    if(ret < 0)
+    {
+        return "0";
+    }
+    else
+    {
+        return QString::number(ret,'f',1);
+    }
+//    else if(ret > 145.038)
+//    {
+//        return "Falla [>145.038]";
+//    }
+
+}
+
+QString conv_integer_presion_inv_2(QString str, uint param1)
+{
+    float ret = 0;
+    bool ok;
+    float decimal = (float)str.toFloat(&ok);
+/*
+    Presión [PSI]= 0.02784*Cuentas [PSI /adc] - 12.8931 [PSI]
+*/
+
+    ret = decimal + 12.8931;
+    ret = ret  / 0.02784;
+
+    uint to_decimal = (uint)ret;
+    QString str2 = QString("%1").arg(to_decimal, 0, 16);
+    return str2;
+}
+
+QString conv_nivel_1(QString str, uint param1)
+{
+    float ret = 0;
+    bool ok;
+    float decimal = (float)str.toInt(&ok, 16);
+/*
+ *  Midel= 0.0016972*Cuentas [m /adc] - 0.7858[l/m] (VERIFICADO!)
+*/
+
+    ret = decimal * 0.0016972;
+    ret = ret - 0.7858;
+
+    if(ret < 0)
+    {
+        return "0";
+    }
+    else
+    {
+        return QString::number(ret,'f',2);
+    }
+}
+
+QString conv_nivel_1_inv(QString str, uint param1)
+{
+    float ret = 0;
+    bool ok;
+    float decimal = (float)str.toInt(&ok, 16);
+/*
+ *  Midel= 0.0016972*Cuentas [m /adc] - 0.7858[l/m] (VERIFICADO!)
+*/
+
+    ret = decimal + 0.7858;
+    ret = ret / 0.0016972;
+
 
     uint to_decimal = (uint)ret;
     QString str2 = QString("%1").arg(to_decimal, 0, 16);

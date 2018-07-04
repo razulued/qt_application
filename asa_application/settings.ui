@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>620</x>
-     <y>530</y>
+     <y>540</y>
      <width>166</width>
      <height>61</height>
     </rect>
@@ -51,11 +51,11 @@
      <x>10</x>
      <y>40</y>
      <width>771</width>
-     <height>491</height>
+     <height>311</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -71,1565 +71,6 @@
       </rect>
      </property>
     </widget>
-    <widget class="QFrame" name="key_frame">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>260</y>
-       <width>691</width>
-       <height>181</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">#key_frame
-{
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/fondo teclado.png);
-background-repeat:none;
-/*background-color: black;*/
-border:none;
-}</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QPushButton" name="key_0">
-      <property name="geometry">
-       <rect>
-        <x>556</x>
-        <y>132</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_0{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/0 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_0::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/0 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_4">
-      <property name="geometry">
-       <rect>
-        <x>511</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_4{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/4 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_4::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/4 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_5">
-      <property name="geometry">
-       <rect>
-        <x>554</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_5{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/5 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_5::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/5 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_7">
-      <property name="geometry">
-       <rect>
-        <x>511</x>
-        <y>8</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_7{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/7 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_7::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/7 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_8">
-      <property name="geometry">
-       <rect>
-        <x>555</x>
-        <y>8</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_8{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/8 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_8::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/8 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_1">
-      <property name="geometry">
-       <rect>
-        <x>512</x>
-        <y>90</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_1{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/1 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_1::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/1 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_6">
-      <property name="geometry">
-       <rect>
-        <x>599</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_6{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/6 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_6::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/6 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_back">
-      <property name="geometry">
-       <rect>
-        <x>443</x>
-        <y>7</y>
-        <width>61</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_back{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Backspace azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-
-}
-
-#key_back::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Backspace blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_3">
-      <property name="geometry">
-       <rect>
-        <x>593</x>
-        <y>86</y>
-        <width>50</width>
-        <height>50</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_3{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/3 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_3::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/3 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_9">
-      <property name="geometry">
-       <rect>
-        <x>598</x>
-        <y>6</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_9{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/9 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_9::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/9 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_2">
-      <property name="geometry">
-       <rect>
-        <x>556</x>
-        <y>91</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_2{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/2 azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_2::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/2 blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_Q">
-      <property name="geometry">
-       <rect>
-        <x>8</x>
-        <y>8</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_Q{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Q azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_Q::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Q blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_W">
-      <property name="geometry">
-       <rect>
-        <x>52</x>
-        <y>7</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_W{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/W azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_W::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/W blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_E">
-      <property name="geometry">
-       <rect>
-        <x>95</x>
-        <y>7</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_E{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/E azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_E::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/E blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_R">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>8</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_R{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/R azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_R::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/R blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_T">
-      <property name="geometry">
-       <rect>
-        <x>183</x>
-        <y>8</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_T{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/T azul.png);
-border:none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_T::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/T blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_Y">
-      <property name="geometry">
-       <rect>
-        <x>226</x>
-        <y>7</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_Y{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Y azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_Y::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Y blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_U">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>7</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_U{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/U azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_U::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/U blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_I">
-      <property name="geometry">
-       <rect>
-        <x>313</x>
-        <y>7</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_I{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/I azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_I::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/I blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_P">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>8</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_P{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/P azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_P::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/P blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_O">
-      <property name="geometry">
-       <rect>
-        <x>357</x>
-        <y>8</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_O{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/O azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_O::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/O blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_A">
-      <property name="geometry">
-       <rect>
-        <x>34</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_A{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/A azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_A::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/A blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_L">
-      <property name="geometry">
-       <rect>
-        <x>382</x>
-        <y>48</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_L{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/L azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_L::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/L blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_H">
-      <property name="geometry">
-       <rect>
-        <x>251</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_H{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/H azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_H::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/H blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_G">
-      <property name="geometry">
-       <rect>
-        <x>207</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_G{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/G azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_G::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/G blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_F">
-      <property name="geometry">
-       <rect>
-        <x>165</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_F{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/F azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_F::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/F blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_S">
-      <property name="geometry">
-       <rect>
-        <x>78</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_S{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/S azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_S::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/S blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_D">
-      <property name="geometry">
-       <rect>
-        <x>121</x>
-        <y>50</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_D{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/D azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_D::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/D blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_J">
-      <property name="geometry">
-       <rect>
-        <x>294</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_J{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/J azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_J::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/J blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_K">
-      <property name="geometry">
-       <rect>
-        <x>339</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_K{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/K azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_K::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/K blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_dot">
-      <property name="geometry">
-       <rect>
-        <x>599</x>
-        <y>132</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_dot{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_dot::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_slash">
-      <property name="geometry">
-       <rect>
-        <x>642</x>
-        <y>7</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_slash{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/slash azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_slash::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/slash blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_plus">
-      <property name="geometry">
-       <rect>
-        <x>642</x>
-        <y>90</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_plus{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/plus_azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_plus::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/plus_blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_minus">
-      <property name="geometry">
-       <rect>
-        <x>642</x>
-        <y>49</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_minus{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/minus_azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_minus::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/minus_blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_X">
-      <property name="geometry">
-       <rect>
-        <x>95</x>
-        <y>91</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_X{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/X azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_X::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/X blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_Z">
-      <property name="geometry">
-       <rect>
-        <x>52</x>
-        <y>91</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_Z{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Z azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_Z::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Z blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_M">
-      <property name="geometry">
-       <rect>
-        <x>313</x>
-        <y>90</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_M{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/M azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_M::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/M blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_C">
-      <property name="geometry">
-       <rect>
-        <x>139</x>
-        <y>90</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_C{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/C azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_C::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/C blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_V">
-      <property name="geometry">
-       <rect>
-        <x>183</x>
-        <y>90</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_V{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/V azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_V::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/V blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_B">
-      <property name="geometry">
-       <rect>
-        <x>226</x>
-        <y>90</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_B{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/B azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_B::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/B blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_N">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>90</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_N{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/N azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_N::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/N blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_comma">
-      <property name="geometry">
-       <rect>
-        <x>357</x>
-        <y>91</y>
-        <width>41</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_comma{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/coma azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_comma::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/coma blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_space">
-      <property name="geometry">
-       <rect>
-        <x>161</x>
-        <y>128</y>
-        <width>281</width>
-        <height>50</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_space{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Espacio azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_space::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Espacio blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_enter">
-      <property name="geometry">
-       <rect>
-        <x>427</x>
-        <y>49</y>
-        <width>81</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_enter{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Enter azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_enter::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Enter blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_mayus">
-      <property name="geometry">
-       <rect>
-        <x>12</x>
-        <y>134</y>
-        <width>111</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_mayus{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Mayus azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_mayus::checked{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Mayus bco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </widget>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -1641,7 +82,7 @@ background-position: center;
        <x>1</x>
        <y>3</y>
        <width>761</width>
-       <height>451</height>
+       <height>271</height>
       </rect>
      </property>
      <property name="widgetResizable">
@@ -1651,9 +92,9 @@ background-position: center;
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-317</y>
-        <width>745</width>
-        <height>766</height>
+        <y>0</y>
+        <width>843</width>
+        <height>816</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -1721,7 +162,7 @@ height: 15;
              <number>1</number>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -1744,7 +185,7 @@ height: 15;
              <number>1</number>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -1812,7 +253,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -1841,7 +282,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -1863,7 +304,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -1899,7 +340,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -1931,7 +372,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -1953,7 +394,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2016,7 +457,7 @@ height: 15;
              <bool>true</bool>
             </property>
             <property name="maximum">
-             <double>9999.989999999999782</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -2036,7 +477,7 @@ height: 15;
              <bool>true</bool>
             </property>
             <property name="maximum">
-             <double>9999.989999999999782</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -2052,7 +493,7 @@ height: 15;
              <number>0</number>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2079,7 +520,7 @@ height: 15;
              <number>0</number>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2099,7 +540,7 @@ height: 15;
              <number>0</number>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2119,7 +560,7 @@ height: 15;
              <number>0</number>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2180,7 +621,7 @@ height: 15;
              <bool>true</bool>
             </property>
             <property name="maximum">
-             <double>99.989999999999995</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -2199,15 +640,8 @@ height: 15;
             <property name="accelerated">
              <bool>true</bool>
             </property>
-            <property name="singleStep">
-             <double>0.010000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QDoubleSpinBox" name="control_9402">
-            <property name="accelerated">
-             <bool>true</bool>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -2218,6 +652,19 @@ height: 15;
            <widget class="QLabel" name="label_20">
             <property name="text">
              <string>Nivel: Minimo</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDoubleSpinBox" name="control_9402">
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.010000000000000</double>
             </property>
            </widget>
           </item>
@@ -2233,6 +680,9 @@ height: 15;
             <property name="accelerated">
              <bool>true</bool>
             </property>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
+            </property>
            </widget>
           </item>
           <item row="5" column="0">
@@ -2243,49 +693,114 @@ height: 15;
            </widget>
           </item>
           <item row="5" column="1">
-           <widget class="QDoubleSpinBox" name="control_9500">
+           <widget class="QDoubleSpinBox" name="control_9404">
             <property name="accelerated">
              <bool>true</bool>
+            </property>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
           <item row="6" column="0">
            <widget class="QLabel" name="label_24">
             <property name="text">
-             <string>Tiempo: Delay RET</string>
+             <string>Tiempo: Valve Delay</string>
             </property>
            </widget>
           </item>
           <item row="6" column="1">
-           <widget class="QDoubleSpinBox" name="control_9501">
+           <widget class="QDoubleSpinBox" name="control_9500">
             <property name="accelerated">
              <bool>true</bool>
+            </property>
+            <property name="decimals">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
           <item row="7" column="0">
            <widget class="QLabel" name="label_25">
             <property name="text">
-             <string>Tiempo: OP-G</string>
+             <string>Tiempo: Giro RET</string>
             </property>
            </widget>
           </item>
           <item row="7" column="1">
-           <widget class="QDoubleSpinBox" name="control_9502">
+           <widget class="QDoubleSpinBox" name="control_9501">
             <property name="accelerated">
              <bool>true</bool>
+            </property>
+            <property name="decimals">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
           <item row="8" column="0">
-           <widget class="QLabel" name="label_26">
+           <widget class="QLabel" name="label_28">
             <property name="text">
-             <string>Hora: S-EXT</string>
+             <string>Hora: Ext-Sed</string>
             </property>
            </widget>
           </item>
           <item row="8" column="1">
-           <widget class="QTextEdit" name="textEdit_2"/>
+           <widget class="QDoubleSpinBox" name="control_9502">
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="decimals">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_87">
+            <property name="text">
+             <string>Tiempo: Ext-Sed</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QDoubleSpinBox" name="control_9503">
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="decimals">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="label_88">
+            <property name="text">
+             <string>Tiempo: Descanso</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <widget class="QDoubleSpinBox" name="control_9504">
+            <property name="accelerated">
+             <bool>true</bool>
+            </property>
+            <property name="decimals">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <double>9999999999.000000000000000</double>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -2304,7 +819,7 @@ height: 15;
        <x>0</x>
        <y>0</y>
        <width>761</width>
-       <height>471</height>
+       <height>281</height>
       </rect>
      </property>
      <property name="widgetResizable">
@@ -2369,7 +884,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -2401,7 +916,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -2433,7 +948,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -2465,7 +980,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -2497,7 +1012,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2526,7 +1041,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2582,7 +1097,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -2614,7 +1129,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -2646,7 +1161,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -2678,7 +1193,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -2710,7 +1225,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2739,7 +1254,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -2843,7 +1358,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -2875,7 +1390,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -2907,7 +1422,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -2939,7 +1454,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -2971,7 +1486,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -3000,7 +1515,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -3053,7 +1568,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -3082,7 +1597,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -3114,7 +1629,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -3146,7 +1661,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -3178,7 +1693,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -3207,7 +1722,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -3260,7 +1775,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -3289,7 +1804,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -3321,7 +1836,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -3467,7 +1982,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -3496,7 +2011,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -3528,7 +2043,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -3725,7 +2240,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -3757,7 +2272,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -3782,7 +2297,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -3821,7 +2336,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -3853,7 +2368,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -3875,7 +2390,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -3935,7 +2450,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -3964,7 +2479,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -3996,7 +2511,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4028,7 +2543,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4060,7 +2575,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -4089,7 +2604,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -4110,7 +2625,7 @@ height: 15;
        <x>0</x>
        <y>-10</y>
        <width>771</width>
-       <height>461</height>
+       <height>291</height>
       </rect>
      </property>
      <property name="widgetResizable">
@@ -4120,7 +2635,7 @@ height: 15;
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-1063</y>
+        <y>-1134</y>
         <width>755</width>
         <height>1522</height>
        </rect>
@@ -4134,7 +2649,7 @@ height: 15;
           </font>
          </property>
          <property name="text">
-          <string>Motor 1 Overcurrent</string>
+          <string>Motor de Giro Overcurrent</string>
          </property>
         </widget>
        </item>
@@ -4146,7 +2661,7 @@ height: 15;
           </font>
          </property>
          <property name="text">
-          <string>Motor 2 Overcurrent</string>
+          <string>Bomba de Lavado 1 Overcurrent</string>
          </property>
         </widget>
        </item>
@@ -4199,7 +2714,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -4231,7 +2746,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -4263,7 +2778,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4295,7 +2810,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4327,7 +2842,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -4356,7 +2871,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -4412,7 +2927,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -4444,7 +2959,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -4476,7 +2991,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4508,7 +3023,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4540,7 +3055,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -4569,7 +3084,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -4637,7 +3152,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -4669,7 +3184,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -4701,7 +3216,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4733,7 +3248,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4765,7 +3280,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -4794,7 +3309,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -4850,7 +3365,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -4882,7 +3397,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -4914,7 +3429,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4946,7 +3461,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -4978,7 +3493,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5007,7 +3522,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5075,7 +3590,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -5107,7 +3622,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -5139,7 +3654,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -5171,7 +3686,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -5203,7 +3718,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5232,7 +3747,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5288,7 +3803,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -5320,7 +3835,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -5352,7 +3867,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -5384,7 +3899,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -5416,7 +3931,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5445,7 +3960,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5460,7 +3975,7 @@ height: 15;
           </font>
          </property>
          <property name="text">
-          <string>Motor 4 Overcurrent</string>
+          <string>Bomba de Alimentación Overcurrent</string>
          </property>
         </widget>
        </item>
@@ -5472,7 +3987,7 @@ height: 15;
           </font>
          </property>
          <property name="text">
-          <string>Motor 3 Overcurrent</string>
+          <string>Bomba de Lavado 2 Overcurrent</string>
          </property>
         </widget>
        </item>
@@ -5549,7 +4064,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -5581,7 +4096,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -5613,7 +4128,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -5645,7 +4160,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -5677,7 +4192,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5706,7 +4221,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5759,7 +4274,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -5788,7 +4303,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -5820,7 +4335,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -5852,7 +4367,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -5884,7 +4399,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5913,7 +4428,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -5969,7 +4484,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -6001,7 +4516,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.100000000000000</double>
@@ -6033,7 +4548,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -6065,7 +4580,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -6097,7 +4612,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -6126,7 +4641,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -6153,7 +4668,7 @@ height: 15;
           </font>
          </property>
          <property name="text">
-          <string>Sensor Nivel Low Limit</string>
+          <string>Sensor Nivel High Limit</string>
          </property>
         </widget>
        </item>
@@ -6203,7 +4718,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -6232,7 +4747,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>0.010000000000000</double>
@@ -6264,7 +4779,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -6296,7 +4811,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
             <property name="singleStep">
              <double>1.000000000000000</double>
@@ -6328,7 +4843,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -6357,7 +4872,7 @@ height: 15;
              <double>0.000000000000000</double>
             </property>
             <property name="maximum">
-             <double>99999.000000000000000</double>
+             <double>9999999999.000000000000000</double>
             </property>
            </widget>
           </item>
@@ -6367,6 +4882,1667 @@ height: 15;
       </layout>
      </widget>
     </widget>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="key_frame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>360</y>
+     <width>781</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#key_frame
+{
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/fondo teclado 2.png);
+background-repeat:none;
+/*background-color: black;*/
+border:none;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="key_0">
+    <property name="geometry">
+     <rect>
+      <x>536</x>
+      <y>96</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_0{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/0 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_0::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/0 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_4">
+    <property name="geometry">
+     <rect>
+      <x>582</x>
+      <y>49</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_4{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/4 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_4::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/4 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_5">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>49</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_5{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/5 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_5::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/5 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_7">
+    <property name="geometry">
+     <rect>
+      <x>581</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_7{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/7 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_7::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/7 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_8">
+    <property name="geometry">
+     <rect>
+      <x>625</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_8{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/8 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_8::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/8 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_1">
+    <property name="geometry">
+     <rect>
+      <x>582</x>
+      <y>96</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_1{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/1 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_1::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/1 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_6">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>49</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_6{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/6 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_6::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/6 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_back">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>4</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_back{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Backspace azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+
+}
+
+#key_back::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Backspace blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_3">
+    <property name="geometry">
+     <rect>
+      <x>663</x>
+      <y>92</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_3{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/3 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_3::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/3 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_9">
+    <property name="geometry">
+     <rect>
+      <x>668</x>
+      <y>3</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_9{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/9 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_9::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/9 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_2">
+    <property name="geometry">
+     <rect>
+      <x>626</x>
+      <y>97</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_2{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/2 azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_2::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/2 blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_Q">
+    <property name="geometry">
+     <rect>
+      <x>27</x>
+      <y>5</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_Q{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Q azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_Q::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Q blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_W">
+    <property name="geometry">
+     <rect>
+      <x>72</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_W{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/W azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_W::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/W blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_E">
+    <property name="geometry">
+     <rect>
+      <x>116</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_E{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/E azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_E::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/E blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_R">
+    <property name="geometry">
+     <rect>
+      <x>161</x>
+      <y>5</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_R{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/R azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_R::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/R blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_T">
+    <property name="geometry">
+     <rect>
+      <x>204</x>
+      <y>5</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_T{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/T azul.png);
+border:none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_T::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/T blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_Y">
+    <property name="geometry">
+     <rect>
+      <x>246</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_Y{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Y azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_Y::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Y blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_U">
+    <property name="geometry">
+     <rect>
+      <x>291</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_U{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/U azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_U::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/U blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_I">
+    <property name="geometry">
+     <rect>
+      <x>335</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_I{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/I azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_I::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/I blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_P">
+    <property name="geometry">
+     <rect>
+      <x>422</x>
+      <y>5</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_P{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/P azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_P::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/P blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_O">
+    <property name="geometry">
+     <rect>
+      <x>379</x>
+      <y>5</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_O{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/O azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_O::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/O blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_A">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_A{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/A azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_A::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/A blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_L">
+    <property name="geometry">
+     <rect>
+      <x>359</x>
+      <y>49</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_L{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/L azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_L::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/L blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_H">
+    <property name="geometry">
+     <rect>
+      <x>228</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_H{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/H azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_H::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/H blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_G">
+    <property name="geometry">
+     <rect>
+      <x>184</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_G{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/G azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_G::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/G blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_F">
+    <property name="geometry">
+     <rect>
+      <x>142</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_F{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/F azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_F::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/F blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_S">
+    <property name="geometry">
+     <rect>
+      <x>55</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_S{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/S azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_S::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/S blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_D">
+    <property name="geometry">
+     <rect>
+      <x>98</x>
+      <y>51</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_D{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/D azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_D::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/D blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_J">
+    <property name="geometry">
+     <rect>
+      <x>271</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_J{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/J azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_J::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/J blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_K">
+    <property name="geometry">
+     <rect>
+      <x>316</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_K{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/K azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_K::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/K blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_dot">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>97</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_dot{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto azul 2.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_dot::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto blanco 2.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_slash">
+    <property name="geometry">
+     <rect>
+      <x>536</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_slash{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/slash azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_slash::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/slash blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_plus">
+    <property name="geometry">
+     <rect>
+      <x>715</x>
+      <y>96</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_plus{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/plus_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_plus::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/plus_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_minus">
+    <property name="geometry">
+     <rect>
+      <x>715</x>
+      <y>49</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_minus{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/minus_azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_minus::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/minus_blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_X">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>97</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_X{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/X azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_X::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/X blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_Z">
+    <property name="geometry">
+     <rect>
+      <x>117</x>
+      <y>97</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_Z{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Z azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_Z::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Z blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_M">
+    <property name="geometry">
+     <rect>
+      <x>378</x>
+      <y>96</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_M{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/M azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_M::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/M blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_C">
+    <property name="geometry">
+     <rect>
+      <x>204</x>
+      <y>96</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_C{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/C azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_C::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/C blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_V">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>96</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_V{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/V azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_V::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/V blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_B">
+    <property name="geometry">
+     <rect>
+      <x>291</x>
+      <y>96</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_B{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/B azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_B::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/B blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_N">
+    <property name="geometry">
+     <rect>
+      <x>335</x>
+      <y>96</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_N{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/N azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_N::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/N blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_comma">
+    <property name="geometry">
+     <rect>
+      <x>422</x>
+      <y>97</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_comma{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/coma azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_comma::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/coma blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_space">
+    <property name="geometry">
+     <rect>
+      <x>148</x>
+      <y>136</y>
+      <width>281</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_space{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Espacio azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_space::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Espacio blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_enter">
+    <property name="geometry">
+     <rect>
+      <x>494</x>
+      <y>49</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_enter{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Enter azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_enter::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Enter blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_mayus">
+    <property name="geometry">
+     <rect>
+      <x>24</x>
+      <y>97</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_mayus{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Mayus azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_mayus::checked{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Mayus bco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_L_corchete">
+    <property name="geometry">
+     <rect>
+      <x>403</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_L_corchete{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Corchete izq. azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_L_corchete::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Corchete izq. blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_equal">
+    <property name="geometry">
+     <rect>
+      <x>715</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_equal{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Igual azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_equal::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Igual blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_R_corchete">
+    <property name="geometry">
+     <rect>
+      <x>447</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_R_corchete{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Corchete der. azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_R_corchete::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Corchete der. blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
    </widget>
   </widget>
  </widget>

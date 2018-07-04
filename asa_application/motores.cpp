@@ -32,6 +32,7 @@ motores::motores(QWidget *parent) :
     module_init( &MainWindow::reg_outputs, ui->gridLayout);
     module_init( &MainWindow::react_outputs, ui->gridLayout_2);
     module_init( &MainWindow::filtro_outputs, ui->gridLayout_3);
+    module_init( &MainWindow::filtro_bomba_outputs, ui->gridLayout_4);
 
     this->setObjectName("MyMotors");
     this->setStyleSheet("#MyMotors{background-color: black;"
@@ -73,13 +74,18 @@ motores::motores(QWidget *parent) :
                                 "color: white;");
     ui->comboBox_3->setStyleSheet("background-color: black;"
                                 "color: white;");
+    ui->comboBox_4->setStyleSheet("background-color: black;"
+                                "color: white;");
+
+    mode_4600 = load_parameter("mode4600.bin");
     read_op_mode();
     set_op_mode(ui->comboBox->currentIndex(), ELEMENT_REGULADOR);
     set_op_mode(ui->comboBox_2->currentIndex(), ELEMENT_REACTOR);
     set_op_mode(ui->comboBox_3->currentIndex(), ELEMENT_FILTRO);
+    set_op_mode(ui->comboBox_4->currentIndex(), ELEMENT_FILTRO_BOMBA);
 
     this->move(parent->pos());
-    this->show();
+//    this->show();
 }
 
 motores::~motores()
@@ -92,12 +98,14 @@ void motores::update_motors()
     module_update(&MainWindow::reg_outputs);
     module_update(&MainWindow::react_outputs);
     module_update(&MainWindow::filtro_outputs);
+    module_update(&MainWindow::filtro_bomba_outputs);
     motor_index = 0;
 }
 
 void motores::on_asa_logo_clicked()
 {
     output_token_transfer(false);
+    release_lock();
     this->close();
 }
 
@@ -268,6 +276,7 @@ void motores::out_checkBoxStateChanged(int a)
 void motores::background_clicked()
 {
     output_token_transfer(false);
+    release_lock();
     this->close();
 }
 
@@ -282,6 +291,7 @@ void motores::checkActivity()
     else
     {
         output_token_transfer(false);
+        release_lock();
         this->close();
     }
 }
@@ -300,6 +310,7 @@ void motores::checkStop()
         output_op_mode(4600, "04");
         output_op_mode(5600, "04");
         output_op_mode(9600, "04");
+        output_op_mode(9700, "04");
     }
     else
     {
@@ -351,6 +362,16 @@ void motores::read_op_mode()
     {
         ui->comboBox_3->setCurrentIndex(1);
     }
+
+    str = getParamValue(0x9700);
+    if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox_4->setCurrentIndex(0);
+    }
+    else
+    {
+        ui->comboBox_4->setCurrentIndex(1);
+    }
 }
 
 void motores::set_op_mode(uint mode, uint what_element)
@@ -362,7 +383,14 @@ void motores::set_op_mode(uint mode, uint what_element)
     }
     else
     {
-        str = "01";
+        if((2 == mode_4600) && (ELEMENT_REACTOR == what_element))
+        {
+            str = "02";
+        }
+        else
+        {
+            str = "01";
+        }
     }
 
     switch(what_element)
@@ -378,6 +406,9 @@ void motores::set_op_mode(uint mode, uint what_element)
         break;
     case ELEMENT_FILTRO:
         output_op_mode(9600, str);
+        break;
+    case ELEMENT_FILTRO_BOMBA:
+        output_op_mode(9700, str);
         break;
     default:
         break;
@@ -396,4 +427,9 @@ void motores::on_comboBox_2_currentIndexChanged(int index)
 void motores::on_comboBox_3_currentIndexChanged(int index)
 {
     set_op_mode(index, ELEMENT_FILTRO);
+}
+
+void motores::on_comboBox_4_currentIndexChanged(int index)
+{
+    set_op_mode(index, ELEMENT_FILTRO_BOMBA);
 }

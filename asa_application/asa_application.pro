@@ -47,7 +47,8 @@ SOURCES += main.cpp\
     filtrowindow.cpp \
     change_text.cpp \
     calendar.cpp \
-    contacto.cpp
+    contacto.cpp \
+    earm_update.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -84,7 +85,8 @@ HEADERS  += mainwindow.h \
     change_text.h \
     calendar.h \
     contacto.h \
-    build_settings.h
+    build_settings.h \
+    earm_update.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -98,7 +100,8 @@ FORMS    += mainwindow.ui \
     filtrowindow.ui \
     change_text.ui \
     calendar.ui \
-    contacto.ui
+    contacto.ui \
+    earm_update.ui
 
 RESOURCES += \
     fonts.qrc \

@@ -613,6 +613,26 @@ background-image: url(:/diagrama/screen800x600/diagrama/motor_filtro.png);
     </rect>
    </property>
   </widget>
+  <widget class="QWidget" name="widget_4" native="true">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>170</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget_5" native="true">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>180</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
   <zorder>top_bar</zorder>
   <zorder>filtro_button</zorder>
   <zorder>go_to_main</zorder>
@@ -638,6 +658,8 @@ background-image: url(:/diagrama/screen800x600/diagrama/motor_filtro.png);
   <zorder>label_title</zorder>
   <zorder>modulo_2</zorder>
   <zorder>widget_6</zorder>
+  <zorder>widget_4</zorder>
+  <zorder>widget_5</zorder>
  </widget>
  <resources/>
  <connections/>

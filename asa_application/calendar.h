@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QDate>
 #include <QDateTime>
+#include <QTime>
 
 namespace Ui {
 class calendar;
@@ -28,6 +29,7 @@ private:
 
 signals:
     void send_calendar_date(uint hour, QDate date);
+    void send_calendar_datetime(QDateTime datetime);
 };
 
 #endif // CALENDAR_H

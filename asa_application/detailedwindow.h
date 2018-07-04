@@ -9,6 +9,7 @@
 #include "login_dialog.h"
 #include <QCheckBox>
 #include "calendar.h"
+#include <QMutex>
 
 typedef enum
 {
@@ -21,6 +22,7 @@ typedef enum
     ELEMENT_AFLUENTE,
     ELEMENT_EFLUENTE,
     ELEMENT_FILTRO,
+    ELEMENT_FILTRO_BOMBA
 }detailed_elements_t;
 
 typedef struct
@@ -48,6 +50,8 @@ public:
     ~detailedwindow();
     void update_params();
     static bool user_lock;
+    bool init_completed = false;
+    QMutex mutex;
 
 private slots:
     void on_closeButton_clicked();
@@ -153,7 +157,6 @@ private:
     uint reschedule_time;
 
 
-    bool init_completed = false;
     uint origentype;
 
     void tab_1_init(uint selected_type);
@@ -185,6 +188,12 @@ private:
 
     void set_op_mode(uint mode);
     void read_op_mode();
-    };
+
+    uint mode_4600 = 0;
+
+signals:
+    void release_lock();
+
+};
 
 #endif // DETAILEDWINDOW_H

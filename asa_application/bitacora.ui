@@ -73,7 +73,7 @@ height: 50px;
     <enum>QTabWidget::North</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -202,8 +202,58 @@ background-position: center;
        <x>0</x>
        <y>0</y>
        <width>791</width>
-       <height>541</height>
+       <height>481</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key_Reschedule_2">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>488</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#key_Reschedule_2{ 
+background-image: url(:/iconos/images/Iconos/Posponer_azul_old.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_Reschedule_2::pressed{ 
+background-image: url(:/iconos/images/Iconos/Posponer_blanco_old.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>393</x>
+       <y>480</y>
+       <width>291</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>SELECIONAR UNA RUTINA DE LA LISTA Y HACER CLICK AQUI PARA MODIFICAR EL SIGUIENTE EVENTO</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

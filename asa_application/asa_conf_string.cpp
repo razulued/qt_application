@@ -15,6 +15,8 @@ QString calib_string;
 configuration_id plant_config;
 void init_plat_config()
 {
+    mutex.lock();
+
     conf.sync();
     conf.beginGroup("Plant-Cfg");
 
@@ -29,12 +31,11 @@ void init_plat_config()
     conf_string = build_string(&plant_config);
     qDebug() << conf_string;
 
-//    get_plant_config();
+    mutex.unlock();
 }
 
 QString build_string(configuration_id *conf)
 {
-    mutex.lock();
     int i = 0;
     QString temp;
     // Plant Config
@@ -42,7 +43,6 @@ QString build_string(configuration_id *conf)
     {
         temp += conf->names.at(i) + ":" + conf->ids_string.at(i) + "|";
     }
-    mutex.unlock();
 
     return temp;
 }
@@ -56,6 +56,7 @@ void get_plant_config()
 
 void output_control_toggle(uint id)
 {
+    mutex.lock();
     configuration_id temp_config;
 
 
@@ -85,11 +86,13 @@ void output_control_toggle(uint id)
     conf_string = build_string(&temp_config);
 
     qDebug() << conf_string;
+    mutex.unlock();
 
 }
 
 void output_op_mode(uint id, QString val)
 {
+    mutex.lock();
     configuration_id temp_config;
 
 
@@ -110,12 +113,14 @@ void output_op_mode(uint id, QString val)
     conf_string = build_string(&temp_config);
 
     qDebug() << conf_string;
+    mutex.unlock();
 
 }
 
 
 void output_token_transfer(bool val)
 {
+    mutex.lock();
     configuration_id temp_config;
 //    uint id = 0x0D03; //Token transfer
 
@@ -147,6 +152,7 @@ void output_token_transfer(bool val)
     conf_string = build_string(&temp_config);
 
     qDebug() << conf_string;
+    mutex.unlock();
 
 }
 
@@ -174,6 +180,7 @@ void synch_config_string()
 
 void synch_output_state()
 {
+    mutex.lock();
     configuration_id temp_config;
     conf.sync();
     conf.beginGroup("Plant-Cfg");
@@ -193,7 +200,8 @@ void synch_output_state()
     conf.setValue("9601", getParamValue(0x9000));
     conf.setValue("9602", getParamValue(0x9010));
     conf.setValue("9603", getParamValue(0x9020));
-    conf.setValue("9604", getParamValue(0x9030));
+
+    conf.setValue("9701", getParamValue(0x9080));
 
     conf.setValue("9640", getParamValue(0x9100));
     conf.setValue("9641", getParamValue(0x9101));
@@ -211,6 +219,7 @@ void synch_output_state()
     conf_string = build_string(&temp_config);
 
     qDebug() << conf_string;
+    mutex.unlock();
 }
 
 QString get_config_string()
@@ -260,7 +269,8 @@ uint motor_state(QString motor_control)
     else if(motor_control =="9601"){return getParamValue(0x9000).toInt();}
     else if(motor_control =="9602"){return getParamValue(0x9010).toInt();}
     else if(motor_control =="9603"){return getParamValue(0x9020).toInt();}
-    else if(motor_control =="9604"){return getParamValue(0x9030).toInt();}
+
+    else if(motor_control =="9701"){return getParamValue(0x9080).toInt();}
 
     else if(motor_control =="9640"){return getParamValue(0x9100).toInt();}
     else if(motor_control =="9641"){return getParamValue(0x9101).toInt();}

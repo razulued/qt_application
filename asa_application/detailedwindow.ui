@@ -697,8 +697,8 @@ background-position: center;
     </property>
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
+      <x>15</x>
+      <y>50</y>
       <width>181</width>
       <height>161</height>
      </rect>

@@ -32,6 +32,7 @@ contacto::~contacto()
 
 void contacto::background_clicked()
 {
+    release_lock();
     this->close();
 }
 
@@ -85,5 +86,6 @@ void contacto::on_push_cancelar_4_clicked()
 
 void contacto::on_close_clicked()
 {
+    release_lock();
     this->close();
 }

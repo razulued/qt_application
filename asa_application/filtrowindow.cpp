@@ -55,6 +55,8 @@ filtrowindow::filtrowindow(bool active_params, parameters_t param, QString dia, 
         delete graph;
     }
     graph = new graphwindow(this);
+    connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
+    connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
 
     //Setup Buttons and link to images
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
@@ -113,7 +115,7 @@ filtrowindow::filtrowindow(bool active_params, parameters_t param, QString dia, 
                                    "background-color:transparent;");
 
     this->move(parent->pos());
-    this->show();
+//    this->show();
 }
 
 filtrowindow::~filtrowindow()
@@ -125,7 +127,8 @@ void filtrowindow::on_go_to_main_clicked()
 {
     forward_param_buttons_state(display_parameters, GetParemeter());
     //Parchesazo!!
-    custom_tooltip::tooltip_number -=3;
+    custom_tooltip::tooltip_number -=6;
+    release_lock();
     this->close();
 }
 
@@ -169,6 +172,13 @@ void filtrowindow::InitTooltips()
     tool_tip_filtro_quimicos = new custom_tooltip(ui->widget_3, MainWindow::conf_filtro_quimi.ids, MainWindow::conf_filtro_quimi.names,
                                                   MainWindow::filtro_outputs.ids, MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_QUIMICOS, graph,  this->my_name);
 
+    tool_tip_filtro_bomba_electricos = new custom_tooltip(ui->widget_4, MainWindow::conf_filtro_bomba_elect.ids, MainWindow::conf_filtro_bomba_elect.names,
+                                      MainWindow::filtro_bomba_outputs.ids, MainWindow::MainWindow::filtro_bomba_outputs.names, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_filtro_bomba_fisicos = new custom_tooltip(ui->widget_5, MainWindow::conf_filtro_bomba_fisic.ids,  MainWindow::conf_filtro_bomba_fisic.names,
+                                                 MainWindow::filtro_bomba_outputs.ids, MainWindow::filtro_bomba_outputs.names, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_filtro_bomba_quimicos = new custom_tooltip(ui->widget_6, MainWindow::conf_filtro_bomba_quimi.ids, MainWindow::conf_filtro_bomba_quimi.names,
+                                                  MainWindow::filtro_bomba_outputs.ids, MainWindow::filtro_bomba_outputs.names, this, ui->modulo_2, TYPE_QUIMICOS, graph,  this->my_name);
+
     init_complete = true;
 }
 
@@ -176,7 +186,8 @@ void filtrowindow::on_asa_logo_clicked()
 {
     forward_param_buttons_state(display_parameters, GetParemeter());
     //Parchesazo!!
-    custom_tooltip::tooltip_number -=3;
+    custom_tooltip::tooltip_number -=6;
+    release_lock();
     this->close();
 }
 
@@ -192,11 +203,19 @@ void filtrowindow::update_tooltips(void)
             tool_tip_filtro_fisicos->force_hide();
             tool_tip_filtro_quimicos->force_hide();
 
+            tool_tip_filtro_bomba_electricos->force_show();
+            tool_tip_filtro_bomba_fisicos->force_hide();
+            tool_tip_filtro_bomba_quimicos->force_hide();
+
             break;
         case PARAM_PHYSHIC:
             tool_tip_filtro_electricos->force_hide();
             tool_tip_filtro_fisicos->force_show();
             tool_tip_filtro_quimicos->force_hide();
+
+            tool_tip_filtro_bomba_electricos->force_hide();
+            tool_tip_filtro_bomba_fisicos->force_show();
+            tool_tip_filtro_bomba_quimicos->force_hide();
 
             break;
         case PARAM_CHEMIC:
@@ -204,6 +223,9 @@ void filtrowindow::update_tooltips(void)
             tool_tip_filtro_fisicos->force_hide();
             tool_tip_filtro_quimicos->force_show();
 
+            tool_tip_filtro_bomba_electricos->force_hide();
+            tool_tip_filtro_bomba_fisicos->force_hide();
+            tool_tip_filtro_bomba_quimicos->force_show();
             break;
         default:
             break;
@@ -217,6 +239,9 @@ void filtrowindow::update_tooltips(void)
             tool_tip_filtro_fisicos->update_data();
             tool_tip_filtro_quimicos->update_data();
 
+            tool_tip_filtro_bomba_electricos->update_data();
+            tool_tip_filtro_bomba_fisicos->update_data();
+            tool_tip_filtro_bomba_quimicos->update_data();
         }
 
     }
@@ -273,10 +298,15 @@ void filtrowindow::update_other(QString dia, QString hora, QString user)
 
 void filtrowindow::on_modulo_1_clicked()
 {
-    if (detail_window != NULL) {
-        delete detail_window;
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_FILTRO, rutinas_ptr, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(detailed_window_closed()));
+        detail_window->show();
     }
-    detail_window = new detailedwindow(ELEMENT_FILTRO, rutinas_ptr, this);
 }
 
 void filtrowindow::on_prof_pic_clicked()
@@ -286,10 +316,28 @@ void filtrowindow::on_prof_pic_clicked()
 
 void filtrowindow::on_top_menu_6_clicked()
 {
-    forward_bitacora_clicked();
+    forward_control_clicked();
 }
 
 void filtrowindow::on_top_menu_2_clicked()
 {
-    forward_control_clicked();
+    forward_bitacora_clicked();
+}
+
+void filtrowindow::on_modulo_2_clicked()
+{
+    if(mutex_detailed.tryLock(0))
+    {
+        if (detail_window != NULL) {
+            delete detail_window;
+        }
+        detail_window = new detailedwindow(ELEMENT_FILTRO_BOMBA, rutinas_ptr, this);
+        connect(detail_window, SIGNAL(release_lock()), this, SLOT(detailed_window_closed()));
+        detail_window->show();
+    }
+}
+
+void filtrowindow::detailed_window_closed()
+{
+    mutex_detailed.unlock();
 }

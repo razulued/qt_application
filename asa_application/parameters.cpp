@@ -187,3 +187,35 @@ void toggleParamActiveShow(unsigned int id)
 
     write_active_parameter();
 }
+
+void write_parameter(QString filename, uint value)
+{
+   QFile myFile(filename);
+   if (!myFile.open(QIODevice::WriteOnly))
+   {
+       qDebug() << "Could not write to file:" << filename << "Error string:" << myFile.errorString();
+       return;
+   }
+
+   QDataStream out(&myFile);
+   out.setVersion(QDataStream::Qt_5_7);
+   out << value;
+}
+
+
+uint load_parameter(QString filename)
+{
+    QFile myFile(filename);
+    uint value;
+    QDataStream in(&myFile);
+    in.setVersion(QDataStream::Qt_5_7);
+
+    if (!myFile.open(QIODevice::ReadOnly))
+    {
+        //qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
+        return value;
+    }
+
+    in >> value;
+    return value;
+}

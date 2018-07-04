@@ -184,6 +184,21 @@ detailed_window_elements_t details_9=
     &MainWindow::filtro_outputs,
 };
 
+detailed_window_elements_t details_10=
+{
+    "Bomba Alimentación",
+    ":/diagrama/screen800x600/diagrama/motor_filtro_small.png",
+    "Agregar descripción",
+
+
+    &MainWindow::conf_filtro_bomba_elect,
+
+    &MainWindow::conf_filtro_bomba_fisic,
+
+    &MainWindow::conf_filtro_bomba_quimi,
+
+    &MainWindow::filtro_bomba_outputs,
+};
 
 const detailed_window_elements_t *detailed_elements[]=
 {
@@ -196,6 +211,7 @@ const detailed_window_elements_t *detailed_elements[]=
     &details_7,
     &details_8,
     &details_9,
+    &details_10,
 };
 
 detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimiento *rutina, QWidget *parent) :
@@ -203,15 +219,18 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     ui(new Ui::detailedwindow)
 {
     ui->setupUi(this);
-    init_completed = false;
 
-    synch_output_state();
+    init_completed = false;
 
     clickeablelabel *alphabackground = new clickeablelabel(this);
     alphabackground->setGeometry(this->geometry());
     alphabackground->setStyleSheet("background-color: rgb(0,0,0,180);");
     alphabackground->lower();
     connect(alphabackground,SIGNAL(clicked()),this,SLOT(background_clicked()));
+
+
+    synch_output_state();
+
 
     rutinas_ptr = rutina;
 
@@ -310,6 +329,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
         output_token_transfer(false);
     }
 
+    mode_4600 = load_parameter("mode4600.bin");
     read_op_mode();
 
 
@@ -319,17 +339,13 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     tab_4_init();
     tab_5_init();
 
+
 //    if(NULL != blur_window)
 //    {
 //        delete blur_window;
 //    }
 
 //    blur_window = new blur();
-
-    //Hide window bars and buttons
-    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
-    this->setAttribute(Qt::WA_TranslucentBackground);
-
 
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
@@ -338,9 +354,17 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     // Start timer
     QTimer::singleShot(MAX_INACTIVITY_TIMEOUT, this, SLOT(checkActivity()));
 
+
+    //Hide window bars and buttons
+    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
+
     this->move(parent->pos());
+
     init_completed = true;
-    this->show();
+
+//    this->show();
+
 }
 
 detailedwindow::~detailedwindow()
@@ -354,6 +378,7 @@ void detailedwindow::on_closeButton_clicked()
 //    validate_token(false);
     //Check token
     output_token_transfer(false);
+    release_lock();
     this->close();
 }
 
@@ -979,6 +1004,9 @@ void detailedwindow::tab_2_init()
     case ELEMENT_FILTRO:
         origentype = ORIGEN_FILTRO;
         break;
+    case ELEMENT_FILTRO_BOMBA:
+        origentype = ORIGEN_FILTRO_BOMBA;
+        break;
     default:
         origentype = ORIGEN_GENERAL;
         break;
@@ -1464,6 +1492,7 @@ void detailedwindow::background_clicked()
 {
 //    validate_token(false);
     output_token_transfer(false);
+    release_lock();
     this->close();
 }
 
@@ -1501,6 +1530,7 @@ void detailedwindow::checkActivity()
     else
     {
         output_token_transfer(false);
+        release_lock();
         this->close();
     }
 }
@@ -1551,7 +1581,14 @@ void detailedwindow::set_op_mode(uint mode)
     }
     else
     {
-        str = "01";
+        if((2 == mode_4600) && (ELEMENT_REACTOR == what_element))
+        {
+            str = "02";
+        }
+        else
+        {
+            str = "01";
+        }
     }
 
     switch(what_element)
@@ -1569,6 +1606,9 @@ void detailedwindow::set_op_mode(uint mode)
         break;
     case ELEMENT_FILTRO:
         output_op_mode(9600, str);
+        break;
+    case ELEMENT_FILTRO_BOMBA:
+        output_op_mode(9700, str);
         break;
     default:
         break;
@@ -1593,6 +1633,9 @@ void detailedwindow::read_op_mode()
         break;
     case ELEMENT_FILTRO:
         str = getParamValue(0x9600);
+        break;
+    case ELEMENT_FILTRO_BOMBA:
+        str = getParamValue(0x9700);
         break;
     default:
         break;

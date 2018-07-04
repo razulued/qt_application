@@ -113,7 +113,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
 
     init_tables();
 
-//    connect(ui->tableWidget, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected(QTableWidgetItem*)));
+    connect(ui->tableWidget, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected_all(QTableWidgetItem*)));
     connect(ui->tableWidget_2, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected(QTableWidgetItem*)));
 
     //Scroll
@@ -145,7 +145,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     scroller_2->grabGesture(ui->tableWidget_2,QScroller::LeftMouseButtonGesture);
 
     this->move(parent->pos());
-    this->show();
+//    this->show();
 }
 
 bitacora::~bitacora()
@@ -155,10 +155,12 @@ bitacora::~bitacora()
 
 void bitacora::on_top_menu_3_clicked()
 {
+    release_lock();
     this->close();
 }
 void bitacora::on_top_menu_2_clicked()
 {
+    release_lock();
     this->close();
 }
 
@@ -478,6 +480,14 @@ void bitacora::item_selected(QTableWidgetItem* item)
 //    qDebug() << "ID " << selected_id;
 }
 
+void bitacora::item_selected_all(QTableWidgetItem* item)
+{
+    QTableWidget *table = item->tableWidget();
+    ui->label_3->setText(table->item(item->row(), 1)->text());
+    selected_id = table->item(item->row(), 0)->text().toInt();
+    qDebug() << "ID " << selected_id;
+}
+
 void bitacora::on_key_Reschedule_clicked()
 {
     uint i = 0;
@@ -507,6 +517,30 @@ void bitacora::receive_date(uint hora, QDate date)
     *temp = temp->addSecs(60 * 60 * hora);
     reschedule_time = temp->toTime_t();
     delete temp;
+}
+
+void bitacora::update_datetime(QDateTime datetime)
+{
+    qDebug() << datetime;
+    uint i = 0;
+    reschedule_time = datetime.toTime_t();
+    if(0 != selected_id)
+    {
+        for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
+        {
+            if(rutina_ptr->id(i) == selected_id)
+            {
+                qDebug() << "ID match at: " << i;
+
+                if(reschedule_time > 0)
+                {
+                    rutina_ptr->reschedule_rutina(i, reschedule_time);
+                    rutina_ptr->update_rutina(i);
+                }
+                break;
+            }
+        }
+    }
 }
 
 void bitacora::on_key_OK_clicked()
@@ -540,3 +574,24 @@ void bitacora::on_key_OK_clicked()
 }
 
 
+
+void bitacora::on_key_Reschedule_2_clicked()
+{
+    uint i = 0;
+    uint periodo;
+    if(NULL != calendar_window)
+    {
+        delete calendar_window;
+    }
+
+    for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
+    {
+        if(rutina_ptr->id(i) == selected_id)
+        {
+            periodo = rutina_ptr->periodo(i);
+            break;
+        }
+    }
+    calendar_window = new calendar(MainWindow::time, 0, this);
+    connect(calendar_window, SIGNAL(send_calendar_datetime(QDateTime)), this, SLOT(update_datetime(QDateTime)));
+}
