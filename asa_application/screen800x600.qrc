@@ -121,6 +121,9 @@
         <file>screen800x600/iconos/STOP--ACTIVADO.png</file>
         <file>screen800x600/iconos/BOTON 2.png</file>
         <file>screen800x600/iconos/BOTON.png</file>
+        <file>screen800x600/iconos/Stop-Boton-Activo-Small.gif</file>
+        <file>screen800x600/iconos/Stop-Boton-Activo.gif</file>
+        <file>screen800x600/iconos/BOTON_small.png</file>
     </qresource>
     <qresource prefix="/texto">
         <file>screen800x600/texto/Teclado 1.1/0 azul.png</file>

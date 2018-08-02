@@ -156,6 +156,42 @@ void output_token_transfer(bool val)
 
 }
 
+void emergency_stop(bool val)
+{
+    mutex.lock();
+    configuration_id temp_config;
+//    uint id = 0x0D03; //Token transfer
+
+    conf.sync();
+    conf.beginGroup("Plant-Cfg");
+
+    // Modify status in config
+//    QString value = conf.value(QString::number(id)).toString();
+
+    if(true == val)
+    {
+        conf.setValue("0902", "01");
+    }
+    else
+    {
+        conf.setValue("0902", "00");
+    }
+
+    //Update String
+    temp_config.names = conf.childKeys();
+    foreach(const QString &key, temp_config.names)
+    {
+        temp_config.ids_string << conf.value(key).toString();
+    }
+    conf.endGroup();
+
+    conf_string = build_string(&temp_config);
+
+    qDebug() << conf_string;
+    mutex.unlock();
+
+}
+
 void synch_config_string()
 {
     configuration_id temp_config;
@@ -166,7 +202,11 @@ void synch_config_string()
     temp_config.names = conf.childKeys();
     foreach(const QString &key, temp_config.names)
     {
-        if("" != getParamValue(key.toInt(&ok, 16)))
+        if(key.toInt(&ok, 16) == 0x0902)
+        {
+            //do not synch emergency stop
+        }
+        else if("" != getParamValue(key.toInt(&ok, 16)))
         {
             if(conf.value(key).toString() != getParamValue(key.toInt(&ok, 16)))
             {
@@ -180,6 +220,12 @@ void synch_config_string()
 
 void synch_output_state()
 {
+    // Skip synchcronization is system is stop
+    if(get_id_state("0902").toInt() == 1)
+    {
+        return;
+    }
+
     mutex.lock();
     configuration_id temp_config;
     conf.sync();
@@ -239,7 +285,7 @@ QString get_config_string()
     return ret;
 }
 
-QString get_id_state(uint id)
+QString get_id_state(QString str_id)
 {
     QString value;
 
@@ -248,7 +294,7 @@ QString get_id_state(uint id)
     conf.beginGroup("Plant-Cfg");
 
     //Update String
-    value = conf.value(QString::number(id)).toString();
+    value = conf.value(str_id).toString();
     conf.endGroup();
 
 

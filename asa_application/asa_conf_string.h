@@ -11,11 +11,12 @@ void output_token_transfer(bool val);
 void synch_config_string();
 void output_op_mode(uint id, QString val);
 
-QString get_id_state(uint id);
+QString get_id_state(QString str_id);
 void synch_output_state();
 
 QString get_config_string();
 uint motor_state(QString motor_control);
 void set_calibration(QString str);
+void emergency_stop(bool val);
 
 #endif // ASA_CONF_STRING_H

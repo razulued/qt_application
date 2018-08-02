@@ -80,7 +80,7 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /*---- 9:control ECU --*/
 /* Reset controller    */ 0x0900,   ASA_TYPE_INTEGER,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
 /* Switch session      */ 0x0901,   ASA_TYPE_INTEGER,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* Emergency shut-off  */ 0x0902,   ASA_TYPE_INTEGER,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
+/* Emergency shut-off  */ 0x0902,   ASA_TYPE_INTEGER,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 /*---- a:control IO ---*/
 /* Control panel LED   */ 0x0A00,   ASA_TYPE_INTEGER,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
 /* Start memory OP cmd */ 0x0A01,   ASA_TYPE_INTEGER,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",

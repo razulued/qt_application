@@ -624,39 +624,39 @@ void DataProccess::dataRandom()
 //    }
 ////    qDebug() << "count " << count;
 ///
-    store_value_by_ID(0x4000, "1");
-    store_value_by_ID(0x4010, "3");
-    store_value_by_ID(0x4020, "3");
-    store_value_by_ID(0x4030, "3");
+//    store_value_by_ID(0x4000, "3");
+//    store_value_by_ID(0x4010, "3");
+//    store_value_by_ID(0x4020, "3");
+//    store_value_by_ID(0x4030, "3");
 
-    store_value_by_ID(0x3000, "3");
-    store_value_by_ID(0x3010, "3");
-    store_value_by_ID(0x3020, "3");
-    store_value_by_ID(0x3030, "3");
+//    store_value_by_ID(0x3000, "1");
+//    store_value_by_ID(0x3010, "3");
+//    store_value_by_ID(0x3020, "3");
+//    store_value_by_ID(0x3030, "3");
 
-    store_value_by_ID(0x4001, "5DC");
-    store_value_by_ID(0x3004, "4B0");
+//    store_value_by_ID(0x4001, "5DC");
+//    store_value_by_ID(0x3004, "4B0");
 
-    // /100
-    store_value_by_ID(0x3400, "96");
-    store_value_by_ID(0x3401, "FA");
-    store_value_by_ID(0x3402, "15E");
-    store_value_by_ID(0x3403, "1C2");
-    // /1
-    store_value_by_ID(0x3501, "226");
-    store_value_by_ID(0x3502, "28A");
+//    // /100
+//    store_value_by_ID(0x3400, "96");
+//    store_value_by_ID(0x3401, "FA");
+//    store_value_by_ID(0x3402, "15E");
+//    store_value_by_ID(0x3403, "1C2");
+//    // /1
+//    store_value_by_ID(0x3501, "226");
+//    store_value_by_ID(0x3502, "28A");
 
-    // / 100
-    store_value_by_ID(0x4400, "12C");
-    store_value_by_ID(0x4401, "258");
+//    // / 100
+//    store_value_by_ID(0x4400, "12C");
+//    store_value_by_ID(0x4401, "258");
 
-    // /1
-    store_value_by_ID(0x4501, "25");
-    store_value_by_ID(0x4502, "50");
+//    // /1
+//    store_value_by_ID(0x4501, "25");
+//    store_value_by_ID(0x4502, "50");
 
-    // /1
-    store_value_by_ID(0x4540, "75");
-    store_value_by_ID(0x9203, "1F4");
+//    // /1
+//    store_value_by_ID(0x4540, "75");
+//    store_value_by_ID(0x9203, "1F4");
 
 //    //presion
 //    store_value_by_ID(0x5400, "123");

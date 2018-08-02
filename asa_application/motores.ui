@@ -301,7 +301,7 @@ background-position: center;
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
+     <y>10</y>
      <width>331</width>
      <height>141</height>
     </rect>
@@ -326,9 +326,9 @@ border-radius: 10px;
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>14</x>
       <y>4</y>
-      <width>251</width>
+      <width>301</width>
       <height>41</height>
      </rect>
     </property>
@@ -341,7 +341,7 @@ border-radius: 10px;
      <string notr="true">color:white</string>
     </property>
     <property name="text">
-     <string>Alto general, presionar durante 3 segundos</string>
+     <string>Alto general. Presionar durante 3 segundos para activar/desactivar</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -355,8 +355,8 @@ border-radius: 10px;
      <rect>
       <x>120</x>
       <y>50</y>
-      <width>91</width>
-      <height>81</height>
+      <width>82</width>
+      <height>82</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -366,28 +366,69 @@ border-radius: 10px;
      <string notr="true">#pushButton
 {
 background-color:transparent;
-background-image: url(:/iconos/screen800x600/iconos/BOTON.png);
+/*background-image: url(:/iconos/screen800x600/iconos/BOTON.png);*/
 background-position: center;
 background-repeat:none;
+border:none;
 }
-#pushButton::pressed
+
+/*#pushButton::pressed
+{
+background-color:transparent;
+background-image:  url(:/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png);
+background-position: center;
+background-repeat:none;
+border:none;
+}
+#pushButton::checked
 {
 background-color:transparent;
 background-image: url(:/iconos/screen800x600/iconos/BOTON 2.png);
+background-image:  url(:/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png);
 background-position: center;
 background-repeat:none;
+border:none;
+}*/</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="stop_button_image">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>50</y>
+      <width>82</width>
+      <height>82</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#stop_button_image
+{
+/*background-image: url(:/iconos/screen800x600/iconos/Stop-Boton-Activo.gif);*/
+background-position:center;
 }</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
+   <zorder>stop_button_image</zorder>
+   <zorder>label_3</zorder>
+   <zorder>pushButton</zorder>
   </widget>
   <widget class="QFrame" name="frame_4">
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>20</y>
+     <y>130</y>
      <width>391</width>
      <height>221</height>
     </rect>
@@ -499,7 +540,7 @@ color: white;
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>175</y>
+     <y>170</y>
      <width>331</width>
      <height>171</height>
     </rect>

@@ -384,8 +384,6 @@ MainWindow::MainWindow(QWidget *parent) :
                                    "color:black;"
                                    "background-color:transparent;");
     ui->label_title->setText(title_name);
-
-
 }
 
 
@@ -671,6 +669,12 @@ void MainWindow::dataTimerSlot()
     }
 
     count++;
+
+//    if(NULL == stop_button_window && this->isVisible() && count>10)
+//    {
+//        stop_button_window = new stop_button(this);
+//        stop_button_window->show();
+//    }
 
 }
 

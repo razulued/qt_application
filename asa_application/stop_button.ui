@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>stop_button</class>
+ <widget class="QDialog" name="stop_button">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>50</width>
+    <height>50</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton
+{
+background-color:transparent;
+border-image: url(:/iconos/screen800x600/iconos/BOTON.png);
+background-position: center;
+background-repeat:none;
+}
+#pushButton::pressed
+{
+background-color:transparent;
+border-image: url(:/iconos/screen800x600/iconos/BOTON 2.png);
+background-position: center;
+background-repeat:none;
+}
+#pushButton::checked
+{
+background-color:transparent;
+border-image: url(:/iconos/screen800x600/iconos/BOTON 2.png);
+background-position: center;
+background-repeat:none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

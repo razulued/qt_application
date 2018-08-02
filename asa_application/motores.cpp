@@ -7,6 +7,7 @@
 #include "token_auth.h"
 #include "mainwindow.h"
 #include "clickeablelabel.h"
+#include "QMovie"
 
 #define MAX_INACTIVITY_TIMEOUT (300 * 1000)
 
@@ -15,6 +16,23 @@ motores::motores(QWidget *parent) :
     ui(new Ui::motores)
 {
     ui->setupUi(this);
+
+    // HIDE STOP BUTTON
+//    ui->frame_3->hide();
+
+    ui->pushButton->setCheckable(true);
+    if(get_id_state("0902").toInt() == 1)
+    {
+        ui->pushButton->setChecked(true);
+        stop_pressed = true;
+        wating_timer = false;
+
+        stop_button_animation(true);
+    }
+    else
+    {
+        stop_button_animation(false);
+    }
 
     synch_output_state();
 
@@ -132,10 +150,25 @@ void motores::module_init(configuration_id *conf, QGridLayout *layout)
         {
             box_motores->setEnabled(true);
 
-//            if(1 == get_id_state(conf->ids.at(i)).toInt())
-            if(1 == motor_state(conf->ids_string.at(i)))
+
+            if(motor_state(conf->ids_string.at(i)) !=
+                    get_id_state(conf->ids_string.at(i)).toInt())
             {
-//                box_motores->setChecked(true);
+                box_motores->setStyleSheet("QCheckBox{"
+                                           "color:white;"
+                                           "width: 30px;"
+                                           "height: 30px;"
+                                           "border: none;"
+                                           "}"
+                                           "QCheckBox::indicator{"
+                                           "image: url(:/iconos/screen800x600/iconos/Encendido blanco.png);"
+                                           "border-width: 0px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
+                                           "}");
+            }
+            else if(1 == motor_state(conf->ids_string.at(i)))
+            {
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
                                            "width: 30px;"
@@ -212,11 +245,25 @@ void motores::module_update(configuration_id *conf)
         {
             box_motores->setEnabled(true);
 
-//            qDebug() << "ID " << conf->ids.at(i) << " " << motor_state(conf->ids_string.at(i));
-//            if(1 == get_id_state(conf->ids.at(i)).toInt())
-            if(1 == motor_state(conf->ids_string.at(i)))
+
+            if(motor_state(conf->ids_string.at(i)) !=
+                    get_id_state(conf->ids_string.at(i)).toInt())
             {
-//                box_motores->setChecked(true);
+                box_motores->setStyleSheet("QCheckBox{"
+                                           "color:white;"
+                                           "width: 30px;"
+                                           "height: 30px;"
+                                           "border: none;"
+                                           "}"
+                                           "QCheckBox::indicator{"
+                                           "image: url(:/iconos/screen800x600/iconos/Encendido blanco.png);"
+                                           "border-width: 0px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
+                                           "}");
+            }
+            else if(1 == motor_state(conf->ids_string.at(i)))
+            {
                 box_motores->setStyleSheet("QCheckBox{"
                                            "color:white;"
                                            "width: 30px;"
@@ -267,9 +314,44 @@ void motores::module_update(configuration_id *conf)
 
 void motores::out_checkBoxStateChanged(int a)
 {
+    // Skip if control is not manual
+    // I don't recall why these numbers are not hex
+    uint module_prefix = a / 100;
+//    qDebug() << "prefix " << module_prefix;
+    if(module_prefix == 36)
+    {
+        // regulador
+        if(ui->comboBox->currentIndex() != 0)
+        {
+            return;
+        }
+    }
+    else if(module_prefix == 46)
+    {
+        // reactor
+        if(ui->comboBox_2->currentIndex() != 0)
+        {
+            return;
+        }
+    }
+    else if(module_prefix == 96)
+    {
+        if(ui->comboBox_3->currentIndex() != 0)
+        {
+            return;
+        }
+    }
+    else if(module_prefix == 97)
+    {
+        if(ui->comboBox_4->currentIndex() != 0)
+        {
+            return;
+        }
+    }
+
     qDebug() << "Toggle output " << a;
     has_activity = true;
-    synch_output_state();
+//    synch_output_state();
     output_control_toggle(a);
 }
 
@@ -303,30 +385,58 @@ void motores::on_pushButton_clicked()
 
 void motores::checkStop()
 {
-    if(true == ui->pushButton->isDown() && stop_pressed)
+    if(true == ui->pushButton->isDown())
     {
-        // STOP ALL
-        output_op_mode(3600, "04");
-        output_op_mode(4600, "04");
-        output_op_mode(5600, "04");
-        output_op_mode(9600, "04");
-        output_op_mode(9700, "04");
-    }
-    else
-    {
+        if(!stop_pressed)
+        {
+            emergency_stop(true);
+            ui->pushButton->setChecked(true);
+            stop_pressed = true;
 
+            stop_button_animation(true);
+        }
+        else
+        {
+            emergency_stop(false);
+            ui->pushButton->setChecked(false);
+
+            stop_pressed = false;
+            stop_button_animation(false);
+        }
     }
+    wating_timer = false;
 }
 
 void motores::on_pushButton_pressed()
 {
-    QTimer::singleShot(2500, this, SLOT(checkStop()));
-    stop_pressed = true;
+    if(wating_timer == false)
+    {
+        if(get_id_state("0902").toInt() == 0)
+        {
+            QTimer::singleShot(2500, this, SLOT(checkStop()));
+            stop_button_animation(true);
+        }
+        else
+        {
+            QTimer::singleShot(2500, this, SLOT(checkStop()));
+            ui->pushButton->setChecked(false);
+        }
+        wating_timer = true;
+    }
 }
 
 void motores::on_pushButton_released()
 {
-    stop_pressed = false;
+    if(stop_pressed == true)
+    {
+        ui->pushButton->setChecked(true);
+        stop_button_animation(true);
+    }
+    else
+    {
+        ui->pushButton->setChecked(false);
+        stop_button_animation(false);
+    }
 }
 
 void motores::read_op_mode()
@@ -414,6 +524,7 @@ void motores::set_op_mode(uint mode, uint what_element)
         break;
     }
 }
+
 void motores::on_comboBox_currentIndexChanged(int index)
 {
     set_op_mode(index, ELEMENT_REGULADOR);
@@ -432,4 +543,34 @@ void motores::on_comboBox_3_currentIndexChanged(int index)
 void motores::on_comboBox_4_currentIndexChanged(int index)
 {
     set_op_mode(index, ELEMENT_FILTRO_BOMBA);
+}
+
+void motores::stop_button_animation(bool state)
+{
+    if(true == state)
+    {
+        QMovie *mv;
+        mv = new QMovie(":/iconos/screen800x600/iconos/Stop-Boton-Activo.gif");
+        ui->stop_button_image->setAttribute(Qt::WA_NoSystemBackground);
+        mv->start();
+        ui->stop_button_image->setMovie(mv);
+
+        ui->pushButton->setStyleSheet("background-color:transparent;"
+                                             "background-image: url(:/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png);"
+                                             "background-position: center;"
+                                             "background-repeat:none;"
+                                             "border:none;");
+        this->update();
+    }
+    else
+    {
+        ui->stop_button_image->setMovie(NULL);
+        ui->pushButton->setStyleSheet("background-color:transparent;"
+                                             "background-image: url(:/iconos/screen800x600/iconos/BOTON.png);"
+                                             "background-position: center;"
+                                             "background-repeat:none;"
+                                             "border:none;");
+
+        this->update();
+    }
 }

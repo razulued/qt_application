@@ -148,6 +148,17 @@ private slots:
 
     void on_comboBox_currentIndexChanged(int index);
 
+    void on_pushButton_pressed();
+
+    void on_pushButton_released();
+
+    void checkStop();
+    void checkStop_modulo();
+
+    void on_pushButton_modulo_pressed();
+
+    void on_pushButton_modulo_released();
+
 private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;
@@ -191,6 +202,14 @@ private:
 
     uint mode_4600 = 0;
 
+    bool wating_timer = false;
+    bool stop_pressed = false;
+    void stop_button_animation(bool state);
+
+    bool wating_timer_modulo = false;
+    bool stop_pressed_modulo = false;
+    void stop_button_animation_module(bool state);
+    bool stop_op_mode();
 signals:
     void release_lock();
 

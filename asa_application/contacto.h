@@ -2,7 +2,7 @@
 #define CONTACTO_H
 
 #include <QDialog>
-
+#include "settings.h"
 namespace Ui {
 class contacto;
 }
@@ -27,9 +27,13 @@ private slots:
 
     void on_close_clicked();
 
+    void on_top_menu_5_clicked();
+
 private:
     Ui::contacto *ui;
     uint sequence = 0;
+
+    settings *settingswindow = NULL;
 
 signals:
     void close_app();

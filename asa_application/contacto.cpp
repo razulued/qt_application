@@ -2,6 +2,7 @@
 #include "ui_contacto.h"
 #include "clickeablelabel.h"
 #include <QProcess>
+#include "token_auth.h"
 
 contacto::contacto(QWidget *parent) :
     QDialog(parent),
@@ -88,4 +89,21 @@ void contacto::on_close_clicked()
 {
     release_lock();
     this->close();
+}
+
+void contacto::on_top_menu_5_clicked()
+{
+    if(true == get_validity_state())
+    {
+//        if(mutex_detailed.tryLock(0))
+        {
+            if(settingswindow != NULL)
+            {
+                delete settingswindow;
+            }
+            settingswindow = new settings(this);
+//            connect(settingswindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
+            settingswindow->show();
+        }
+    }
 }

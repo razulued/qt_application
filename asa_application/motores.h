@@ -48,9 +48,11 @@ private:
     QCheckBox* controls_ptr[20];
     void module_update(configuration_id *conf);
     bool stop_pressed = false;
+    bool wating_timer = false;
     void read_op_mode();
     void set_op_mode(uint mode, uint what_element);
     uint mode_4600 = 0;
+    void stop_button_animation(bool state);
 signals:
     void release_lock();
 };

@@ -28,6 +28,7 @@
 #include "change_text.h"
 #include "contacto.h"
 #include "earm_update.h"
+#include "stop_button.h"
 
 namespace Ui {
 class MainWindow;
@@ -265,6 +266,8 @@ private:
 
     earm_update *update_window = NULL;
     bool update_in_progress = false;
+
+    stop_button *stop_button_window = NULL;
 protected:
     void paintEvent(QPaintEvent *);
 };

@@ -156,6 +156,37 @@ border: none;
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="top_menu_5">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>210</y>
+      <width>34</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#top_menu_5 { 
+background-color: transparent;
+background-image: url(:/iconos/screen800x600/iconos/Ajustes azul.png);
+background-position: center;
+border: none; 
+background-repeat: none;
+ } </string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QPushButton" name="push_cancelar">
    <property name="geometry">
@@ -183,8 +214,8 @@ border: none;
   <widget class="QPushButton" name="push_cancelar_2">
    <property name="geometry">
     <rect>
-     <x>730</x>
-     <y>0</y>
+     <x>0</x>
+     <y>540</y>
      <width>71</width>
      <height>61</height>
     </rect>
@@ -229,8 +260,8 @@ border: none;
   <widget class="QPushButton" name="push_cancelar_4">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>540</y>
+     <x>730</x>
+     <y>0</y>
      <width>71</width>
      <height>61</height>
     </rect>

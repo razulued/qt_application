@@ -16,6 +16,7 @@
 #include "token_auth.h"
 #include <QMutex>
 #include "login_dialog.h"
+#include "QMovie"
 
 #define BUILD_FOR_RPI (1)
 
@@ -228,6 +229,33 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     alphabackground->lower();
     connect(alphabackground,SIGNAL(clicked()),this,SLOT(background_clicked()));
 
+
+    ui->pushButton->setCheckable(true);
+    if(get_id_state("0902").toInt() == 1)
+    {
+        ui->pushButton->setChecked(true);
+        stop_pressed = true;
+        wating_timer = false;
+        stop_button_animation(true);
+    }
+    else
+    {
+        stop_button_animation(false);
+    }
+
+    ui->pushButton->setCheckable(true);
+
+    if(true == stop_op_mode())
+    {
+        ui->pushButton_modulo->setChecked(true);
+        stop_pressed_modulo = true;
+        wating_timer_modulo = false;
+        stop_button_animation_module(true);
+    }
+    else
+    {
+        stop_button_animation_module(false);
+    }
 
     synch_output_state();
 
@@ -627,8 +655,11 @@ void detailedwindow::checkBoxStateChanged(int a)
 
 void detailedwindow::out_checkBoxStateChanged(int a)
 {
-    qDebug() << "Toggle output " << a;
-    output_control_toggle(a);
+    if(ui->comboBox->currentIndex() == 0)
+    {
+        qDebug() << "Toggle output " << a;
+        output_control_toggle(a);
+    }
     has_activity = true;
 }
 
@@ -1174,7 +1205,23 @@ void detailedwindow::tab_5_init()
             box_motores->setEnabled(true);
 
 //            if(1 == get_id_state(detailed_elements[what_element]->out_config->ids.at(i)).toInt())
-            if(1 == motor_state(detailed_elements[what_element]->out_config->ids_string.at(i)))
+            if(motor_state(detailed_elements[what_element]->out_config->ids_string.at(i)) !=
+                    get_id_state(detailed_elements[what_element]->out_config->ids_string.at(i)).toInt())
+            {
+                box_motores->setStyleSheet("QCheckBox{"
+                                           "color:white;"
+                                           "width: 30px;"
+                                           "height: 30px;"
+                                           "border: none;"
+                                           "}"
+                                           "QCheckBox::indicator{"
+                                           "image: url(:/iconos/screen800x600/iconos/Encendido blanco.png);"
+                                           "border-width: 0px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
+                                           "}");
+            }
+            else if(1 == motor_state(detailed_elements[what_element]->out_config->ids_string.at(i)))
             {
 //                box_motores->setChecked(true);
                 box_motores->setStyleSheet("QCheckBox{"
@@ -1362,8 +1409,24 @@ void detailedwindow::tab_5_update()
         {
             box_motores->setEnabled(true);
 
-//            if(1 == get_id_state(detailed_elements[what_element]->out_config->ids.at(i)).toInt())
-            if(1 == motor_state(detailed_elements[what_element]->out_config->ids_string.at(i)))
+//            qDebug() << "Value of " << detailed_elements[what_element]->out_config->ids_string.at(i) << " " << get_id_state(detailed_elements[what_element]->out_config->ids_string.at(i));
+            if(motor_state(detailed_elements[what_element]->out_config->ids_string.at(i)) !=
+                    get_id_state(detailed_elements[what_element]->out_config->ids_string.at(i)).toInt())
+            {
+                box_motores->setStyleSheet("QCheckBox{"
+                                           "color:white;"
+                                           "width: 30px;"
+                                           "height: 30px;"
+                                           "border: none;"
+                                           "}"
+                                           "QCheckBox::indicator{"
+                                           "image: url(:/iconos/screen800x600/iconos/Encendido blanco.png);"
+                                           "border-width: 0px;"
+                                           "width: 30px;"
+                                           "height: 30px;"
+                                           "}");
+            }
+            else if(1 == motor_state(detailed_elements[what_element]->out_config->ids_string.at(i)))
             {
 //                box_motores->setChecked(true);
                 box_motores->setStyleSheet("QCheckBox{"
@@ -1575,7 +1638,11 @@ void detailedwindow::check_lock()
 void detailedwindow::set_op_mode(uint mode)
 {
     QString str;
-    if(0 == mode)
+    if(0xFF == mode)
+    {
+        str = "04";
+    }
+    else if(0 == mode)
     {
         str = "03";
     }
@@ -1655,4 +1722,213 @@ void detailedwindow::read_op_mode()
 void detailedwindow::on_comboBox_currentIndexChanged(int index)
 {
     set_op_mode(index);
+}
+
+void detailedwindow::checkStop()
+{
+    if(true == ui->pushButton->isDown())
+    {
+        if(!stop_pressed)
+        {
+            emergency_stop(true);
+            ui->pushButton->setChecked(true);
+            stop_pressed = true;
+
+            stop_button_animation(true);
+        }
+        else
+        {
+            emergency_stop(false);
+            ui->pushButton->setChecked(false);
+
+            stop_pressed = false;
+            stop_button_animation(false);
+        }
+    }
+    wating_timer = false;
+}
+
+void detailedwindow::on_pushButton_pressed()
+{
+    if(wating_timer == false)
+    {
+        if(get_id_state("0902").toInt() == 0)
+        {
+            QTimer::singleShot(2500, this, SLOT(checkStop()));
+            stop_button_animation(true);
+        }
+        else
+        {
+            QTimer::singleShot(2500, this, SLOT(checkStop()));
+            ui->pushButton->setChecked(false);
+        }
+        wating_timer = true;
+    }
+}
+
+void detailedwindow::on_pushButton_released()
+{
+    if(stop_pressed == true)
+    {
+        ui->pushButton->setChecked(true);
+        stop_button_animation(true);
+    }
+    else
+    {
+        ui->pushButton->setChecked(false);
+        stop_button_animation(false);
+    }
+}
+
+void detailedwindow::stop_button_animation(bool state)
+{
+    if(true == state)
+    {
+        QMovie *mv;
+        mv = new QMovie(":/iconos/screen800x600/iconos/Stop-Boton-Activo.gif");
+        ui->stop_button_image->setAttribute(Qt::WA_NoSystemBackground);
+        mv->start();
+        ui->stop_button_image->setMovie(mv);
+
+        ui->pushButton->setStyleSheet("background-color:transparent;"
+                                             "background-image: url(:/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png);"
+                                             "background-position: center;"
+                                             "background-repeat:none;"
+                                             "border:none;");
+        this->update();
+    }
+    else
+    {
+        ui->stop_button_image->setMovie(NULL);
+        ui->pushButton->setStyleSheet("background-color:transparent;"
+                                             "background-image: url(:/iconos/screen800x600/iconos/BOTON.png);"
+                                             "background-position: center;"
+                                             "background-repeat:none;"
+                                             "border:none;");
+
+        this->update();
+    }
+}
+
+void detailedwindow::stop_button_animation_module(bool state)
+{
+    if(true == state)
+    {
+        QMovie *mv;
+        mv = new QMovie(":/iconos/screen800x600/iconos/Stop-Boton-Activo-Small.gif");
+        ui->stop_button_image_modulo->setAttribute(Qt::WA_NoSystemBackground);
+        mv->start();
+        ui->stop_button_image_modulo->setMovie(mv);
+
+        ui->pushButton_modulo->setStyleSheet("background-color:transparent;"
+                                             "background-image: url(:/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png);"
+                                             "background-position: center;"
+                                             "background-repeat:none;"
+                                             "border:none;");
+        this->update();
+    }
+    else
+    {
+        ui->stop_button_image_modulo->setMovie(NULL);
+        ui->pushButton_modulo->setStyleSheet("background-color:transparent;"
+                                             "background-image: url(:/iconos/screen800x600/iconos/BOTON_small.png);"
+                                             "background-position: center;"
+                                             "background-repeat:none;"
+                                             "border:none;");
+
+        this->update();
+    }
+}
+
+void detailedwindow::checkStop_modulo()
+{
+    if(true == ui->pushButton_modulo->isDown())
+    {
+        if(!stop_pressed_modulo)
+        {
+//            emergency_stop(true);
+            set_op_mode(0xFF);
+            ui->pushButton_modulo->setChecked(true);
+            stop_pressed_modulo = true;
+
+            stop_button_animation_module(true);
+        }
+        else
+        {
+//            emergency_stop(false);
+            set_op_mode(ui->comboBox->currentIndex());
+            ui->pushButton_modulo->setChecked(false);
+
+            stop_pressed_modulo = false;
+            stop_button_animation_module(false);
+        }
+    }
+    wating_timer_modulo = false;
+}
+
+void detailedwindow::on_pushButton_modulo_pressed()
+{
+    if(wating_timer_modulo == false)
+    {
+        if(false == stop_op_mode())
+        {
+            QTimer::singleShot(2500, this, SLOT(checkStop_modulo()));
+            stop_button_animation_module(true);
+        }
+        else
+        {
+            QTimer::singleShot(2500, this, SLOT(checkStop_modulo()));
+            ui->pushButton_modulo->setChecked(false);
+        }
+        wating_timer_modulo = true;
+    }
+}
+
+void detailedwindow::on_pushButton_modulo_released()
+{
+    if(stop_pressed_modulo == true)
+    {
+        ui->pushButton_modulo->setChecked(true);
+        stop_button_animation_module(true);
+    }
+    else
+    {
+        ui->pushButton_modulo->setChecked(false);
+        stop_button_animation_module(false);
+    }
+}
+
+bool detailedwindow::stop_op_mode()
+{
+    bool ret = false;
+    QString str;
+    switch(what_element)
+    {
+    case ELEMENT_REGULADOR:
+        str = get_id_state("3600");
+        break;
+    case ELEMENT_REACTOR:
+        str = get_id_state("4600");
+        break;
+    case ELEMENT_CLARIFICADOR:
+        str = get_id_state("5600");
+        break;
+    case ELEMENT_CLORADOR:
+        break;
+    case ELEMENT_FILTRO:
+        str = get_id_state("9600");
+        break;
+    case ELEMENT_FILTRO_BOMBA:
+        str = get_id_state("9700");
+        break;
+    default:
+        break;
+    }
+
+    if(str == "4" || str == "04")
+    {
+        ret = true;
+    }
+
+    return ret;
 }
