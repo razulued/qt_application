@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>calendario_filtro</class>
+ <widget class="QDialog" name="calendario_filtro">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>70</y>
+     <width>521</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#frame{
+background-image: url(:/iconos/screen800x600/iconos/Cuadro pantalla.png);
+background-repeat: none;
+border: none;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QPushButton" name="close">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>10</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#close
+{
+background-color: transparent;
+border: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fecha_fin_btn">
+    <property name="geometry">
+     <rect>
+      <x>231</x>
+      <y>173</y>
+      <width>145</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#fecha_fin_btn
+{
+background-image: url(:/iconos/screen800x600/iconos/FIN.png);
+background-position: center;
+background-repeat: none;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fecha_inicio_btn">
+    <property name="geometry">
+     <rect>
+      <x>97</x>
+      <y>173</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#fecha_inicio_btn
+{
+background-image: url(:/iconos/screen800x600/iconos/Inicio.png);
+background-position: center;
+background-repeat: none;
+border:none;
+
+/*color: rgb(0, 167, 250);
+border-style: solid;
+border-width: 2px;
+border-color: rgb(0, 167, 250);
+border-radius: 10;*/
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fecha_inicio_text">
+    <property name="geometry">
+     <rect>
+      <x>164</x>
+      <y>180</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fecha_fin_text">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>180</y>
+      <width>67</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ok_button">
+    <property name="geometry">
+     <rect>
+      <x>377</x>
+      <y>168</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#ok_button
+{
+background-image: url(:/iconos/screen800x600/iconos/boton_records_ok.png);
+background-position: center;
+background-repeat: none;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>80</y>
+      <width>371</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white</string>
+    </property>
+    <property name="text">
+     <string>Seleccione el Periodo a Visualizar</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -7,5 +7,14 @@
         <file>fonts/Typo_Square_Light_Italic Demo.otf</file>
         <file>fonts/Typo_Square_Light Demo.otf</file>
         <file>fonts/TypoSquare_1024.png</file>
+        <file>fonts/SQRS711L.ttf</file>
+        <file>fonts/sqrs711m.ttf</file>
+        <file>fonts/SquareSlab711LtBTLight.ttf</file>
+        <file>fonts/SquareSlab711LtBTMedium.ttf</file>
+        <file>fonts/Squ721Rm.ttf</file>
+        <file>fonts/Square721 BT BoldItalic.ttf</file>
+        <file>fonts/square721 bt-italic.ttf</file>
+        <file>fonts/sqr721b.ttf</file>
+        <file>fonts/TT0246M_.TTF</file>
     </qresource>
 </RCC>

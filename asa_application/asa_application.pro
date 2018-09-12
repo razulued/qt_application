@@ -49,7 +49,10 @@ SOURCES += main.cpp\
     calendar.cpp \
     contacto.cpp \
     earm_update.cpp \
-    stop_button.cpp
+    stop_button.cpp \
+    records.cpp \
+    calendario_filtro.cpp \
+    record_chart.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -88,7 +91,10 @@ HEADERS  += mainwindow.h \
     contacto.h \
     build_settings.h \
     earm_update.h \
-    stop_button.h
+    stop_button.h \
+    records.h \
+    calendario_filtro.h \
+    record_chart.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -104,7 +110,10 @@ FORMS    += mainwindow.ui \
     calendar.ui \
     contacto.ui \
     earm_update.ui \
-    stop_button.ui
+    stop_button.ui \
+    records.ui \
+    calendario_filtro.ui \
+    record_chart.ui
 
 RESOURCES += \
     fonts.qrc \

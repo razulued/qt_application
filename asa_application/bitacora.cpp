@@ -5,6 +5,9 @@
 #include <QScroller>
 #include <QScrollerProperties>
 #include "mainwindow.h"
+#include <QSqlQuery>
+#include "records.h"
+
 // rgb(0, 167, 250)
 
 bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
@@ -16,6 +19,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     ui->setupUi(this);
     rutina_ptr = rutina;
 
+    selected_id = 0;
     this->setStyleSheet("background-color:black;"
                         "color:white"
                         );
@@ -24,10 +28,18 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
     QFont font0("Typo Square Bold Demo",18,1);
-    QFont font1("Typo Square Italic Demo",12,1);
-    QFont font2("Typo Square Italic Demo",10,1);
+//    QFont font1("Typo Square Italic Demo",12,1);
+//    QFont font2("Typo Square Italic Demo",10,1);
     QFont font3("Typo Square Bold Demo",14,1);
     QFont font4("Typo Square Bold Demo",10,1);
+    QFont font5("Typo Square Bold Demo",8,1);
+
+//    QFont font0("SquareSlab711 Lt BT",18,1);
+    QFont font1("Square721 BT",12,1);
+    QFont font2("Square721 BT",10,1);
+//    QFont font3("SquareSlab711 Lt BT",14,1);
+//    QFont font4("SquareSlab711 Lt BT",10,1);
+//    QFont font5("SquareSlab711 Lt BT",8,1);
 
     ui->label->setFont(font0);
 
@@ -99,6 +111,43 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     ui->tableWidget_2->horizontalHeader()->setStretchLastSection(true);
     ui->tableWidget_2->setWordWrap(true);
 
+    // table 3
+    ui->tableWidget_3->setAlternatingRowColors(true);
+    ui->tableWidget_3->setStyleSheet("color: rgb(0, 167, 250);;"
+                                   "alternate-background-color: rgb(50, 50, 50);"
+                                   "background-color: black;"
+                                     "gridline-color: none;"
+                                   "border-style: none;"
+                                   "QHeaderView::section:vertical{"
+                                   "border-left: none;"
+                                   "}"
+                                   "QHeaderView::section:horizontal{"
+                                   "border-top: none;"
+                                   "}"
+                                   );
+    ui->tableWidget_3->horizontalHeader()->setFont(font1);
+    ui->tableWidget_3->horizontalHeader()->setStyleSheet("border-style: none;"
+                                                       "border-bottom: 1px solid #00a7fa;"
+                                                       "border-top: 1px solid #00a7fa;"
+                                                       "border-left: 1px solid #00a7fa;"
+                                                       "border-right: 1px solid #00a7fa;"
+                                                       "QHeaderView::section:vertical{"
+                                                       "border-left: 1px solid #00a7fa;"
+                                                       "}"
+                                                       "QHeaderView::section:horizontal{"
+                                                       "border-top: 1px solid #00a7fa;"
+                                                       "}");
+    ui->tableWidget_3->verticalHeader()->setVisible(false);
+    ui->tableWidget_3->setFont(font2);
+    ui->tableWidget_3->horizontalHeader()->setStretchLastSection(true);
+    ui->tableWidget_3->setWordWrap(true);
+
+    ui->label_quitar_filtros->setFont(font4);
+    ui->label_quitar_filtros->setStyleSheet("background-color: transparent;"
+                                         "color: rgb(0, 167, 250);");
+    ui->label_filtro_fecha->setFont(font4);
+    ui->label_filtro_fecha->setStyleSheet("background-color: transparent;"
+                                         "color: rgb(0, 167, 250);");
     ui->label_2->setFont(font3);
     ui->label_2->setAlignment(Qt::AlignCenter);
 
@@ -144,6 +193,20 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     //Scrolling Gesture
     scroller_2->grabGesture(ui->tableWidget_2,QScroller::LeftMouseButtonGesture);
 
+    //Scroll
+    QScroller *scroller_3 = QScroller::scroller(ui->tableWidget_3);
+    ui->tableWidget_3->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    ui->tableWidget_3->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+    QScrollerProperties properties_3 = QScroller::scroller(scroller_3)->scrollerProperties();
+    QVariant overshootPolicy_3 = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties_3.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy_3);
+    scroller_3->setScrollerProperties(properties_3);
+    properties_3.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, overshootPolicy_3);
+    scroller_3->setScrollerProperties(properties_3);
+    //Scrolling Gesture
+    scroller_3->grabGesture(ui->tableWidget_3,QScroller::LeftMouseButtonGesture);
+
     this->move(parent->pos());
 //    this->show();
 }
@@ -169,6 +232,7 @@ void bitacora::init_tables()
 
     init_full_table();
     init_active_table();
+    init_registros_table();
 
     init_completed = true;
 }
@@ -224,6 +288,17 @@ void bitacora::update_full_table()
 
 //        ui->tableWidget->resizeColumnsToContents();
     }
+}
+
+void bitacora::init_registros_table()
+{
+    QStringList titulos;
+
+    titulos << "ID" << "Rutina" << "Fecha" << "Pregunta" << "Valor";
+    ui->tableWidget_3->setColumnCount(titulos.size());
+    ui->tableWidget_3->setHorizontalHeaderLabels(titulos);
+
+    add_row_registro("SELECT * FROM log;", ui->tableWidget_3);
 }
 
 void bitacora::init_active_table()
@@ -341,9 +416,9 @@ void bitacora::update_active_table()
     {
         if(0 == rutina_ptr->ready(i))
         {
-            for(row = 0; row < ui->tableWidget_2->rowCount() ; row++)
+            for(row = 0; row < (uint)ui->tableWidget_2->rowCount() ; row++)
             {
-                if(ui->tableWidget_2->item(row,0)->text().toInt() == rutina_ptr->id(i))
+                if((uint)ui->tableWidget_2->item(row,0)->text().toInt() == rutina_ptr->id(i))
                 {
                     item_found = true;
                     break;
@@ -363,9 +438,9 @@ void bitacora::update_active_table()
     {
         if(1 == rutina_ptr->ready(i))
         {
-            for(row = 0; row < ui->tableWidget_2->rowCount() ; row++)
+            for(row = 0; row < (uint)ui->tableWidget_2->rowCount() ; row++)
             {
-                if(ui->tableWidget_2->item(row,0)->text().toInt() == rutina_ptr->id(i))
+                if((uint)ui->tableWidget_2->item(row,0)->text().toInt() == rutina_ptr->id(i))
                 {
                     item_found = true;
                     break;
@@ -465,6 +540,89 @@ void bitacora::add_row_rutina(uint row, uint rutina, QTableWidget *table)
     table->setColumnWidth(4, 90);
 }
 
+void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
+{
+    QSqlQuery q;
+    QSqlQuery question_query;
+
+    uint row = 0;
+    uint question_id;
+    QDateTime *temp_date;
+
+    qDebug() << "QUERY: " << sql_query;
+
+    if(!q.prepare(sql_query)) qDebug() << "Failed to prepare";
+
+//    q.bindValue(":id_found",rutina_def_table[i].id);
+    if(!q.exec()) qDebug() << "Failed to execute";
+
+    //titulos << "ID" << "Rutina" << "Fecha" << "Pregunta" << "Valor";
+    while (q.next())
+    {
+        table->insertRow(row);
+
+        table->setItem(row,0, new QTableWidgetItem(q.value("rutina_id").toString()));
+        table->setItem(row,1, new QTableWidgetItem(q.value("rutina_name").toString()));
+
+        temp_date = new QDateTime(QDateTime::fromTime_t(q.value("log_date").toInt()));
+        table->setItem(row,2, new QTableWidgetItem(temp_date->toString()));
+
+        table->setItem(row,3, new QTableWidgetItem(q.value("record_name").toString()));
+
+        //get question type
+        question_id = q.value("record_id").toInt();
+        if(!question_query.prepare("SELECT * FROM records WHERE id = :id_found"))
+        {
+            qDebug() << "Failed to prepare";
+        }
+        else
+        {
+            question_query.bindValue(":id_found",question_id);
+            if(!question_query.exec())
+            {
+                qDebug() << "Failed to execute";
+            }
+            else
+            {
+                while (question_query.next())
+                {
+                    if("NUMBER" == question_query.value("type").toString())
+                    {
+                        // This is a number, retrieve the actual number
+                        table->setItem(row,4, new QTableWidgetItem(q.value("record_value").toString()));
+                    }
+                    else
+                    {
+                        // This is a option type, cross reference the name
+                        if(1 == q.value("record_value").toInt())
+                        {
+                            table->setItem(row,4, new QTableWidgetItem(question_query.value("field_1").toString()));
+                        }
+                        else if(2 == q.value("record_value").toInt())
+                        {
+                            table->setItem(row,4, new QTableWidgetItem(question_query.value("field_2").toString()));
+                        }
+                        else if(3 == q.value("record_value").toInt())
+                        {
+                            table->setItem(row,4, new QTableWidgetItem(question_query.value("field_3").toString()));
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        row++;
+        table->resizeRowsToContents();
+        table->setColumnWidth(0, 35);
+        table->setColumnWidth(1, 300);
+        table->setColumnWidth(2, 120);
+        table->setColumnWidth(3, 200);
+        table->setColumnWidth(4, 70);
+    }
+}
+
 void bitacora::delete_row(uint row, QTableWidget *table)
 {
     table->removeRow(row);
@@ -546,6 +704,10 @@ void bitacora::update_datetime(QDateTime datetime)
 void bitacora::on_key_OK_clicked()
 {
     uint i = 0;
+    QStringList list_records;
+    uint record_idx = 0;
+    QString record_ID;
+    records *rec_ptr;
 
     if(0 != selected_id)
     {
@@ -563,6 +725,22 @@ void bitacora::on_key_OK_clicked()
                 else
                 {
                     rutina_ptr->complete_rutina(i);
+                    list_records = rutina_ptr->texto_ayuda(i).split(',');
+//                    qDebug() << "SPLIT: " << list_records << "len: " << list_records.length();
+                    if(list_records.length() > 0)
+                    {
+                        for(record_idx = 0; record_idx < (uint)list_records.length(); record_idx++)
+                        {
+                            record_ID = list_records.at(record_idx);
+                            if(record_ID != "")
+                            {
+                                rec_ptr = new records("rutinas.db", record_ID.toInt(),
+                                                      selected_id,
+                                                      rutina_ptr->get_current_time().toTime_t(),
+                                                      this);
+                            }
+                        }
+                    }
                 }
                 break;
             }
@@ -594,4 +772,61 @@ void bitacora::on_key_Reschedule_2_clicked()
     }
     calendar_window = new calendar(MainWindow::time, 0, this);
     connect(calendar_window, SIGNAL(send_calendar_datetime(QDateTime)), this, SLOT(update_datetime(QDateTime)));
+}
+
+void bitacora::on_log_button_clicked()
+{
+    // Delete all rows in registros table, and prepare new query
+    if( 0 != selected_id)
+    {
+        ui->tableWidget_3->setRowCount(0);
+        add_row_registro("SELECT * FROM log WHERE rutina_id = "+QString::number(selected_id), ui->tableWidget_3);
+        ui->tabWidget->setCurrentIndex(2);
+    }
+}
+
+void bitacora::on_clear_filters_clicked()
+{
+    ui->tableWidget_3->setRowCount(0);
+    add_row_registro("SELECT * FROM log", ui->tableWidget_3);
+    ui->tabWidget->setCurrentIndex(3);
+
+    filtro_fecha_inicio = 0;
+    filtro_fecha_fin = 0;
+
+}
+
+
+
+void bitacora::on_filtro_fecha_clicked()
+{
+    if(calendario_window != NULL)
+    {
+        delete calendario_window;
+    }
+
+    calendario_window = new calendario_filtro(this);
+    connect(calendario_window, SIGNAL(send_fechas(uint,uint)),
+            this, SLOT(filtro_fecha_received(uint,uint)));
+
+}
+
+void bitacora::filtro_fecha_received(uint ini, uint end)
+{
+    filtro_fecha_inicio = ini;
+    filtro_fecha_fin = end;
+    // Delete all rows in registros table, and prepare new query
+    if( 0 != filtro_fecha_fin &&
+            0 != filtro_fecha_inicio &&
+            filtro_fecha_fin > filtro_fecha_inicio)
+    {
+        ui->tableWidget_3->setRowCount(0);
+        //SELECT * FROM log WHERE log_date BETWEEN 1537106400 and 1537279200
+        add_row_registro("SELECT * FROM log WHERE log_date BETWEEN "+
+                         QString::number(filtro_fecha_inicio) +
+                         " and "+
+                         QString::number(filtro_fecha_fin), ui->tableWidget_3);
+        ui->tabWidget->setCurrentIndex(2);
+    }
+
 }

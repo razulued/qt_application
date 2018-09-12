@@ -22,10 +22,7 @@ def_rutina_t rutina_def_table[]=
 
     {"Revisar Promedio Retorno de Lodo",            2,  1,  RUTINA_DIA,     ORIGEN_CLARIFICADOR,    STATE_NEW, 0, 0, 0, 9,
     "Medir el flujo de retorno de lodos. Utiliza una cubeta de volumen conocido y mide en cuánto tiempo se llena; midiendo siempre en el mismo retorno.",
-     "- ¿Cuál fue el volumen captado?\n"
-     "__ Litros\n"
-     "- ¿En cuánto tiempo se llenó?\n"
-     "__ segundos"
+     "101,100"
     },
 
     {"Revisar y limpiar Vertedero clarificador",    3,  1,  RUTINA_DIA,     ORIGEN_CLARIFICADOR,    STATE_NEW, 0, 0, 0, 9,
@@ -46,10 +43,7 @@ def_rutina_t rutina_def_table[]=
 
     {"Realizar Pruebas de Sedimentacion",           6,  1,  RUTINA_DIA,     ORIGEN_CLARIFICADOR,    STATE_NEW, 0, 0, 0, 9,
     "Con los sopladores en operación tomar una muestra de 1 Litro en la probeta o cono de Imhoff. Dejar media hora en reposo a la sombra.",
-     "- Cantidad de sólidos sedimentados.\n"
-     "__ mL/L\n"
-     "- ¿Hubo flotación de lodos?\n"
-     "Sí/No"
+     "103,102"
     },
 
     {"Verificar Medidor de Flujo",                  7,  1,  RUTINA_DIA,     ORIGEN_EFLUENTE,        STATE_NEW, 0, 0, 0, 9,
@@ -74,22 +68,13 @@ def_rutina_t rutina_def_table[]=
 
     {"Revisar Fugas en válvulas de aire",           12,  1,  RUTINA_MES,     ORIGEN_GENERAL,        STATE_NEW, 0, 0, 0, 0,
     "Verificar visualmente que no haya fuga en las válvulas de aire. Si se sospecha que hay fuga en alguna, corroborar con una solución jabonosa.",
-     "- ¿Hubo fuga de aire en alguna válvula?\n"
-     "Sí/No"
+     "104"
     },
 
 
     {"Tomar Muestra en el Efluente",                13,  1,  RUTINA_MES,     ORIGEN_CLORADOR,       STATE_NEW, 0, 0, 0, 0,
     "Tomar una muestra de agua en el efluente y realizar pruebas de calidad apropiadas.",
-     "- Claridad\n"
-     "Buena/Media/Mala\n"
-     "- Sólidos Suspendidos Totales\n"
-     "Medidos/No medidos\n"
-     "__ mg/L\n"
-     "- Cloro residual\n"
-     "mg/L\n"
-     "- pH\n"
-     "__"
+     "108,107,106,105"
     },
 
     {"Lubricar Candados",                           14,  1,  RUTINA_MES,     ORIGEN_GENERAL,        STATE_NEW, 0, 0, 0, 0,
@@ -99,22 +84,17 @@ def_rutina_t rutina_def_table[]=
 
     {"Revisar Tensión y Desgaste en Bandas",        15,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
     "Parar el soplador, retirar las válvulas y revisar que se encuentren en buen estado.",
-     "- ¿Las bandas se encuentran en buen estado?\n"
-     "Sí/No\n"
-     "Cantidad de bandas en mal estado\n"
-     "__ bandas"
+     "110,109"
     },
 
     {"Verificar Alineacion de Poleas",              16,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
     "Parar el soplador y revisar que las poleas se encuentren apropiadamente alineadas.",
-     "- ¿Fue necesario realizar un ajuste a la alineación de poleas?\n"
-     "Sí/No"
+     "111"
     },
 
     {"Lubricar Chumaceras",                         17,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
     "Parar el soplador  realizar lubricación con grasa en motores, dando un par de bombeos con la grasera en cada punto de lubricación.",
-     "- ¿La grasa excedente se ve quemada?\n"
-     "Sí/No"
+     "112"
     },
 
     {"Limpiar Ventilación de Motores",              18,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
@@ -124,16 +104,12 @@ def_rutina_t rutina_def_table[]=
 
     {"Verificar Nivel de Aceite en Sopladores",     19,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
     "Parar el soplador y revisar nivel actual de aceite. Rellenar en caso de ser necesario.",
-     "- ¿Se requirió llenado de aceite?\n"
-     "Sí/No\n"
-     "- Cantidad de aceite agregado\n"
-     "__ mL"
+     "114,113"
     },
 
     {"Limpiar Filtros de Aire",                     20,  1,  RUTINA_MES,     ORIGEN_REACTOR,         STATE_NEW, 0, 0, 0, 0,
     "Parar el soplador, retirar cubierta metálica y realizar limpieza del filtro de aire.",
-     "- Estado del filtro de aire\n"
-     "Bueno/Medio/Malo"
+     "115"
     },
 
     {"Limpiar Valvulas de Alivio",                  21,  1,  RUTINA_MES,     ORIGEN_REACTOR,         STATE_NEW, 0, 0, 0, 0,
@@ -359,7 +335,8 @@ void rutinas_mantenimiento::rutina_state_machine(int index)
         }
         break;
     case STATE_SET_LAST_EVENT:
-        if(0 == rutina_def_table[index].last_event)
+        if(0 == rutina_def_table[index].last_event &&
+           0 == rutina_def_table[index].next_event)
         {
 //            qDebug() << "Rutina " << index << "last time not set, use time from synch";
             time = new QDateTime(QDateTime::fromTime_t(rutina_def_table[index].synch_date));
@@ -502,7 +479,7 @@ QString rutinas_mantenimiento::nombre(uint rutina)
 
 QString rutinas_mantenimiento::texto_ayuda(uint rutina)
 {
-    return rutina_def_table[rutina].texto_ayuda;
+    return rutina_def_table[rutina].records;
 }
 
 QString rutinas_mantenimiento::explicacion(uint rutina)

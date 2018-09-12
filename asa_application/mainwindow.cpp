@@ -11,6 +11,7 @@
 #include "statistics.h"
 #include "token_auth.h"
 #include "build_settings.h"
+#include "records.h"
 
 #define ENABLE_TEST (1)
 
@@ -160,6 +161,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // Rutinas y DB
     rutinas = new rutinas_mantenimiento("rutinas.db");
 
+//    records *rec_ptr = new records("rutinas.db", 103, 6, this);
+
     //Get config
     validate_token(false);
     init_plat_config();
@@ -278,6 +281,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Ligth Demo.otf");
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Italic Demo.otf");
     QFontDatabase::addApplicationFont(":/fonts/fonts/Typo_Square_Bold_Italic Demo.otf");
+
+    QFontDatabase::addApplicationFont(":/fonts/fonts/SQRS711L.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/fonts/sqrs711m.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/fonts/square721 bt-italic.ttf");
+
+
 
     //Setup Buttons and link to images
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);

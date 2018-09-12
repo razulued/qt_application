@@ -54,7 +54,7 @@ typedef struct
     uint next_event;
     uint schedule_to;
     QString explicacion;
-    QString texto_ayuda;
+    QString records;
 }def_rutina_t;
 
 class rutinas_mantenimiento
@@ -83,13 +83,13 @@ public:
     void reschedule_rutina(uint rutina, uint new_time);
     void set_time(QDateTime time);
     void update_rutina(uint rutina);
+    QDateTime get_current_time();
 private:
 //    def_rutina_t rutina_def_table[];
     QSqlDatabase m_db;
     QString db_path;
     void rutina_state_machine(int index);
 
-    QDateTime get_current_time();
 
     QDateTime global_time = QDateTime::fromTime_t(0);
 

@@ -6,6 +6,7 @@
 #include <QTableWidgetItem>
 #include "rutinas_mantenimiento.h"
 #include "calendar.h"
+#include "calendario_filtro.h"
 
 namespace Ui {
 class bitacora;
@@ -38,18 +39,27 @@ private slots:
 
     void on_key_Reschedule_2_clicked();
 
+    void on_log_button_clicked();
+
+    void on_clear_filters_clicked();
+
+    void on_filtro_fecha_clicked();
+
+    void filtro_fecha_received(uint ini, uint end);
 private:
     Ui::bitacora *ui;
     void init_tables(void);
     void init_full_table(void);
     void update_full_table(void);
+    void init_registros_table();
+    void update_registros_table();
     void init_active_table(void);
     void update_active_table(void);
     void add_row_rutina(uint row, uint rutina, QTableWidget *table);
     void delete_row(uint row, QTableWidget *table);
 
 
-    uint selected_id;
+    uint selected_id = 0;
     bool init_completed = false;
 
     rutinas_mantenimiento *rutina_ptr;
@@ -68,6 +78,11 @@ private:
     calendar * calendar_window = NULL;
     uint reschedule_time;
 
+    void add_row_registro(QString sql_query, QTableWidget *table);
+    uint filtro_fecha_inicio;
+    uint filtro_fecha_fin;
+
+    calendario_filtro * calendario_window = NULL;
 signals:
     void release_lock();
 

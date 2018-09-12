@@ -1311,9 +1311,9 @@ border:none;
    <widget class="QLabel" name="label_dia">
     <property name="geometry">
      <rect>
-      <x>275</x>
+      <x>245</x>
       <y>28</y>
-      <width>231</width>
+      <width>291</width>
       <height>21</height>
      </rect>
     </property>

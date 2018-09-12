@@ -124,6 +124,15 @@
         <file>screen800x600/iconos/Stop-Boton-Activo-Small.gif</file>
         <file>screen800x600/iconos/Stop-Boton-Activo.gif</file>
         <file>screen800x600/iconos/BOTON_small.png</file>
+        <file>screen800x600/iconos/Boton_records.png</file>
+        <file>screen800x600/iconos/boton_records_2.png</file>
+        <file>screen800x600/iconos/boton_records_ok.png</file>
+        <file>screen800x600/iconos/Historial.png</file>
+        <file>screen800x600/iconos/Historial_small.png</file>
+        <file>screen800x600/iconos/FIN.png</file>
+        <file>screen800x600/iconos/Inicio.png</file>
+        <file>screen800x600/iconos/Limpiar-filtro.png</file>
+        <file>screen800x600/iconos/Calendario.png</file>
     </qresource>
     <qresource prefix="/texto">
         <file>screen800x600/texto/Teclado 1.1/0 azul.png</file>

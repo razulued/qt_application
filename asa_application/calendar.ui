@@ -96,7 +96,7 @@ border: none;
      </font>
     </property>
     <property name="text">
-     <string>Reprogramar rutina</string>
+     <string>Calendario</string>
     </property>
    </widget>
   </widget>

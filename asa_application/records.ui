@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>detailedwindow</class>
- <widget class="QDialog" name="detailedwindow">
+ <class>records</class>
+ <widget class="QDialog" name="records">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,816 +10,22 @@
     <height>600</height>
    </rect>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>800</width>
-    <height>600</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>800</width>
-    <height>600</height>
-   </size>
-  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">QCheckBox{
-color:white;
-}
-</string>
-  </property>
-  <widget class="QFrame" name="frame">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>70</y>
-     <width>521</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">#frame{
-background-image: url(:/iconos/screen800x600/iconos/Cuadro pantalla.png);
-background-repeat: none;
-border: none;
-}</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>20</y>
-      <width>281</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color:white</string>
-    </property>
-    <property name="text">
-     <string>Parámetros</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_parametros">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>200</y>
-      <width>31</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#button_parametros{
-background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_evento">
-    <property name="geometry">
-     <rect>
-      <x>59</x>
-      <y>200</y>
-      <width>31</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#button_evento{
-background-image: url(:/iconos/screen800x600/iconos/Bitacora azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>40</y>
-      <width>305</width>
-      <height>208</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#tabWidget { 
-background-color: transparent;
-border-image: none;
-background: none; 
-border: none; 
-background-repeat: none;
- } 
-
-QTabBar::tab {
-background-color: transparent;
-border: none;
-}</string>
-    </property>
-    <property name="tabPosition">
-     <enum>QTabWidget::North</enum>
-    </property>
-    <property name="tabShape">
-     <enum>QTabWidget::Rounded</enum>
-    </property>
-    <property name="currentIndex">
-     <number>5</number>
-    </property>
-    <property name="elideMode">
-     <enum>Qt::ElideNone</enum>
-    </property>
-    <property name="tabBarAutoHide">
-     <bool>false</bool>
-    </property>
-    <widget class="QWidget" name="tab_1">
-     <attribute name="title">
-      <string>Tab 1</string>
-     </attribute>
-     <widget class="QTableWidget" name="tableWidget_tab_1">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>281</width>
-        <height>161</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="filtro_fisicos">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>0</y>
-        <width>31</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#filtro_fisicos{
-background-image: url(:/iconos/screen800x600/iconos/Medidor azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="filtro_quimicos">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>0</y>
-        <width>31</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#filtro_quimicos{
-background-image: url(:/iconos/screen800x600/iconos/Matraz azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="filtro_electricos">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>0</y>
-        <width>31</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#filtro_electricos{
-background-image: url(:/iconos/screen800x600/iconos/Clavija azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Tab 2</string>
-     </attribute>
-     <widget class="QTableWidget" name="tableWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>301</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="gridStyle">
-       <enum>Qt::SolidLine</enum>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>Tab 3</string>
-     </attribute>
-     <widget class="QLabel" name="description_label">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>291</width>
-        <height>171</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Descripcion</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignHCenter|Qt::AlignTop</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_4">
-     <attribute name="title">
-      <string>Tab 4</string>
-     </attribute>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>301</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>299</width>
-         <height>189</height>
-        </rect>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_5">
-     <attribute name="title">
-      <string>Tab 5</string>
-     </attribute>
-     <widget class="QComboBox" name="comboBox">
-      <property name="geometry">
-       <rect>
-        <x>8</x>
-        <y>10</y>
-        <width>161</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <item>
-       <property name="text">
-        <string>Manual</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Automatico</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QWidget" name="gridLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>291</width>
-        <height>151</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout"/>
-     </widget>
-     <widget class="QPushButton" name="pushButton_modulo">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>0</y>
-        <width>40</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#pushButton_modulo
-{
-background-color:transparent;
-background-image: url(:/iconos/screen800x600/iconos/BOTON_small.png);
-background-position: center;
-background-repeat: none;
-border: none;
-}
-/*#pushButton::pressed
-{
-background-color:transparent;
-border-image: url(:/iconos/screen800x600/iconos/BOTON 2.png);
-background-position: center;
-background-repeat:none;
-}
-#pushButton::checked
-{
-background-color:transparent;
-border-image: url(:/iconos/screen800x600/iconos/BOTON 2.png);
-background-position: center;
-background-repeat:none;
-}*/</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="stop_button_image_modulo">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>0</y>
-        <width>40</width>
-        <height>40</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <zorder>stop_button_image_modulo</zorder>
-     <zorder>comboBox</zorder>
-     <zorder>gridLayoutWidget</zorder>
-     <zorder>pushButton_modulo</zorder>
-    </widget>
-    <widget class="QWidget" name="tab_6">
-     <attribute name="title">
-      <string>tab_6</string>
-     </attribute>
-     <widget class="QTableWidget" name="tableWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>301</width>
-        <height>51</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="evento_gif">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>107</y>
-        <width>161</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#evento_gif
-{
-background-image: url(:/iconos/screen800x600/iconos/Play azul.png);
-background-repeat: none;
-background-position: center;
-border-style: solid;
-border-color: gray;
-border-width: 1px;
-}
-
-#evento_gif::pressed
-{
-background-image: url(:/iconos/screen800x600/iconos/Play blanco.png);
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="explicacion">
-      <property name="geometry">
-       <rect>
-        <x>4</x>
-        <y>53</y>
-        <width>271</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_OK">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>166</y>
-        <width>81</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_OK{ 
-background-image: url(:/iconos/screen800x600/iconos/Listo azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_OK::pressed{ 
-background-image: url(:/iconos/screen800x600/iconos/Listo blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="key_Reschedule">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>166</y>
-        <width>151</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::NoFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#key_Reschedule{ 
-background-image: url(:/iconos/screen800x600/iconos/Posponer azul largo.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#key_Reschedule::checked{ 
-background-image: url(:/iconos/screen800x600/iconos/Posponer blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_horas">
-      <property name="geometry">
-       <rect>
-        <x>14</x>
-        <y>172</y>
-        <width>118</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="ayuda_btn">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>73</y>
-        <width>31</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">#ayuda_btn{ 
-background-image: url(:/iconos/screen800x600/iconos/Ayuda azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}
-
-#ayuda_btn::pressed{ 
-background-image: url(:/iconos/screen800x600/iconos/Ayuda blanco.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QPushButton" name="button_visualizacion">
-    <property name="geometry">
-     <rect>
-      <x>134</x>
-      <y>200</y>
-      <width>31</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#button_visualizacion{
-background-image: url(:/iconos/screen800x600/iconos/Ajustes azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="closeButton">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>10</y>
-      <width>41</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#closeButton { 
-background-color: transparent;
-/*border-image: url(:/iconos/images/Iconos/close-x.png);*/
-background: none; 
-border: none; 
-background-repeat: none;
-margin:5px;
- } 
-</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_control">
-    <property name="geometry">
-     <rect>
-      <x>168</x>
-      <y>200</y>
-      <width>31</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#button_control{ 
-background-image: url(:/iconos/screen800x600/iconos/Encendido azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="nombre">
-    <property name="geometry">
-     <rect>
-      <x>21</x>
-      <y>-3</y>
-      <width>261</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>14</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Nombre</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="imagen">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>15</x>
-      <y>50</y>
-      <width>181</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#imagen { 
-background-color: transparent;
-border-image: url(:/images/images/detail_deshidratador.png);
-background: none; 
-border: none; 
-background-repeat: none;
- } </string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_descripcion">
-    <property name="geometry">
-     <rect>
-      <x>97</x>
-      <y>200</y>
-      <width>31</width>
-      <height>45</height>
-     </rect>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::NoFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">#button_descripcion{
-background-image: url(:/iconos/screen800x600/iconos/Info azul.png);
-border: none;
-background-repeat: none;
-background-position: center;
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
-   </widget>
-  </widget>
   <widget class="QFrame" name="key_frame">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>420</y>
-     <width>691</width>
-     <height>181</height>
+     <x>10</x>
+     <y>380</y>
+     <width>781</width>
+     <height>191</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">#key_frame
 {
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/fondo teclado.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/fondo teclado 2.png);
 background-repeat:none;
 /*background-color: black;*/
 border:none;
@@ -834,8 +40,8 @@ border:none;
    <widget class="QPushButton" name="key_0">
     <property name="geometry">
      <rect>
-      <x>556</x>
-      <y>132</y>
+      <x>536</x>
+      <y>96</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -868,7 +74,7 @@ background-position: center;
    <widget class="QPushButton" name="key_4">
     <property name="geometry">
      <rect>
-      <x>511</x>
+      <x>582</x>
       <y>49</y>
       <width>41</width>
       <height>41</height>
@@ -902,7 +108,7 @@ background-position: center;
    <widget class="QPushButton" name="key_5">
     <property name="geometry">
      <rect>
-      <x>554</x>
+      <x>625</x>
       <y>49</y>
       <width>41</width>
       <height>41</height>
@@ -936,8 +142,8 @@ background-position: center;
    <widget class="QPushButton" name="key_7">
     <property name="geometry">
      <rect>
-      <x>511</x>
-      <y>8</y>
+      <x>581</x>
+      <y>4</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -970,8 +176,8 @@ background-position: center;
    <widget class="QPushButton" name="key_8">
     <property name="geometry">
      <rect>
-      <x>555</x>
-      <y>8</y>
+      <x>625</x>
+      <y>4</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1004,8 +210,8 @@ background-position: center;
    <widget class="QPushButton" name="key_1">
     <property name="geometry">
      <rect>
-      <x>512</x>
-      <y>90</y>
+      <x>582</x>
+      <y>96</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1038,7 +244,7 @@ background-position: center;
    <widget class="QPushButton" name="key_6">
     <property name="geometry">
      <rect>
-      <x>599</x>
+      <x>670</x>
       <y>49</y>
       <width>41</width>
       <height>41</height>
@@ -1072,8 +278,8 @@ background-position: center;
    <widget class="QPushButton" name="key_back">
     <property name="geometry">
      <rect>
-      <x>443</x>
-      <y>7</y>
+      <x>470</x>
+      <y>4</y>
       <width>61</width>
       <height>41</height>
      </rect>
@@ -1107,10 +313,10 @@ background-position: center;
    <widget class="QPushButton" name="key_3">
     <property name="geometry">
      <rect>
-      <x>598</x>
-      <y>91</y>
-      <width>41</width>
-      <height>41</height>
+      <x>663</x>
+      <y>92</y>
+      <width>50</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -1141,8 +347,8 @@ background-position: center;
    <widget class="QPushButton" name="key_9">
     <property name="geometry">
      <rect>
-      <x>598</x>
-      <y>6</y>
+      <x>668</x>
+      <y>3</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1175,8 +381,8 @@ background-position: center;
    <widget class="QPushButton" name="key_2">
     <property name="geometry">
      <rect>
-      <x>556</x>
-      <y>91</y>
+      <x>626</x>
+      <y>97</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1209,8 +415,8 @@ background-position: center;
    <widget class="QPushButton" name="key_Q">
     <property name="geometry">
      <rect>
-      <x>8</x>
-      <y>8</y>
+      <x>27</x>
+      <y>5</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1243,8 +449,8 @@ background-position: center;
    <widget class="QPushButton" name="key_W">
     <property name="geometry">
      <rect>
-      <x>52</x>
-      <y>7</y>
+      <x>72</x>
+      <y>4</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1277,8 +483,8 @@ background-position: center;
    <widget class="QPushButton" name="key_E">
     <property name="geometry">
      <rect>
-      <x>95</x>
-      <y>7</y>
+      <x>116</x>
+      <y>4</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1311,8 +517,8 @@ background-position: center;
    <widget class="QPushButton" name="key_R">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>8</y>
+      <x>161</x>
+      <y>5</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1345,8 +551,8 @@ background-position: center;
    <widget class="QPushButton" name="key_T">
     <property name="geometry">
      <rect>
-      <x>183</x>
-      <y>8</y>
+      <x>204</x>
+      <y>5</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1379,8 +585,8 @@ background-position: center;
    <widget class="QPushButton" name="key_Y">
     <property name="geometry">
      <rect>
-      <x>226</x>
-      <y>7</y>
+      <x>246</x>
+      <y>4</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1413,8 +619,8 @@ background-position: center;
    <widget class="QPushButton" name="key_U">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>7</y>
+      <x>291</x>
+      <y>4</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1447,8 +653,8 @@ background-position: center;
    <widget class="QPushButton" name="key_I">
     <property name="geometry">
      <rect>
-      <x>313</x>
-      <y>7</y>
+      <x>335</x>
+      <y>4</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1481,8 +687,8 @@ background-position: center;
    <widget class="QPushButton" name="key_P">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>8</y>
+      <x>422</x>
+      <y>5</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1515,8 +721,8 @@ background-position: center;
    <widget class="QPushButton" name="key_O">
     <property name="geometry">
      <rect>
-      <x>357</x>
-      <y>8</y>
+      <x>379</x>
+      <y>5</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1549,8 +755,8 @@ background-position: center;
    <widget class="QPushButton" name="key_A">
     <property name="geometry">
      <rect>
-      <x>34</x>
-      <y>49</y>
+      <x>11</x>
+      <y>50</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1583,8 +789,8 @@ background-position: center;
    <widget class="QPushButton" name="key_L">
     <property name="geometry">
      <rect>
-      <x>382</x>
-      <y>48</y>
+      <x>359</x>
+      <y>49</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1617,8 +823,8 @@ background-position: center;
    <widget class="QPushButton" name="key_H">
     <property name="geometry">
      <rect>
-      <x>251</x>
-      <y>49</y>
+      <x>228</x>
+      <y>50</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1651,8 +857,8 @@ background-position: center;
    <widget class="QPushButton" name="key_G">
     <property name="geometry">
      <rect>
-      <x>207</x>
-      <y>49</y>
+      <x>184</x>
+      <y>50</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1685,8 +891,8 @@ background-position: center;
    <widget class="QPushButton" name="key_F">
     <property name="geometry">
      <rect>
-      <x>165</x>
-      <y>49</y>
+      <x>142</x>
+      <y>50</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1719,8 +925,8 @@ background-position: center;
    <widget class="QPushButton" name="key_S">
     <property name="geometry">
      <rect>
-      <x>78</x>
-      <y>49</y>
+      <x>55</x>
+      <y>50</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1753,8 +959,8 @@ background-position: center;
    <widget class="QPushButton" name="key_D">
     <property name="geometry">
      <rect>
-      <x>121</x>
-      <y>50</y>
+      <x>98</x>
+      <y>51</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1787,8 +993,8 @@ background-position: center;
    <widget class="QPushButton" name="key_J">
     <property name="geometry">
      <rect>
-      <x>294</x>
-      <y>49</y>
+      <x>271</x>
+      <y>50</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1821,8 +1027,8 @@ background-position: center;
    <widget class="QPushButton" name="key_K">
     <property name="geometry">
      <rect>
-      <x>339</x>
-      <y>49</y>
+      <x>316</x>
+      <y>50</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1855,8 +1061,8 @@ background-position: center;
    <widget class="QPushButton" name="key_dot">
     <property name="geometry">
      <rect>
-      <x>599</x>
-      <y>132</y>
+      <x>470</x>
+      <y>97</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1866,14 +1072,14 @@ background-position: center;
     </property>
     <property name="styleSheet">
      <string notr="true">#key_dot{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto azul.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto azul 2.png);
 border: none;
 background-repeat: none;
 background-position: center;
 }
 
 #key_dot::pressed{ 
-background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto blanco.png);
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Punto blanco 2.png);
 border: none;
 background-repeat: none;
 background-position: center;
@@ -1889,8 +1095,8 @@ background-position: center;
    <widget class="QPushButton" name="key_slash">
     <property name="geometry">
      <rect>
-      <x>642</x>
-      <y>7</y>
+      <x>536</x>
+      <y>4</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1923,8 +1129,8 @@ background-position: center;
    <widget class="QPushButton" name="key_plus">
     <property name="geometry">
      <rect>
-      <x>642</x>
-      <y>90</y>
+      <x>715</x>
+      <y>96</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1957,7 +1163,7 @@ background-position: center;
    <widget class="QPushButton" name="key_minus">
     <property name="geometry">
      <rect>
-      <x>642</x>
+      <x>715</x>
       <y>49</y>
       <width>41</width>
       <height>41</height>
@@ -1991,8 +1197,8 @@ background-position: center;
    <widget class="QPushButton" name="key_X">
     <property name="geometry">
      <rect>
-      <x>95</x>
-      <y>91</y>
+      <x>160</x>
+      <y>97</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -2025,8 +1231,8 @@ background-position: center;
    <widget class="QPushButton" name="key_Z">
     <property name="geometry">
      <rect>
-      <x>52</x>
-      <y>91</y>
+      <x>117</x>
+      <y>97</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -2059,8 +1265,8 @@ background-position: center;
    <widget class="QPushButton" name="key_M">
     <property name="geometry">
      <rect>
-      <x>313</x>
-      <y>90</y>
+      <x>378</x>
+      <y>96</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -2093,8 +1299,8 @@ background-position: center;
    <widget class="QPushButton" name="key_C">
     <property name="geometry">
      <rect>
-      <x>139</x>
-      <y>90</y>
+      <x>204</x>
+      <y>96</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -2127,8 +1333,8 @@ background-position: center;
    <widget class="QPushButton" name="key_V">
     <property name="geometry">
      <rect>
-      <x>183</x>
-      <y>90</y>
+      <x>248</x>
+      <y>96</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -2161,8 +1367,8 @@ background-position: center;
    <widget class="QPushButton" name="key_B">
     <property name="geometry">
      <rect>
-      <x>226</x>
-      <y>90</y>
+      <x>291</x>
+      <y>96</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -2195,8 +1401,8 @@ background-position: center;
    <widget class="QPushButton" name="key_N">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>90</y>
+      <x>335</x>
+      <y>96</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -2229,8 +1435,8 @@ background-position: center;
    <widget class="QPushButton" name="key_comma">
     <property name="geometry">
      <rect>
-      <x>357</x>
-      <y>91</y>
+      <x>422</x>
+      <y>97</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -2263,8 +1469,8 @@ background-position: center;
    <widget class="QPushButton" name="key_space">
     <property name="geometry">
      <rect>
-      <x>161</x>
-      <y>128</y>
+      <x>148</x>
+      <y>136</y>
       <width>281</width>
       <height>50</height>
      </rect>
@@ -2297,7 +1503,7 @@ background-position: center;
    <widget class="QPushButton" name="key_enter">
     <property name="geometry">
      <rect>
-      <x>427</x>
+      <x>494</x>
       <y>49</y>
       <width>81</width>
       <height>41</height>
@@ -2331,9 +1537,9 @@ background-position: center;
    <widget class="QPushButton" name="key_mayus">
     <property name="geometry">
      <rect>
-      <x>13</x>
-      <y>134</y>
-      <width>111</width>
+      <x>24</x>
+      <y>97</y>
+      <width>91</width>
       <height>41</height>
      </rect>
     </property>
@@ -2365,103 +1571,331 @@ background-position: center;
      <bool>false</bool>
     </property>
    </widget>
-  </widget>
-  <widget class="QTextEdit" name="textEdit">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>340</y>
-     <width>691</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">#textEdit
-{
-color: white;
-background-color:black;
-border-style: solid;
-border-width: 1px;
-border-radius: 8px;
-border-color: rgb(0, 167, 250);;
-}</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="stop_button_image">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>82</width>
-     <height>82</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">#stop_button_image
-{
-/*background-image: url(:/iconos/screen800x600/iconos/Stop-Boton-Activo.gif);*/
-background-position:center;
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>82</width>
-     <height>82</height>
-    </rect>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">#pushButton
-{
-background-color:transparent;
-background-image: url(:/iconos/screen800x600/iconos/BOTON.png);
+   <widget class="QPushButton" name="key_L_corchete">
+    <property name="geometry">
+     <rect>
+      <x>403</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_L_corchete{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Corchete izq. azul.png);
+border: none;
+background-repeat: none;
 background-position: center;
-background-repeat:none;
-border:none;
 }
 
-/*#pushButton::pressed
-{
-background-color:transparent;
-background-image:  url(:/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png);
+#key_L_corchete::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Corchete izq. blanco.png);
+border: none;
+background-repeat: none;
 background-position: center;
-background-repeat:none;
-border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_equal">
+    <property name="geometry">
+     <rect>
+      <x>715</x>
+      <y>4</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_equal{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Igual azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
 }
-#pushButton::checked
-{
-background-color:transparent;
-background-image: url(:/iconos/screen800x600/iconos/BOTON 2.png);
-background-image:  url(:/gifs/0 Flechas de flujo/screen800x600/gifs/0 Flechas de flujo/none.png);
+
+#key_equal::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Igual blanco.png);
+border: none;
+background-repeat: none;
 background-position: center;
-background-repeat:none;
-border:none;
-}*/</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="key_R_corchete">
+    <property name="geometry">
+     <rect>
+      <x>447</x>
+      <y>50</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#key_R_corchete{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Corchete der. azul.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}
+
+#key_R_corchete::pressed{ 
+background-image: url(:/texto/screen800x600/texto/Teclado 1.1/Corchete der. blanco.png);
+border: none;
+background-repeat: none;
+background-position: center;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
-  <zorder>stop_button_image</zorder>
-  <zorder>frame</zorder>
-  <zorder>key_frame</zorder>
-  <zorder>textEdit</zorder>
-  <zorder>pushButton</zorder>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>9</y>
+     <width>561</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#frame
+{
+background-image: url(:/iconos/screen800x600/iconos/Cuadro pantalla.png);
+background-repeat: none;
+background-position: center;
+border:none;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>20</y>
+      <width>461</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#tabWidget { 
+background-color: none;
+border-image: none;
+background: none; 
+border: none; 
+background-repeat: none;
+ } 
+
+QTabBar::tab {
+background-color: transparent;
+border: none;
+}</string>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <attribute name="title">
+      <string/>
+     </attribute>
+     <widget class="QLabel" name="opt_text_name_label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>461</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pregunta:</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="opt_text_units_label">
+      <property name="geometry">
+       <rect>
+        <x>333</x>
+        <y>100</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#opt_text_units_label
+{
+background-color: transparent;
+border: none;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="opt_text_textEdit">
+      <property name="geometry">
+       <rect>
+        <x>279</x>
+        <y>99</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#opt_text_textEdit
+{
+background-color: transparent;
+border: none;
+}</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>100</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#pushButton
+{
+background-color: transparent;
+border:none;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="button_image">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>100</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#button_image
+{
+background-image: url(:/iconos/screen800x600/iconos/boton_records_2.png);
+background-repeat: none;
+background-position: center;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <zorder>button_image</zorder>
+     <zorder>opt_text_name_label</zorder>
+     <zorder>opt_text_units_label</zorder>
+     <zorder>opt_text_textEdit</zorder>
+     <zorder>pushButton</zorder>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string/>
+     </attribute>
+     <widget class="QLabel" name="opt_ch_name_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>451</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pregunta:</string>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>361</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout"/>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>373</x>
+        <y>95</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#pushButton_2
+{
+background-image: url(:/iconos/screen800x600/iconos/boton_records_ok.png);
+background-repeat: none;
+background-position: center;
+border:none;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>

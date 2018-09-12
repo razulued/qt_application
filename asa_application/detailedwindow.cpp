@@ -17,6 +17,7 @@
 #include <QMutex>
 #include "login_dialog.h"
 #include "QMovie"
+#include "records.h"
 
 #define BUILD_FOR_RPI (1)
 
@@ -389,6 +390,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 
     this->move(parent->pos());
 
+    reschedule_time = 0;
     init_completed = true;
 
 //    this->show();
@@ -728,24 +730,24 @@ void detailedwindow::on_key_Reschedule_clicked()
 {
     uint i;
     uint periodo;
-    if(false == ui->key_frame->isVisible())
-    {
+//    if(false == ui->key_frame->isVisible())
+//    {
         /* Show keyboard and text edit */
-        ui->textEdit->setVisible(true);
-        ui->key_frame->setVisible(true);
-        ui->frame->setGeometry(ui->frame->pos().x(),70,ui->frame->width(),ui->frame->height());
+//        ui->textEdit->setVisible(true);
+//        ui->key_frame->setVisible(true);
+//        ui->frame->setGeometry(ui->frame->pos().x(),70,ui->frame->width(),ui->frame->height());
 
-        ui->textEdit->clear();
+//        ui->textEdit->clear();
 
-        for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-        {
-            if(rutinas_ptr->id(i) == selected_id)
-            {
-                ui->textEdit->setText(rutinas_ptr->texto_ayuda(i));
-                break;
-            }
-        }
-    }
+//        for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
+//        {
+//            if(rutinas_ptr->id(i) == selected_id)
+//            {
+//                ui->textEdit->setText(rutinas_ptr->texto_ayuda(i));
+//                break;
+//            }
+//        }
+//    }
 
     if(NULL != calendar_window)
     {
@@ -769,12 +771,17 @@ void detailedwindow::on_key_Reschedule_clicked()
 void detailedwindow::on_key_OK_clicked()
 {
     uint i = 0;
+    QStringList list_records;
+    uint record_idx = 0;
+    QString record_ID;
+    records *rec_ptr;
 
     if(0 != selected_id)
     {
         qDebug() << "Button clicked ID: " << selected_id;
         for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
         {
+            qDebug() << "RUTINA: " << rutinas_ptr->id(i);
             if(rutinas_ptr->id(i) == selected_id)
             {
                 qDebug() << "ID match at: " << i;
@@ -786,7 +793,26 @@ void detailedwindow::on_key_OK_clicked()
                 else
                 {
                     rutinas_ptr->complete_rutina(i);
+
+                    //Parse to open record window.
+                    list_records = rutinas_ptr->texto_ayuda(i).split(',');
+//                    qDebug() << "SPLIT: " << list_records << "len: " << list_records.length();
+                    if(list_records.length() > 0)
+                    {
+                        for(record_idx = 0; record_idx < (uint)list_records.length(); record_idx++)
+                        {
+                            record_ID = list_records.at(record_idx);
+                            if(record_ID != "")
+                            {
+                                rec_ptr = new records("rutinas.db", record_ID.toInt(),
+                                                      selected_id,
+                                                      rutinas_ptr->get_current_time().toTime_t(),
+                                                      this);
+                            }
+                        }
+                    }
                 }
+                reschedule_time = 0;
                 break;
             }
         }
@@ -1496,23 +1522,35 @@ void detailedwindow::delete_row(uint row, QTableWidget *table)
 
 void detailedwindow::on_ayuda_btn_clicked()
 {
-    uint i = 0;
-
+//    uint i = 0;
+//    uint record_idx = 0;
+//    QString record_ID;
+//    QStringList list_records;
+//    records *rec_ptr;
     /* Show keyboard and text edit */
-    ui->textEdit->setVisible(true);
-    ui->key_frame->setVisible(true);
-    ui->frame->setGeometry(ui->frame->pos().x(),70,ui->frame->width(),ui->frame->height());
+//    ui->textEdit->setVisible(true);
+//    ui->key_frame->setVisible(true);
+//    ui->frame->setGeometry(ui->frame->pos().x(),70,ui->frame->width(),ui->frame->height());
 
-    ui->textEdit->clear();
+//    ui->textEdit->clear();
 
-    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-    {
-        if(rutinas_ptr->id(i) == selected_id)
-        {
-            ui->textEdit->setText(rutinas_ptr->texto_ayuda(i));
-            break;
-        }
-    }
+//    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
+//    {
+//        if(rutinas_ptr->id(i) == selected_id)
+//        {
+//            //Parse to open record window.
+//            list_records = rutinas_ptr->texto_ayuda(i).split(',');
+//            ui->textEdit->setText(rutinas_ptr->texto_ayuda(i));
+//            qDebug() << "SPLIT: " << list_records;
+//            for(record_idx = 0; record_idx < list_records.length(); record_idx++)
+//            {
+//                record_ID = list_records.at(record_idx);
+//                rec_ptr = new records("rutinas.db", record_ID.toInt(), this);
+//            }
+
+//            break;
+//        }
+//    }
     has_activity = true;
 
 }
