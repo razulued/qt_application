@@ -22,22 +22,13 @@ typedef struct
 {
     uint id;
     ASA_protocol_types_t type;
+    void (*receive_hanlder) (QString str);
     QString (*conversion_hanlder) (QString str, uint param1);
     QString (*inverse_hanlder) (QString str, uint param1);
 
     uint param1;
     QString units;
 }ASA_protocol_element_t;
-
-//class ASA_protocol
-//{
-//public:
-//    ASA_protocol();
-
-//private:
-//    QHash<uint, uint> hash_indices;
-//    QHash<uint, QVariant> hash_values;
-//};
 
 void ASA_protocol_init();
 

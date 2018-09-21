@@ -19,4 +19,6 @@ uint motor_state(QString motor_control);
 void set_calibration(QString str);
 void emergency_stop(bool val);
 
+void add_to_one_time_transmit(QString str);
+
 #endif // ASA_CONF_STRING_H

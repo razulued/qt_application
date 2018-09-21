@@ -1,6 +1,8 @@
 #include "simulation_input.h"
 #include "ui_simulation_input.h"
 #include "asa_protocol.h"
+#include "dataproccess.h"
+#include "asa_conf_string.h"
 
 QDateTime simulation_input::simDateTime;
 
@@ -209,4 +211,77 @@ void simulation_input::on_lineEdit_8_editingFinished()
 void simulation_input::on_lineEdit_9_editingFinished()
 {
     store_value_by_ID((0x0B01), ui->lineEdit_9->text());
+}
+
+void simulation_input::on_pushButton_6_clicked()
+{
+    ui->lineEdit_10->setText("|1800|");
+}
+
+void simulation_input::on_pushButton_7_clicked()
+{
+    ui->lineEdit_10->setText("|1801|");
+}
+
+void simulation_input::on_pushButton_8_clicked()
+{
+    ui->lineEdit_10->setText("|1802:N|");
+}
+
+void simulation_input::on_pushButton_9_clicked()
+{
+    ui->lineEdit_10->setText("|1880:Name,IDProceso,Periodo,Epoch,[Descripcion],[RegID,RegID,...]|");
+}
+
+void simulation_input::on_pushButton_10_clicked()
+{
+    ui->lineEdit_10->setText("|1881:Descripcion,Tipo,Unit1,Unit2,Unit3|");
+}
+
+int simulation_input::intString2Int(QString inputString)
+{
+    int temp;
+    bool ok;
+//    temp = inputString.toInt(); //Casting from String to Int (Hexadecimal representation)
+    temp = inputString.toInt(&ok,16); //Casting from String to Int (Hexadecimal representation)
+
+    if(false == ok)
+    {
+        temp = 0;
+    }
+    return temp;
+}
+
+void simulation_input::on_pushButton_5_clicked()
+{
+    //Send Command..
+    QString cmd = ui->lineEdit_10->text();
+    qDebug() << "Sending String: "<< cmd;
+
+    QStringList ID_Parameters = cmd.split("|");
+    QStringList realParameters ;
+
+
+    for(int i = 0; i < ID_Parameters.length() ; i++)
+    {
+        realParameters = ID_Parameters[i].split(":");
+
+        if(realParameters.length() > 1)
+        {
+//            qDebug() << "+++++++" << realParameters[0] << realParameters[1];
+            store_value_by_ID(intString2Int(realParameters[0]) , realParameters[1]);
+        }
+        else
+        {
+            // only one part was found, this could be a zero lengh ID
+//            qDebug() << "++++(Z)" << realParameters[0];
+            store_value_by_ID(intString2Int(realParameters[0]) , "");
+        }
+    }
+}
+
+void simulation_input::on_pushButton_11_clicked()
+{
+    ui->plainTextEdit->clear();
+    ui->plainTextEdit->appendPlainText(get_config_string());
 }

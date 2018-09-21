@@ -6,6 +6,7 @@
 #include <QFileInfo>
 #include <QDateTime>
 #include "mainwindow.h"
+#include <QVector>
 
 #define FIRST_MONDAY_EPOCH (345600)
 #define SECONDS_IN_A_WEEK (60 * 60 * 24 * 7)
@@ -13,147 +14,11 @@
 
 int multiplicador = (10);//(3600 * 24);
 
-def_rutina_t rutina_def_table[]=
-{
-    {"Revisar Balance de Aire en Difusores",        1,  1,  RUTINA_DIA,     ORIGEN_REACTOR,         STATE_NEW, 0, 0, 0, 9,
-    "Revisar visualmente en cada cámara aireada que se tenga suficiente aire sin que haya exceso de movimiento.",
-     ""
-    },
+QVector <def_rutina_t> rutina_def_table;
 
-    {"Revisar Promedio Retorno de Lodo",            2,  1,  RUTINA_DIA,     ORIGEN_CLARIFICADOR,    STATE_NEW, 0, 0, 0, 9,
-    "Medir el flujo de retorno de lodos. Utiliza una cubeta de volumen conocido y mide en cuánto tiempo se llena; midiendo siempre en el mismo retorno.",
-     "101,100"
-    },
-
-    {"Revisar y limpiar Vertedero clarificador",    3,  1,  RUTINA_DIA,     ORIGEN_CLARIFICADOR,    STATE_NEW, 0, 0, 0, 9,
-    "Limpiar y retirar basura, algas y sobrenadantes que se encuentren en los dientes de los vertederos de entrada y salida.",
-     ""
-    },
-
-    {"Raspar la tolva",                             4,  1,  RUTINA_DIA,     ORIGEN_CLARIFICADOR,    STATE_NEW, 0, 0, 0, 9,
-    "Colocar el cepillo en el mango telescópico y limpiar cuidadosamente todas las paredes del clarificador. "
-     "Comenzar en la parte superior, recargar el cepillo en la pared y bajar lentamente, al terminar despegar el cepillo y sacarlo lentamente.",
-     ""
-    },
-
-    {"Limpiar Superficie del clarificador",         5,  1,  RUTINA_DIA,     ORIGEN_CLARIFICADOR,    STATE_NEW, 0, 0, 0, 9,
-    "Colocar la red en el mango telescópico y retirar manualmente sólidos flotantes, basura y nata de la superficie del clarificador.",
-     ""
-    },
-
-    {"Realizar Pruebas de Sedimentacion",           6,  1,  RUTINA_DIA,     ORIGEN_CLARIFICADOR,    STATE_NEW, 0, 0, 0, 9,
-    "Con los sopladores en operación tomar una muestra de 1 Litro en la probeta o cono de Imhoff. Dejar media hora en reposo a la sombra.",
-     "103,102"
-    },
-
-    {"Verificar Medidor de Flujo",                  7,  1,  RUTINA_DIA,     ORIGEN_EFLUENTE,        STATE_NEW, 0, 0, 0, 9,
-    "Necesita explicación",
-     ""
-    },
-
-    {"Verificar Medidor de Flujo",                  8,  1,  RUTINA_DIA,     ORIGEN_AFLUENTE,        STATE_NEW, 0, 0, 0, 9,
-    "Necesita explicación",
-     ""
-    },
-
-    {"Revisión y limpieza en pretratamiento",       9,  1,  RUTINA_SEMANA,  ORIGEN_REGULADOR,       STATE_NEW, 0, 0, 0, 1,
-    "Retirar sólidos acumulados en canastilla. Realizar limpieza general en área de pretratamiento. En caso de ser necesario, realizar la actividad con mayor frecuencia.",
-     ""
-    },
-
-    {"Limpieza General de la Planta",               11,  1,  RUTINA_SEMANA,  ORIGEN_GENERAL,        STATE_NEW, 0, 0, 0, 1,
-    "Realizar limpieza general sobre la planta y alrededores; barrer, recoger basura, lavar pisos conforme a necesidad.",
-     ""
-    },
-
-    {"Revisar Fugas en válvulas de aire",           12,  1,  RUTINA_MES,     ORIGEN_GENERAL,        STATE_NEW, 0, 0, 0, 0,
-    "Verificar visualmente que no haya fuga en las válvulas de aire. Si se sospecha que hay fuga en alguna, corroborar con una solución jabonosa.",
-     "104"
-    },
-
-
-    {"Tomar Muestra en el Efluente",                13,  1,  RUTINA_MES,     ORIGEN_CLORADOR,       STATE_NEW, 0, 0, 0, 0,
-    "Tomar una muestra de agua en el efluente y realizar pruebas de calidad apropiadas.",
-     "108,107,106,105"
-    },
-
-    {"Lubricar Candados",                           14,  1,  RUTINA_MES,     ORIGEN_GENERAL,        STATE_NEW, 0, 0, 0, 0,
-    "Realizar lubricación de candados con aceite apropiado.",
-     ""
-    },
-
-    {"Revisar Tensión y Desgaste en Bandas",        15,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
-    "Parar el soplador, retirar las válvulas y revisar que se encuentren en buen estado.",
-     "110,109"
-    },
-
-    {"Verificar Alineacion de Poleas",              16,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
-    "Parar el soplador y revisar que las poleas se encuentren apropiadamente alineadas.",
-     "111"
-    },
-
-    {"Lubricar Chumaceras",                         17,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
-    "Parar el soplador  realizar lubricación con grasa en motores, dando un par de bombeos con la grasera en cada punto de lubricación.",
-     "112"
-    },
-
-    {"Limpiar Ventilación de Motores",              18,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
-    "Parar el soplador y realizar limpieza manual de los puntos de ventilación de soplador y motor.",
-     ""
-    },
-
-    {"Verificar Nivel de Aceite en Sopladores",     19,  1,  RUTINA_MES,     ORIGEN_REACTOR,        STATE_NEW, 0, 0, 0, 0,
-    "Parar el soplador y revisar nivel actual de aceite. Rellenar en caso de ser necesario.",
-     "114,113"
-    },
-
-    {"Limpiar Filtros de Aire",                     20,  1,  RUTINA_MES,     ORIGEN_REACTOR,         STATE_NEW, 0, 0, 0, 0,
-    "Parar el soplador, retirar cubierta metálica y realizar limpieza del filtro de aire.",
-     "115"
-    },
-
-    {"Limpiar Valvulas de Alivio",                  21,  1,  RUTINA_MES,     ORIGEN_REACTOR,         STATE_NEW, 0, 0, 0, 0,
-    "Necesita explicación",
-     ""
-    },
-
-    {"Limpiar y Pintar Partes Metálicas",           22,  1,  RUTINA_ANIO,    ORIGEN_GENERAL,         STATE_NEW, 0, 0, 0, 1,
-    "Necesita explicación",
-    ""
-    },
-
-    {"Revisar Terminales y Disparadores",           23,  1,  RUTINA_ANIO,    ORIGEN_GENERAL,         STATE_NEW, 0, 0, 0, 1,
-    "Necesita explicación",
-    ""
-    },
-    {"Revisión de fugas",                           24,  1,  RUTINA_DIA,     ORIGEN_FILTRO,          STATE_NEW, 0, 0, 0, 1,
-    "Realizar inspección visual para garantizar que no haya fugas en tubería y conexiones.",
-     ""
-    },
-    {"Engrasado",                                   25,  1,  RUTINA_MES,     ORIGEN_FILTRO,          STATE_NEW, 0, 0, 0, 1,
-    "Revisar engrasado de la junta articulación giratoria y engrasar en caso de ser necesario.",
-     ""
-    },
-    {"Limpieza de motores",                         26,  1,  RUTINA_MES,     ORIGEN_FILTRO,          STATE_NEW, 0, 0, 0, 1,
-    "Revisión visual de motor de giro y bomba de retro-lavado, realizar limpieza pertinente.",
-     ""
-    },
-    {"Revisión de la tela",                         27,  1,  RUTINA_MES,     ORIGEN_FILTRO,          STATE_NEW, 0, 0, 0, 1,
-    "Realizar inspección visual de la integridad de la tela filtrante. En caso de ser "
-     "necesario retirar del filtro y limpiar manualmente o reemplazar.",
-     ""
-    },
-    {"Revisión de aceite",                          28,  1,  RUTINA_MES,     ORIGEN_FILTRO,          STATE_NEW, 0, 0, 0, 1,
-    "Revisar nivel de aceite del motor de giro y bomba de retro lavado y rellenar en caso de ser necesario.",
-     ""
-    },
-    {"Cambio de aceite",                            29,  1,  RUTINA_ANIO,    ORIGEN_FILTRO,          STATE_NEW, 0, 0, 0, 1,
-    "Realizar purga y cambio de aceite en motor de giro y bomba de retro lavado.",
-     ""
-    },
-};
-
-uint rutinas_mantenimiento::num_of_rutinas = sizeof(rutina_def_table)/sizeof(def_rutina_t);
+//Static vars
+uint rutinas_mantenimiento::num_of_rutinas = 0;
+bool rutinas_mantenimiento::update_db = false;
 
 rutinas_mantenimiento::rutinas_mantenimiento(const QString &path)
 {
@@ -193,6 +58,7 @@ rutinas_mantenimiento::rutinas_mantenimiento(const QString &path)
 //                         << q.value("synch_date");
 
 //            }
+
         }
         else
         {
@@ -228,12 +94,9 @@ rutinas_mantenimiento::rutinas_mantenimiento(const QString &path)
             init_db();
         }
 
+        // Load DB to table.
+        load_to_table();
 
-        uint i = 0;
-        for(i = 0; i < num_of_rutinas; i++)
-        {
-            load_to_table(rutina_def_table[i].id);
-        }
     }
 
 }
@@ -246,36 +109,38 @@ rutinas_mantenimiento::~rutinas_mantenimiento()
 
 void rutinas_mantenimiento::init_db(void)
 {
-    unsigned int i;
-    QSqlQuery q;
+//    unsigned int i;
+//    QSqlQuery q;
 
-    if(QFileInfo::exists(db_path))
-    {
-        for(i = 0; i < num_of_rutinas; i++)
-        {
-            q.prepare("INSERT INTO rutinas(id, nombre, ready, periodo, origen, state, synch_date, last_event, next_event, explicacion, schedule_to) "
-                      "VALUES(:id, :nombre, :ready, :periodo, :origen, :state, :synch_date, :last_event, :next_event, :explicacion, :schedule_to)");
-            q.bindValue(":id",rutina_def_table[i].id);
-            q.bindValue(":nombre",rutina_def_table[i].nombre);
-            q.bindValue(":ready",rutina_def_table[i].ready);
-            q.bindValue(":periodo", rutina_def_table[i].periodo);
-            q.bindValue(":origen", rutina_def_table[i].origen);
-            q.bindValue(":state", rutina_def_table[i].state);
-            q.bindValue(":synch_date", rutina_def_table[i].synch_date);
-            q.bindValue(":last_event", rutina_def_table[i].last_event);
-            q.bindValue(":next_event", rutina_def_table[i].next_event);
-            q.bindValue(":explicacion", rutina_def_table[i].explicacion);
-            q.bindValue(":schedule_to", rutina_def_table[i].schedule_to);
-            if(!q.exec())
-            {
-                qDebug() << q.lastError().text();
-            }
-        }
-    }
-    else
-    {
-        qDebug() << "Database doesn't exists";
-    }
+//    if(QFileInfo::exists(db_path))
+//    {
+//        for(i = 0; i < num_of_rutinas; i++)
+//        {
+//            q.prepare("INSERT INTO rutinas(id, nombre, ready, periodo, origen, state, synch_date, last_event, next_event, explicacion, schedule_to, record_links) "
+//                      "VALUES(:id, :nombre, :ready, :periodo, :origen, :state, :synch_date, :last_event, :next_event, :explicacion, :schedule_to, :record_links)");
+//            q.bindValue(":id",rutina_def_table[i].id);
+//            q.bindValue(":nombre",rutina_def_table[i].nombre);
+//            q.bindValue(":ready",rutina_def_table[i].ready);
+//            q.bindValue(":periodo", rutina_def_table[i].periodo);
+//            q.bindValue(":origen", rutina_def_table[i].origen);
+//            q.bindValue(":state", rutina_def_table[i].state);
+//            q.bindValue(":synch_date", rutina_def_table[i].synch_date);
+//            q.bindValue(":last_event", rutina_def_table[i].last_event);
+//            q.bindValue(":next_event", rutina_def_table[i].next_event);
+//            q.bindValue(":explicacion", rutina_def_table[i].explicacion);
+//            q.bindValue(":schedule_to", rutina_def_table[i].schedule_to);
+//            q.bindValue(":record_links", rutina_def_table[i].record_links);
+
+//            if(!q.exec())
+//            {
+//                qDebug() << q.lastError().text();
+//            }
+//        }
+//    }
+//    else
+//    {
+//        qDebug() << "Database doesn't exists";
+//    }
 
 }
 
@@ -297,6 +162,11 @@ void rutinas_mantenimiento::check_rutinas(void)
         return;
     }
 
+    if(update_db == true)
+    {
+        load_to_table();
+        update_db = false;
+    }
     for(i = 0; i < num_of_rutinas; i++)
     {
         rutina_state_machine(i);
@@ -479,7 +349,7 @@ QString rutinas_mantenimiento::nombre(uint rutina)
 
 QString rutinas_mantenimiento::texto_ayuda(uint rutina)
 {
-    return rutina_def_table[rutina].records;
+    return rutina_def_table[rutina].record_links;
 }
 
 QString rutinas_mantenimiento::explicacion(uint rutina)
@@ -516,51 +386,54 @@ QDateTime rutinas_mantenimiento::get_current_time()
 //    }
 }
 
-void rutinas_mantenimiento::load_to_table(uint id)
+void rutinas_mantenimiento::load_to_table()
 {
-    qDebug() << "Load ID " << id;
     uint i = 0;
     QSqlQuery q;
+    def_rutina_t temp_rutina_def;
 
+    rutina_def_table.clear();
 
-    // Search ID
-    for(i = 0; i < num_of_rutinas; i++)
+    if(!q.prepare("SELECT * FROM rutinas")) qDebug() << "Failed to prepare";
+
+//            q.bindValue(":id_found",rutina_def_table[i].id);
+
+    if(!q.exec()) qDebug() << "Failed to execute: rutinas load_to_table()";
+
+    while (q.next())
     {
-        if(rutina_def_table[i].id == id)
-        {
-            //SELECT body FROM tbl_index WHERE id = 937
-            if(!q.prepare("SELECT * FROM rutinas WHERE id = :id_found")) qDebug() << "Failed to prepare";
+        temp_rutina_def.id = q.value("id").toInt();
+        temp_rutina_def.nombre = q.value("nombre").toString();
+        temp_rutina_def.ready = q.value("ready").toInt();
+        temp_rutina_def.periodo = q.value("periodo").toInt();
+        temp_rutina_def.origen = q.value("origen").toInt();
+        temp_rutina_def.state = q.value("state").toInt();
+        temp_rutina_def.synch_date = q.value("synch_date").toInt();
+        temp_rutina_def.last_event = q.value("last_event").toInt();
+        temp_rutina_def.next_event = q.value("next_event").toInt();
+        temp_rutina_def.explicacion = q.value("explicacion").toInt();
+        temp_rutina_def.schedule_to = q.value("schedule_to").toInt();
+        temp_rutina_def.record_links = q.value("record_links").toString();
+        rutina_def_table.append(temp_rutina_def);
+         i++;
 
-            q.bindValue(":id_found",rutina_def_table[i].id);
+    }
 
-            if(!q.exec()) qDebug() << "Failed to execute";
+    num_of_rutinas = i;
 
-            while (q.next())
-            {
-                rutina_def_table[i].id = q.value("id").toInt();
-                rutina_def_table[i].nombre = q.value("nombre").toString();
-                rutina_def_table[i].ready = q.value("ready").toInt();
-                rutina_def_table[i].periodo = q.value("periodo").toInt();
-                rutina_def_table[i].origen = q.value("origen").toInt();
-                rutina_def_table[i].state = q.value("state").toInt();
-                rutina_def_table[i].synch_date = q.value("synch_date").toInt();
-                rutina_def_table[i].last_event = q.value("last_event").toInt();
-                rutina_def_table[i].next_event = q.value("next_event").toInt();
-                rutina_def_table[i].schedule_to = q.value("schedule_to").toInt();
-            }
-
-
-            qDebug() << "Save to table"
-                     << rutina_def_table[i].id
-                     << rutina_def_table[i].nombre
-                     << rutina_def_table[i].periodo
-                     << rutina_def_table[i].origen
-                     << rutina_def_table[i].state
-                     << rutina_def_table[i].synch_date
-                     << rutina_def_table[i].last_event
-                     << rutina_def_table[i].next_event
-                     << rutina_def_table[i].schedule_to;
-        }
+    for(i = 0; num_of_rutinas < 3; i++)
+    {
+        qDebug() << "Save to table"
+                 << rutina_def_table[i].id
+                 << rutina_def_table[i].nombre
+                 << rutina_def_table[i].periodo
+                 << rutina_def_table[i].origen
+                 << rutina_def_table[i].state
+                 << rutina_def_table[i].synch_date
+                 << rutina_def_table[i].last_event
+                 << rutina_def_table[i].next_event
+                 << rutina_def_table[i].schedule_to
+                 << rutina_def_table[i].record_links;
     }
 }
 
@@ -577,29 +450,39 @@ void rutinas_mantenimiento::load_to_db(uint id)
         {
             //UPDATE Customers SET ContactName = 'Alfred Schmidt', City= 'Frankfurt' WHERE CustomerID = 1;
             if(!q.prepare("UPDATE rutinas SET  "
+                          "id=:id_found, "
+                          "nombre=:nombre, "
                           "ready=:ready, "
+                          "periodo=:periodo, "
+                          "origen=:origen, "
                           "state=:state, "
                           "synch_date=:synch_date, "
                           "last_event=:last_event, "
                           "next_event=:next_event, "
-                          "schedule_to=:schedule_to "
+                          "explicacion=:explicacion, "
+                          "schedule_to=:schedule_to, "
+                          "record_links=:record_links "
                           "WHERE id=:id_found"))
             {
                 qDebug() << "Failed to prepare";
                 qDebug() << q.lastError().text();
             }
 
+            q.bindValue(":id_found",rutina_def_table[i].id);
+            q.bindValue(":nombre",rutina_def_table[i].nombre);
             q.bindValue(":ready",rutina_def_table[i].ready);
+            q.bindValue(":periodo",rutina_def_table[i].periodo);
+            q.bindValue(":origen",rutina_def_table[i].origen);
             q.bindValue(":state",rutina_def_table[i].state);
             q.bindValue(":synch_date",rutina_def_table[i].synch_date);
             q.bindValue(":last_event",rutina_def_table[i].last_event);
             q.bindValue(":next_event",rutina_def_table[i].next_event);
+            q.bindValue(":explicacion",rutina_def_table[i].explicacion);
             q.bindValue(":schedule_to",rutina_def_table[i].schedule_to);
-            q.bindValue(":id_found",rutina_def_table[i].id);
+            q.bindValue(":record_links",rutina_def_table[i].record_links);
 
-
-            if(!q.exec()) qDebug() << "Failed to execute";
-
+            if(!q.exec()) qDebug() << "Failed to execute: rutinas load_to_db() " << q.lastError();
+            qDebug() << q.lastQuery();
             while (q.next())
             {
                 rutina_def_table[i].id = q.value("id").toInt();

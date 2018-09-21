@@ -20,6 +20,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     rutina_ptr = rutina;
 
     selected_id = 0;
+    selected_record = 0;
     this->setStyleSheet("background-color:black;"
                         "color:white"
                         );
@@ -148,6 +149,10 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     ui->label_filtro_fecha->setFont(font4);
     ui->label_filtro_fecha->setStyleSheet("background-color: transparent;"
                                          "color: rgb(0, 167, 250);");
+    ui->label_filtro_record->setFont(font4);
+    ui->label_filtro_record->setStyleSheet("background-color: transparent;"
+                                         "color: rgb(0, 167, 250);");
+
     ui->label_2->setFont(font3);
     ui->label_2->setAlignment(Qt::AlignCenter);
 
@@ -164,6 +169,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
 
     connect(ui->tableWidget, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected_all(QTableWidgetItem*)));
     connect(ui->tableWidget_2, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected(QTableWidgetItem*)));
+    connect(ui->tableWidget_3, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected_registros(QTableWidgetItem*)));
 
     //Scroll
     QScroller *scroller = QScroller::scroller(ui->tableWidget);
@@ -294,7 +300,7 @@ void bitacora::init_registros_table()
 {
     QStringList titulos;
 
-    titulos << "ID" << "Rutina" << "Fecha" << "Pregunta" << "Valor";
+    titulos << "ID" << "Rutina" << "Fecha" << "ID" << "Pregunta" << "Valor";
     ui->tableWidget_3->setColumnCount(titulos.size());
     ui->tableWidget_3->setHorizontalHeaderLabels(titulos);
 
@@ -553,8 +559,7 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
 
     if(!q.prepare(sql_query)) qDebug() << "Failed to prepare";
 
-//    q.bindValue(":id_found",rutina_def_table[i].id);
-    if(!q.exec()) qDebug() << "Failed to execute";
+    if(!q.exec()) qDebug() << "Failed to execute: add_row_registro()";
 
     //titulos << "ID" << "Rutina" << "Fecha" << "Pregunta" << "Valor";
     while (q.next())
@@ -567,7 +572,8 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
         temp_date = new QDateTime(QDateTime::fromTime_t(q.value("log_date").toInt()));
         table->setItem(row,2, new QTableWidgetItem(temp_date->toString()));
 
-        table->setItem(row,3, new QTableWidgetItem(q.value("record_name").toString()));
+        table->setItem(row,3, new QTableWidgetItem(q.value("record_id").toString()));
+        table->setItem(row,4, new QTableWidgetItem(q.value("record_name").toString()));
 
         //get question type
         question_id = q.value("record_id").toInt();
@@ -580,7 +586,7 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
             question_query.bindValue(":id_found",question_id);
             if(!question_query.exec())
             {
-                qDebug() << "Failed to execute";
+                qDebug() << "Failed to execute: add_row_registro() 2";
             }
             else
             {
@@ -589,22 +595,22 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
                     if("NUMBER" == question_query.value("type").toString())
                     {
                         // This is a number, retrieve the actual number
-                        table->setItem(row,4, new QTableWidgetItem(q.value("record_value").toString()));
+                        table->setItem(row,5, new QTableWidgetItem(q.value("record_value").toString()));
                     }
                     else
                     {
                         // This is a option type, cross reference the name
                         if(1 == q.value("record_value").toInt())
                         {
-                            table->setItem(row,4, new QTableWidgetItem(question_query.value("field_1").toString()));
+                            table->setItem(row,5, new QTableWidgetItem(question_query.value("field_1").toString()));
                         }
                         else if(2 == q.value("record_value").toInt())
                         {
-                            table->setItem(row,4, new QTableWidgetItem(question_query.value("field_2").toString()));
+                            table->setItem(row,5, new QTableWidgetItem(question_query.value("field_2").toString()));
                         }
                         else if(3 == q.value("record_value").toInt())
                         {
-                            table->setItem(row,4, new QTableWidgetItem(question_query.value("field_3").toString()));
+                            table->setItem(row,5, new QTableWidgetItem(question_query.value("field_3").toString()));
                         }
                     }
                 }
@@ -618,8 +624,9 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
         table->setColumnWidth(0, 35);
         table->setColumnWidth(1, 300);
         table->setColumnWidth(2, 120);
-        table->setColumnWidth(3, 200);
-        table->setColumnWidth(4, 70);
+        table->setColumnWidth(3, 35);
+        table->setColumnWidth(4, 200);
+        table->setColumnWidth(5, 70);
     }
 }
 
@@ -646,6 +653,13 @@ void bitacora::item_selected_all(QTableWidgetItem* item)
     qDebug() << "ID " << selected_id;
 }
 
+void bitacora::item_selected_registros(QTableWidgetItem* item)
+{
+    QTableWidget *table = item->tableWidget();
+//    ui->label_2->setText(table->item(item->row(), 1)->text());
+    selected_record = table->item(item->row(), 3)->text().toInt();
+    qDebug() << "ID " << selected_record;
+}
 void bitacora::on_key_Reschedule_clicked()
 {
     uint i = 0;
@@ -829,4 +843,15 @@ void bitacora::filtro_fecha_received(uint ini, uint end)
         ui->tabWidget->setCurrentIndex(2);
     }
 
+}
+
+void bitacora::on_filtro_record_clicked()
+{
+    // Delete all rows in registros table, and prepare new query
+    if( 0 != selected_record)
+    {
+        ui->tableWidget_3->setRowCount(0);
+        add_row_registro("SELECT * FROM log WHERE record_id = "+QString::number(selected_record), ui->tableWidget_3);
+        ui->tabWidget->setCurrentIndex(2);
+    }
 }

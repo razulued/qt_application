@@ -27,6 +27,7 @@ private slots:
 
     void item_selected(QTableWidgetItem *item);
     void item_selected_all(QTableWidgetItem *item);
+    void item_selected_registros(QTableWidgetItem *item);
 
     void on_key_Reschedule_clicked();
 
@@ -46,6 +47,8 @@ private slots:
     void on_filtro_fecha_clicked();
 
     void filtro_fecha_received(uint ini, uint end);
+    void on_filtro_record_clicked();
+
 private:
     Ui::bitacora *ui;
     void init_tables(void);
@@ -60,6 +63,8 @@ private:
 
 
     uint selected_id = 0;
+    uint selected_record = 0;
+
     bool init_completed = false;
 
     rutinas_mantenimiento *rutina_ptr;

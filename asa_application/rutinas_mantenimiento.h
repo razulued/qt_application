@@ -54,7 +54,7 @@ typedef struct
     uint next_event;
     uint schedule_to;
     QString explicacion;
-    QString records;
+    QString record_links;
 }def_rutina_t;
 
 class rutinas_mantenimiento
@@ -67,6 +67,7 @@ public:
     void delete_db(void);
     void check_rutinas(void);
     static uint num_of_rutinas;
+    static bool update_db;
 
     uint origen(uint rutina);
     uint ready(uint rutina);
@@ -93,7 +94,7 @@ private:
 
     QDateTime global_time = QDateTime::fromTime_t(0);
 
-    void load_to_table(uint id);
+    void load_to_table();
     void load_to_db(uint id);
 
     uint find_next_schedule(uint periodo, uint last_event, uint schedule_to);

@@ -1,5 +1,6 @@
 #include "asa_conversions.h"
-#
+#include "sql_cmd_manager.h"
+#include "asa_conf_string.h"
 
 QString conv_none_or_passthru(QString str, uint param1)
 {
@@ -293,4 +294,47 @@ QString conv_int_to_hex(QString str, uint param1)
     int value = str.toInt(&ok, 10);
 
     return  QString("%1").arg(value, 0, 16);
+}
+
+
+// Receive functions.
+void Query_ID_last_activity(QString str)
+{
+    QString str_response;
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    str_response = "1900:" + QString::number(query->query_last_id_last_activity()) +"|";
+    add_to_one_time_transmit(str_response);
+    query->~sql_cmd_manager();
+}
+
+void Query_ID_last_record(QString str)
+{
+    QString str_response;
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    str_response = "1901:" + QString::number(query->query_last_id_last_record()) +"|";
+    add_to_one_time_transmit(str_response);
+    query->~sql_cmd_manager();
+}
+
+void Query_N_record(QString str)
+{
+    QString str_response;
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    str_response = "1902:" + query->query_N_log() +"|";
+    add_to_one_time_transmit(str_response);
+    query->~sql_cmd_manager();
+}
+
+void Store_activity(QString str)
+{
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    qDebug() << "Store_activity: " << query->store_activity();
+    query->~sql_cmd_manager();
+}
+
+void Store_record(QString str)
+{
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    qDebug() << "Store_record: " << query->store_record();
+    query->~sql_cmd_manager();
 }

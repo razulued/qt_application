@@ -52,7 +52,8 @@ SOURCES += main.cpp\
     stop_button.cpp \
     records.cpp \
     calendario_filtro.cpp \
-    record_chart.cpp
+    record_chart.cpp \
+    sql_cmd_manager.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -94,7 +95,8 @@ HEADERS  += mainwindow.h \
     stop_button.h \
     records.h \
     calendario_filtro.h \
-    record_chart.h
+    record_chart.h \
+    sql_cmd_manager.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \

@@ -399,6 +399,51 @@ border:none;
       <string>Filtrar por fecha</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="filtro_record">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>460</y>
+       <width>41</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#filtro_record
+{
+background-image: url(:/iconos/screen800x600/iconos/Ayuda azul.png);
+background-position: center;
+background-repeat: none;
+border:none;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_filtro_record">
+     <property name="geometry">
+      <rect>
+       <x>473</x>
+       <y>470</y>
+       <width>141</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Filtro por pregunta</string>
+     </property>
+    </widget>
+    <zorder>tableWidget_3</zorder>
+    <zorder>clear_filters</zorder>
+    <zorder>filtro_fecha</zorder>
+    <zorder>label_quitar_filtros</zorder>
+    <zorder>label_filtro_fecha</zorder>
+    <zorder>label_filtro_record</zorder>
+    <zorder>filtro_record</zorder>
    </widget>
   </widget>
   <widget class="QPushButton" name="top_menu_1">

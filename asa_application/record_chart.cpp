@@ -6,6 +6,7 @@ record_chart::record_chart(QWidget *parent) :
     ui(new Ui::record_chart)
 {
     ui->setupUi(this);
+
 }
 
 record_chart::~record_chart()

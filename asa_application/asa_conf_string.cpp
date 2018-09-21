@@ -11,6 +11,7 @@ QString conf_string;
 QMutex mutex;
 bool calibration_needed = false;
 QString calib_string;
+QStringList one_time_transmit;
 
 configuration_id plant_config;
 void init_plat_config()
@@ -281,6 +282,13 @@ QString get_config_string()
         calibration_needed = false;
         ret = calib_string;
     }
+
+    uint i = 0;
+    for(i = 0; i < one_time_transmit.length(); i++)
+    {
+        ret.append(one_time_transmit.at(i));
+    }
+    one_time_transmit.clear();
     mutex.unlock();
     return ret;
 }
@@ -328,4 +336,9 @@ void set_calibration(QString str)
 {
     calib_string = str;
     calibration_needed = true;
+}
+
+void add_to_one_time_transmit(QString str)
+{
+    one_time_transmit.append(str);
 }

@@ -32,7 +32,7 @@ records::records(const QString &path, uint record_id, uint from_id, uint time, Q
             QSqlQuery q;
             if(!q.prepare("SELECT * FROM rutinas WHERE id = :id_found")) qDebug() << "Failed to prepare";
             q.bindValue(":id_found",from_id);
-            if(!q.exec()) qDebug() << "Failed to execute";
+            if(!q.exec()) qDebug() << "Failed to execute: records";
 
             while (q.next())
             {
@@ -112,7 +112,7 @@ void records::load_to_table(uint id)
 
         if(!q.exec())
         {
-            qDebug() << "Failed to execute";
+            qDebug() << "Failed to execute: records load_to_table()";
         }
         else
         {

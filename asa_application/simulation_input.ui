@@ -6,219 +6,437 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>604</width>
-    <height>495</height>
+    <width>470</width>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Carcamo Level</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QCheckBox" name="checkBox">
-     <property name="text">
-      <string>Motor 1</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QCheckBox" name="checkBox_4">
-     <property name="text">
-      <string>Motor 2</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QCheckBox" name="checkBox_5">
-     <property name="text">
-      <string>Motor 3</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QCheckBox" name="checkBox_6">
-     <property name="text">
-      <string>Motor 4</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLineEdit" name="lineEdit"/>
-   </item>
-   <item row="4" column="1">
-    <widget class="QScrollBar" name="horizontalScrollBar">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Reactor</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QCheckBox" name="checkBox_2">
-     <property name="text">
-      <string>Motor 1</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QCheckBox" name="checkBox_3">
-     <property name="text">
-      <string>Motor 2</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QCheckBox" name="checkBox_7">
-     <property name="text">
-      <string>Motor 3</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1">
-    <widget class="QCheckBox" name="checkBox_8">
-     <property name="text">
-      <string>Motor 4</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Caudal in</string>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="0">
-    <widget class="QLineEdit" name="lineEdit_2"/>
-   </item>
-   <item row="13" column="1">
-    <widget class="QScrollBar" name="horizontalScrollBar_2">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="14" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Caudal out</string>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="0">
-    <widget class="QLineEdit" name="lineEdit_3"/>
-   </item>
-   <item row="15" column="1">
-    <widget class="QScrollBar" name="horizontalScrollBar_3">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="16" column="0">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Return</string>
-     </property>
-    </widget>
-   </item>
-   <item row="17" column="0">
-    <widget class="QLineEdit" name="lineEdit_4"/>
-   </item>
-   <item row="17" column="1">
-    <widget class="QScrollBar" name="horizontalScrollBar_4">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="18" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Date Time</string>
-     </property>
-    </widget>
-   </item>
-   <item row="18" column="1">
-    <widget class="QDateTimeEdit" name="dateTimeEdit">
-     <property name="displayFormat">
-      <string>dd/MM/yy HH:mm:ss</string>
-     </property>
-    </widget>
-   </item>
-   <item row="19" column="0">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>Add hour</string>
-     </property>
-    </widget>
-   </item>
-   <item row="19" column="1">
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="text">
-      <string>Add second</string>
-     </property>
-    </widget>
-   </item>
-   <item row="20" column="0">
-    <widget class="QPushButton" name="pushButton_3">
-     <property name="text">
-      <string>Run Time</string>
-     </property>
-    </widget>
-   </item>
-   <item row="20" column="1">
-    <widget class="QPushButton" name="pushButton_4">
-     <property name="text">
-      <string>Stop time</string>
-     </property>
-    </widget>
-   </item>
-   <item row="21" column="0">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>FW update</string>
-     </property>
-    </widget>
-   </item>
-   <item row="22" column="0">
-    <widget class="QLineEdit" name="lineEdit_5"/>
-   </item>
-   <item row="23" column="0">
-    <widget class="QLineEdit" name="lineEdit_6"/>
-   </item>
-   <item row="22" column="1">
-    <widget class="QLineEdit" name="lineEdit_7"/>
-   </item>
-   <item row="23" column="1">
-    <widget class="QLineEdit" name="lineEdit_8"/>
-   </item>
-   <item row="21" column="1">
-    <widget class="QLineEdit" name="lineEdit_9"/>
-   </item>
-  </layout>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>448</width>
+     <height>360</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Tab 1</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Carcamo  Motores</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QCheckBox" name="checkBox">
+           <property name="text">
+            <string>Motor 1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_4">
+           <property name="text">
+            <string>Motor 2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_5">
+           <property name="text">
+            <string>Motor 3</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_6">
+           <property name="text">
+            <string>Motor 4</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Carcamo Level</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+         <item>
+          <widget class="QScrollBar" name="horizontalScrollBar">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Reactor</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QCheckBox" name="checkBox_2">
+           <property name="text">
+            <string>Motor 1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_3">
+           <property name="text">
+            <string>Motor 2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_7">
+           <property name="text">
+            <string>Motor 3</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_8">
+           <property name="text">
+            <string>Motor 4</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="3" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Caudal in</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_2"/>
+         </item>
+         <item>
+          <widget class="QScrollBar" name="horizontalScrollBar_2">
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="4" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Caudal out</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_3"/>
+         </item>
+         <item>
+          <widget class="QScrollBar" name="horizontalScrollBar_3">
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="5" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Return</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_4"/>
+         </item>
+         <item>
+          <widget class="QScrollBar" name="horizontalScrollBar_4">
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Tab 2</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Date Time</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dateTimeEdit">
+         <property name="displayFormat">
+          <string>dd/MM/yy HH:mm:ss</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_10">
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Add hour</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Add second</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="text">
+          <string>Stop time</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>Run Time</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>FW update</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_9"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="lineEdit_5"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="lineEdit_7"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLineEdit" name="lineEdit_6"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEdit_8"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+    <zorder></zorder>
+    <zorder></zorder>
+    <zorder></zorder>
+    <zorder></zorder>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>Page</string>
+    </attribute>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="0" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_11">
+       <item>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="text">
+          <string>ID ultima Actividad</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="text">
+          <string>ID ultimo Registro</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_8">
+         <property name="text">
+          <string>Dame log N</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <item>
+        <widget class="QPushButton" name="pushButton_9">
+         <property name="text">
+          <string>Store Actividad</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_10">
+         <property name="text">
+          <string>Store Registro</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_12">
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="text">
+          <string>Send Command</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_10"/>
+       </item>
+      </layout>
+     </item>
+     <item row="3" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QPushButton" name="pushButton_11">
+         <property name="text">
+          <string>Read current string (send)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="plainTextEdit"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>checkBox</zorder>
+  <zorder>checkBox_4</zorder>
+  <zorder>checkBox_5</zorder>
+  <zorder>checkBox_6</zorder>
+  <zorder>lineEdit</zorder>
+  <zorder>horizontalScrollBar</zorder>
+  <zorder>label_2</zorder>
+  <zorder>checkBox_2</zorder>
+  <zorder>checkBox_3</zorder>
+  <zorder>checkBox_7</zorder>
+  <zorder>checkBox_8</zorder>
+  <zorder>label_3</zorder>
+  <zorder>lineEdit_2</zorder>
+  <zorder>horizontalScrollBar_2</zorder>
+  <zorder>label_4</zorder>
+  <zorder>lineEdit_3</zorder>
+  <zorder>horizontalScrollBar_3</zorder>
+  <zorder>label_5</zorder>
+  <zorder>lineEdit_4</zorder>
+  <zorder>horizontalScrollBar_4</zorder>
+  <zorder>label_6</zorder>
+  <zorder>dateTimeEdit</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>pushButton_3</zorder>
+  <zorder>pushButton_4</zorder>
+  <zorder>label_7</zorder>
+  <zorder>lineEdit_5</zorder>
+  <zorder>lineEdit_6</zorder>
+  <zorder>lineEdit_7</zorder>
+  <zorder>lineEdit_8</zorder>
+  <zorder>lineEdit_9</zorder>
+  <zorder>label_8</zorder>
+  <zorder></zorder>
+  <zorder>lineEdit_10</zorder>
+  <zorder>pushButton_5</zorder>
+  <zorder>pushButton_6</zorder>
+  <zorder>pushButton_7</zorder>
+  <zorder>pushButton_8</zorder>
+  <zorder>pushButton_9</zorder>
+  <zorder>pushButton_10</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>tabWidget</zorder>
  </widget>
  <resources/>
  <connections/>

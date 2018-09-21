@@ -688,33 +688,8 @@ void MainWindow::dataTimerSlot()
 }
 
 
-//void MainWindow::get_ASA_string()
-//{
-//    MainWindow::ASA_conf_only_string = get_config_string();
-//    qDebug() << ASA_conf_only_string;
-//}
-
-//void MainWindow::update_ASA_string(void)
-//{
-//    QString out_data;
-
-//    out_data += "|";
-//    out_data += "80:";
-//    out_data += QString("%1").arg(reg_op_mode,2,16, QChar('0'));
-//    out_data += "|";
-//    out_data += "81:";
-//    out_data += QString("%1").arg(reg_mot_1,2,16, QChar('0'));
-//    out_data += "|";
-//    out_data += "82:";
-//    out_data += QString("%1").arg(reg_mot_2,2,16, QChar('0'));
-
-//    ASA_conf_string = ASA_conf_only_string + out_data;
-//    qDebug() << ASA_conf_string;
-//}
-
 void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &painter)
 {
-    static uint i = 0;
     static QPoint last_position;
 
     if(true == tooltip->isVisible() && (last_position != tooltip->pos()))
