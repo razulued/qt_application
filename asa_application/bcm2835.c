@@ -7,7 +7,9 @@
 // Copyright (C) 2011-2013 Mike McCauley
 // $Id: bcm2835.c,v 1.24 2017/02/05 02:08:07 mikem Exp mikem $
 */
+#include "build_settings.h"
 
+#if (1 == RELEASE_FOR_RPI)
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -1511,5 +1513,6 @@ int main(int argc, char **argv)
 }
 #endif
 
+#endif
 
 

@@ -781,7 +781,7 @@ QString get_value_by_ID(uint id)
     return str;
 }
 
-QString inverse_value_by_ID(uint id, float_t value)
+QString inverse_value_by_ID(uint id, float value)
 {
     QString str;
     uint index = 0;

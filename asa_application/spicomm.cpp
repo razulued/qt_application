@@ -1,5 +1,9 @@
 #include "spicomm.h"
+#include "build_settings.h"
+#if (1 == RELEASE_FOR_RPI)
 #include "bcm2835.h"
+#endif
+
 #include <QDebug>
 #include "my_crc_api.h"
 #include <stdint.h>
@@ -47,6 +51,8 @@ SPICOMM* SPICOMM::SPInstance()
 
 void SPICOMM::startSPICommunication()
 {
+#if (1 == RELEASE_FOR_RPI)
+
     bool statusComm = true;
     if (!bcm2835_init())
     {
@@ -64,20 +70,25 @@ void SPICOMM::startSPICommunication()
         SPIsuccess = true;
         qDebug() << "Connection success";
     }
+#endif
 }
 
 void SPICOMM::endSPICommuniction()
 {
+#if (1 == RELEASE_FOR_RPI)
+
     if(SPIsuccess)
     {
         bcm2835_spi_end();
         bcm2835_close();
     }
-
+#endif
 }
 
 void SPICOMM::sendSPIdata()
 {
+#if (1 == RELEASE_FOR_RPI)
+
     int i = 0;
     uint8_t checksum_string[MAX_BUFFER_SIZE];
     uint8_t temp = 0;
@@ -114,11 +125,12 @@ void SPICOMM::sendSPIdata()
         temp = bcm2835_spi_transfer((uint8_t)((CRCvalue) & 0x00FF));
         msDelay(10U);
     }
+#endif
 }
 
 char *SPICOMM::getSPIdata()
 {
-
+#if (1 == RELEASE_FOR_RPI)
 
     uint8_t dataReadFromSPI[MAX_BUFFER_SIZE];
     char dataCharReadFromSPI[MAX_BUFFER_SIZE];
@@ -238,7 +250,7 @@ char *SPICOMM::getSPIdata()
         {
             strncpy ( dataInfo, dataCharReadFromSPI, bufferIndex);
         }
-
+#endif
 return (dataInfo);
 
 }
@@ -256,11 +268,13 @@ void SPICOMM::msDelay(unsigned int delay)
 
 void SPICOMM::configureSPICommunication()
 {
-    bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);      // The default
+#if (1 == RELEASE_FOR_RPI)
+        bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);      // The default
     bcm2835_spi_setDataMode(BCM2835_SPI_MODE0);                   // The default
     bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_4096); // The default
     bcm2835_spi_chipSelect(BCM2835_SPI_CS0);                      // The default
     bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS0, LOW);      // the default
+#endif
 }
 
 SPICOMM::~SPICOMM()
