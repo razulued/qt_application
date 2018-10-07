@@ -6,6 +6,7 @@
 #include <QScrollerProperties>
 #include "mainwindow.h"
 #include <QSqlQuery>
+#include <QSqlError>
 #include "records.h"
 
 // rgb(0, 167, 250)
@@ -27,6 +28,46 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
 
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+
+    QSqlQuery q;
+    if(q.prepare("SELECT MAX(log_date) FROM log"))
+    {
+        if(q.exec())
+        {
+            while(q.next())
+            {
+                filtro_fecha_fin = q.value(0).toInt();
+            }
+        }
+        else
+        {
+            qDebug() << "on_clear_filters_clicked. Failed to exec." << q.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "on_clear_filters_clicked. Failed to prepare." << q.lastError();
+    }
+
+    if(q.prepare("SELECT MIN(log_date) FROM log"))
+    {
+        if(q.exec())
+        {
+            while(q.next())
+            {
+                filtro_fecha_inicio = q.value(0).toInt();
+            }
+        }
+        else
+        {
+            qDebug() << "on_clear_filters_clicked. Failed to exec." << q.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "on_clear_filters_clicked. Failed to prepare." << q.lastError();
+    }
+
 
     QFont font0("Typo Square Bold Demo",18,1);
 //    QFont font1("Typo Square Italic Demo",12,1);
@@ -151,6 +192,9 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
                                          "color: rgb(0, 167, 250);");
     ui->label_filtro_record->setFont(font4);
     ui->label_filtro_record->setStyleSheet("background-color: transparent;"
+                                         "color: rgb(0, 167, 250);");
+    ui->label_mostrar_graficos->setFont(font4);
+    ui->label_mostrar_graficos->setStyleSheet("background-color: transparent;"
                                          "color: rgb(0, 167, 250);");
 
     ui->label_2->setFont(font3);
@@ -801,13 +845,50 @@ void bitacora::on_log_button_clicked()
 
 void bitacora::on_clear_filters_clicked()
 {
+    QSqlQuery q;
     ui->tableWidget_3->setRowCount(0);
     add_row_registro("SELECT * FROM log", ui->tableWidget_3);
     ui->tabWidget->setCurrentIndex(3);
 
-    filtro_fecha_inicio = 0;
-    filtro_fecha_fin = 0;
+//    filtro_fecha_inicio = 0;
+//    filtro_fecha_fin = 0;
+    if(q.prepare("SELECT MAX(log_date) FROM log"))
+    {
+        if(q.exec())
+        {
+            while(q.next())
+            {
+                filtro_fecha_fin = q.value(0).toInt();
+            }
+        }
+        else
+        {
+            qDebug() << "on_clear_filters_clicked. Failed to exec." << q.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "on_clear_filters_clicked. Failed to prepare." << q.lastError();
+    }
 
+    if(q.prepare("SELECT MIN(log_date) FROM log"))
+    {
+        if(q.exec())
+        {
+            while(q.next())
+            {
+                filtro_fecha_inicio = q.value(0).toInt();
+            }
+        }
+        else
+        {
+            qDebug() << "on_clear_filters_clicked. Failed to exec." << q.lastError();
+        }
+    }
+    else
+    {
+        qDebug() << "on_clear_filters_clicked. Failed to prepare." << q.lastError();
+    }
 }
 
 
@@ -853,5 +934,18 @@ void bitacora::on_filtro_record_clicked()
         ui->tableWidget_3->setRowCount(0);
         add_row_registro("SELECT * FROM log WHERE record_id = "+QString::number(selected_record), ui->tableWidget_3);
         ui->tabWidget->setCurrentIndex(2);
+    }
+}
+
+void bitacora::on_graph_button_clicked()
+{
+    // Delete all rows in registros table, and prepare new query
+    if( 0 != selected_record)
+    {
+        if(chart_window != NULL)
+        {
+            delete chart_window;
+        }
+        chart_window = new record_chart(selected_record, filtro_fecha_inicio, filtro_fecha_fin, this);
     }
 }

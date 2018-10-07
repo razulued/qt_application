@@ -437,6 +437,41 @@ border:none;
       <string>Filtro por pregunta</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="graph_button">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>465</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#graph_button
+{
+background-image: url(:/iconos/screen800x600/iconos/graph-icon.png);
+background-position: center;
+background-repeat: none;
+border:none;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_mostrar_graficos">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>470</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mostrar gráfico</string>
+     </property>
+    </widget>
     <zorder>tableWidget_3</zorder>
     <zorder>clear_filters</zorder>
     <zorder>filtro_fecha</zorder>
@@ -444,6 +479,8 @@ border:none;
     <zorder>label_filtro_fecha</zorder>
     <zorder>label_filtro_record</zorder>
     <zorder>filtro_record</zorder>
+    <zorder>graph_button</zorder>
+    <zorder>label_mostrar_graficos</zorder>
    </widget>
   </widget>
   <widget class="QPushButton" name="top_menu_1">

@@ -286,8 +286,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QFontDatabase::addApplicationFont(":/fonts/fonts/sqrs711m.ttf");
     QFontDatabase::addApplicationFont(":/fonts/fonts/square721 bt-italic.ttf");
 
-
-
     //Setup Buttons and link to images
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
     display_parameters = false;
@@ -393,6 +391,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                    "color:black;"
                                    "background-color:transparent;");
     ui->label_title->setText(title_name);
+
 }
 
 

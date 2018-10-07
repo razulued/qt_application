@@ -7,6 +7,7 @@
 #include "rutinas_mantenimiento.h"
 #include "calendar.h"
 #include "calendario_filtro.h"
+#include "record_chart.h"
 
 namespace Ui {
 class bitacora;
@@ -49,6 +50,8 @@ private slots:
     void filtro_fecha_received(uint ini, uint end);
     void on_filtro_record_clicked();
 
+    void on_graph_button_clicked();
+
 private:
     Ui::bitacora *ui;
     void init_tables(void);
@@ -84,10 +87,11 @@ private:
     uint reschedule_time;
 
     void add_row_registro(QString sql_query, QTableWidget *table);
-    uint filtro_fecha_inicio;
-    uint filtro_fecha_fin;
+    uint filtro_fecha_inicio = 0;
+    uint filtro_fecha_fin = 0;
 
     calendario_filtro * calendario_window = NULL;
+    record_chart * chart_window = NULL;
 signals:
     void release_lock();
 

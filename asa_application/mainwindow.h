@@ -268,6 +268,7 @@ private:
     bool update_in_progress = false;
 
     stop_button *stop_button_window = NULL;
+
 protected:
     void paintEvent(QPaintEvent *);
 };

@@ -482,7 +482,7 @@ void rutinas_mantenimiento::load_to_db(uint id)
             q.bindValue(":record_links",rutina_def_table[i].record_links);
 
             if(!q.exec()) qDebug() << "Failed to execute: rutinas load_to_db() " << q.lastError();
-            qDebug() << q.lastQuery();
+//            qDebug() << q.lastQuery();
             while (q.next())
             {
                 rutina_def_table[i].id = q.value("id").toInt();
@@ -509,6 +509,7 @@ void rutinas_mantenimiento::load_to_db(uint id)
                      << rutina_def_table[i].next_event
                      << rutina_def_table[i].schedule_to;
 
+            break;
         }
     }
 }
