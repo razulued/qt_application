@@ -26,7 +26,11 @@ QString conv_nivel_1_inv(QString str, uint param1);
 void Query_ID_last_activity(QString str);
 void Query_ID_last_record(QString str);
 void Query_N_record(QString str);
+void Query_last_log(QString str);
 void Store_activity(QString str);
 void Store_record(QString str);
-
+void Edit_activity(QString str);
+void Edit_record(QString str);
+void Delete_activity(QString str);
+void Delete_record(QString str);
 #endif // ASA_CONVERSIONS_H

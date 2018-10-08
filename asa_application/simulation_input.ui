@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -312,7 +312,6 @@
     <zorder></zorder>
     <zorder></zorder>
     <zorder></zorder>
-    <zorder></zorder>
    </widget>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
@@ -393,50 +392,6 @@
     </layout>
    </widget>
   </widget>
-  <zorder>label</zorder>
-  <zorder>checkBox</zorder>
-  <zorder>checkBox_4</zorder>
-  <zorder>checkBox_5</zorder>
-  <zorder>checkBox_6</zorder>
-  <zorder>lineEdit</zorder>
-  <zorder>horizontalScrollBar</zorder>
-  <zorder>label_2</zorder>
-  <zorder>checkBox_2</zorder>
-  <zorder>checkBox_3</zorder>
-  <zorder>checkBox_7</zorder>
-  <zorder>checkBox_8</zorder>
-  <zorder>label_3</zorder>
-  <zorder>lineEdit_2</zorder>
-  <zorder>horizontalScrollBar_2</zorder>
-  <zorder>label_4</zorder>
-  <zorder>lineEdit_3</zorder>
-  <zorder>horizontalScrollBar_3</zorder>
-  <zorder>label_5</zorder>
-  <zorder>lineEdit_4</zorder>
-  <zorder>horizontalScrollBar_4</zorder>
-  <zorder>label_6</zorder>
-  <zorder>dateTimeEdit</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>pushButton_4</zorder>
-  <zorder>label_7</zorder>
-  <zorder>lineEdit_5</zorder>
-  <zorder>lineEdit_6</zorder>
-  <zorder>lineEdit_7</zorder>
-  <zorder>lineEdit_8</zorder>
-  <zorder>lineEdit_9</zorder>
-  <zorder>label_8</zorder>
-  <zorder></zorder>
-  <zorder>lineEdit_10</zorder>
-  <zorder>pushButton_5</zorder>
-  <zorder>pushButton_6</zorder>
-  <zorder>pushButton_7</zorder>
-  <zorder>pushButton_8</zorder>
-  <zorder>pushButton_9</zorder>
-  <zorder>pushButton_10</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>tabWidget</zorder>
  </widget>
  <resources/>
  <connections/>

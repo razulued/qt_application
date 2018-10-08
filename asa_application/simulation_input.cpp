@@ -15,6 +15,10 @@ simulation_input::simulation_input(QWidget *parent) :
     simDateTime = QDateTime::currentDateTime();
 
     ui->dateTimeEdit->setDateTime(QDateTime::currentDateTime());
+
+    time_running = true;
+    QTimer::singleShot(1000, this, SLOT(add_seconds()));
+
     this->show();
 }
 

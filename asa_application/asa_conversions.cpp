@@ -325,6 +325,16 @@ void Query_N_record(QString str)
     query->~sql_cmd_manager();
 }
 
+void Query_last_log(QString str)
+{
+    QString str_response;
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    str_response = "1903:" + QString::number(query->query_last_log_ID()) +"|";
+    add_to_one_time_transmit(str_response);
+    query->~sql_cmd_manager();
+}
+
+
 void Store_activity(QString str)
 {
     sql_cmd_manager *query = new sql_cmd_manager(str);
@@ -336,5 +346,33 @@ void Store_record(QString str)
 {
     sql_cmd_manager *query = new sql_cmd_manager(str);
     qDebug() << "Store_record: " << query->store_record();
+    query->~sql_cmd_manager();
+}
+
+void Edit_activity(QString str)
+{
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    qDebug() << "Edit_activity: " << query->edit_activity();
+    query->~sql_cmd_manager();
+}
+
+void Edit_record(QString str)
+{
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    qDebug() << "Edit_record: " << query->edit_record();
+    query->~sql_cmd_manager();
+}
+
+void Delete_activity(QString str)
+{
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    qDebug() << "Delete_activity: " << query->delete_activity();
+    query->~sql_cmd_manager();
+}
+
+void Delete_record(QString str)
+{
+    sql_cmd_manager *query = new sql_cmd_manager(str);
+    qDebug() << "Delete_record: " << query->delete_record();
     query->~sql_cmd_manager();
 }

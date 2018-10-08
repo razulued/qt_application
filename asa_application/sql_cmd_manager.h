@@ -15,7 +15,12 @@ public:
     QString query_N_log();
     int store_activity();
     int store_record();
+    uint query_last_log_ID();
 
+    int edit_activity();
+    int edit_record();
+    int delete_activity();
+    int delete_record();
 private:
     QString input_command;
 };

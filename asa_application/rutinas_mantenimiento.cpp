@@ -411,7 +411,7 @@ void rutinas_mantenimiento::load_to_table()
         temp_rutina_def.synch_date = q.value("synch_date").toInt();
         temp_rutina_def.last_event = q.value("last_event").toInt();
         temp_rutina_def.next_event = q.value("next_event").toInt();
-        temp_rutina_def.explicacion = q.value("explicacion").toInt();
+        temp_rutina_def.explicacion = q.value("explicacion").toString();
         temp_rutina_def.schedule_to = q.value("schedule_to").toInt();
         temp_rutina_def.record_links = q.value("record_links").toString();
         rutina_def_table.append(temp_rutina_def);
@@ -448,7 +448,6 @@ void rutinas_mantenimiento::load_to_db(uint id)
     {
         if(rutina_def_table[i].id == id)
         {
-            //UPDATE Customers SET ContactName = 'Alfred Schmidt', City= 'Frankfurt' WHERE CustomerID = 1;
             if(!q.prepare("UPDATE rutinas SET  "
                           "id=:id_found, "
                           "nombre=:nombre, "
