@@ -1,6 +1,6 @@
 #ifndef BUILD_SETTINGS_H
 #define BUILD_SETTINGS_H
 
-#define RELEASE_FOR_RPI (0)
+#define RELEASE_FOR_RPI (1)
 
 #endif // BUILD_SETTINGS_H

@@ -113,7 +113,7 @@ void DataProccess::dataSPI()
         QStringList ID_Parameters = bufferString.split("|");
         QStringList realParameters ;
 
-
+        qDebug() << "Number of parameters: " << ID_Parameters.length();
         for(int i = 0; i < ID_Parameters.length() ; i++)
         {
             realParameters = ID_Parameters[i].split(":");

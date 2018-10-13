@@ -96,7 +96,7 @@ void SPICOMM::sendSPIdata()
     uint8_t ch = 0;
 
     /*Do this only if there is data in the configuration*/
-    QString output_str = get_config_string();
+    QString output_str = *get_config_string();
     if(output_str.size() > 1)
     {
         //Send start of TX
@@ -142,7 +142,7 @@ char *SPICOMM::getSPIdata()
     uint8_t CRCtemp2 = 0;
     bool endOfLineFound = false;
     bool validData = false;
-    bool CRC_flag = false;
+    bool CRC_flag = true;
     static int counter = 0;
     static int CRC_error_counter = 0;
     static int NO_EOF_counter = 0;
@@ -150,7 +150,7 @@ char *SPICOMM::getSPIdata()
     char info1[] = "<|12:00ADBC|345:0FFF|1:00DDDA|777:00BCDE|52:00CDDD|321:00BBC1|311:000EEA|23:7878|11:7777|999:123|89:5435|434:6577|77:456|>";
 
     //Clear the buffer dataInfo
-//    memset(dataInfo, 0, sizeof dataInfo);
+    memset(dataInfo, 0, sizeof dataInfo);
 
     for (bufferIndex = 0; bufferIndex < MAX_BUFFER_SIZE; ++bufferIndex)
     {
@@ -211,6 +211,10 @@ char *SPICOMM::getSPIdata()
         {
             CRC_error_counter++;
             CRC_flag = true;
+        }
+        else
+        {
+            CRC_flag = false;
         }
 
         qDebug() << "Data: " << dataCharReadFromSPI;

@@ -92,9 +92,9 @@ border: none;
    <widget class="QChartView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>20</x>
       <y>50</y>
-      <width>371</width>
+      <width>401</width>
       <height>301</height>
      </rect>
     </property>

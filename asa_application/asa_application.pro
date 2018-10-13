@@ -6,6 +6,8 @@
 
 QT       += core gui sql charts
 
+LIBS += -lQt5Charts
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = asa_application

@@ -324,10 +324,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_hora->setFont(hora_font);
     ui->label_dia->setStyleSheet("color: white");
     ui->label_dia->setFont(dia_font);
-//    button.setStyleSheet( FormStyleSheetString( "button" ) );
-//     button.setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-//     button.setIconSize(QSize(200,200));
-//     button.show();
 
     mod_1 = new mod_1_carcamo(ui->gif_modulo_1);
     connect(mod_1, SIGNAL(update_window()), this, SLOT(update_this()));

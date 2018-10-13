@@ -287,5 +287,5 @@ void simulation_input::on_pushButton_5_clicked()
 void simulation_input::on_pushButton_11_clicked()
 {
     ui->plainTextEdit->clear();
-    ui->plainTextEdit->appendPlainText(get_config_string());
+    ui->plainTextEdit->appendPlainText(*get_config_string());
 }

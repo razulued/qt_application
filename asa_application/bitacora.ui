@@ -50,6 +50,9 @@
      <height>561</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
    <property name="styleSheet">
     <string notr="true">QTabWidget::tab-bar{
 alignment: right;
@@ -73,7 +76,7 @@ height: 50px;
     <enum>QTabWidget::North</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -320,7 +323,7 @@ background-position: center;
     <widget class="QPushButton" name="clear_filters">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>10</x>
        <y>461</y>
        <width>41</width>
        <height>31</height>
@@ -351,7 +354,7 @@ border-radius: 10;*/
     <widget class="QPushButton" name="filtro_fecha">
      <property name="geometry">
       <rect>
-       <x>630</x>
+       <x>620</x>
        <y>457</y>
        <width>41</width>
        <height>41</height>
@@ -376,7 +379,7 @@ border:none;
     <widget class="QLabel" name="label_quitar_filtros">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>50</x>
        <y>470</y>
        <width>111</width>
        <height>21</height>
@@ -389,9 +392,9 @@ border:none;
     <widget class="QLabel" name="label_filtro_fecha">
      <property name="geometry">
       <rect>
-       <x>672</x>
+       <x>662</x>
        <y>470</y>
-       <width>121</width>
+       <width>131</width>
        <height>21</height>
       </rect>
      </property>
@@ -402,7 +405,7 @@ border:none;
     <widget class="QPushButton" name="filtro_record">
      <property name="geometry">
       <rect>
-       <x>430</x>
+       <x>417</x>
        <y>460</y>
        <width>41</width>
        <height>41</height>
@@ -427,7 +430,7 @@ border:none;
     <widget class="QLabel" name="label_filtro_record">
      <property name="geometry">
       <rect>
-       <x>473</x>
+       <x>460</x>
        <y>470</y>
        <width>141</width>
        <height>21</height>
@@ -440,11 +443,14 @@ border:none;
     <widget class="QPushButton" name="graph_button">
      <property name="geometry">
       <rect>
-       <x>230</x>
+       <x>190</x>
        <y>465</y>
        <width>41</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">#graph_button
@@ -462,9 +468,9 @@ border:none;
     <widget class="QLabel" name="label_mostrar_graficos">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>240</x>
        <y>470</y>
-       <width>111</width>
+       <width>131</width>
        <height>21</height>
       </rect>
      </property>

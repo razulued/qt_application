@@ -755,14 +755,19 @@ void store_value_by_ID(uint id, QString str_value)
     if(0 != id)
     {
         data_mutex.lock();
+
         hash_values.insert(id, str_value);
 
         // Check its index in the table and run its Received function, if present.
         //Index in table (for functions)
         index = hash_indices.value(id);
+
         if(0 != index)
         {
-            (void)supported_ASA_IDs[index].receive_hanlder(str_value);
+            if(supported_ASA_IDs[index].receive_hanlder != NULL)
+            {
+                (void)supported_ASA_IDs[index].receive_hanlder(str_value);
+            }
         }
 
         data_mutex.unlock();
