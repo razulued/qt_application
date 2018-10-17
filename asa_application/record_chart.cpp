@@ -193,7 +193,7 @@ void record_chart::update_pie_chart(uint id, uint fecha_inicio, uint fecha_fin)
     }
     else
     {
-        ui->label_7->setText("NO HAY REGISTROS");
+        ui->label_7->setText(tr("NO HAY REGISTROS"));
     }
     ui->label_3->setText(QDateTime::fromTime_t(fecha_inicio).toString());
     ui->label_5->setText(QDateTime::fromTime_t(fecha_fin).toString());
@@ -310,7 +310,7 @@ void record_chart::update_bar_chart(uint id, uint fecha_inicio, uint fecha_fin)
     }
     else
     {
-        ui->label_7->setText("NO HAY REGISTROS");
+        ui->label_7->setText(tr("NO HAY REGISTROS"));
     }
     ui->label_3->setText(QDateTime::fromTime_t(fecha_inicio).toString());
     ui->label_5->setText(QDateTime::fromTime_t(fecha_fin).toString());

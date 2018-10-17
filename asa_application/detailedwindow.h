@@ -210,6 +210,7 @@ private:
     bool stop_pressed_modulo = false;
     void stop_button_animation_module(bool state);
     bool stop_op_mode();
+
 signals:
     void release_lock();
 

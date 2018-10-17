@@ -62,7 +62,7 @@ border: none;
     <property name="geometry">
      <rect>
       <x>231</x>
-      <y>173</y>
+      <y>178</y>
       <width>145</width>
       <height>31</height>
      </rect>
@@ -73,7 +73,7 @@ border: none;
     <property name="styleSheet">
      <string notr="true">#fecha_fin_btn
 {
-background-image: url(:/iconos/screen800x600/iconos/FIN.png);
+background-color:transparent;
 background-position: center;
 background-repeat: none;
 border:none;
@@ -86,9 +86,9 @@ border:none;
    <widget class="QPushButton" name="fecha_inicio_btn">
     <property name="geometry">
      <rect>
-      <x>97</x>
-      <y>173</y>
-      <width>141</width>
+      <x>93</x>
+      <y>177</y>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -98,16 +98,10 @@ border:none;
     <property name="styleSheet">
      <string notr="true">#fecha_inicio_btn
 {
-background-image: url(:/iconos/screen800x600/iconos/Inicio.png);
+background-color:transparent;
 background-position: center;
 background-repeat: none;
 border:none;
-
-/*color: rgb(0, 167, 250);
-border-style: solid;
-border-width: 2px;
-border-color: rgb(0, 167, 250);
-border-radius: 10;*/
 }</string>
     </property>
     <property name="text">
@@ -117,8 +111,8 @@ border-radius: 10;*/
    <widget class="QLabel" name="fecha_inicio_text">
     <property name="geometry">
      <rect>
-      <x>164</x>
-      <y>180</y>
+      <x>160</x>
+      <y>182</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -134,7 +128,7 @@ border-radius: 10;*/
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>180</y>
+      <y>182</y>
       <width>67</width>
       <height>20</height>
      </rect>
@@ -150,7 +144,7 @@ border-radius: 10;*/
     <property name="geometry">
      <rect>
       <x>377</x>
-      <y>168</y>
+      <y>173</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -187,6 +181,87 @@ border:none;
      <string>Seleccione el Periodo a Visualizar</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>122</x>
+      <y>183</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Inicio</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>264</x>
+      <y>182</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fin</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="back_1">
+    <property name="geometry">
+     <rect>
+      <x>86</x>
+      <y>177</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#back_1
+{
+background-image: url(:/iconos/screen800x600/iconos/Inicio.png);
+background-position: center;
+background-repeat: none;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="back_2">
+    <property name="geometry">
+     <rect>
+      <x>229</x>
+      <y>177</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#back_2
+{
+background-image: url(:/iconos/screen800x600/iconos/Inicio.png);
+background-position: center;
+background-repeat: none;
+border:none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>back_2</zorder>
+   <zorder>close</zorder>
+   <zorder>ok_button</zorder>
+   <zorder>label</zorder>
+   <zorder>back_1</zorder>
+   <zorder>label_2</zorder>
+   <zorder>fecha_inicio_text</zorder>
+   <zorder>fecha_inicio_btn</zorder>
+   <zorder>label_3</zorder>
+   <zorder>fecha_fin_text</zorder>
+   <zorder>fecha_fin_btn</zorder>
   </widget>
  </widget>
  <resources/>

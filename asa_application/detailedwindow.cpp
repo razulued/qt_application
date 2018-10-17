@@ -6,7 +6,6 @@
 #include <QTableWidget>
 #include "parameters.h"
 #include <QDebug>
-#include "mainwindow.h"
 #include <QScrollBar>
 #include <QScrollArea>
 #include <QScroller>
@@ -18,6 +17,7 @@
 #include "login_dialog.h"
 #include "QMovie"
 #include "records.h"
+#include "mainwindow.h"
 
 #define BUILD_FOR_RPI (1)
 
@@ -39,13 +39,13 @@ QList<int> create_list()
 
 detailed_window_elements_t details_1=
 {
-    "Regulador",
+    QObject::tr("Regulador"),
 
     ":/images/images/detail_regulador.png",
 
-    "Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo "
+    QObject::tr("Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo "
     "igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujo"
-    "generado durante las horas pico",
+    "generado durante las horas pico"),
 
     &MainWindow::conf_reg_elect,
 
@@ -58,12 +58,12 @@ detailed_window_elements_t details_1=
 
 detailed_window_elements_t details_2=
 {
-    "Reactor biológico",
+    QObject::tr("Reactor biológico"),
 
     ":/images/images/detail_reactor_biologico.png",
 
-    "Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo "
-    "en contacto las aguas residuales con una biomasa de microorganismos que la depuran.",
+    QObject::tr("Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo "
+    "en contacto las aguas residuales con una biomasa de microorganismos que la depuran."),
 
     &MainWindow::conf_react_elect,
 
@@ -76,10 +76,10 @@ detailed_window_elements_t details_2=
 
 detailed_window_elements_t details_3=
 {
-    "Clarificador",
+    QObject::tr("Clarificador"),
     ":/images/images/detail_clarificador.png",
-    "Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos "
-    "suspendidos se sedimentan, separandose del agua.",
+    QObject::tr("Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos "
+    "suspendidos se sedimentan, separandose del agua."),
 
     &MainWindow::conf_clarif_elect,
 
@@ -92,9 +92,9 @@ detailed_window_elements_t details_3=
 
 detailed_window_elements_t details_4=
 {
-    "Clorador",
+    QObject::tr("Clorador"),
     ":/images/images/detail_clorador.png",
-    "Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes.",
+    QObject::tr("Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes."),
 
     &MainWindow::conf_clora_elect,
 
@@ -107,10 +107,10 @@ detailed_window_elements_t details_4=
 
 detailed_window_elements_t details_5=
 {
-    "Digestor de lodos",
+    QObject::tr("Digestor de lodos"),
     ":/images/images/detail_digestor.png",
-    "Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente"
-    " hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos.",
+    QObject::tr("Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente"
+    " hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos."),
 
     &MainWindow::conf_digest_elect,
 
@@ -123,10 +123,10 @@ detailed_window_elements_t details_5=
 
 detailed_window_elements_t details_6=
 {
-    "Deshidratador",
+    QObject::tr("Deshidratador"),
     ":/images/images/detail_deshidratador.png",
-    "Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y "
-    "se permite su infiltración, dejando secar los lodos",
+    QObject::tr("Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y "
+    "se permite su infiltración, dejando secar los lodos"),
 
     &MainWindow::conf_deshid_elect,
 
@@ -139,9 +139,9 @@ detailed_window_elements_t details_6=
 
 detailed_window_elements_t details_7=
 {
-    "Afluente",
+    QObject::tr("Afluente"),
     ":/images/images/afluente.png",
-    "Agua residual sanitaria",
+    QObject::tr("Agua residual sanitaria"),
 
     &MainWindow::conf_afluente_elect,
 
@@ -154,9 +154,9 @@ detailed_window_elements_t details_7=
 
 detailed_window_elements_t details_8=
 {
-    "Efluente",
+    QObject::tr("Efluente"),
     ":/images/images/efluente.png",
-    "Agua tratada",
+    QObject::tr("Agua tratada"),
 
     &MainWindow::conf_efluente_elect,
 
@@ -169,12 +169,12 @@ detailed_window_elements_t details_8=
 
 detailed_window_elements_t details_9=
 {
-    "Filtro",
+    QObject::tr("Filtro"),
     ":/diagrama/screen800x600/diagrama/Filtro 5SDF portátil_ small.png",
-    "Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción "
+    QObject::tr("Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción "
     "adicional de sólidos así como el color ámbar característico de las aguas tratadas. "
     "Dadas las características de la tela filtrante, no se requiere la acumulación de material ni la formación de "
-    "una manta filtrante a fin de lograr el pulimento deseado.",
+    "una manta filtrante a fin de lograr el pulimento deseado."),
 
 
     &MainWindow::conf_filtro_elect,
@@ -188,9 +188,9 @@ detailed_window_elements_t details_9=
 
 detailed_window_elements_t details_10=
 {
-    "Bomba Alimentación",
+    QObject::tr("Bomba Alimentación"),
     ":/diagrama/screen800x600/diagrama/motor_filtro_small.png",
-    "Agregar descripción",
+    QObject::tr("Agregar descripción"),
 
 
     &MainWindow::conf_filtro_bomba_elect,
@@ -202,7 +202,7 @@ detailed_window_elements_t details_10=
     &MainWindow::filtro_bomba_outputs,
 };
 
-const detailed_window_elements_t *detailed_elements[]=
+detailed_window_elements_t *detailed_elements[]=
 {
     &details_1,
     &details_2,
@@ -291,20 +291,17 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     QFont font("Typo Square Italic Demo",12,1);
     QFont font_2("Typo Square Bold Italic Demo",14,1);
 
-//    ui->frame->setObjectName("DetailFrame");
-//    ui->frame->setStyleSheet("detailedwindow#DetailFrame{"
-//                             "background-color:black;"
-//                             "border-style: solid;"
-//                             "border-width: 6px;"
-//                             "border-radius: 6px;"
-//                             "border-color: gray;"
-//                             "}");
+    QString nombres[] = {tr("Regulador"), tr("Reactor Biológico"), tr("Clarificador"),tr("Clorador"),
+                        tr("Digestor de lodos"), tr("Deshidratador"), tr("Afluente"), tr("Efluente"),
+                        tr("Filtro"), tr("Bomba Alimentación")};
 
     // Nombre Del elemento
     ui->nombre->setFont(font_2);
     ui->nombre->setStyleSheet("color: black;"
                               "background-color: transparent;");
-    ui->nombre->setText(detailed_elements[element]->name);
+//    ui->nombre->setText(detailed_elements[element]->name);
+    ui->nombre->setText(nombres[element]);
+
 
     ui->imagen->setStyleSheet("border-image: url("+detailed_elements[element]->image+");"
                             "background-color: transparent;");
@@ -368,14 +365,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     tab_4_init();
     tab_5_init();
 
-
-//    if(NULL != blur_window)
-//    {
-//        delete blur_window;
-//    }
-
-//    blur_window = new blur();
-
     ui->textEdit->setVisible(false);
     ui->key_frame->setVisible(false);
     ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
@@ -392,9 +381,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 
     reschedule_time = 0;
     init_completed = true;
-
-//    this->show();
-
 }
 
 detailedwindow::~detailedwindow()
@@ -414,7 +400,7 @@ void detailedwindow::on_closeButton_clicked()
 
 void detailedwindow::on_button_parametros_clicked()
 {
-    ui->label->setText("Parámetros");
+    ui->label->setText(tr("Parámetros"));
     ui->tabWidget->setCurrentIndex(0);
     ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar blanco.png);"
                     "border: none;"
@@ -457,7 +443,7 @@ void detailedwindow::on_button_parametros_clicked()
 
 void detailedwindow::on_button_evento_clicked()
 {
-    ui->label->setText("Evento");
+    ui->label->setText(tr("Evento"));
     ui->tabWidget->setCurrentIndex(1);
     ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
                     "border: none;"
@@ -500,7 +486,7 @@ void detailedwindow::on_button_evento_clicked()
 
 void detailedwindow::on_button_descripcion_clicked()
 {
-    ui->label->setText("Descripción");
+    ui->label->setText(tr("Descripción"));
     ui->tabWidget->setCurrentIndex(2);
     ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
                     "border: none;"
@@ -543,7 +529,7 @@ void detailedwindow::on_button_descripcion_clicked()
 
 void detailedwindow::on_button_visualizacion_clicked()
 {
-    ui->label->setText("Visualización de Parámetros");
+    ui->label->setText(tr("Visualización de Parámetros"));
     ui->tabWidget->setCurrentIndex(3);
     ui->button_parametros->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Visualizar azul.png);"
                     "border: none;"
@@ -625,7 +611,7 @@ void detailedwindow::on_button_control_clicked()
                          "background-repeat: none;"
                          "background-position: center;");
 
-        ui->label->setText("Encendido de Motores");
+        ui->label->setText(tr("Encendido de Motores"));
         ui->tabWidget->setCurrentIndex(4);
 
         //Check token validity
@@ -817,14 +803,6 @@ void detailedwindow::on_key_OK_clicked()
             }
         }
 
-//        for(i = 0; i < (uint)ui->tableWidget->rowCount() ; i++)
-//        {
-//            if((uint)ui->tableWidget->item(i,0)->text().toInt() == selected_id)
-//            {
-//                ui->tableWidget->removeRow(i);
-//                break;
-//            }
-//        }
     }
 
     ui->textEdit->setVisible(false);
@@ -958,7 +936,7 @@ void detailedwindow::tab_2_init()
     uint i = 0;
     QFont font("Typo Square Bold Demo",10,1);
     QStringList titulos;
-    titulos << "ID" << "Rutina"; // Fecha is next
+    titulos << tr("ID") << tr("Rutina"); // Fecha is next
 
     QFont font1("Typo Square Italic Demo",12,1);
 
@@ -1106,9 +1084,40 @@ void detailedwindow::tab_2_init()
 void detailedwindow::tab_3_init()
 {
     QFont font("Typo Square Ligth Demo",10,1);
+    QString description[] = {
+        /*Regulador*/
+        tr("Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo "
+            "igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujo"
+            "generado durante las horas pico"),
+        /*Reactor*/
+        tr("Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo "
+            "en contacto las aguas residuales con una biomasa de microorganismos que la depuran."),
+        /*Clarificador*/
+        tr("Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos "
+            "suspendidos se sedimentan, separandose del agua."),
+        /*Clorador*/
+        tr("Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes."),
+        /*Digestor de lodos*/
+        tr("Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente"
+            " hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos."),
+        /*Deshidratador*/
+        tr("Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y "
+            "se permite su infiltración, dejando secar los lodos"),
+        /*Afluente*/
+        tr("Agua residual sanitaria"),
+        /*Efluente*/
+        tr("Agua tratada"),
+        /*Filtro*/
+        tr("Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción "
+            "adicional de sólidos así como el color ámbar característico de las aguas tratadas. "
+            "Dadas las características de la tela filtrante, no se requiere la acumulación de material ni la formación de "
+            "una manta filtrante a fin de lograr el pulimento deseado."),
+        /* Bomba de alimentacion */
+        tr("Agregar descripción"),
+    };
 
     ui->description_label->setFont(font);
-    ui->description_label->setText(detailed_elements[what_element]->description);
+    ui->description_label->setText(description[what_element]);
     ui->description_label->setStyleSheet("color: white;"
                                          "background-color: transparent;");
 }
@@ -1120,12 +1129,6 @@ void detailedwindow::tab_4_init()
     QFont font_2("Typo Square Ligth Demo",10,1);
 
     QSignalMapper *checkboxMapper = new QSignalMapper(this);
-
-//    QScrollArea* scrollArea = new QScrollArea;
-//    scrollArea->setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
-//    scrollArea->setVerticalScrollBarPolicy (Qt::ScrollBarAsNeeded);
-//    scrollArea->setWidget(ui->tab_4);
-//    scrollArea->setWidgetResizable (true);
 
 //    QVBoxLayout *layout = new QVBoxLayout(ui->tab_4);
     QVBoxLayout *layout = new QVBoxLayout;

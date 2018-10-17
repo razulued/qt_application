@@ -50,12 +50,12 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>771</width>
-     <height>311</height>
+     <width>751</width>
+     <height>301</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -93,8 +93,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>843</width>
-        <height>816</height>
+        <width>741</width>
+        <height>786</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -830,8 +830,8 @@ height: 15;
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>745</width>
-        <height>1220</height>
+        <width>741</width>
+        <height>1180</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
@@ -2635,9 +2635,9 @@ height: 15;
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-1134</y>
-        <width>755</width>
-        <height>1522</height>
+        <y>0</y>
+        <width>751</width>
+        <height>1472</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
@@ -4882,6 +4882,222 @@ height: 15;
       </layout>
      </widget>
     </widget>
+   </widget>
+   <widget class="QWidget" name="tab_5">
+    <attribute name="title">
+     <string>Lenguaje y unidades</string>
+    </attribute>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>50</y>
+       <width>127</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_26">
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Idioma</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="combobox_idioma">
+        <item>
+         <property name="text">
+          <string>Español</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>English</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLabel" name="label_119">
+     <property name="geometry">
+      <rect>
+       <x>281</x>
+       <y>81</y>
+       <width>59</width>
+       <height>18</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Unidades</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>283</x>
+       <y>107</y>
+       <width>131</width>
+       <height>108</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_23">
+      <item row="0" column="0">
+       <layout class="QFormLayout" name="formLayout_5">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_89">
+          <property name="text">
+           <string>Longitud</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="combobox_longitud">
+          <item>
+           <property name="text">
+            <string>m</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>cm</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>ft</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QFormLayout" name="formLayout_14">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_90">
+          <property name="text">
+           <string>Presion</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="combobox_presion">
+          <item>
+           <property name="text">
+            <string>psi</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>kg/cm²</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>bar</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>m.c.a</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <layout class="QFormLayout" name="formLayout_21">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_91">
+          <property name="text">
+           <string>Caudal</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="combobox_caudal">
+          <item>
+           <property name="text">
+            <string>l/s</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>l/min</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>l/h</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>gal/s</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>gal/min</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>gal/h</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>m³/h</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <layout class="QFormLayout" name="formLayout_22">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_92">
+          <property name="text">
+           <string>Tiempo</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="combobox_tiempo">
+          <item>
+           <property name="text">
+            <string>min</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>h</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+    <zorder>label_119</zorder>
+    <zorder>layoutWidget</zorder>
+    <zorder>layoutWidget</zorder>
    </widget>
   </widget>
   <widget class="QFrame" name="key_frame">

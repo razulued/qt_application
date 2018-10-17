@@ -57,7 +57,7 @@ bool get_validity_state()
 
 QString get_user_name()
 {
-    QString username = "Sin Usuario";
+    QString username = QObject::tr("Sin Usuario");
     QSettings conf(QDir::currentPath() + "/access.ini", QSettings::IniFormat);
     conf.sync();
     conf.beginGroup("Passwords");

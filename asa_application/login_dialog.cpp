@@ -25,6 +25,14 @@ login_dialog::login_dialog(QWidget *parent) :
                         );
 
     //Hide window bars and buttons
+    QFont label_title_font("Typo Square Bold Demo",17,1);
+
+    ui->label_2->setFont(label_title_font);
+    ui->label_2->setStyleSheet("Text-align:left;"
+                                   "border:none;"
+                                   "color:black;"
+                                   "background-color:transparent;");
+
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
     this->move(parent->pos());
     this->show();

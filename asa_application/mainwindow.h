@@ -161,6 +161,8 @@ private slots:
     void check_title_click();
 
     void window_closed();
+    void on_top_menu_1_clicked();
+
 private:
     QTimer dataTimer;
     uint title_click_count = 0;

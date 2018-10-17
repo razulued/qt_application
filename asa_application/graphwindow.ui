@@ -126,7 +126,7 @@ background-repeat: none;
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>270</y>
+     <y>249</y>
      <width>461</width>
      <height>31</height>
     </rect>
@@ -583,7 +583,7 @@ background-repeat: none;
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>111</y>
+       <y>88</y>
        <width>121</width>
        <height>31</height>
       </rect>
@@ -1627,7 +1627,7 @@ background-repeat: none;
    <property name="geometry">
     <rect>
      <x>56</x>
-     <y>271</y>
+     <y>250</y>
      <width>171</width>
      <height>21</height>
     </rect>
@@ -1686,7 +1686,7 @@ background-repeat: none;
    <property name="geometry">
     <rect>
      <x>300</x>
-     <y>260</y>
+     <y>250</y>
      <width>151</width>
      <height>21</height>
     </rect>
@@ -1705,9 +1705,9 @@ background-repeat: none;
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>290</y>
-     <width>501</width>
-     <height>311</height>
+     <y>270</y>
+     <width>601</width>
+     <height>331</height>
     </rect>
    </property>
    <property name="focusPolicy">
@@ -1748,23 +1748,14 @@ height:30px;
     <attribute name="title">
      <string>60 segundos</string>
     </attribute>
-    <widget class="QGraphicsView" name="graphicsView">
+    <widget class="QChartView" name="splineGraph_1">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>500</width>
-       <height>280</height>
+       <width>601</width>
+       <height>301</height>
       </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">#graphicsView
-{
-border-top: none;
-border-left : none;
-border-right : 1px solid gray;;
-border-bottom : 1px solid gray;
-}</string>
      </property>
     </widget>
    </widget>
@@ -1858,6 +1849,13 @@ background-repeat: none;
   <zorder>tabWidget_2</zorder>
   <zorder>top_menu_6</zorder>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header>QtCharts</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

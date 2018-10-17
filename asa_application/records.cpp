@@ -98,7 +98,6 @@ records::~records()
 
 void records::load_to_table(uint id)
 {
-    qDebug() << "****RECORDS**** " << id;
     QSqlQuery q;
 
     //SELECT body FROM tbl_index WHERE id = 937
@@ -141,7 +140,6 @@ void records::load_to_table(uint id)
                 }
 
             }
-            qDebug() << "****RECORDS DONE**** ";
         }
     }
 

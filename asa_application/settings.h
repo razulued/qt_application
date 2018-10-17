@@ -93,6 +93,8 @@ private:
 
     void synch_calibrations();
 
+    void read_languaje_and_units();
+    void save_language_and_units();
 signals:
     void release_lock();
 };

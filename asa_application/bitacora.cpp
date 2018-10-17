@@ -8,10 +8,10 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include "records.h"
-
+#include "token_auth.h"
 // rgb(0, 167, 250)
 
-bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
+bitacora::bitacora(rutinas_mantenimiento *rutina, uint tab_ini, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::bitacora)
 {
@@ -20,11 +20,24 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
     ui->setupUi(this);
     rutina_ptr = rutina;
 
+    QFont label_title_font("Typo Square Bold Demo",17,1);
+    QFont ok_font("Typo Square Bold Demo",12,1);
+    ui->key_OK->setFont(ok_font);
+
+    ui->label_title->setFont(label_title_font);
+    ui->label_title->setStyleSheet("Text-align:left;"
+                                   "border:none;"
+                                   "color:black;"
+                                   "background-color:transparent;");
+    ui->prof_label->setStyleSheet("color:white;");
+    ui->prof_label->setText(get_user_name());
     selected_id = 0;
     selected_record = 0;
     this->setStyleSheet("background-color:black;"
                         "color:white"
                         );
+
+    ui->tabWidget->setCurrentIndex(tab_ini);
 
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
@@ -82,8 +95,6 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, QWidget *parent) :
 //    QFont font3("SquareSlab711 Lt BT",14,1);
 //    QFont font4("SquareSlab711 Lt BT",10,1);
 //    QFont font5("SquareSlab711 Lt BT",8,1);
-
-    ui->label->setFont(font0);
 
 //    ui->tableWidget->setStyleSheet("color: white;"
 //                                   "background-color: black;"
@@ -273,8 +284,9 @@ void bitacora::on_top_menu_3_clicked()
 }
 void bitacora::on_top_menu_2_clicked()
 {
-    release_lock();
-    this->close();
+//    release_lock();
+//    this->close();
+    ui->tabWidget->setCurrentIndex(2);
 }
 
 void bitacora::init_tables()
@@ -303,7 +315,7 @@ void bitacora::init_full_table()
 {
     QStringList titulos;
 
-    titulos << "ID" << "Rutina" << "Periodo" << "Ultimo" << "Siguiente" << "Origen";
+    titulos << tr("ID") << tr("Rutina") << tr("Periodo") << tr("Ultimo") << tr("Siguiente") << tr("Subsistema");
     ui->tableWidget->setColumnCount(titulos.size());
     ui->tableWidget->setHorizontalHeaderLabels(titulos);
 
@@ -344,7 +356,7 @@ void bitacora::init_registros_table()
 {
     QStringList titulos;
 
-    titulos << "ID" << "Rutina" << "Fecha" << "ID" << "Pregunta" << "Valor";
+    titulos << tr("ID") << tr("Rutina") << tr("Fecha") << tr("ID") << tr("Pregunta") << tr("Valor");
     ui->tableWidget_3->setColumnCount(titulos.size());
     ui->tableWidget_3->setHorizontalHeaderLabels(titulos);
 
@@ -358,7 +370,7 @@ void bitacora::init_active_table()
     QDateTime *temp_date;
     QStringList titulos;
 
-    titulos << "ID" << "Rutina" << "Periodo" << "Ultimo" << "Actual" << "Origen";
+    titulos << tr("ID") << tr("Rutina") << tr("Periodo") << tr("Ultimo") << tr("Actual") << tr("Subsistema");
     ui->tableWidget_2->setColumnCount(titulos.size());
     ui->tableWidget_2->setHorizontalHeaderLabels(titulos);
 
@@ -382,20 +394,20 @@ void bitacora::init_active_table()
             switch(rutina_ptr->periodo(i))
             {
             case RUTINA_DIA:
-                temp_name = new QString("Diario");
+                temp_name = new QString(tr("Diario"));
                 break;
             case RUTINA_SEMANA:
-                temp_name = new QString("Semanal");
+                temp_name = new QString(tr("Semanal"));
                 break;
             case RUTINA_MES:
-                temp_name = new QString("Mensual");
+                temp_name = new QString(tr("Mensual"));
                 break;
             case RUTINA_ANIO:
-                temp_name = new QString("Anual");
+                temp_name = new QString(tr("Anual"));
                 break;
             case SIN_RUTINA:
             default:
-                temp_name = new QString("Sin Rutina");
+                temp_name = new QString(tr("Sin Rutina"));
                 break;
             }
             ui->tableWidget_2->setItem(fila, PERIODO, new QTableWidgetItem(*temp_name));
@@ -409,37 +421,37 @@ void bitacora::init_active_table()
             switch(rutina_ptr->origen(i))
             {
             case ORIGEN_GENERAL:
-                temp_name = new QString("General");
+                temp_name = new QString(tr("General"));
                 break;
             case ORIGEN_REGULADOR:
-                temp_name = new QString("Regulador");
+                temp_name = new QString(tr("Regulador"));
                 break;
             case ORIGEN_REACTOR:
-                temp_name = new QString("Reactor Biológico");
+                temp_name = new QString(tr("Reactor Biológico"));
                 break;
             case ORIGEN_CLARIFICADOR:
-                temp_name = new QString("Clarificador");
+                temp_name = new QString(tr("Clarificador"));
                 break;
             case ORIGEN_CLORADOR:
-                temp_name = new QString("Clorador");
+                temp_name = new QString(tr("Clorador"));
                 break;
             case ORIGEN_SECADO:
-                temp_name = new QString("Secado");
+                temp_name = new QString(tr("Secado"));
                 break;
             case ORIGEN_DIGESTOR:
-                temp_name = new QString("Digestor");
+                temp_name = new QString(tr("Digestor"));
                 break;
             case ORIGEN_AFLUENTE:
-                temp_name = new QString("Afluente");
+                temp_name = new QString(tr("Afluente"));
                 break;
             case ORIGEN_EFLUENTE:
-                temp_name = new QString("Efluente");
+                temp_name = new QString(tr("Efluente"));
                 break;
             case ORIGEN_FILTRO:
-                temp_name = new QString("Filtro");
+                temp_name = new QString(tr("Filtro"));
                 break;
             default:
-                temp_name = new QString("Otro");
+                temp_name = new QString(tr("Otro"));
                 break;
             }
             ui->tableWidget_2->setItem(fila, ORIGEN, new QTableWidgetItem(*temp_name));
@@ -520,20 +532,20 @@ void bitacora::add_row_rutina(uint row, uint rutina, QTableWidget *table)
     switch(rutina_ptr->periodo(rutina))
     {
     case RUTINA_DIA:
-        temp_name = new QString("Diario");
+        temp_name = new QString(tr("Diario"));
         break;
     case RUTINA_SEMANA:
-        temp_name = new QString("Semanal");
+        temp_name = new QString(tr("Semanal"));
         break;
     case RUTINA_MES:
-        temp_name = new QString("Mensual");
+        temp_name = new QString(tr("Mensual"));
         break;
     case RUTINA_ANIO:
-        temp_name = new QString("Anual");
+        temp_name = new QString(tr("Anual"));
         break;
     case SIN_RUTINA:
     default:
-        temp_name = new QString("Sin Rutina");
+        temp_name = new QString(tr("Sin Rutina"));
         break;
     }
     table->setItem(row, PERIODO, new QTableWidgetItem(*temp_name));
@@ -547,37 +559,37 @@ void bitacora::add_row_rutina(uint row, uint rutina, QTableWidget *table)
     switch(rutina_ptr->origen(rutina))
     {
     case ORIGEN_GENERAL:
-        temp_name = new QString("General");
+        temp_name = new QString(tr("General"));
         break;
     case ORIGEN_REGULADOR:
-        temp_name = new QString("Regulador");
+        temp_name = new QString(tr("Regulador"));
         break;
     case ORIGEN_REACTOR:
-        temp_name = new QString("Reactor Biológico");
+        temp_name = new QString(tr("Reactor Biológico"));
         break;
     case ORIGEN_CLARIFICADOR:
-        temp_name = new QString("Clarificador");
+        temp_name = new QString(tr("Clarificador"));
         break;
     case ORIGEN_CLORADOR:
-        temp_name = new QString("Clorador");
+        temp_name = new QString(tr("Clorador"));
         break;
     case ORIGEN_SECADO:
-        temp_name = new QString("Secado");
+        temp_name = new QString(tr("Secado"));
         break;
     case ORIGEN_DIGESTOR:
-        temp_name = new QString("Digestor");
+        temp_name = new QString(tr("Digestor"));
         break;
     case ORIGEN_AFLUENTE:
-        temp_name = new QString("Afluente");
+        temp_name = new QString(tr("Afluente"));
         break;
     case ORIGEN_EFLUENTE:
-        temp_name = new QString("Efluente");
+        temp_name = new QString(tr("Efluente"));
         break;
     case ORIGEN_FILTRO:
-        temp_name = new QString("Filtro");
+        temp_name = new QString(tr("Filtro"));
         break;
     default:
-        temp_name = new QString("Otro");
+        temp_name = new QString(tr("Otro"));
         break;
     }
     table->setItem(row, ORIGEN, new QTableWidgetItem(*temp_name));
@@ -806,7 +818,7 @@ void bitacora::on_key_OK_clicked()
 
     }
 
-    ui->label_2->setText("SELECIONAR UNA RUTINA DE LA LISTA");
+    ui->label_2->setText(tr("SELECIONAR UNA RUTINA DE LA LISTA"));
 }
 
 
@@ -948,4 +960,14 @@ void bitacora::on_graph_button_clicked()
         }
         chart_window = new record_chart(selected_record, filtro_fecha_inicio, filtro_fecha_fin, this);
     }
+}
+
+void bitacora::on_top_menu_1_clicked()
+{
+    ui->tabWidget->setCurrentIndex(0);
+}
+
+void bitacora::on_top_menu_5_clicked()
+{
+
 }

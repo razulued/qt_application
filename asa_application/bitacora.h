@@ -18,7 +18,7 @@ class bitacora : public QDialog
     Q_OBJECT
 
 public:
-    explicit bitacora(rutinas_mantenimiento *rutina, QWidget *parent = 0);
+    explicit bitacora(rutinas_mantenimiento *rutina, uint tab_ini, QWidget *parent = 0);
     ~bitacora();
 
     void update_table(void);
@@ -51,6 +51,10 @@ private slots:
     void on_filtro_record_clicked();
 
     void on_graph_button_clicked();
+
+    void on_top_menu_1_clicked();
+
+    void on_top_menu_5_clicked();
 
 private:
     Ui::bitacora *ui;

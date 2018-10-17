@@ -50,8 +50,8 @@ QString build_string(configuration_id *conf)
 
 void get_plant_config()
 {
-    qDebug() << "0x0402" << getParamValue(0x0402);
-    qDebug() << "0x2001" << getParamValue(0x2001);
+    qDebug() << "0x0402" << getParamValue_base_units(0x0402);
+    qDebug() << "0x2001" << getParamValue_base_units(0x2001);
 
 }
 
@@ -204,12 +204,12 @@ void synch_config_string()
         {
             //do not synch emergency stop
         }
-        else if("" != getParamValue(key.toInt(&ok, 16)))
+        else if("" != getParamValue_base_units(key.toInt(&ok, 16)))
         {
-            if(conf.value(key).toString() != getParamValue(key.toInt(&ok, 16)))
+            if(conf.value(key).toString() != getParamValue_base_units(key.toInt(&ok, 16)))
             {
-                qDebug() << "Config values are different " << conf.value(key).toString() << getParamValue(key.toInt(&ok, 16));
-                conf.setValue(key, getParamValue(key.toInt(&ok, 16)));
+                qDebug() << "Config values are different " << conf.value(key).toString() << getParamValue_base_units(key.toInt(&ok, 16));
+                conf.setValue(key, getParamValue_base_units(key.toInt(&ok, 16)));
             }
         }
     }
@@ -233,23 +233,23 @@ void synch_output_state()
     temp_config.names = conf.childKeys();
 
     //SYNCH MOTORS
-    conf.setValue("3602", getParamValue(0x3000));
-    conf.setValue("3603", getParamValue(0x3010));
+    conf.setValue("3602", getParamValue_base_units(0x3000));
+    conf.setValue("3603", getParamValue_base_units(0x3010));
 
-    conf.setValue("4601", getParamValue(0x4000));
-    conf.setValue("4602", getParamValue(0x4010));
-    conf.setValue("4603", getParamValue(0x4020));
-    conf.setValue("4604", getParamValue(0x4030));
+    conf.setValue("4601", getParamValue_base_units(0x4000));
+    conf.setValue("4602", getParamValue_base_units(0x4010));
+    conf.setValue("4603", getParamValue_base_units(0x4020));
+    conf.setValue("4604", getParamValue_base_units(0x4030));
 
-    conf.setValue("9601", getParamValue(0x9000));
-    conf.setValue("9602", getParamValue(0x9010));
-    conf.setValue("9603", getParamValue(0x9020));
+    conf.setValue("9601", getParamValue_base_units(0x9000));
+    conf.setValue("9602", getParamValue_base_units(0x9010));
+    conf.setValue("9603", getParamValue_base_units(0x9020));
 
-    conf.setValue("9701", getParamValue(0x9080));
+    conf.setValue("9701", getParamValue_base_units(0x9080));
 
-    conf.setValue("9640", getParamValue(0x9100));
-    conf.setValue("9641", getParamValue(0x9101));
-    conf.setValue("9642", getParamValue(0x9102));
+    conf.setValue("9640", getParamValue_base_units(0x9100));
+    conf.setValue("9641", getParamValue_base_units(0x9101));
+    conf.setValue("9642", getParamValue_base_units(0x9102));
 
 
     //Update String
@@ -309,23 +309,23 @@ QString get_id_state(QString str_id)
 uint motor_state(QString motor_control)
 {
 //    qDebug() << "motor_control " << motor_control;
-    if(motor_control =="3602"){    return getParamValue(0x3000).toInt();}
-    else if(motor_control =="3603"){return getParamValue(0x3010).toInt();}
+    if(motor_control =="3602"){    return getParamValue_base_units(0x3000).toInt();}
+    else if(motor_control =="3603"){return getParamValue_base_units(0x3010).toInt();}
 
-    else if(motor_control =="4601"){return getParamValue(0x4000).toInt();}
-    else if(motor_control =="4602"){return getParamValue(0x4010).toInt();}
-    else if(motor_control =="4603"){return getParamValue(0x4020).toInt();}
-    else if(motor_control =="4604"){return getParamValue(0x4030).toInt();}
+    else if(motor_control =="4601"){return getParamValue_base_units(0x4000).toInt();}
+    else if(motor_control =="4602"){return getParamValue_base_units(0x4010).toInt();}
+    else if(motor_control =="4603"){return getParamValue_base_units(0x4020).toInt();}
+    else if(motor_control =="4604"){return getParamValue_base_units(0x4030).toInt();}
 
-    else if(motor_control =="9601"){return getParamValue(0x9000).toInt();}
-    else if(motor_control =="9602"){return getParamValue(0x9010).toInt();}
-    else if(motor_control =="9603"){return getParamValue(0x9020).toInt();}
+    else if(motor_control =="9601"){return getParamValue_base_units(0x9000).toInt();}
+    else if(motor_control =="9602"){return getParamValue_base_units(0x9010).toInt();}
+    else if(motor_control =="9603"){return getParamValue_base_units(0x9020).toInt();}
 
-    else if(motor_control =="9701"){return getParamValue(0x9080).toInt();}
+    else if(motor_control =="9701"){return getParamValue_base_units(0x9080).toInt();}
 
-    else if(motor_control =="9640"){return getParamValue(0x9100).toInt();}
-    else if(motor_control =="9641"){return getParamValue(0x9101).toInt();}
-    else if(motor_control =="9642"){return getParamValue(0x9102).toInt();}
+    else if(motor_control =="9640"){return getParamValue_base_units(0x9100).toInt();}
+    else if(motor_control =="9641"){return getParamValue_base_units(0x9101).toInt();}
+    else if(motor_control =="9642"){return getParamValue_base_units(0x9102).toInt();}
     return 0;
 }
 

@@ -315,7 +315,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->active_param_label->setFont(active_parameter_font);
 
     ui->active_param_label->setStyleSheet("color:black");
-    ui->active_param_label->setText("Parametros Eléctricos");
+    ui->active_param_label->setText(tr("Parametros Eléctricos"));
 
     QFont hora_font("Typo Square Ligth Demo",18,1);
     QFont dia_font("Typo Square Ligth Demo",14,1);
@@ -414,21 +414,21 @@ void MainWindow::handleParametrosElectricosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
     SelectParemeter(PARAM_ELECTRIC);
-    ui->active_param_label->setText("Parametros Eléctricos");
+    ui->active_param_label->setText(tr("Parametros Eléctricos"));
 }
 
 void MainWindow::handleParametrosFisicosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
     SelectParemeter(PARAM_PHYSHIC);
-    ui->active_param_label->setText("Parametros Físicos");
+    ui->active_param_label->setText(tr("Parametros Físicos"));
 }
 
 void MainWindow::handleParametrosQuimicosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
     SelectParemeter(PARAM_CHEMIC);
-    ui->active_param_label->setText("Parametros Químicos");
+    ui->active_param_label->setText(tr("Parametros Químicos"));
 }
 
 void MainWindow::window_closed()
@@ -439,11 +439,8 @@ void MainWindow::window_closed()
 
 void MainWindow::handleDetailedView_1()
 {
-    qDebug() << "handleDetailedView_1";
     if(mutex_detailed.tryLock(0))
     {
-        qDebug() << "lock OK";
-
         if (detail_window != NULL) {
             qDebug() << "delete";
             delete detail_window;
@@ -451,10 +448,6 @@ void MainWindow::handleDetailedView_1()
         detail_window = new detailedwindow(ELEMENT_REGULADOR, rutinas, this);
         connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
         detail_window->show();
-    }
-    else
-    {
-        qDebug() << "lock NOK";
     }
 }
 void MainWindow::handleDetailedView_2()
@@ -784,7 +777,7 @@ void MainWindow::on_top_menu_2_clicked()
         {
             delete bitacorawindow;
         }
-        bitacorawindow = new bitacora(rutinas, this);
+        bitacorawindow = new bitacora(rutinas, 2, this);
         connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
         bitacorawindow->show();
     }
@@ -1239,65 +1232,65 @@ QString MainWindow::build_date_string(QDateTime time)
     switch(time.date().dayOfWeek())
     {
     case 1:
-        dia_semana = "Lunes";
+        dia_semana = tr("Lunes");
         break;
     case 2:
-        dia_semana = "Martes";
+        dia_semana = tr("Martes");
         break;
     case 3:
-        dia_semana = "Miércoles";
+        dia_semana = tr("Miércoles");
         break;
     case 4:
-        dia_semana = "Jueves";
+        dia_semana = tr("Jueves");
         break;
     case 5:
-        dia_semana = "Viernes";
+        dia_semana = tr("Viernes");
         break;
     case 6:
-        dia_semana = "Sábado";
+        dia_semana = tr("Sábado");
         break;
     case 7:
-        dia_semana = "Domingo";
+        dia_semana = tr("Domingo");
         break;
     }
 
     switch(time.date().month())
     {
     case 1:
-        mes = "Enero";
+        mes = tr("Enero");
         break;
     case 2:
-        mes = "Febrero";
+        mes = tr("Febrero");
         break;
     case 3:
-        mes = "Marzo";
+        mes = tr("Marzo");
         break;
     case 4:
-        mes = "Abril";
+        mes = tr("Abril");
         break;
     case 5:
-        mes = "Mayo";
+        mes = tr("Mayo");
         break;
     case 6:
-        mes = "Junio";
+        mes = tr("Junio");
         break;
     case 7:
-        mes = "Julio";
+        mes = tr("Julio");
         break;
     case 8:
-        mes = "Agosto";
+        mes = tr("Agosto");
         break;
     case 9:
-        mes = "Septiembre";
+        mes = tr("Septiembre");
         break;
     case 10:
-        mes = "Octubre";
+        mes = tr("Octubre");
         break;
     case 11:
-        mes = "Noviembre";
+        mes = tr("Noviembre");
         break;
     case 12:
-        mes = "Diciembre";
+        mes = tr("Diciembre");
         break;
     }
 //    QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
@@ -1384,5 +1377,19 @@ void MainWindow::check_title_click()
     else
     {
         title_click_count = 0;
+    }
+}
+
+void MainWindow::on_top_menu_1_clicked()
+{
+    if(mutex_detailed.tryLock(0))
+    {
+        if(bitacorawindow !=NULL)
+        {
+            delete bitacorawindow;
+        }
+        bitacorawindow = new bitacora(rutinas, 0, this);
+        connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        bitacorawindow->show();
     }
 }

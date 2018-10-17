@@ -43,6 +43,8 @@ private slots:
     void on_modulo_2_clicked();
 
     void detailed_window_closed();
+    void on_top_menu_1_clicked();
+
 private:
     Ui::filtrowindow *ui;
     void HideButtons(bool hide);

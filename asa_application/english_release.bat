@@ -1,0 +1,2 @@
+lrelease english.ts
+pause

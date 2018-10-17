@@ -31,9 +31,9 @@ earm_update::~earm_update()
 
 void earm_update::update_data()
 {
-      ui->label_2->setText("Calidad de señal: " + QString::number(getParamValue(0x0100).toInt())+"%");
-      ui->label_3->setText("Tiempo de conexión: " + QString::number(getParamValue(0x0200).toInt()/10)+" segundos");
-      ui->label_5->setText("Numero de serie: " + getParamValue(0x0002));
+      ui->label_2->setText(tr("Calidad de señal: ") + QString::number(getParamValue(0x0100).toInt())+tr("%"));
+      ui->label_3->setText(tr("Tiempo de conexión: ") + QString::number(getParamValue(0x0200).toInt()/10)+tr(" segundos"));
+      ui->label_5->setText(tr("Numero de serie: ") + getParamValue(0x0002));
 
       uint value = 0;
       if(0 != getParamValue(0x0601).toInt())
@@ -44,7 +44,7 @@ void earm_update::update_data()
 
       if(1 == getParamValue(0x0B01).toInt())
       {
-          ui->label_4->setText("Error en transferencia");
+          ui->label_4->setText(tr("Error en transferencia"));
       }
 
 }

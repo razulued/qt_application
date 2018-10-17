@@ -55,7 +55,8 @@ SOURCES += main.cpp\
     records.cpp \
     calendario_filtro.cpp \
     record_chart.cpp \
-    sql_cmd_manager.cpp
+    sql_cmd_manager.cpp \
+    chart.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -98,7 +99,8 @@ HEADERS  += mainwindow.h \
     records.h \
     calendario_filtro.h \
     record_chart.h \
-    sql_cmd_manager.h
+    sql_cmd_manager.h \
+    chart.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -122,7 +124,8 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     fonts.qrc \
     screen800x600.qrc \
-    images.qrc
+    images.qrc \
+    languages.qrc
 
 INSTALLS = target
 

@@ -118,15 +118,15 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
     0x1022,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1023,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 
-    0x103C,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-    0x103D,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
+    0x103C,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+    0x103D,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
     0x103E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x103F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1040,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1041,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 
-    0x1042,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-    0x1043,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
+    0x1042,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+    0x1043,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
     0x1044,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1045,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1046,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
@@ -217,15 +217,15 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
     0x10F4,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x10F5,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 
-    0x10FC,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-    0x10FD,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
+    0x10FC,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+    0x10FD,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
     0x10FE,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x10FF,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1101,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 
-    0x1102,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-    0x1103,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
+    0x1102,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+    0x1103,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
     0x1104,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1105,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1106,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
@@ -360,11 +360,11 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /* Alert Indication    */ 0x3100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 /*----- 3:Plant Carcamo	2:Status:Fisicos    ------*/
 /* Sens 1 State        */ 0x3200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* s1 value            */ 0x3201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,   " m",
+/* s1 value            */ 0x3201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,   "longitud",
 /* Sens 2 State        */ 0x3202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_integer_multiply_by, 0,    "",
-/* s2 value            */ 0x3203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    " LPM",
+/* s2 value            */ 0x3203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
 /* Sens 3 State        */ 0x3204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* s3 value            */ 0x3205,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "  PSI",
+/* s3 value            */ 0x3205,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "presion",
 /* Sens 4 State        */ 0x3206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 /* s4 value            */ 0x3207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 /*----- 3:Plant Carcamo	3:Status:Quimicos   ------*/
@@ -377,10 +377,10 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /* Sens 4 State        */ 0x3306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
 /* s4 value            */ 0x3307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
 /*----- 3:Plant Carcamo	4:Parametric:OPlevels ----*/
-/* Alert level         */ 0x3400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-/* Off Level           */ 0x3401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-/* Level ON1           */ 0x3402,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-/* Level ON2           */ 0x3403,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
+/* Alert level         */ 0x3400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+/* Off Level           */ 0x3401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+/* Level ON1           */ 0x3402,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+/* Level ON2           */ 0x3403,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
 /*----- 3:Plant Carcamo	5:Parametric:OPtimings ---*/
 /* Tipo alternado      */ 0x3500,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* Time Alt Max        */ 0x3501,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
@@ -462,11 +462,11 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
     //none
 /*----- 4:Plant Reactores 2:Status:Fisicos    ----*/
 /* Sens 1 State        */ 0x4200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x4201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   " m",
+/* s1 value            */ 0x4201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
 /* Sens 2 State        */ 0x4202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x4203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    " LPM",
+/* s2 value            */ 0x4203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
 /* Sens 3 State        */ 0x4204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x4205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion_2,   conv_integer_presion_inv_2, 0,    "  PSI",
+/* s3 value            */ 0x4205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion_2,   conv_integer_presion_inv_2, 0,    "presion",
 /* Sens 4 State        */ 0x4206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* s4 value            */ 0x4207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /*----- 4:Plant Reactores 3:Status:Quimicos   ----*/
@@ -500,11 +500,11 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
     //none
 /*----- 5:Plant Clarificador 2:Status:Fisicos ----*/
 /* Sens 1 State        */ 0x5200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x5201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   " m",
+/* s1 value            */ 0x5201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
 /* Sens 2 State        */ 0x5202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x5203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    " LPM",
+/* s2 value            */ 0x5203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
 /* Sens 3 State        */ 0x5204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x5205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "  PSI",
+/* s3 value            */ 0x5205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
 /* Sens 4 State        */ 0x5206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* s4 value            */ 0x5207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /*----- 5:Plant Clarificador 3:Status:Quimicos   ----*/
@@ -517,8 +517,8 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /* Sens 4 State        */ 0x5306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
 /* s4 value            */ 0x5307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
 /*----- 5:Plant Clarificador 4:Parametric:OPlevels -*/
-/* Pressure OPT        */ 0x5400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "  PSI",
-/* Pressure MAX        */ 0x5401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "  PSI",
+/* Pressure OPT        */ 0x5400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
+/* Pressure MAX        */ 0x5401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
 /*----- 5:Plant Clarificador 5:Parametric:OPtimings -*/
     //none
 /*----- 5:Plant Clarificador 6:CONTROL -*/
@@ -528,11 +528,11 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /*----- 6:Plant Clorador 1:Status:MISC      -------*/
 /*----- 6:Plant Clorador 2:Status:Phys      -------*/
 /* Sens 1 State        */ 0x6200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x6201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   " m",
+/* s1 value            */ 0x6201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
 /* Sens 2 State        */ 0x6202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x6203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    " LPM",
+/* s2 value            */ 0x6203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
 /* Sens 3 State        */ 0x6204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x6205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "  PSI",
+/* s3 value            */ 0x6205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
 /* Sens 4 State        */ 0x6206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* s4 value            */ 0x6207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /*----- 6:Plant Clorador 3:Status:Quimicos   ----*/
@@ -548,11 +548,11 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /*----- 7:Plant Digestor 1:Status:MISC      -------*/
 /*----- 7:Plant Digestor 2:Status:Phys      -------*/
 /* Sens 1 State        */ 0x7200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x7201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   " m",
+/* s1 value            */ 0x7201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
 /* Sens 2 State        */ 0x7202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x7203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    " LPM",
+/* s2 value            */ 0x7203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
 /* Sens 3 State        */ 0x7204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x7205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "  PSI",
+/* s3 value            */ 0x7205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
 /* Sens 4 State        */ 0x7206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* s4 value            */ 0x7207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /*----- 7:Plant Digestor 3:Status:Quimicos   ----*/
@@ -568,11 +568,11 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /*----- 8:Plant Secado 1:Status:MISC      -------*/
 /*----- 8:Plant Secado 2:Status:Phys      -------*/
 /* Sens 1 State        */ 0x8200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x8201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   " m",
+/* s1 value            */ 0x8201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
 /* Sens 2 State        */ 0x8202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x8203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    " LPM",
+/* s2 value            */ 0x8203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
 /* Sens 3 State        */ 0x8204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x8205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "  PSI",
+/* s3 value            */ 0x8205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
 /* Sens 4 State        */ 0x8206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* s4 value            */ 0x8207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /*----- 8:Plant Secado 3:Status:Quimicos   ----*/
@@ -677,12 +677,12 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /* Alert Indication    */ 0x9180,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /*----- 9:Plant Filtro 2:Status:Phys      -------*/
 /* Sens 1 State        */ 0x9200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-///* s1 value            */ 0x9201,   ASA_TYPE_INTEGER,   NULL,   conv_nivel_1,             conv_nivel_1_inv, 0,   " m",
-/* s1 value            */ 0x9201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
+///* s1 value            */ 0x9201,   ASA_TYPE_INTEGER,   NULL,   conv_nivel_1,             conv_nivel_1_inv, 0,   "longitud",
+/* s1 value            */ 0x9201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
 /* Sens 2 State        */ 0x9202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x9203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal_2,    conv_integer_caudal_inv_2,  0,    " LPM",
+/* s2 value            */ 0x9203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal_2,    conv_integer_caudal_inv_2,  0,    "caudal",
 /* Sens 3 State        */ 0x9204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x9205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "  PSI",
+/* s3 value            */ 0x9205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
 /* Sens 4 State        */ 0x9206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* s4 value            */ 0x9207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /*----- 8:Plant Secado 3:Status:Quimicos   ----*/
@@ -704,9 +704,9 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /* s4 value            */ 0x9317,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
 
 /* CALIBRACIONES*/
-0x9400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-0x9401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
-0x9402,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    " m",
+0x9400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+0x9401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
+0x9402,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
 0x9403,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,         conv_integer_multiply_by,   10,     " NTU",
 0x9404,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,         conv_integer_multiply_by,   10,     " NTU",
 
@@ -734,6 +734,16 @@ QHash<uint, uint> hash_indices;
 QHash<uint, QVariant> hash_values;
 QMutex data_mutex;
 
+QString units_longitud;
+QString units_presion;
+QString units_caudal;
+QString units_tiempo;
+
+float factor_longitud;
+float factor_presion;
+float factor_caudal;
+float factor_tiempo;
+
 void ASA_protocol_init()
 {
     uint i = 0;
@@ -743,6 +753,98 @@ void ASA_protocol_init()
     {
         hash_indices.insert(supported_ASA_IDs[i].id, i);
     }
+
+    QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
+    conf.sync();
+    conf.beginGroup("Units");
+    switch(conf.value("longitud").toInt())
+    {
+        case 1:
+            units_longitud = "cm";
+            factor_longitud = 100;
+        break;
+        case 2:
+            units_longitud = "ft";
+            factor_longitud = 3.28;
+        break;
+        default:
+        case 0:
+            units_longitud = "m";
+            factor_longitud = 1;
+        break;
+    }
+
+    switch(conf.value("presion").toInt())
+    {
+        case 1:
+            units_presion = "kg/cm²";
+            factor_presion = 0.0703;
+        break;
+        case 2:
+            units_presion = "Bar";
+            factor_presion = 0.0689;
+        break;
+        case 3:
+            units_presion ="m.c.a";
+            factor_presion = 0.703;
+        break;
+        default:
+        case 0:
+            units_presion = "PSI";
+            factor_presion = 1;
+        break;
+    }
+
+    switch(conf.value("caudal").toInt())
+    {
+        case 1:
+            units_caudal = "l/m";
+            factor_caudal = 1;
+        break;
+        case 2:
+            units_caudal = "l/h";
+            factor_caudal = 60;
+        break;
+        case 3:
+            units_caudal = "gal/s";
+            factor_caudal = 0.0044;
+        break;
+        case 4:
+            units_caudal = "gal/m";
+            factor_caudal = 0.264;
+        break;
+        case 5:
+            units_caudal = " gal/h";
+            factor_caudal = 15.84;
+        break;
+        case 6:
+            units_caudal = "m³/h";
+            factor_caudal = 0.004616;
+        break;
+        default:
+        case 0:
+            units_caudal = "l/s";
+            factor_caudal = 0.0167;
+        break;
+    }
+
+    switch(conf.value("tiempo").toInt())
+    {
+        case 1:
+            units_tiempo = "min";
+            factor_tiempo = 60;
+        break;
+        case 2:
+            units_tiempo = "h";
+            factor_tiempo = 3600;
+        break;
+        default:
+        case 0:
+            units_tiempo = "s";
+            factor_tiempo = 1;
+        break;
+    }
+    conf.endGroup();
 
     load_active_parameters();
 }
@@ -785,13 +887,33 @@ QString get_value_by_ID(uint id)
     //Index in table (for conversions)
     index = hash_indices.value(id);
     str = supported_ASA_IDs[index].conversion_hanlder(hash_values[id].value<QString>(), supported_ASA_IDs[index].param1);
+
+    //Apply scale by units
+    float number = str.toFloat();
+    str = units_scale(id, number);
+
+    data_mutex.unlock();
+
+    return str;
+}
+
+QString get_value_by_ID_base_units(uint id)
+{
+    QString str;
+    uint index = 0;
+    //Debug
+    data_mutex.lock();
+
+    //Index in table (for conversions)
+    index = hash_indices.value(id);
+    str = supported_ASA_IDs[index].conversion_hanlder(hash_values[id].value<QString>(), supported_ASA_IDs[index].param1);
     //qDebug() << "Id: " << QString::number(id, 16) << ": " << hash_values[id].value<QString>() << "at index " << hash_indices.value(id);
     data_mutex.unlock();
 
     return str;
 }
 
-QString inverse_value_by_ID(uint id, float value)
+QString inverse_value_by_ID_base_units(uint id, float value)
 {
     QString str;
     uint index = 0;
@@ -817,8 +939,77 @@ QString get_value_units(uint id)
 
     //Index in table (for conversions)
     index = hash_indices.value(id);
-    str = supported_ASA_IDs[index].units;
+    if(supported_ASA_IDs[index].units == "longitud")
+    {
+        str = " " +units_longitud;
+    }
+    else if(supported_ASA_IDs[index].units == "presion")
+    {
+        str = " " +units_presion;
+    }
+    else if(supported_ASA_IDs[index].units == "caudal")
+    {
+        str = " " +units_caudal;
+    }
+    else if(supported_ASA_IDs[index].units == "tiempo")
+    {
+        str = " " +units_tiempo;
+    }
+    else
+    {
+        str = supported_ASA_IDs[index].units;
+    }
+
     data_mutex.unlock();
 
     return str;
+}
+
+QString units_scale(uint id, float value)
+{
+    float val;
+    uint index = 0;
+    //Index in table (for conversions)
+    index = hash_indices.value(id);
+    if(supported_ASA_IDs[index].units == "longitud")
+    {
+        val = value * factor_longitud;
+    }
+    else if(supported_ASA_IDs[index].units == "presion")
+    {
+        val = value * factor_presion;
+    }
+    else if(supported_ASA_IDs[index].units == "caudal")
+    {
+        val = value * factor_caudal;
+    }
+    else if(supported_ASA_IDs[index].units == "tiempo")
+    {
+        val = value * factor_tiempo;
+    }
+    else
+    {
+        val = value;
+    }
+    return QString::number(val,'f',2);
+}
+
+QString get_units_longitud(void)
+{
+    return units_longitud;
+}
+
+QString get_units_presion(void)
+{
+    return units_presion;
+}
+
+QString get_units_caudal(void)
+{
+    return units_caudal;
+}
+
+QString get_units_tiempo(void)
+{
+    return units_tiempo;
 }

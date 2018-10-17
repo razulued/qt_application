@@ -317,6 +317,9 @@ void settings::on_buttonBox_accepted()
 
     // Save 4600
     write_parameter("mode4600.bin", mode_4600);
+
+    //Save language and units settings
+    save_language_and_units();
 }
 
 
@@ -415,159 +418,195 @@ void settings::keyboard_handler(QString key)
 
 void settings::synch_calibrations()
 {
-    ui->control_3400->setValue(getParamValue(0x3400).toDouble());
-    ui->control_3401->setValue(getParamValue(0x3401).toDouble());
-    ui->control_3402->setValue(getParamValue(0x3402).toDouble());
-    ui->control_3403->setValue(getParamValue(0x3403).toDouble());
-    ui->control_3501->setValue(getParamValue(0x3501).toDouble());
-    ui->control_3502->setValue(getParamValue(0x3502).toDouble());
+    ui->control_3400->setValue(getParamValue_base_units(0x3400).toDouble());
+    ui->control_3401->setValue(getParamValue_base_units(0x3401).toDouble());
+    ui->control_3402->setValue(getParamValue_base_units(0x3402).toDouble());
+    ui->control_3403->setValue(getParamValue_base_units(0x3403).toDouble());
+    ui->control_3501->setValue(getParamValue_base_units(0x3501).toDouble());
+    ui->control_3502->setValue(getParamValue_base_units(0x3502).toDouble());
 
-    ui->control_4400->setValue(getParamValue(0x4400).toDouble());
-    ui->control_4401->setValue(getParamValue(0x4401).toDouble());
-    ui->control_4501->setValue(getParamValue(0x4501).toDouble());
-    ui->control_4502->setValue(getParamValue(0x4502).toDouble());
-    ui->control_4540->setValue(getParamValue(0x4540).toDouble());
-    ui->control_4541->setValue(getParamValue(0x4541).toDouble());
+    ui->control_4400->setValue(getParamValue_base_units(0x4400).toDouble());
+    ui->control_4401->setValue(getParamValue_base_units(0x4401).toDouble());
+    ui->control_4501->setValue(getParamValue_base_units(0x4501).toDouble());
+    ui->control_4502->setValue(getParamValue_base_units(0x4502).toDouble());
+    ui->control_4540->setValue(getParamValue_base_units(0x4540).toDouble());
+    ui->control_4541->setValue(getParamValue_base_units(0x4541).toDouble());
 
-//    ui->control_5400->setValue(getParamValue(0x5400).toDouble());
-//    ui->control_5401->setValue(getParamValue(0x5401).toDouble());
+//    ui->control_5400->setValue(getParamValue_base_units(0x5400).toDouble());
+//    ui->control_5401->setValue(getParamValue_base_units(0x5401).toDouble());
 
-    ui->control_9400->setValue(getParamValue(0x9400).toDouble());
-    ui->control_9401->setValue(getParamValue(0x9401).toDouble());
-    ui->control_9402->setValue(getParamValue(0x9402).toDouble());
-    ui->control_9403->setValue(getParamValue(0x9403).toDouble());
-    ui->control_9404->setValue(getParamValue(0x9404).toDouble());
-    ui->control_9500->setValue(getParamValue(0x9500).toDouble());
-    ui->control_9501->setValue(getParamValue(0x9501).toDouble());
-    ui->control_9502->setValue(getParamValue(0x9502).toDouble());
-    ui->control_9503->setValue(getParamValue(0x9503).toDouble());
-    ui->control_9504->setValue(getParamValue(0x9504).toDouble());
+    ui->control_9400->setValue(getParamValue_base_units(0x9400).toDouble());
+    ui->control_9401->setValue(getParamValue_base_units(0x9401).toDouble());
+    ui->control_9402->setValue(getParamValue_base_units(0x9402).toDouble());
+    ui->control_9403->setValue(getParamValue_base_units(0x9403).toDouble());
+    ui->control_9404->setValue(getParamValue_base_units(0x9404).toDouble());
+    ui->control_9500->setValue(getParamValue_base_units(0x9500).toDouble());
+    ui->control_9501->setValue(getParamValue_base_units(0x9501).toDouble());
+    ui->control_9502->setValue(getParamValue_base_units(0x9502).toDouble());
+    ui->control_9503->setValue(getParamValue_base_units(0x9503).toDouble());
+    ui->control_9504->setValue(getParamValue_base_units(0x9504).toDouble());
 
     // ALARMAS
-    ui->control_1006->setValue(getParamValue(0x1006).toDouble());
-    ui->control_1007->setValue(getParamValue(0x1007).toDouble());
-    ui->control_1008->setValue(getParamValue(0x1008).toDouble());
-    ui->control_1009->setValue(getParamValue(0x1009).toDouble());
-    ui->control_100A->setValue(getParamValue(0x100A).toDouble());
-    ui->control_100B->setValue(getParamValue(0x100B).toDouble());
+    ui->control_1006->setValue(getParamValue_base_units(0x1006).toDouble());
+    ui->control_1007->setValue(getParamValue_base_units(0x1007).toDouble());
+    ui->control_1008->setValue(getParamValue_base_units(0x1008).toDouble());
+    ui->control_1009->setValue(getParamValue_base_units(0x1009).toDouble());
+    ui->control_100A->setValue(getParamValue_base_units(0x100A).toDouble());
+    ui->control_100B->setValue(getParamValue_base_units(0x100B).toDouble());
 
-    ui->control_101E->setValue(getParamValue(0x101E).toDouble());
-    ui->control_101F->setValue(getParamValue(0x101F).toDouble());
-    ui->control_1020->setValue(getParamValue(0x1020).toDouble());
-    ui->control_1021->setValue(getParamValue(0x1021).toDouble());
-    ui->control_1022->setValue(getParamValue(0x1022).toDouble());
-    ui->control_1023->setValue(getParamValue(0x1023).toDouble());
+    ui->control_101E->setValue(getParamValue_base_units(0x101E).toDouble());
+    ui->control_101F->setValue(getParamValue_base_units(0x101F).toDouble());
+    ui->control_1020->setValue(getParamValue_base_units(0x1020).toDouble());
+    ui->control_1021->setValue(getParamValue_base_units(0x1021).toDouble());
+    ui->control_1022->setValue(getParamValue_base_units(0x1022).toDouble());
+    ui->control_1023->setValue(getParamValue_base_units(0x1023).toDouble());
 
-    ui->control_103C->setValue(getParamValue(0x103C).toDouble());
-    ui->control_103D->setValue(getParamValue(0x103D).toDouble());
-    ui->control_103E->setValue(getParamValue(0x103E).toDouble());
-    ui->control_103F->setValue(getParamValue(0x103F).toDouble());
-    ui->control_1040->setValue(getParamValue(0x1040).toDouble());
-    ui->control_1041->setValue(getParamValue(0x1041).toDouble());
+    ui->control_103C->setValue(getParamValue_base_units(0x103C).toDouble());
+    ui->control_103D->setValue(getParamValue_base_units(0x103D).toDouble());
+    ui->control_103E->setValue(getParamValue_base_units(0x103E).toDouble());
+    ui->control_103F->setValue(getParamValue_base_units(0x103F).toDouble());
+    ui->control_1040->setValue(getParamValue_base_units(0x1040).toDouble());
+    ui->control_1041->setValue(getParamValue_base_units(0x1041).toDouble());
 
-    ui->control_1042->setValue(getParamValue(0x1042).toDouble());
-    ui->control_1043->setValue(getParamValue(0x1043).toDouble());
-    ui->control_1044->setValue(getParamValue(0x1044).toDouble());
-    ui->control_1045->setValue(getParamValue(0x1045).toDouble());
-    ui->control_1046->setValue(getParamValue(0x1046).toDouble());
-    ui->control_1047->setValue(getParamValue(0x1047).toDouble());
+    ui->control_1042->setValue(getParamValue_base_units(0x1042).toDouble());
+    ui->control_1043->setValue(getParamValue_base_units(0x1043).toDouble());
+    ui->control_1044->setValue(getParamValue_base_units(0x1044).toDouble());
+    ui->control_1045->setValue(getParamValue_base_units(0x1045).toDouble());
+    ui->control_1046->setValue(getParamValue_base_units(0x1046).toDouble());
+    ui->control_1047->setValue(getParamValue_base_units(0x1047).toDouble());
 
-    ui->control_1048->setValue(getParamValue(0x1048).toDouble());
-    ui->control_1049->setValue(getParamValue(0x1049).toDouble());
-    ui->control_104A->setValue(getParamValue(0x104A).toDouble());
-    ui->control_104B->setValue(getParamValue(0x104B).toDouble());
-    ui->control_104C->setValue(getParamValue(0x104C).toDouble());
-    ui->control_104D->setValue(getParamValue(0x104D).toDouble());
+    ui->control_1048->setValue(getParamValue_base_units(0x1048).toDouble());
+    ui->control_1049->setValue(getParamValue_base_units(0x1049).toDouble());
+    ui->control_104A->setValue(getParamValue_base_units(0x104A).toDouble());
+    ui->control_104B->setValue(getParamValue_base_units(0x104B).toDouble());
+    ui->control_104C->setValue(getParamValue_base_units(0x104C).toDouble());
+    ui->control_104D->setValue(getParamValue_base_units(0x104D).toDouble());
 
-    ui->control_1060->setValue(getParamValue(0x1060).toDouble());
-    ui->control_1061->setValue(getParamValue(0x1061).toDouble());
-    ui->control_1062->setValue(getParamValue(0x1062).toDouble());
-    ui->control_1063->setValue(getParamValue(0x1063).toDouble());
-    ui->control_1064->setValue(getParamValue(0x1064).toDouble());
-    ui->control_1065->setValue(getParamValue(0x1065).toDouble());
+    ui->control_1060->setValue(getParamValue_base_units(0x1060).toDouble());
+    ui->control_1061->setValue(getParamValue_base_units(0x1061).toDouble());
+    ui->control_1062->setValue(getParamValue_base_units(0x1062).toDouble());
+    ui->control_1063->setValue(getParamValue_base_units(0x1063).toDouble());
+    ui->control_1064->setValue(getParamValue_base_units(0x1064).toDouble());
+    ui->control_1065->setValue(getParamValue_base_units(0x1065).toDouble());
 
-    ui->control_1090->setValue(getParamValue(0x1090).toDouble());
-    ui->control_1091->setValue(getParamValue(0x1091).toDouble());
-    ui->control_1092->setValue(getParamValue(0x1092).toDouble());
-    ui->control_1093->setValue(getParamValue(0x1093).toDouble());
-    ui->control_1094->setValue(getParamValue(0x1094).toDouble());
-    ui->control_1095->setValue(getParamValue(0x1095).toDouble());
+    ui->control_1090->setValue(getParamValue_base_units(0x1090).toDouble());
+    ui->control_1091->setValue(getParamValue_base_units(0x1091).toDouble());
+    ui->control_1092->setValue(getParamValue_base_units(0x1092).toDouble());
+    ui->control_1093->setValue(getParamValue_base_units(0x1093).toDouble());
+    ui->control_1094->setValue(getParamValue_base_units(0x1094).toDouble());
+    ui->control_1095->setValue(getParamValue_base_units(0x1095).toDouble());
 
-    ui->control_109C->setValue(getParamValue(0x109C).toDouble());
-    ui->control_109D->setValue(getParamValue(0x109D).toDouble());
-    ui->control_109E->setValue(getParamValue(0x109E).toDouble());
-    ui->control_109F->setValue(getParamValue(0x109F).toDouble());
-    ui->control_10A0->setValue(getParamValue(0x10A0).toDouble());
-    ui->control_10A1->setValue(getParamValue(0x10A1).toDouble());
+    ui->control_109C->setValue(getParamValue_base_units(0x109C).toDouble());
+    ui->control_109D->setValue(getParamValue_base_units(0x109D).toDouble());
+    ui->control_109E->setValue(getParamValue_base_units(0x109E).toDouble());
+    ui->control_109F->setValue(getParamValue_base_units(0x109F).toDouble());
+    ui->control_10A0->setValue(getParamValue_base_units(0x10A0).toDouble());
+    ui->control_10A1->setValue(getParamValue_base_units(0x10A1).toDouble());
 
     //Filtro
-    ui->control_10A2->setValue(getParamValue(0x10A2).toDouble());
-    ui->control_10A3->setValue(getParamValue(0x10A3).toDouble());
-    ui->control_10A4->setValue(getParamValue(0x10A4).toDouble());
-    ui->control_10A5->setValue(getParamValue(0x10A5).toDouble());
-    ui->control_10A6->setValue(getParamValue(0x10A6).toDouble());
-    ui->control_10A7->setValue(getParamValue(0x10A7).toDouble());
+    ui->control_10A2->setValue(getParamValue_base_units(0x10A2).toDouble());
+    ui->control_10A3->setValue(getParamValue_base_units(0x10A3).toDouble());
+    ui->control_10A4->setValue(getParamValue_base_units(0x10A4).toDouble());
+    ui->control_10A5->setValue(getParamValue_base_units(0x10A5).toDouble());
+    ui->control_10A6->setValue(getParamValue_base_units(0x10A6).toDouble());
+    ui->control_10A7->setValue(getParamValue_base_units(0x10A7).toDouble());
 
-    ui->control_10A8->setValue(getParamValue(0x10A8).toDouble());
-    ui->control_10A9->setValue(getParamValue(0x10A9).toDouble());
-    ui->control_10AA->setValue(getParamValue(0x10AA).toDouble());
-    ui->control_10AB->setValue(getParamValue(0x10AB).toDouble());
-    ui->control_10AC->setValue(getParamValue(0x10AC).toDouble());
-    ui->control_10AD->setValue(getParamValue(0x10AD).toDouble());
+    ui->control_10A8->setValue(getParamValue_base_units(0x10A8).toDouble());
+    ui->control_10A9->setValue(getParamValue_base_units(0x10A9).toDouble());
+    ui->control_10AA->setValue(getParamValue_base_units(0x10AA).toDouble());
+    ui->control_10AB->setValue(getParamValue_base_units(0x10AB).toDouble());
+    ui->control_10AC->setValue(getParamValue_base_units(0x10AC).toDouble());
+    ui->control_10AD->setValue(getParamValue_base_units(0x10AD).toDouble());
 
-    ui->control_10AE->setValue(getParamValue(0x10AE).toDouble());
-    ui->control_10AF->setValue(getParamValue(0x10AF).toDouble());
-    ui->control_10B0->setValue(getParamValue(0x10B0).toDouble());
-    ui->control_10B1->setValue(getParamValue(0x10B1).toDouble());
-    ui->control_10B2->setValue(getParamValue(0x10B2).toDouble());
-    ui->control_10B3->setValue(getParamValue(0x10B3).toDouble());
+    ui->control_10AE->setValue(getParamValue_base_units(0x10AE).toDouble());
+    ui->control_10AF->setValue(getParamValue_base_units(0x10AF).toDouble());
+    ui->control_10B0->setValue(getParamValue_base_units(0x10B0).toDouble());
+    ui->control_10B1->setValue(getParamValue_base_units(0x10B1).toDouble());
+    ui->control_10B2->setValue(getParamValue_base_units(0x10B2).toDouble());
+    ui->control_10B3->setValue(getParamValue_base_units(0x10B3).toDouble());
 
-    ui->control_10B4->setValue(getParamValue(0x10B4).toDouble());
-    ui->control_10B5->setValue(getParamValue(0x10B5).toDouble());
-    ui->control_10B6->setValue(getParamValue(0x10B6).toDouble());
-    ui->control_10B7->setValue(getParamValue(0x10B7).toDouble());
-    ui->control_10B8->setValue(getParamValue(0x10B8).toDouble());
-    ui->control_10B9->setValue(getParamValue(0x10B9).toDouble());
+    ui->control_10B4->setValue(getParamValue_base_units(0x10B4).toDouble());
+    ui->control_10B5->setValue(getParamValue_base_units(0x10B5).toDouble());
+    ui->control_10B6->setValue(getParamValue_base_units(0x10B6).toDouble());
+    ui->control_10B7->setValue(getParamValue_base_units(0x10B7).toDouble());
+    ui->control_10B8->setValue(getParamValue_base_units(0x10B8).toDouble());
+    ui->control_10B9->setValue(getParamValue_base_units(0x10B9).toDouble());
 
-    ui->control_10D8->setValue(getParamValue(0x10D8).toDouble());
-    ui->control_10D9->setValue(getParamValue(0x10D9).toDouble());
-    ui->control_10DA->setValue(getParamValue(0x10DA).toDouble());
-    ui->control_10DB->setValue(getParamValue(0x10DB).toDouble());
-    ui->control_10DC->setValue(getParamValue(0x10DC).toDouble());
-    ui->control_10DD->setValue(getParamValue(0x10DD).toDouble());
+    ui->control_10D8->setValue(getParamValue_base_units(0x10D8).toDouble());
+    ui->control_10D9->setValue(getParamValue_base_units(0x10D9).toDouble());
+    ui->control_10DA->setValue(getParamValue_base_units(0x10DA).toDouble());
+    ui->control_10DB->setValue(getParamValue_base_units(0x10DB).toDouble());
+    ui->control_10DC->setValue(getParamValue_base_units(0x10DC).toDouble());
+    ui->control_10DD->setValue(getParamValue_base_units(0x10DD).toDouble());
 
-    ui->control_10DE->setValue(getParamValue(0x10DE).toDouble());
-    ui->control_10DF->setValue(getParamValue(0x10DF).toDouble());
-    ui->control_10E0->setValue(getParamValue(0x10E0).toDouble());
-    ui->control_10E1->setValue(getParamValue(0x10E1).toDouble());
-    ui->control_10E2->setValue(getParamValue(0x10E2).toDouble());
-    ui->control_10E3->setValue(getParamValue(0x10E3).toDouble());
+    ui->control_10DE->setValue(getParamValue_base_units(0x10DE).toDouble());
+    ui->control_10DF->setValue(getParamValue_base_units(0x10DF).toDouble());
+    ui->control_10E0->setValue(getParamValue_base_units(0x10E0).toDouble());
+    ui->control_10E1->setValue(getParamValue_base_units(0x10E1).toDouble());
+    ui->control_10E2->setValue(getParamValue_base_units(0x10E2).toDouble());
+    ui->control_10E3->setValue(getParamValue_base_units(0x10E3).toDouble());
 
-    ui->control_10EA->setValue(getParamValue(0x10EA).toDouble());
-    ui->control_10EB->setValue(getParamValue(0x10EB).toDouble());
-    ui->control_10EC->setValue(getParamValue(0x10EC).toDouble());
-    ui->control_10ED->setValue(getParamValue(0x10ED).toDouble());
-    ui->control_10EE->setValue(getParamValue(0x10EE).toDouble());
-    ui->control_10EF->setValue(getParamValue(0x10EF).toDouble());
+    ui->control_10EA->setValue(getParamValue_base_units(0x10EA).toDouble());
+    ui->control_10EB->setValue(getParamValue_base_units(0x10EB).toDouble());
+    ui->control_10EC->setValue(getParamValue_base_units(0x10EC).toDouble());
+    ui->control_10ED->setValue(getParamValue_base_units(0x10ED).toDouble());
+    ui->control_10EE->setValue(getParamValue_base_units(0x10EE).toDouble());
+    ui->control_10EF->setValue(getParamValue_base_units(0x10EF).toDouble());
 
-    ui->control_10F0->setValue(getParamValue(0x10F0).toDouble());
-    ui->control_10F1->setValue(getParamValue(0x10F1).toDouble());
-    ui->control_10F2->setValue(getParamValue(0x10F2).toDouble());
-    ui->control_10F3->setValue(getParamValue(0x10F3).toDouble());
-    ui->control_10F4->setValue(getParamValue(0x10F4).toDouble());
-    ui->control_10F5->setValue(getParamValue(0x10F5).toDouble());
+    ui->control_10F0->setValue(getParamValue_base_units(0x10F0).toDouble());
+    ui->control_10F1->setValue(getParamValue_base_units(0x10F1).toDouble());
+    ui->control_10F2->setValue(getParamValue_base_units(0x10F2).toDouble());
+    ui->control_10F3->setValue(getParamValue_base_units(0x10F3).toDouble());
+    ui->control_10F4->setValue(getParamValue_base_units(0x10F4).toDouble());
+    ui->control_10F5->setValue(getParamValue_base_units(0x10F5).toDouble());
 
-    ui->control_10FC->setValue(getParamValue(0x10FC).toDouble());
-    ui->control_10FD->setValue(getParamValue(0x10FD).toDouble());
-    ui->control_10FE->setValue(getParamValue(0x10FE).toDouble());
-    ui->control_10FF->setValue(getParamValue(0x10FF).toDouble());
-    ui->control_1100->setValue(getParamValue(0x1100).toDouble());
-    ui->control_1101->setValue(getParamValue(0x1101).toDouble());
+    ui->control_10FC->setValue(getParamValue_base_units(0x10FC).toDouble());
+    ui->control_10FD->setValue(getParamValue_base_units(0x10FD).toDouble());
+    ui->control_10FE->setValue(getParamValue_base_units(0x10FE).toDouble());
+    ui->control_10FF->setValue(getParamValue_base_units(0x10FF).toDouble());
+    ui->control_1100->setValue(getParamValue_base_units(0x1100).toDouble());
+    ui->control_1101->setValue(getParamValue_base_units(0x1101).toDouble());
 
-    ui->control_1102->setValue(getParamValue(0x1102).toDouble());
-    ui->control_1103->setValue(getParamValue(0x1103).toDouble());
-    ui->control_1104->setValue(getParamValue(0x1104).toDouble());
-    ui->control_1105->setValue(getParamValue(0x1105).toDouble());
-    ui->control_1106->setValue(getParamValue(0x1106).toDouble());
-    ui->control_1107->setValue(getParamValue(0x1107).toDouble());
+    ui->control_1102->setValue(getParamValue_base_units(0x1102).toDouble());
+    ui->control_1103->setValue(getParamValue_base_units(0x1103).toDouble());
+    ui->control_1104->setValue(getParamValue_base_units(0x1104).toDouble());
+    ui->control_1105->setValue(getParamValue_base_units(0x1105).toDouble());
+    ui->control_1106->setValue(getParamValue_base_units(0x1106).toDouble());
+    ui->control_1107->setValue(getParamValue_base_units(0x1107).toDouble());
+
+    read_languaje_and_units();
+}
+
+void settings::read_languaje_and_units(void)
+{
+    QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
+    conf.sync();
+    conf.beginGroup("Lang");
+    ui->combobox_idioma->setCurrentIndex(conf.value("App_text").toInt());
+    conf.endGroup();
+
+    conf.sync();
+    conf.beginGroup("Units");
+    ui->combobox_longitud->setCurrentIndex(conf.value("longitud").toInt());
+    ui->combobox_presion->setCurrentIndex(conf.value("presion").toInt());
+    ui->combobox_caudal->setCurrentIndex(conf.value("caudal").toInt());
+    ui->combobox_tiempo->setCurrentIndex(conf.value("tiempo").toInt());
+    conf.endGroup();
+}
+
+void settings::save_language_and_units(void)
+{
+    QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
+    conf.sync();
+    conf.beginGroup("Lang");
+    conf.setValue("App_text",ui->combobox_idioma->currentIndex());
+    conf.endGroup();
+
+    conf.sync();
+    conf.beginGroup("Units");
+    conf.setValue("longitud",ui->combobox_longitud->currentIndex());
+    conf.setValue("presion",ui->combobox_presion->currentIndex());
+    conf.setValue("caudal",ui->combobox_caudal->currentIndex());
+    conf.setValue("tiempo",ui->combobox_tiempo->currentIndex());
+    conf.endGroup();
 }

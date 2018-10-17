@@ -10,6 +10,9 @@
 #include <QString>
 #include <QScroller>
 #include <QScrollerProperties>
+#include "chart.h"
+#include "asa_protocol.h"
+
 QMutex g_mutex;
 
 #define VAL_SEC_SEPARATION (ui->graphicsView->width()/60)
@@ -57,18 +60,18 @@ typedef struct
 const g_elec_settings electric_graph_settings[] =
 {
     /*                  name            state   V1      V2      V3      A1      A2      A6      */
-    /* CARCAMO_MOT_1 */{"Carcamo 1",    0x3000, 0x3001, 0x3002, 0x3003, 0x3004, 0x3005, 0x3006,  },
-    /* CARCAMO_MOT_2 */{"Carcamo 2",    0x3010, 0x3011, 0x3012, 0x3013, 0x3014, 0x3015, 0x3016,  },
-    /* CARCAMO_MOT_3 */{"Carcamo 3",    0x3020, 0x3021, 0x3022, 0x3023, 0x3024, 0x3025, 0x3026,  },
-    /* CARCAMO_MOT_4 */{"Carcamo 4",    0x3030, 0x3031, 0x3032, 0x3033, 0x3034, 0x3035, 0x3036,  },
-    /* REACTOR_MOT_1 */{"Reactor 1",    0x4000, 0x4001, 0x4002, 0x4003, 0x4004, 0x4005, 0x4006,  },
-    /* REACTOR_MOT_2 */{"Reactor 2",    0x4010, 0x4011, 0x4012, 0x4013, 0x4014, 0x4015, 0x4016,  },
-    /* REACTOR_MOT_3 */{"Reactor 3",    0x4020, 0x4021, 0x4022, 0x4023, 0x4024, 0x4025, 0x4026,  },
-    /* REACTOR_MOT_4 */{"Reactor 4",    0x4030, 0x4031, 0x4032, 0x4033, 0x4034, 0x4035, 0x4036,  },
-    /* FILTRO_MOT_1  */{"Motor Giro",    0x9000, 0x9001, 0x9002, 0x9003, 0x9004, 0x9005, 0x9006,  },
-    /* FILTRO_MOT_2  */{"Bomba Retro 1", 0x9010, 0x9011, 0x9012, 0x9013, 0x9014, 0x9015, 0x9016,  },
-    /* FILTRO_MOT_3  */{"Bomba Retro 2", 0x9020, 0x9021, 0x9022, 0x9023, 0x9024, 0x9025, 0x9026,  },
-    /* FILTRO_MOT_4  */{"Bomba Alim",    0x9080, 0x9081, 0x9082, 0x9083, 0x9084, 0x9085, 0x9086,  },
+    /* CARCAMO_MOT_1 */{QObject::tr("Carcamo 1"),    0x3000, 0x3001, 0x3002, 0x3003, 0x3004, 0x3005, 0x3006,  },
+    /* CARCAMO_MOT_2 */{QObject::tr("Carcamo 2"),    0x3010, 0x3011, 0x3012, 0x3013, 0x3014, 0x3015, 0x3016,  },
+    /* CARCAMO_MOT_3 */{QObject::tr("Carcamo 3"),    0x3020, 0x3021, 0x3022, 0x3023, 0x3024, 0x3025, 0x3026,  },
+    /* CARCAMO_MOT_4 */{QObject::tr("Carcamo 4"),    0x3030, 0x3031, 0x3032, 0x3033, 0x3034, 0x3035, 0x3036,  },
+    /* REACTOR_MOT_1 */{QObject::tr("Reactor 1"),    0x4000, 0x4001, 0x4002, 0x4003, 0x4004, 0x4005, 0x4006,  },
+    /* REACTOR_MOT_2 */{QObject::tr("Reactor 2"),    0x4010, 0x4011, 0x4012, 0x4013, 0x4014, 0x4015, 0x4016,  },
+    /* REACTOR_MOT_3 */{QObject::tr("Reactor 3"),    0x4020, 0x4021, 0x4022, 0x4023, 0x4024, 0x4025, 0x4026,  },
+    /* REACTOR_MOT_4 */{QObject::tr("Reactor 4"),    0x4030, 0x4031, 0x4032, 0x4033, 0x4034, 0x4035, 0x4036,  },
+    /* FILTRO_MOT_1  */{QObject::tr("Motor Giro"),    0x9000, 0x9001, 0x9002, 0x9003, 0x9004, 0x9005, 0x9006,  },
+    /* FILTRO_MOT_2  */{QObject::tr("Bomba Retro 1"), 0x9010, 0x9011, 0x9012, 0x9013, 0x9014, 0x9015, 0x9016,  },
+    /* FILTRO_MOT_3  */{QObject::tr("Bomba Retro 2"), 0x9020, 0x9021, 0x9022, 0x9023, 0x9024, 0x9025, 0x9026,  },
+    /* FILTRO_MOT_4  */{QObject::tr("Bomba Alim"),    0x9080, 0x9081, 0x9082, 0x9083, 0x9084, 0x9085, 0x9086,  },
 };
 
 uint graphwindow::g_OD_IN       = OD_IN;
@@ -158,7 +161,7 @@ graphwindow::graphwindow(QWidget *parent) :
     ui->pb_Turb_out->setStyleSheet(ui->volts_1->styleSheet());
 
 
-    QLinearGradient gradient(0,0,ui->graphicsView->width(),ui->graphicsView->height());
+    QLinearGradient gradient(0,0,ui->graphicsView_2->width(),ui->graphicsView_2->height());
 //    gradient.setColorAt(0, QColor::fromRgbF(0, 0, 0, 127));
     gradient.setColorAt(0, QColor::fromRgb(0, 167, 250,180));
 //    gradient.setColorAt(0.7, QColor::fromRgb(0, 167, 250,255));
@@ -178,8 +181,8 @@ graphwindow::graphwindow(QWidget *parent) :
     ui->div_text->setStyleSheet("color: white;");
 
 
-    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView_3->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -199,6 +202,11 @@ void graphwindow::show_graph(uint type)
 {
     g_mutex.lock();
 
+    //SET UNITS
+    ui->label_14->setText(tr("Gasto") + " " + "(" + get_units_caudal() + ")");
+    ui->label_19->setText(tr("Nivel") + " " + "(" +get_units_longitud() + ")");
+    ui->label_21->setText(tr("Presión") + " " + "(" + get_units_presion() + ")");
+
     element_type = type;
 
     ui->comboBox->clear();
@@ -217,7 +225,7 @@ void graphwindow::show_graph(uint type)
     case TYPE_ELECTRICOS:
         ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/Parametros electricos.png);");
         parameter_to_graph = electric_graph_settings[0].param_v_fase_1;
-        ui->label_graph->setText("Voltaje L1-L2");
+        ui->label_graph->setText(tr("Voltaje L1-L2"));
 
         break;
     case TYPE_FISICOS:
@@ -225,12 +233,12 @@ void graphwindow::show_graph(uint type)
         if("PTAR" == graph_origin)
         {
             parameter_to_graph = g_GASTO_INS;
-            ui->label_graph->setText("Gasto Instantáneo");
+            ui->label_graph->setText(tr("Gasto Instantáneo"));
         }
         else
         {
             parameter_to_graph = g_NIVEL_REG;
-            ui->label_graph->setText("Filtro");
+            ui->label_graph->setText(tr("Filtro"));
         }
 
         break;
@@ -239,12 +247,12 @@ void graphwindow::show_graph(uint type)
         if("PTAR" == graph_origin)
         {
             parameter_to_graph = g_OD_IN;
-            ui->label_graph->setText("OD entrada");
+            ui->label_graph->setText(tr("OD entrada"));
         }
         else
         {
             parameter_to_graph = g_SST_IN;
-            ui->label_graph->setText("SST entrada");
+            ui->label_graph->setText(tr("SST entrada"));
         }
         break;
 
@@ -311,7 +319,7 @@ void graphwindow::on_volts_1_clicked()
     parameter_to_graph = electric_graph_settings[index_of_motor()].param_v_fase_1;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Voltaje L1-L2");
+    ui->label_graph->setText(tr("Voltaje L1-L2"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -322,7 +330,7 @@ void graphwindow::on_volts_2_clicked()
     parameter_to_graph = electric_graph_settings[index_of_motor()].param_v_fase_2;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Voltaje L2-L3");
+    ui->label_graph->setText(tr("Voltaje L2-L3"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -333,7 +341,7 @@ void graphwindow::on_volts_3_clicked()
     parameter_to_graph = electric_graph_settings[index_of_motor()].param_v_fase_3;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Voltaje L3-L1");
+    ui->label_graph->setText(tr("Voltaje L3-L1"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -344,7 +352,7 @@ void graphwindow::on_amps_1_clicked()
     parameter_to_graph = electric_graph_settings[index_of_motor()].param_a_fase_1;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Amps L1-L2");
+    ui->label_graph->setText(tr("Amps L1-L2"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -355,7 +363,7 @@ void graphwindow::on_amps_2_clicked()
     parameter_to_graph = electric_graph_settings[index_of_motor()].param_a_fase_2;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Amps L2-L1");
+    ui->label_graph->setText(tr("Amps L2-L1"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -366,7 +374,7 @@ void graphwindow::on_amps_3_clicked()
     parameter_to_graph = electric_graph_settings[index_of_motor()].param_a_fase_3;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Amps L3-L1");
+    ui->label_graph->setText(tr("Amps L3-L1"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -383,7 +391,7 @@ void graphwindow::update_graph_seconds(uint param)
     int i;
     QPolygon pol;
     QPoint point;
-    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView);
+//    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView);
     QList<float>values_60_seconds;
 
 
@@ -391,24 +399,29 @@ void graphwindow::update_graph_seconds(uint param)
     g_mutex.lock();
     values_60_seconds = get_list_last_60_sec_from_param(param);
     g_mutex.unlock();
+//    qDebug() << "values_60_seconds " << values_60_seconds;
+    Chart *chart = new Chart(values_60_seconds, 60);
+//    chart->setTitle("Dynamic spline chart");
+    chart->legend()->hide();
+    ui->splineGraph_1->setChart(chart);
 
-    // 60 SEGUNDOS
-    draw_grill(scene);
-    // Graph lines
-    for(i = 0; i < (values_60_seconds.length()); i++)
-    {
-        point.setX(i*VAL_SEC_SEPARATION);
-        point.setY(adjusted_y_value(values_60_seconds.at(i))*-1);
-        pol.append(point);
-    }
-    QPainterPath path;
-    path.addPolygon(pol);
-    scene->addPath(path, pen);
-    i = i-1;
-    draw_end_ball(scene, i*VAL_SEC_SEPARATION, adjusted_y_value(values_60_seconds.at(i)));
-    scene->setSceneRect(0,-ui->graphicsView->height(),500,280);
+//    // 60 SEGUNDOS
+//    draw_grill(scene);
+//    // Graph lines
+//    for(i = 0; i < (values_60_seconds.length()); i++)
+//    {
+//        point.setX(i*VAL_SEC_SEPARATION);
+//        point.setY(adjusted_y_value(values_60_seconds.at(i))*-1);
+//        pol.append(point);
+//    }
+//    QPainterPath path;
+//    path.addPolygon(pol);
+//    scene->addPath(path, pen);
+//    i = i-1;
+//    draw_end_ball(scene, i*VAL_SEC_SEPARATION, adjusted_y_value(values_60_seconds.at(i)));
+//    scene->setSceneRect(0,-ui->graphicsView->height(),500,280);
 
-    ui->graphicsView->setScene(scene);
+//    ui->graphicsView->setScene(scene);
 
 }
 
@@ -510,7 +523,7 @@ void graphwindow::on_pb_gasto_inst_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("Gasto Instantáneo");
+        ui->label_graph->setText(tr("Gasto Instantáneo"));
     }
     else
     {
@@ -528,7 +541,7 @@ void graphwindow::on_pb_gasto_acc_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("Gasto Accumulado");
+        ui->label_graph->setText(tr("Gasto Accumulado"));
     }
     else
     {
@@ -546,11 +559,11 @@ void graphwindow::on_pb_nivel_reg_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("Nivel Regulador");
+        ui->label_graph->setText(tr("Nivel Regulador"));
     }
     else
     {
-        ui->label_graph->setText("Filtro");
+        ui->label_graph->setText(tr("Filtro"));
     }
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
@@ -564,7 +577,7 @@ void graphwindow::on_pb_nivel_clarif_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("Nivel Clarificador");
+        ui->label_graph->setText(tr("Nivel Clarificador"));
     }
     else
     {
@@ -582,7 +595,7 @@ void graphwindow::on_pb_presion_aire_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("Presión Aireador");
+        ui->label_graph->setText(tr("Presión Aireador"));
     }
     else
     {
@@ -600,7 +613,7 @@ void graphwindow::on_pb_presion_filt_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("Presión Filtración");
+        ui->label_graph->setText(tr("Presión Filtración"));
     }
     else
     {
@@ -618,7 +631,7 @@ void graphwindow::on_pb_OD_in_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("OD entrada");
+        ui->label_graph->setText(tr("OD entrada"));
     }
     else
     {
@@ -636,7 +649,7 @@ void graphwindow::on_pb_pH_in_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("pH entrada");
+        ui->label_graph->setText(tr("pH entrada"));
     }
     else
     {
@@ -652,7 +665,7 @@ void graphwindow::on_pb_SST_in_clicked()
     parameter_to_graph = g_SST_IN;
     g_mutex.unlock();
 
-    ui->label_graph->setText("SST entrada");
+    ui->label_graph->setText(tr("SST entrada"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -663,7 +676,7 @@ void graphwindow::on_pb_Turb_in_clicked()
     parameter_to_graph = g_Turb_IN;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Turbidez entrada");
+    ui->label_graph->setText(tr("Turbidez entrada"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -676,7 +689,7 @@ void graphwindow::on_pb_OD_out_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("OD salida");
+        ui->label_graph->setText(tr("OD salida"));
     }
     else
     {
@@ -694,7 +707,7 @@ void graphwindow::on_pb_pH_out_clicked()
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText("pH salida");
+        ui->label_graph->setText(tr("pH salida"));
     }
     else
     {
@@ -710,7 +723,7 @@ void graphwindow::on_pb_SST_out_clicked()
     parameter_to_graph = g_SST_OUT;
     g_mutex.unlock();
 
-    ui->label_graph->setText("SST salida");
+    ui->label_graph->setText(tr("SST salida"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -721,7 +734,7 @@ void graphwindow::on_pb_Turb_out_clicked()
     parameter_to_graph = g_Turb_OUT;
     g_mutex.unlock();
 
-    ui->label_graph->setText("Turbidez salida");
+    ui->label_graph->setText(tr("Turbidez salida"));
     color_to_label(parameter_to_graph);
     update_graph_window(parameter_to_graph);
 }
@@ -768,7 +781,7 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
             min_value = VOLT_MIN;
             max_value = VOLT_MAX;
             num_of_lines = 10;
-            ui->div_text->setText("50V/div");
+            ui->div_text->setText(tr("50V/div"));
         }
         else
         {
@@ -776,7 +789,7 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
             min_value = AMP_MIN;
             max_value = AMP_MAX;
             num_of_lines = 10;
-            ui->div_text->setText("1A/div");
+            ui->div_text->setText(tr("1A/div"));
         }
         break;
     case TYPE_FISICOS:
@@ -786,28 +799,28 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
             min_value = 0;
             max_value = 600;
             num_of_lines = 10;
-            ui->div_text->setText("60 LPM/div");
+            ui->div_text->setText(tr("60 LPM/div"));
         }
         else if(parameter_to_graph == g_GASTO_INS || parameter_to_graph == g_GASTO_ACC)
         {
             min_value = 0;
             max_value = 150;
             num_of_lines = 10;
-            ui->div_text->setText("15 LPM/div");
+            ui->div_text->setText(tr("15 LPM/div"));
         }
         else if(parameter_to_graph == g_NIVEL_REG || parameter_to_graph == g_NIVEL_CL)
         {
             min_value = 0;
             max_value = 10;
             num_of_lines = 10;
-            ui->div_text->setText("1 m/div");
+            ui->div_text->setText(tr("1 m/div"));
         }
         else if(parameter_to_graph == g_PRES_AIR || parameter_to_graph == g_PRES_FIL)
         {
             min_value = 0;
             max_value = 15;
             num_of_lines = 10;
-            ui->div_text->setText("1.5 PSI/div");
+            ui->div_text->setText(tr("1.5 PSI/div"));
         }
 
         break;
@@ -818,34 +831,34 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
             min_value = 0;
             max_value = 8;
             num_of_lines = 8;
-            ui->div_text->setText("1 ppm/div");
+            ui->div_text->setText(tr("1 ppm/div"));
         }
         else if(parameter_to_graph == g_SST_IN || parameter_to_graph == g_SST_OUT)
         {
             min_value = 0;
             max_value = 800;
             num_of_lines = 10;
-            ui->div_text->setText("80 mg/l div");
+            ui->div_text->setText(tr("80 mg/l div"));
         }
         else if(parameter_to_graph == g_Turb_IN || parameter_to_graph == g_Turb_OUT)
         {
             min_value = 0;
             max_value = 100;
             num_of_lines = 10;
-            ui->div_text->setText("10 NTU/div");
+            ui->div_text->setText(tr("10 NTU/div"));
         }
         else if(parameter_to_graph == g_PH_IN || parameter_to_graph == g_PH_OUT)
         {
             min_value = 0;
             max_value = 14;
             num_of_lines = 14;
-            ui->div_text->setText("1 pH/div");
+            ui->div_text->setText(tr("1 pH/div"));
         }
         break;
     }
 
 
-    separation = ui->graphicsView->height()/num_of_lines;
+//    separation = ui->graphicsView->height()/num_of_lines;
 
     ui->min_value->setText(QString::number(min_value));
     ui->max_value->setText(QString::number(max_value));
@@ -853,7 +866,7 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
 
     for(i = 0; i < num_of_lines; i++)
     {
-        scene->addLine(0, i*separation*-1, ui->graphicsView->width(), i*separation*-1, pen);
+//        scene->addLine(0, i*separation*-1, ui->graphicsView->width(), i*separation*-1, pen);
     }
 
     pen.setColor(QColor(25, 25, 25));
@@ -862,11 +875,11 @@ void graphwindow::draw_grill(QGraphicsScene *scene)
     {
         if(0 == i%2)
         {
-            scene->addLine(i*ui->graphicsView->width()/12, 0, i*ui->graphicsView->width()/12, -1*ui->graphicsView->height(), pen);
+//            scene->addLine(i*ui->graphicsView->width()/12, 0, i*ui->graphicsView->width()/12, -1*ui->graphicsView->height(), pen);
         }
         else
         {
-            scene->addLine(i*ui->graphicsView->width()/12, 0, i*ui->graphicsView->width()/12, -10, pen);
+//            scene->addLine(i*ui->graphicsView->width()/12, 0, i*ui->graphicsView->width()/12, -10, pen);
         }
     }
 
@@ -882,7 +895,7 @@ void graphwindow::on_comboBox_currentIndexChanged(int index)
 
     parameter_to_graph = electric_graph_settings[index_of_motor()].param_v_fase_1;
 
-    ui->label_graph->setText("Voltaje L1-L2");
+    ui->label_graph->setText(tr("Voltaje L1-L2"));
 
     qDebug() << "Index is " << i;
 }
@@ -890,7 +903,7 @@ void graphwindow::on_comboBox_currentIndexChanged(int index)
 qreal graphwindow::adjusted_y_value(qreal val)
 {
     qreal new_value;
-    new_value = val * ui->graphicsView->height();
+    new_value = val * ui->graphicsView_2->height();
     new_value = new_value / max_value;
 
     return  new_value;
@@ -1039,51 +1052,51 @@ void graphwindow::color_to_label(uint parameter)
 uint graphwindow::index_of_motor()
 {
     uint ret = 0;
-    if("Carcamo 1" == ui->comboBox->currentText())
+    if(tr("Carcamo 1") == ui->comboBox->currentText())
     {
         ret = 0;
     }
-    else if("Carcamo 2" == ui->comboBox->currentText())
+    else if(tr("Carcamo 2") == ui->comboBox->currentText())
     {
         ret = 1;
     }
-    else if("Carcamo 3" == ui->comboBox->currentText())
+    else if(tr("Carcamo 3") == ui->comboBox->currentText())
     {
         ret = 2;
     }
-    else if("Carcamo 4" == ui->comboBox->currentText())
+    else if(tr("Carcamo 4") == ui->comboBox->currentText())
     {
         ret = 3;
     }
-    else if("Reactor 1" == ui->comboBox->currentText())
+    else if(tr("Reactor 1") == ui->comboBox->currentText())
     {
         ret = 4;
     }
-    else if("Reactor 2" == ui->comboBox->currentText())
+    else if(tr("Reactor 2") == ui->comboBox->currentText())
     {
         ret = 5;
     }
-    else if("Reactor 3" == ui->comboBox->currentText())
+    else if(tr("Reactor 3") == ui->comboBox->currentText())
     {
         ret = 6;
     }
-    else if("Reactor 4" == ui->comboBox->currentText())
+    else if(tr("Reactor 4") == ui->comboBox->currentText())
     {
         ret = 7;
     }
-    else if("Motor Giro" == ui->comboBox->currentText())
+    else if(tr("Motor Giro") == ui->comboBox->currentText())
     {
         ret = 8;
     }
-    else if("Bomba Retro 1" == ui->comboBox->currentText())
+    else if(tr("Bomba Retro 1") == ui->comboBox->currentText())
     {
         ret = 9;
     }
-    else if("Bomba Retro 2" == ui->comboBox->currentText())
+    else if(tr("Bomba Retro 2") == ui->comboBox->currentText())
     {
         ret = 10;
     }
-    else if("Bomba Alim" == ui->comboBox->currentText())
+    else if(tr("Bomba Alim") == ui->comboBox->currentText())
     {
         ret = 11;
     }
@@ -1114,18 +1127,18 @@ void graphwindow::set_type(QString type)
         g_PRES_FIL  =PRES_FIL ;
 
         // fisicos
-        ui->label_15->setText("Instantáneo");
-        ui->label_16->setText("Acumulado");
-        ui->label_18->setText("Regulador");
-        ui->label_17->setText("Clarificador");
-        ui->label_22->setText("Aireador");
-        ui->label_20->setText("Filtración");
+        ui->label_15->setText(tr("Instantáneo"));
+        ui->label_16->setText(tr("Acumulado"));
+        ui->label_18->setText(tr("Regulador"));
+        ui->label_17->setText(tr("Clarificador"));
+        ui->label_22->setText(tr("Aireador"));
+        ui->label_20->setText(tr("Filtración"));
 
         // quimicos
-        ui->label_30->setText("pH");
-        ui->label_28->setText("pH");
-        ui->label_23->setText("OD");
-        ui->label_24->setText("OD");
+        ui->label_30->setText(tr("pH"));
+        ui->label_28->setText(tr("pH"));
+        ui->label_23->setText(tr("OD"));
+        ui->label_24->setText(tr("OD"));
     }
     else
     {
@@ -1147,9 +1160,9 @@ void graphwindow::set_type(QString type)
         g_PRES_FIL  =Filtro_PRES_FIL ;
 
         // fisicos
-        ui->label_15->setText("Caudal");
+        ui->label_15->setText(tr("Caudal"));
         ui->label_16->setText("");
-        ui->label_18->setText("Filtro");
+        ui->label_18->setText(tr("Filtro"));
         ui->label_17->setText("");
         ui->label_22->setText("");
         ui->label_20->setText("");

@@ -148,19 +148,19 @@ void filtrowindow::handleMenuButton()
 void filtrowindow::handleParametrosElectricosButton()
 {
     SelectParemeter(PARAM_ELECTRIC);
-    ui->active_param_label->setText("Parametros Eléctricos");
+    ui->active_param_label->setText(tr("Parametros Eléctricos"));
 }
 
 void filtrowindow::handleParametrosFisicosButton()
 {
     SelectParemeter(PARAM_PHYSHIC);
-    ui->active_param_label->setText("Parametros Físicos");
+    ui->active_param_label->setText(tr("Parametros Físicos"));
 }
 
 void filtrowindow::handleParametrosQuimicosButton()
 {
     SelectParemeter(PARAM_CHEMIC);
-    ui->active_param_label->setText("Parametros Químicos");
+    ui->active_param_label->setText(tr("Parametros Químicos"));
 }
 
 void filtrowindow::InitTooltips()
@@ -340,4 +340,9 @@ void filtrowindow::on_modulo_2_clicked()
 void filtrowindow::detailed_window_closed()
 {
     mutex_detailed.unlock();
+}
+
+void filtrowindow::on_top_menu_1_clicked()
+{
+    forward_bitacora_clicked();
 }
