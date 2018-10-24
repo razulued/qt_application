@@ -291,9 +291,18 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     QFont font("Typo Square Italic Demo",12,1);
     QFont font_2("Typo Square Bold Italic Demo",14,1);
 
-    QString nombres[] = {tr("Regulador"), tr("Reactor Biológico"), tr("Clarificador"),tr("Clorador"),
-                        tr("Digestor de lodos"), tr("Deshidratador"), tr("Afluente"), tr("Efluente"),
-                        tr("Filtro"), tr("Bomba Alimentación")};
+    QString nombres[] = {
+        tr("Regulador"),
+        tr("Reactor Biológico"),
+        tr("Clarificador"),
+        tr("Clorador"),
+        tr("Digestor de lodos"),
+        tr("Deshidratador"),
+        tr("Afluente"),
+        tr("Efluente"),
+        tr("Filtro"),
+        tr("Bomba Alimentación")
+    };
 
     // Nombre Del elemento
     ui->nombre->setFont(font_2);
@@ -758,8 +767,6 @@ void detailedwindow::on_key_OK_clicked()
 {
     uint i = 0;
     QStringList list_records;
-    uint record_idx = 0;
-    QString record_ID;
     records *rec_ptr;
 
     if(0 != selected_id)
@@ -778,24 +785,31 @@ void detailedwindow::on_key_OK_clicked()
                 }
                 else
                 {
-                    rutinas_ptr->complete_rutina(i);
-
                     //Parse to open record window.
                     list_records = rutinas_ptr->texto_ayuda(i).split(',');
 //                    qDebug() << "SPLIT: " << list_records << "len: " << list_records.length();
                     if(list_records.length() > 0)
                     {
-                        for(record_idx = 0; record_idx < (uint)list_records.length(); record_idx++)
+                        if(list_records.at(0) != "")
                         {
-                            record_ID = list_records.at(record_idx);
-                            if(record_ID != "")
-                            {
-                                rec_ptr = new records("rutinas.db", record_ID.toInt(),
-                                                      selected_id,
-                                                      rutinas_ptr->get_current_time().toTime_t(),
-                                                      this);
-                            }
+                            rec_ptr = new records(tr("rutinas.db"),
+                                                  list_records,
+                                                  selected_id,
+                                                  rutinas_ptr->get_current_time().toTime_t(),
+                                                  this);
+
+                            // Wait to be completed? release lock
+                            connect(rec_ptr,SIGNAL(all_questions_ok(uint)),this,SLOT(activity_is_completed(uint)));
+
                         }
+                        else
+                        {
+                            rutinas_ptr->complete_rutina(i);
+                        }
+                    }
+                    else
+                    {
+                        rutinas_ptr->complete_rutina(i);
                     }
                 }
                 reschedule_time = 0;
@@ -833,7 +847,7 @@ void detailedwindow::tab_1_init(uint selected_type)
                                    "gridline-color: black;");
     ui->tableWidget_tab_1->verticalHeader()->setVisible(false);
     ui->tableWidget_tab_1->horizontalHeader()->setVisible(false);
-
+    ui->tableWidget_tab_1->setFocusPolicy(Qt::NoFocus);
     switch(selected_type)
     {
     case 0:
@@ -944,6 +958,11 @@ void detailedwindow::tab_2_init()
     QFont font3("Typo Square Regular Demo",8,1);
     QFont font4("Typo Square Regular Demo",10,1);
 
+    QFont ok_font("Typo Square Bold Demo",10,1);
+    ui->key_OK->setFont(ok_font);
+
+    QFont paro_font("Typo Square Bold Demo",14,1);
+    ui->label_paro_general->setFont(paro_font);
 
 //    ui->key_OK->setStyleSheet("border: 2px solid rgb(0, 167, 250); color: white");
 //    ui->key_Reschedule->setStyleSheet("border: 2px solid rgb(0, 167, 250); color: white");
@@ -1228,6 +1247,7 @@ void detailedwindow::tab_5_init()
         controls_ptr[i] = box_motores;
         box_motores->setFont(font_2);
         box_motores->setLayoutDirection(Qt::RightToLeft);
+        box_motores->setFocusPolicy(Qt::NoFocus);
 
         if(true == get_validity_state())
         {
@@ -1972,4 +1992,17 @@ bool detailedwindow::stop_op_mode()
     }
 
     return ret;
+}
+
+void detailedwindow::activity_is_completed(uint id)
+{
+    uint i;
+    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
+    {
+        if(rutinas_ptr->id(i) == id)
+        {
+            rutinas_ptr->complete_rutina(i);
+            break;
+        }
+    }
 }

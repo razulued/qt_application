@@ -888,9 +888,13 @@ QString get_value_by_ID(uint id)
     index = hash_indices.value(id);
     str = supported_ASA_IDs[index].conversion_hanlder(hash_values[id].value<QString>(), supported_ASA_IDs[index].param1);
 
-    //Apply scale by units
-    float number = str.toFloat();
-    str = units_scale(id, number);
+    //Apply scale by units for non-pass thrus or hex to ints
+    if(supported_ASA_IDs[index].conversion_hanlder != conv_none_or_passthru &&
+       supported_ASA_IDs[index].conversion_hanlder != conv_hex_to_int)
+    {
+        float number = str.toFloat();
+        str = units_scale(id, number);
+    }
 
     data_mutex.unlock();
 

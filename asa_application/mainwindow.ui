@@ -1563,6 +1563,29 @@ background-position: center;
      <string>Diagrama</string>
     </property>
    </widget>
+   <widget class="QLabel" name="loading_icon">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>100</y>
+      <width>351</width>
+      <height>311</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#loading_icon
+{
+background-image: url(:/iconos/screen800x600/iconos/loading.png);
+border: none;
+background-color: transparent;
+background-position: center;
+background-repeat: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>gif_modulo_5</zorder>
    <zorder>top_bar</zorder>
    <zorder>gif_modulo_4</zorder>
@@ -1639,6 +1662,7 @@ background-position: center;
    <zorder>widget_15</zorder>
    <zorder>widget_12</zorder>
    <zorder>widget_22</zorder>
+   <zorder>loading_icon</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

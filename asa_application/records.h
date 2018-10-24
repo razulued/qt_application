@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QString>
 #include <QSqlDatabase>
+#include <QMutex>
 
 namespace Ui {
 class records;
@@ -14,12 +15,23 @@ enum{
     TYPE_NUMERIC,
     TYPE_CHOICE
 };
+
+typedef struct
+{
+    uint log__rutina_id;
+    uint log__date;
+    QString log__rutina_text;
+    uint log__record_id;
+    QString log__record_text;
+    float log__record_value;
+}log_type;
+
 class records : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit records(const QString &path, uint record_id, uint from_id, uint time, QWidget *parent = 0);
+    explicit records(const QString &path, QStringList list_records, uint from_id, uint time, QWidget *parent = 0);
     ~records();
 
 private:
@@ -28,19 +40,19 @@ private:
     QString db_path;
     void load_to_table(uint id);
     uint current_type = NO_TYPE_SELECTED;
+    uint main_id;
+    uint actual_time;
+    QStringList question_list;
 
     void format_everything();
     void input_numeric(QString name, QString units);
     void input_choice(QString name, QString opt_1, QString opt_2, QString opt_3);
 
-    uint log__rutina_id;
-    uint log__date;
-    QString log__rutina_text;
-    uint log__record_id;
-    QString log__record_text;
-    float log__record_value;
+    QList<log_type> log_queue;
+    log_type temp_log;
 
-    void save_record_to_log();
+    void save_records_to_log();
+    uint get_current_question_id();
 private slots:
     void on_key_0_clicked();
     void on_key_1_clicked();
@@ -97,6 +109,9 @@ private slots:
 
     void out_RadioButtonChanged(int opt);
     void on_pushButton_2_clicked();
+    void background_clicked();
+signals:
+    void all_questions_ok(uint id);
 };
 
 #endif // RECORDS_H

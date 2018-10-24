@@ -83,6 +83,7 @@
         <file>images/Barras/Parametros_quimicos_amarillo.png</file>
         <file>images/Barras/Parametros_quimicos_azul.png</file>
         <file>images/Barras/Parametros_quimicos_rojo.png</file>
+        <file>screen800x600/barras/barra_grafica_inverted.png</file>
     </qresource>
     <qresource prefix="/iconos">
         <file>images/Iconos/Ajustes_azul.png</file>

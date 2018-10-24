@@ -120,3 +120,8 @@ void calendar::on_push_cancelar_clicked()
 {
     this->close();
 }
+
+void calendar::on_closeButton_clicked()
+{
+    this->close();
+}

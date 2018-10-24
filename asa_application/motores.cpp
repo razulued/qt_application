@@ -552,6 +552,7 @@ void motores::stop_button_animation(bool state)
         QMovie *mv;
         mv = new QMovie(":/iconos/screen800x600/iconos/Stop-Boton-Activo.gif");
         ui->stop_button_image->setAttribute(Qt::WA_NoSystemBackground);
+        mv->setCacheMode(QMovie::CacheAll);
         mv->start();
         ui->stop_button_image->setMovie(mv);
 

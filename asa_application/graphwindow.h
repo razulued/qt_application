@@ -5,6 +5,7 @@
 #include <QPen>
 #include <QGraphicsEllipseItem>
 #include <QLabel>
+#include "chart.h"
 
 #define OD_IN   (0x4307)
 #define SST_IN  (0x3305)
@@ -72,6 +73,7 @@ public:
     static uint g_NIVEL_CL;
     static uint g_PRES_AIR;
     static uint g_PRES_FIL;
+    void set_graph_span(uint span);
 private slots:
     void on_top_menu_3_clicked();
 
@@ -118,21 +120,30 @@ private slots:
 
     void on_top_menu_2_clicked();
 
+    void on_label_graph_clicked();
+
+    void on_radioButton_toggled(bool checked);
+
+    void on_radioButton_2_toggled(bool checked);
+
+    void on_radioButton_3_toggled(bool checked);
+
 private:
     Ui::graphwindow *ui;
     QPen pen;
     QPen pen2;
     QWidget *parent_window;
     uint parameter_to_graph;
+    uint parameter_to_graph_righside;
+
     void draw_graph_line();
     void draw_end_ball(QGraphicsScene *scene, int x, int y);
-    void draw_grill(QGraphicsScene *scene);
+//    void draw_grill(QGraphicsScene *scene);
     void update_graph_window(uint param);
-    void update_graph_seconds(uint param);
-    void update_graph_minutes(uint param);
-    void update_graph_hour(uint param);
+    void init_graph(uint param);
+    void update_graphs(uint param);
 
-    qreal adjusted_y_value(qreal val);
+//    qreal adjusted_y_value(qreal val);
 
     uint element_type = 0;
     qreal min_value = 0;
@@ -142,7 +153,16 @@ private:
 
     uint index_of_motor();
     QString graph_origin;
+    bool show_both_graph = false;
+    void show_or_hide_graph(bool both_graph);
 
+    uint graph_span = 0;
+    QList<float> get_list(uint param);
+    uint graph_divisions = 0;
+
+    Chart *char_left = NULL;
+    Chart *char_rigth = NULL;
+    float get_last_param_from_list(uint param);
 signals:
     void forward_bitacora_clicked();
     void forward_control_clicked();

@@ -24,6 +24,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">#frame{
+background-color: transparent;
 background-image: url(:/iconos/screen800x600/iconos/Cuadro pantalla.png);
 background-repeat: none;
 border: none;
@@ -190,6 +191,14 @@ border:none;
       <height>20</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#label_2
+{
+background-color: transparent;
+color: black;
+boder:none;
+}</string>
+    </property>
     <property name="text">
      <string>Inicio</string>
     </property>
@@ -202,6 +211,14 @@ border:none;
       <width>31</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#label_3
+{
+background-color: transparent;
+color: black;
+boder:none;
+}</string>
     </property>
     <property name="text">
      <string>Fin</string>

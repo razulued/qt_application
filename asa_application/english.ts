@@ -39,113 +39,118 @@
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="318"/>
-        <location filename="mainwindow.cpp" line="417"/>
+        <location filename="mainwindow.cpp" line="164"/>
+        <source>rutinas.db</source>
+        <translation>rutinas_english.db</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="320"/>
+        <location filename="mainwindow.cpp" line="419"/>
         <source>Parametros Eléctricos</source>
         <translation>Electric Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="424"/>
+        <location filename="mainwindow.cpp" line="426"/>
         <source>Parametros Físicos</source>
         <translation>Physical Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="431"/>
+        <location filename="mainwindow.cpp" line="433"/>
         <source>Parametros Químicos</source>
         <translation>Chemical Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1235"/>
+        <location filename="mainwindow.cpp" line="1243"/>
         <source>Lunes</source>
         <translation>Monday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1238"/>
+        <location filename="mainwindow.cpp" line="1246"/>
         <source>Martes</source>
         <translation>Tuesday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1241"/>
+        <location filename="mainwindow.cpp" line="1249"/>
         <source>Miércoles</source>
         <translation>Wednesday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1244"/>
+        <location filename="mainwindow.cpp" line="1252"/>
         <source>Jueves</source>
         <translation>Thursday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1247"/>
+        <location filename="mainwindow.cpp" line="1255"/>
         <source>Viernes</source>
         <translation>Friday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1250"/>
+        <location filename="mainwindow.cpp" line="1258"/>
         <source>Sábado</source>
         <translation>Saturday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1253"/>
+        <location filename="mainwindow.cpp" line="1261"/>
         <source>Domingo</source>
         <translation>Sunday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1260"/>
+        <location filename="mainwindow.cpp" line="1268"/>
         <source>Enero</source>
         <translation>January</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1263"/>
+        <location filename="mainwindow.cpp" line="1271"/>
         <source>Febrero</source>
         <translation>February</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1266"/>
+        <location filename="mainwindow.cpp" line="1274"/>
         <source>Marzo</source>
         <translation>March</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1269"/>
+        <location filename="mainwindow.cpp" line="1277"/>
         <source>Abril</source>
         <translation>April</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1272"/>
+        <location filename="mainwindow.cpp" line="1280"/>
         <source>Mayo</source>
         <translation>May</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1275"/>
+        <location filename="mainwindow.cpp" line="1283"/>
         <source>Junio</source>
         <translation>June</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1278"/>
+        <location filename="mainwindow.cpp" line="1286"/>
         <source>Julio</source>
         <translation>July</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1281"/>
+        <location filename="mainwindow.cpp" line="1289"/>
         <source>Agosto</source>
         <translation>August</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1284"/>
+        <location filename="mainwindow.cpp" line="1292"/>
         <source>Septiembre</source>
         <translation>September</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1287"/>
+        <location filename="mainwindow.cpp" line="1295"/>
         <source>Octubre</source>
         <translation>October</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1290"/>
+        <location filename="mainwindow.cpp" line="1298"/>
         <source>Noviembre</source>
         <translation>November</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1293"/>
+        <location filename="mainwindow.cpp" line="1301"/>
         <source>Diciembre</source>
         <translation>December</translation>
     </message>
@@ -257,62 +262,62 @@
         <translation>Add description</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="63"/>
+        <location filename="graphwindow.cpp" line="62"/>
         <source>Carcamo 1</source>
         <translation>Sump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="64"/>
+        <location filename="graphwindow.cpp" line="63"/>
         <source>Carcamo 2</source>
         <translation>Sump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="65"/>
+        <location filename="graphwindow.cpp" line="64"/>
         <source>Carcamo 3</source>
         <translation>Sump 3</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="66"/>
+        <location filename="graphwindow.cpp" line="65"/>
         <source>Carcamo 4</source>
         <translation>Sump 4</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="67"/>
+        <location filename="graphwindow.cpp" line="66"/>
         <source>Reactor 1</source>
         <translation>Reactor 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="68"/>
+        <location filename="graphwindow.cpp" line="67"/>
         <source>Reactor 2</source>
         <translation>Reactor 2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="69"/>
+        <location filename="graphwindow.cpp" line="68"/>
         <source>Reactor 3</source>
         <translation>Reactor 3</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="70"/>
+        <location filename="graphwindow.cpp" line="69"/>
         <source>Reactor 4</source>
         <translation>Reactor 4</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="71"/>
+        <location filename="graphwindow.cpp" line="70"/>
         <source>Motor Giro</source>
         <translation>Turning Motor</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="72"/>
+        <location filename="graphwindow.cpp" line="71"/>
         <source>Bomba Retro 1</source>
         <translation>Backwash pump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="73"/>
+        <location filename="graphwindow.cpp" line="72"/>
         <source>Bomba Retro 2</source>
         <translation>Backwash pump 2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="74"/>
+        <location filename="graphwindow.cpp" line="73"/>
         <source>Bomba Alim</source>
         <translation>Feeding Pump</translation>
     </message>
@@ -345,68 +350,72 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="628"/>
+        <location filename="bitacora.ui" line="176"/>
+        <source>Completado</source>
+        <translation>Completed</translation>
+    </message>
+    <message>
+        <location filename="bitacora.ui" line="777"/>
         <source>Sin usuario</source>
         <translation>No user</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="656"/>
+        <location filename="bitacora.ui" line="805"/>
         <source>Bitácora</source>
         <translation>Logbook</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="70"/>
+        <location filename="bitacora.ui" line="71"/>
         <source>Pendientes</source>
         <translation>Pending</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="92"/>
-        <location filename="bitacora.cpp" line="821"/>
+        <location filename="bitacora.ui" line="93"/>
+        <location filename="bitacora.cpp" line="829"/>
         <source>SELECIONAR UNA RUTINA DE LA LISTA</source>
         <translation>SELECT ONE ROUTINE FROM THE LIST</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="175"/>
         <source>Listo</source>
-        <translation>Ready</translation>
+        <translation type="vanished">Ready</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="189"/>
+        <location filename="bitacora.ui" line="238"/>
         <source>Todas</source>
         <translation>All</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="245"/>
+        <location filename="bitacora.ui" line="294"/>
         <source>SELECIONAR UNA RUTINA DE LA LISTA Y HACER CLICK AQUI PARA MODIFICAR EL SIGUIENTE EVENTO</source>
         <translation>SELECT ONE ROUTINE FROM THE LIST AND CLICK HERE TO MODIFY THE NEXT EVENT</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="286"/>
+        <location filename="bitacora.ui" line="335"/>
         <source>Ver historial de eventos para la actividad seleccionada</source>
         <translation>See events history for the selected activity</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="300"/>
+        <location filename="bitacora.ui" line="397"/>
         <source>Registros</source>
         <translation>Records</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="378"/>
+        <location filename="bitacora.ui" line="477"/>
         <source>Quitar Filtros</source>
         <translation>Clear filters</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="391"/>
+        <location filename="bitacora.ui" line="490"/>
         <source>Filtrar por fecha</source>
         <translation>Filter by date</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="429"/>
+        <location filename="bitacora.ui" line="529"/>
         <source>Filtro por pregunta</source>
         <translation>Filter by question</translation>
     </message>
     <message>
-        <location filename="bitacora.ui" line="467"/>
+        <location filename="bitacora.ui" line="568"/>
         <source>Mostrar gráfico</source>
         <translation>Show graphic</translation>
     </message>
@@ -461,6 +470,11 @@
         <location filename="bitacora.cpp" line="373"/>
         <source>Ultimo</source>
         <translation>Last</translation>
+    </message>
+    <message>
+        <location filename="bitacora.cpp" line="359"/>
+        <source>Usuario</source>
+        <translation>User</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="373"/>
@@ -567,6 +581,11 @@
         <source>Otro</source>
         <translation>Other</translation>
     </message>
+    <message>
+        <location filename="bitacora.cpp" line="803"/>
+        <source>rutinas.db</source>
+        <translation>rutinas_english.db</translation>
+    </message>
 </context>
 <context>
     <name>calendar</name>
@@ -576,17 +595,17 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="calendar.ui" line="68"/>
+        <location filename="calendar.ui" line="69"/>
         <source>Aceptar</source>
         <translation>Accept</translation>
     </message>
     <message>
-        <location filename="calendar.ui" line="81"/>
+        <location filename="calendar.ui" line="82"/>
         <source>Cancelar</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="calendar.ui" line="99"/>
+        <location filename="calendar.ui" line="100"/>
         <source>Calendario</source>
         <translation>Calendar</translation>
     </message>
@@ -599,17 +618,17 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="calendario_filtro.ui" line="181"/>
+        <location filename="calendario_filtro.ui" line="182"/>
         <source>Seleccione el Periodo a Visualizar</source>
         <translation>Select the Period to Visualize</translation>
     </message>
     <message>
-        <location filename="calendario_filtro.ui" line="194"/>
+        <location filename="calendario_filtro.ui" line="203"/>
         <source>Inicio</source>
         <translation>From</translation>
     </message>
     <message>
-        <location filename="calendario_filtro.ui" line="207"/>
+        <location filename="calendario_filtro.ui" line="224"/>
         <source>Fin</source>
         <translation>To</translation>
     </message>
@@ -666,7 +685,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="detailedwindow.ui" line="80"/>
-        <location filename="detailedwindow.cpp" line="403"/>
+        <location filename="detailedwindow.cpp" line="412"/>
         <source>Parámetros</source>
         <translation>Parameters</translation>
     </message>
@@ -721,127 +740,156 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
+        <location filename="detailedwindow.ui" line="547"/>
+        <source>Completado</source>
+        <translation>Completed</translation>
+    </message>
+    <message>
+        <location filename="detailedwindow.ui" line="2483"/>
+        <source>Paro General</source>
+        <translation>General Stop</translation>
+    </message>
+    <message>
+        <source>Listo</source>
+        <translation type="vanished">Ready</translation>
+    </message>
+    <message>
         <location filename="detailedwindow.ui" line="748"/>
         <source>Nombre</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="294"/>
+        <location filename="detailedwindow.cpp" line="295"/>
         <source>Regulador</source>
         <translation>Regulator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="294"/>
+        <location filename="detailedwindow.cpp" line="296"/>
         <source>Reactor Biológico</source>
         <translation>Biological Reactor</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="295"/>
+        <location filename="detailedwindow.cpp" line="297"/>
+        <source>Clarificador</source>
+        <translation>Clarifier</translation>
+    </message>
+    <message>
+        <location filename="detailedwindow.cpp" line="298"/>
+        <source>Clorador</source>
+        <translation>Chlorinator</translation>
+    </message>
+    <message>
+        <location filename="detailedwindow.cpp" line="299"/>
         <source>Digestor de lodos</source>
         <translation>Sludge digester</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="295"/>
+        <location filename="detailedwindow.cpp" line="300"/>
         <source>Deshidratador</source>
         <translation>Dehydrator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="295"/>
+        <location filename="detailedwindow.cpp" line="301"/>
         <source>Afluente</source>
         <translation>Affluent</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="295"/>
+        <location filename="detailedwindow.cpp" line="302"/>
         <source>Efluente</source>
         <translation>Effluent</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="296"/>
+        <location filename="detailedwindow.cpp" line="303"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="296"/>
+        <location filename="detailedwindow.cpp" line="304"/>
         <source>Bomba Alimentación</source>
         <translation>Feeding pump</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="446"/>
+        <location filename="detailedwindow.cpp" line="455"/>
         <source>Evento</source>
         <translation>Event</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="489"/>
+        <location filename="detailedwindow.cpp" line="498"/>
         <source>Descripción</source>
         <translation>Description</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="532"/>
+        <location filename="detailedwindow.cpp" line="541"/>
         <source>Visualización de Parámetros</source>
         <translation>Parameter Display</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="614"/>
+        <location filename="detailedwindow.cpp" line="623"/>
         <source>Encendido de Motores</source>
         <translation>Engine Control</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="939"/>
+        <location filename="detailedwindow.cpp" line="795"/>
+        <source>rutinas.db</source>
+        <translation>rutinas_english.db</translation>
+    </message>
+    <message>
+        <location filename="detailedwindow.cpp" line="953"/>
         <source>ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="939"/>
+        <location filename="detailedwindow.cpp" line="953"/>
         <source>Rutina</source>
         <translation>Routine</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1089"/>
+        <location filename="detailedwindow.cpp" line="1108"/>
         <source>Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujogenerado durante las horas pico</source>
         <translation>Dampens the peaks and load flow, so that the treatment plant receives constantly equal to the design flow and efficiency is not affected. It has enough volume to be able to store the generated flow during peak hours</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1093"/>
+        <location filename="detailedwindow.cpp" line="1112"/>
         <source>Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo en contacto las aguas residuales con una biomasa de microorganismos que la depuran.</source>
         <translation>Secondary treatment where organic matter is eliminated by biological oxidation processes; that is, putting the wastewater in contact with a biomass of microorganisms that purify it.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1096"/>
+        <location filename="detailedwindow.cpp" line="1115"/>
         <source>Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos suspendidos se sedimentan, separandose del agua.</source>
         <translation>It receives the affluent of the biological reactor, made up of water and biological sludge. Biological sludge and suspended solids sediment, separating from water.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1099"/>
+        <location filename="detailedwindow.cpp" line="1118"/>
         <source>Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes.</source>
         <translation>Disinfection process of sodium hypochlorite / liquid / solid calcium. The microorganisms present are eliminated.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1101"/>
+        <location filename="detailedwindow.cpp" line="1120"/>
         <source>Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos.</source>
         <translation>Receives the biological sludge generated in excess and separated in the secondary clarifier; These are oxidized biologically until obtaining a reduction of 40 to 60% in the volatile solids present, thus achieving a stabilization of sludge.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1104"/>
+        <location filename="detailedwindow.cpp" line="1123"/>
         <source>Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y se permite su infiltración, dejando secar los lodos</source>
         <translation>Drying beds, horizontal downflow filter packed with gravel and sand. A quantity of mud is poured over it and its infiltration is allowed, allowing the sludge to dry</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1107"/>
+        <location filename="detailedwindow.cpp" line="1126"/>
         <source>Agua residual sanitaria</source>
         <translation>Sanitary wastewater</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1109"/>
+        <location filename="detailedwindow.cpp" line="1128"/>
         <source>Agua tratada</source>
         <translation>Treated water</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1111"/>
+        <location filename="detailedwindow.cpp" line="1130"/>
         <source>Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción adicional de sólidos así como el color ámbar característico de las aguas tratadas. Dadas las características de la tela filtrante, no se requiere la acumulación de material ni la formación de una manta filtrante a fin de lograr el pulimento deseado.</source>
         <translation>Tertiary filtration equipment. Using a specialized fabric as a fixed filtering medium achieves the additional removal of solids as well as the characteristic amber color of the treated waters. Given the characteristics of the filter cloth, neither the accumulation of material nor the formation of a filter mat is required in order to achieve the desired polish.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1116"/>
+        <location filename="detailedwindow.cpp" line="1135"/>
         <source>Agregar descripción</source>
         <translation>Add description</translation>
     </message>
@@ -1004,25 +1052,25 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="graphwindow.ui" line="758"/>
-        <location filename="graphwindow.cpp" line="1130"/>
+        <location filename="graphwindow.cpp" line="947"/>
         <source>Instantáneo</source>
         <translation>Instant</translation>
     </message>
     <message>
         <location filename="graphwindow.ui" line="776"/>
-        <location filename="graphwindow.cpp" line="1131"/>
+        <location filename="graphwindow.cpp" line="948"/>
         <source>Acumulado</source>
         <translation>Accumulated</translation>
     </message>
     <message>
         <location filename="graphwindow.ui" line="794"/>
-        <location filename="graphwindow.cpp" line="1133"/>
+        <location filename="graphwindow.cpp" line="950"/>
         <source>Clarificador</source>
         <translation>Clarifier</translation>
     </message>
     <message>
         <location filename="graphwindow.ui" line="812"/>
-        <location filename="graphwindow.cpp" line="1132"/>
+        <location filename="graphwindow.cpp" line="949"/>
         <source>Regulador</source>
         <translation>Regulator</translation>
     </message>
@@ -1033,7 +1081,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="graphwindow.ui" line="933"/>
-        <location filename="graphwindow.cpp" line="1135"/>
+        <location filename="graphwindow.cpp" line="952"/>
         <source>Filtración</source>
         <translation>Filtration</translation>
     </message>
@@ -1044,7 +1092,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="graphwindow.ui" line="1054"/>
-        <location filename="graphwindow.cpp" line="1134"/>
+        <location filename="graphwindow.cpp" line="951"/>
         <source>Aireador</source>
         <translation>Aerator</translation>
     </message>
@@ -1056,8 +1104,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="graphwindow.ui" line="1206"/>
         <location filename="graphwindow.ui" line="1224"/>
-        <location filename="graphwindow.cpp" line="1140"/>
-        <location filename="graphwindow.cpp" line="1141"/>
+        <location filename="graphwindow.cpp" line="957"/>
+        <location filename="graphwindow.cpp" line="958"/>
         <source>OD</source>
         <translation>DO</translation>
     </message>
@@ -1075,8 +1123,8 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="graphwindow.ui" line="1392"/>
         <location filename="graphwindow.ui" line="1460"/>
-        <location filename="graphwindow.cpp" line="1138"/>
-        <location filename="graphwindow.cpp" line="1139"/>
+        <location filename="graphwindow.cpp" line="955"/>
+        <location filename="graphwindow.cpp" line="956"/>
         <source>pH</source>
         <translation></translation>
     </message>
@@ -1097,279 +1145,251 @@ p, li { white-space: pre-wrap; }
         <translation>Process</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1650"/>
+        <location filename="graphwindow.ui" line="1735"/>
+        <source>Param 1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="1766"/>
+        <source>Param 2</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="1810"/>
+        <source>60 Segundos</source>
+        <translation>60 Seconds</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="1825"/>
+        <source>60 Minutos</source>
+        <translation>60 Minutes</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="1840"/>
+        <source>24 Horas</source>
+        <translation>24 Hours</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="1861"/>
+        <location filename="graphwindow.cpp" line="235"/>
+        <source>Parámetros Eléctricos</source>
+        <translation>Electrical Parameters</translation>
+    </message>
+    <message>
         <source>Voltaje</source>
-        <translation>Voltage</translation>
+        <translation type="vanished">Voltage</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1663"/>
-        <source>min</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.ui" line="1679"/>
-        <source>max</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.ui" line="1695"/>
-        <source>div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.ui" line="1749"/>
         <source>60 segundos</source>
-        <translation>60 seconds</translation>
+        <translation type="vanished">60 seconds</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1764"/>
         <source>60 minutos</source>
-        <translation>60 minutes</translation>
+        <translation type="vanished">60 minutes</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1788"/>
         <source>24 horas</source>
-        <translation>24 hours</translation>
+        <translation type="vanished">24 hours</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="206"/>
+        <location filename="graphwindow.cpp" line="212"/>
         <source>Gasto</source>
         <translation>Expenditure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="207"/>
+        <location filename="graphwindow.cpp" line="213"/>
         <source>Nivel</source>
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="208"/>
+        <location filename="graphwindow.cpp" line="214"/>
         <source>Presión</source>
         <translation>Pressure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="228"/>
-        <location filename="graphwindow.cpp" line="322"/>
-        <location filename="graphwindow.cpp" line="898"/>
+        <location filename="graphwindow.cpp" line="234"/>
+        <location filename="graphwindow.cpp" line="334"/>
+        <location filename="graphwindow.cpp" line="724"/>
         <source>Voltaje L1-L2</source>
         <translation>Voltage L1-L2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="236"/>
-        <location filename="graphwindow.cpp" line="526"/>
+        <location filename="graphwindow.cpp" line="242"/>
+        <location filename="graphwindow.cpp" line="477"/>
         <source>Gasto Instantáneo</source>
         <translation>Instant expenditure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="241"/>
-        <location filename="graphwindow.cpp" line="566"/>
-        <location filename="graphwindow.cpp" line="1165"/>
+        <location filename="graphwindow.cpp" line="247"/>
+        <location filename="graphwindow.cpp" line="517"/>
+        <location filename="graphwindow.cpp" line="982"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="250"/>
-        <location filename="graphwindow.cpp" line="634"/>
+        <location filename="graphwindow.cpp" line="249"/>
+        <source>Parámetros Físicos</source>
+        <translation>Physical Parameters</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="257"/>
+        <location filename="graphwindow.cpp" line="585"/>
         <source>OD entrada</source>
         <translation>DO in</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="255"/>
-        <location filename="graphwindow.cpp" line="668"/>
+        <location filename="graphwindow.cpp" line="262"/>
+        <location filename="graphwindow.cpp" line="619"/>
         <source>SST entrada</source>
         <translation>SST In</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="333"/>
+        <location filename="graphwindow.cpp" line="264"/>
+        <source>Parámetros Químicos</source>
+        <translation>Chemical Parameters</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="345"/>
         <source>Voltaje L2-L3</source>
         <translation>Voltage L2-L3</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="344"/>
+        <location filename="graphwindow.cpp" line="356"/>
         <source>Voltaje L3-L1</source>
         <translation>Voltage L3-L1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="355"/>
+        <location filename="graphwindow.cpp" line="367"/>
         <source>Amps L1-L2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="366"/>
+        <location filename="graphwindow.cpp" line="378"/>
         <source>Amps L2-L1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="377"/>
+        <location filename="graphwindow.cpp" line="389"/>
         <source>Amps L3-L1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="544"/>
+        <location filename="graphwindow.cpp" line="495"/>
         <source>Gasto Accumulado</source>
         <translation>Accumulated expenditure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="562"/>
+        <location filename="graphwindow.cpp" line="513"/>
         <source>Nivel Regulador</source>
         <translation>Regulator level</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="580"/>
+        <location filename="graphwindow.cpp" line="531"/>
         <source>Nivel Clarificador</source>
         <translation>Clarifier Level</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="598"/>
+        <location filename="graphwindow.cpp" line="549"/>
         <source>Presión Aireador</source>
         <translation>Aerator pressure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="616"/>
+        <location filename="graphwindow.cpp" line="567"/>
         <source>Presión Filtración</source>
         <translation>Filter pressure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="652"/>
+        <location filename="graphwindow.cpp" line="603"/>
         <source>pH entrada</source>
         <translation>ph Input</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="679"/>
+        <location filename="graphwindow.cpp" line="630"/>
         <source>Turbidez entrada</source>
         <translation>Turbidity input</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="692"/>
+        <location filename="graphwindow.cpp" line="643"/>
         <source>OD salida</source>
         <translation>DO output</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="710"/>
+        <location filename="graphwindow.cpp" line="661"/>
         <source>pH salida</source>
         <translation>pH output</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="726"/>
+        <location filename="graphwindow.cpp" line="677"/>
         <source>SST salida</source>
         <translation>SST output</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="737"/>
+        <location filename="graphwindow.cpp" line="688"/>
         <source>Turbidez salida</source>
         <translation>Turbidity ouput</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="784"/>
-        <source>50V/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="792"/>
-        <source>1A/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="802"/>
-        <source>60 LPM/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="809"/>
-        <source>15 LPM/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="816"/>
-        <source>1 m/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="823"/>
-        <source>1.5 PSI/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="834"/>
-        <source>1 ppm/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="841"/>
-        <source>80 mg/l div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="848"/>
-        <source>10 NTU/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="855"/>
-        <source>1 pH/div</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="graphwindow.cpp" line="1055"/>
+        <location filename="graphwindow.cpp" line="872"/>
         <source>Carcamo 1</source>
         <translation>Sump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1059"/>
+        <location filename="graphwindow.cpp" line="876"/>
         <source>Carcamo 2</source>
         <translation>Sump 2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1063"/>
+        <location filename="graphwindow.cpp" line="880"/>
         <source>Carcamo 3</source>
         <translation>Sump 3</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1067"/>
+        <location filename="graphwindow.cpp" line="884"/>
         <source>Carcamo 4</source>
         <translation>Sump 4</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1071"/>
+        <location filename="graphwindow.cpp" line="888"/>
         <source>Reactor 1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1075"/>
+        <location filename="graphwindow.cpp" line="892"/>
         <source>Reactor 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1079"/>
+        <location filename="graphwindow.cpp" line="896"/>
         <source>Reactor 3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1083"/>
+        <location filename="graphwindow.cpp" line="900"/>
         <source>Reactor 4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1087"/>
+        <location filename="graphwindow.cpp" line="904"/>
         <source>Motor Giro</source>
         <translation>Turning Motor</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1091"/>
+        <location filename="graphwindow.cpp" line="908"/>
         <source>Bomba Retro 1</source>
         <translation>Backwash pump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1095"/>
+        <location filename="graphwindow.cpp" line="912"/>
         <source>Bomba Retro 2</source>
         <translation>Backwash pump 2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1099"/>
+        <location filename="graphwindow.cpp" line="916"/>
         <source>Bomba Alim</source>
         <translation>Feeding pump</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="1163"/>
+        <location filename="graphwindow.cpp" line="980"/>
         <source>Caudal</source>
         <translation>Flow</translation>
     </message>
@@ -1494,8 +1514,8 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="records.ui" line="1744"/>
-        <location filename="records.ui" line="1854"/>
+        <location filename="records.ui" line="1745"/>
+        <location filename="records.ui" line="1855"/>
         <source>Pregunta:</source>
         <translation>Question:</translation>
     </message>

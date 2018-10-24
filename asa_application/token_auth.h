@@ -9,5 +9,6 @@ void validate_token(bool val);
 
 bool get_validity_state();
 QString get_user_name();
+QString get_user_initials(void);
 
 #endif // TOKEN_AUTH_H

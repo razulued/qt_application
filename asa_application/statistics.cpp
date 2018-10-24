@@ -100,7 +100,12 @@ QList<float> get_list_last_24_hour_from_param(uint param)
     return last_24_hours.value(param);
 }
 
-QString get_last_value_from_param(uint param)
+QString get_last_string_value_from_param(uint param)
 {
     return QString::number(last_60_seconds.value(param).last());
+}
+
+float get_last_value_from_param(uint param)
+{
+    return last_60_seconds.value(param).last();
 }

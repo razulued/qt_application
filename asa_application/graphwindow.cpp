@@ -10,7 +10,6 @@
 #include <QString>
 #include <QScroller>
 #include <QScrollerProperties>
-#include "chart.h"
 #include "asa_protocol.h"
 
 QMutex g_mutex;
@@ -98,6 +97,10 @@ graphwindow::graphwindow(QWidget *parent) :
     ui->setupUi(this);
     parent_window = parent;
 
+    ui->splineGraph_1->hide();
+    ui->splineGraph_2->hide();
+    show_or_hide_graph(false);
+
     // ELECTRICOS
     this->setStyleSheet("background-color:black;");
     ui->label->setStyleSheet("color:white");
@@ -161,32 +164,35 @@ graphwindow::graphwindow(QWidget *parent) :
     ui->pb_Turb_out->setStyleSheet(ui->volts_1->styleSheet());
 
 
-    QLinearGradient gradient(0,0,ui->graphicsView_2->width(),ui->graphicsView_2->height());
-//    gradient.setColorAt(0, QColor::fromRgbF(0, 0, 0, 127));
-    gradient.setColorAt(0, QColor::fromRgb(0, 167, 250,180));
-//    gradient.setColorAt(0.7, QColor::fromRgb(0, 167, 250,255));
-    gradient.setColorAt(0.8, QColor::fromRgb(255, 255, 255,255));
-    gradient.setColorAt(0.9, QColor::fromRgb(255, 255, 255,0));
+    QFont label_title_font("Typo Square Bold Demo",17,1);
 
-    QBrush brush(gradient);
+    ui->label_title->setFont(label_title_font);
+    ui->label_title->setStyleSheet("Text-align:left;"
+                                   "border:none;"
+                                   "color:black;"
+                                   "background-color:transparent;");
+
+//    QLinearGradient gradient(0,0,ui->graphicsView_2->width(),ui->graphicsView_2->height());
+////    gradient.setColorAt(0, QColor::fromRgbF(0, 0, 0, 127));
+//    gradient.setColorAt(0, QColor::fromRgb(0, 167, 250,180));
+////    gradient.setColorAt(0.7, QColor::fromRgb(0, 167, 250,255));
+//    gradient.setColorAt(0.8, QColor::fromRgb(255, 255, 255,255));
+//    gradient.setColorAt(0.9, QColor::fromRgb(255, 255, 255,0));
+
+//    QBrush brush(gradient);
 //    QBrush brush(Qt::LinearGradientPattern);
-    pen.setBrush(brush);
+//    pen.setBrush(brush);
 //        QColor line_color;
 //        line_color.setRgb(0, 167, 250,150);
 //        pen.setColor(line_color);
-    pen.setWidth(5);
-
-    ui->min_value->setStyleSheet("color: white;");
-    ui->max_value->setStyleSheet("color: white;");
-    ui->div_text->setStyleSheet("color: white;");
-
+//    pen.setWidth(5);
 
 //    ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 //    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView_3->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->graphicsView_3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    ui->graphicsView_2->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    ui->graphicsView_2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    ui->graphicsView_3->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    ui->graphicsView_3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
@@ -226,7 +232,7 @@ void graphwindow::show_graph(uint type)
         ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/Parametros electricos.png);");
         parameter_to_graph = electric_graph_settings[0].param_v_fase_1;
         ui->label_graph->setText(tr("Voltaje L1-L2"));
-
+        ui->label_title->setText(tr("Parámetros Eléctricos"));
         break;
     case TYPE_FISICOS:
         ui->top_bar->setStyleSheet("background-image: url(:/barras/screen800x600/barras/Parametros fisicos.png);");
@@ -240,6 +246,7 @@ void graphwindow::show_graph(uint type)
             parameter_to_graph = g_NIVEL_REG;
             ui->label_graph->setText(tr("Filtro"));
         }
+        ui->label_title->setText(tr("Parámetros Físicos"));
 
         break;
     case TYPE_QUIMICOS:
@@ -254,6 +261,8 @@ void graphwindow::show_graph(uint type)
             parameter_to_graph = g_SST_IN;
             ui->label_graph->setText(tr("SST entrada"));
         }
+        ui->label_title->setText(tr("Parámetros Químicos"));
+
         break;
 
     }
@@ -262,6 +271,9 @@ void graphwindow::show_graph(uint type)
     ui->tabWidget->setCurrentIndex(element_type);
 
     this->move(parent_window->pos());
+
+    init_graph(parameter_to_graph);
+
     this->show();
 }
 
@@ -273,35 +285,35 @@ void graphwindow::update_graph()
     case TYPE_ELECTRICOS:
 
         // electricos
-        ui->volts_1->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_v_fase_1));
-        ui->volts_2->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_v_fase_2));
-        ui->volts_3->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_v_fase_3));
+        ui->volts_1->setText(get_last_string_value_from_param(electric_graph_settings[index_motor].param_v_fase_1));
+        ui->volts_2->setText(get_last_string_value_from_param(electric_graph_settings[index_motor].param_v_fase_2));
+        ui->volts_3->setText(get_last_string_value_from_param(electric_graph_settings[index_motor].param_v_fase_3));
 
-        ui->amps_1->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_a_fase_1));
-        ui->amps_2->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_a_fase_2));
-        ui->amps_3->setText(get_last_value_from_param(electric_graph_settings[index_motor].param_a_fase_3));
+        ui->amps_1->setText(get_last_string_value_from_param(electric_graph_settings[index_motor].param_a_fase_1));
+        ui->amps_2->setText(get_last_string_value_from_param(electric_graph_settings[index_motor].param_a_fase_2));
+        ui->amps_3->setText(get_last_string_value_from_param(electric_graph_settings[index_motor].param_a_fase_3));
         break;
         // fisicos
     case TYPE_FISICOS:
-        ui->pb_gasto_inst->setText(get_last_value_from_param(g_GASTO_INS));
-        ui->pb_gasto_acc->setText(get_last_value_from_param(g_GASTO_ACC));
+        ui->pb_gasto_inst->setText(get_last_string_value_from_param(g_GASTO_INS));
+        ui->pb_gasto_acc->setText(get_last_string_value_from_param(g_GASTO_ACC));
 
-        ui->pb_nivel_clarif->setText(get_last_value_from_param(g_NIVEL_CL));
-        ui->pb_nivel_reg->setText(get_last_value_from_param(g_NIVEL_REG));
+        ui->pb_nivel_clarif->setText(get_last_string_value_from_param(g_NIVEL_CL));
+        ui->pb_nivel_reg->setText(get_last_string_value_from_param(g_NIVEL_REG));
 
-        ui->pb_presion_aire->setText(get_last_value_from_param(g_PRES_AIR));
-        ui->pb_presion_filt->setText(get_last_value_from_param(g_PRES_FIL));
+        ui->pb_presion_aire->setText(get_last_string_value_from_param(g_PRES_AIR));
+        ui->pb_presion_filt->setText(get_last_string_value_from_param(g_PRES_FIL));
         break;
         // quimicos
     case TYPE_QUIMICOS:
-        ui->pb_OD_in->setText(get_last_value_from_param(g_OD_IN));
-        ui->pb_OD_out->setText(get_last_value_from_param(g_OD_OUT));
-        ui->pb_pH_in->setText(get_last_value_from_param(g_PH_IN));
-        ui->pb_pH_out->setText(get_last_value_from_param(g_PH_OUT));
-        ui->pb_SST_in->setText(get_last_value_from_param(g_SST_IN));
-        ui->pb_SST_out->setText(get_last_value_from_param(g_SST_OUT));
-        ui->pb_Turb_in->setText(get_last_value_from_param(g_Turb_IN));
-        ui->pb_Turb_out->setText(get_last_value_from_param(g_Turb_OUT));
+        ui->pb_OD_in->setText(get_last_string_value_from_param(g_OD_IN));
+        ui->pb_OD_out->setText(get_last_string_value_from_param(g_OD_OUT));
+        ui->pb_pH_in->setText(get_last_string_value_from_param(g_PH_IN));
+        ui->pb_pH_out->setText(get_last_string_value_from_param(g_PH_OUT));
+        ui->pb_SST_in->setText(get_last_string_value_from_param(g_SST_IN));
+        ui->pb_SST_out->setText(get_last_string_value_from_param(g_SST_OUT));
+        ui->pb_Turb_in->setText(get_last_string_value_from_param(g_Turb_IN));
+        ui->pb_Turb_out->setText(get_last_string_value_from_param(g_Turb_OUT));
         break;
     }
 
@@ -381,123 +393,62 @@ void graphwindow::on_amps_3_clicked()
 
 void graphwindow::update_graph_window(uint param)
 {
-    update_graph_seconds(param);
-    update_graph_minutes(param);
-    update_graph_hour(param);
+    update_graphs(param);
 }
 
-void graphwindow::update_graph_seconds(uint param)
+void graphwindow::init_graph(uint param)
 {
-    int i;
-    QPolygon pol;
-    QPoint point;
-//    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView);
-    QList<float>values_60_seconds;
-
+    QList<float>list_of_values;
 
     qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
     g_mutex.lock();
-    values_60_seconds = get_list_last_60_sec_from_param(param);
+    list_of_values = get_list(param);
     g_mutex.unlock();
 //    qDebug() << "values_60_seconds " << values_60_seconds;
-    Chart *chart = new Chart(values_60_seconds, 60);
+    char_left = new Chart(list_of_values, graph_divisions,ui->splineGraph_1);
 //    chart->setTitle("Dynamic spline chart");
-    chart->legend()->hide();
-    ui->splineGraph_1->setChart(chart);
+    char_left->legend()->hide();
+    ui->splineGraph_1->setChart(char_left);
+//    ui->splineGraph_1->show();
 
-//    // 60 SEGUNDOS
-//    draw_grill(scene);
-//    // Graph lines
-//    for(i = 0; i < (values_60_seconds.length()); i++)
-//    {
-//        point.setX(i*VAL_SEC_SEPARATION);
-//        point.setY(adjusted_y_value(values_60_seconds.at(i))*-1);
-//        pol.append(point);
-//    }
-//    QPainterPath path;
-//    path.addPolygon(pol);
-//    scene->addPath(path, pen);
-//    i = i-1;
-//    draw_end_ball(scene, i*VAL_SEC_SEPARATION, adjusted_y_value(values_60_seconds.at(i)));
-//    scene->setSceneRect(0,-ui->graphicsView->height(),500,280);
-
-//    ui->graphicsView->setScene(scene);
+    g_mutex.lock();
+    list_of_values = get_list(parameter_to_graph_righside);
+    g_mutex.unlock();
+//    qDebug() << "values_60_seconds " << values_60_seconds;
+    char_rigth = new Chart(list_of_values, graph_divisions,ui->splineGraph_1);
+//    chart->setTitle("Dynamic spline chart");
+    char_rigth->legend()->hide();
+    ui->splineGraph_2->setChart(char_rigth);
+//    ui->splineGraph_2->show();
 
 }
-
-void graphwindow::update_graph_minutes(uint param)
+void graphwindow::update_graphs(uint param)
 {
-    int i;
-    QPolygon pol;
-    QPoint point;
-    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView_2);
-    QList<float>values_60_minutes;
+    QList<float>list_of_values;
 
-
-//    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
+    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
     g_mutex.lock();
-    values_60_minutes = get_list_last_60_min_from_param(param);
+    list_of_values = get_list(param);
     g_mutex.unlock();
 
-    // 60 SEGUNDOS
-    draw_grill(scene);
-    // Graph lines
-    if(values_60_minutes.length() > 0)
+    char_left->append_to_end(list_of_values);
+//    ui->splineGraph_1->setChart(chart);
+    ui->splineGraph_1->show();
+
+    if(show_both_graph == true)
     {
-        for(i = 0; i < (values_60_minutes.length()); i++)
-        {
-            point.setX(i*VAL_MIN_SEPARATION);
-            point.setY(adjusted_y_value(values_60_minutes.at(i))*-1);
-            pol.append(point);
-        }
-        QPainterPath path;
-        path.addPolygon(pol);
-        scene->addPath(path, pen);
-        i = i-1;
-        draw_end_ball(scene, i*VAL_MIN_SEPARATION, adjusted_y_value(values_60_minutes.at(i)));
-        scene->setSceneRect(0,-ui->graphicsView_2->height(),500,280);
-
+        g_mutex.lock();
+        list_of_values = get_list(parameter_to_graph_righside);
+        g_mutex.unlock();
+        char_rigth->append_to_end(list_of_values);
+    //    qDebug() << "values_60_seconds " << values_60_seconds;
+//        Chart *chart2 = new Chart(value, graph_divisions,ui->splineGraph_1);
+    //    chart->setTitle("Dynamic spline chart");
+//        chart2->legend()->hide();
+//        ui->splineGraph_2->setChart(chart2);
+        ui->splineGraph_2->show();
     }
-    ui->graphicsView_2->setScene(scene);
 }
-
-void graphwindow::update_graph_hour(uint param)
-{
-    int i;
-    QPolygon pol;
-    QPoint point;
-    QGraphicsScene *scene = new QGraphicsScene(ui->graphicsView_3);
-    QList<float>values_24_hours;
-
-
-//    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
-    g_mutex.lock();
-    values_24_hours = get_list_last_24_hour_from_param(param);
-    g_mutex.unlock();
-
-    // 60 SEGUNDOS
-    draw_grill(scene);
-
-    if(values_24_hours.length() > 0)
-    {
-        // Graph lines
-        for(i = 0; i < (values_24_hours.length()); i++)
-        {
-            point.setX(i*VAL_HOUR_SEPARATION);
-            point.setY(adjusted_y_value(values_24_hours.at(i))*-1);
-            pol.append(point);
-        }
-        QPainterPath path;
-        path.addPolygon(pol);
-        scene->addPath(path, pen);
-        i = i-1;
-        draw_end_ball(scene, i*VAL_HOUR_SEPARATION, adjusted_y_value(values_24_hours.at(i)));
-        scene->setSceneRect(0,-ui->graphicsView_3->height(),500,280);
-
-    }
-    ui->graphicsView_3->setScene(scene);
-}
-
 
 void graphwindow::on_tabWidget_currentChanged(int index)
 {
@@ -761,131 +712,6 @@ void graphwindow::draw_end_ball(QGraphicsScene *scene, int x, int y)
     scene->addEllipse(x - size/2, (y + size/2) *-1,size,size,pen2, QBrush(brush));
 }
 
-void graphwindow::draw_grill(QGraphicsScene *scene)
-{
-    QPen pen;
-    int i = 0;
-    pen.setColor(QColor(119, 136, 153));
-    pen.setWidth(1);
-
-    qreal separation = 0;
-    qreal num_of_lines = 10;
-
-    switch(element_type)
-    {
-    case TYPE_ELECTRICOS:
-
-        // Voltaje, min = 0; max = 480;
-        if((parameter_to_graph & 0x07) <= 3)
-        {
-            min_value = VOLT_MIN;
-            max_value = VOLT_MAX;
-            num_of_lines = 10;
-            ui->div_text->setText(tr("50V/div"));
-        }
-        else
-        {
-            // Corriente, min = 0; max 80;
-            min_value = AMP_MIN;
-            max_value = AMP_MAX;
-            num_of_lines = 10;
-            ui->div_text->setText(tr("1A/div"));
-        }
-        break;
-    case TYPE_FISICOS:
-
-        if(parameter_to_graph == Filtro_GASTO_INS)
-        {
-            min_value = 0;
-            max_value = 600;
-            num_of_lines = 10;
-            ui->div_text->setText(tr("60 LPM/div"));
-        }
-        else if(parameter_to_graph == g_GASTO_INS || parameter_to_graph == g_GASTO_ACC)
-        {
-            min_value = 0;
-            max_value = 150;
-            num_of_lines = 10;
-            ui->div_text->setText(tr("15 LPM/div"));
-        }
-        else if(parameter_to_graph == g_NIVEL_REG || parameter_to_graph == g_NIVEL_CL)
-        {
-            min_value = 0;
-            max_value = 10;
-            num_of_lines = 10;
-            ui->div_text->setText(tr("1 m/div"));
-        }
-        else if(parameter_to_graph == g_PRES_AIR || parameter_to_graph == g_PRES_FIL)
-        {
-            min_value = 0;
-            max_value = 15;
-            num_of_lines = 10;
-            ui->div_text->setText(tr("1.5 PSI/div"));
-        }
-
-        break;
-        // quimicos
-    case TYPE_QUIMICOS:
-        if(parameter_to_graph == g_OD_IN || parameter_to_graph == g_OD_OUT)
-        {
-            min_value = 0;
-            max_value = 8;
-            num_of_lines = 8;
-            ui->div_text->setText(tr("1 ppm/div"));
-        }
-        else if(parameter_to_graph == g_SST_IN || parameter_to_graph == g_SST_OUT)
-        {
-            min_value = 0;
-            max_value = 800;
-            num_of_lines = 10;
-            ui->div_text->setText(tr("80 mg/l div"));
-        }
-        else if(parameter_to_graph == g_Turb_IN || parameter_to_graph == g_Turb_OUT)
-        {
-            min_value = 0;
-            max_value = 100;
-            num_of_lines = 10;
-            ui->div_text->setText(tr("10 NTU/div"));
-        }
-        else if(parameter_to_graph == g_PH_IN || parameter_to_graph == g_PH_OUT)
-        {
-            min_value = 0;
-            max_value = 14;
-            num_of_lines = 14;
-            ui->div_text->setText(tr("1 pH/div"));
-        }
-        break;
-    }
-
-
-//    separation = ui->graphicsView->height()/num_of_lines;
-
-    ui->min_value->setText(QString::number(min_value));
-    ui->max_value->setText(QString::number(max_value));
-
-
-    for(i = 0; i < num_of_lines; i++)
-    {
-//        scene->addLine(0, i*separation*-1, ui->graphicsView->width(), i*separation*-1, pen);
-    }
-
-    pen.setColor(QColor(25, 25, 25));
-    pen.setWidth(1);
-    for(i = 0; i < 12; i++)
-    {
-        if(0 == i%2)
-        {
-//            scene->addLine(i*ui->graphicsView->width()/12, 0, i*ui->graphicsView->width()/12, -1*ui->graphicsView->height(), pen);
-        }
-        else
-        {
-//            scene->addLine(i*ui->graphicsView->width()/12, 0, i*ui->graphicsView->width()/12, -10, pen);
-        }
-    }
-
-}
-
-
 
 void graphwindow::on_comboBox_currentIndexChanged(int index)
 {
@@ -898,15 +724,6 @@ void graphwindow::on_comboBox_currentIndexChanged(int index)
     ui->label_graph->setText(tr("Voltaje L1-L2"));
 
     qDebug() << "Index is " << i;
-}
-
-qreal graphwindow::adjusted_y_value(qreal val)
-{
-    qreal new_value;
-    new_value = val * ui->graphicsView_2->height();
-    new_value = new_value / max_value;
-
-    return  new_value;
 }
 
 void graphwindow::color_to_label(uint parameter)
@@ -1187,3 +1004,116 @@ void graphwindow::on_top_menu_2_clicked()
     forward_bitacora_clicked();
     // bitacora
 }
+
+void graphwindow::show_or_hide_graph(bool both_graph)
+{
+    if(both_graph == false)
+    {
+        ui->splineGraph_1->setGeometry(ui->splineGraph_1->x(), ui->splineGraph_1->y(), 800, ui->splineGraph_1->height());
+        ui->splineGraph_2->hide();
+        ui->label_graph_2->hide();
+        ui->barra_grafica_2->hide();
+    }
+    else
+    {
+        ui->splineGraph_1->setGeometry(ui->splineGraph_1->x(), ui->splineGraph_1->y(), 400, ui->splineGraph_1->height());
+        ui->splineGraph_2->show();
+        ui->label_graph_2->show();
+        ui->barra_grafica_2->show();
+        update_graph_window(parameter_to_graph);
+    }
+}
+
+void graphwindow::on_label_graph_clicked()
+{
+    if(show_both_graph == false)
+    {
+        // Display both graph
+        show_both_graph = true;
+        ui->label_graph_2->setText(ui->label_graph->text());
+        show_or_hide_graph(show_both_graph);
+        parameter_to_graph_righside = parameter_to_graph;
+    }
+    else
+    {
+        // Display only left graph
+        show_both_graph = false;
+        show_or_hide_graph(show_both_graph);
+    }
+}
+
+void graphwindow::set_graph_span(uint span)
+{
+    if(span == 0)
+    {
+        ui->radioButton->setChecked(true);
+    }
+
+    graph_span = span;
+}
+
+void graphwindow::on_radioButton_toggled(bool checked)
+{
+    if(checked == true)
+    {
+        graph_span = 0;
+        update_graph_window(parameter_to_graph);
+    }
+}
+
+void graphwindow::on_radioButton_2_toggled(bool checked)
+{
+    if(checked == true)
+    {
+        graph_span = 1;
+        update_graph_window(parameter_to_graph);
+    }
+}
+
+void graphwindow::on_radioButton_3_toggled(bool checked)
+{
+    if(checked == true)
+    {
+        graph_span = 2;
+        update_graph_window(parameter_to_graph);
+    }
+}
+
+QList<float> graphwindow::get_list(uint param)
+{
+    if(graph_span == 0)
+    {
+        graph_divisions = 60;
+        return get_list_last_60_sec_from_param(param);
+    }
+    else if(graph_span == 1)
+    {
+        graph_divisions = 60;
+        return get_list_last_60_min_from_param(param);
+    }
+    else if(graph_span == 2)
+    {
+        graph_divisions = 24;
+        return get_list_last_24_hour_from_param(param);
+    }
+}
+
+float graphwindow::get_last_param_from_list(uint param)
+{
+    if(graph_span == 0)
+    {
+        graph_divisions = 60;
+        return get_list_last_60_sec_from_param(param).last();
+    }
+    else if(graph_span == 1)
+    {
+        graph_divisions = 60;
+        return get_list_last_60_min_from_param(param).last();
+    }
+    else if(graph_span == 2)
+    {
+        graph_divisions = 24;
+        return get_list_last_24_hour_from_param(param).last();
+    }
+}
+

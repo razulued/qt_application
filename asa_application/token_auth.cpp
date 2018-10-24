@@ -73,3 +73,28 @@ QString get_user_name()
     conf.endGroup();
     return username;
 }
+
+QString get_user_initials(void)
+{
+    QString name = get_user_name();
+    QString initials;
+
+    uint i = 0;
+    bool next_char_is_initial = true;
+
+    for(i = 0; i < (uint)name.length(); i++)
+    {
+        if((true == next_char_is_initial) && name.at(i).isLetter())
+        {
+            initials.append(name.at(i));
+            next_char_is_initial = false;
+        }
+
+        if(name.at(i).isNull() || name.at(i).isSpace())
+        {
+            next_char_is_initial = true;
+        }
+    }
+
+    return initials;
+}

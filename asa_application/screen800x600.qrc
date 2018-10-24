@@ -134,6 +134,7 @@
         <file>screen800x600/iconos/Limpiar-filtro.png</file>
         <file>screen800x600/iconos/Calendario.png</file>
         <file>screen800x600/iconos/graph-icon.png</file>
+        <file>screen800x600/iconos/loading.png</file>
     </qresource>
     <qresource prefix="/texto">
         <file>screen800x600/texto/Teclado 1.1/0 azul.png</file>

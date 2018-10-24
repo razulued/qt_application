@@ -346,8 +346,8 @@ background-position: center;
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>299</width>
-         <height>189</height>
+         <width>297</width>
+         <height>187</height>
         </rect>
        </property>
       </widget>
@@ -544,7 +544,7 @@ background-position: center;
 }</string>
       </property>
       <property name="text">
-       <string/>
+       <string>Completado</string>
       </property>
       <property name="checkable">
        <bool>false</bool>
@@ -2457,11 +2457,41 @@ border:none;
     <bool>false</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="label_paro_general">
+   <property name="geometry">
+    <rect>
+     <x>111</x>
+     <y>63</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#label_paro_general
+{
+color: white;
+background-color:transparent;
+border:none;
+}</string>
+   </property>
+   <property name="text">
+    <string>Paro General</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
   <zorder>stop_button_image</zorder>
   <zorder>frame</zorder>
   <zorder>key_frame</zorder>
   <zorder>textEdit</zorder>
   <zorder>pushButton</zorder>
+  <zorder>label_paro_general</zorder>
  </widget>
  <resources/>
  <connections/>

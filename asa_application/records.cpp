@@ -10,13 +10,17 @@
 #include <QTextEdit>
 #include <QRadioButton>
 #include <QSignalMapper>
+#include "token_auth.h"
 
-records::records(const QString &path, uint record_id, uint from_id, uint time, QWidget *parent) :
+records::records(const QString &path, QStringList list_records, uint from_id, uint time, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::records)
 {
     ui->setupUi(this);
     current_type = NO_TYPE_SELECTED;
+    main_id = from_id;
+    actual_time = time;
+    question_list = list_records;
 
     db_path = path;
 
@@ -26,68 +30,68 @@ records::records(const QString &path, uint record_id, uint from_id, uint time, Q
     }
     else
     {
-        if((true == QFileInfo(db_path).exists()) && (QFileInfo(db_path).isFile()))
-        {
-            qDebug() << "Ya existe la DB";
-            QSqlQuery q;
-            if(!q.prepare("SELECT * FROM rutinas WHERE id = :id_found")) qDebug() << "Failed to prepare";
-            q.bindValue(":id_found",from_id);
-            if(!q.exec()) qDebug() << "Failed to execute: records";
+//        if((true == QFileInfo(db_path).exists()) && (QFileInfo(db_path).isFile()))
+//        {
+//            qDebug() << "Ya existe la DB";
+//            QSqlQuery q;
+//            if(!q.prepare("SELECT * FROM rutinas WHERE id = :id_found")) qDebug() << "Failed to prepare";
+//            q.bindValue(":id_found",from_id);
+//            if(!q.exec()) qDebug() << "Failed to execute: records";
 
-            while (q.next())
-            {
-                qDebug() << q.value("id").toInt();
-                qDebug() << q.value("nombre").toString();
-                qDebug() << q.value("periodo").toInt();
-                qDebug() << q.value("origen").toInt();
-                qDebug() << q.value("next_event").toInt();
+//            while (q.next())
+//            {
+//                qDebug() << q.value("id").toInt();
+//                qDebug() << q.value("nombre").toString();
+//                qDebug() << q.value("periodo").toInt();
+//                qDebug() << q.value("origen").toInt();
+//                qDebug() << q.value("next_event").toInt();
 
-                log__rutina_id = q.value("id").toInt();
-                log__date = time;
-                log__rutina_text = q.value("nombre").toString();
-            }
+//                log__rutina_id = q.value("id").toInt();
+//                log__date = time;
+//                log__rutina_text = q.value("nombre").toString();
+//            }
 
-        }
-        else
-        {
-            m_db = QSqlDatabase::addDatabase("QSQLITE");
-            m_db.setDatabaseName(db_path);
+//        }
+//        else
+//        {
+//            m_db = QSqlDatabase::addDatabase("QSQLITE");
+//            m_db.setDatabaseName(db_path);
 
-            if (!m_db.open())
-            {
-               qDebug() << "Error: connection with database fail";
-            }
-            else
-            {
-               qDebug() << "Database: connection ok";
-            }
+//            if (!m_db.open())
+//            {
+//               qDebug() << "Error: connection with database fail";
+//            }
+//            else
+//            {
+//               qDebug() << "Database: connection ok";
+//            }
 
-            qDebug() << "ALV NO HAY TABLA";
-        }
+//            qDebug() << "ALV NO HAY TABLA";
+//        }
 
 
         this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
         this->setAttribute(Qt::WA_TranslucentBackground);
 
-//        ui->frame->setStyleSheet("border-style: solid;"
-//                                 "border-color: gray;"
-//                                 "border-width: 3px;"
-//                                 "border-radius: 15px;"
-//                                 "background-color: black");
-
         clickeablelabel *alphabackground = new clickeablelabel(this);
         alphabackground->setGeometry(this->geometry());
         alphabackground->setStyleSheet("background-color: rgb(0,0,0,180);");
         alphabackground->lower();
+        connect(alphabackground,SIGNAL(clicked()),this,SLOT(background_clicked()));
+
+
         format_everything();
 
-        load_to_table(record_id);
+
+        load_to_table(get_current_question_id());
 
         if(parent != NULL)
         {
             this->move(parent->pos());
         }
+
         this->show();
+
     }
 }
 
@@ -99,6 +103,30 @@ records::~records()
 void records::load_to_table(uint id)
 {
     QSqlQuery q;
+
+    if(!q.prepare("SELECT * FROM rutinas WHERE id = :id_found"))
+    {
+        qDebug() << "Failed to prepare";
+    }
+    else
+    {
+        q.bindValue(":id_found",main_id);
+        if(!q.exec()) qDebug() << "Failed to execute: records";
+
+        while (q.next())
+        {
+            qDebug() << q.value("id").toInt();
+            qDebug() << q.value("nombre").toString();
+            qDebug() << q.value("periodo").toInt();
+            qDebug() << q.value("origen").toInt();
+            qDebug() << q.value("next_event").toInt();
+
+            temp_log.log__rutina_id = q.value("id").toInt();
+            temp_log.log__date = actual_time;
+            temp_log.log__rutina_text = q.value("nombre").toString();
+        }
+
+    }
 
     //SELECT body FROM tbl_index WHERE id = 937
     if(!q.prepare("SELECT * FROM records WHERE id = :id_found"))
@@ -124,8 +152,8 @@ void records::load_to_table(uint id)
                 qDebug() << q.value("field_2").toString();
                 qDebug() << q.value("field_3").toString();
 
-                log__record_id = q.value("id").toInt();
-                log__record_text = q.value("name").toString();
+                temp_log.log__record_id = q.value("id").toInt();
+                temp_log.log__record_text = q.value("name").toString();
 
                 if(q.value("type").toString() == "NUMBER")
                 {
@@ -152,11 +180,16 @@ void records::input_numeric(QString name, QString units)
     ui->opt_text_name_label->setText(name);
     ui->opt_text_units_label->setText(units);
     ui->tabWidget->setCurrentIndex(0);
+    ui->key_frame->show();
+    ui->opt_text_textEdit->clear();
+    ui->opt_text_textEdit->setFocus();
 }
 
 void records::input_choice(QString name, QString opt_1, QString opt_2, QString opt_3 )
 {
     QFont font("Typo Square Bold Demo",16,1);
+
+    ui->key_frame->hide();
 
     current_type = TYPE_CHOICE;
     QRadioButton *choice;
@@ -228,28 +261,35 @@ void records::input_choice(QString name, QString opt_1, QString opt_2, QString o
     ui->tabWidget->setCurrentIndex(1);
 }
 
-void records::save_record_to_log()
+void records::save_records_to_log()
 {
+    uint i = 0;
     QSqlQuery q;
-    qDebug() << "log__date: " << log__date;
-    qDebug() <<  "log__rutina_id: " << log__rutina_id;
-    qDebug() << "log__rutina_text: " << log__rutina_text;
-    qDebug() << "log__record_id: " << log__record_id;
-    qDebug() << "log__record_text: " << log__record_text;
-    qDebug() << "log__record_value: " << log__record_value;
-
-    q.prepare("INSERT INTO log(log_date, rutina_id, rutina_name, record_id, record_name, record_value) "
-              "VALUES(:log_date, :rutina_id, :rutina_name, :record_id, :record_name, :record_value)");
-    q.bindValue(":log_date",log__date);
-    q.bindValue(":rutina_id",log__rutina_id);
-    q.bindValue(":rutina_name",log__rutina_text);
-    q.bindValue(":record_id",log__record_id);
-    q.bindValue(":record_name",log__record_text);
-    q.bindValue(":record_value",log__record_value);
-    if(!q.exec())
+    for(i = 0; i < log_queue.length(); i++)
     {
-        qDebug() << q.lastError().text();
+        qDebug() << "log__date: " << log_queue.at(i).log__date;
+        qDebug() <<  "log__rutina_id: " << log_queue.at(i).log__rutina_id;
+        qDebug() << "log__rutina_text: " << log_queue.at(i).log__rutina_text;
+        qDebug() << "log__record_id: " << log_queue.at(i).log__record_id;
+        qDebug() << "log__record_text: " << log_queue.at(i).log__record_text;
+        qDebug() << "log__record_value: " << log_queue.at(i).log__record_value;
+
+        q.prepare("INSERT INTO log(log_date, rutina_id, rutina_name, record_id, record_name, record_value, user) "
+                  "VALUES(:log_date, :rutina_id, :rutina_name, :record_id, :record_name, :record_value, :user)");
+        q.bindValue(":log_date",log_queue.at(i).log__date);
+        q.bindValue(":rutina_id",log_queue.at(i).log__rutina_id);
+        q.bindValue(":rutina_name",log_queue.at(i).log__rutina_text);
+        q.bindValue(":record_id",log_queue.at(i).log__record_id);
+        q.bindValue(":record_name",log_queue.at(i).log__record_text);
+        q.bindValue(":record_value",log_queue.at(i).log__record_value);
+        q.bindValue(":user",get_user_initials());
+        if(!q.exec())
+        {
+            qDebug() << q.lastError().text();
+        }
+
     }
+    all_questions_ok(main_id);
 }
 
 void records::on_key_0_clicked() {keyboard_handler("0");}
@@ -303,7 +343,10 @@ void records::on_key_back_clicked()
 {
     keyboard_handler("back");
 }
-void records::on_key_enter_clicked() {keyboard_handler("\n");}
+void records::on_key_enter_clicked()
+{
+//    keyboard_handler("\n");
+}
 
 void records::keyboard_handler(QString key)
 {
@@ -326,15 +369,27 @@ void records::keyboard_handler(QString key)
 
 void records::on_pushButton_clicked()
 {
-    log__record_value = ui->opt_text_textEdit->toPlainText().toFloat();
-    save_record_to_log();
-    this->close();
+    temp_log.log__record_value = ui->opt_text_textEdit->toPlainText().toFloat();
+    log_queue.append(temp_log);
+    question_list.removeLast();
+
+    if(true == question_list.isEmpty())
+    {
+        qDebug() << "NO MORE QUESTIONS";
+        save_records_to_log();
+        this->close();
+    }
+    else
+    {
+        // Load next question
+        load_to_table(get_current_question_id());
+    }
 }
 
 void records::out_RadioButtonChanged(int opt)
 {
     qDebug() << "VALUE CHANGED " << opt;
-    log__record_value = (float)opt;
+    temp_log.log__record_value = (float)opt;
 }
 
 void records::format_everything()
@@ -379,6 +434,30 @@ void records::format_everything()
 
 void records::on_pushButton_2_clicked()
 {
-    save_record_to_log();
+    log_queue.append(temp_log);
+    question_list.removeLast();
+
+    if(true == question_list.isEmpty())
+    {
+        qDebug() << "NO MORE QUESTIONS";
+        save_records_to_log();
+        this->close();
+    }
+    else
+    {
+        // Load next question
+        load_to_table(get_current_question_id());
+    }
+}
+
+void records::background_clicked()
+{
     this->close();
+}
+
+uint records::get_current_question_id(void)
+{
+    QString ID = question_list.last();
+    qDebug() << "RETRUN: " << ID;
+    return ID.toInt();
 }

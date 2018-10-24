@@ -21,7 +21,7 @@ bitacora::bitacora(rutinas_mantenimiento *rutina, uint tab_ini, QWidget *parent)
     rutina_ptr = rutina;
 
     QFont label_title_font("Typo Square Bold Demo",17,1);
-    QFont ok_font("Typo Square Bold Demo",12,1);
+    QFont ok_font("Typo Square Bold Demo",10,1);
     ui->key_OK->setFont(ok_font);
 
     ui->label_title->setFont(label_title_font);
@@ -356,11 +356,11 @@ void bitacora::init_registros_table()
 {
     QStringList titulos;
 
-    titulos << tr("ID") << tr("Rutina") << tr("Fecha") << tr("ID") << tr("Pregunta") << tr("Valor");
+    titulos << tr("ID") << tr("Rutina") << tr("Fecha") << tr("ID") << tr("Pregunta") << tr("Valor") << tr("Usuario");
     ui->tableWidget_3->setColumnCount(titulos.size());
     ui->tableWidget_3->setHorizontalHeaderLabels(titulos);
 
-    add_row_registro("SELECT * FROM log;", ui->tableWidget_3);
+    add_row_registro("SELECT * FROM log ORDER BY log_date DESC;", ui->tableWidget_3);
 }
 
 void bitacora::init_active_table()
@@ -630,6 +630,7 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
 
         table->setItem(row,3, new QTableWidgetItem(q.value("record_id").toString()));
         table->setItem(row,4, new QTableWidgetItem(q.value("record_name").toString()));
+        table->setItem(row,6, new QTableWidgetItem(q.value("user").toString()));
 
         //get question type
         question_id = q.value("record_id").toInt();
@@ -678,11 +679,12 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
         row++;
         table->resizeRowsToContents();
         table->setColumnWidth(0, 35);
-        table->setColumnWidth(1, 300);
+        table->setColumnWidth(1, 250);
         table->setColumnWidth(2, 120);
         table->setColumnWidth(3, 35);
         table->setColumnWidth(4, 200);
-        table->setColumnWidth(5, 70);
+        table->setColumnWidth(5, 65);
+        table->setColumnWidth(6, 65);
     }
 }
 
@@ -775,8 +777,6 @@ void bitacora::on_key_OK_clicked()
 {
     uint i = 0;
     QStringList list_records;
-    uint record_idx = 0;
-    QString record_ID;
     records *rec_ptr;
 
     if(0 != selected_id)
@@ -794,22 +794,30 @@ void bitacora::on_key_OK_clicked()
                 }
                 else
                 {
-                    rutina_ptr->complete_rutina(i);
                     list_records = rutina_ptr->texto_ayuda(i).split(',');
-//                    qDebug() << "SPLIT: " << list_records << "len: " << list_records.length();
+                    qDebug() << "SPLIT: " << list_records << "len: " << list_records.length();
                     if(list_records.length() > 0)
                     {
-                        for(record_idx = 0; record_idx < (uint)list_records.length(); record_idx++)
+                        if(list_records.at(0) != "")
                         {
-                            record_ID = list_records.at(record_idx);
-                            if(record_ID != "")
-                            {
-                                rec_ptr = new records("rutinas.db", record_ID.toInt(),
-                                                      selected_id,
-                                                      rutina_ptr->get_current_time().toTime_t(),
-                                                      this);
-                            }
+                            rec_ptr = new records(tr("rutinas.db"),
+                                                  list_records,
+                                                  selected_id,
+                                                  rutina_ptr->get_current_time().toTime_t(),
+                                                  this);
+
+                            // Wait to be completed? release lock
+                            connect(rec_ptr,SIGNAL(all_questions_ok(uint)),this,SLOT(activity_is_completed(uint)));
+
                         }
+                        else
+                        {
+                            rutina_ptr->complete_rutina(i);
+                        }
+                    }
+                    else
+                    {
+                        rutina_ptr->complete_rutina(i);
                     }
                 }
                 break;
@@ -850,7 +858,8 @@ void bitacora::on_log_button_clicked()
     if( 0 != selected_id)
     {
         ui->tableWidget_3->setRowCount(0);
-        add_row_registro("SELECT * FROM log WHERE rutina_id = "+QString::number(selected_id), ui->tableWidget_3);
+        add_row_registro("SELECT * FROM log WHERE rutina_id = "+QString::number(selected_id)
+                         + " ORDER BY log_date DESC", ui->tableWidget_3);
         ui->tabWidget->setCurrentIndex(2);
     }
 }
@@ -859,7 +868,7 @@ void bitacora::on_clear_filters_clicked()
 {
     QSqlQuery q;
     ui->tableWidget_3->setRowCount(0);
-    add_row_registro("SELECT * FROM log", ui->tableWidget_3);
+    add_row_registro("SELECT * FROM log ORDER BY log_date DESC", ui->tableWidget_3);
     ui->tabWidget->setCurrentIndex(3);
 
 //    filtro_fecha_inicio = 0;
@@ -932,7 +941,8 @@ void bitacora::filtro_fecha_received(uint ini, uint end)
         add_row_registro("SELECT * FROM log WHERE log_date BETWEEN "+
                          QString::number(filtro_fecha_inicio) +
                          " and "+
-                         QString::number(filtro_fecha_fin), ui->tableWidget_3);
+                         QString::number(filtro_fecha_fin) +
+                         " ORDER BY log_date DESC", ui->tableWidget_3);
         ui->tabWidget->setCurrentIndex(2);
     }
 
@@ -944,7 +954,8 @@ void bitacora::on_filtro_record_clicked()
     if( 0 != selected_record)
     {
         ui->tableWidget_3->setRowCount(0);
-        add_row_registro("SELECT * FROM log WHERE record_id = "+QString::number(selected_record), ui->tableWidget_3);
+        add_row_registro("SELECT * FROM log WHERE record_id = "+QString::number(selected_record) +
+                         " ORDER BY log_date DESC", ui->tableWidget_3);
         ui->tabWidget->setCurrentIndex(2);
     }
 }
@@ -970,4 +981,47 @@ void bitacora::on_top_menu_1_clicked()
 void bitacora::on_top_menu_5_clicked()
 {
 
+}
+
+void bitacora::activity_is_completed(uint id)
+{
+    uint i;
+    for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
+    {
+        if(rutina_ptr->id(i) == id)
+        {
+            rutina_ptr->complete_rutina(i);
+            break;
+        }
+    }
+}
+
+void bitacora::on_tab1_to_bottom_clicked()
+{
+    ui->tableWidget_2->scrollToBottom();
+}
+
+void bitacora::on_tab1_to_top_clicked()
+{
+    ui->tableWidget_2->scrollToTop();
+}
+
+void bitacora::on_tab2_to_top_clicked()
+{
+    ui->tableWidget->scrollToTop();
+}
+
+void bitacora::on_tab2_to_bottom_clicked()
+{
+    ui->tableWidget->scrollToBottom();
+}
+
+void bitacora::on_tab3_to_top_clicked()
+{
+    ui->tableWidget_3->scrollToTop();
+}
+
+void bitacora::on_tab3_to_bottom_clicked()
+{
+    ui->tableWidget_3->scrollToBottom();
 }

@@ -49,7 +49,8 @@ QTabBar::tab { min-width:200px; }
 
 QTabBar::tab:!selected{
 background-color: #000000;
-color:#ffffff;font-size:8pt;
+color: rgb(0, 167, 250);
+font-size:8pt;
 height: 50px;
 }
 QTabBar::tab:selected{
@@ -63,7 +64,7 @@ height: 50px;
     <enum>QTabWidget::North</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -172,10 +173,56 @@ color:black;
 }</string>
      </property>
      <property name="text">
-      <string>Listo</string>
+      <string>Completado</string>
      </property>
      <property name="checkable">
       <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="tab1_to_top">
+     <property name="geometry">
+      <rect>
+       <x>764</x>
+       <y>3</y>
+       <width>31</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#tab1_to_top
+{
+border: none;
+background-color:transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="tab1_to_bottom">
+     <property name="geometry">
+      <rect>
+       <x>764</x>
+       <y>411</y>
+       <width>31</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#tab1_to_bottom
+{
+border: none;
+background-color:transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
     <zorder>tableWidget_2</zorder>
@@ -183,6 +230,8 @@ color:black;
     <zorder>key_Reschedule</zorder>
     <zorder>key_OK</zorder>
     <zorder>label_horas</zorder>
+    <zorder>tab1_to_top</zorder>
+    <zorder>tab1_to_bottom</zorder>
    </widget>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
@@ -289,11 +338,59 @@ background-position: center;
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QPushButton" name="tab2_to_top">
+     <property name="geometry">
+      <rect>
+       <x>764</x>
+       <y>1</y>
+       <width>31</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#tab2_to_top
+{
+border: none;
+background-color:transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="tab2_to_bottom">
+     <property name="geometry">
+      <rect>
+       <x>764</x>
+       <y>410</y>
+       <width>31</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#tab2_to_bottom
+{
+border: none;
+background-color:transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>tableWidget</zorder>
     <zorder>key_Reschedule_2</zorder>
     <zorder>label_3</zorder>
     <zorder>label_4</zorder>
     <zorder>log_button</zorder>
+    <zorder>tab2_to_top</zorder>
+    <zorder>tab2_to_bottom</zorder>
    </widget>
    <widget class="QWidget" name="tab_3">
     <attribute name="title">
@@ -312,9 +409,9 @@ background-position: center;
     <widget class="QPushButton" name="clear_filters">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>20</x>
        <y>461</y>
-       <width>41</width>
+       <width>131</width>
        <height>31</height>
       </rect>
      </property>
@@ -325,9 +422,10 @@ background-position: center;
       <string notr="true">#clear_filters
 {
 background-image: url(:/iconos/screen800x600/iconos/Limpiar-filtro.png);
-background-position: center;
+background-position: left;
 background-repeat: none;
 border:none;
+background-color:transparent;
 /*background-color: black;
 color: rgb(0, 167, 250);
 border-style: solid;
@@ -345,7 +443,7 @@ border-radius: 10;*/
       <rect>
        <x>620</x>
        <y>457</y>
-       <width>41</width>
+       <width>151</width>
        <height>41</height>
       </rect>
      </property>
@@ -356,9 +454,10 @@ border-radius: 10;*/
       <string notr="true">#filtro_fecha
 {
 background-image: url(:/iconos/screen800x600/iconos/Calendario.png);
-background-position: center;
+background-position: left;
 background-repeat: none;
 border:none;
+background-color:transparent;
 }</string>
      </property>
      <property name="text">
@@ -394,9 +493,9 @@ border:none;
     <widget class="QPushButton" name="filtro_record">
      <property name="geometry">
       <rect>
-       <x>417</x>
+       <x>420</x>
        <y>460</y>
-       <width>41</width>
+       <width>161</width>
        <height>41</height>
       </rect>
      </property>
@@ -407,9 +506,10 @@ border:none;
       <string notr="true">#filtro_record
 {
 background-image: url(:/iconos/screen800x600/iconos/Ayuda azul.png);
-background-position: center;
+background-position: left;
 background-repeat: none;
 border:none;
+background-color:transparent;
 }</string>
      </property>
      <property name="text">
@@ -419,9 +519,9 @@ border:none;
     <widget class="QLabel" name="label_filtro_record">
      <property name="geometry">
       <rect>
-       <x>460</x>
+       <x>440</x>
        <y>470</y>
-       <width>141</width>
+       <width>171</width>
        <height>21</height>
       </rect>
      </property>
@@ -432,9 +532,9 @@ border:none;
     <widget class="QPushButton" name="graph_button">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>204</x>
        <y>465</y>
-       <width>41</width>
+       <width>151</width>
        <height>31</height>
       </rect>
      </property>
@@ -445,9 +545,10 @@ border:none;
       <string notr="true">#graph_button
 {
 background-image: url(:/iconos/screen800x600/iconos/graph-icon.png);
-background-position: center;
+background-position: left;
 background-repeat: none;
 border:none;
+background-color:transparent;
 }</string>
      </property>
      <property name="text">
@@ -467,15 +568,63 @@ border:none;
       <string>Mostrar gráfico</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="tab3_to_top">
+     <property name="geometry">
+      <rect>
+       <x>764</x>
+       <y>0</y>
+       <width>31</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#tab3_to_top
+{
+border: none;
+background-color:transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="tab3_to_bottom">
+     <property name="geometry">
+      <rect>
+       <x>764</x>
+       <y>411</y>
+       <width>31</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#tab3_to_bottom
+{
+border: none;
+background-color:transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>tableWidget_3</zorder>
-    <zorder>clear_filters</zorder>
-    <zorder>filtro_fecha</zorder>
     <zorder>label_quitar_filtros</zorder>
     <zorder>label_filtro_fecha</zorder>
     <zorder>label_filtro_record</zorder>
-    <zorder>filtro_record</zorder>
-    <zorder>graph_button</zorder>
     <zorder>label_mostrar_graficos</zorder>
+    <zorder>clear_filters</zorder>
+    <zorder>graph_button</zorder>
+    <zorder>filtro_record</zorder>
+    <zorder>filtro_fecha</zorder>
+    <zorder>tab3_to_top</zorder>
+    <zorder>tab3_to_bottom</zorder>
    </widget>
   </widget>
   <widget class="QPushButton" name="top_menu_1">

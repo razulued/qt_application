@@ -56,6 +56,7 @@ void mod_1_carcamo::load_new_gif(uint state)
         }
 
         parent_label->setAttribute(Qt::WA_NoSystemBackground);
+        mv->setCacheMode(QMovie::CacheAll);
         mv->start();
         parent_label->setMovie(mv);
 

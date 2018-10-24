@@ -308,6 +308,7 @@ void custom_tooltip::checkClick()
             {
                 graph_ptr->show_graph(element_type);
                 graph_ptr->set_type(graph_origin);
+                graph_ptr->set_graph_span(0);
             }
         }
         else

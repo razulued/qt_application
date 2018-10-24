@@ -27,6 +27,7 @@
 background-image: url(:/iconos/screen800x600/iconos/Cuadro pantalla.png);
 background-repeat: none;
 border: none;
+background-color:transparent;
 }</string>
    </property>
    <property name="frameShape">
@@ -97,6 +98,49 @@ border: none;
     </property>
     <property name="text">
      <string>Calendario</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="closeButton">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>0</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#closeButton { 
+background-color: transparent;
+/*border-image: url(:/iconos/images/Iconos/close-x.png);*/
+background: none; 
+border: none; 
+background-repeat: none;
+margin:5px;
+ } 
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>

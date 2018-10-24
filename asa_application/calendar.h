@@ -24,6 +24,8 @@ private slots:
 
     void on_push_cancelar_clicked();
 
+    void on_closeButton_clicked();
+
 private:
     Ui::calendar *ui;
 

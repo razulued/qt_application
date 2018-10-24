@@ -1689,6 +1689,7 @@ background-position: center;
 background-image: url(:/iconos/screen800x600/iconos/Cuadro pantalla.png);
 background-repeat: none;
 background-position: center;
+background-color: transparent;
 border:none;
 }</string>
    </property>
@@ -1722,7 +1723,7 @@ border: none;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <property name="styleSheet">

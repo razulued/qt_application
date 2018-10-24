@@ -214,6 +214,8 @@ private:
 signals:
     void release_lock();
 
+protected slots:
+    void activity_is_completed(uint id);
 };
 
 #endif // DETAILEDWINDOW_H

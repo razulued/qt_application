@@ -55,6 +55,18 @@ private slots:
     void on_top_menu_1_clicked();
 
     void on_top_menu_5_clicked();
+    void activity_is_completed(uint id);
+    void on_tab1_to_bottom_clicked();
+
+    void on_tab1_to_top_clicked();
+
+    void on_tab2_to_top_clicked();
+
+    void on_tab2_to_bottom_clicked();
+
+    void on_tab3_to_top_clicked();
+
+    void on_tab3_to_bottom_clicked();
 
 private:
     Ui::bitacora *ui;
@@ -96,6 +108,7 @@ private:
 
     calendario_filtro * calendario_window = NULL;
     record_chart * chart_window = NULL;
+
 signals:
     void release_lock();
 

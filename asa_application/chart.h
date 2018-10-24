@@ -32,6 +32,7 @@
 
 #include <QtCharts/QChart>
 #include <QtCore/QTimer>
+#include <QChartView>
 
 QT_CHARTS_BEGIN_NAMESPACE
 class QSplineSeries;
@@ -45,7 +46,8 @@ class Chart: public QChart
 {
     Q_OBJECT
 public:
-    Chart(QList<float> values, uint ticks, QGraphicsItem *parent = 0, Qt::WindowFlags wFlags = 0);
+    Chart(QList<float> values, uint ticks, QtCharts::QChartView *target, QGraphicsItem *parent = 0, Qt::WindowFlags wFlags = 0);
+    void append_to_end(QList<float> values);
     virtual ~Chart();
 
 public slots:
@@ -63,6 +65,8 @@ private:
     qreal yMax;
     qreal roundUp(qreal actual, qreal base, qreal gap);
     qreal roundDown(qreal actual, qreal base, qreal gap);
+    void draw_end_ball(QChartView *tar,int x, int y);
+    uint global_x;
 };
 //![1]
 

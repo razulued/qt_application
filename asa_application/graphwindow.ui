@@ -125,7 +125,7 @@ background-repeat: none;
   <widget class="QLabel" name="barra_grafica">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>0</x>
      <y>249</y>
      <width>461</width>
      <height>31</height>
@@ -183,7 +183,7 @@ height: 50px;
     <enum>QTabWidget::North</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="iconSize">
     <size>
@@ -1623,191 +1623,6 @@ background-repeat: none;
     <zorder>label_33</zorder>
    </widget>
   </widget>
-  <widget class="QLabel" name="label_graph">
-   <property name="geometry">
-    <rect>
-     <x>56</x>
-     <y>250</y>
-     <width>171</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">#label_graph
-{
-background-color: transparent;
-background-position: center;
-border: none; 
-background-repeat: none;
-}</string>
-   </property>
-   <property name="text">
-    <string>Voltaje</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="min_value">
-   <property name="geometry">
-    <rect>
-     <x>6</x>
-     <y>550</y>
-     <width>41</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>min</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="max_value">
-   <property name="geometry">
-    <rect>
-     <x>5</x>
-     <y>280</y>
-     <width>41</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>max</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="div_text">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>250</y>
-     <width>151</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>div</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-   <property name="wordWrap">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QTabWidget" name="tabWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>270</y>
-     <width>601</width>
-     <height>331</height>
-    </rect>
-   </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QTabWidget{
-border:none;
-}
-
-QTabWidget::tab-bar{
-alignment: right;
-}
-
-QTabBar::tab { min-width:110px; }
-
-QTabBar::tab:!selected{
-background-color: #000000;
-color: rgb(100, 100, 100);
-font-size:10pt;
-height: 30px;
-}
-QTabBar::tab:selected{
-background-color: #000000;
-color:#ffffff;
-/*color: rgb(161, 161, 161)*/
-font-size:10pt;
-height:30px;
-}</string>
-   </property>
-   <property name="tabPosition">
-    <enum>QTabWidget::South</enum>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="QWidget" name="tab_4">
-    <attribute name="title">
-     <string>60 segundos</string>
-    </attribute>
-    <widget class="QChartView" name="splineGraph_1">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>601</width>
-       <height>301</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_5">
-    <attribute name="title">
-     <string>60 minutos</string>
-    </attribute>
-    <widget class="QGraphicsView" name="graphicsView_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>500</width>
-       <height>280</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">#graphicsView_2
-{
-border-top: none;
-border-left : none;
-border-right : 1px solid gray;;
-border-bottom : 1px solid gray;
-}</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="tab_6">
-    <attribute name="title">
-     <string>24 horas</string>
-    </attribute>
-    <widget class="QGraphicsView" name="graphicsView_3">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>500</width>
-       <height>280</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">#graphicsView_3
-{
-border-top: none;
-border-left : none;
-border-right : 1px solid gray;;
-border-bottom : 1px solid gray;
-}</string>
-     </property>
-    </widget>
-   </widget>
-  </widget>
   <widget class="QPushButton" name="top_menu_6">
    <property name="geometry">
     <rect>
@@ -1836,18 +1651,230 @@ background-repeat: none;
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QChartView" name="splineGraph_1">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>260</y>
+     <width>400</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#splineGraph_1
+{
+background-color: black;
+}</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="barra_grafica_2">
+   <property name="geometry">
+    <rect>
+     <x>339</x>
+     <y>249</y>
+     <width>461</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#barra_grafica_2 { 
+background-color: transparent;
+background-image: url(:/barras/screen800x600/barras/barra_grafica_inverted.png);
+border: none; 
+background-repeat: none;
+ } </string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QChartView" name="splineGraph_2">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>260</y>
+     <width>400</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#splineGraph_2
+{
+background-color: black;
+}</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="label_graph">
+   <property name="geometry">
+    <rect>
+     <x>4</x>
+     <y>250</y>
+     <width>191</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#label_graph
+{
+background-color: transparent;
+background-position: center;
+border: none; 
+background-repeat: none;
+Text-align:left;
+}</string>
+   </property>
+   <property name="text">
+    <string>Param 1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="label_graph_2">
+   <property name="geometry">
+    <rect>
+     <x>607</x>
+     <y>250</y>
+     <width>191</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#label_graph_2
+{
+background-color: transparent;
+background-position: center;
+border: none; 
+background-repeat: none;
+Text-align:right;
+}</string>
+   </property>
+   <property name="text">
+    <string>Param 2</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>560</y>
+     <width>401</width>
+     <height>43</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#groupBox
+{
+border:none;
+background-color:transparent;
+}
+QRadioButton
+{
+color: rgb(0, 167, 250);
+}
+QRadioButton::indicator
+{
+width: 30px;
+height: 30px;
+}
+</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QRadioButton" name="radioButton">
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="text">
+       <string>60 Segundos</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton_2">
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="text">
+       <string>60 Minutos</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="radioButton_3">
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="text">
+       <string>24 Horas</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label_title">
+   <property name="geometry">
+    <rect>
+     <x>261</x>
+     <y>0</y>
+     <width>321</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Parámetros Eléctricos</string>
+   </property>
+  </widget>
+  <zorder>splineGraph_2</zorder>
+  <zorder>splineGraph_1</zorder>
   <zorder>tabWidget</zorder>
   <zorder>barra_grafica</zorder>
   <zorder>top_bar</zorder>
   <zorder>top_menu_3</zorder>
   <zorder>top_menu_1</zorder>
   <zorder>top_menu_2</zorder>
-  <zorder>label_graph</zorder>
-  <zorder>min_value</zorder>
-  <zorder>max_value</zorder>
-  <zorder>div_text</zorder>
-  <zorder>tabWidget_2</zorder>
   <zorder>top_menu_6</zorder>
+  <zorder>barra_grafica_2</zorder>
+  <zorder>label_graph</zorder>
+  <zorder>label_graph_2</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>label_title</zorder>
  </widget>
  <customwidgets>
   <customwidget>

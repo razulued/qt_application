@@ -36,25 +36,32 @@
 #include <QBrush>
 #include <QLinearGradient>
 
-Chart::Chart(QList<float> values, uint ticks, QGraphicsItem *parent, Qt::WindowFlags wFlags):
+Chart::Chart(QList<float> values, uint ticks, QChartView *target, QGraphicsItem *parent, Qt::WindowFlags wFlags):
     QChart(QChart::ChartTypeCartesian, parent, wFlags),
     m_series(0),
     m_axis(new QValueAxis),
     m_step(0),
     m_x(0),
-    m_y(0)
+    m_y(values.at(0))
 {
     qsrand((uint) QTime::currentTime().msec());
 
 //    QObject::connect(&m_timer, SIGNAL(timeout()), this, SLOT(handleTimeout()));
 //    m_timer.setInterval(1000);
 
+    QLinearGradient gradient(0,0,target->width(),target->height());
+    gradient.setColorAt(0, QColor::fromRgb(0, 167, 250,180));
+    gradient.setColorAt(0.8, QColor::fromRgb(255, 255, 255,255));
+    gradient.setColorAt(0.9, QColor::fromRgb(255, 255, 255,0));
+    QBrush brush(gradient);
+
     m_series = new QSplineSeries(this);
-    QPen line_color(QColor::fromRgb(0, 167, 250,180));
+//    QPen line_color(QColor::fromRgb(0, 167, 250,180));
+    QPen line_color;
+    line_color.setBrush(brush);
     line_color.setWidth(5);
     m_series->setPen(line_color);
     m_series->append(m_x, m_y);
-
 
     addSeries(m_series);
     createDefaultAxes();
@@ -99,10 +106,30 @@ Chart::Chart(QList<float> values, uint ticks, QGraphicsItem *parent, Qt::WindowF
     this->axisY()->setLabelsColor(Qt::white);
     this->setTitleBrush(Qt::white);
 
-    uint i = 0;
-    for(i = 0; i < values.length(); i++)
+//    uint i = 0;
+    for(m_x = 0; m_x < values.length(); m_x++)
     {
-        m_series->append(i, values.at(i));
+        m_series->append(m_x, values.at(m_x));
+    }
+
+    //    draw_end_ball(target, i-1, values.at(i-1));
+}
+
+void Chart::append_to_end(QList<float> values)
+{
+
+//    qreal y = (m_axis->max() - m_axis->min()) / m_axis->tickCount();
+
+//    m_series->append(m_x, value);
+//    m_x++;
+//    if((m_x - m_axis->min()) >= 10)
+//    {
+//        scroll(m_x, 0);
+//    }
+    m_series->clear();
+    for(m_x = 0; m_x < values.length(); m_x++)
+    {
+        m_series->append(m_x, values.at(m_x));
     }
 }
 
@@ -150,4 +177,21 @@ qreal Chart::roundDown(qreal actual, qreal base, qreal gap)
 //    qDebug() << "DN: " << ret;
 
     return ret;
+}
+
+void Chart::draw_end_ball(QChartView *tar, int x, int y)
+{
+    QPen pen2;
+    qreal size = 30;
+    QRadialGradient gradient2(QPointF(x, y *-1),size);
+
+    gradient2.setColorAt(0, QColor::fromRgba(QRgb(0xFFFFFFFF)));
+    gradient2.setColorAt(0.5, QColor::fromRgba(QRgb(0x00000000)));
+
+    QBrush brush(gradient2);
+
+    pen2.setColor(Qt::transparent);
+    pen2.setWidth(0);
+
+    tar->scene()->addEllipse(x - size/2, (y + size/2) *-1,size,size,pen2, QBrush(brush));
 }

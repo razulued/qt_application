@@ -154,12 +154,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
     connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
 
+    ui->loading_icon->hide();
+
     // Init SPI
     dataObj = new DataProccess;
     dataObj->start();
 
     // Rutinas y DB
-    rutinas = new rutinas_mantenimiento("rutinas.db");
+    rutinas = new rutinas_mantenimiento(tr("rutinas.db"));
 
 //    records *rec_ptr = new records("rutinas.db", 103, 6, this);
 
@@ -773,6 +775,8 @@ void MainWindow::on_top_menu_2_clicked()
 {
     if(mutex_detailed.tryLock(0))
     {
+        ui->loading_icon->show();
+        this->update();
         if(bitacorawindow !=NULL)
         {
             delete bitacorawindow;
@@ -780,6 +784,8 @@ void MainWindow::on_top_menu_2_clicked()
         bitacorawindow = new bitacora(rutinas, 2, this);
         connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
         bitacorawindow->show();
+//        ui->loading_icon->hide();
+
     }
 }
 
@@ -1035,6 +1041,8 @@ void MainWindow::update_system_time()
         if((NULL != bitacorawindow) && bitacorawindow->isActiveWindow())
         {
             bitacorawindow->update_table();
+//            bitacorawindow->show();
+            ui->loading_icon->hide();
         }
 
         //Update text on screen
@@ -1384,6 +1392,8 @@ void MainWindow::on_top_menu_1_clicked()
 {
     if(mutex_detailed.tryLock(0))
     {
+        ui->loading_icon->show();
+        this->update();
         if(bitacorawindow !=NULL)
         {
             delete bitacorawindow;
@@ -1391,5 +1401,7 @@ void MainWindow::on_top_menu_1_clicked()
         bitacorawindow = new bitacora(rutinas, 0, this);
         connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
         bitacorawindow->show();
+//        ui->loading_icon->hide();
+
     }
 }

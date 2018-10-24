@@ -222,8 +222,8 @@ border:none;
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>230</y>
+      <x>240</x>
+      <y>360</y>
       <width>201</width>
       <height>21</height>
      </rect>
