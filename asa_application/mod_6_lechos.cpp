@@ -2,6 +2,8 @@
 #include <QLayout>
 #include <QLabel>
 #include <QMovie>
+#include <QDebug>
+
 mod_6_lechos::mod_6_lechos(QLabel *parent) :
     QWidget(parent)
 {

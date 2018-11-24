@@ -64,7 +64,7 @@ height: 50px;
     <enum>QTabWidget::North</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -830,6 +830,28 @@ background-position: center;
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="num_of_act">
+   <property name="geometry">
+    <rect>
+     <x>174</x>
+     <y>5</y>
+     <width>21</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#num_of_act
+{
+color: yellow;
+border:none;
+background-color: transparent;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>num_of_act</zorder>
   <zorder>top_bar</zorder>
   <zorder>tabWidget</zorder>
   <zorder>top_menu_1</zorder>

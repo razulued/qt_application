@@ -489,6 +489,10 @@ void bitacora::update_active_table()
             if(!item_found)
             {
                 add_row_rutina(ui->tableWidget_2->rowCount(), i, ui->tableWidget_2);
+
+                // Reset table with all entries.
+                ui->tableWidget->setRowCount(0);
+                init_full_table();
             }
         }
         item_found = false;
@@ -717,6 +721,17 @@ void bitacora::item_selected_registros(QTableWidgetItem* item)
 //    ui->label_2->setText(table->item(item->row(), 1)->text());
     selected_record = table->item(item->row(), 3)->text().toInt();
     qDebug() << "ID " << selected_record;
+    if( (1 != table->item(item->row(), 3)->text().toInt()) &&
+        (2 != table->item(item->row(), 3)->text().toInt()) )
+    {
+        ui->graph_button->show();
+        ui->label_mostrar_graficos->show();
+    }
+    else
+    {
+        ui->graph_button->hide();
+        ui->label_mostrar_graficos->hide();
+    }
 }
 void bitacora::on_key_Reschedule_clicked()
 {
@@ -791,6 +806,14 @@ void bitacora::on_key_OK_clicked()
                 if(reschedule_time > 0)
                 {
                     rutina_ptr->reschedule_rutina(i, reschedule_time);
+
+                    //update database
+                    list_records.append("2"); /* #2 is reserved for reschedule */
+                    rec_ptr = new records(tr("rutinas.db"),
+                                          list_records,
+                                          selected_id,
+                                          rutina_ptr->get_current_time().toTime_t(),
+                                          this);
                 }
                 else
                 {
@@ -800,6 +823,11 @@ void bitacora::on_key_OK_clicked()
                     {
                         if(list_records.at(0) != "")
                         {
+                            if(list_records.last() == "")
+                            {
+                                list_records.removeLast();
+                            }
+
                             rec_ptr = new records(tr("rutinas.db"),
                                                   list_records,
                                                   selected_id,
@@ -808,7 +836,6 @@ void bitacora::on_key_OK_clicked()
 
                             // Wait to be completed? release lock
                             connect(rec_ptr,SIGNAL(all_questions_ok(uint)),this,SLOT(activity_is_completed(uint)));
-
                         }
                         else
                         {
@@ -986,11 +1013,17 @@ void bitacora::on_top_menu_5_clicked()
 void bitacora::activity_is_completed(uint id)
 {
     uint i;
+    qDebug() << "ACTIVITY COMPLETED " << id;
     for(i = 0; i < rutina_ptr->num_of_rutinas ; i++)
     {
         if(rutina_ptr->id(i) == id)
         {
             rutina_ptr->complete_rutina(i);
+
+            // When a routine is completed, update tab 3
+            ui->tableWidget_3->setRowCount(0);
+            init_registros_table();
+
             break;
         }
     }
@@ -1024,4 +1057,28 @@ void bitacora::on_tab3_to_top_clicked()
 void bitacora::on_tab3_to_bottom_clicked()
 {
     ui->tableWidget_3->scrollToBottom();
+}
+
+void bitacora::update_act_icon(uint num)
+{
+    if(num > 0)
+    {
+        ui->top_menu_1->setStyleSheet("background-color: transparent;"
+                                      "background-image: url(:/iconos/screen800x600/iconos/Campana_amarillo.png);"
+                                      "border: none;"
+                                      "background-repeat: none;"
+                                      "background-position: center;"
+                                      );
+        ui->num_of_act->setText(QString::number(num));
+    }
+    else
+    {
+        ui->top_menu_1->setStyleSheet("background-color: transparent;"
+                                      "background-image: url(:/iconos/screen800x600/iconos/Campana.png);"
+                                      "border: none;"
+                                      "background-repeat: none;"
+                                      "background-position: center;"
+                                      );
+        ui->num_of_act->setText("");
+    }
 }

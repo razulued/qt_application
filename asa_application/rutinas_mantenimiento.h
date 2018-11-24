@@ -3,7 +3,7 @@
 #include <QString>
 #include <QSqlDatabase>
 #include <QDateTime>
-
+#include <QObject>
 
 enum{
     SIN_RUTINA,
@@ -85,6 +85,8 @@ public:
     void set_time(QDateTime time);
     void update_rutina(uint rutina);
     QDateTime get_current_time();
+
+    void (*number_of_activities_found)(uint);
 private:
 //    def_rutina_t rutina_def_table[];
     QSqlDatabase m_db;
@@ -98,6 +100,7 @@ private:
     void load_to_db(uint id);
 
     uint find_next_schedule(uint periodo, uint last_event, uint schedule_to);
+    uint are_new_activities(void);
 };
 
 #endif // RUTINAS_MANTENIMIENTO_H

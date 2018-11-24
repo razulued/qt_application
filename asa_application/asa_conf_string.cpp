@@ -266,25 +266,27 @@ void synch_output_state()
     mutex.unlock();
 }
 
-QString* get_config_string()
+QString get_config_string()
 {
-    QString *ret;
+    QString ret;
     mutex.lock();
     if(false == calibration_needed)
     {
-        ret = &conf_string;
+        ret = conf_string;
     }
     else
     {
         calibration_needed = false;
-        ret = &calib_string;
+        ret = calib_string;
     }
 
     uint i = 0;
     for(i = 0; i < (uint)one_time_transmit.length(); i++)
     {
-        ret->append(one_time_transmit.at(i));
+        ret.append(one_time_transmit.at(i));
     }
+//    qDebug() << "STRING: " << one_time_transmit;
+//    qDebug() << "conf: " << conf_string;
     one_time_transmit.clear();
     mutex.unlock();
     return ret;

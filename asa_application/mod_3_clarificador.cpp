@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QMovie>
 #include "parameters.h"
+#include <QDebug>
 
 mod_3_clarificador::mod_3_clarificador(QLabel *parent) :
     QWidget(parent)

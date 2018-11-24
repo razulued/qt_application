@@ -13,7 +13,9 @@ class records;
 enum{
     NO_TYPE_SELECTED,
     TYPE_NUMERIC,
-    TYPE_CHOICE
+    TYPE_CHOICE,
+    TYPE_COMPLETED,
+    TYPE_RESCHEDULE
 };
 
 typedef struct
@@ -38,7 +40,7 @@ private:
     Ui::records *ui;
     QSqlDatabase m_db;
     QString db_path;
-    void load_to_table(uint id);
+    void load_to_temp(uint id);
     uint current_type = NO_TYPE_SELECTED;
     uint main_id;
     uint actual_time;
@@ -53,6 +55,7 @@ private:
 
     void save_records_to_log();
     uint get_current_question_id();
+    void input_completed_reschedule();
 private slots:
     void on_key_0_clicked();
     void on_key_1_clicked();
@@ -110,6 +113,7 @@ private slots:
     void out_RadioButtonChanged(int opt);
     void on_pushButton_2_clicked();
     void background_clicked();
+    void run_after();
 signals:
     void all_questions_ok(uint id);
 };

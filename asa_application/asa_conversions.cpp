@@ -344,6 +344,7 @@ void Store_activity(QString str)
 
 void Store_record(QString str)
 {
+    qDebug() << "NEW RECORD:STRING: " << str;
     sql_cmd_manager *query = new sql_cmd_manager(str);
     qDebug() << "Store_record: " << query->store_record();
     query->~sql_cmd_manager();

@@ -119,6 +119,9 @@ public:
 
     bool filtro_present = false;
 
+    static uint num_of_pending_act;
+    void update_activity_alarm(void);
+
 public slots:
     void handleMenuButton();
     void handleParametrosElectricosButton();
@@ -273,6 +276,10 @@ private:
 
 protected:
     void paintEvent(QPaintEvent *);
+
+signals:
+    void send_date_hour(QDateTime date_time);
+    void send_num_activities(uint act);
 };
 
 

@@ -11,6 +11,7 @@
 #include <QRadioButton>
 #include <QSignalMapper>
 #include "token_auth.h"
+#include <QTimer>
 
 records::records(const QString &path, QStringList list_records, uint from_id, uint time, QWidget *parent) :
     QDialog(parent),
@@ -30,46 +31,6 @@ records::records(const QString &path, QStringList list_records, uint from_id, ui
     }
     else
     {
-//        if((true == QFileInfo(db_path).exists()) && (QFileInfo(db_path).isFile()))
-//        {
-//            qDebug() << "Ya existe la DB";
-//            QSqlQuery q;
-//            if(!q.prepare("SELECT * FROM rutinas WHERE id = :id_found")) qDebug() << "Failed to prepare";
-//            q.bindValue(":id_found",from_id);
-//            if(!q.exec()) qDebug() << "Failed to execute: records";
-
-//            while (q.next())
-//            {
-//                qDebug() << q.value("id").toInt();
-//                qDebug() << q.value("nombre").toString();
-//                qDebug() << q.value("periodo").toInt();
-//                qDebug() << q.value("origen").toInt();
-//                qDebug() << q.value("next_event").toInt();
-
-//                log__rutina_id = q.value("id").toInt();
-//                log__date = time;
-//                log__rutina_text = q.value("nombre").toString();
-//            }
-
-//        }
-//        else
-//        {
-//            m_db = QSqlDatabase::addDatabase("QSQLITE");
-//            m_db.setDatabaseName(db_path);
-
-//            if (!m_db.open())
-//            {
-//               qDebug() << "Error: connection with database fail";
-//            }
-//            else
-//            {
-//               qDebug() << "Database: connection ok";
-//            }
-
-//            qDebug() << "ALV NO HAY TABLA";
-//        }
-
-
         this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
         this->setAttribute(Qt::WA_TranslucentBackground);
 
@@ -83,14 +44,14 @@ records::records(const QString &path, QStringList list_records, uint from_id, ui
         format_everything();
 
 
-        load_to_table(get_current_question_id());
+        load_to_temp(get_current_question_id());
 
         if(parent != NULL)
         {
             this->move(parent->pos());
         }
 
-        this->show();
+//        this->show();
 
     }
 }
@@ -100,7 +61,7 @@ records::~records()
     delete ui;
 }
 
-void records::load_to_table(uint id)
+void records::load_to_temp(uint id)
 {
     QSqlQuery q;
 
@@ -157,7 +118,9 @@ void records::load_to_table(uint id)
 
                 if(q.value("type").toString() == "NUMBER")
                 {
-                    input_numeric(q.value("name").toString(), q.value("field_1").toString());
+                    input_numeric(q.value("name").toString(), q.value("field_1").toString());                   
+                    // Requieres to show window
+                    this->show();
                 }
                 else if(q.value("type").toString() == "CHOICE")
                 {
@@ -165,6 +128,18 @@ void records::load_to_table(uint id)
                                        q.value("field_1").toString(),
                                        q.value("field_2").toString(),
                                        q.value("field_3").toString());
+                    // Requieres to show window
+                    this->show();
+                }
+                else if(q.value("type").toString() == "COMPLETED")
+                {
+                    // do not save fields or show window
+                    input_completed_reschedule();
+                }
+                else if(q.value("type").toString() == "RESCHEDULE")
+                {
+                    // do not save fields or show window
+                    input_completed_reschedule();
                 }
 
             }
@@ -183,6 +158,17 @@ void records::input_numeric(QString name, QString units)
     ui->key_frame->show();
     ui->opt_text_textEdit->clear();
     ui->opt_text_textEdit->setFocus();
+}
+
+void records::input_completed_reschedule(void)
+{
+    current_type = TYPE_COMPLETED;
+
+    temp_log.log__record_value = 0;
+    log_queue.append(temp_log);
+    question_list.removeLast();
+
+    save_records_to_log();
 }
 
 void records::input_choice(QString name, QString opt_1, QString opt_2, QString opt_3 )
@@ -289,7 +275,7 @@ void records::save_records_to_log()
         }
 
     }
-    all_questions_ok(main_id);
+    QTimer::singleShot(500, this, SLOT(run_after()));
 }
 
 void records::on_key_0_clicked() {keyboard_handler("0");}
@@ -373,6 +359,8 @@ void records::on_pushButton_clicked()
     log_queue.append(temp_log);
     question_list.removeLast();
 
+    uint question_ID = 0;
+
     if(true == question_list.isEmpty())
     {
         qDebug() << "NO MORE QUESTIONS";
@@ -382,7 +370,17 @@ void records::on_pushButton_clicked()
     else
     {
         // Load next question
-        load_to_table(get_current_question_id());
+        question_ID = get_current_question_id();
+        if((1 != question_ID ) && 2 != question_ID)
+        {
+            load_to_temp(question_ID);
+        }
+        else
+        {
+            qDebug() << "NO MORE QUESTIONS";
+            save_records_to_log();
+            this->close();
+        }
     }
 }
 
@@ -436,6 +434,7 @@ void records::on_pushButton_2_clicked()
 {
     log_queue.append(temp_log);
     question_list.removeLast();
+    uint question_ID;
 
     if(true == question_list.isEmpty())
     {
@@ -446,7 +445,17 @@ void records::on_pushButton_2_clicked()
     else
     {
         // Load next question
-        load_to_table(get_current_question_id());
+        question_ID = get_current_question_id();
+        if((1 != question_ID ) && 2 != question_ID)
+        {
+            load_to_temp(question_ID);
+        }
+        else
+        {
+            qDebug() << "NO MORE QUESTIONS";
+            save_records_to_log();
+            this->close();
+        }
     }
 }
 
@@ -455,9 +464,14 @@ void records::background_clicked()
     this->close();
 }
 
+void records::run_after()
+{
+    all_questions_ok(main_id);
+}
+
 uint records::get_current_question_id(void)
 {
     QString ID = question_list.last();
-    qDebug() << "RETRUN: " << ID;
+    qDebug() << "Question ID: " << ID;
     return ID.toInt();
 }

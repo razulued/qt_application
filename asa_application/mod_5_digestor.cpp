@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QMovie>
 #include "parameters.h"
+#include <QDebug>
 
 mod_5_digestor::mod_5_digestor(QLabel *parent) :
     QWidget(parent)

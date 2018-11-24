@@ -3,9 +3,12 @@
 #include "build_settings.h"
 #include "QTranslator"
 #include "QSettings"
+#include "screen_saver.h"
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    screen_saver *saver = new screen_saver();
 
     //Load language
     QTranslator T;
@@ -37,9 +40,12 @@ int main(int argc, char *argv[])
 
     //Qt::WindowStaysOnTopHint
 #if (1 == RELEASE_FOR_RPI)
-    QApplication::setOverrideCursor(Qt::BlankCursor);
+//    QApplication::setOverrideCursor(Qt::BlankCursor);
 #endif
 
+    a.installEventFilter(saver);
+    QObject::connect(&w, SIGNAL(send_date_hour(QDateTime)), saver, SLOT(receive_date_hour(QDateTime)));
+    QObject::connect(&w,SIGNAL(send_num_activities(uint)),saver, SLOT(pending_activities(uint)));
 //    w.showFullScreen();
     w.show();
 

@@ -12,6 +12,7 @@
 #include "token_auth.h"
 #include "build_settings.h"
 #include "records.h"
+#include <QMouseEvent>
 
 #define ENABLE_TEST (1)
 
@@ -81,6 +82,11 @@ QDateTime MainWindow::time;
 //QString MainWindow::ASA_conf_string;
 //QString MainWindow::ASA_conf_only_string;
 
+uint MainWindow::num_of_pending_act = 0;
+void get_number_of_pending_activities (uint a)
+{
+    MainWindow::num_of_pending_act = a;
+}
 
 void MainWindow::HideButtons(bool hide)
 {
@@ -154,14 +160,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
     connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
 
-    ui->loading_icon->hide();
-
     // Init SPI
     dataObj = new DataProccess;
     dataObj->start();
 
     // Rutinas y DB
     rutinas = new rutinas_mantenimiento(tr("rutinas.db"));
+    rutinas->number_of_activities_found = get_number_of_pending_activities;
 
 //    records *rec_ptr = new records("rutinas.db", 103, 6, this);
 
@@ -554,7 +559,7 @@ void MainWindow::handleDetailedView_9()
 
 void MainWindow::update_this()
 {
-    qDebug() << "update this";
+//    qDebug() << "update this";
     this->update();
 }
 
@@ -775,14 +780,13 @@ void MainWindow::on_top_menu_2_clicked()
 {
     if(mutex_detailed.tryLock(0))
     {
-        ui->loading_icon->show();
-        this->update();
         if(bitacorawindow !=NULL)
         {
             delete bitacorawindow;
         }
         bitacorawindow = new bitacora(rutinas, 2, this);
         connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        connect(this, SIGNAL(send_num_activities(uint)), bitacorawindow, SLOT(update_act_icon(uint)));
         bitacorawindow->show();
 //        ui->loading_icon->hide();
 
@@ -1035,14 +1039,13 @@ void MainWindow::update_system_time()
 
             rutinas->set_time(time);
             rutinas->check_rutinas();
+            update_activity_alarm();
         }
 
         /* Check update values in bitacora window (if open) */
         if((NULL != bitacorawindow) && bitacorawindow->isActiveWindow())
         {
             bitacorawindow->update_table();
-//            bitacorawindow->show();
-            ui->loading_icon->hide();
         }
 
         //Update text on screen
@@ -1053,6 +1056,7 @@ void MainWindow::update_system_time()
 
         ui->label_dia->setText(display_dia);
         ui->label_hora->setText(display_time);
+        send_date_hour(time);
 
         add_value_to_stats(0x3001, getParamValue(0x3001).toFloat());
         add_value_to_stats(0x3002, getParamValue(0x3002).toFloat());
@@ -1392,16 +1396,43 @@ void MainWindow::on_top_menu_1_clicked()
 {
     if(mutex_detailed.tryLock(0))
     {
-        ui->loading_icon->show();
-        this->update();
         if(bitacorawindow !=NULL)
         {
             delete bitacorawindow;
         }
         bitacorawindow = new bitacora(rutinas, 0, this);
         connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
+        connect(this, SIGNAL(send_num_activities(uint)), bitacorawindow, SLOT(update_act_icon(uint)));
         bitacorawindow->show();
-//        ui->loading_icon->hide();
-
     }
+}
+
+void MainWindow::update_activity_alarm(void)
+{
+    static int last_value = -1;
+    if(1)
+    {
+        if(num_of_pending_act > 0)
+        {
+            ui->top_menu_1->setStyleSheet("background-color: transparent;"
+                                          "background-image: url(:/iconos/screen800x600/iconos/Campana_amarillo.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;"
+                                          );
+            ui->num_of_act->setText(QString::number(num_of_pending_act));
+        }
+        else
+        {
+            ui->top_menu_1->setStyleSheet("background-color: transparent;"
+                                          "background-image: url(:/iconos/screen800x600/iconos/Campana.png);"
+                                          "border: none;"
+                                          "background-repeat: none;"
+                                          "background-position: center;"
+                                          );
+            ui->num_of_act->setText("");
+        }
+        send_num_activities(num_of_pending_act);
+    }
+    last_value = num_of_pending_act;
 }

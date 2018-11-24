@@ -792,6 +792,11 @@ void detailedwindow::on_key_OK_clicked()
                     {
                         if(list_records.at(0) != "")
                         {
+                            if(list_records.last() == "")
+                            {
+                                list_records.removeLast();
+                            }
+
                             rec_ptr = new records(tr("rutinas.db"),
                                                   list_records,
                                                   selected_id,
@@ -1696,10 +1701,19 @@ void detailedwindow::check_lock()
     //    last_validity_state = state;
 }
 
+void detailedwindow::save_stop_status(uint mode)
+{
+    if((ELEMENT_REACTOR == what_element))
+    {
+        write_parameter("mot_stat/m4600_stop.bin", mode);
+    }
+}
+
 void detailedwindow::set_op_mode(uint mode)
 {
     QString str;
-    if(0xFF == mode)
+
+    if((0xFF == mode) || (1 == load_parameter("mot_stat/m4600_stop.bin")))
     {
         str = "04";
     }
@@ -1707,7 +1721,7 @@ void detailedwindow::set_op_mode(uint mode)
     {
         str = "03";
     }
-    else
+    else if(1 == mode)
     {
         if((2 == mode_4600) && (ELEMENT_REACTOR == what_element))
         {
@@ -1908,6 +1922,7 @@ void detailedwindow::checkStop_modulo()
         if(!stop_pressed_modulo)
         {
 //            emergency_stop(true);
+            save_stop_status(1);
             set_op_mode(0xFF);
             ui->pushButton_modulo->setChecked(true);
             stop_pressed_modulo = true;
@@ -1917,6 +1932,7 @@ void detailedwindow::checkStop_modulo()
         else
         {
 //            emergency_stop(false);
+            save_stop_status(0);
             set_op_mode(ui->comboBox->currentIndex());
             ui->pushButton_modulo->setChecked(false);
 
@@ -2005,4 +2021,9 @@ void detailedwindow::activity_is_completed(uint id)
             break;
         }
     }
+}
+
+void detailedwindow::on_pushButton_modulo_clicked()
+{
+
 }

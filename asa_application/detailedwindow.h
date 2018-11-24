@@ -159,6 +159,8 @@ private slots:
 
     void on_pushButton_modulo_released();
 
+    void on_pushButton_modulo_clicked();
+
 private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;
@@ -211,6 +213,7 @@ private:
     void stop_button_animation_module(bool state);
     bool stop_op_mode();
 
+    void save_stop_status(uint mode);
 signals:
     void release_lock();
 

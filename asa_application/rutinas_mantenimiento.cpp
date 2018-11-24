@@ -75,23 +75,91 @@ rutinas_mantenimiento::rutinas_mantenimiento(const QString &path)
             }
 
             QSqlQuery q;
+
+            //Rutinas table
             if(!q.exec("CREATE TABLE IF NOT EXISTS rutinas("
-                       "id INTEGER NOT NULL PRIMARY KEY,"
-                       "nombre VARCHAR(255) NOT NULL,"
+                       "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                       "nombre VARCHAR ( 255 ) NOT NULL, "
                        "ready INTEGER,"
                        "periodo INTEGER,"
-                       "origen  INTEGER,"
-                       "state   INTEGER,"
-                       "synch_date  INTEGER,"
-                       "last_event  INTEGER,"
-                       "next_event  INTEGER,"
-                       "explicacion VARCHAR(1024),"
-                       "schedule_to INTEGER"
-                       ")"))
+                       "origen INTEGER,"
+                       "state INTEGER,"
+                       "synch_date INTEGER,"
+                       "last_event INTEGER,"
+                       "next_event INTEGER,"
+                       "explicacion VARCHAR ( 1024 ),"
+                       "schedule_to INTEGER,"
+                       "record_links TEXT )"))
             {
                 qDebug() << "Error: exec";
             }
-            init_db();
+
+            //Records table
+            if(!q.exec("CREATE TABLE records("
+                       "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                       "name TEXT,"
+                       "type TEXT,"
+                       "field_1 TEXT,"
+                       "field_2 TEXT,"
+                       "field_3 TEXT )"))
+            {
+                qDebug() << "Error: exec";
+            }
+
+            // Log table
+            if(!q.exec("CREATE TABLE log("
+                       "log_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                       "log_date INTEGER,"
+                       "rutina_id INTEGER,"
+                       "rutina_name TEXT,"
+                       "record_id INTEGER,"
+                       "record_name TEXT,"
+                       "record_value NUMERIC,"
+                       "user TEXT )"))
+            {
+                qDebug() << "Error: exec";
+            }
+
+            //Insert default records #1 and #2
+            if( q.prepare("INSERT INTO records(name, type, field_1, field_2, field_3) "
+                                 "VALUES(:name, :type, :field_1, :field_2, :field_3)"))
+            {
+                QString completed_str = QObject::tr("Actividad Completada");
+                q.bindValue(":name",completed_str);
+                q.bindValue(":type","COMPLETED");
+                q.bindValue(":field_1", "");
+                q.bindValue(":field_2", "");
+                q.bindValue(":field_3", "");
+
+                if(!q.exec())
+                {
+                    qDebug() << q.lastError().text() << "store_record";
+                }
+            }
+            else
+            {
+                qDebug() << q.lastError().text() << "store_record";
+            }
+
+            if( q.prepare("INSERT INTO records(name, type, field_1, field_2, field_3) "
+                                 "VALUES(:name, :type, :field_1, :field_2, :field_3)"))
+            {
+                QString rechsedule_str = QObject::tr("Actividad reagendada");
+                q.bindValue(":name",rechsedule_str);
+                q.bindValue(":type","RESCHEDULE");
+                q.bindValue(":field_1", "");
+                q.bindValue(":field_2", "");
+                q.bindValue(":field_3", "");
+
+                if(!q.exec())
+                {
+                    qDebug() << q.lastError().text() << "store_record";
+                }
+            }
+            else
+            {
+                qDebug() << q.lastError().text() << "store_record";
+            }
         }
 
         // Load DB to table.
@@ -170,6 +238,10 @@ void rutinas_mantenimiento::check_rutinas(void)
     for(i = 0; i < num_of_rutinas; i++)
     {
         rutina_state_machine(i);
+    }
+    if(NULL != number_of_activities_found)
+    {
+        number_of_activities_found(are_new_activities());
     }
 }
 
@@ -383,7 +455,21 @@ QDateTime rutinas_mantenimiento::get_current_time()
 //    {
         return global_time;
         multiplicador = (3600 * 24);
-//    }
+        //    }
+}
+
+uint rutinas_mantenimiento::are_new_activities()
+{
+    uint i;
+    uint activities = 0;
+    for(i = 0; i < num_of_rutinas; i++)
+    {
+        if(0 == rutina_def_table[i].ready)
+        {
+            activities++;
+        }
+    }
+    return activities;
 }
 
 void rutinas_mantenimiento::load_to_table()
@@ -421,20 +507,20 @@ void rutinas_mantenimiento::load_to_table()
 
     num_of_rutinas = i;
 
-    for(i = 0; num_of_rutinas < 3; i++)
-    {
-        qDebug() << "Save to table"
-                 << rutina_def_table[i].id
-                 << rutina_def_table[i].nombre
-                 << rutina_def_table[i].periodo
-                 << rutina_def_table[i].origen
-                 << rutina_def_table[i].state
-                 << rutina_def_table[i].synch_date
-                 << rutina_def_table[i].last_event
-                 << rutina_def_table[i].next_event
-                 << rutina_def_table[i].schedule_to
-                 << rutina_def_table[i].record_links;
-    }
+//    for(i = 0; num_of_rutinas < 3; i++)
+//    {
+//        qDebug() << "Save to table"
+//                 << rutina_def_table[i].id
+//                 << rutina_def_table[i].nombre
+//                 << rutina_def_table[i].periodo
+//                 << rutina_def_table[i].origen
+//                 << rutina_def_table[i].state
+//                 << rutina_def_table[i].synch_date
+//                 << rutina_def_table[i].last_event
+//                 << rutina_def_table[i].next_event
+//                 << rutina_def_table[i].schedule_to
+//                 << rutina_def_table[i].record_links;
+//    }
 }
 
 void rutinas_mantenimiento::load_to_db(uint id)

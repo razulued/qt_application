@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QMovie>
 #include "parameters.h"
+#include <QDebug>
 
 mod_4_clorador::mod_4_clorador(QLabel *parent) :
     QWidget(parent)

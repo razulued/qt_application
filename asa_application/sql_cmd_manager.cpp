@@ -83,7 +83,8 @@ QString sql_cmd_manager::query_N_log()
                         +q.value("rutina_id").toString()+","
                         +q.value("record_id").toString()+","
                         +q.value("record_value").toString()+","
-                        +q.value("log_date").toString();
+                        +q.value("log_date").toString()+","
+                        +q.value("user").toString();
             }
         }
         else
@@ -131,14 +132,16 @@ int sql_cmd_manager::store_activity()
     int ret = 0;
     QSqlQuery q;
 
+    qDebug() << "STORE ACTIVITY: " << input_command;
     QStringList list = input_command.split(",");
 
-    //   0      1       2       3        4              5
-    // Name,IDProceso,Periodo,epoch,[Descripcion],[regID,regID...]
-    QString Name = list.at(0);
-    QString IDProceso = list.at(1);
-    QString Periodo = list.at(2);
-    QString epoch = list.at(3);
+    //   0      1       2       3        4        5             6
+    // ID_table,Name,IDProceso,Periodo,epoch,[Descripcion],[regID,regID...]
+    QString id_table     = list.at(0);
+    QString Name        = list.at(1);
+    QString IDProceso   = list.at(2);
+    QString Periodo     = list.at(3);
+    QString epoch       = list.at(4);
 
     qDebug() << "LA LISTA: " << Name << IDProceso << Periodo << epoch;
 
@@ -202,10 +205,11 @@ int sql_cmd_manager::store_activity()
     qDebug() << "RegIDs: " << RegIDs;
 
 
-    if( q.prepare("INSERT INTO rutinas(nombre, ready, periodo, origen, state, synch_date, last_event, next_event, explicacion, schedule_to, record_links) "
-                         "VALUES(:nombre, :ready, :periodo, :origen, :state, :synch_date, :last_event, :next_event, :explicacion, :schedule_to, :record_links)"))
+    if( q.prepare("INSERT INTO rutinas(id, nombre, ready, periodo, origen, state, synch_date, last_event, next_event, explicacion, schedule_to, record_links) "
+                         "VALUES(:id, :nombre, :ready, :periodo, :origen, :state, :synch_date, :last_event, :next_event, :explicacion, :schedule_to, :record_links)"))
     {
     //    q.bindValue(":id",rutina_def_table[i].id);
+        q.bindValue(":id",id_table);
         q.bindValue(":nombre",Name);
         q.bindValue(":ready",0);
         q.bindValue(":periodo", Periodo);
@@ -220,6 +224,7 @@ int sql_cmd_manager::store_activity()
 
         if(!q.exec())
         {
+            qDebug() << "last query: " << q.lastQuery();
             qDebug() << q.lastError().text() << "store_activity";
         }
         else
@@ -230,6 +235,7 @@ int sql_cmd_manager::store_activity()
     }
     else
     {
+        qDebug() << "last query: " << q.lastQuery();
         qDebug() << q.lastError().text() << "store_activity";
     }
 
@@ -244,12 +250,13 @@ int sql_cmd_manager::store_record()
     QStringList list = input_command.split(",");
 
     //   0      1       2       3     4
-    // Descripcion,Tipo,Unit1,Unit2,Unit3
-    QString Descripcion = list.at(0);
-    QString Tipo = list.at(1);
-    QString Unit1 = list.at(2);
-    QString Unit2 = list.at(3);
-    QString Unit3 = list.at(4);
+    // ID_Table,Descripcion,Tipo,Unit1,Unit2,Unit3
+    QString ID_table    = list.at(0);
+    QString Descripcion = list.at(1);
+    QString Tipo        = list.at(2);
+    QString Unit1       = list.at(3);
+    QString Unit2       = list.at(4);
+    QString Unit3       = list.at(5);
 
     if(Unit1 == "null" || Unit1 == "NULL") Unit1 = "";
     if(Unit2 == "null" || Unit2 == "NULL") Unit2 = "";
@@ -259,9 +266,10 @@ int sql_cmd_manager::store_record()
     else if(Tipo == "2") Tipo = "CHOICE";
     else Tipo = "";
 
-    if( q.prepare("INSERT INTO records(name, type, field_1, field_2, field_3) "
-                         "VALUES(:name, :type, :field_1, :field_2, :field_3)"))
+    if( q.prepare("INSERT INTO records(id, name, type, field_1, field_2, field_3) "
+                         "VALUES(:id, :name, :type, :field_1, :field_2, :field_3)"))
     {
+        q.bindValue(":id",ID_table);
         q.bindValue(":name",Descripcion);
         q.bindValue(":type",Tipo);
         q.bindValue(":field_1", Unit1);

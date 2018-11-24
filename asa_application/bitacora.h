@@ -23,6 +23,8 @@ public:
 
     void update_table(void);
 
+public slots:
+    void update_act_icon(uint num);
 private slots:
     void on_top_menu_3_clicked();
 

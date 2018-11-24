@@ -39,118 +39,118 @@
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="164"/>
+        <location filename="mainwindow.cpp" line="168"/>
         <source>rutinas.db</source>
         <translation>rutinas_english.db</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="320"/>
-        <location filename="mainwindow.cpp" line="419"/>
+        <location filename="mainwindow.cpp" line="325"/>
+        <location filename="mainwindow.cpp" line="424"/>
         <source>Parametros Eléctricos</source>
         <translation>Electric Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="426"/>
+        <location filename="mainwindow.cpp" line="431"/>
         <source>Parametros Físicos</source>
         <translation>Physical Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="433"/>
+        <location filename="mainwindow.cpp" line="438"/>
         <source>Parametros Químicos</source>
         <translation>Chemical Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1243"/>
+        <location filename="mainwindow.cpp" line="1247"/>
         <source>Lunes</source>
         <translation>Monday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1246"/>
+        <location filename="mainwindow.cpp" line="1250"/>
         <source>Martes</source>
         <translation>Tuesday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1249"/>
+        <location filename="mainwindow.cpp" line="1253"/>
         <source>Miércoles</source>
         <translation>Wednesday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1252"/>
+        <location filename="mainwindow.cpp" line="1256"/>
         <source>Jueves</source>
         <translation>Thursday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1255"/>
+        <location filename="mainwindow.cpp" line="1259"/>
         <source>Viernes</source>
         <translation>Friday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1258"/>
+        <location filename="mainwindow.cpp" line="1262"/>
         <source>Sábado</source>
         <translation>Saturday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1261"/>
+        <location filename="mainwindow.cpp" line="1265"/>
         <source>Domingo</source>
         <translation>Sunday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1268"/>
+        <location filename="mainwindow.cpp" line="1272"/>
         <source>Enero</source>
         <translation>January</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1271"/>
+        <location filename="mainwindow.cpp" line="1275"/>
         <source>Febrero</source>
         <translation>February</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1274"/>
+        <location filename="mainwindow.cpp" line="1278"/>
         <source>Marzo</source>
         <translation>March</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1277"/>
+        <location filename="mainwindow.cpp" line="1281"/>
         <source>Abril</source>
         <translation>April</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1280"/>
+        <location filename="mainwindow.cpp" line="1284"/>
         <source>Mayo</source>
         <translation>May</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1283"/>
+        <location filename="mainwindow.cpp" line="1287"/>
         <source>Junio</source>
         <translation>June</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1286"/>
+        <location filename="mainwindow.cpp" line="1290"/>
         <source>Julio</source>
         <translation>July</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1289"/>
+        <location filename="mainwindow.cpp" line="1293"/>
         <source>Agosto</source>
         <translation>August</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1292"/>
+        <location filename="mainwindow.cpp" line="1296"/>
         <source>Septiembre</source>
         <translation>September</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1295"/>
+        <location filename="mainwindow.cpp" line="1299"/>
         <source>Octubre</source>
         <translation>October</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1298"/>
+        <location filename="mainwindow.cpp" line="1302"/>
         <source>Noviembre</source>
         <translation>November</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1301"/>
+        <location filename="mainwindow.cpp" line="1305"/>
         <source>Diciembre</source>
         <translation>December</translation>
     </message>
@@ -326,6 +326,16 @@
         <source>Sin Usuario</source>
         <translation>No User</translation>
     </message>
+    <message>
+        <location filename="rutinas_mantenimiento.cpp" line="127"/>
+        <source>Actividad Completada</source>
+        <translation>Activity Completed</translation>
+    </message>
+    <message>
+        <location filename="rutinas_mantenimiento.cpp" line="147"/>
+        <source>Actividad reagendada</source>
+        <translation>Activity Rescheduled</translation>
+    </message>
 </context>
 <context>
     <name>Test</name>
@@ -371,7 +381,7 @@
     </message>
     <message>
         <location filename="bitacora.ui" line="93"/>
-        <location filename="bitacora.cpp" line="829"/>
+        <location filename="bitacora.cpp" line="847"/>
         <source>SELECIONAR UNA RUTINA DE LA LISTA</source>
         <translation>SELECT ONE ROUTINE FROM THE LIST</translation>
     </message>
@@ -582,7 +592,8 @@
         <translation>Other</translation>
     </message>
     <message>
-        <location filename="bitacora.cpp" line="803"/>
+        <location filename="bitacora.cpp" line="808"/>
+        <location filename="bitacora.cpp" line="822"/>
         <source>rutinas.db</source>
         <translation>rutinas_english.db</translation>
     </message>
@@ -1518,6 +1529,119 @@ p, li { white-space: pre-wrap; }
         <location filename="records.ui" line="1855"/>
         <source>Pregunta:</source>
         <translation>Question:</translation>
+    </message>
+</context>
+<context>
+    <name>screen_saver</name>
+    <message>
+        <location filename="screen_saver.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.ui" line="43"/>
+        <source>11:45</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="screen_saver.ui" line="99"/>
+        <source>13</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="screen_saver.ui" line="171"/>
+        <location filename="screen_saver.cpp" line="198"/>
+        <source>Noviembre</source>
+        <translation>November</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.ui" line="198"/>
+        <location filename="screen_saver.cpp" line="84"/>
+        <source>PM</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="screen_saver.ui" line="225"/>
+        <source>32</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Hora</source>
+        <translation type="vanished">Hour</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.ui" line="70"/>
+        <source>25</source>
+        <oldsource>Día</oldsource>
+        <translation>25</translation>
+    </message>
+    <message>
+        <source>Nuevas actividades:</source>
+        <translation type="vanished">New activities:</translation>
+    </message>
+    <message>
+        <source>Nuevas actividades: </source>
+        <translation type="vanished">New activities:</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="96"/>
+        <source>AM</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="168"/>
+        <source>Enero</source>
+        <translation>January</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="171"/>
+        <source>Febrero</source>
+        <translation>February</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="174"/>
+        <source>Marzo</source>
+        <translation>March</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="177"/>
+        <source>Abril</source>
+        <translation>April</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="180"/>
+        <source>Mayo</source>
+        <translation>May</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="183"/>
+        <source>Junio</source>
+        <translation>June</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="186"/>
+        <source>Julio</source>
+        <translation>July</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="189"/>
+        <source>Agosto</source>
+        <translation>August</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="192"/>
+        <source>Septiembre</source>
+        <translation>September</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="195"/>
+        <source>Octubre</source>
+        <translation>October</translation>
+    </message>
+    <message>
+        <location filename="screen_saver.cpp" line="201"/>
+        <source>Diciembre</source>
+        <translation>December</translation>
     </message>
 </context>
 <context>
