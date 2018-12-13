@@ -321,7 +321,7 @@ void motores::out_checkBoxStateChanged(int a)
     if(module_prefix == 36)
     {
         // regulador
-        if(ui->comboBox->currentIndex() != 0)
+        if(ui->comboBox->currentIndex() == CONTROL_AUTOMATICO)
         {
             return;
         }
@@ -329,21 +329,21 @@ void motores::out_checkBoxStateChanged(int a)
     else if(module_prefix == 46)
     {
         // reactor
-        if(ui->comboBox_2->currentIndex() != 0)
+        if(ui->comboBox_2->currentIndex() == CONTROL_AUTOMATICO)
         {
             return;
         }
     }
     else if(module_prefix == 96)
     {
-        if(ui->comboBox_3->currentIndex() != 0)
+        if(ui->comboBox_3->currentIndex() == CONTROL_AUTOMATICO)
         {
             return;
         }
     }
     else if(module_prefix == 97)
     {
-        if(ui->comboBox_4->currentIndex() != 0)
+        if(ui->comboBox_4->currentIndex() == CONTROL_AUTOMATICO)
         {
             return;
         }
@@ -444,55 +444,76 @@ void motores::read_op_mode()
     QString str;
 
     str = getParamValue(0x3600);
-    if(("03" == str) || ("3" == str))
+    if(("04" == str) || ("4" == str))
     {
-        ui->comboBox->setCurrentIndex(0);
+        ui->comboBox->setCurrentIndex(CONTROL_STOP);
+    }
+    else if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox->setCurrentIndex(CONTROL_MANUAL);
     }
     else
     {
-        ui->comboBox->setCurrentIndex(1);
+        ui->comboBox->setCurrentIndex(CONTROL_AUTOMATICO);
     }
 
     str = getParamValue(0x4600);
-    if(("03" == str) || ("3" == str))
+    if(("04" == str) || ("4" == str))
     {
-        ui->comboBox_2->setCurrentIndex(0);
+        ui->comboBox_2->setCurrentIndex(CONTROL_STOP);
+    }
+    else if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox_2->setCurrentIndex(CONTROL_MANUAL);
     }
     else
     {
-        ui->comboBox_2->setCurrentIndex(1);
+        ui->comboBox_2->setCurrentIndex(CONTROL_AUTOMATICO);
     }
 
     str = getParamValue(0x9600);
-    if(("03" == str) || ("3" == str))
+    if(("04" == str) || ("4" == str))
     {
-        ui->comboBox_3->setCurrentIndex(0);
+        ui->comboBox_3->setCurrentIndex(CONTROL_STOP);
+    }
+    else if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox_3->setCurrentIndex(CONTROL_MANUAL);
     }
     else
     {
-        ui->comboBox_3->setCurrentIndex(1);
+        ui->comboBox_3->setCurrentIndex(CONTROL_AUTOMATICO);
     }
 
     str = getParamValue(0x9700);
-    if(("03" == str) || ("3" == str))
+    if(("04" == str) || ("4" == str))
     {
-        ui->comboBox_4->setCurrentIndex(0);
+        ui->comboBox_4->setCurrentIndex(CONTROL_STOP);
+    }
+    else if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox_4->setCurrentIndex(CONTROL_MANUAL);
     }
     else
     {
-        ui->comboBox_4->setCurrentIndex(1);
+        ui->comboBox_4->setCurrentIndex(CONTROL_AUTOMATICO);
     }
 }
 
 void motores::set_op_mode(uint mode, uint what_element)
 {
     QString str;
-    if(0 == mode)
+    if(CONTROL_STOP == mode)
+    {
+        str = "04";
+    }
+    else if(CONTROL_MANUAL == mode)
     {
         str = "03";
     }
     else
     {
+        // CONTROL_AUTOMATICO
         if((2 == mode_4600) && (ELEMENT_REACTOR == what_element))
         {
             str = "02";

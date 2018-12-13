@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QMovie>
 #include <QFont>
+#include <token_auth.h>
 #define TIMEOUT (60)
 
 bool screen_saver::eventFilter(QObject *obj, QEvent *event)
@@ -64,6 +65,7 @@ void screen_saver::TimerSlot()
     if((inactivity_counter >= TIMEOUT) && (false == screen_saver_active))
     {
         qDebug() << "TIMEOUT RUN SCREEN SAVER";
+        validate_token(false);
         screen_saver_active = true;
         run_back_ground_gif(true);
         this->show();
@@ -118,7 +120,7 @@ void screen_saver::pending_activities(uint act)
         if(act > 0)
         {
             ui->notification->setText(QString::number(act));
-            ui->notification->setText(QString::number(act));
+//            ui->notification->setText(QString::number(act));
             ui->bell->setAttribute(Qt::WA_NoSystemBackground);
             mv = new QMovie(":/iconos/screen800x600/iconos/Bell_2.png");
             mv->setCacheMode(QMovie::CacheAll);

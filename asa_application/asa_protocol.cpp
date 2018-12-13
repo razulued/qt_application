@@ -87,6 +87,7 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /* Read ID             */ 0x0A02,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
 /* Write ID            */ 0x0A03,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
 /* Transfer BC         */ 0x0A04,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
+/* Transfer Calibration*/ 0x0A05,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
 /*---- b:control COM --*/
 /* Start connection    */ 0x0B00,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
 /* End connection      */ 0x0B01,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
@@ -667,9 +668,9 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /* dat14               */ 0x908E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* dat15               */ 0x908F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 
-/* Valvula 1 state     */ 0x9100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Valvula 3(S) state  */ 0x9101,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Valvula 2 state     */ 0x9102,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
+/* Valvula 1 state     */ /*0x9100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",*/
+/* Valvula 3(S) state  */ /*0x9101,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",*/
+/* Valvula 2 state     */ /*0x9102,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",*/
 /*----- 9:Plant Filtro 1:Status:MISC      -------*/
 /* Valvula 1 state     */ 0x9100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* Valvula 2 state     */ 0x9101,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
@@ -1016,4 +1017,25 @@ QString get_units_caudal(void)
 QString get_units_tiempo(void)
 {
     return units_tiempo;
+}
+
+QString get_RAW_value_by_ID(uint id)
+{
+    QString str;
+//    uint index = 0;
+    //Debug
+    data_mutex.lock();
+
+    //Index in table (for conversions)
+    str = hash_values[id].value<QString>();
+
+    if(str == "")
+    {
+        str = "0";
+    }
+    //str = supported_ASA_IDs[index].conversion_hanlder(hash_values[id].value<QString>(), supported_ASA_IDs[index].param1);
+    //qDebug() << "Id: " << QString::number(id, 16) << ": " << hash_values[id].value<QString>() << "at index " << hash_indices.value(id);
+    data_mutex.unlock();
+
+    return str;
 }

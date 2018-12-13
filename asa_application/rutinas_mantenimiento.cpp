@@ -365,8 +365,16 @@ void rutinas_mantenimiento::reschedule_rutina(uint rutina, uint new_time)
     if(new_time > time->toTime_t())
     {
         rutina_def_table[rutina].next_event = new_time;
+        qDebug() << "next_event: " << rutina_def_table[rutina].next_event;
         time = new QDateTime(QDateTime::fromTime_t(new_time));
 
+    }
+    else
+    {
+        // is next day
+        rutina_def_table[rutina].next_event = (new_time + 86400);
+        qDebug() << "next_event: " << rutina_def_table[rutina].next_event;
+        time = new QDateTime(QDateTime::fromTime_t(new_time));
     }
 
     switch(rutina_def_table[rutina].periodo)
@@ -375,6 +383,7 @@ void rutinas_mantenimiento::reschedule_rutina(uint rutina, uint new_time)
         break;
     case RUTINA_DIA:
         rutina_def_table[rutina].schedule_to = time->time().hour();
+        qDebug() << "schedule_to: " << rutina_def_table[rutina].schedule_to;
         break;
 
     case RUTINA_SEMANA:

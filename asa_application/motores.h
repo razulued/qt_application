@@ -6,6 +6,8 @@
 #include <QVBoxLayout>
 #include "login_dialog.h"
 #include <QCheckBox>
+
+
 namespace Ui {
 class motores;
 }
@@ -53,6 +55,13 @@ private:
     void set_op_mode(uint mode, uint what_element);
     uint mode_4600 = 0;
     void stop_button_animation(bool state);
+
+    enum
+    {
+        CONTROL_STOP = 0,
+        CONTROL_AUTOMATICO = 1,
+        CONTROL_MANUAL = 2
+    };
 signals:
     void release_lock();
 };

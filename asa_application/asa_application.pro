@@ -57,7 +57,8 @@ SOURCES += main.cpp\
     record_chart.cpp \
     sql_cmd_manager.cpp \
     chart.cpp \
-    screen_saver.cpp
+    screen_saver.cpp \
+    build_settings.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \

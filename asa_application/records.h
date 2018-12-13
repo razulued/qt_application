@@ -25,7 +25,7 @@ typedef struct
     QString log__rutina_text;
     uint log__record_id;
     QString log__record_text;
-    float log__record_value;
+    double log__record_value;
 }log_type;
 
 class records : public QDialog
@@ -33,7 +33,7 @@ class records : public QDialog
     Q_OBJECT
 
 public:
-    explicit records(const QString &path, QStringList list_records, uint from_id, uint time, QWidget *parent = 0);
+    explicit records(const QString &path, QStringList list_records, uint from_id, uint time, uint new_time, QWidget *parent = 0);
     ~records();
 
 private:
@@ -52,10 +52,11 @@ private:
 
     QList<log_type> log_queue;
     log_type temp_log;
+    uint reschedule = 0;
 
     void save_records_to_log();
     uint get_current_question_id();
-    void input_completed_reschedule();
+    void input_completed_reschedule(uint time);
 private slots:
     void on_key_0_clicked();
     void on_key_1_clicked();

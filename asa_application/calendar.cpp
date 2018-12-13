@@ -82,10 +82,10 @@ calendar::calendar(QDateTime datetime, uint periodo, QWidget *parent) :
     ui->calendarWidget->setStyleSheet("background-color: white;"
                                       "color: black");
 
-    if(periodo == 1)
-    {
-        ui->calendarWidget->setEnabled(false);
-    }
+//    if(periodo == 1)
+//    {
+//        ui->calendarWidget->setEnabled(false);
+//    }
 
     this->move(parent->pos());
     this->show();}

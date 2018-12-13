@@ -371,12 +371,17 @@ background-position: center;
       </property>
       <item>
        <property name="text">
-        <string>Manual</string>
+        <string>Paro</string>
        </property>
       </item>
       <item>
        <property name="text">
         <string>Automatico</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Manual</string>
        </property>
       </item>
      </widget>

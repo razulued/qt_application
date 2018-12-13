@@ -9,6 +9,16 @@
 #include "parameters.h"
 #include "asa_conf_string.h"
 #include "QKeyEvent"
+#include "build_settings.h"
+
+#define VERSION_MAJOR   (0)
+#define VERSION_MID     (1)
+#define VERSION_MINOR   (0)
+#define VERSION_FIX     ("a1211")
+const QString SW_VERSION = QString::number(VERSION_MAJOR).append(".")\
+        .append(QString::number(VERSION_MID)).append(".")\
+        .append(QString::number(VERSION_MINOR).append("-"))\
+        .append(VERSION_FIX);
 
 settings::settings(QWidget *parent) :
     QDialog(parent),
@@ -17,6 +27,11 @@ settings::settings(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
     QFont font_1("Typo Square Ligth Demo",18,1);
+
+    // SET SW Version.
+    ui->label_version->setText(tr("APP Version: ")+ SW_VERSION + "\r\n"
+                               + tr("Fecha de compilación: ") + __DATE__ + " " + __TIME__ + "\r\n\r\n"
+                               + tr("EARM Version: ") + getParamValue(0x0006));
 
     this->setObjectName("SettingsWindow");
     this->setStyleSheet("settings#SettingsWindow{"

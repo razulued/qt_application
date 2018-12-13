@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
     //Qt::WindowStaysOnTopHint
 #if (1 == RELEASE_FOR_RPI)
-//    QApplication::setOverrideCursor(Qt::BlankCursor);
+    QApplication::setOverrideCursor(Qt::BlankCursor);
 #endif
 
     a.installEventFilter(saver);

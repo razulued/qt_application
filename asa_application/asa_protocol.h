@@ -38,4 +38,7 @@ typedef struct
 
 void ASA_protocol_init();
 
+QString get_RAW_value_by_ID(uint id);
+
+
 #endif // ASA_PROTOCOL_H

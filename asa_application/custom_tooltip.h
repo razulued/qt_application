@@ -66,9 +66,12 @@ private:
 
     arrowkeys *arrow_key_window = NULL;
     QString graph_origin;
+
+    QList<int> unknown_tool_pos;
 private slots:
     void ListPressed();
     void checkClick();
+    void retry_tool_pos();
 
 protected:
 //    void mousePressEvent(QMouseEvent *event);

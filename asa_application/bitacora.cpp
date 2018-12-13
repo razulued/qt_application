@@ -491,6 +491,7 @@ void bitacora::update_active_table()
                 add_row_rutina(ui->tableWidget_2->rowCount(), i, ui->tableWidget_2);
 
                 // Reset table with all entries.
+                // Registros
                 ui->tableWidget->setRowCount(0);
                 init_full_table();
             }
@@ -653,7 +654,19 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
             {
                 while (question_query.next())
                 {
-                    if("NUMBER" == question_query.value("type").toString())
+                    if("RESCHEDULE" == question_query.value("type").toString())
+                    {
+                        // This is a number (date), retrieve the actual number
+                        QDateTime *temp_date;
+                        temp_date = new QDateTime(QDateTime::fromTime_t(q.value("record_value").toInt()));
+                        table->setItem(row,5, new QTableWidgetItem(temp_date->toString()));
+                    }
+                    if("COMPLETED" == question_query.value("type").toString())
+                    {
+                        // Set 0 for completed
+                        table->setItem(row,5, new QTableWidgetItem("N/A"));
+                    }
+                    else if("NUMBER" == question_query.value("type").toString())
                     {
                         // This is a number, retrieve the actual number
                         table->setItem(row,5, new QTableWidgetItem(q.value("record_value").toString()));
@@ -683,11 +696,11 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
         row++;
         table->resizeRowsToContents();
         table->setColumnWidth(0, 35);
-        table->setColumnWidth(1, 250);
+        table->setColumnWidth(1, 220);
         table->setColumnWidth(2, 120);
         table->setColumnWidth(3, 35);
-        table->setColumnWidth(4, 200);
-        table->setColumnWidth(5, 65);
+        table->setColumnWidth(4, 180);
+        table->setColumnWidth(5, 120);
         table->setColumnWidth(6, 65);
     }
 }
@@ -704,6 +717,7 @@ void bitacora::item_selected(QTableWidgetItem* item)
     selected_id = table->item(item->row(), 0)->text().toInt();
     reschedule_time = 0;
     ui->label_horas->setText("");
+    ui->key_OK->setText(tr("Completado"));
 //    qDebug() << "ID " << selected_id;
 }
 
@@ -759,14 +773,33 @@ void bitacora::receive_date(uint hora, QDate date)
     QDateTime *temp = new QDateTime(date);
     ui->label_horas->setText(date.toString("yyyy-MM-dd") + " " + QString::number(hora) + ":00");
 
+    qDebug() << "XXXX: date " << date;
+    qDebug() << "XXXX: hora " << hora;
+
     *temp = temp->addSecs(60 * 60 * hora);
     reschedule_time = temp->toTime_t();
+    qDebug() << "XXXX: temp " << *temp;
+    qDebug() << "XXXX: reschedule_time " << reschedule_time;
+
+    if(reschedule_time < MainWindow::time.toTime_t())
+    {
+        ui->label_2->setText(tr("Error: nueva fecha es menor a fecha actual"));
+        ui->label_horas->setText("");
+        ui->key_OK->setText(tr("Completado"));
+        selected_id = 0;
+        reschedule_time = 0;
+    }
+    else
+    {
+        ui->key_OK->setText(tr("Reagendar"));
+        ui->label_2->setText(tr("SELECCIONAR UNA RUTINA DE LA LISTA"));
+    }
     delete temp;
 }
 
 void bitacora::update_datetime(QDateTime datetime)
 {
-    qDebug() << datetime;
+
     uint i = 0;
     reschedule_time = datetime.toTime_t();
     if(0 != selected_id)
@@ -776,7 +809,6 @@ void bitacora::update_datetime(QDateTime datetime)
             if(rutina_ptr->id(i) == selected_id)
             {
                 qDebug() << "ID match at: " << i;
-
                 if(reschedule_time > 0)
                 {
                     rutina_ptr->reschedule_rutina(i, reschedule_time);
@@ -791,6 +823,7 @@ void bitacora::update_datetime(QDateTime datetime)
 void bitacora::on_key_OK_clicked()
 {
     uint i = 0;
+    uint items = 0;
     QStringList list_records;
     records *rec_ptr;
 
@@ -805,6 +838,7 @@ void bitacora::on_key_OK_clicked()
 
                 if(reschedule_time > 0)
                 {
+                    qDebug() << "RESCH: " << reschedule_time;
                     rutina_ptr->reschedule_rutina(i, reschedule_time);
 
                     //update database
@@ -813,11 +847,30 @@ void bitacora::on_key_OK_clicked()
                                           list_records,
                                           selected_id,
                                           rutina_ptr->get_current_time().toTime_t(),
+                                          reschedule_time,
                                           this);
+                    ui->label_horas->setText("");
+
+                    // Update first two tables
+                    update_table();
+
+                    // When a routine is reschedule, update tab 3
+                    ui->tableWidget_3->setRowCount(0);
+                    init_registros_table();
                 }
                 else
                 {
                     list_records = rutina_ptr->texto_ayuda(i).split(',');
+                    // remove #2 from the list, it would cause to always report it.
+                    for(items = 0; items < list_records.length(); items++)
+                    {
+                        if("2" == list_records.at(items))
+                        {
+                            list_records.removeAt(items);
+                            break;
+                        }
+                    }
+
                     qDebug() << "SPLIT: " << list_records << "len: " << list_records.length();
                     if(list_records.length() > 0)
                     {
@@ -832,6 +885,7 @@ void bitacora::on_key_OK_clicked()
                                                   list_records,
                                                   selected_id,
                                                   rutina_ptr->get_current_time().toTime_t(),
+                                                  reschedule_time,
                                                   this);
 
                             // Wait to be completed? release lock
@@ -853,6 +907,7 @@ void bitacora::on_key_OK_clicked()
 
     }
 
+    ui->key_OK->setText(tr("Completado"));
     ui->label_2->setText(tr("SELECIONAR UNA RUTINA DE LA LISTA"));
 }
 
@@ -1020,9 +1075,13 @@ void bitacora::activity_is_completed(uint id)
         {
             rutina_ptr->complete_rutina(i);
 
+            // Update first two tables
+            update_table();
+
             // When a routine is completed, update tab 3
             ui->tableWidget_3->setRowCount(0);
             init_registros_table();
+            selected_id = 0;
 
             break;
         }

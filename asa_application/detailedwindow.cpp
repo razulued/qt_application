@@ -222,6 +222,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 {
     ui->setupUi(this);
 
+    what_element = element;
+
     init_completed = false;
 
     clickeablelabel *alphabackground = new clickeablelabel(this);
@@ -320,7 +322,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     ui->label->setStyleSheet("color: white;"
                              "background-color: transparent;");
 
-    what_element = element;
 
     //This is a hack to hide tabs from tab widget
     ui->tabWidget->setCurrentIndex(0);
@@ -652,7 +653,7 @@ void detailedwindow::checkBoxStateChanged(int a)
 
 void detailedwindow::out_checkBoxStateChanged(int a)
 {
-    if(ui->comboBox->currentIndex() == 0)
+    if(ui->comboBox->currentIndex()!= CONTROL_AUTOMATICO)
     {
         qDebug() << "Toggle output " << a;
         output_control_toggle(a);
@@ -782,11 +783,29 @@ void detailedwindow::on_key_OK_clicked()
                 if(reschedule_time > 0)
                 {
                     rutinas_ptr->reschedule_rutina(i, reschedule_time);
+                    //update database
+                    list_records.append("2"); /* #2 is reserved for reschedule */
+                    rec_ptr = new records(tr("rutinas.db"),
+                                          list_records,
+                                          selected_id,
+                                          rutinas_ptr->get_current_time().toTime_t(),
+                                          reschedule_time,
+                                          this);
                 }
                 else
                 {
                     //Parse to open record window.
                     list_records = rutinas_ptr->texto_ayuda(i).split(',');
+                    // remove #2 from the list, it would cause to always report it.
+                    uint items = 0;
+                    for(items = 0; items < list_records.length(); items++)
+                    {
+                        if("2" == list_records.at(items))
+                        {
+                            list_records.removeAt(items);
+                            break;
+                        }
+                    }
 //                    qDebug() << "SPLIT: " << list_records << "len: " << list_records.length();
                     if(list_records.length() > 0)
                     {
@@ -801,6 +820,7 @@ void detailedwindow::on_key_OK_clicked()
                                                   list_records,
                                                   selected_id,
                                                   rutinas_ptr->get_current_time().toTime_t(),
+                                                  reschedule_time,
                                                   this);
 
                             // Wait to be completed? release lock
@@ -1713,16 +1733,14 @@ void detailedwindow::set_op_mode(uint mode)
 {
     QString str;
 
-    if((0xFF == mode) || (1 == load_parameter("mot_stat/m4600_stop.bin")))
+    if(CONTROL_STOP == mode)
     {
+        // PARO
         str = "04";
     }
-    else if(0 == mode)
+    else if(CONTROL_AUTOMATICO == mode)
     {
-        str = "03";
-    }
-    else if(1 == mode)
-    {
+        // AUTOMATICO
         if((2 == mode_4600) && (ELEMENT_REACTOR == what_element))
         {
             str = "02";
@@ -1731,6 +1749,23 @@ void detailedwindow::set_op_mode(uint mode)
         {
             str = "01";
         }
+
+        // Make sure STOP button is not active
+        ui->pushButton_modulo->setChecked(false);
+        stop_pressed_modulo = false;
+        stop_button_animation_module(false);
+        wating_timer_modulo = false;
+    }
+    else if(CONTROL_MANUAL == mode)
+    {
+        // MANUAL OVERRIDE
+        str = "03";
+
+        // Make sure STOP button is not active
+        ui->pushButton_modulo->setChecked(false);
+        stop_pressed_modulo = false;
+        stop_button_animation_module(false);
+        wating_timer_modulo = false;
     }
 
     switch(what_element)
@@ -1785,11 +1820,21 @@ void detailedwindow::read_op_mode()
 
     if("03" == str | "3" == str)
     {
-        ui->comboBox->setCurrentIndex(0);
+        ui->comboBox->setCurrentIndex(CONTROL_MANUAL);
+    }
+    else if("02" == str | "2" == str |
+       "01" == str | "1" == str)
+    {
+        ui->comboBox->setCurrentIndex(CONTROL_AUTOMATICO);
+    }
+    else if("04" == str | "4" == str)
+    {
+        ui->comboBox->setCurrentIndex(CONTROL_STOP);
     }
     else
     {
-        ui->comboBox->setCurrentIndex(1);
+        // Unknown, set stop
+        ui->comboBox->setCurrentIndex(CONTROL_STOP);
     }
 
 }
@@ -1921,21 +1966,17 @@ void detailedwindow::checkStop_modulo()
     {
         if(!stop_pressed_modulo)
         {
-//            emergency_stop(true);
-            save_stop_status(1);
-            set_op_mode(0xFF);
+            set_op_mode(CONTROL_STOP);
             ui->pushButton_modulo->setChecked(true);
             stop_pressed_modulo = true;
-
             stop_button_animation_module(true);
+            ui->comboBox->setCurrentIndex(CONTROL_STOP);
         }
         else
         {
-//            emergency_stop(false);
-            save_stop_status(0);
+            // Will stay the same stop state
             set_op_mode(ui->comboBox->currentIndex());
             ui->pushButton_modulo->setChecked(false);
-
             stop_pressed_modulo = false;
             stop_button_animation_module(false);
         }
@@ -1949,12 +1990,12 @@ void detailedwindow::on_pushButton_modulo_pressed()
     {
         if(false == stop_op_mode())
         {
-            QTimer::singleShot(2500, this, SLOT(checkStop_modulo()));
+            QTimer::singleShot(2000, this, SLOT(checkStop_modulo()));
             stop_button_animation_module(true);
         }
         else
         {
-            QTimer::singleShot(2500, this, SLOT(checkStop_modulo()));
+            QTimer::singleShot(2000, this, SLOT(checkStop_modulo()));
             ui->pushButton_modulo->setChecked(false);
         }
         wating_timer_modulo = true;

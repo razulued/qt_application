@@ -164,6 +164,11 @@ QString getParamValue_base_units(unsigned int id)
     return get_value_by_ID_base_units(id);
 }
 
+QString getParamValue_RAW(unsigned int id)
+{
+    return get_RAW_value_by_ID(id);
+}
+
 
 QString invese_getParamValue(unsigned int id, float_t value)
 {

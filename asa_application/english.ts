@@ -361,6 +361,9 @@
     </message>
     <message>
         <location filename="bitacora.ui" line="176"/>
+        <location filename="bitacora.cpp" line="719"/>
+        <location filename="bitacora.cpp" line="787"/>
+        <location filename="bitacora.cpp" line="904"/>
         <source>Completado</source>
         <translation>Completed</translation>
     </message>
@@ -381,7 +384,7 @@
     </message>
     <message>
         <location filename="bitacora.ui" line="93"/>
-        <location filename="bitacora.cpp" line="847"/>
+        <location filename="bitacora.cpp" line="905"/>
         <source>SELECIONAR UNA RUTINA DE LA LISTA</source>
         <translation>SELECT ONE ROUTINE FROM THE LIST</translation>
     </message>
@@ -497,103 +500,118 @@
     </message>
     <message>
         <location filename="bitacora.cpp" line="397"/>
-        <location filename="bitacora.cpp" line="535"/>
+        <location filename="bitacora.cpp" line="539"/>
         <source>Diario</source>
         <translation>Daily</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="400"/>
-        <location filename="bitacora.cpp" line="538"/>
+        <location filename="bitacora.cpp" line="542"/>
         <source>Semanal</source>
         <translation>Weekly</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="403"/>
-        <location filename="bitacora.cpp" line="541"/>
+        <location filename="bitacora.cpp" line="545"/>
         <source>Mensual</source>
         <translation>Monthly</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="406"/>
-        <location filename="bitacora.cpp" line="544"/>
+        <location filename="bitacora.cpp" line="548"/>
         <source>Anual</source>
         <translation>Annual</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="410"/>
-        <location filename="bitacora.cpp" line="548"/>
+        <location filename="bitacora.cpp" line="552"/>
         <source>Sin Rutina</source>
         <translation>No Routine</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="424"/>
-        <location filename="bitacora.cpp" line="562"/>
+        <location filename="bitacora.cpp" line="566"/>
         <source>General</source>
         <translation></translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="427"/>
-        <location filename="bitacora.cpp" line="565"/>
+        <location filename="bitacora.cpp" line="569"/>
         <source>Regulador</source>
         <translation>Regulator</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="430"/>
-        <location filename="bitacora.cpp" line="568"/>
+        <location filename="bitacora.cpp" line="572"/>
         <source>Reactor Biológico</source>
         <translation>Biological Reactor</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="433"/>
-        <location filename="bitacora.cpp" line="571"/>
+        <location filename="bitacora.cpp" line="575"/>
         <source>Clarificador</source>
         <translation>Clarifier</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="436"/>
-        <location filename="bitacora.cpp" line="574"/>
+        <location filename="bitacora.cpp" line="578"/>
         <source>Clorador</source>
         <translation>Chlorinator</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="439"/>
-        <location filename="bitacora.cpp" line="577"/>
+        <location filename="bitacora.cpp" line="581"/>
         <source>Secado</source>
         <translation>Drying</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="442"/>
-        <location filename="bitacora.cpp" line="580"/>
+        <location filename="bitacora.cpp" line="584"/>
         <source>Digestor</source>
         <translation>Digestor</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="445"/>
-        <location filename="bitacora.cpp" line="583"/>
+        <location filename="bitacora.cpp" line="587"/>
         <source>Afluente</source>
         <translation>Affluent</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="448"/>
-        <location filename="bitacora.cpp" line="586"/>
+        <location filename="bitacora.cpp" line="590"/>
         <source>Efluente</source>
         <translation>Effluent</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="451"/>
-        <location filename="bitacora.cpp" line="589"/>
+        <location filename="bitacora.cpp" line="593"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="454"/>
-        <location filename="bitacora.cpp" line="592"/>
+        <location filename="bitacora.cpp" line="596"/>
         <source>Otro</source>
         <translation>Other</translation>
     </message>
     <message>
-        <location filename="bitacora.cpp" line="808"/>
-        <location filename="bitacora.cpp" line="822"/>
+        <location filename="bitacora.cpp" line="785"/>
+        <source>Error: nueva fecha es menor a fecha actual</source>
+        <translation>New data is older than current data</translation>
+    </message>
+    <message>
+        <location filename="bitacora.cpp" line="793"/>
+        <source>Reagendar</source>
+        <translation>Reschedule</translation>
+    </message>
+    <message>
+        <location filename="bitacora.cpp" line="794"/>
+        <source>SELECCIONAR UNA RUTINA DE LA LISTA</source>
+        <translation>SELECT ONE ROUTINE FROM THE LIST</translation>
+    </message>
+    <message>
+        <location filename="bitacora.cpp" line="845"/>
+        <location filename="bitacora.cpp" line="878"/>
         <source>rutinas.db</source>
         <translation>rutinas_english.db</translation>
     </message>
@@ -696,7 +714,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="detailedwindow.ui" line="80"/>
-        <location filename="detailedwindow.cpp" line="412"/>
+        <location filename="detailedwindow.cpp" line="413"/>
         <source>Parámetros</source>
         <translation>Parameters</translation>
     </message>
@@ -732,6 +750,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="detailedwindow.ui" line="374"/>
+        <source>Paro</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <location filename="detailedwindow.ui" line="384"/>
         <source>Manual</source>
         <translation></translation>
     </message>
@@ -741,22 +764,22 @@ p, li { white-space: pre-wrap; }
         <translation>Automatic</translation>
     </message>
     <message>
-        <location filename="detailedwindow.ui" line="460"/>
+        <location filename="detailedwindow.ui" line="465"/>
         <source>tab_6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="detailedwindow.ui" line="513"/>
+        <location filename="detailedwindow.ui" line="518"/>
         <source>TextLabel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="detailedwindow.ui" line="547"/>
+        <location filename="detailedwindow.ui" line="552"/>
         <source>Completado</source>
         <translation>Completed</translation>
     </message>
     <message>
-        <location filename="detailedwindow.ui" line="2483"/>
+        <location filename="detailedwindow.ui" line="2488"/>
         <source>Paro General</source>
         <translation>General Stop</translation>
     </message>
@@ -765,142 +788,143 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Ready</translation>
     </message>
     <message>
-        <location filename="detailedwindow.ui" line="748"/>
+        <location filename="detailedwindow.ui" line="753"/>
         <source>Nombre</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="295"/>
+        <location filename="detailedwindow.cpp" line="297"/>
         <source>Regulador</source>
         <translation>Regulator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="296"/>
+        <location filename="detailedwindow.cpp" line="298"/>
         <source>Reactor Biológico</source>
         <translation>Biological Reactor</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="297"/>
+        <location filename="detailedwindow.cpp" line="299"/>
         <source>Clarificador</source>
         <translation>Clarifier</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="298"/>
+        <location filename="detailedwindow.cpp" line="300"/>
         <source>Clorador</source>
         <translation>Chlorinator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="299"/>
+        <location filename="detailedwindow.cpp" line="301"/>
         <source>Digestor de lodos</source>
         <translation>Sludge digester</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="300"/>
+        <location filename="detailedwindow.cpp" line="302"/>
         <source>Deshidratador</source>
         <translation>Dehydrator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="301"/>
+        <location filename="detailedwindow.cpp" line="303"/>
         <source>Afluente</source>
         <translation>Affluent</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="302"/>
+        <location filename="detailedwindow.cpp" line="304"/>
         <source>Efluente</source>
         <translation>Effluent</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="303"/>
+        <location filename="detailedwindow.cpp" line="305"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="304"/>
+        <location filename="detailedwindow.cpp" line="306"/>
         <source>Bomba Alimentación</source>
         <translation>Feeding pump</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="455"/>
+        <location filename="detailedwindow.cpp" line="456"/>
         <source>Evento</source>
         <translation>Event</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="498"/>
+        <location filename="detailedwindow.cpp" line="499"/>
         <source>Descripción</source>
         <translation>Description</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="541"/>
+        <location filename="detailedwindow.cpp" line="542"/>
         <source>Visualización de Parámetros</source>
         <translation>Parameter Display</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="623"/>
+        <location filename="detailedwindow.cpp" line="624"/>
         <source>Encendido de Motores</source>
         <translation>Engine Control</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="795"/>
+        <location filename="detailedwindow.cpp" line="788"/>
+        <location filename="detailedwindow.cpp" line="819"/>
         <source>rutinas.db</source>
         <translation>rutinas_english.db</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="953"/>
+        <location filename="detailedwindow.cpp" line="978"/>
         <source>ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="953"/>
+        <location filename="detailedwindow.cpp" line="978"/>
         <source>Rutina</source>
         <translation>Routine</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1108"/>
+        <location filename="detailedwindow.cpp" line="1133"/>
         <source>Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujogenerado durante las horas pico</source>
         <translation>Dampens the peaks and load flow, so that the treatment plant receives constantly equal to the design flow and efficiency is not affected. It has enough volume to be able to store the generated flow during peak hours</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1112"/>
+        <location filename="detailedwindow.cpp" line="1137"/>
         <source>Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo en contacto las aguas residuales con una biomasa de microorganismos que la depuran.</source>
         <translation>Secondary treatment where organic matter is eliminated by biological oxidation processes; that is, putting the wastewater in contact with a biomass of microorganisms that purify it.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1115"/>
+        <location filename="detailedwindow.cpp" line="1140"/>
         <source>Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos suspendidos se sedimentan, separandose del agua.</source>
         <translation>It receives the affluent of the biological reactor, made up of water and biological sludge. Biological sludge and suspended solids sediment, separating from water.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1118"/>
+        <location filename="detailedwindow.cpp" line="1143"/>
         <source>Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes.</source>
         <translation>Disinfection process of sodium hypochlorite / liquid / solid calcium. The microorganisms present are eliminated.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1120"/>
+        <location filename="detailedwindow.cpp" line="1145"/>
         <source>Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos.</source>
         <translation>Receives the biological sludge generated in excess and separated in the secondary clarifier; These are oxidized biologically until obtaining a reduction of 40 to 60% in the volatile solids present, thus achieving a stabilization of sludge.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1123"/>
+        <location filename="detailedwindow.cpp" line="1148"/>
         <source>Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y se permite su infiltración, dejando secar los lodos</source>
         <translation>Drying beds, horizontal downflow filter packed with gravel and sand. A quantity of mud is poured over it and its infiltration is allowed, allowing the sludge to dry</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1126"/>
+        <location filename="detailedwindow.cpp" line="1151"/>
         <source>Agua residual sanitaria</source>
         <translation>Sanitary wastewater</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1128"/>
+        <location filename="detailedwindow.cpp" line="1153"/>
         <source>Agua tratada</source>
         <translation>Treated water</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1130"/>
+        <location filename="detailedwindow.cpp" line="1155"/>
         <source>Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción adicional de sólidos así como el color ámbar característico de las aguas tratadas. Dadas las características de la tela filtrante, no se requiere la acumulación de material ni la formación de una manta filtrante a fin de lograr el pulimento deseado.</source>
         <translation>Tertiary filtration equipment. Using a specialized fabric as a fixed filtering medium achieves the additional removal of solids as well as the characteristic amber color of the treated waters. Given the characteristics of the filter cloth, neither the accumulation of material nor the formation of a filter mat is required in order to achieve the desired polish.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1135"/>
+        <location filename="detailedwindow.cpp" line="1160"/>
         <source>Agregar descripción</source>
         <translation>Add description</translation>
     </message>
@@ -1431,38 +1455,46 @@ p, li { white-space: pre-wrap; }
         <translation>Regulator</translation>
     </message>
     <message>
-        <location filename="motores.ui" line="118"/>
-        <location filename="motores.ui" line="252"/>
-        <location filename="motores.ui" line="518"/>
-        <location filename="motores.ui" line="630"/>
+        <location filename="motores.ui" line="128"/>
+        <location filename="motores.ui" line="267"/>
+        <location filename="motores.ui" line="538"/>
+        <location filename="motores.ui" line="655"/>
         <source>Manual</source>
         <translation></translation>
     </message>
     <message>
         <location filename="motores.ui" line="123"/>
-        <location filename="motores.ui" line="257"/>
-        <location filename="motores.ui" line="523"/>
-        <location filename="motores.ui" line="635"/>
+        <location filename="motores.ui" line="262"/>
+        <location filename="motores.ui" line="533"/>
+        <location filename="motores.ui" line="650"/>
         <source>Automatico</source>
         <translation>Automatic</translation>
     </message>
     <message>
-        <location filename="motores.ui" line="183"/>
+        <location filename="motores.ui" line="118"/>
+        <location filename="motores.ui" line="257"/>
+        <location filename="motores.ui" line="528"/>
+        <location filename="motores.ui" line="645"/>
+        <source>Paro</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <location filename="motores.ui" line="188"/>
         <source>Reactor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="motores.ui" line="344"/>
+        <location filename="motores.ui" line="354"/>
         <source>Alto general. Presionar durante 3 segundos para activar/desactivar</source>
         <translation>General stop. Press for 3 seconds to activate / deactivate</translation>
     </message>
     <message>
-        <location filename="motores.ui" line="471"/>
+        <location filename="motores.ui" line="481"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="motores.ui" line="583"/>
+        <location filename="motores.ui" line="598"/>
         <source>Bomba de Alimentación</source>
         <translation>Feeding pump</translation>
     </message>
@@ -1550,13 +1582,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="screen_saver.ui" line="171"/>
-        <location filename="screen_saver.cpp" line="198"/>
+        <location filename="screen_saver.cpp" line="200"/>
         <source>Noviembre</source>
         <translation>November</translation>
     </message>
     <message>
         <location filename="screen_saver.ui" line="198"/>
-        <location filename="screen_saver.cpp" line="84"/>
+        <location filename="screen_saver.cpp" line="86"/>
         <source>PM</source>
         <translation></translation>
     </message>
@@ -1584,62 +1616,62 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">New activities:</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="96"/>
+        <location filename="screen_saver.cpp" line="98"/>
         <source>AM</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="168"/>
+        <location filename="screen_saver.cpp" line="170"/>
         <source>Enero</source>
         <translation>January</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="171"/>
+        <location filename="screen_saver.cpp" line="173"/>
         <source>Febrero</source>
         <translation>February</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="174"/>
+        <location filename="screen_saver.cpp" line="176"/>
         <source>Marzo</source>
         <translation>March</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="177"/>
+        <location filename="screen_saver.cpp" line="179"/>
         <source>Abril</source>
         <translation>April</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="180"/>
+        <location filename="screen_saver.cpp" line="182"/>
         <source>Mayo</source>
         <translation>May</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="183"/>
+        <location filename="screen_saver.cpp" line="185"/>
         <source>Junio</source>
         <translation>June</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="186"/>
+        <location filename="screen_saver.cpp" line="188"/>
         <source>Julio</source>
         <translation>July</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="189"/>
+        <location filename="screen_saver.cpp" line="191"/>
         <source>Agosto</source>
         <translation>August</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="192"/>
+        <location filename="screen_saver.cpp" line="194"/>
         <source>Septiembre</source>
         <translation>September</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="195"/>
+        <location filename="screen_saver.cpp" line="197"/>
         <source>Octubre</source>
         <translation>October</translation>
     </message>
     <message>
-        <location filename="screen_saver.cpp" line="201"/>
+        <location filename="screen_saver.cpp" line="203"/>
         <source>Diciembre</source>
         <translation>December</translation>
     </message>
@@ -2188,6 +2220,44 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="settings.ui" line="5089"/>
         <source>h</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="settings.ui" line="5104"/>
+        <source>Información</source>
+        <translation>Info</translation>
+    </message>
+    <message>
+        <location filename="settings.ui" line="5116"/>
+        <source>APP Version: XX.XXXX</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="settings.ui" line="5129"/>
+        <source>Belisario Dominguez 1551
+Col. Mariano Otero
+Zapopan, Jalisco Mexico C.P. 45067
+
+Web: plantasdetratamiento.com.mx
+
+Tel.: 33 3180-2780
+
+Email: info@plantasdetratamiento.com.mx</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="32"/>
+        <source>APP Version: </source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="33"/>
+        <source>Fecha de compilación: </source>
+        <translation>Build date:</translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="34"/>
+        <source>EARM Version: </source>
         <translation></translation>
     </message>
 </context>

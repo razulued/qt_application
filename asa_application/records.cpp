@@ -13,7 +13,7 @@
 #include "token_auth.h"
 #include <QTimer>
 
-records::records(const QString &path, QStringList list_records, uint from_id, uint time, QWidget *parent) :
+records::records(const QString &path, QStringList list_records, uint from_id, uint time, uint new_time, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::records)
 {
@@ -22,6 +22,8 @@ records::records(const QString &path, QStringList list_records, uint from_id, ui
     main_id = from_id;
     actual_time = time;
     question_list = list_records;
+    reschedule = new_time;
+    qDebug() << " Asi entra: " << reschedule;
 
     db_path = path;
 
@@ -134,12 +136,12 @@ void records::load_to_temp(uint id)
                 else if(q.value("type").toString() == "COMPLETED")
                 {
                     // do not save fields or show window
-                    input_completed_reschedule();
+                    input_completed_reschedule(0);
                 }
                 else if(q.value("type").toString() == "RESCHEDULE")
                 {
                     // do not save fields or show window
-                    input_completed_reschedule();
+                    input_completed_reschedule(reschedule);
                 }
 
             }
@@ -160,15 +162,18 @@ void records::input_numeric(QString name, QString units)
     ui->opt_text_textEdit->setFocus();
 }
 
-void records::input_completed_reschedule(void)
+void records::input_completed_reschedule(uint time)
 {
     current_type = TYPE_COMPLETED;
 
-    temp_log.log__record_value = 0;
+    temp_log.log__record_value = time;
+//    qDebug() << " Asi es el value: " << (uint)temp_log.log__record_value;
+
     log_queue.append(temp_log);
     question_list.removeLast();
 
     save_records_to_log();
+    this->close();
 }
 
 void records::input_choice(QString name, QString opt_1, QString opt_2, QString opt_3 )
@@ -182,6 +187,13 @@ void records::input_choice(QString name, QString opt_1, QString opt_2, QString o
     QSignalMapper *out_choiceMapper = new QSignalMapper(this);
 
     ui->opt_ch_name_label->setText(name);
+
+    // Clear items.
+    QLayoutItem *child;
+    while ((child = ui->horizontalLayout->takeAt(0)) != 0) {
+      delete child;
+    }
+
 
     if(opt_1 != "")
     {
@@ -371,7 +383,8 @@ void records::on_pushButton_clicked()
     {
         // Load next question
         question_ID = get_current_question_id();
-        if((1 != question_ID ) && 2 != question_ID)
+//        if((1 != question_ID ) && 2 != question_ID)
+        if(2 != question_ID)
         {
             load_to_temp(question_ID);
         }
@@ -446,7 +459,8 @@ void records::on_pushButton_2_clicked()
     {
         // Load next question
         question_ID = get_current_question_id();
-        if((1 != question_ID ) && 2 != question_ID)
+//        if((1 != question_ID ) && 2 != question_ID)
+        if(2 != question_ID)
         {
             load_to_temp(question_ID);
         }

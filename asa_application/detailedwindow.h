@@ -214,6 +214,13 @@ private:
     bool stop_op_mode();
 
     void save_stop_status(uint mode);
+
+    enum
+    {
+        CONTROL_STOP = 0,
+        CONTROL_AUTOMATICO = 1,
+        CONTROL_MANUAL = 2
+    };
 signals:
     void release_lock();
 

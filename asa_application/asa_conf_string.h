@@ -21,4 +21,7 @@ void emergency_stop(bool val);
 
 void add_to_one_time_transmit(QString str);
 
+void get_calibrations_and_set_config_str();
+void save_calibrations();
+
 #endif // ASA_CONF_STRING_H

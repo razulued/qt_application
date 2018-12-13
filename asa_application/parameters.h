@@ -27,6 +27,7 @@ QString getParamValue_base_units(unsigned int id);
 QString invese_getParamValue(unsigned int id, float_t value);
 
 QString getParamValue_and_units(unsigned int id);
+QString getParamValue_RAW(unsigned int id);
 
 void setParamValue(unsigned int id, double value);
 void setParamString(unsigned int id, QString value);

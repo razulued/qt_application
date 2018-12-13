@@ -55,7 +55,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>4</number>
+    <number>5</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -5098,6 +5098,45 @@ height: 15;
     <zorder>label_119</zorder>
     <zorder>layoutWidget</zorder>
     <zorder>layoutWidget</zorder>
+   </widget>
+   <widget class="QWidget" name="tab_6">
+    <attribute name="title">
+     <string>Información</string>
+    </attribute>
+    <widget class="QLabel" name="label_version">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>711</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>APP Version: XX.XXXX</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_info">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>120</y>
+       <width>711</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Belisario Dominguez 1551
+Col. Mariano Otero
+Zapopan, Jalisco Mexico C.P. 45067
+
+Web: plantasdetratamiento.com.mx
+
+Tel.: 33 3180-2780
+
+Email: info@plantasdetratamiento.com.mx</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QFrame" name="key_frame">

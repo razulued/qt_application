@@ -66,6 +66,9 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
     if (!myFile.open(QIODevice::ReadOnly))
     {
         qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
+        // Re-try later
+        unknown_tool_pos.append(actual_tooltip_number);
+        QTimer::singleShot(3000, this, SLOT(retry_tool_pos()));
     }
     else
     {
@@ -325,6 +328,38 @@ void custom_tooltip::checkClick()
     }
 
     number_of_clicks = 0;
+}
+
+void custom_tooltip::retry_tool_pos()
+{
+    uint tooltip_num = unknown_tool_pos.takeLast();
+
+    if (0 != tooltip_num)
+    {
+        QString filename = "./tooltips/tool"+QString::number(tooltip_num);
+        QFile myFile(filename);
+
+        QDataStream in(&myFile);
+        in.setVersion(QDataStream::Qt_5_7);
+
+        QPoint pos = parent_frame->pos();
+        if (!myFile.open(QIODevice::ReadOnly))
+        {
+            qDebug() << "NEL NO SE PUDO";
+        }
+        else
+        {
+            in >> pos;
+    //        init_data();
+    //        qDebug() << "tool: " << actual_tooltip_number <<"pos " << pos;
+        }
+
+        if(pos.x() != 0 && pos.y() != 0)
+        {
+            parent_frame->move(pos);
+        }
+        myFile.close();
+    }
 }
 
 
