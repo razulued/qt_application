@@ -37,6 +37,10 @@ enum
     CARCAMO_MOT_2,
     CARCAMO_MOT_3,
     CARCAMO_MOT_4,
+    REGULADOR_MOT_1,
+    REGULADOR_MOT_2,
+    REGULADOR_MOT_3,
+    REGULADOR_MOT_4,
     REACTOR_MOT_1,
     REACTOR_MOT_2,
     REACTOR_MOT_3,
@@ -58,11 +62,17 @@ typedef struct
 
 const g_elec_settings electric_graph_settings[] =
 {
-    /*                  name            state   V1      V2      V3      A1      A2      A6      */
+    /*                  name                         state   V1      V2      V3      A1      A2      A6      */
     /* CARCAMO_MOT_1 */{QObject::tr("Carcamo 1"),    0x3000, 0x3001, 0x3002, 0x3003, 0x3004, 0x3005, 0x3006,  },
     /* CARCAMO_MOT_2 */{QObject::tr("Carcamo 2"),    0x3010, 0x3011, 0x3012, 0x3013, 0x3014, 0x3015, 0x3016,  },
     /* CARCAMO_MOT_3 */{QObject::tr("Carcamo 3"),    0x3020, 0x3021, 0x3022, 0x3023, 0x3024, 0x3025, 0x3026,  },
     /* CARCAMO_MOT_4 */{QObject::tr("Carcamo 4"),    0x3030, 0x3031, 0x3032, 0x3033, 0x3034, 0x3035, 0x3036,  },
+
+    /* REGULADOR_MOT_1 */{QObject::tr("Regulador 1"),    0x3800, 0x3801, 0x3802, 0x3803, 0x3804, 0x3805, 0x3806,  },
+    /* REGULADOR_MOT_2 */{QObject::tr("Regulador 2"),    0x3810, 0x3811, 0x3812, 0x3813, 0x3814, 0x3815, 0x3816,  },
+    /* REGULADOR_MOT_3 */{QObject::tr("Regulador 3"),    0x3820, 0x3821, 0x3822, 0x3823, 0x3824, 0x3825, 0x3826,  },
+    /* REGULADOR_MOT_4 */{QObject::tr("Regulador 4"),    0x3830, 0x3831, 0x3832, 0x3833, 0x3834, 0x3835, 0x3836,  },
+
     /* REACTOR_MOT_1 */{QObject::tr("Reactor 1"),    0x4000, 0x4001, 0x4002, 0x4003, 0x4004, 0x4005, 0x4006,  },
     /* REACTOR_MOT_2 */{QObject::tr("Reactor 2"),    0x4010, 0x4011, 0x4012, 0x4013, 0x4014, 0x4015, 0x4016,  },
     /* REACTOR_MOT_3 */{QObject::tr("Reactor 3"),    0x4020, 0x4021, 0x4022, 0x4023, 0x4024, 0x4025, 0x4026,  },
@@ -85,8 +95,8 @@ uint graphwindow::g_PH_OUT      = PH_OUT;
 
 uint graphwindow::g_GASTO_INS   = GASTO_INS;
 uint graphwindow::g_GASTO_ACC   = GASTO_ACC;
+uint graphwindow::g_NIVEL_CAR   = NIVEL_CAR ;
 uint graphwindow::g_NIVEL_REG   = NIVEL_REG;
-uint graphwindow::g_NIVEL_CL    = NIVEL_CL ;
 uint graphwindow::g_PRES_AIR    = PRES_AIR ;
 uint graphwindow::g_PRES_FIL    = PRES_FIL ;
 
@@ -136,7 +146,7 @@ graphwindow::graphwindow(QWidget *parent) :
 
     ui->pb_gasto_acc->setStyleSheet(ui->volts_1->styleSheet());
     ui->pb_gasto_inst->setStyleSheet(ui->volts_1->styleSheet());
-    ui->pb_nivel_clarif->setStyleSheet(ui->volts_1->styleSheet());
+    ui->pb_nivel_car->setStyleSheet(ui->volts_1->styleSheet());
     ui->pb_nivel_reg->setStyleSheet(ui->volts_1->styleSheet());
     ui->pb_presion_aire->setStyleSheet(ui->volts_1->styleSheet());
     ui->pb_presion_filt->setStyleSheet(ui->volts_1->styleSheet());
@@ -298,7 +308,7 @@ void graphwindow::update_graph()
         ui->pb_gasto_inst->setText(get_last_string_value_from_param(g_GASTO_INS));
         ui->pb_gasto_acc->setText(get_last_string_value_from_param(g_GASTO_ACC));
 
-        ui->pb_nivel_clarif->setText(get_last_string_value_from_param(g_NIVEL_CL));
+        ui->pb_nivel_car->setText(get_last_string_value_from_param(g_NIVEL_CAR));
         ui->pb_nivel_reg->setText(get_last_string_value_from_param(g_NIVEL_REG));
 
         ui->pb_presion_aire->setText(get_last_string_value_from_param(g_PRES_AIR));
@@ -520,15 +530,15 @@ void graphwindow::on_pb_nivel_reg_clicked()
     update_graph_window(parameter_to_graph);
 }
 
-void graphwindow::on_pb_nivel_clarif_clicked()
+void graphwindow::on_pb_nivel_car_clicked()
 {
     g_mutex.lock();
-    parameter_to_graph = g_NIVEL_CL;
+    parameter_to_graph = g_NIVEL_CAR;
     g_mutex.unlock();
 
     if("PTAR" == graph_origin)
     {
-        ui->label_graph->setText(tr("Nivel Clarificador"));
+        ui->label_graph->setText(tr("Nivel Cárcamo"));
     }
     else
     {
@@ -804,10 +814,10 @@ void graphwindow::color_to_label(uint parameter)
     else
     {ui->pb_nivel_reg->setStyleSheet(inactive);}
     //NIVEL_CL
-    if(parameter == g_NIVEL_CL)
-    {ui->pb_nivel_clarif->setStyleSheet(active); }
+    if(parameter == g_NIVEL_CAR)
+    {ui->pb_nivel_car->setStyleSheet(active); }
     else
-    {ui->pb_nivel_clarif->setStyleSheet(inactive);}
+    {ui->pb_nivel_car->setStyleSheet(inactive);}
     //PRES_AIR
     if(parameter == g_PRES_AIR)
     {ui->pb_presion_aire->setStyleSheet(active); }
@@ -885,37 +895,53 @@ uint graphwindow::index_of_motor()
     {
         ret = 3;
     }
-    else if(tr("Reactor 1") == ui->comboBox->currentText())
+    if(tr("Regulador 1") == ui->comboBox->currentText())
     {
         ret = 4;
     }
-    else if(tr("Reactor 2") == ui->comboBox->currentText())
+    else if(tr("Regulador 2") == ui->comboBox->currentText())
     {
         ret = 5;
     }
-    else if(tr("Reactor 3") == ui->comboBox->currentText())
+    else if(tr("Regulador 3") == ui->comboBox->currentText())
     {
         ret = 6;
     }
-    else if(tr("Reactor 4") == ui->comboBox->currentText())
+    else if(tr("Regulador 4") == ui->comboBox->currentText())
     {
         ret = 7;
     }
-    else if(tr("Motor Giro") == ui->comboBox->currentText())
+    else if(tr("Reactor 1") == ui->comboBox->currentText())
     {
         ret = 8;
     }
-    else if(tr("Bomba Retro 1") == ui->comboBox->currentText())
+    else if(tr("Reactor 2") == ui->comboBox->currentText())
     {
         ret = 9;
     }
-    else if(tr("Bomba Retro 2") == ui->comboBox->currentText())
+    else if(tr("Reactor 3") == ui->comboBox->currentText())
     {
         ret = 10;
     }
-    else if(tr("Bomba Alim") == ui->comboBox->currentText())
+    else if(tr("Reactor 4") == ui->comboBox->currentText())
     {
         ret = 11;
+    }
+    else if(tr("Motor Giro") == ui->comboBox->currentText())
+    {
+        ret = 12;
+    }
+    else if(tr("Bomba Retro 1") == ui->comboBox->currentText())
+    {
+        ret = 13;
+    }
+    else if(tr("Bomba Retro 2") == ui->comboBox->currentText())
+    {
+        ret = 14;
+    }
+    else if(tr("Bomba Alim") == ui->comboBox->currentText())
+    {
+        ret = 15;
     }
 
     return ret;
@@ -939,15 +965,15 @@ void graphwindow::set_type(QString type)
         g_GASTO_INS =GASTO_INS;
         g_GASTO_ACC =GASTO_ACC;
         g_NIVEL_REG =NIVEL_REG;
-        g_NIVEL_CL  =NIVEL_CL ;
+        g_NIVEL_CAR  =NIVEL_CAR ;
         g_PRES_AIR  =PRES_AIR ;
         g_PRES_FIL  =PRES_FIL ;
 
         // fisicos
         ui->label_15->setText(tr("Instantáneo"));
         ui->label_16->setText(tr("Acumulado"));
-        ui->label_18->setText(tr("Regulador"));
-        ui->label_17->setText(tr("Clarificador"));
+        ui->label_18->setText(tr("Cárcamo"));
+        ui->label_17->setText(tr("Regulador"));
         ui->label_22->setText(tr("Aireador"));
         ui->label_20->setText(tr("Filtración"));
 
@@ -972,7 +998,7 @@ void graphwindow::set_type(QString type)
         g_GASTO_INS =Filtro_GASTO_INS;
         g_GASTO_ACC =Filtro_GASTO_ACC;
         g_NIVEL_REG =Filtro_NIVEL_REG;
-        g_NIVEL_CL  =Filtro_NIVEL_CL ;
+        g_NIVEL_CAR =Filtro_NIVEL_CL ;
         g_PRES_AIR  =Filtro_PRES_AIR ;
         g_PRES_FIL  =Filtro_PRES_FIL ;
 

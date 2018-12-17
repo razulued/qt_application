@@ -72,6 +72,7 @@ rutinas_mantenimiento::rutinas_mantenimiento(const QString &path)
             else
             {
                qDebug() << "Database: connection ok";
+               QProcess::execute("sudo chmod 777 " + db_path);
             }
 
             QSqlQuery q;

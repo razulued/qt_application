@@ -11,6 +11,7 @@ configuration::configuration(QString name)
 
 void configuration::load_configuration(QString name)
 {
+    bool test;
     QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
     conf.sync();
 
@@ -21,7 +22,7 @@ void configuration::load_configuration(QString name)
     process_conf.names = conf.childKeys();
     foreach(const QString &key, process_conf.names)
     {
-        process_conf.ids << conf.value(key).toInt();
+        process_conf.ids << conf.value(key).toString().toInt(&test,16);
         process_conf.ids_string << conf.value(key).toString();
     }
     conf.endGroup();
@@ -50,7 +51,7 @@ configuration_id configuration::get_config()
 void configuration::saveSettings(const QString &name, const QString &key, const QString &value)
 {
     QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
-
+    conf.sync();
     conf.beginGroup(name);
     conf.setValue(key, value);
     conf.endGroup();

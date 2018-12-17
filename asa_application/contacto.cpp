@@ -101,7 +101,7 @@ void contacto::on_top_menu_5_clicked()
             {
                 delete settingswindow;
             }
-            settingswindow = new settings(this);
+            settingswindow = new settings(get_super_user(), this);
 //            connect(settingswindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
             settingswindow->show();
         }

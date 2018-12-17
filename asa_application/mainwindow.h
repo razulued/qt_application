@@ -13,6 +13,7 @@
 #include "rutinas_mantenimiento.h"
 
 #include "mod_1_carcamo.h"
+#include "mod_1_regulador.h"
 #include "mod_2_reactor.h"
 #include "mod_3_clarificador.h"
 #include "mod_4_clorador.h"
@@ -50,6 +51,10 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void InitTooltips();
+
+    static configuration_id conf_car_elect;
+    static configuration_id conf_car_fisic;
+    static configuration_id conf_car_quimic;
 
     static configuration_id conf_reg_elect;
     static configuration_id conf_reg_fisic;
@@ -91,6 +96,7 @@ public:
     static configuration_id conf_filtro_bomba_fisic;
     static configuration_id conf_filtro_bomba_quimi;
 
+    static configuration_id car_outputs;
     static configuration_id reg_outputs;
     static configuration_id react_outputs;
     static configuration_id clarif_outputs;
@@ -185,6 +191,9 @@ private:
     parameter_state_t physic_state;
     bool init_complete = false;
 
+    custom_tooltip *tool_tip_carcamo_electricos;
+    custom_tooltip *tool_tip_carcamo_fisicos;
+    custom_tooltip *tool_tip_carcamo_quimicos;
 
     custom_tooltip *tool_tip_regulador_electricos;
     custom_tooltip *tool_tip_regulador_fisicos;
@@ -229,8 +238,8 @@ private:
     void update_tooltips(void);
 
     void trace_lines(QWidget *tooltip, QPushButton *module, QPainter &painter);
-
-    mod_1_carcamo *mod_1;
+    mod_1_carcamo *mod_9;
+    mod_1_regulador *mod_1;
     mod_2_reactor *mod_2;
     mod_3_clarificador *mod_3;
     mod_4_clorador *mod_4;
@@ -252,6 +261,11 @@ private:
     mod_flechas *mod_bomba_2;
     mod_flechas *mod_bomba_3;
     mod_flechas *mod_bomba_4;
+
+    mod_flechas *mod_bomba_reg_1;
+    mod_flechas *mod_bomba_reg_2;
+    mod_flechas *mod_bomba_reg_3;
+    mod_flechas *mod_bomba_reg_4;
 
     void update_system_time();
 

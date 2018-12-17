@@ -10,17 +10,18 @@
 #include "asa_conf_string.h"
 #include "QKeyEvent"
 #include "build_settings.h"
+#include "asa_protocol.h"
 
 #define VERSION_MAJOR   (0)
 #define VERSION_MID     (1)
 #define VERSION_MINOR   (0)
-#define VERSION_FIX     ("a1211")
+#define VERSION_FIX     ("a1217")
 const QString SW_VERSION = QString::number(VERSION_MAJOR).append(".")\
         .append(QString::number(VERSION_MID)).append(".")\
         .append(QString::number(VERSION_MINOR).append("-"))\
         .append(VERSION_FIX);
 
-settings::settings(QWidget *parent) :
+settings::settings(bool super_user, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::settings)
 {
@@ -94,6 +95,12 @@ settings::settings(QWidget *parent) :
     //Scrolling Gesture
     scroller_3->grabGesture(ui->scrollArea_3,QScroller::LeftMouseButtonGesture);
 
+    // Hide super user tab
+    if(super_user == false)
+    {
+        ui->tabWidget->removeTab(6);
+    }
+
     synch_calibrations();
 }
 
@@ -161,9 +168,19 @@ void settings::on_buttonBox_accepted()
     calibrations += "|3400:" + invese_getParamValue(0x3400, ui->control_3400->value());
     calibrations += "|3401:" + invese_getParamValue(0x3401, ui->control_3401->value());
     calibrations += "|3402:" + invese_getParamValue(0x3402, ui->control_3402->value());
-    calibrations += "|3403:" + invese_getParamValue(0x3400, ui->control_3403->value());
+    calibrations += "|3403:" + invese_getParamValue(0x3403, ui->control_3403->value());
     calibrations += "|3501:" + invese_getParamValue(0x3501, ui->control_3501->value());
     calibrations += "|3502:" + invese_getParamValue(0x3502, ui->control_3502->value());
+    calibrations += "|2403:" + invese_getParamValue(0x2403, ui->control_2403->value());
+
+
+    calibrations += "|3C00:" + invese_getParamValue(0x3C00, ui->control_3C00->value());
+    calibrations += "|3C01:" + invese_getParamValue(0x3C01, ui->control_3C01->value());
+    calibrations += "|3C02:" + invese_getParamValue(0x3C02, ui->control_3C02->value());
+    calibrations += "|3C03:" + invese_getParamValue(0x3C03, ui->control_3C03->value());
+    calibrations += "|3D01:" + invese_getParamValue(0x3D01, ui->control_3D01->value());
+    calibrations += "|3D02:" + invese_getParamValue(0x3D02, ui->control_3D02->value());
+    calibrations += "|2402:" + invese_getParamValue(0x2402, ui->control_2402->value());
 
     calibrations += "|4400:" + invese_getParamValue(0x4400, ui->control_4400->value());
     calibrations += "|4401:" + invese_getParamValue(0x4401, ui->control_4401->value());
@@ -198,20 +215,35 @@ void settings::on_buttonBox_accepted()
     calibrations += "|9504:" + invese_getParamValue(0x9504, ui->control_9504->value());
 
 
-    ///
+    ///carcamo
     calibrations += "|1006:" + invese_getParamValue(0x1006, ui->control_1006->value());
     calibrations += "|1007:" + invese_getParamValue(0x1007, ui->control_1007->value());
     calibrations += "|1008:" + invese_getParamValue(0x1008, ui->control_1008->value());
     calibrations += "|1009:" + invese_getParamValue(0x1009, ui->control_1009->value());
     calibrations += "|100A:" + invese_getParamValue(0x100A, ui->control_100A->value());
     calibrations += "|100B:" + invese_getParamValue(0x100B, ui->control_100B->value());
+    ///regulador
+    calibrations += "|1126:" + invese_getParamValue(0x1126, ui->control_1126->value());
+    calibrations += "|1127:" + invese_getParamValue(0x1127, ui->control_1127->value());
+    calibrations += "|1128:" + invese_getParamValue(0x1128, ui->control_1128->value());
+    calibrations += "|1129:" + invese_getParamValue(0x1129, ui->control_1129->value());
+    calibrations += "|112A:" + invese_getParamValue(0x112A, ui->control_112A->value());
+    calibrations += "|112B:" + invese_getParamValue(0x112B, ui->control_112B->value());
 
+    ///carcamo
     calibrations += "|101E:" + invese_getParamValue(0x101E, ui->control_101E->value());
     calibrations += "|101F:" + invese_getParamValue(0x101F, ui->control_101F->value());
     calibrations += "|1020:" + invese_getParamValue(0x1020, ui->control_1020->value());
     calibrations += "|1021:" + invese_getParamValue(0x1021, ui->control_1021->value());
     calibrations += "|1022:" + invese_getParamValue(0x1022, ui->control_1022->value());
     calibrations += "|1023:" + invese_getParamValue(0x1023, ui->control_1023->value());
+    ///regulador
+    calibrations += "|113E:" + invese_getParamValue(0x113E, ui->control_113E->value());
+    calibrations += "|113F:" + invese_getParamValue(0x113F, ui->control_113F->value());
+    calibrations += "|1140:" + invese_getParamValue(0x1140, ui->control_1140->value());
+    calibrations += "|1141:" + invese_getParamValue(0x1141, ui->control_1141->value());
+    calibrations += "|1142:" + invese_getParamValue(0x1142, ui->control_1142->value());
+    calibrations += "|1143:" + invese_getParamValue(0x1143, ui->control_1143->value());
 
     calibrations += "|103C:" + invese_getParamValue(0x103C, ui->control_103C->value());
     calibrations += "|103D:" + invese_getParamValue(0x103D, ui->control_103D->value());
@@ -439,6 +471,15 @@ void settings::synch_calibrations()
     ui->control_3403->setValue(getParamValue_base_units(0x3403).toDouble());
     ui->control_3501->setValue(getParamValue_base_units(0x3501).toDouble());
     ui->control_3502->setValue(getParamValue_base_units(0x3502).toDouble());
+    ui->control_2403->setValue(getParamValue_base_units(0x2403).toDouble());
+
+    ui->control_3C00->setValue(getParamValue_base_units(0x3C00).toDouble());
+    ui->control_3C01->setValue(getParamValue_base_units(0x3C01).toDouble());
+    ui->control_3C02->setValue(getParamValue_base_units(0x3C02).toDouble());
+    ui->control_3C03->setValue(getParamValue_base_units(0x3C03).toDouble());
+    ui->control_3D01->setValue(getParamValue_base_units(0x3D01).toDouble());
+    ui->control_3D02->setValue(getParamValue_base_units(0x3D02).toDouble());
+    ui->control_2402->setValue(getParamValue_base_units(0x2402).toDouble());
 
     ui->control_4400->setValue(getParamValue_base_units(0x4400).toDouble());
     ui->control_4401->setValue(getParamValue_base_units(0x4401).toDouble());
@@ -462,19 +503,35 @@ void settings::synch_calibrations()
     ui->control_9504->setValue(getParamValue_base_units(0x9504).toDouble());
 
     // ALARMAS
+    // carcamo
     ui->control_1006->setValue(getParamValue_base_units(0x1006).toDouble());
     ui->control_1007->setValue(getParamValue_base_units(0x1007).toDouble());
     ui->control_1008->setValue(getParamValue_base_units(0x1008).toDouble());
     ui->control_1009->setValue(getParamValue_base_units(0x1009).toDouble());
     ui->control_100A->setValue(getParamValue_base_units(0x100A).toDouble());
     ui->control_100B->setValue(getParamValue_base_units(0x100B).toDouble());
+    // regulador
+    ui->control_1126->setValue(getParamValue_base_units(0x1126).toDouble());
+    ui->control_1127->setValue(getParamValue_base_units(0x1127).toDouble());
+    ui->control_1128->setValue(getParamValue_base_units(0x1128).toDouble());
+    ui->control_1129->setValue(getParamValue_base_units(0x1129).toDouble());
+    ui->control_112A->setValue(getParamValue_base_units(0x112A).toDouble());
+    ui->control_112B->setValue(getParamValue_base_units(0x112B).toDouble());
 
+    //carcamo
     ui->control_101E->setValue(getParamValue_base_units(0x101E).toDouble());
     ui->control_101F->setValue(getParamValue_base_units(0x101F).toDouble());
     ui->control_1020->setValue(getParamValue_base_units(0x1020).toDouble());
     ui->control_1021->setValue(getParamValue_base_units(0x1021).toDouble());
     ui->control_1022->setValue(getParamValue_base_units(0x1022).toDouble());
     ui->control_1023->setValue(getParamValue_base_units(0x1023).toDouble());
+    // carcamo
+    ui->control_113E->setValue(getParamValue_base_units(0x113E).toDouble());
+    ui->control_113F->setValue(getParamValue_base_units(0x113F).toDouble());
+    ui->control_1140->setValue(getParamValue_base_units(0x1140).toDouble());
+    ui->control_1141->setValue(getParamValue_base_units(0x1141).toDouble());
+    ui->control_1142->setValue(getParamValue_base_units(0x1142).toDouble());
+    ui->control_1143->setValue(getParamValue_base_units(0x1143).toDouble());
 
     ui->control_103C->setValue(getParamValue_base_units(0x103C).toDouble());
     ui->control_103D->setValue(getParamValue_base_units(0x103D).toDouble());
@@ -624,4 +681,22 @@ void settings::save_language_and_units(void)
     conf.setValue("caudal",ui->combobox_caudal->currentIndex());
     conf.setValue("tiempo",ui->combobox_tiempo->currentIndex());
     conf.endGroup();
+}
+
+void settings::on_borrar_DB_clicked()
+{
+    output_op_mode("1FFF", "1012");
+    QTimer::singleShot(2000, this, SLOT(remove_db()));
+
+}
+
+void settings::on_pushButton_clicked()
+{
+    QProcess::execute("sudo reboot");
+}
+
+void settings::remove_db()
+{
+    QProcess::execute("sudo rm /home/pi/rutinas.db");
+    output_op_mode("1FFF", "0");
 }

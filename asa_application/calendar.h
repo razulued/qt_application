@@ -30,7 +30,7 @@ private:
     Ui::calendar *ui;
 
 signals:
-    void send_calendar_date(uint hour, QDate date);
+    void send_calendar_date(uint hour, QDate date, QDateTime datetime);
     void send_calendar_datetime(QDateTime datetime);
 };
 

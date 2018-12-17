@@ -9,7 +9,7 @@ void get_plant_config();
 void output_control_toggle(uint id);
 void output_token_transfer(bool val);
 void synch_config_string();
-void output_op_mode(uint id, QString val);
+void output_op_mode(QString id, QString val);
 
 QString get_id_state(QString str_id);
 void synch_output_state();

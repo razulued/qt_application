@@ -22,7 +22,8 @@ typedef enum
     ELEMENT_AFLUENTE,
     ELEMENT_EFLUENTE,
     ELEMENT_FILTRO,
-    ELEMENT_FILTRO_BOMBA
+    ELEMENT_FILTRO_BOMBA,
+    ELEMENT_CARCAMO,
 }detailed_elements_t;
 
 typedef struct

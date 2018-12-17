@@ -25,6 +25,10 @@ typedef enum
     CARCAMO_MOTOR_2,
     CARCAMO_MOTOR_3,
     CARCAMO_MOTOR_4,
+    REGULADOR_MOTOR_1,
+    REGULADOR_MOTOR_2,
+    REGULADOR_MOTOR_3,
+    REGULADOR_MOTOR_4,
 }arrow_type_t;
 
 enum

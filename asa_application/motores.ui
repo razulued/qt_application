@@ -29,9 +29,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>360</y>
+     <y>380</y>
      <width>331</width>
-     <height>231</height>
+     <height>211</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -133,9 +133,9 @@ color: white;
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>70</y>
+      <y>90</y>
       <width>181</width>
-      <height>141</height>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout"/>
@@ -145,9 +145,9 @@ color: white;
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>360</y>
+     <y>380</y>
      <width>351</width>
-     <height>231</height>
+     <height>211</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -272,9 +272,9 @@ color: white;
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>70</y>
+      <y>90</y>
       <width>191</width>
-      <height>141</height>
+      <height>111</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2"/>
@@ -438,9 +438,9 @@ background-position:center;
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>130</y>
-     <width>391</width>
-     <height>221</height>
+     <y>10</y>
+     <width>361</width>
+     <height>191</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -488,7 +488,7 @@ border-radius: 10px;
     <property name="geometry">
      <rect>
       <x>-10</x>
-      <y>50</y>
+      <y>10</y>
       <width>141</width>
       <height>161</height>
      </rect>
@@ -545,7 +545,7 @@ color: white;
       <x>140</x>
       <y>80</y>
       <width>241</width>
-      <height>121</height>
+      <height>101</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_3"/>
@@ -554,9 +554,9 @@ color: white;
   <widget class="QFrame" name="frame_5">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>170</y>
-     <width>331</width>
+     <x>380</x>
+     <y>205</y>
+     <width>361</width>
      <height>171</height>
     </rect>
    </property>
@@ -666,6 +666,122 @@ color: white;
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_4"/>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="frame_6">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>160</y>
+     <width>331</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#frame_6
+{
+background-color: black;
+color: white;
+border-style: solid;
+border-width:1px;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:white</string>
+    </property>
+    <property name="text">
+     <string>Carcamo</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="regulador_imagen_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>121</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#regulador_imagen_2
+{
+background-image: url(:/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/carcamo hi quiet water.png);
+background-repeat: none;
+background-position: center;
+border: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_5">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>40</y>
+      <width>171</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#comboBox
+{
+background-color: black;
+color: white;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Paro</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Automatico</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Manual</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_5">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>90</y>
+      <width>181</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_5"/>
    </widget>
   </widget>
  </widget>

@@ -36,6 +36,7 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
     layout->setAlignment(Qt::AlignTop);
 
     list_widget = new QListWidget();
+    list_widget->setFocusPolicy(Qt::NoFocus);
     list_widget->clear();
     list_widget->setStyleSheet("background: transparent;"
                                   "color: rgb(0, 167, 250);"

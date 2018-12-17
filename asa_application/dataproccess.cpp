@@ -4,6 +4,7 @@
 #include "asa_protocol.h"
 #include "mainwindow.h"
 #include "build_settings.h"
+#include "build_settings.h"
 
 DataProccess::DataProccess(QObject *parent)
 {
@@ -32,6 +33,11 @@ void DataProccess::run()
     store_value_by_ID(0x3010, "3");
     store_value_by_ID(0x3020, "3");
     store_value_by_ID(0x3030, "3");
+
+    store_value_by_ID(0x3800, "3");
+    store_value_by_ID(0x3810, "3");
+    store_value_by_ID(0x3820, "3");
+    store_value_by_ID(0x3830, "3");
 
     store_value_by_ID(0x9000, "3");
     store_value_by_ID(0x9010, "3");

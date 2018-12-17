@@ -58,7 +58,8 @@ SOURCES += main.cpp\
     sql_cmd_manager.cpp \
     chart.cpp \
     screen_saver.cpp \
-    build_settings.cpp
+    build_settings.cpp \
+    mod_1_regulador.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -103,7 +104,8 @@ HEADERS  += mainwindow.h \
     record_chart.h \
     sql_cmd_manager.h \
     chart.h \
-    screen_saver.h
+    screen_saver.h \
+    mod_1_regulador.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \

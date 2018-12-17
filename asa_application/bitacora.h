@@ -38,7 +38,7 @@ private slots:
 
     void on_top_menu_2_clicked();
 
-    void receive_date(uint hora, QDate date);
+    void receive_date(uint hora, QDate date, QDateTime datetime);
     void update_datetime(QDateTime datetime);
 
     void on_key_Reschedule_2_clicked();

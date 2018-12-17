@@ -301,6 +301,13 @@ int sql_cmd_manager::edit_activity()
 
     QStringList list = input_command.split(",");
 
+    //validation
+    if("" == input_command ||
+            list.length() < 5)
+    {
+        return 0;
+    }
+
     //     1       2       3        4        5             6
     // ID,Name,IDProceso,Periodo,epoch,[Descripcion],[regID,regID...]
     QString ID = list.at(0);
@@ -420,6 +427,12 @@ int sql_cmd_manager::edit_record()
 
     QStringList list = input_command.split(",");
 
+    //validation
+    if("" == input_command ||
+            list.length() < 4)
+    {
+        return 0;
+    }
     //  0      1       2     3     4     5
     // ID,Descripcion,Tipo,Unit1,Unit2,Unit3
     QString ID = list.at(0);

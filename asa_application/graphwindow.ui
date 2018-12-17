@@ -183,7 +183,7 @@ height: 50px;
     <enum>QTabWidget::North</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <property name="iconSize">
     <size>
@@ -603,6 +603,7 @@ color: rgb(0, 167, 250)
 QComboBox QAbstractItemView{
 border: 2px solid darkgray;
 background-color: black;
+color:white;
 }
 QComboBox::down-arrow {
 	image: url(:/texto/screen800x600/texto/Teclado 1.1/arrow_down_azul.png);
@@ -791,7 +792,7 @@ background-repeat: none;
       </font>
      </property>
      <property name="text">
-      <string>Clarificador</string>
+      <string>Regulador</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_18">
@@ -809,10 +810,10 @@ background-repeat: none;
       </font>
      </property>
      <property name="text">
-      <string>Regulador</string>
+      <string>Cárcamo</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pb_nivel_clarif">
+    <widget class="QPushButton" name="pb_nivel_reg">
      <property name="geometry">
       <rect>
        <x>380</x>
@@ -844,7 +845,7 @@ background-repeat: none;
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pb_nivel_reg">
+    <widget class="QPushButton" name="pb_nivel_car">
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -1067,11 +1068,11 @@ background-repeat: none;
     <zorder>base_fisicos</zorder>
     <zorder>base_fisicos_2</zorder>
     <zorder>pb_gasto_acc</zorder>
-    <zorder>pb_nivel_reg</zorder>
+    <zorder>pb_nivel_car</zorder>
     <zorder>pb_presion_aire</zorder>
     <zorder>pb_presion_filt</zorder>
     <zorder>pb_gasto_inst</zorder>
-    <zorder>pb_nivel_clarif</zorder>
+    <zorder>pb_nivel_reg</zorder>
    </widget>
    <widget class="QWidget" name="tab_3">
     <attribute name="icon">

@@ -39,118 +39,118 @@
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="168"/>
+        <location filename="mainwindow.cpp" line="179"/>
         <source>rutinas.db</source>
         <translation>rutinas_english.db</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="325"/>
-        <location filename="mainwindow.cpp" line="424"/>
+        <location filename="mainwindow.cpp" line="345"/>
+        <location filename="mainwindow.cpp" line="456"/>
         <source>Parametros Eléctricos</source>
         <translation>Electric Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="431"/>
+        <location filename="mainwindow.cpp" line="463"/>
         <source>Parametros Físicos</source>
         <translation>Physical Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="438"/>
+        <location filename="mainwindow.cpp" line="470"/>
         <source>Parametros Químicos</source>
         <translation>Chemical Parameters</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1247"/>
+        <location filename="mainwindow.cpp" line="1325"/>
         <source>Lunes</source>
         <translation>Monday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1250"/>
+        <location filename="mainwindow.cpp" line="1328"/>
         <source>Martes</source>
         <translation>Tuesday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1253"/>
+        <location filename="mainwindow.cpp" line="1331"/>
         <source>Miércoles</source>
         <translation>Wednesday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1256"/>
+        <location filename="mainwindow.cpp" line="1334"/>
         <source>Jueves</source>
         <translation>Thursday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1259"/>
+        <location filename="mainwindow.cpp" line="1337"/>
         <source>Viernes</source>
         <translation>Friday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1262"/>
+        <location filename="mainwindow.cpp" line="1340"/>
         <source>Sábado</source>
         <translation>Saturday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1265"/>
+        <location filename="mainwindow.cpp" line="1343"/>
         <source>Domingo</source>
         <translation>Sunday</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1272"/>
+        <location filename="mainwindow.cpp" line="1350"/>
         <source>Enero</source>
         <translation>January</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1275"/>
+        <location filename="mainwindow.cpp" line="1353"/>
         <source>Febrero</source>
         <translation>February</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1278"/>
+        <location filename="mainwindow.cpp" line="1356"/>
         <source>Marzo</source>
         <translation>March</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1281"/>
+        <location filename="mainwindow.cpp" line="1359"/>
         <source>Abril</source>
         <translation>April</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1284"/>
+        <location filename="mainwindow.cpp" line="1362"/>
         <source>Mayo</source>
         <translation>May</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1287"/>
+        <location filename="mainwindow.cpp" line="1365"/>
         <source>Junio</source>
         <translation>June</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1290"/>
+        <location filename="mainwindow.cpp" line="1368"/>
         <source>Julio</source>
         <translation>July</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1293"/>
+        <location filename="mainwindow.cpp" line="1371"/>
         <source>Agosto</source>
         <translation>August</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1296"/>
+        <location filename="mainwindow.cpp" line="1374"/>
         <source>Septiembre</source>
         <translation>September</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1299"/>
+        <location filename="mainwindow.cpp" line="1377"/>
         <source>Octubre</source>
         <translation>October</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1302"/>
+        <location filename="mainwindow.cpp" line="1380"/>
         <source>Noviembre</source>
         <translation>November</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1305"/>
+        <location filename="mainwindow.cpp" line="1383"/>
         <source>Diciembre</source>
         <translation>December</translation>
     </message>
@@ -158,12 +158,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="detailedwindow.cpp" line="42"/>
+        <location filename="detailedwindow.cpp" line="61"/>
         <source>Regulador</source>
         <translation>Regulator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="46"/>
+        <location filename="detailedwindow.cpp" line="65"/>
         <source>Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujogenerado durante las horas pico</source>
         <translation>Dampens the peaks and load flow, so that the treatment plant receives constantly equal to the design flow and efficiency is not affected. It has enough volume to be able to store the generated flow during peak hours</translation>
     </message>
@@ -172,152 +172,177 @@
         <translation type="obsolete">Hello World</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="61"/>
+        <location filename="detailedwindow.cpp" line="42"/>
+        <source>Carcamo</source>
+        <translation>Sump</translation>
+    </message>
+    <message>
+        <location filename="detailedwindow.cpp" line="80"/>
         <source>Reactor biológico</source>
         <translation>Biological reactor</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="65"/>
+        <location filename="detailedwindow.cpp" line="84"/>
         <source>Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo en contacto las aguas residuales con una biomasa de microorganismos que la depuran.</source>
         <translation>Secondary treatment where organic matter is eliminated by biological oxidation processes; that is, putting the wastewater in contact with a biomass of microorganisms that purify it.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="79"/>
+        <location filename="detailedwindow.cpp" line="98"/>
         <source>Clarificador</source>
         <translation>Clarifier</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="81"/>
+        <location filename="detailedwindow.cpp" line="100"/>
         <source>Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos suspendidos se sedimentan, separandose del agua.</source>
         <translation>It receives the affluent of the biological reactor, made up of water and biological sludge. Biological sludge and suspended solids sediment, separating from water.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="95"/>
+        <location filename="detailedwindow.cpp" line="114"/>
         <source>Clorador</source>
         <translation>Chlorinator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="97"/>
+        <location filename="detailedwindow.cpp" line="116"/>
         <source>Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes.</source>
         <translation>Disinfection process of sodium hypochlorite / liquid / solid calcium. The microorganisms present are eliminated.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="110"/>
+        <location filename="detailedwindow.cpp" line="129"/>
         <source>Digestor de lodos</source>
         <translation>Sludge digester</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="112"/>
+        <location filename="detailedwindow.cpp" line="131"/>
         <source>Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos.</source>
         <translation>Receives the biological sludge generated in excess and separated in the secondary clarifier; These are oxidized biologically until obtaining a reduction of 40 to 60% in the volatile solids present, thus achieving a stabilization of sludge.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="126"/>
+        <location filename="detailedwindow.cpp" line="145"/>
         <source>Deshidratador</source>
         <translation>Dehydrator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="128"/>
+        <location filename="detailedwindow.cpp" line="147"/>
         <source>Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y se permite su infiltración, dejando secar los lodos</source>
         <translation>Drying beds, horizontal downflow filter packed with gravel and sand. A quantity of mud is poured over it and its infiltration is allowed, allowing the sludge to dry</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="142"/>
+        <location filename="detailedwindow.cpp" line="161"/>
         <source>Afluente</source>
         <translation>Affluent</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="144"/>
+        <location filename="detailedwindow.cpp" line="163"/>
         <source>Agua residual sanitaria</source>
         <translation>Sanitary wastewater</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="157"/>
+        <location filename="detailedwindow.cpp" line="176"/>
         <source>Efluente</source>
         <translation>Effluent</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="159"/>
+        <location filename="detailedwindow.cpp" line="178"/>
         <source>Agua tratada</source>
         <translation>Treated water</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="172"/>
+        <location filename="detailedwindow.cpp" line="191"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="174"/>
+        <location filename="detailedwindow.cpp" line="193"/>
         <source>Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción adicional de sólidos así como el color ámbar característico de las aguas tratadas. Dadas las características de la tela filtrante, no se requiere la acumulación de material ni la formación de una manta filtrante a fin de lograr el pulimento deseado.</source>
         <translation>Tertiary filtration equipment. Using a specialized fabric as a fixed filtering medium achieves the additional removal of solids as well as the characteristic amber color of the treated waters. Given the characteristics of the filter cloth, neither the accumulation of material nor the formation of a filter mat is required in order to achieve the desired polish.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="191"/>
+        <location filename="detailedwindow.cpp" line="210"/>
         <source>Bomba Alimentación</source>
         <translation>Feeding pump</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="193"/>
+        <location filename="detailedwindow.cpp" line="212"/>
         <source>Agregar descripción</source>
         <translation>Add description</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="62"/>
+        <location filename="graphwindow.cpp" line="66"/>
         <source>Carcamo 1</source>
         <translation>Sump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="63"/>
+        <location filename="graphwindow.cpp" line="67"/>
         <source>Carcamo 2</source>
         <translation>Sump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="64"/>
+        <location filename="graphwindow.cpp" line="68"/>
         <source>Carcamo 3</source>
         <translation>Sump 3</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="65"/>
+        <location filename="graphwindow.cpp" line="69"/>
         <source>Carcamo 4</source>
         <translation>Sump 4</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="66"/>
+        <location filename="graphwindow.cpp" line="71"/>
+        <source>Regulador 1</source>
+        <translation>Regulator 1</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="72"/>
+        <source>Regulador 2</source>
+        <translation>Regulator 2</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="73"/>
+        <source>Regulador 3</source>
+        <translation>Regulator 3</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="74"/>
+        <source>Regulador 4</source>
+        <translation>Regulator 4</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="76"/>
         <source>Reactor 1</source>
         <translation>Reactor 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="67"/>
+        <location filename="graphwindow.cpp" line="77"/>
         <source>Reactor 2</source>
         <translation>Reactor 2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="68"/>
+        <location filename="graphwindow.cpp" line="78"/>
         <source>Reactor 3</source>
         <translation>Reactor 3</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="69"/>
+        <location filename="graphwindow.cpp" line="79"/>
         <source>Reactor 4</source>
         <translation>Reactor 4</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="70"/>
+        <location filename="graphwindow.cpp" line="80"/>
         <source>Motor Giro</source>
         <translation>Turning Motor</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="71"/>
+        <location filename="graphwindow.cpp" line="81"/>
         <source>Bomba Retro 1</source>
         <translation>Backwash pump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="72"/>
+        <location filename="graphwindow.cpp" line="82"/>
         <source>Bomba Retro 2</source>
         <translation>Backwash pump 2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="73"/>
+        <location filename="graphwindow.cpp" line="83"/>
         <source>Bomba Alim</source>
         <translation>Feeding Pump</translation>
     </message>
@@ -327,12 +352,12 @@
         <translation>No User</translation>
     </message>
     <message>
-        <location filename="rutinas_mantenimiento.cpp" line="127"/>
+        <location filename="rutinas_mantenimiento.cpp" line="128"/>
         <source>Actividad Completada</source>
         <translation>Activity Completed</translation>
     </message>
     <message>
-        <location filename="rutinas_mantenimiento.cpp" line="147"/>
+        <location filename="rutinas_mantenimiento.cpp" line="148"/>
         <source>Actividad reagendada</source>
         <translation>Activity Rescheduled</translation>
     </message>
@@ -361,9 +386,9 @@
     </message>
     <message>
         <location filename="bitacora.ui" line="176"/>
-        <location filename="bitacora.cpp" line="719"/>
-        <location filename="bitacora.cpp" line="787"/>
-        <location filename="bitacora.cpp" line="904"/>
+        <location filename="bitacora.cpp" line="720"/>
+        <location filename="bitacora.cpp" line="788"/>
+        <location filename="bitacora.cpp" line="910"/>
         <source>Completado</source>
         <translation>Completed</translation>
     </message>
@@ -384,7 +409,7 @@
     </message>
     <message>
         <location filename="bitacora.ui" line="93"/>
-        <location filename="bitacora.cpp" line="905"/>
+        <location filename="bitacora.cpp" line="911"/>
         <source>SELECIONAR UNA RUTINA DE LA LISTA</source>
         <translation>SELECT ONE ROUTINE FROM THE LIST</translation>
     </message>
@@ -500,118 +525,118 @@
     </message>
     <message>
         <location filename="bitacora.cpp" line="397"/>
-        <location filename="bitacora.cpp" line="539"/>
+        <location filename="bitacora.cpp" line="540"/>
         <source>Diario</source>
         <translation>Daily</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="400"/>
-        <location filename="bitacora.cpp" line="542"/>
+        <location filename="bitacora.cpp" line="543"/>
         <source>Semanal</source>
         <translation>Weekly</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="403"/>
-        <location filename="bitacora.cpp" line="545"/>
+        <location filename="bitacora.cpp" line="546"/>
         <source>Mensual</source>
         <translation>Monthly</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="406"/>
-        <location filename="bitacora.cpp" line="548"/>
+        <location filename="bitacora.cpp" line="549"/>
         <source>Anual</source>
         <translation>Annual</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="410"/>
-        <location filename="bitacora.cpp" line="552"/>
+        <location filename="bitacora.cpp" line="553"/>
         <source>Sin Rutina</source>
         <translation>No Routine</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="424"/>
-        <location filename="bitacora.cpp" line="566"/>
+        <location filename="bitacora.cpp" line="567"/>
         <source>General</source>
         <translation></translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="427"/>
-        <location filename="bitacora.cpp" line="569"/>
+        <location filename="bitacora.cpp" line="570"/>
         <source>Regulador</source>
         <translation>Regulator</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="430"/>
-        <location filename="bitacora.cpp" line="572"/>
+        <location filename="bitacora.cpp" line="573"/>
         <source>Reactor Biológico</source>
         <translation>Biological Reactor</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="433"/>
-        <location filename="bitacora.cpp" line="575"/>
+        <location filename="bitacora.cpp" line="576"/>
         <source>Clarificador</source>
         <translation>Clarifier</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="436"/>
-        <location filename="bitacora.cpp" line="578"/>
+        <location filename="bitacora.cpp" line="579"/>
         <source>Clorador</source>
         <translation>Chlorinator</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="439"/>
-        <location filename="bitacora.cpp" line="581"/>
+        <location filename="bitacora.cpp" line="582"/>
         <source>Secado</source>
         <translation>Drying</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="442"/>
-        <location filename="bitacora.cpp" line="584"/>
+        <location filename="bitacora.cpp" line="585"/>
         <source>Digestor</source>
         <translation>Digestor</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="445"/>
-        <location filename="bitacora.cpp" line="587"/>
+        <location filename="bitacora.cpp" line="588"/>
         <source>Afluente</source>
         <translation>Affluent</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="448"/>
-        <location filename="bitacora.cpp" line="590"/>
+        <location filename="bitacora.cpp" line="591"/>
         <source>Efluente</source>
         <translation>Effluent</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="451"/>
-        <location filename="bitacora.cpp" line="593"/>
+        <location filename="bitacora.cpp" line="594"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
         <location filename="bitacora.cpp" line="454"/>
-        <location filename="bitacora.cpp" line="596"/>
+        <location filename="bitacora.cpp" line="597"/>
         <source>Otro</source>
         <translation>Other</translation>
     </message>
     <message>
-        <location filename="bitacora.cpp" line="785"/>
+        <location filename="bitacora.cpp" line="786"/>
         <source>Error: nueva fecha es menor a fecha actual</source>
         <translation>New data is older than current data</translation>
     </message>
     <message>
-        <location filename="bitacora.cpp" line="793"/>
+        <location filename="bitacora.cpp" line="794"/>
         <source>Reagendar</source>
         <translation>Reschedule</translation>
     </message>
     <message>
-        <location filename="bitacora.cpp" line="794"/>
+        <location filename="bitacora.cpp" line="795"/>
         <source>SELECCIONAR UNA RUTINA DE LA LISTA</source>
         <translation>SELECT ONE ROUTINE FROM THE LIST</translation>
     </message>
     <message>
-        <location filename="bitacora.cpp" line="845"/>
-        <location filename="bitacora.cpp" line="878"/>
+        <location filename="bitacora.cpp" line="846"/>
+        <location filename="bitacora.cpp" line="884"/>
         <source>rutinas.db</source>
         <translation>rutinas_english.db</translation>
     </message>
@@ -714,7 +739,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="detailedwindow.ui" line="80"/>
-        <location filename="detailedwindow.cpp" line="413"/>
+        <location filename="detailedwindow.cpp" line="434"/>
         <source>Parámetros</source>
         <translation>Parameters</translation>
     </message>
@@ -793,140 +818,150 @@ p, li { white-space: pre-wrap; }
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="297"/>
+        <location filename="detailedwindow.cpp" line="317"/>
         <source>Regulador</source>
         <translation>Regulator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="298"/>
+        <location filename="detailedwindow.cpp" line="318"/>
         <source>Reactor Biológico</source>
         <translation>Biological Reactor</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="299"/>
+        <location filename="detailedwindow.cpp" line="319"/>
         <source>Clarificador</source>
         <translation>Clarifier</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="300"/>
+        <location filename="detailedwindow.cpp" line="320"/>
         <source>Clorador</source>
         <translation>Chlorinator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="301"/>
+        <location filename="detailedwindow.cpp" line="321"/>
         <source>Digestor de lodos</source>
         <translation>Sludge digester</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="302"/>
+        <location filename="detailedwindow.cpp" line="322"/>
         <source>Deshidratador</source>
         <translation>Dehydrator</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="303"/>
+        <location filename="detailedwindow.cpp" line="323"/>
         <source>Afluente</source>
         <translation>Affluent</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="304"/>
+        <location filename="detailedwindow.cpp" line="324"/>
         <source>Efluente</source>
         <translation>Effluent</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="305"/>
+        <location filename="detailedwindow.cpp" line="325"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="306"/>
+        <location filename="detailedwindow.cpp" line="326"/>
         <source>Bomba Alimentación</source>
         <translation>Feeding pump</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="456"/>
+        <location filename="detailedwindow.cpp" line="327"/>
+        <source>Cárcamo</source>
+        <translation>Sump</translation>
+    </message>
+    <message>
+        <location filename="detailedwindow.cpp" line="477"/>
         <source>Evento</source>
         <translation>Event</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="499"/>
+        <location filename="detailedwindow.cpp" line="520"/>
         <source>Descripción</source>
         <translation>Description</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="542"/>
+        <location filename="detailedwindow.cpp" line="563"/>
         <source>Visualización de Parámetros</source>
         <translation>Parameter Display</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="624"/>
+        <location filename="detailedwindow.cpp" line="645"/>
         <source>Encendido de Motores</source>
         <translation>Engine Control</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="788"/>
-        <location filename="detailedwindow.cpp" line="819"/>
+        <location filename="detailedwindow.cpp" line="809"/>
+        <location filename="detailedwindow.cpp" line="840"/>
         <source>rutinas.db</source>
         <translation>rutinas_english.db</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="978"/>
+        <location filename="detailedwindow.cpp" line="999"/>
         <source>ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="978"/>
+        <location filename="detailedwindow.cpp" line="999"/>
         <source>Rutina</source>
         <translation>Routine</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1133"/>
+        <location filename="detailedwindow.cpp" line="1156"/>
         <source>Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujogenerado durante las horas pico</source>
         <translation>Dampens the peaks and load flow, so that the treatment plant receives constantly equal to the design flow and efficiency is not affected. It has enough volume to be able to store the generated flow during peak hours</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1137"/>
+        <location filename="detailedwindow.cpp" line="1160"/>
         <source>Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo en contacto las aguas residuales con una biomasa de microorganismos que la depuran.</source>
         <translation>Secondary treatment where organic matter is eliminated by biological oxidation processes; that is, putting the wastewater in contact with a biomass of microorganisms that purify it.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1140"/>
+        <location filename="detailedwindow.cpp" line="1163"/>
         <source>Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos suspendidos se sedimentan, separandose del agua.</source>
         <translation>It receives the affluent of the biological reactor, made up of water and biological sludge. Biological sludge and suspended solids sediment, separating from water.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1143"/>
+        <location filename="detailedwindow.cpp" line="1166"/>
         <source>Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes.</source>
         <translation>Disinfection process of sodium hypochlorite / liquid / solid calcium. The microorganisms present are eliminated.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1145"/>
+        <location filename="detailedwindow.cpp" line="1168"/>
         <source>Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos.</source>
         <translation>Receives the biological sludge generated in excess and separated in the secondary clarifier; These are oxidized biologically until obtaining a reduction of 40 to 60% in the volatile solids present, thus achieving a stabilization of sludge.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1148"/>
+        <location filename="detailedwindow.cpp" line="1171"/>
         <source>Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y se permite su infiltración, dejando secar los lodos</source>
         <translation>Drying beds, horizontal downflow filter packed with gravel and sand. A quantity of mud is poured over it and its infiltration is allowed, allowing the sludge to dry</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1151"/>
+        <location filename="detailedwindow.cpp" line="1174"/>
         <source>Agua residual sanitaria</source>
         <translation>Sanitary wastewater</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1153"/>
+        <location filename="detailedwindow.cpp" line="1176"/>
         <source>Agua tratada</source>
         <translation>Treated water</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1155"/>
+        <location filename="detailedwindow.cpp" line="1178"/>
         <source>Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción adicional de sólidos así como el color ámbar característico de las aguas tratadas. Dadas las características de la tela filtrante, no se requiere la acumulación de material ni la formación de una manta filtrante a fin de lograr el pulimento deseado.</source>
         <translation>Tertiary filtration equipment. Using a specialized fabric as a fixed filtering medium achieves the additional removal of solids as well as the characteristic amber color of the treated waters. Given the characteristics of the filter cloth, neither the accumulation of material nor the formation of a filter mat is required in order to achieve the desired polish.</translation>
     </message>
     <message>
-        <location filename="detailedwindow.cpp" line="1160"/>
+        <location filename="detailedwindow.cpp" line="1183"/>
         <source>Agregar descripción</source>
         <translation>Add description</translation>
+    </message>
+    <message>
+        <location filename="detailedwindow.cpp" line="1184"/>
+        <source>Dado el nivel de arrastre de la línea de drenaje es necesario instalar un cárcamo de bombeo que permita elevar las aguas residuales desde el nivel del drenaje hasta el tanque regulador.</source>
+        <translation>Given the drag level of the drainage line, it is necessary to install a pumping station that allows to raise the wastewater from the level of the drainage to the regulating tank.</translation>
     </message>
 </context>
 <context>
@@ -1076,137 +1111,141 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="638"/>
+        <location filename="graphwindow.ui" line="639"/>
         <source>Fisicos</source>
         <translation>Physical</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="740"/>
+        <location filename="graphwindow.ui" line="741"/>
         <source>Gasto (LPM)</source>
         <translation>Expenditure (LPM)</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="758"/>
-        <location filename="graphwindow.cpp" line="947"/>
+        <location filename="graphwindow.ui" line="759"/>
+        <location filename="graphwindow.cpp" line="973"/>
         <source>Instantáneo</source>
         <translation>Instant</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="776"/>
-        <location filename="graphwindow.cpp" line="948"/>
+        <location filename="graphwindow.ui" line="777"/>
+        <location filename="graphwindow.cpp" line="974"/>
         <source>Acumulado</source>
         <translation>Accumulated</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="794"/>
-        <location filename="graphwindow.cpp" line="950"/>
         <source>Clarificador</source>
-        <translation>Clarifier</translation>
+        <translation type="vanished">Clarifier</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="812"/>
-        <location filename="graphwindow.cpp" line="949"/>
+        <location filename="graphwindow.ui" line="795"/>
+        <location filename="graphwindow.cpp" line="976"/>
         <source>Regulador</source>
         <translation>Regulator</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="894"/>
+        <location filename="graphwindow.ui" line="813"/>
+        <location filename="graphwindow.cpp" line="975"/>
+        <source>Cárcamo</source>
+        <translation>Sump</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.ui" line="895"/>
         <source>Nivel (m)</source>
         <translation>Level (m)</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="933"/>
-        <location filename="graphwindow.cpp" line="952"/>
+        <location filename="graphwindow.ui" line="934"/>
+        <location filename="graphwindow.cpp" line="978"/>
         <source>Filtración</source>
         <translation>Filtration</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="983"/>
+        <location filename="graphwindow.ui" line="984"/>
         <source>Presion (PSI)</source>
         <translation>Pressure (PSI)</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1054"/>
-        <location filename="graphwindow.cpp" line="951"/>
+        <location filename="graphwindow.ui" line="1055"/>
+        <location filename="graphwindow.cpp" line="977"/>
         <source>Aireador</source>
         <translation>Aerator</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1084"/>
+        <location filename="graphwindow.ui" line="1085"/>
         <source>Quimicos</source>
         <translation>Chemical</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1206"/>
-        <location filename="graphwindow.ui" line="1224"/>
-        <location filename="graphwindow.cpp" line="957"/>
-        <location filename="graphwindow.cpp" line="958"/>
+        <location filename="graphwindow.ui" line="1207"/>
+        <location filename="graphwindow.ui" line="1225"/>
+        <location filename="graphwindow.cpp" line="983"/>
+        <location filename="graphwindow.cpp" line="984"/>
         <source>OD</source>
         <translation>DO</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1242"/>
+        <location filename="graphwindow.ui" line="1243"/>
         <source>Salida</source>
         <translation>Out</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1324"/>
-        <location filename="graphwindow.ui" line="1342"/>
+        <location filename="graphwindow.ui" line="1325"/>
+        <location filename="graphwindow.ui" line="1343"/>
         <source>SST</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1392"/>
-        <location filename="graphwindow.ui" line="1460"/>
-        <location filename="graphwindow.cpp" line="955"/>
-        <location filename="graphwindow.cpp" line="956"/>
+        <location filename="graphwindow.ui" line="1393"/>
+        <location filename="graphwindow.ui" line="1461"/>
+        <location filename="graphwindow.cpp" line="981"/>
+        <location filename="graphwindow.cpp" line="982"/>
         <source>pH</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1410"/>
+        <location filename="graphwindow.ui" line="1411"/>
         <source>Entrada</source>
         <translation>In</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1478"/>
-        <location filename="graphwindow.ui" line="1496"/>
+        <location filename="graphwindow.ui" line="1479"/>
+        <location filename="graphwindow.ui" line="1497"/>
         <source>Turbidez</source>
         <translation>Turbidity</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1599"/>
+        <location filename="graphwindow.ui" line="1600"/>
         <source>Proceso</source>
         <translation>Process</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1735"/>
+        <location filename="graphwindow.ui" line="1736"/>
         <source>Param 1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1766"/>
+        <location filename="graphwindow.ui" line="1767"/>
         <source>Param 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1810"/>
+        <location filename="graphwindow.ui" line="1811"/>
         <source>60 Segundos</source>
         <translation>60 Seconds</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1825"/>
+        <location filename="graphwindow.ui" line="1826"/>
         <source>60 Minutos</source>
         <translation>60 Minutes</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1840"/>
+        <location filename="graphwindow.ui" line="1841"/>
         <source>24 Horas</source>
         <translation>24 Hours</translation>
     </message>
     <message>
-        <location filename="graphwindow.ui" line="1861"/>
-        <location filename="graphwindow.cpp" line="235"/>
+        <location filename="graphwindow.ui" line="1862"/>
+        <location filename="graphwindow.cpp" line="245"/>
         <source>Parámetros Eléctricos</source>
         <translation>Electrical Parameters</translation>
     </message>
@@ -1227,204 +1266,228 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">24 hours</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="212"/>
+        <location filename="graphwindow.cpp" line="222"/>
         <source>Gasto</source>
         <translation>Expenditure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="213"/>
+        <location filename="graphwindow.cpp" line="223"/>
         <source>Nivel</source>
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="214"/>
+        <location filename="graphwindow.cpp" line="224"/>
         <source>Presión</source>
         <translation>Pressure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="234"/>
-        <location filename="graphwindow.cpp" line="334"/>
-        <location filename="graphwindow.cpp" line="724"/>
+        <location filename="graphwindow.cpp" line="244"/>
+        <location filename="graphwindow.cpp" line="344"/>
+        <location filename="graphwindow.cpp" line="734"/>
         <source>Voltaje L1-L2</source>
         <translation>Voltage L1-L2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="242"/>
-        <location filename="graphwindow.cpp" line="477"/>
+        <location filename="graphwindow.cpp" line="252"/>
+        <location filename="graphwindow.cpp" line="487"/>
         <source>Gasto Instantáneo</source>
         <translation>Instant expenditure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="247"/>
-        <location filename="graphwindow.cpp" line="517"/>
-        <location filename="graphwindow.cpp" line="982"/>
+        <location filename="graphwindow.cpp" line="257"/>
+        <location filename="graphwindow.cpp" line="527"/>
+        <location filename="graphwindow.cpp" line="1008"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="249"/>
+        <location filename="graphwindow.cpp" line="259"/>
         <source>Parámetros Físicos</source>
         <translation>Physical Parameters</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="257"/>
-        <location filename="graphwindow.cpp" line="585"/>
+        <location filename="graphwindow.cpp" line="267"/>
+        <location filename="graphwindow.cpp" line="595"/>
         <source>OD entrada</source>
         <translation>DO in</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="262"/>
-        <location filename="graphwindow.cpp" line="619"/>
+        <location filename="graphwindow.cpp" line="272"/>
+        <location filename="graphwindow.cpp" line="629"/>
         <source>SST entrada</source>
         <translation>SST In</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="264"/>
+        <location filename="graphwindow.cpp" line="274"/>
         <source>Parámetros Químicos</source>
         <translation>Chemical Parameters</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="345"/>
+        <location filename="graphwindow.cpp" line="355"/>
         <source>Voltaje L2-L3</source>
         <translation>Voltage L2-L3</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="356"/>
+        <location filename="graphwindow.cpp" line="366"/>
         <source>Voltaje L3-L1</source>
         <translation>Voltage L3-L1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="367"/>
+        <location filename="graphwindow.cpp" line="377"/>
         <source>Amps L1-L2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="378"/>
+        <location filename="graphwindow.cpp" line="388"/>
         <source>Amps L2-L1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="389"/>
+        <location filename="graphwindow.cpp" line="399"/>
         <source>Amps L3-L1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="495"/>
+        <location filename="graphwindow.cpp" line="505"/>
         <source>Gasto Accumulado</source>
         <translation>Accumulated expenditure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="513"/>
+        <location filename="graphwindow.cpp" line="523"/>
         <source>Nivel Regulador</source>
         <translation>Regulator level</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="531"/>
         <source>Nivel Clarificador</source>
-        <translation>Clarifier Level</translation>
+        <translation type="vanished">Clarifier Level</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="549"/>
+        <location filename="graphwindow.cpp" line="541"/>
+        <source>Nivel Cárcamo</source>
+        <translation>Sump level</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="559"/>
         <source>Presión Aireador</source>
         <translation>Aerator pressure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="567"/>
+        <location filename="graphwindow.cpp" line="577"/>
         <source>Presión Filtración</source>
         <translation>Filter pressure</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="603"/>
+        <location filename="graphwindow.cpp" line="613"/>
         <source>pH entrada</source>
         <translation>ph Input</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="630"/>
+        <location filename="graphwindow.cpp" line="640"/>
         <source>Turbidez entrada</source>
         <translation>Turbidity input</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="643"/>
+        <location filename="graphwindow.cpp" line="653"/>
         <source>OD salida</source>
         <translation>DO output</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="661"/>
+        <location filename="graphwindow.cpp" line="671"/>
         <source>pH salida</source>
         <translation>pH output</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="677"/>
+        <location filename="graphwindow.cpp" line="687"/>
         <source>SST salida</source>
         <translation>SST output</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="688"/>
+        <location filename="graphwindow.cpp" line="698"/>
         <source>Turbidez salida</source>
         <translation>Turbidity ouput</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="872"/>
+        <location filename="graphwindow.cpp" line="882"/>
         <source>Carcamo 1</source>
         <translation>Sump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="876"/>
+        <location filename="graphwindow.cpp" line="886"/>
         <source>Carcamo 2</source>
         <translation>Sump 2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="880"/>
+        <location filename="graphwindow.cpp" line="890"/>
         <source>Carcamo 3</source>
         <translation>Sump 3</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="884"/>
+        <location filename="graphwindow.cpp" line="894"/>
         <source>Carcamo 4</source>
         <translation>Sump 4</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="888"/>
+        <location filename="graphwindow.cpp" line="898"/>
+        <source>Regulador 1</source>
+        <translation>Regulator 1</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="902"/>
+        <source>Regulador 2</source>
+        <translation>Regulator 2</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="906"/>
+        <source>Regulador 3</source>
+        <translation>Regulator 3</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="910"/>
+        <source>Regulador 4</source>
+        <translation>Regulator 4</translation>
+    </message>
+    <message>
+        <location filename="graphwindow.cpp" line="914"/>
         <source>Reactor 1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="892"/>
+        <location filename="graphwindow.cpp" line="918"/>
         <source>Reactor 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="896"/>
+        <location filename="graphwindow.cpp" line="922"/>
         <source>Reactor 3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="900"/>
+        <location filename="graphwindow.cpp" line="926"/>
         <source>Reactor 4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="904"/>
+        <location filename="graphwindow.cpp" line="930"/>
         <source>Motor Giro</source>
         <translation>Turning Motor</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="908"/>
+        <location filename="graphwindow.cpp" line="934"/>
         <source>Bomba Retro 1</source>
         <translation>Backwash pump 1</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="912"/>
+        <location filename="graphwindow.cpp" line="938"/>
         <source>Bomba Retro 2</source>
         <translation>Backwash pump 2</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="916"/>
+        <location filename="graphwindow.cpp" line="942"/>
         <source>Bomba Alim</source>
         <translation>Feeding pump</translation>
     </message>
     <message>
-        <location filename="graphwindow.cpp" line="980"/>
+        <location filename="graphwindow.cpp" line="1006"/>
         <source>Caudal</source>
         <translation>Flow</translation>
     </message>
@@ -1459,6 +1522,7 @@ p, li { white-space: pre-wrap; }
         <location filename="motores.ui" line="267"/>
         <location filename="motores.ui" line="538"/>
         <location filename="motores.ui" line="655"/>
+        <location filename="motores.ui" line="771"/>
         <source>Manual</source>
         <translation></translation>
     </message>
@@ -1467,6 +1531,7 @@ p, li { white-space: pre-wrap; }
         <location filename="motores.ui" line="262"/>
         <location filename="motores.ui" line="533"/>
         <location filename="motores.ui" line="650"/>
+        <location filename="motores.ui" line="766"/>
         <source>Automatico</source>
         <translation>Automatic</translation>
     </message>
@@ -1475,6 +1540,7 @@ p, li { white-space: pre-wrap; }
         <location filename="motores.ui" line="257"/>
         <location filename="motores.ui" line="528"/>
         <location filename="motores.ui" line="645"/>
+        <location filename="motores.ui" line="761"/>
         <source>Paro</source>
         <translation>Stop</translation>
     </message>
@@ -1497,6 +1563,11 @@ p, li { white-space: pre-wrap; }
         <location filename="motores.ui" line="598"/>
         <source>Bomba de Alimentación</source>
         <translation>Feeding pump</translation>
+    </message>
+    <message>
+        <location filename="motores.ui" line="715"/>
+        <source>Carcamo</source>
+        <translation>Sump</translation>
     </message>
 </context>
 <context>
@@ -1699,541 +1770,556 @@ p, li { white-space: pre-wrap; }
         <translation>Calibrations</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="109"/>
+        <location filename="settings.ui" line="530"/>
         <source>Reactor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="121"/>
         <source>Carcamo/Regulador</source>
-        <translation>Sump/Regulator</translation>
+        <translation type="vanished">Sump/Regulator</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="152"/>
+        <location filename="settings.ui" line="561"/>
         <source>Level PRESS Opt</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="175"/>
+        <location filename="settings.ui" line="584"/>
         <source>Level PRESS Max</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="206"/>
+        <location filename="settings.ui" line="506"/>
         <source>Clarificador</source>
         <translation>Clarifier</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="237"/>
+        <location filename="settings.ui" line="634"/>
+        <location filename="settings.ui" line="835"/>
         <source>Level Alert</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="266"/>
+        <location filename="settings.ui" line="663"/>
+        <location filename="settings.ui" line="864"/>
         <source>Level OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="317"/>
+        <location filename="settings.ui" line="692"/>
+        <location filename="settings.ui" line="893"/>
         <source>Level ON1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="324"/>
+        <location filename="settings.ui" line="721"/>
+        <location filename="settings.ui" line="922"/>
         <source>Level ON2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="353"/>
+        <location filename="settings.ui" line="750"/>
+        <location filename="settings.ui" line="951"/>
         <source>Time ALTMAX</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="404"/>
-        <location filename="settings.ui" line="510"/>
+        <location filename="settings.ui" line="200"/>
+        <location filename="settings.ui" line="779"/>
+        <location filename="settings.ui" line="980"/>
         <source>Time ON Min</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="419"/>
-        <location filename="settings.ui" line="2620"/>
+        <location filename="settings.ui" line="109"/>
+        <location filename="settings.ui" line="3397"/>
         <source>Filtro</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="450"/>
+        <location filename="settings.ui" line="140"/>
         <source>Level Oxi Min</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="470"/>
+        <location filename="settings.ui" line="160"/>
         <source>Level Oxi Max</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="503"/>
+        <location filename="settings.ui" line="193"/>
         <source>Time ALT Max</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="530"/>
+        <location filename="settings.ui" line="220"/>
         <source>Prog Time ON</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="550"/>
+        <location filename="settings.ui" line="240"/>
         <source>Prog Time OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="570"/>
+        <location filename="settings.ui" line="260"/>
         <source>Por tiempos</source>
         <translation>By times</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="580"/>
+        <location filename="settings.ui" line="270"/>
         <source>Por Oxigeno</source>
         <translation>By Oxygen</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="614"/>
+        <location filename="settings.ui" line="304"/>
         <source>Nivel: Activacion</source>
         <translation>Level: Activation</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="634"/>
+        <location filename="settings.ui" line="324"/>
         <source>Nivel: Emergencia</source>
         <translation>Level: Emergency</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="654"/>
+        <location filename="settings.ui" line="344"/>
         <source>Nivel: Minimo</source>
         <translation>Level: Minimum</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="674"/>
+        <location filename="settings.ui" line="364"/>
         <source>Lim: Turbidez IN</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="691"/>
+        <location filename="settings.ui" line="381"/>
         <source>Lim: Turbidez OUT</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="708"/>
+        <location filename="settings.ui" line="398"/>
         <source>Tiempo: Valve Delay</source>
         <translation>Time: Valve Delay</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="728"/>
+        <location filename="settings.ui" line="418"/>
         <source>Tiempo: Giro RET</source>
         <translation>Time: Turn RET</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="748"/>
+        <location filename="settings.ui" line="438"/>
         <source>Hora: Ext-Sed</source>
         <translation>Hour: Ext-Sed</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="768"/>
+        <location filename="settings.ui" line="458"/>
         <source>Tiempo: Ext-Sed</source>
         <translation>Time: Ext-Sed</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="788"/>
+        <location filename="settings.ui" line="478"/>
         <source>Tiempo: Descanso</source>
         <translation>Time: Rest</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="814"/>
+        <location filename="settings.ui" line="1027"/>
         <source>Config Alertas</source>
         <translation>Alert Config</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="865"/>
         <location filename="settings.ui" line="1078"/>
-        <location filename="settings.ui" line="1339"/>
-        <location filename="settings.ui" line="2221"/>
-        <location filename="settings.ui" line="2908"/>
-        <location filename="settings.ui" line="3133"/>
-        <location filename="settings.ui" line="3571"/>
-        <location filename="settings.ui" line="3784"/>
+        <location filename="settings.ui" line="1348"/>
+        <location filename="settings.ui" line="1696"/>
+        <location filename="settings.ui" line="2982"/>
+        <location filename="settings.ui" line="3685"/>
+        <location filename="settings.ui" line="3910"/>
+        <location filename="settings.ui" line="4348"/>
+        <location filename="settings.ui" line="4561"/>
         <source>Limite maximo (A)</source>
         <translation>Max Limit (A)</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="897"/>
         <location filename="settings.ui" line="1110"/>
-        <location filename="settings.ui" line="1371"/>
-        <location filename="settings.ui" line="2253"/>
-        <location filename="settings.ui" line="2940"/>
-        <location filename="settings.ui" line="3165"/>
-        <location filename="settings.ui" line="3603"/>
-        <location filename="settings.ui" line="3816"/>
+        <location filename="settings.ui" line="1380"/>
+        <location filename="settings.ui" line="1728"/>
+        <location filename="settings.ui" line="2950"/>
+        <location filename="settings.ui" line="3717"/>
+        <location filename="settings.ui" line="3942"/>
+        <location filename="settings.ui" line="4380"/>
+        <location filename="settings.ui" line="4593"/>
         <source>Limite minimo (A)</source>
         <translation>Min Limit (A)</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="929"/>
         <location filename="settings.ui" line="1142"/>
-        <location filename="settings.ui" line="1403"/>
-        <location filename="settings.ui" line="1610"/>
-        <location filename="settings.ui" line="1817"/>
-        <location filename="settings.ui" line="2024"/>
-        <location filename="settings.ui" line="2310"/>
-        <location filename="settings.ui" line="2492"/>
-        <location filename="settings.ui" line="2759"/>
-        <location filename="settings.ui" line="2972"/>
-        <location filename="settings.ui" line="3197"/>
-        <location filename="settings.ui" line="3410"/>
-        <location filename="settings.ui" line="3635"/>
-        <location filename="settings.ui" line="3848"/>
-        <location filename="settings.ui" line="4109"/>
-        <location filename="settings.ui" line="4316"/>
-        <location filename="settings.ui" line="4529"/>
-        <location filename="settings.ui" line="4760"/>
+        <location filename="settings.ui" line="1387"/>
+        <location filename="settings.ui" line="1760"/>
+        <location filename="settings.ui" line="1967"/>
+        <location filename="settings.ui" line="2163"/>
+        <location filename="settings.ui" line="2576"/>
+        <location filename="settings.ui" line="2943"/>
+        <location filename="settings.ui" line="3269"/>
+        <location filename="settings.ui" line="3536"/>
+        <location filename="settings.ui" line="3749"/>
+        <location filename="settings.ui" line="3974"/>
+        <location filename="settings.ui" line="4187"/>
+        <location filename="settings.ui" line="4412"/>
+        <location filename="settings.ui" line="4625"/>
+        <location filename="settings.ui" line="4886"/>
+        <location filename="settings.ui" line="5093"/>
+        <location filename="settings.ui" line="5306"/>
+        <location filename="settings.ui" line="5537"/>
         <source>Tiempo de deteccion</source>
         <translation>Detection time</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="961"/>
         <location filename="settings.ui" line="1174"/>
-        <location filename="settings.ui" line="1435"/>
-        <location filename="settings.ui" line="1642"/>
-        <location filename="settings.ui" line="1849"/>
-        <location filename="settings.ui" line="2056"/>
-        <location filename="settings.ui" line="2317"/>
-        <location filename="settings.ui" line="2524"/>
-        <location filename="settings.ui" line="2791"/>
-        <location filename="settings.ui" line="3004"/>
-        <location filename="settings.ui" line="3229"/>
-        <location filename="settings.ui" line="3442"/>
-        <location filename="settings.ui" line="3667"/>
-        <location filename="settings.ui" line="3880"/>
-        <location filename="settings.ui" line="4141"/>
-        <location filename="settings.ui" line="4348"/>
-        <location filename="settings.ui" line="4561"/>
-        <location filename="settings.ui" line="4792"/>
+        <location filename="settings.ui" line="1291"/>
+        <location filename="settings.ui" line="1792"/>
+        <location filename="settings.ui" line="1999"/>
+        <location filename="settings.ui" line="2231"/>
+        <location filename="settings.ui" line="2544"/>
+        <location filename="settings.ui" line="2886"/>
+        <location filename="settings.ui" line="3301"/>
+        <location filename="settings.ui" line="3568"/>
+        <location filename="settings.ui" line="3781"/>
+        <location filename="settings.ui" line="4006"/>
+        <location filename="settings.ui" line="4219"/>
+        <location filename="settings.ui" line="4444"/>
+        <location filename="settings.ui" line="4657"/>
+        <location filename="settings.ui" line="4918"/>
+        <location filename="settings.ui" line="5125"/>
+        <location filename="settings.ui" line="5338"/>
+        <location filename="settings.ui" line="5569"/>
         <source>Tiempo de recuperacion</source>
         <translation>Recover time</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="993"/>
         <location filename="settings.ui" line="1206"/>
-        <location filename="settings.ui" line="1467"/>
-        <location filename="settings.ui" line="1674"/>
-        <location filename="settings.ui" line="1881"/>
-        <location filename="settings.ui" line="2088"/>
-        <location filename="settings.ui" line="2349"/>
-        <location filename="settings.ui" line="2556"/>
-        <location filename="settings.ui" line="2823"/>
-        <location filename="settings.ui" line="3036"/>
-        <location filename="settings.ui" line="3261"/>
-        <location filename="settings.ui" line="3474"/>
-        <location filename="settings.ui" line="3699"/>
-        <location filename="settings.ui" line="3912"/>
-        <location filename="settings.ui" line="4173"/>
-        <location filename="settings.ui" line="4380"/>
-        <location filename="settings.ui" line="4593"/>
-        <location filename="settings.ui" line="4824"/>
+        <location filename="settings.ui" line="1419"/>
+        <location filename="settings.ui" line="1824"/>
+        <location filename="settings.ui" line="2031"/>
+        <location filename="settings.ui" line="2238"/>
+        <location filename="settings.ui" line="2512"/>
+        <location filename="settings.ui" line="2854"/>
+        <location filename="settings.ui" line="3333"/>
+        <location filename="settings.ui" line="3600"/>
+        <location filename="settings.ui" line="3813"/>
+        <location filename="settings.ui" line="4038"/>
+        <location filename="settings.ui" line="4251"/>
+        <location filename="settings.ui" line="4476"/>
+        <location filename="settings.ui" line="4689"/>
+        <location filename="settings.ui" line="4950"/>
+        <location filename="settings.ui" line="5157"/>
+        <location filename="settings.ui" line="5370"/>
+        <location filename="settings.ui" line="5601"/>
         <source>Cantidad de notificaciones</source>
         <translation>Number of notifications</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1022"/>
         <location filename="settings.ui" line="1235"/>
-        <location filename="settings.ui" line="1496"/>
-        <location filename="settings.ui" line="1703"/>
-        <location filename="settings.ui" line="1910"/>
-        <location filename="settings.ui" line="2117"/>
-        <location filename="settings.ui" line="2400"/>
-        <location filename="settings.ui" line="2585"/>
-        <location filename="settings.ui" line="2852"/>
-        <location filename="settings.ui" line="3065"/>
-        <location filename="settings.ui" line="3290"/>
-        <location filename="settings.ui" line="3503"/>
-        <location filename="settings.ui" line="3728"/>
-        <location filename="settings.ui" line="3941"/>
-        <location filename="settings.ui" line="4202"/>
-        <location filename="settings.ui" line="4409"/>
-        <location filename="settings.ui" line="4622"/>
-        <location filename="settings.ui" line="4853"/>
+        <location filename="settings.ui" line="1448"/>
+        <location filename="settings.ui" line="1853"/>
+        <location filename="settings.ui" line="2060"/>
+        <location filename="settings.ui" line="2267"/>
+        <location filename="settings.ui" line="2483"/>
+        <location filename="settings.ui" line="3011"/>
+        <location filename="settings.ui" line="3362"/>
+        <location filename="settings.ui" line="3629"/>
+        <location filename="settings.ui" line="3842"/>
+        <location filename="settings.ui" line="4067"/>
+        <location filename="settings.ui" line="4280"/>
+        <location filename="settings.ui" line="4505"/>
+        <location filename="settings.ui" line="4718"/>
+        <location filename="settings.ui" line="4979"/>
+        <location filename="settings.ui" line="5186"/>
+        <location filename="settings.ui" line="5399"/>
+        <location filename="settings.ui" line="5630"/>
         <source>Periodo</source>
         <translation>Period</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1272"/>
+        <location filename="settings.ui" line="1629"/>
         <source>Carcamo/Regulador Low Limit</source>
         <translation>Sump/Regulator Low Limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1284"/>
+        <location filename="settings.ui" line="1641"/>
         <source>Reactor Open circuit</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1296"/>
+        <location filename="settings.ui" line="1653"/>
         <source>Carcamo/Regulador Overcurrent</source>
         <translation>Sump/Regulator Overcurrent</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1308"/>
+        <location filename="settings.ui" line="1665"/>
         <source>Carcamo/Regulador Open Circuit</source>
         <translation>Sump/Regulator Open Circuit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1552"/>
-        <location filename="settings.ui" line="2434"/>
+        <location filename="settings.ui" line="1909"/>
+        <location filename="settings.ui" line="3211"/>
         <source>Limite maximo (PPM)</source>
         <translation>Maximum Limit (PPM)</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1581"/>
-        <location filename="settings.ui" line="2463"/>
+        <location filename="settings.ui" line="1938"/>
+        <location filename="settings.ui" line="3240"/>
         <source>Limite minimo (PPM)</source>
         <translation>Minimum limit (PPM)</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1759"/>
-        <location filename="settings.ui" line="1966"/>
-        <location filename="settings.ui" line="4258"/>
-        <location filename="settings.ui" line="4702"/>
+        <location filename="settings.ui" line="2199"/>
+        <location filename="settings.ui" line="2634"/>
+        <location filename="settings.ui" line="5035"/>
+        <location filename="settings.ui" line="5479"/>
         <source>Limite maximo (m)</source>
         <translation>Maximum Limit (m)</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="1788"/>
-        <location filename="settings.ui" line="1995"/>
-        <location filename="settings.ui" line="4287"/>
-        <location filename="settings.ui" line="4731"/>
+        <location filename="settings.ui" line="2170"/>
+        <location filename="settings.ui" line="2627"/>
+        <location filename="settings.ui" line="5064"/>
+        <location filename="settings.ui" line="5508"/>
         <source>Limite minimo (m)</source>
         <translation>Minimum Limit (m)</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="2154"/>
+        <location filename="settings.ui" line="518"/>
+        <source>Carcamo</source>
+        <translation>Sump</translation>
+    </message>
+    <message>
+        <location filename="settings.ui" line="1017"/>
+        <source>Regulador</source>
+        <translation>Regulator</translation>
+    </message>
+    <message>
+        <location filename="settings.ui" line="2787"/>
         <source>Reactor Oxigeno Out Depleted</source>
         <translation>Reactor Oxygen Out Depleted</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="2166"/>
+        <location filename="settings.ui" line="2799"/>
         <source>Reactor Overcurrent</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="2178"/>
+        <location filename="settings.ui" line="2811"/>
         <source>Reactor Oxigeno Low Limit</source>
         <translation>Reactor Oxygen Low Limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="2190"/>
+        <location filename="settings.ui" line="2823"/>
         <source>Carcamo/Regulador High Limit</source>
         <translation>Sump/Regulador High Limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="2652"/>
+        <location filename="settings.ui" line="3429"/>
         <source>Motor de Giro Overcurrent</source>
         <translation>Turning Motor Overcurrent</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="2664"/>
+        <location filename="settings.ui" line="3441"/>
         <source>Bomba de Lavado 1 Overcurrent</source>
         <translation>Backwash pump 1 Overcurrent</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="2695"/>
-        <location filename="settings.ui" line="3346"/>
-        <location filename="settings.ui" line="4045"/>
-        <location filename="settings.ui" line="4465"/>
+        <location filename="settings.ui" line="3472"/>
+        <location filename="settings.ui" line="4123"/>
+        <location filename="settings.ui" line="4822"/>
+        <location filename="settings.ui" line="5242"/>
         <source>Limite maximo (NTU)</source>
         <translation>Maximum Limit (NTU)</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="2727"/>
-        <location filename="settings.ui" line="3378"/>
-        <location filename="settings.ui" line="4077"/>
-        <location filename="settings.ui" line="4497"/>
+        <location filename="settings.ui" line="3504"/>
+        <location filename="settings.ui" line="4155"/>
+        <location filename="settings.ui" line="4854"/>
+        <location filename="settings.ui" line="5274"/>
         <source>Limite minimo (NTU)</source>
         <translation>Minimum Limit (NTU)</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="3102"/>
+        <location filename="settings.ui" line="3879"/>
         <source>Sensor Turbidez 2 Low Limit</source>
         <translation>Turbidity sensor 2 Low Limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="3540"/>
+        <location filename="settings.ui" line="4317"/>
         <source>Sensor Turbidez 1 Low Limit</source>
         <translation>Turbidity Sensor 1 Low Limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="3978"/>
+        <location filename="settings.ui" line="4755"/>
         <source>Bomba de Alimentación Overcurrent</source>
         <translation>Feeding Pump Overcurrent</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="3990"/>
+        <location filename="settings.ui" line="4767"/>
         <source>Bomba de Lavado 2 Overcurrent</source>
         <translation>Wash pump 2 Overcurrent</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4002"/>
+        <location filename="settings.ui" line="4779"/>
         <source>Sensor Turbidez 2 High Limit</source>
         <translation>Turbidity Sensor 2 High Limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4014"/>
+        <location filename="settings.ui" line="4791"/>
         <source>Sensor Turbidez 1 High Limit</source>
         <translation>Turbidity Sensor 1 High Limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4659"/>
+        <location filename="settings.ui" line="5436"/>
         <source>Sensor Nivel Low Limit</source>
         <translation>Level sensot Low limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4671"/>
+        <location filename="settings.ui" line="5448"/>
         <source>Sensor Nivel High Limit</source>
         <translation>Level sensor High Limit</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4888"/>
+        <location filename="settings.ui" line="5665"/>
         <source>Lenguaje y unidades</source>
         <translation>Language and units</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4908"/>
+        <location filename="settings.ui" line="5685"/>
         <source>Idioma</source>
         <translation>Language</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4916"/>
+        <location filename="settings.ui" line="5693"/>
         <source>Español</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4921"/>
+        <location filename="settings.ui" line="5698"/>
         <source>English</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4943"/>
+        <location filename="settings.ui" line="5720"/>
         <source>Unidades</source>
         <translation>Units</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4961"/>
+        <location filename="settings.ui" line="5738"/>
         <source>Longitud</source>
         <translation>Longitud</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4969"/>
+        <location filename="settings.ui" line="5746"/>
         <source>m</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4974"/>
+        <location filename="settings.ui" line="5751"/>
         <source>cm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4979"/>
+        <location filename="settings.ui" line="5756"/>
         <source>ft</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4991"/>
+        <location filename="settings.ui" line="5768"/>
         <source>Presion</source>
         <translation>Pressure</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="4999"/>
+        <location filename="settings.ui" line="5776"/>
         <source>psi</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5004"/>
+        <location filename="settings.ui" line="5781"/>
         <source>kg/cm²</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5009"/>
+        <location filename="settings.ui" line="5786"/>
         <source>bar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5014"/>
+        <location filename="settings.ui" line="5791"/>
         <source>m.c.a</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5026"/>
+        <location filename="settings.ui" line="5803"/>
         <source>Caudal</source>
         <translation>Flow</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5034"/>
+        <location filename="settings.ui" line="5811"/>
         <source>l/s</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5039"/>
+        <location filename="settings.ui" line="5816"/>
         <source>l/min</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5044"/>
+        <location filename="settings.ui" line="5821"/>
         <source>l/h</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5049"/>
+        <location filename="settings.ui" line="5826"/>
         <source>gal/s</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5054"/>
+        <location filename="settings.ui" line="5831"/>
         <source>gal/min</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5059"/>
+        <location filename="settings.ui" line="5836"/>
         <source>gal/h</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5064"/>
+        <location filename="settings.ui" line="5841"/>
         <source>m³/h</source>
         <oldsource>m3/h</oldsource>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5076"/>
+        <location filename="settings.ui" line="5853"/>
         <source>Tiempo</source>
         <translation>Time</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5084"/>
+        <location filename="settings.ui" line="5861"/>
         <source>min</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5089"/>
+        <location filename="settings.ui" line="5866"/>
         <source>h</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5104"/>
+        <location filename="settings.ui" line="5881"/>
         <source>Información</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5116"/>
+        <location filename="settings.ui" line="5893"/>
         <source>APP Version: XX.XXXX</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.ui" line="5129"/>
+        <location filename="settings.ui" line="5906"/>
         <source>Belisario Dominguez 1551
 Col. Mariano Otero
 Zapopan, Jalisco Mexico C.P. 45067
@@ -2246,17 +2332,27 @@ Email: info@plantasdetratamiento.com.mx</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="settings.cpp" line="32"/>
-        <source>APP Version: </source>
+        <location filename="settings.ui" line="5927"/>
+        <source>BORRAR DB</source>
+        <translation>DELETE DB</translation>
+    </message>
+    <message>
+        <location filename="settings.ui" line="5940"/>
+        <source>RESET</source>
         <translation></translation>
     </message>
     <message>
         <location filename="settings.cpp" line="33"/>
+        <source>APP Version: </source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="settings.cpp" line="34"/>
         <source>Fecha de compilación: </source>
         <translation>Build date:</translation>
     </message>
     <message>
-        <location filename="settings.cpp" line="34"/>
+        <location filename="settings.cpp" line="35"/>
         <source>EARM Version: </source>
         <translation></translation>
     </message>

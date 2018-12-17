@@ -15,7 +15,7 @@ class settings : public QDialog
     Q_OBJECT
 
 public:
-    explicit settings(QWidget *parent = 0);
+    explicit settings(bool super_user, QWidget *parent = 0);
     ~settings();
 
     void sync_regulador_IDs(void);
@@ -85,6 +85,12 @@ private slots:
     void on_key_plus_clicked();
 
     void keyboard_handler(QString key);
+
+    void on_borrar_DB_clicked();
+
+    void on_pushButton_clicked();
+
+    void remove_db();
 
 private:
     Ui::settings *ui;

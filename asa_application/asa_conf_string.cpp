@@ -60,20 +60,21 @@ void output_control_toggle(uint id)
     mutex.lock();
     configuration_id temp_config;
 
-
     conf.sync();
     conf.beginGroup("Plant-Cfg");
 
     // Modify status in config
-    QString value = conf.value(QString::number(id)).toString();
-
+    QString value = conf.value(QString::number(id, 16).toUpper()).toString();
+//    qDebug() << "EL VALUE: " << value;
     if("00" == value || "0" == value)
     {
-        conf.setValue(QString::number(id), "01");
+//        qDebug() << "CHANGING: " << QString::number(id, 16).toUpper() << "1";
+        conf.setValue(QString::number(id, 16).toUpper(), "01");
     }
     else
     {
-        conf.setValue(QString::number(id), "00");
+//        qDebug() << "CHANGING: " << QString::number(id, 16).toUpper() << "0";
+        conf.setValue(QString::number(id, 16).toUpper(), "00");
     }
 
     //Update String
@@ -90,7 +91,7 @@ void output_control_toggle(uint id)
     mutex.unlock();
 }
 
-void output_op_mode(uint id, QString val)
+void output_op_mode(QString id, QString val)
 {
     mutex.lock();
     configuration_id temp_config;
@@ -100,8 +101,8 @@ void output_op_mode(uint id, QString val)
     conf.beginGroup("Plant-Cfg");
 
     // Modify status in config
-    conf.setValue(QString::number(id), val);
-
+    //conf.setValue(QString::number(id), val);
+    conf.setValue(id, val);
     //Update String
     temp_config.names = conf.childKeys();
     foreach(const QString &key, temp_config.names)
@@ -233,8 +234,14 @@ void synch_output_state()
     temp_config.names = conf.childKeys();
 
     //SYNCH MOTORS
+
+    //CARCAMO
     conf.setValue("3602", getParamValue_base_units(0x3000));
     conf.setValue("3603", getParamValue_base_units(0x3010));
+
+    //REGULADOR
+    conf.setValue("3E02", getParamValue_base_units(0x3800));
+    conf.setValue("3E03", getParamValue_base_units(0x3810));
 
     conf.setValue("4601", getParamValue_base_units(0x4000));
     conf.setValue("4602", getParamValue_base_units(0x4010));
@@ -336,9 +343,11 @@ QString get_id_state(QString str_id)
 
 uint motor_state(QString motor_control)
 {
-//    qDebug() << "motor_control " << motor_control;
     if(motor_control =="3602"){    return getParamValue_base_units(0x3000).toInt();}
     else if(motor_control =="3603"){return getParamValue_base_units(0x3010).toInt();}
+
+    else if(motor_control =="3E02" || motor_control =="3e02"){return getParamValue_base_units(0x3800).toInt();}
+    else if(motor_control =="3E03" || motor_control =="3e03"){return getParamValue_base_units(0x3810).toInt();}
 
     else if(motor_control =="4601"){return getParamValue_base_units(0x4000).toInt();}
     else if(motor_control =="4602"){return getParamValue_base_units(0x4010).toInt();}
@@ -377,12 +386,23 @@ void get_calibrations_and_set_config_str()
 
     calibrations += "0D03:2";
     calibrations += "|0D04:2";
+    //Carcamo
     calibrations += "|3400:" + conf.value("3400").toString();
     calibrations += "|3401:" + conf.value("3401").toString();
     calibrations += "|3402:" + conf.value("3402").toString();
-    calibrations += "|3403:" + conf.value("3400").toString();
+    calibrations += "|3403:" + conf.value("3403").toString();
     calibrations += "|3501:" + conf.value("3501").toString();
     calibrations += "|3502:" + conf.value("3502").toString();
+    calibrations += "|2403:" + conf.value("2403").toString();
+
+    //Regulador
+    calibrations += "|3C00:" + conf.value("3C00").toString();
+    calibrations += "|3C01:" + conf.value("3C01").toString();
+    calibrations += "|3C02:" + conf.value("3C02").toString();
+    calibrations += "|3C03:" + conf.value("3C03").toString();
+    calibrations += "|3D01:" + conf.value("3D01").toString();
+    calibrations += "|3D02:" + conf.value("3D02").toString();
+    calibrations += "|2402:" + conf.value("2402").toString();
 
     calibrations += "|4400:" + conf.value("4400").toString();
     calibrations += "|4401:" + conf.value("4401").toString();
@@ -405,20 +425,36 @@ void get_calibrations_and_set_config_str()
     calibrations += "|9503:" + conf.value("9503").toString();
     calibrations += "|9504:" + conf.value("9504").toString();
 
-    ///
+    // carcamo
     calibrations += "|1006:" + conf.value("1006").toString();
     calibrations += "|1007:" + conf.value("1007").toString();
     calibrations += "|1008:" + conf.value("1008").toString();
     calibrations += "|1009:" + conf.value("1009").toString();
     calibrations += "|100A:" + conf.value("100A").toString();
     calibrations += "|100B:" + conf.value("100B").toString();
+    // regulador
+    calibrations += "|1126:" + conf.value("1126").toString();
+    calibrations += "|1127:" + conf.value("1127").toString();
+    calibrations += "|1128:" + conf.value("1128").toString();
+    calibrations += "|1129:" + conf.value("1129").toString();
+    calibrations += "|112A:" + conf.value("112A").toString();
+    calibrations += "|112B:" + conf.value("112B").toString();
 
+    // carcamo
     calibrations += "|101E:" + conf.value("101E").toString();
     calibrations += "|101F:" + conf.value("101F").toString();
     calibrations += "|1020:" + conf.value("1020").toString();
     calibrations += "|1021:" + conf.value("1021").toString();
     calibrations += "|1022:" + conf.value("1022").toString();
     calibrations += "|1023:" + conf.value("1023").toString();
+    // regulador
+    calibrations += "|113E:" + conf.value("113E").toString();
+    calibrations += "|113F:" + conf.value("113F").toString();
+    calibrations += "|1140:" + conf.value("1140").toString();
+    calibrations += "|1141:" + conf.value("1141").toString();
+    calibrations += "|1142:" + conf.value("1142").toString();
+    calibrations += "|1143:" + conf.value("1143").toString();
+
 
     calibrations += "|103C:" + conf.value("103C").toString();
     calibrations += "|103D:" + conf.value("103D").toString();
@@ -545,12 +581,23 @@ void save_calibrations()
     conf.sync();
     conf.beginGroup("Calibrations");
 
+    //Carcamo
     conf.setValue("3400", getParamValue_RAW(0x3400));
     conf.setValue("3401", getParamValue_RAW(0x3401));
     conf.setValue("3402", getParamValue_RAW(0x3402));
     conf.setValue("3403", getParamValue_RAW(0x3403));
     conf.setValue("3501", getParamValue_RAW(0x3501));
     conf.setValue("3502", getParamValue_RAW(0x3502));
+    conf.setValue("2403", getParamValue_RAW(0x2403));
+
+    //Regulador
+    conf.setValue("3C00", getParamValue_RAW(0x3C00));
+    conf.setValue("3C01", getParamValue_RAW(0x3C01));
+    conf.setValue("3C02", getParamValue_RAW(0x3C02));
+    conf.setValue("3C03", getParamValue_RAW(0x3C03));
+    conf.setValue("3D01", getParamValue_RAW(0x3D01));
+    conf.setValue("3D02", getParamValue_RAW(0x3D02));
+    conf.setValue("2402", getParamValue_RAW(0x2402));
 
     conf.setValue("4400", getParamValue_RAW(0x4400));
     conf.setValue("4401", getParamValue_RAW(0x4401));
@@ -576,19 +623,36 @@ void save_calibrations()
     conf.setValue("9504", getParamValue_RAW(0x9504));
 
     // ALARMAS
+    // Carcamo
     conf.setValue("1006", getParamValue_RAW(0x1006));
     conf.setValue("1007", getParamValue_RAW(0x1007));
     conf.setValue("1008", getParamValue_RAW(0x1008));
     conf.setValue("1009", getParamValue_RAW(0x1009));
     conf.setValue("100A", getParamValue_RAW(0x100A));
     conf.setValue("100B", getParamValue_RAW(0x100B));
+    // regulador
+    conf.setValue("1126", getParamValue_RAW(0x1126));
+    conf.setValue("1127", getParamValue_RAW(0x1127));
+    conf.setValue("1128", getParamValue_RAW(0x1128));
+    conf.setValue("1129", getParamValue_RAW(0x1129));
+    conf.setValue("112A", getParamValue_RAW(0x112A));
+    conf.setValue("112B", getParamValue_RAW(0x112B));
 
+    // Carcamo
     conf.setValue("101E", getParamValue_RAW(0x101E));
     conf.setValue("101F", getParamValue_RAW(0x101F));
     conf.setValue("1020", getParamValue_RAW(0x1020));
     conf.setValue("1021", getParamValue_RAW(0x1021));
     conf.setValue("1022", getParamValue_RAW(0x1022));
     conf.setValue("1023", getParamValue_RAW(0x1023));
+    // regulador
+    conf.setValue("113E", getParamValue_RAW(0x113E));
+    conf.setValue("113F", getParamValue_RAW(0x113F));
+    conf.setValue("1140", getParamValue_RAW(0x1140));
+    conf.setValue("1141", getParamValue_RAW(0x1141));
+    conf.setValue("1142", getParamValue_RAW(0x1142));
+    conf.setValue("1143", getParamValue_RAW(0x1143));
+
 
     conf.setValue("103C", getParamValue_RAW(0x103C));
     conf.setValue("103D", getParamValue_RAW(0x103D));

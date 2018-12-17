@@ -37,6 +37,25 @@ QList<int> create_list()
     return list;
 }
 
+detailed_window_elements_t details_11=
+{
+    QObject::tr("Carcamo"),
+
+    ":/images/images/detail_regulador.png",
+
+    QObject::tr("Dado el nivel de arrastre de la línea de drenaje es necesario "
+    "instalar un cárcamo de bombeo que permita elevar las aguas residuales desde "
+    "el nivel del drenaje hasta el tanque regulador."),
+
+    &MainWindow::conf_car_elect,
+
+    &MainWindow::conf_car_fisic,
+
+    &MainWindow::conf_car_quimic,
+
+    &MainWindow::car_outputs,
+};
+
 detailed_window_elements_t details_1=
 {
     QObject::tr("Regulador"),
@@ -214,6 +233,7 @@ detailed_window_elements_t *detailed_elements[]=
     &details_8,
     &details_9,
     &details_10,
+    &details_11,
 };
 
 detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimiento *rutina, QWidget *parent) :
@@ -303,7 +323,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
         tr("Afluente"),
         tr("Efluente"),
         tr("Filtro"),
-        tr("Bomba Alimentación")
+        tr("Bomba Alimentación"),
+        tr("Cárcamo"),
     };
 
     // Nombre Del elemento
@@ -1067,7 +1088,6 @@ void detailedwindow::tab_2_init()
     case ELEMENT_CLORADOR:
         origentype = ORIGEN_CLORADOR;
         break;
-        break;
     case ELEMENT_DIGESTOR:
         origentype = ORIGEN_DIGESTOR;
         break;
@@ -1085,6 +1105,9 @@ void detailedwindow::tab_2_init()
         break;
     case ELEMENT_FILTRO_BOMBA:
         origentype = ORIGEN_FILTRO_BOMBA;
+        break;
+    case ELEMENT_CARCAMO:
+        origentype = ORIGEN_CARCAMO;
         break;
     default:
         origentype = ORIGEN_GENERAL;
@@ -1158,6 +1181,9 @@ void detailedwindow::tab_3_init()
             "una manta filtrante a fin de lograr el pulimento deseado."),
         /* Bomba de alimentacion */
         tr("Agregar descripción"),
+        tr("Dado el nivel de arrastre de la línea de drenaje es necesario "
+        "instalar un cárcamo de bombeo que permita elevar las aguas residuales desde "
+        "el nivel del drenaje hasta el tanque regulador."),
     };
 
     ui->description_label->setFont(font);
@@ -1771,21 +1797,24 @@ void detailedwindow::set_op_mode(uint mode)
     switch(what_element)
     {
     case ELEMENT_REGULADOR:
-        output_op_mode(3600, str);
+        output_op_mode("3E00", str);/* Antes 3600 */
         break;
     case ELEMENT_REACTOR:
-        output_op_mode(4600, str);
+        output_op_mode("4600", str);
         break;
     case ELEMENT_CLARIFICADOR:
-        output_op_mode(5600, str);
+        output_op_mode("5600", str);
         break;
     case ELEMENT_CLORADOR:
         break;
     case ELEMENT_FILTRO:
-        output_op_mode(9600, str);
+        output_op_mode("9600", str);
         break;
     case ELEMENT_FILTRO_BOMBA:
-        output_op_mode(9700, str);
+        output_op_mode("9700", str);
+        break;
+    case ELEMENT_CARCAMO:
+        output_op_mode("3600", str);
         break;
     default:
         break;
@@ -1798,7 +1827,7 @@ void detailedwindow::read_op_mode()
     switch(what_element)
     {
     case ELEMENT_REGULADOR:
-        str = getParamValue(0x3600);
+        str = getParamValue(0x3E00);  /* Antes 3600*/
         break;
     case ELEMENT_REACTOR:
         str = getParamValue(0x4600);
@@ -1813,6 +1842,9 @@ void detailedwindow::read_op_mode()
         break;
     case ELEMENT_FILTRO_BOMBA:
         str = getParamValue(0x9700);
+        break;
+    case ELEMENT_CARCAMO:
+        str = getParamValue(0x3600);
         break;
     default:
         break;
@@ -2023,7 +2055,7 @@ bool detailedwindow::stop_op_mode()
     switch(what_element)
     {
     case ELEMENT_REGULADOR:
-        str = get_id_state("3600");
+        str = get_id_state("3E00"); /* Antes 3600 */
         break;
     case ELEMENT_REACTOR:
         str = get_id_state("4600");
@@ -2038,6 +2070,9 @@ bool detailedwindow::stop_op_mode()
         break;
     case ELEMENT_FILTRO_BOMBA:
         str = get_id_state("9700");
+        break;
+    case ELEMENT_CARCAMO:
+        str = get_id_state("3600");
         break;
     default:
         break;

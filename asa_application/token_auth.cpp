@@ -12,6 +12,8 @@ QString current_user_key;
 
 bool token_validity = false;
 
+static QString username = QObject::tr("Sin Usuario");
+
 bool check_user_password(QString str)
 {
     bool ret = false;
@@ -43,6 +45,10 @@ void validate_token(bool val)
     if(false == val)
     {
         current_user_key = "";
+        if(true == get_super_user())
+        {
+            username = QObject::tr("Sin Usuario");
+        }
     }
 
     token_validity = val;
@@ -55,10 +61,20 @@ bool get_validity_state()
     return token_validity;
 }
 
+bool get_super_user()
+{
+    if("Super Usuario" == get_user_name())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 QString get_user_name()
 {
-    static QString username = QObject::tr("Sin Usuario");
-
     QSettings conf(QDir::currentPath() + "/access.ini", QSettings::IniFormat);
     conf.sync();
     conf.beginGroup("Passwords");

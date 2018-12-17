@@ -177,6 +177,10 @@ void mod_flechas::load_new_gif(arrow_type_t type, uint state)
         case CARCAMO_MOTOR_2:
         case CARCAMO_MOTOR_3:
         case CARCAMO_MOTOR_4:
+        case REGULADOR_MOTOR_1:
+        case REGULADOR_MOTOR_2:
+        case REGULADOR_MOTOR_3:
+        case REGULADOR_MOTOR_4:
             if(0 == state)
             {
                 mv = new QMovie(":/gifs/0 Equipos/screen800x600/gifs/0 Equipos/pump off.png");
@@ -290,6 +294,26 @@ void mod_flechas::check_update_animation()
     else if(CARCAMO_MOTOR_4 == arrow_type)
     {
         carcamo_motores =getParamValue(0x3030).toInt();
+        load_new_gif(arrow_type, carcamo_motores);
+    }
+    else if(REGULADOR_MOTOR_1 == arrow_type)
+    {
+        carcamo_motores =getParamValue(0x3800).toInt();
+        load_new_gif(arrow_type, carcamo_motores);
+    }
+    else if(REGULADOR_MOTOR_2 == arrow_type)
+    {
+        carcamo_motores =getParamValue(0x3810).toInt();
+        load_new_gif(arrow_type, carcamo_motores);
+    }
+    else if(REGULADOR_MOTOR_3 == arrow_type)
+    {
+        carcamo_motores =getParamValue(0x3820).toInt();
+        load_new_gif(arrow_type, carcamo_motores);
+    }
+    else if(REGULADOR_MOTOR_4 == arrow_type)
+    {
+        carcamo_motores =getParamValue(0x3830).toInt();
         load_new_gif(arrow_type, carcamo_motores);
     }
 }

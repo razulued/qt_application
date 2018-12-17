@@ -51,6 +51,7 @@ motores::motores(QWidget *parent) :
     module_init( &MainWindow::react_outputs, ui->gridLayout_2);
     module_init( &MainWindow::filtro_outputs, ui->gridLayout_3);
     module_init( &MainWindow::filtro_bomba_outputs, ui->gridLayout_4);
+    module_init( &MainWindow::car_outputs, ui->gridLayout_5);
 
     this->setObjectName("MyMotors");
     this->setStyleSheet("#MyMotors{background-color: black;"
@@ -94,6 +95,8 @@ motores::motores(QWidget *parent) :
                                 "color: white;");
     ui->comboBox_4->setStyleSheet("background-color: black;"
                                 "color: white;");
+    ui->comboBox_5->setStyleSheet("background-color: black;"
+                                "color: white;");
 
     mode_4600 = load_parameter("mode4600.bin");
     read_op_mode();
@@ -117,6 +120,7 @@ void motores::update_motors()
     module_update(&MainWindow::react_outputs);
     module_update(&MainWindow::filtro_outputs);
     module_update(&MainWindow::filtro_bomba_outputs);
+    module_update(&MainWindow::car_outputs);
     motor_index = 0;
 }
 
@@ -317,10 +321,10 @@ void motores::out_checkBoxStateChanged(int a)
     // Skip if control is not manual
     // I don't recall why these numbers are not hex
     uint module_prefix = a / 100;
-//    qDebug() << "prefix " << module_prefix;
+    qDebug() << "prefix " << module_prefix;
     if(module_prefix == 36)
     {
-        // regulador
+        // carcamo
         if(ui->comboBox->currentIndex() == CONTROL_AUTOMATICO)
         {
             return;
@@ -443,7 +447,7 @@ void motores::read_op_mode()
 {
     QString str;
 
-    str = getParamValue(0x3600);
+    str = getParamValue(0x3E00); /* Antes 3600 */
     if(("04" == str) || ("4" == str))
     {
         ui->comboBox->setCurrentIndex(CONTROL_STOP);
@@ -498,6 +502,20 @@ void motores::read_op_mode()
     {
         ui->comboBox_4->setCurrentIndex(CONTROL_AUTOMATICO);
     }
+
+    str = getParamValue(0x3600);
+    if(("04" == str) || ("4" == str))
+    {
+        ui->comboBox_5->setCurrentIndex(CONTROL_STOP);
+    }
+    else if(("03" == str) || ("3" == str))
+    {
+        ui->comboBox_5->setCurrentIndex(CONTROL_MANUAL);
+    }
+    else
+    {
+        ui->comboBox_5->setCurrentIndex(CONTROL_AUTOMATICO);
+    }
 }
 
 void motores::set_op_mode(uint mode, uint what_element)
@@ -527,19 +545,22 @@ void motores::set_op_mode(uint mode, uint what_element)
     switch(what_element)
     {
     case ELEMENT_REGULADOR:
-        output_op_mode(3600, str);
+        output_op_mode("3E00", str); /* Antes 3600 */
         break;
     case ELEMENT_REACTOR:
-        output_op_mode(4600, str);
+        output_op_mode("4600", str);
         break;
     case ELEMENT_CLARIFICADOR:
-        output_op_mode(5600, str);
+        output_op_mode("5600", str);
         break;
     case ELEMENT_FILTRO:
-        output_op_mode(9600, str);
+        output_op_mode("9600", str);
         break;
     case ELEMENT_FILTRO_BOMBA:
-        output_op_mode(9700, str);
+        output_op_mode("9700", str);
+        break;
+    case ELEMENT_CARCAMO:
+        output_op_mode("3600", str);
         break;
     default:
         break;

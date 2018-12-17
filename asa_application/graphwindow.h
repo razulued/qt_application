@@ -19,8 +19,8 @@
 
 #define GASTO_INS  (0x3203)
 #define GASTO_ACC  (0x4203)
-#define NIVEL_REG  (0x3201)
-#define NIVEL_CL   (0x5201)
+#define NIVEL_REG  (0x3A01)
+#define NIVEL_CAR  (0x3201)
 #define PRES_AIR   (0x4205)
 #define PRES_FIL   (0x8205)
 
@@ -69,8 +69,8 @@ public:
 
     static uint g_GASTO_INS;
     static uint g_GASTO_ACC;
+    static uint g_NIVEL_CAR;
     static uint g_NIVEL_REG;
-    static uint g_NIVEL_CL;
     static uint g_PRES_AIR;
     static uint g_PRES_FIL;
     void set_graph_span(uint span);
@@ -92,7 +92,7 @@ private slots:
 
     void on_pb_nivel_reg_clicked();
 
-    void on_pb_nivel_clarif_clicked();
+    void on_pb_nivel_car_clicked();
 
     void on_pb_presion_aire_clicked();
 

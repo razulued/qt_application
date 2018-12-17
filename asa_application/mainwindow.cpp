@@ -16,6 +16,10 @@
 
 #define ENABLE_TEST (1)
 
+configuration_id MainWindow::conf_car_elect;
+configuration_id MainWindow::conf_car_fisic;
+configuration_id MainWindow::conf_car_quimic;
+
 configuration_id MainWindow::conf_reg_elect;
 configuration_id MainWindow::conf_reg_fisic;
 configuration_id MainWindow::conf_reg_quimic;
@@ -56,6 +60,7 @@ configuration_id MainWindow::conf_filtro_bomba_elect;
 configuration_id MainWindow::conf_filtro_bomba_fisic;
 configuration_id MainWindow::conf_filtro_bomba_quimi;
 
+configuration_id MainWindow::car_outputs;
 configuration_id MainWindow::reg_outputs;
 configuration_id MainWindow::react_outputs;
 configuration_id MainWindow::clarif_outputs;
@@ -110,6 +115,9 @@ void MainWindow::HideButtons(bool hide)
 
 void MainWindow::InitTooltips()
 {
+    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, conf_car_elect.ids, conf_car_elect.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_carcamo_fisicos = new custom_tooltip(ui->widget_26, conf_car_fisic.ids, conf_car_fisic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_carcamo_quimicos = new custom_tooltip(ui->widget_27, conf_car_quimic.ids, conf_car_quimic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_QUIMICOS, graph, this->my_name);
 
     tool_tip_regulador_electricos = new custom_tooltip(ui->widget, conf_reg_elect.ids, conf_reg_elect.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
     tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, conf_reg_fisic.ids, conf_reg_fisic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
@@ -164,6 +172,9 @@ MainWindow::MainWindow(QWidget *parent) :
     dataObj = new DataProccess;
     dataObj->start();
 
+    output_op_mode("1FFF", "0");
+
+
     // Rutinas y DB
     rutinas = new rutinas_mantenimiento(tr("rutinas.db"));
     rutinas->number_of_activities_found = get_number_of_pending_activities;
@@ -176,6 +187,13 @@ MainWindow::MainWindow(QWidget *parent) :
 //    get_ASA_string();
 
     configuration *config;
+
+    config = new configuration("Carcamo-Electricos");
+    conf_car_elect = config->get_config();
+    config = new configuration("Carcamo-Fisicos");
+    conf_car_fisic = config->get_config();
+    config = new configuration("Carcamo-Quimicos");
+    conf_car_quimic = config->get_config();
 
     config = new configuration("Regulador-Electricos");
     conf_reg_elect = config->get_config();
@@ -248,6 +266,8 @@ MainWindow::MainWindow(QWidget *parent) :
     conf_filtro_bomba_quimi = config->get_config();
 
     //Get outputs
+    config = new configuration("Carcamo-Out");
+    car_outputs = config->get_config();
     config = new configuration("Regulador-Out");
     reg_outputs = config->get_config();
     config = new configuration("Reactor-Out");
@@ -316,7 +336,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->modulo_6, SIGNAL (released()),this, SLOT (handleDetailedView_6()));
     connect(ui->modulo_7, SIGNAL (released()),this, SLOT (handleDetailedView_7()));
     connect(ui->modulo_8, SIGNAL (released()),this, SLOT (handleDetailedView_8()));
-//    connect(ui->modulo_9, SIGNAL (released()),this, SLOT (handleDetailedView_9()));
+    connect(ui->modulo_9, SIGNAL (released()),this, SLOT (handleDetailedView_9()));
 
     QFont active_parameter_font("Typo Square Bold Demo",16,1);
     ui->active_param_label->setFont(active_parameter_font);
@@ -332,7 +352,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_dia->setStyleSheet("color: white");
     ui->label_dia->setFont(dia_font);
 
-    mod_1 = new mod_1_carcamo(ui->gif_modulo_1);
+    mod_9 = new mod_1_carcamo(ui->gif_modulo_9);
+    connect(mod_9, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_1 = new mod_1_regulador(ui->gif_modulo_1);
     connect(mod_1, SIGNAL(update_window()), this, SLOT(update_this()));
     mod_2 = new mod_2_reactor(ui->gif_modulo_2);
     connect(mod_2, SIGNAL(update_window()), this, SLOT(update_this()));
@@ -373,6 +395,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mod_bomba_3, SIGNAL(update_window()), this, SLOT(update_this()));
     mod_bomba_4 = new mod_flechas(CARCAMO_MOTOR_4,  3, ui->gif_car_mot);
     connect(mod_bomba_4, SIGNAL(update_window()), this, SLOT(update_this()));
+
+    mod_bomba_reg_1 = new mod_flechas(REGULADOR_MOTOR_1,  3, ui->gif_reg_mot_4);
+    connect(mod_bomba_reg_1, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_bomba_reg_2 = new mod_flechas(REGULADOR_MOTOR_2,  3, ui->gif_reg_mot_3);
+    connect(mod_bomba_reg_2, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_bomba_reg_3 = new mod_flechas(REGULADOR_MOTOR_3,  3, ui->gif_reg_mot_2);
+    connect(mod_bomba_reg_3, SIGNAL(update_window()), this, SLOT(update_this()));
+    mod_bomba_reg_4 = new mod_flechas(REGULADOR_MOTOR_4,  3, ui->gif_reg_mot);
+    connect(mod_bomba_reg_4, SIGNAL(update_window()), this, SLOT(update_this()));
+
     ASA_protocol_init();
 
     if((NULL == sim_window) && simulation)
@@ -551,7 +583,7 @@ void MainWindow::handleDetailedView_9()
         if (detail_window != NULL) {
             delete detail_window;
         }
-        detail_window = new detailedwindow(ELEMENT_FILTRO, rutinas, this);
+        detail_window = new detailedwindow(ELEMENT_CARCAMO, rutinas, this);
         connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
         detail_window->show();
     }
@@ -649,6 +681,7 @@ void MainWindow::dataTimerSlot()
 
 #if (1 ==ENABLE_TEST)
         /***** DEMO *****/
+        mod_9->check_update_animation();
         mod_1->check_update_animation();
         mod_2->check_update_animation();
         mod_3->check_update_animation();
@@ -668,6 +701,11 @@ void MainWindow::dataTimerSlot()
         mod_bomba_2->check_update_animation();
         mod_bomba_3->check_update_animation();
         mod_bomba_4->check_update_animation();
+
+        mod_bomba_reg_1->check_update_animation();
+        mod_bomba_reg_2->check_update_animation();
+        mod_bomba_reg_3->check_update_animation();
+        mod_bomba_reg_4->check_update_animation();
 
 #endif
     }
@@ -802,7 +840,7 @@ void MainWindow::update_tooltips(void)
         switch(GetParemeter())
         {
         case PARAM_ELECTRIC:
-
+            tool_tip_carcamo_electricos->force_show();
             tool_tip_regulador_electricos->force_show();
             tool_tip_reactor_electricos->force_show();
             tool_tip_clarificador_electricos->force_show();
@@ -813,6 +851,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_efluente_electricos->force_show();
 //            tool_tip_filtro_electricos->force_show();
 
+            tool_tip_carcamo_fisicos->force_hide();
             tool_tip_regulador_fisicos->force_hide();
             tool_tip_reactor_fisicos->force_hide();
             tool_tip_clarificador_fisicos->force_hide();
@@ -823,6 +862,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_efluente_fisicos->force_hide();
 //            tool_tip_filtro_fisicos->force_hide();
 
+            tool_tip_carcamo_quimicos->force_hide();
             tool_tip_regulador_quimicos->force_hide();
             tool_tip_reactor_quimicos->force_hide();
             tool_tip_clarificador_quimicos->force_hide();
@@ -835,7 +875,7 @@ void MainWindow::update_tooltips(void)
 
             break;
         case PARAM_PHYSHIC:
-
+            tool_tip_carcamo_electricos->force_hide();
             tool_tip_regulador_electricos->force_hide();
             tool_tip_reactor_electricos->force_hide();
             tool_tip_clarificador_electricos->force_hide();
@@ -847,6 +887,7 @@ void MainWindow::update_tooltips(void)
 //            tool_tip_filtro_electricos->force_hide();
 
 
+            tool_tip_carcamo_fisicos->force_show();
             tool_tip_regulador_fisicos->force_show();
             tool_tip_reactor_fisicos->force_show();
             tool_tip_clarificador_fisicos->force_show();
@@ -857,6 +898,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_efluente_fisicos->force_show();
 //            tool_tip_filtro_fisicos->force_show();
 
+            tool_tip_carcamo_quimicos->force_hide();
             tool_tip_regulador_quimicos->force_hide();
             tool_tip_reactor_quimicos->force_hide();
             tool_tip_clarificador_quimicos->force_hide();
@@ -870,6 +912,7 @@ void MainWindow::update_tooltips(void)
 
             break;
         case PARAM_CHEMIC:
+            tool_tip_carcamo_electricos->force_hide();
             tool_tip_regulador_electricos->force_hide();
             tool_tip_reactor_electricos->force_hide();
             tool_tip_clarificador_electricos->force_hide();
@@ -880,6 +923,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_efluente_electricos->force_hide();
 //            tool_tip_filtro_electricos->force_hide();
 
+            tool_tip_carcamo_fisicos->force_hide();
             tool_tip_regulador_fisicos->force_hide();
             tool_tip_reactor_fisicos->force_hide();
             tool_tip_clarificador_fisicos->force_hide();
@@ -890,6 +934,7 @@ void MainWindow::update_tooltips(void)
             tool_tip_efluente_fisicos->force_hide();
 //            tool_tip_filtro_fisicos->force_hide();
 
+            tool_tip_carcamo_quimicos->force_show();
             tool_tip_regulador_quimicos->force_show();
             tool_tip_reactor_quimicos->force_show();
             tool_tip_clarificador_quimicos->force_show();
@@ -911,6 +956,7 @@ void MainWindow::update_tooltips(void)
         {
             if(0 == count)
             {
+                tool_tip_carcamo_electricos->update_data();
                 tool_tip_regulador_electricos->update_data();
                 tool_tip_reactor_electricos->update_data();
                 tool_tip_clarificador_electricos->update_data();
@@ -924,6 +970,7 @@ void MainWindow::update_tooltips(void)
             }
             else if(1 == count)
             {
+                tool_tip_carcamo_fisicos->update_data();
                 tool_tip_regulador_fisicos->update_data();
                 tool_tip_reactor_fisicos->update_data();
                 tool_tip_clarificador_fisicos->update_data();
@@ -937,6 +984,7 @@ void MainWindow::update_tooltips(void)
             }
             else
             {
+                tool_tip_carcamo_quimicos->update_data();
                 tool_tip_regulador_quimicos->update_data();
                 tool_tip_reactor_quimicos->update_data();
                 tool_tip_clarificador_quimicos->update_data();
@@ -1058,6 +1106,7 @@ void MainWindow::update_system_time()
         ui->label_hora->setText(display_time);
         send_date_hour(time);
 
+        //CARCAMO
         add_value_to_stats(0x3001, getParamValue(0x3001).toFloat());
         add_value_to_stats(0x3002, getParamValue(0x3002).toFloat());
         add_value_to_stats(0x3003, getParamValue(0x3003).toFloat());
@@ -1085,6 +1134,35 @@ void MainWindow::update_system_time()
         add_value_to_stats(0x3034, getParamValue(0x3034).toFloat());
         add_value_to_stats(0x3035, getParamValue(0x3035).toFloat());
         add_value_to_stats(0x3036, getParamValue(0x3036).toFloat());
+
+        // REGULADOR
+        add_value_to_stats(0x3801, getParamValue(0x3801).toFloat());
+        add_value_to_stats(0x3802, getParamValue(0x3802).toFloat());
+        add_value_to_stats(0x3803, getParamValue(0x3803).toFloat());
+        add_value_to_stats(0x3804, getParamValue(0x3804).toFloat());
+        add_value_to_stats(0x3805, getParamValue(0x3805).toFloat());
+        add_value_to_stats(0x3806, getParamValue(0x3806).toFloat());
+
+        add_value_to_stats(0x3811, getParamValue(0x3811).toFloat());
+        add_value_to_stats(0x3812, getParamValue(0x3812).toFloat());
+        add_value_to_stats(0x3813, getParamValue(0x3813).toFloat());
+        add_value_to_stats(0x3814, getParamValue(0x3814).toFloat());
+        add_value_to_stats(0x3815, getParamValue(0x3815).toFloat());
+        add_value_to_stats(0x3816, getParamValue(0x3816).toFloat());
+
+        add_value_to_stats(0x3821, getParamValue(0x3821).toFloat());
+        add_value_to_stats(0x3822, getParamValue(0x3822).toFloat());
+        add_value_to_stats(0x3823, getParamValue(0x3823).toFloat());
+        add_value_to_stats(0x3824, getParamValue(0x3824).toFloat());
+        add_value_to_stats(0x3825, getParamValue(0x3825).toFloat());
+        add_value_to_stats(0x3826, getParamValue(0x3826).toFloat());
+
+        add_value_to_stats(0x3831, getParamValue(0x3831).toFloat());
+        add_value_to_stats(0x3832, getParamValue(0x3832).toFloat());
+        add_value_to_stats(0x3833, getParamValue(0x3833).toFloat());
+        add_value_to_stats(0x3834, getParamValue(0x3834).toFloat());
+        add_value_to_stats(0x3835, getParamValue(0x3835).toFloat());
+        add_value_to_stats(0x3836, getParamValue(0x3836).toFloat());
 
         add_value_to_stats(0x4001, getParamValue(0x4001).toFloat());
         add_value_to_stats(0x4002, getParamValue(0x4002).toFloat());
@@ -1167,8 +1245,8 @@ void MainWindow::update_system_time()
         add_value_to_stats(GASTO_INS, getParamValue(GASTO_INS).toFloat());
         add_value_to_stats(GASTO_ACC, getParamValue(GASTO_ACC).toFloat());
         add_value_to_stats(PRES_AIR, getParamValue(PRES_AIR).toFloat());
+        add_value_to_stats(NIVEL_CAR, getParamValue(NIVEL_CAR).toFloat());
         add_value_to_stats(PRES_FIL, getParamValue(PRES_FIL).toFloat());
-        add_value_to_stats(NIVEL_CL, getParamValue(NIVEL_CL).toFloat());
         add_value_to_stats(NIVEL_REG, getParamValue(NIVEL_REG).toFloat());
 
         // QUIMICOS

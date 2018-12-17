@@ -103,14 +103,14 @@ void calendar::background_clicked()
 void calendar::on_push_aceptar_clicked()
 {
 //    qDebug() << "hora " << ui->listWidget->row(ui->listWidget->selectedItems().at(0)) << "date " << ui->calendarWidget->selectedDate();
-    send_calendar_date(ui->listWidget->row(ui->listWidget->selectedItems().at(0)), ui->calendarWidget->selectedDate());
 
     //Build date time
     QDateTime datetime;
-
     datetime.setDate(ui->calendarWidget->selectedDate());
     QTime time(ui->listWidget->row(ui->listWidget->selectedItems().at(0)),0,0);
     datetime.setTime(time);
+
+    send_calendar_date(ui->listWidget->row(ui->listWidget->selectedItems().at(0)), ui->calendarWidget->selectedDate(), datetime);
     send_calendar_datetime(datetime);
 
     this->close();

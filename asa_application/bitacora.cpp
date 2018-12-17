@@ -657,9 +657,16 @@ void bitacora::add_row_registro(QString sql_query, QTableWidget *table)
                     if("RESCHEDULE" == question_query.value("type").toString())
                     {
                         // This is a number (date), retrieve the actual number
-                        QDateTime *temp_date;
+//                        QDateTime temp_date;
+//                        const QTimeZone zone("UTC-06:00");
+//                        temp_date.setTimeZone(zone);
+//                        temp_date.setDate(QDateTime::fromTime_t(q.value("record_value").toInt()).date());
+//                        temp_date.setTime(QDateTime::fromTime_t(q.value("record_value").toInt()).time());
+
                         temp_date = new QDateTime(QDateTime::fromTime_t(q.value("record_value").toInt()));
                         table->setItem(row,5, new QTableWidgetItem(temp_date->toString()));
+
+//                        table->setItem(row,5, new QTableWidgetItem(temp_date.toString()));
                     }
                     if("COMPLETED" == question_query.value("type").toString())
                     {
@@ -765,19 +772,24 @@ void bitacora::on_key_Reschedule_clicked()
         }
     }
     calendar_window = new calendar(MainWindow::time, periodo, this);
-    connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate)), this, SLOT(receive_date(uint,QDate)));
+    connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate, QDateTime)), this, SLOT(receive_date(uint,QDate, QDateTime)));
 }
 
-void bitacora::receive_date(uint hora, QDate date)
+void bitacora::receive_date(uint hora, QDate date, QDateTime datetime)
 {
     QDateTime *temp = new QDateTime(date);
     ui->label_horas->setText(date.toString("yyyy-MM-dd") + " " + QString::number(hora) + ":00");
 
-    qDebug() << "XXXX: date " << date;
+    const QTimeZone zone("UTC-06:00");
+    qDebug() << "zone: " << zone;
+    datetime.setTimeZone(zone);
+    qDebug() << "xxx DATETIME " << datetime;
+//    qDebug() << "XXXX: date " << date;
     qDebug() << "XXXX: hora " << hora;
 
     *temp = temp->addSecs(60 * 60 * hora);
-    reschedule_time = temp->toTime_t();
+//    reschedule_time = temp->toTime_t();
+    reschedule_time = datetime.toTime_t();
     qDebug() << "XXXX: temp " << *temp;
     qDebug() << "XXXX: reschedule_time " << reschedule_time;
 
