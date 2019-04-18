@@ -55,7 +55,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>6</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -92,7 +92,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-176</y>
+        <y>0</y>
         <width>741</width>
         <height>796</height>
        </rect>
@@ -6007,6 +6007,19 @@ Email: info@plantasdetratamiento.com.mx</string>
      </property>
      <property name="text">
       <string>RESET</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>150</y>
+       <width>221</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Modo Demo</string>
      </property>
     </widget>
    </widget>

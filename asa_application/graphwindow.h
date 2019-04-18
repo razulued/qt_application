@@ -18,7 +18,7 @@
 #define PH_OUT   (0x6301)
 
 #define GASTO_INS  (0x3203)
-#define GASTO_ACC  (0x4203)
+#define GASTO_ACC  (0x6203)
 #define NIVEL_REG  (0x3A01)
 #define NIVEL_CAR  (0x3201)
 #define PRES_AIR   (0x4205)

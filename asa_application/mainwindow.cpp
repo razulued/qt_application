@@ -84,6 +84,8 @@ bool MainWindow::simulation =true;
 
 QDateTime MainWindow::time;
 
+bool MainWindow::demo_mode_enabled = false;
+
 //QString MainWindow::ASA_conf_string;
 //QString MainWindow::ASA_conf_only_string;
 
@@ -427,6 +429,8 @@ MainWindow::MainWindow(QWidget *parent) :
                                    "background-color:transparent;");
     ui->label_title->setText(title_name);
 
+    update_demo_mode();
+
 }
 
 
@@ -474,6 +478,25 @@ void MainWindow::window_closed()
 {
     qDebug() << "release lock";
     mutex_detailed.unlock();
+}
+
+void MainWindow::update_demo_mode()
+{
+    // Check demo mode
+    QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
+    conf.sync();
+    // Read Demo mode
+    conf.sync();
+    conf.beginGroup("Demo");
+    if(0 == conf.value("demo_mode").toInt())
+    {
+        demo_mode_enabled = false;
+    }
+    else
+    {
+        demo_mode_enabled = true;
+    }
+    conf.endGroup();
 }
 
 void MainWindow::handleDetailedView_1()
@@ -809,6 +832,7 @@ void MainWindow::on_top_menu_5_clicked()
             }
             settingswindow = new settings(this);
             connect(settingswindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
+            connect(settingswindow, SIGNAL(update_conf()), this, SLOT(update_demo_mode()));
             settingswindow->show();
         }
     }

@@ -68,7 +68,7 @@ const g_elec_settings electric_graph_settings[] =
     /* CARCAMO_MOT_3 */{QObject::tr("Carcamo 3"),    0x3020, 0x3021, 0x3022, 0x3023, 0x3024, 0x3025, 0x3026,  },
     /* CARCAMO_MOT_4 */{QObject::tr("Carcamo 4"),    0x3030, 0x3031, 0x3032, 0x3033, 0x3034, 0x3035, 0x3036,  },
 
-    /* REGULADOR_MOT_1 */{QObject::tr("Regulador 1"),    0x3800, 0x3801, 0x3802, 0x3803, 0x3804, 0x3805, 0x3806,  },
+    /* REGULADOR_MOT_1 */{QObject::tr("Regulador 1"),    0x3800, 0x3001, 0x3002, 0x3003, 0x3804, 0x3805, 0x3806,  },
     /* REGULADOR_MOT_2 */{QObject::tr("Regulador 2"),    0x3810, 0x3811, 0x3812, 0x3813, 0x3814, 0x3815, 0x3816,  },
     /* REGULADOR_MOT_3 */{QObject::tr("Regulador 3"),    0x3820, 0x3821, 0x3822, 0x3823, 0x3824, 0x3825, 0x3826,  },
     /* REGULADOR_MOT_4 */{QObject::tr("Regulador 4"),    0x3830, 0x3831, 0x3832, 0x3833, 0x3834, 0x3835, 0x3836,  },
@@ -435,6 +435,7 @@ void graphwindow::init_graph(uint param)
 void graphwindow::update_graphs(uint param)
 {
     QList<float>list_of_values;
+
 
     qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
     g_mutex.lock();

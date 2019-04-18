@@ -4,7 +4,7 @@
 #include "dataproccess.h"
 #include "asa_conf_string.h"
 
-#define USE_SIM (0)
+//#define USE_SIM (1)
 QDateTime simulation_input::simDateTime;
 
 simulation_input::simulation_input(QWidget *parent) :

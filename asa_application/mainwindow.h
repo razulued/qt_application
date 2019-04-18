@@ -115,6 +115,8 @@ public:
     static QString ASA_conf_only_string;
     static QString ASA_conf_string;
 
+    static bool demo_mode_enabled;
+
     rutinas_mantenimiento *rutinas;
 
     DataProccess *dataObj;
@@ -170,6 +172,7 @@ private slots:
     void check_title_click();
 
     void window_closed();
+    void update_demo_mode();
     void on_top_menu_1_clicked();
 
 private:

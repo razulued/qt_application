@@ -92,6 +92,8 @@ private slots:
 
     void remove_db();
 
+    void on_checkBox_clicked();
+
 private:
     Ui::settings *ui;
     QFile *config_file;
@@ -103,6 +105,7 @@ private:
     void save_language_and_units();
 signals:
     void release_lock();
+    void update_conf();
 };
 
 void saveSettings(const QString &group, const QString &key, const QVariant &value);

@@ -74,22 +74,24 @@ Chart::Chart(QList<float> values, uint ticks, QChartView *target, QGraphicsItem 
     axisX()->setRange(0, ticks);
     axisY()->setRange(yMin, yMax);
 
-    connect(m_series, &QSplineSeries::pointAdded, [=](int index){
-           qreal y = m_series->at(index).y();
+//    connect(m_series, &QSplineSeries::pointAdded, [=](int index){
+//           qreal y = m_series->at(index).y();
 
-           if(y< yMin || y > yMax)
-           {
-               if(y < yMin)
-                   yMin = y;
-               if(y> yMax)
-                   yMax = y;
-//               axisY()->setRange(yMin-20, yMax+20);
-//               qDebug() << "Ymax: " << yMax << "Ymin: " << yMin;
-               axisY()->setRange(roundDown(yMin,10,10), roundUp(yMax,10,10));
-               axisY()->setRange(0, roundUp(yMax,10,10));
-           }
+//           if(y< yMin || y > yMax)
+//           {
+//               if(y < yMin)
+//                   yMin = y;
+//               if(y> yMax)
+//                   yMax = y;
+////               axisY()->setRange(yMin-20, yMax+20);
+////               qDebug() << "Ymax: " << yMax << "Ymin: " << yMin;
+//               axisY()->setRange(roundDown(yMin,10,10), roundUp(yMax,10,10));
+//               axisY()->setRange(0, roundUp(yMax,10,10));
+//           }
+//           yMin = 0;
+//           yMax = 10;
 
-       });
+//       });
 
 
     // Customize chart background
@@ -117,7 +119,8 @@ Chart::Chart(QList<float> values, uint ticks, QChartView *target, QGraphicsItem 
 
 void Chart::append_to_end(QList<float> values)
 {
-
+    float min_value = 0;
+    float max_value = 0;
 //    qreal y = (m_axis->max() - m_axis->min()) / m_axis->tickCount();
 
 //    m_series->append(m_x, value);
@@ -131,6 +134,10 @@ void Chart::append_to_end(QList<float> values)
     {
         m_series->append(m_x, values.at(m_x));
     }
+
+    min_value = *std::min_element(values.begin(), values.end());
+    max_value = *std::max_element(values.begin(), values.end());
+    axisY()->setRange(0, roundUp(max_value,10,0));
 }
 
 Chart::~Chart()

@@ -14,8 +14,8 @@
 
 #define VERSION_MAJOR   (0)
 #define VERSION_MID     (1)
-#define VERSION_MINOR   (0)
-#define VERSION_FIX     ("a1217")
+#define VERSION_MINOR   (1)
+#define VERSION_FIX     ("a0320")
 const QString SW_VERSION = QString::number(VERSION_MAJOR).append(".")\
         .append(QString::number(VERSION_MID)).append(".")\
         .append(QString::number(VERSION_MINOR).append("-"))\
@@ -464,7 +464,7 @@ void settings::keyboard_handler(QString key)
 }
 
 void settings::synch_calibrations()
-{
+{   
     ui->control_3400->setValue(getParamValue_base_units(0x3400).toDouble());
     ui->control_3401->setValue(getParamValue_base_units(0x3401).toDouble());
     ui->control_3402->setValue(getParamValue_base_units(0x3402).toDouble());
@@ -664,6 +664,20 @@ void settings::read_languaje_and_units(void)
     ui->combobox_caudal->setCurrentIndex(conf.value("caudal").toInt());
     ui->combobox_tiempo->setCurrentIndex(conf.value("tiempo").toInt());
     conf.endGroup();
+
+    // Read Demo mode
+    conf.sync();
+    conf.beginGroup("Demo");
+    if(0 == conf.value("demo_mode").toInt())
+    {
+        ui->checkBox->setChecked(false);
+    }
+    else
+    {
+        ui->checkBox->setChecked(true);
+    }
+    conf.endGroup();
+
 }
 
 void settings::save_language_and_units(void)
@@ -699,4 +713,23 @@ void settings::remove_db()
 {
     QProcess::execute("sudo rm /home/pi/rutinas.db");
     output_op_mode("1FFF", "0");
+}
+
+void settings::on_checkBox_clicked()
+{
+    QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
+    conf.sync();
+    conf.beginGroup("Demo");
+    if(ui->checkBox->isChecked())
+    {
+        conf.setValue("demo_mode",1);
+    }
+    else
+    {
+        conf.setValue("demo_mode",0);
+    }
+    conf.endGroup();
+
+    update_conf();
+
 }
