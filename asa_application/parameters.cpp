@@ -133,6 +133,7 @@ static void write_active_parameter()
    QDataStream out(&myFile);
    out.setVersion(QDataStream::Qt_5_7);
    out << active_parameter;
+   myFile.close();
 }
 
 
@@ -151,6 +152,8 @@ QHash<uint,uint> load_active_parameters()
     }
 
     in >> active_parameter;
+    myFile.close();
+
     return active_parameter;
 }
 
@@ -211,6 +214,8 @@ void write_parameter(QString filename, uint value)
    QDataStream out(&myFile);
    out.setVersion(QDataStream::Qt_5_7);
    out << value;
+   myFile.close();
+
 }
 
 
@@ -228,5 +233,7 @@ uint load_parameter(QString filename)
     }
 
     in >> value;
+    myFile.close();
+
     return value;
 }

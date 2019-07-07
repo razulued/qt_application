@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>confsetup</class>
+ <widget class="QDialog" name="confsetup">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>101</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="DirLayout"/>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>20</y>
+     <width>671</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Nombre</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Tipo</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Unidades</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Min. Mostrar</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Max. Mostrar</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Min. Crudo</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Max. Crudo</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Tamaño Dato</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Tipo Calculo</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Const1</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Const2</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Const3</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QGroupBox" name="ButtonBox">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>220</y>
+     <width>671</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#ButtonBox
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border: none;
+}
+</string>
+   </property>
+   <property name="title">
+    <string>Acciones</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="add_pushButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#add_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Agregar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="edit_pushButton">
+      <property name="styleSheet">
+       <string notr="true">#edit_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Editar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="remove_pushButton">
+      <property name="styleSheet">
+       <string notr="true">#remove_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Borrar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="save_changes_pushButton">
+      <property name="styleSheet">
+       <string notr="true">#save_changes_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Guardar Camios</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="closeButton">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>560</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#closeButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 3px;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Cerrar</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="ButtonBox_2">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>310</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border: none;
+}
+
+QPushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+   </property>
+   <property name="title">
+    <string>Alarmas</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="edit_pushButton_2">
+      <property name="styleSheet">
+       <string notr="true">#edit_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Editar</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="ButtonBox_3">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>310</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border: none;
+}
+
+QPushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+   </property>
+   <property name="title">
+    <string>Configuraciones</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QPushButton" name="edit_pushButton_3">
+      <property name="styleSheet">
+       <string notr="true">#edit_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Editar</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

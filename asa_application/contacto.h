@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "settings.h"
+#include "confsetup.h"
+
 namespace Ui {
 class contacto;
 }
@@ -34,7 +36,7 @@ private:
     uint sequence = 0;
 
     settings *settingswindow = NULL;
-
+    confsetup *confwinow = NULL;
 signals:
     void close_app();
     void release_lock();

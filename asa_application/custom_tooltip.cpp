@@ -260,6 +260,7 @@ void custom_tooltip::save_position()
         out.setVersion(QDataStream::Qt_5_7);
         out << parent_frame->pos();
     }
+    myFile.close();
 }
 
 void custom_tooltip::ListPressed()

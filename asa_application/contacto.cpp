@@ -93,17 +93,23 @@ void contacto::on_close_clicked()
 
 void contacto::on_top_menu_5_clicked()
 {
-    if(true == get_validity_state())
+//    if(true == get_validity_state())
+//    {
+////        if(mutex_detailed.tryLock(0))
+//        {
+//            if(settingswindow != NULL)
+//            {
+//                delete settingswindow;
+//            }
+//            settingswindow = new settings(get_super_user(), this);
+////            connect(settingswindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
+//            settingswindow->show();
+//        }
+//    }
+
+    if(confwinow != NULL)
     {
-//        if(mutex_detailed.tryLock(0))
-        {
-            if(settingswindow != NULL)
-            {
-                delete settingswindow;
-            }
-            settingswindow = new settings(get_super_user(), this);
-//            connect(settingswindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
-            settingswindow->show();
-        }
+        delete confwinow;
     }
+    confwinow = new confsetup(this);
 }
