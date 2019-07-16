@@ -40,26 +40,24 @@ confsetup::confsetup(QWidget *parent) :
     ui->tableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section:horizontal{"
                                                      "background-color: rgb(100, 100, 100);"
                                                      "}");
+    ui->tableWidget_2->setAlternatingRowColors(true);
+    ui->tableWidget_2->setStyleSheet(ui->tableWidget->styleSheet());
+    ui->tableWidget_2->horizontalHeader()->setStyleSheet(ui->tableWidget->horizontalHeader()->styleSheet());
+    ui->tableWidget_3->setAlternatingRowColors(true);
+    ui->tableWidget_3->setStyleSheet(ui->tableWidget->styleSheet());
+    ui->tableWidget_3->horizontalHeader()->setStyleSheet(ui->tableWidget->horizontalHeader()->styleSheet());
 
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
     //Scroll
-    QScroller *scroller = QScroller::scroller(ui->tableWidget);
-    ui->tableWidget->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-    ui->tableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
-
-    QScrollerProperties properties = QScroller::scroller(scroller)->scrollerProperties();
-    QVariant overshootPolicy = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
-    properties.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy);
-    scroller->setScrollerProperties(properties);
-    properties.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, overshootPolicy);
-    scroller->setScrollerProperties(properties);
-    //Scrolling Gesture
-    scroller->grabGesture(ui->tableWidget,QScroller::LeftMouseButtonGesture);
+    setScrollers();
 
     ui->ButtonBox->setEnabled(false);
     ui->tableWidget->verticalHeader()->hide();
+    ui->tableWidget_2->verticalHeader()->hide();
+    ui->tableWidget_3->verticalHeader()->hide();
+
     updateDirList();
 
     this->move(parent->pos());
@@ -177,7 +175,6 @@ void confsetup::updateTableFromFile(int dir)
 
     ui->tableWidget->clearContents();
     ui->tableWidget->setRowCount(0);
-
     if(file.open(QFile::ReadOnly))
     {
         QTextStream stream(&file);
@@ -194,9 +191,63 @@ void confsetup::updateTableFromFile(int dir)
                 ui->tableWidget->setItem(ui->tableWidget->rowCount()-1, col, new QTableWidgetItem(values.at(col)));
             }
         }
-
+        ui->tableWidget->setColumnWidth(0,50);
+        ui->tableWidget->resizeRowsToContents();
     }
-    qDebug() << "File Close";
+    file.close();
+
+    module_name = "./conf/"+ list_dir.at(dir) + "/calibration.csv";
+    file.setFileName(module_name);
+    ui->tableWidget_2->clearContents();
+    ui->tableWidget_2->setRowCount(0);
+    if(file.open(QFile::ReadOnly))
+    {
+        QTextStream stream(&file);
+        // Discard First Line
+        stream.readLine();
+
+        while(!stream.atEnd())
+        {
+            values = stream.readLine().split(",");
+
+            ui->tableWidget_2->insertRow(ui->tableWidget_2->rowCount());
+            for(col = 0; col < values.length(); col++)
+            {
+                ui->tableWidget_2->setItem(ui->tableWidget_2->rowCount()-1, col, new QTableWidgetItem(values.at(col)));
+            }
+        }
+        ui->tableWidget_2->setColumnWidth(0,50);
+        ui->tableWidget_2->setColumnWidth(1,135);
+        ui->tableWidget_2->setColumnWidth(2,135);
+        ui->tableWidget_2->resizeRowsToContents();
+    }
+    file.close();
+
+    module_name = "./conf/"+ list_dir.at(dir) + "/alarms.csv";
+    file.setFileName(module_name);
+    ui->tableWidget_3->clearContents();
+    ui->tableWidget_3->setRowCount(0);
+    if(file.open(QFile::ReadOnly))
+    {
+        QTextStream stream(&file);
+        // Discard First Line
+        stream.readLine();
+
+        while(!stream.atEnd())
+        {
+            values = stream.readLine().split(",");
+
+            ui->tableWidget_3->insertRow(ui->tableWidget_3->rowCount());
+            for(col = 0; col < values.length(); col++)
+            {
+                ui->tableWidget_3->setItem(ui->tableWidget_3->rowCount()-1, col, new QTableWidgetItem(values.at(col)));
+            }
+        }
+        ui->tableWidget_3->setColumnWidth(0,50);
+        ui->tableWidget_3->setColumnWidth(1,135);
+        ui->tableWidget_3->setColumnWidth(2,135);
+        ui->tableWidget_3->resizeRowsToContents();
+    }
     file.close();
 
 }
@@ -250,4 +301,62 @@ void confsetup::on_save_changes_pushButton_clicked()
 void confsetup::on_closeButton_clicked()
 {
     this->close();
+}
+
+void confsetup::on_closeButton_2_clicked()
+{
+    //save and close
+    on_save_changes_pushButton_clicked();
+    on_save_changes_pushButton_2_clicked();
+    on_save_changes_pushButton_3_clicked();
+    this->close();
+}
+
+void confsetup::on_save_changes_pushButton_2_clicked()
+{
+
+}
+
+void confsetup::on_save_changes_pushButton_3_clicked()
+{
+
+}
+
+void confsetup::setScrollers()
+{
+    QScroller *scroller = QScroller::scroller(ui->tableWidget);
+    ui->tableWidget->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    ui->tableWidget->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    QScrollerProperties properties = QScroller::scroller(scroller)->scrollerProperties();
+    QVariant overshootPolicy = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy);
+    scroller->setScrollerProperties(properties);
+    properties.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, overshootPolicy);
+    scroller->setScrollerProperties(properties);
+    //Scrolling Gesture
+    scroller->grabGesture(ui->tableWidget,QScroller::LeftMouseButtonGesture);
+
+    QScroller *scroller_2 = QScroller::scroller(ui->tableWidget_2);
+    ui->tableWidget_2->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    ui->tableWidget_2->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    QScrollerProperties properties_2 = QScroller::scroller(scroller_2)->scrollerProperties();
+    QVariant overshootPolicy_2 = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties_2.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy_2);
+    scroller_2->setScrollerProperties(properties_2);
+    properties_2.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, overshootPolicy_2);
+    scroller_2->setScrollerProperties(properties_2);
+    //Scrolling Gesture
+    scroller_2->grabGesture(ui->tableWidget_2,QScroller::LeftMouseButtonGesture);
+
+    QScroller *scroller_3 = QScroller::scroller(ui->tableWidget_3);
+    ui->tableWidget_3->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    ui->tableWidget_3->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    QScrollerProperties properties_3 = QScroller::scroller(scroller_3)->scrollerProperties();
+    QVariant overshootPolicy_3 = QVariant::fromValue<QScrollerProperties::OvershootPolicy>(QScrollerProperties::OvershootAlwaysOff);
+    properties_3.setScrollMetric(QScrollerProperties::VerticalOvershootPolicy, overshootPolicy_3);
+    scroller_3->setScrollerProperties(properties_3);
+    properties_3.setScrollMetric(QScrollerProperties::HorizontalOvershootPolicy, overshootPolicy_3);
+    scroller_3->setScrollerProperties(properties_3);
+    //Scrolling Gesture
+    scroller_3->grabGesture(ui->tableWidget_3,QScroller::LeftMouseButtonGesture);
 }

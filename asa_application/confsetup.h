@@ -31,12 +31,18 @@ private slots:
 
     void on_closeButton_clicked();
 
+    void on_closeButton_2_clicked();
+
+    void on_save_changes_pushButton_2_clicked();
+
+    void on_save_changes_pushButton_3_clicked();
+
 private:
     Ui::confsetup *ui;
 
     uint actual_dir_number = 0xFF;
     QStringList list_dir;
-
+    void setScrollers();
     void updateDirList(void);
     void updateTableFromFile(int dir);
 };

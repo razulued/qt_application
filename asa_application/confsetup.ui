@@ -13,17 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>101</width>
-     <height>271</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="DirLayout"/>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
@@ -118,7 +110,7 @@ border: none;
 </string>
    </property>
    <property name="title">
-    <string>Acciones</string>
+    <string>SENSORES Y ACTUADORES</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
@@ -205,8 +197,8 @@ border-radius: 10px;
   <widget class="QPushButton" name="closeButton">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>560</y>
+     <x>700</x>
+     <y>570</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -224,8 +216,350 @@ border-radius: 3px;
 </string>
    </property>
    <property name="text">
-    <string>Cerrar</string>
+    <string>CANCELAR</string>
    </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>300</y>
+     <width>320</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>99</number>
+   </attribute>
+   <attribute name="horizontalHeaderHighlightSections">
+    <bool>true</bool>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Nombre</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Valor</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QGroupBox" name="ButtonBox_2">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>490</y>
+     <width>320</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border: none;
+}
+QPushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+   </property>
+   <property name="title">
+    <string>CALIBRACIONES</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="add_pushButton_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#add_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Agregar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="edit_pushButton_2">
+      <property name="styleSheet">
+       <string notr="true">#edit_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Editar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="remove_pushButton_2">
+      <property name="styleSheet">
+       <string notr="true">#remove_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Borrar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="save_changes_pushButton_2">
+      <property name="styleSheet">
+       <string notr="true">#save_changes_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="ButtonBox_3">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>490</y>
+     <width>320</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QGroupBox
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border: none;
+}
+QPushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+   </property>
+   <property name="title">
+    <string>ALERTAS</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <item>
+     <widget class="QPushButton" name="add_pushButton_3">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#add_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Agregar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="edit_pushButton_3">
+      <property name="styleSheet">
+       <string notr="true">#edit_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Editar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="remove_pushButton_3">
+      <property name="styleSheet">
+       <string notr="true">#remove_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Borrar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="save_changes_pushButton_3">
+      <property name="styleSheet">
+       <string notr="true">#save_changes_pushButton
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 10px;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="closeButton_2">
+   <property name="geometry">
+    <rect>
+     <x>532</x>
+     <y>570</y>
+     <width>151</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#closeButton_2
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 167, 250);
+border-radius: 3px;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>GUARDAR Y CERRAR</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>300</y>
+     <width>320</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>99</number>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>ID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Nombre</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Valor</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>111</width>
+     <height>541</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QFrame
+{
+background-color: black;
+color: rgb(0, 167, 250);
+border-width: 2px;
+border-style: solid;
+border-color: rgb(0, 200, 250);
+border-top: none;
+border-left: none;
+border-bottom: none;
+}</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <item>
+     <layout class="QVBoxLayout" name="DirLayout"/>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

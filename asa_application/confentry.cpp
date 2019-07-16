@@ -6,8 +6,22 @@ confentry::confentry(QWidget *parent) :
     ui(new Ui::confentry)
 {
     ui->setupUi(this);
+    QDoubleValidator *int32decimalValidator = new QDoubleValidator(-214748.3647,-214748.3648,4);
+    QDoubleValidator *raw32Validator = new QDoubleValidator(0,4294967295,0);
+
 
     ui->value_ID->setInputMask("HHHH");
+    ui->value_minShow->setValidator(int32decimalValidator);
+    ui->value_maxShow->setValidator(int32decimalValidator);
+    ui->value_minRaw->setValidator(raw32Validator);
+    ui->value_maxRaw->setValidator(raw32Validator);
+    ui->value_DataSize->setValidator(raw32Validator);
+
+    ui->value_const1->setValidator(int32decimalValidator);
+    ui->value_const2->setValidator(int32decimalValidator);
+    ui->value_const3->setValidator(int32decimalValidator);
+
+
     ui->value_ID->clear();
 
     //Hide window bars and buttons
