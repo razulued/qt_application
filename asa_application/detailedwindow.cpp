@@ -252,7 +252,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     alphabackground->lower();
     connect(alphabackground,SIGNAL(clicked()),this,SLOT(background_clicked()));
 
-
     ui->pushButton->setCheckable(true);
     if(get_id_state("0902").toInt() == 1)
     {
@@ -281,7 +280,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     }
 
     synch_output_state();
-
 
     rutinas_ptr = rutina;
 
@@ -412,6 +410,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
 
     reschedule_time = 0;
     init_completed = true;
+
 }
 
 detailedwindow::~detailedwindow()

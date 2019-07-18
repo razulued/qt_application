@@ -190,106 +190,60 @@ MainWindow::MainWindow(QWidget *parent) :
 
     configuration *config;
 
-    config = new configuration("Carcamo-Electricos");
-    conf_car_elect = config->get_config();
-    config = new configuration("Carcamo-Fisicos");
-    conf_car_fisic = config->get_config();
-    config = new configuration("Carcamo-Quimicos");
-    conf_car_quimic = config->get_config();
+    conf_car_elect = configuration::get_id_conf_from_module("Carcamo", PARAMETER_ELECTRIC);
+    conf_car_fisic = configuration::get_id_conf_from_module("Carcamo", PARAMETER_PHYSICAL);
+    conf_car_quimic = configuration::get_id_conf_from_module("Carcamo", PARAMETER_CHEMICAL);
+    car_outputs = configuration::get_id_conf_from_module("Carcamo", PARAMETER_OUTPUT);
 
-    config = new configuration("Regulador-Electricos");
-    conf_reg_elect = config->get_config();
-    config = new configuration("Regulador-Fisicos");
-    conf_reg_fisic = config->get_config();
-    config = new configuration("Regulador-Quimicos");
-    conf_reg_quimic = config->get_config();
+    conf_reg_elect = configuration::get_id_conf_from_module("Regulador", PARAMETER_ELECTRIC);
+    conf_reg_fisic = configuration::get_id_conf_from_module("Regulador", PARAMETER_PHYSICAL);
+    conf_reg_quimic = configuration::get_id_conf_from_module("Regulador", PARAMETER_CHEMICAL);
+    reg_outputs = configuration::get_id_conf_from_module("Regulador", PARAMETER_OUTPUT);
 
-    config = new configuration("Reactor-Electricos");
-    conf_react_elect = config->get_config();
-    config = new configuration("Reactor-Fisicos");
-    conf_react_fisic = config->get_config();
-    config = new configuration("Reactor-Quimicos");
-    conf_react_quimi = config->get_config();
+    conf_react_elect = configuration::get_id_conf_from_module("Reactor", PARAMETER_ELECTRIC);
+    conf_react_fisic = configuration::get_id_conf_from_module("Reactor", PARAMETER_PHYSICAL);
+    conf_react_quimi = configuration::get_id_conf_from_module("Reactor", PARAMETER_CHEMICAL);
+    react_outputs = configuration::get_id_conf_from_module("Reactor", PARAMETER_OUTPUT);
 
-    config = new configuration("Clarificador-Electricos");
-    conf_clarif_elect = config->get_config();
-    config = new configuration("Clarificador-Fisicos");
-    conf_clarif_fisic = config->get_config();
-    config = new configuration("Clarificador-Quimicos");
-    conf_clarif_quimi = config->get_config();
+    conf_clarif_elect = configuration::get_id_conf_from_module("Clarificador", PARAMETER_ELECTRIC);
+    conf_clarif_fisic = configuration::get_id_conf_from_module("Clarificador", PARAMETER_PHYSICAL);
+    conf_clarif_quimi = configuration::get_id_conf_from_module("Clarificador", PARAMETER_CHEMICAL);
+    clarif_outputs = configuration::get_id_conf_from_module("Clarificador", PARAMETER_OUTPUT);
 
-    config = new configuration("Clorador-Electricos");
-    conf_clora_elect = config->get_config();
-    config = new configuration("Clorador-Fisicos");
-    conf_clora_fisic = config->get_config();
-    config = new configuration("Clorador-Quimicos");
-    conf_clora_quimi = config->get_config();
+    conf_clora_elect = configuration::get_id_conf_from_module("Clorador", PARAMETER_ELECTRIC);
+    conf_clora_fisic = configuration::get_id_conf_from_module("Clorador", PARAMETER_PHYSICAL);
+    conf_clora_quimi = configuration::get_id_conf_from_module("Clorador", PARAMETER_CHEMICAL);
+    clora_outputs = configuration::get_id_conf_from_module("CARCAMO", PARAMETER_OUTPUT);
 
-    config = new configuration("Digestor-Electricos");
-    conf_digest_elect = config->get_config();
-    config = new configuration("Digestor-Fisicos");
-    conf_digest_fisic = config->get_config();
-    config = new configuration("Digestor-Quimicos");
-    conf_digest_quimi = config->get_config();
+    conf_digest_elect = configuration::get_id_conf_from_module("Digestor", PARAMETER_ELECTRIC);
+    conf_digest_fisic = configuration::get_id_conf_from_module("Digestor", PARAMETER_PHYSICAL);
+    conf_digest_quimi = configuration::get_id_conf_from_module("Digestor", PARAMETER_CHEMICAL);
+    digest_outputs = configuration::get_id_conf_from_module("Digestor", PARAMETER_OUTPUT);
 
-    config = new configuration("Deshidratador-Electricos");
-    conf_deshid_elect = config->get_config();
-    config = new configuration("Deshidratador-Fisicos");
-    conf_deshid_fisic = config->get_config();
-    config = new configuration("Deshidratador-Quimicos");
-    conf_deshid_quimi = config->get_config();
+    conf_deshid_elect = configuration::get_id_conf_from_module("Deshidratador", PARAMETER_ELECTRIC);
+    conf_deshid_fisic = configuration::get_id_conf_from_module("Deshidratador", PARAMETER_PHYSICAL);
+    conf_deshid_quimi = configuration::get_id_conf_from_module("Deshidratador", PARAMETER_CHEMICAL);
+    deshid_outputs = configuration::get_id_conf_from_module("Deshidratador", PARAMETER_OUTPUT);
 
-    config = new configuration("Afluente-Electricos");
-    conf_afluente_elect = config->get_config();
-    config = new configuration("Afluente-Fisicos");
-    conf_afluente_fisic = config->get_config();
-    config = new configuration("Afluente-Quimicos");
-    conf_afluente_quimi = config->get_config();
+    conf_afluente_elect = configuration::get_id_conf_from_module("Afluente", PARAMETER_ELECTRIC);
+    conf_afluente_fisic = configuration::get_id_conf_from_module("Afluente", PARAMETER_PHYSICAL);
+    conf_afluente_quimi = configuration::get_id_conf_from_module("Afluente", PARAMETER_CHEMICAL);
+    afluente_outputs = configuration::get_id_conf_from_module("Afluente", PARAMETER_OUTPUT);
 
-    config = new configuration("Efluente-Electricos");
-    conf_efluente_elect = config->get_config();
-    config = new configuration("Efluente-Fisicos");
-    conf_efluente_fisic = config->get_config();
-    config = new configuration("Efluente-Quimicos");
-    conf_efluente_quimi = config->get_config();
+    conf_efluente_elect = configuration::get_id_conf_from_module("Efluente", PARAMETER_ELECTRIC);
+    conf_efluente_fisic = configuration::get_id_conf_from_module("Efluente", PARAMETER_PHYSICAL);
+    conf_efluente_quimi = configuration::get_id_conf_from_module("Efluente", PARAMETER_CHEMICAL);
+    efluente_outputs = configuration::get_id_conf_from_module("Efluente", PARAMETER_OUTPUT);
 
-    config = new configuration("Filtro-Electricos");
-    conf_filtro_elect = config->get_config();
-    config = new configuration("Filtro-Fisicos");
-    conf_filtro_fisic = config->get_config();
-    config = new configuration("Filtro-Quimicos");
-    conf_filtro_quimi = config->get_config();
+    conf_filtro_elect = configuration::get_id_conf_from_module("Filtro", PARAMETER_ELECTRIC);
+    conf_filtro_fisic = configuration::get_id_conf_from_module("Filtro", PARAMETER_PHYSICAL);
+    conf_filtro_quimi = configuration::get_id_conf_from_module("Filtro", PARAMETER_CHEMICAL);
+    filtro_outputs = configuration::get_id_conf_from_module("Filtro", PARAMETER_OUTPUT);
 
-    config = new configuration("Filtro-Bomba-Electricos");
-    conf_filtro_bomba_elect = config->get_config();
-    config = new configuration("Filtro-Bomba-Fisicos");
-    conf_filtro_bomba_fisic = config->get_config();
-    config = new configuration("Filtro-Bomba-Quimicos");
-    conf_filtro_bomba_quimi = config->get_config();
-
-    //Get outputs
-    config = new configuration("Carcamo-Out");
-    car_outputs = config->get_config();
-    config = new configuration("Regulador-Out");
-    reg_outputs = config->get_config();
-    config = new configuration("Reactor-Out");
-    react_outputs = config->get_config();
-    config = new configuration("Clarificador-Out");
-    clarif_outputs = config->get_config();
-    config = new configuration("Clorador-Out");
-    clora_outputs = config->get_config();
-    config = new configuration("Digestor-Out");
-    digest_outputs = config->get_config();
-    config = new configuration("Deshidratador-Out");
-    deshid_outputs = config->get_config();
-    config = new configuration("Afluente-Out");
-    afluente_outputs = config->get_config();
-    config = new configuration("Efluente-Out");
-    efluente_outputs = config->get_config();
-    config = new configuration("Filtro-Out");
-    filtro_outputs = config->get_config();
-    config = new configuration("Filtro-Bomba-Out");
-    filtro_bomba_outputs = config->get_config();
+    conf_filtro_bomba_elect = configuration::get_id_conf_from_module("Filtro Bomba", PARAMETER_ELECTRIC);
+    conf_filtro_bomba_fisic = configuration::get_id_conf_from_module("Filtro Bomba", PARAMETER_PHYSICAL);
+    conf_filtro_bomba_quimi = configuration::get_id_conf_from_module("Filtro Bomba", PARAMETER_CHEMICAL);
+    filtro_bomba_outputs = configuration::get_id_conf_from_module("Filtro Bomba", PARAMETER_OUTPUT);
 
     config = new configuration("Product-Config");
     if("1" == config->get_value("Product-Config", "Filtro"))

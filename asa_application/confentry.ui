@@ -1775,22 +1775,27 @@ background-color: none;
         </property>
         <item>
          <property name="text">
-          <string>In/Fisico</string>
+          <string>0: Ninguno</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>In/Quimico</string>
+          <string>1: In/Electrico</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>In/Electrico</string>
+          <string>2: In/Fisico</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Out/Motor/Bomba</string>
+          <string>3: In/Quimico</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4: Out/Motor/Bomba</string>
          </property>
         </item>
        </widget>

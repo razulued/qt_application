@@ -152,6 +152,8 @@ void custom_tooltip::update_data()
 
         if(true == getParamActiveShow(param_id))
         {
+            qDebug() << "EL ID:" << param_id;
+
             label = new QListWidgetItem(NameList[i] + ": " + getParamValue_and_units(param_id));
 //            label->setTextFormat(Qt::RichText);
 

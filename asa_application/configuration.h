@@ -9,6 +9,15 @@ typedef struct
     QList<QString> ids_string;
 }configuration_id;
 
+typedef enum
+{
+    PARAMETER_NONE,
+    PARAMETER_ELECTRIC,
+    PARAMETER_PHYSICAL,
+    PARAMETER_CHEMICAL,
+    PARAMETER_OUTPUT
+}elemnt_type;
+
 class configuration
 {
 public:
@@ -20,6 +29,7 @@ public:
     QString get_value(const QString &name, const QString &key);
     void saveSettings(const QString &name, const QString &key, const QString &value);
     configuration_id get_config();
+    static configuration_id get_id_conf_from_module(QString name, elemnt_type type);
 
 private:
     configuration_id process_conf;

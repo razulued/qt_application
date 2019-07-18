@@ -24,6 +24,7 @@ QString get_units_longitud(void);
 QString get_units_presion(void);
 QString get_units_caudal(void);
 QString get_units_tiempo(void);
+
 typedef struct
 {
     uint id;
@@ -31,7 +32,6 @@ typedef struct
     void (*receive_hanlder) (QString str);
     QString (*conversion_hanlder) (QString str, uint param1);
     QString (*inverse_hanlder) (QString str, uint param1);
-
     uint param1;
     QString units;
 }ASA_protocol_element_t;

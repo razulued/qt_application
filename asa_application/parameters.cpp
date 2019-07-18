@@ -180,7 +180,7 @@ QString invese_getParamValue(unsigned int id, float_t value)
 
 QString getParamValue_and_units(unsigned int id)
 {
-    return get_value_by_ID(id) + get_value_units(id);
+    return get_value_by_ID(id) + " " +get_value_units(id);
 }
 
 bool getParamActiveShow(unsigned int id)
