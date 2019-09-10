@@ -102,7 +102,7 @@ void calendar::background_clicked()
 
 void calendar::on_push_aceptar_clicked()
 {
-//    qDebug() << "hora " << ui->listWidget->row(ui->listWidget->selectedItems().at(0)) << "date " << ui->calendarWidget->selectedDate();
+    qDebug() << "aquimero " << ui->listWidget->row(ui->listWidget->selectedItems().at(0)) << "date " << ui->calendarWidget->selectedDate();
 
     //Build date time
     QDateTime datetime;

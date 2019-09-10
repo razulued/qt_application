@@ -778,8 +778,9 @@ void detailedwindow::on_key_Reschedule_clicked()
             break;
         }
     }
+    qDebug() << "a ver wero";
     calendar_window = new calendar(MainWindow::time, periodo, this);
-    connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate)), this, SLOT(receive_date(uint,QDate)));
+    connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate, QDateTime)), this, SLOT(receive_date(uint,QDate, QDateTime)));
 
 
     has_activity = true;
@@ -1710,13 +1711,36 @@ void detailedwindow::checkActivity()
     }
 }
 
-void detailedwindow::receive_date(uint hora, QDate date)
+void detailedwindow::receive_date(uint hora, QDate date, QDateTime datetime)
 {
+//    QDateTime *temp = new QDateTime(date);
+//    ui->label_horas->setText(date.toString("yyyy-MM-dd") + " " + QString::number(hora) + ":00");
+
+//    *temp = temp->addSecs(60 * 60 * hora);
+//    reschedule_time = temp->toTime_t();
+//    delete temp;
+
+
     QDateTime *temp = new QDateTime(date);
     ui->label_horas->setText(date.toString("yyyy-MM-dd") + " " + QString::number(hora) + ":00");
 
+    const QTimeZone zone("UTC-06:00");
+    datetime.setTimeZone(zone);
+
     *temp = temp->addSecs(60 * 60 * hora);
-    reschedule_time = temp->toTime_t();
+    reschedule_time = datetime.toTime_t();
+
+    if(reschedule_time < MainWindow::time.toTime_t())
+    {
+        ui->label_horas->setText("");
+        ui->key_OK->setText(tr("Completado"));
+        selected_id = 0;
+        reschedule_time = 0;
+    }
+    else
+    {
+        ui->key_OK->setText(tr("Reagendar"));
+    }
     delete temp;
 }
 

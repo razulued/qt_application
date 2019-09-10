@@ -145,7 +145,7 @@ private slots:
 
     void checkActivity();
 
-    void receive_date(uint hora, QDate date);
+    void receive_date(uint hora, QDate date, QDateTime datetime);
 
     void on_comboBox_currentIndexChanged(int index);
 
