@@ -1,4 +1,4 @@
-#include "asa_protocol.h"
+#include "protocol/asa_protocol.h"
 #include <QHash>
 #include <QDebug>
 #include <QMutex>
@@ -37,16 +37,6 @@ QHash<uint, data_conf_t> hash_conf;
 
 QHash<uint, QVariant> hash_values;
 QMutex data_mutex;
-
-QString units_longitud;
-QString units_presion;
-QString units_caudal;
-QString units_tiempo;
-
-float factor_longitud;
-float factor_presion;
-float factor_caudal;
-float factor_tiempo;
 
 void init_hash_table()
 {
@@ -104,101 +94,7 @@ void init_hash_table()
 
 void ASA_protocol_init()
 {
-    uint i = 0;
-
     init_hash_table();
-
-    QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
-    conf.sync();
-    conf.beginGroup("Units");
-    switch(conf.value("longitud").toInt())
-    {
-        case 1:
-            units_longitud = "cm";
-            factor_longitud = 100;
-        break;
-        case 2:
-            units_longitud = "ft";
-            factor_longitud = 3.28;
-        break;
-        default:
-        case 0:
-            units_longitud = "m";
-            factor_longitud = 1;
-        break;
-    }
-
-    switch(conf.value("presion").toInt())
-    {
-        case 1:
-            units_presion = "kg/cm²";
-            factor_presion = 0.0703;
-        break;
-        case 2:
-            units_presion = "Bar";
-            factor_presion = 0.0689;
-        break;
-        case 3:
-            units_presion ="m.c.a";
-            factor_presion = 0.703;
-        break;
-        default:
-        case 0:
-            units_presion = "PSI";
-            factor_presion = 1;
-        break;
-    }
-
-    switch(conf.value("caudal").toInt())
-    {
-        case 1:
-            units_caudal = "l/m";
-            factor_caudal = 1;
-        break;
-        case 2:
-            units_caudal = "l/h";
-            factor_caudal = 60;
-        break;
-        case 3:
-            units_caudal = "gal/s";
-            factor_caudal = 0.0044;
-        break;
-        case 4:
-            units_caudal = "gal/m";
-            factor_caudal = 0.264;
-        break;
-        case 5:
-            units_caudal = " gal/h";
-            factor_caudal = 15.84;
-        break;
-        case 6:
-            units_caudal = "m³/h";
-            factor_caudal = 0.004616;
-        break;
-        default:
-        case 0:
-            units_caudal = "l/s";
-            factor_caudal = 0.0167;
-        break;
-    }
-
-    switch(conf.value("tiempo").toInt())
-    {
-        case 1:
-            units_tiempo = "min";
-            factor_tiempo = 60;
-        break;
-        case 2:
-            units_tiempo = "h";
-            factor_tiempo = 3600;
-        break;
-        default:
-        case 0:
-            units_tiempo = "s";
-            factor_tiempo = 1;
-        break;
-    }
-    conf.endGroup();
 
     load_active_parameters();
 }
@@ -255,16 +151,6 @@ QString get_value_by_ID(uint id)
         str = hash_values[id].value<QString>();
     }
 
-//    str = supported_ASA_IDs[index].conversion_hanlder(hash_values[id].value<QString>(), supported_ASA_IDs[index].param1);
-
-//    //Apply scale by units for non-pass thrus or hex to ints
-//    if(supported_ASA_IDs[index].conversion_hanlder != conv_none_or_passthru &&
-//       supported_ASA_IDs[index].conversion_hanlder != conv_hex_to_int)
-//    {
-//        float number = str.toFloat();
-//        str = units_scale(id, number);
-//    }
-
     data_mutex.unlock();
 
     return str;
@@ -273,7 +159,6 @@ QString get_value_by_ID(uint id)
 QString get_value_by_ID_base_units(uint id)
 {
     QString str;
-    uint index = 0;
     //Debug
     data_mutex.lock();
     //Return value as RAW
@@ -306,56 +191,6 @@ QString get_value_units(uint id)
     data_mutex.unlock();
 
     return str;
-}
-
-QString units_scale(uint id, float value)
-{
-    float val;
-    uint index = 0;
-    //Index in table (for conversions)
-    index = 0;
-    //May not be needed
-//    if(supported_ASA_IDs[index].units == "longitud")
-//    {
-//        val = value * factor_longitud;
-//    }
-//    else if(supported_ASA_IDs[index].units == "presion")
-//    {
-//        val = value * factor_presion;
-//    }
-//    else if(supported_ASA_IDs[index].units == "caudal")
-//    {
-//        val = value * factor_caudal;
-//    }
-//    else if(supported_ASA_IDs[index].units == "tiempo")
-//    {
-//        val = value * factor_tiempo;
-//    }
-//    else
-//    {
-//        val = value;
-//    }
-    return QString::number(val,'f',2);
-}
-
-QString get_units_longitud(void)
-{
-    return units_longitud;
-}
-
-QString get_units_presion(void)
-{
-    return units_presion;
-}
-
-QString get_units_caudal(void)
-{
-    return units_caudal;
-}
-
-QString get_units_tiempo(void)
-{
-    return units_tiempo;
 }
 
 QString get_RAW_value_by_ID(uint id)

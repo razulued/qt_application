@@ -1,9 +1,7 @@
 #include "dataproccess.h"
 #include <QDebug>
 #include "parameters.h"
-#include "asa_protocol.h"
-#include "mainwindow.h"
-#include "build_settings.h"
+#include "protocol/asa_protocol.h"
 #include "build_settings.h"
 
 DataProccess::DataProccess(QObject *parent)
@@ -47,7 +45,7 @@ void DataProccess::run()
 
     while(1)
     {
-        if(false == MainWindow::simulation)
+        if(/*false == MainWindow::simulation*/1)
         {
 #if (1 == RELEASE_FOR_RPI)
 
@@ -58,7 +56,6 @@ void DataProccess::run()
         }
         else
         {
-            this->dataRandom();
             QThread::msleep(1000);
         }
         spi_read_completed();
@@ -128,7 +125,7 @@ void DataProccess::dataSPI()
             realParameters = ID_Parameters[i].split(":");
 
 //#if USE_SIM
-            if(MainWindow::demo_mode_enabled == true)
+            if(0 == true)
             {
                 if( 0x3301  == intString2Int(realParameters[0]) ||
                 0x3305  == intString2Int(realParameters[0]) ||
@@ -162,7 +159,7 @@ void DataProccess::dataSPI()
             }
         }
 
-        if(MainWindow::demo_mode_enabled == true)
+        if(0 == true)
         {
     //    #if USE_SIM
             uint val;
@@ -259,84 +256,7 @@ void DataProccess::dataSPI()
     }
 }
 
-void DataProccess::dataRandom()
-{
-//    int i = 0;
-//    uint random = 0;
-//    static int count = 0;
-//    //Add here IDs to generate random numbers
-//    QList<int> id_list = QList<int>() << 0x3001 << 0x3002 << 0x3003 << 0x3004 << 0x3005 << 0x3006
-//                                      << 0x3203 << 0x4203 << 0x5201 << 0x3201 << 0x4204 << 0x8204
-//                                      << 0x3307 << 0x3305 << 0x3303 << 0x3301 << 0x5307 << 0x5305 << 0x5303 << 0x5301;
 
-//    for(i = 0; i < id_list.size(); i++)
-//    {
-//        store_value_by_ID(id_list.at(i), QString::number(random));
-//    }
-
-//    store_value_by_ID((0x3201), "64");
-//    if(0 == count)
-//    {
-//        count = 1;
-//        store_value_by_ID((0x3000), "1");
-//    }
-//    else
-//    {
-//        count = 0;
-//        store_value_by_ID(0x3000, "1");
-//    }
-////    qDebug() << "count " << count;
-///
-//    store_value_by_ID(0x4000, "3");
-//    store_value_by_ID(0x4010, "3");
-//    store_value_by_ID(0x4020, "3");
-//    store_value_by_ID(0x4030, "3");
-
-//    store_value_by_ID(0x3000, "1");
-//    store_value_by_ID(0x3010, "3");
-//    store_value_by_ID(0x3020, "3");
-//    store_value_by_ID(0x3030, "3");
-
-//    store_value_by_ID(0x4001, "5DC");
-//    store_value_by_ID(0x3004, "4B0");
-
-//    // /100
-//    store_value_by_ID(0x3400, "96");
-//    store_value_by_ID(0x3401, "FA");
-//    store_value_by_ID(0x3402, "15E");
-//    store_value_by_ID(0x3403, "1C2");
-//    // /1
-//    store_value_by_ID(0x3501, "226");
-//    store_value_by_ID(0x3502, "28A");
-
-//    // / 100
-//    store_value_by_ID(0x4400, "12C");
-//    store_value_by_ID(0x4401, "258");
-
-//    // /1
-//    store_value_by_ID(0x4501, "25");
-//    store_value_by_ID(0x4502, "50");
-
-//    // /1
-//    store_value_by_ID(0x4540, "75");
-//    store_value_by_ID(0x9203, "1F4");
-
-//    //presion
-//    store_value_by_ID(0x5400, "123");
-//    store_value_by_ID(0x5401, "123");
-
-//    // /10
-//    store_value_by_ID(0x9400, "12C");
-//    store_value_by_ID(0x9401, "258");
-//    store_value_by_ID(0x9402, "2BC");
-
-//    // /10
-//    store_value_by_ID(0x9403, "64");
-
-//    // /1
-//    store_value_by_ID(0x9501, "10");
-//    store_value_by_ID(0x9502,
-}
 
 QList<double> DataProccess::getDataProcessing()
 {

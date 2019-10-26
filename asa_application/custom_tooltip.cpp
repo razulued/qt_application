@@ -1,5 +1,5 @@
 #include "custom_tooltip.h"
-#include "asa_protocol.h"
+#include "protocol/asa_protocol.h"
 #include "parameters.h"
 #include <QDebug>
 #include <QMimeData>
@@ -14,8 +14,7 @@ QPoint offset;
 
 uint custom_tooltip::tooltip_number = 0;
 
-custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list,
-                               QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin) : QWidget(frame)
+custom_tooltip::custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin) : QWidget(frame)
 {
 
     element_type = type;
@@ -46,11 +45,8 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
 
     connect(list_widget, SIGNAL(itemPressed(QListWidgetItem*)),this, SLOT (ListPressed()));
 
-    DataList = list;
-    NameList = names;
-
-    OutDataList = out_list;
-    OutNameList = out_names;
+    DataList = conf_list.ids;
+    NameList = conf_list.names;
 
     item_is_pressed = false;
 
@@ -311,12 +307,12 @@ void custom_tooltip::checkClick()
         if(item_is_pressed == false)
         {
             //Emit signal for graph
-            if(graph_ptr->isHidden())
-            {
-                graph_ptr->show_graph(element_type);
-                graph_ptr->set_type(graph_origin);
-                graph_ptr->set_graph_span(0);
-            }
+//            if(graph_ptr->isHidden())
+//            {
+//                graph_ptr->show_graph(element_type);
+//                graph_ptr->set_type(graph_origin);
+//                graph_ptr->set_graph_span(0);
+//            }
         }
         else
         {

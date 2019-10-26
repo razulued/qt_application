@@ -38,7 +38,6 @@ void toggleParamActiveShow(unsigned int id);
 QHash<uint,uint> load_active_parameters();
 
 void InitRandomParameters();
-void run_simulation();
 
 void write_parameter(QString filename, uint value);
 uint load_parameter(QString filename);

@@ -1,7 +1,7 @@
 #ifndef ASA_CONF_STRING_H
 #define ASA_CONF_STRING_H
 #include <Qt>
-#include "configuration.h"
+#include "configuration/configuration.h"
 
 void init_plat_config();
 QString build_string(configuration_id *conf);

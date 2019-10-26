@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql charts
+QT       += core gui sql charts network
 
 LIBS += -lQt5Charts
 
@@ -15,86 +15,73 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    detailedwindow.cpp \
     multistatebutton.cpp \
-    bcm2835.c \
-    parameters.cpp \
     spicomm.cpp \
     my_crc_api.cpp \
     dataproccess.cpp \
     custom_tooltip.cpp \
-    settings.cpp \
-    configuration.cpp \
-    bitacora.cpp \
     rutinas_mantenimiento.cpp \
-    mod_1_carcamo.cpp \
-    mod_2_reactor.cpp \
-    mod_3_clarificador.cpp \
-    mod_4_clorador.cpp \
-    mod_5_digestor.cpp \
-    mod_flechas.cpp \
-    mod_6_lechos.cpp \
-    asa_protocol.cpp \
-    asa_conversions.cpp \
     clickeablelabel.cpp \
-    login_dialog.cpp \
     token_auth.cpp \
-    asa_conf_string.cpp \
-    graphwindow.cpp \
     statistics.cpp \
-    arrowkeys.cpp \
-    simulation_input.cpp \
-    motores.cpp \
-    filtrowindow.cpp \
-    change_text.cpp \
-    calendar.cpp \
-    contacto.cpp \
-    earm_update.cpp \
-    stop_button.cpp \
-    records.cpp \
-    calendario_filtro.cpp \
-    record_chart.cpp \
     sql_cmd_manager.cpp \
     chart.cpp \
-    screen_saver.cpp \
     build_settings.cpp \
-    mod_1_regulador.cpp \
-    confsetup.cpp \
-    confentry.cpp
+    spline_chart.cpp \
+    spi_lib/bcm2835.c \
+    protocol/asa_conf_string.cpp \
+    protocol/asa_conversions.cpp \
+    protocol/asa_protocol.cpp \
+    animated/mod_1_carcamo.cpp \
+    animated/mod_1_regulador.cpp \
+    animated/mod_2_reactor.cpp \
+    animated/mod_3_clarificador.cpp \
+    animated/mod_4_clorador.cpp \
+    animated/mod_5_digestor.cpp \
+    animated/mod_6_lechos.cpp \
+    animated/mod_flechas.cpp \
+    protocol/parameters.cpp \
+    configuration/configuration.cpp \
+    screens/mainwindow.cpp \
+    screens/filtrowindow.cpp \
+    screens/graphwindow.cpp \
+    screens/detailedwindow.cpp \
+    screens/arrowkeys.cpp \
+    screens/bitacora.cpp \
+    screens/calendar.cpp \
+    screens/calendario_filtro.cpp \
+    screens/change_text.cpp \
+    screens/contacto.cpp \
+    screens/motores.cpp \
+    screens/record_chart.cpp \
+    screens/records.cpp \
+    screens/screen_saver.cpp \
+    screens/settings.cpp \
+    screens/simulation_input.cpp \
+    screens/stop_button.cpp \
+    screens/login_dialog.cpp \
+    screens/earm_update.cpp \
+    socket_client.cpp \
+    screens/confsetup.cpp \
+    screens/confentry.cpp
 
-HEADERS  += mainwindow.h \
-    detailedwindow.h \
+HEADERS  += \
     multistatebutton.h \
     parameters.h \
-    bcm2835.h \
     spicomm.h \
     my_crc_api.h \
     dataproccess.h \
     custom_tooltip.h \
     settings.h \
-    configuration.h \
     bitacora.h \
     rutinas_mantenimiento.h \
-    mod_1_carcamo.h \
-    mod_2_reactor.h \
-    mod_3_clarificador.h \
-    mod_4_clorador.h \
-    mod_5_digestor.h \
-    mod_flechas.h \
-    mod_6_lechos.h \
-    asa_protocol.h \
-    asa_conversions.h \
     clickeablelabel.h \
     login_dialog.h \
     token_auth.h \
-    asa_conf_string.h \
-    graphwindow.h \
     statistics.h \
     arrowkeys.h \
     simulation_input.h \
     motores.h \
-    filtrowindow.h \
     change_text.h \
     calendar.h \
     contacto.h \
@@ -107,9 +94,27 @@ HEADERS  += mainwindow.h \
     sql_cmd_manager.h \
     chart.h \
     screen_saver.h \
-    mod_1_regulador.h \
-    confsetup.h \
-    confentry.h
+    spline_chart.h \
+    spi_lib/bcm2835.h \
+    protocol/asa_conf_string.h \
+    protocol/asa_conversions.h \
+    protocol/asa_protocol.h \
+    animated/mod_1_carcamo.h \
+    animated/mod_1_regulador.h \
+    animated/mod_2_reactor.h \
+    animated/mod_3_clarificador.h \
+    animated/mod_4_clorador.h \
+    animated/mod_5_digestor.h \
+    animated/mod_6_lechos.h \
+    animated/mod_flechas.h \
+    configuration/configuration.h \
+    screens/filtrowindow.h \
+    screens/detailedwindow.h \
+    screens/graphwindow.h \
+    screens/mainwindow.h \
+    socket_client.h \
+    screens/confsetup.h \
+    screens/confentry.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -143,3 +148,6 @@ INSTALLS = target
 
 target.files = asa_application
 target.path = /home/pi
+
+DISTFILES += \
+    ptar_client/Nuevo documento de texto.txt

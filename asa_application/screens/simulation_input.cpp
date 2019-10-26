@@ -1,8 +1,8 @@
 #include "simulation_input.h"
 #include "ui_simulation_input.h"
-#include "asa_protocol.h"
+#include "protocol/asa_protocol.h"
 #include "dataproccess.h"
-#include "asa_conf_string.h"
+#include "protocol/asa_conf_string.h"
 
 //#define USE_SIM (1)
 QDateTime simulation_input::simDateTime;

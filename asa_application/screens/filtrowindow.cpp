@@ -54,9 +54,9 @@ filtrowindow::filtrowindow(bool active_params, parameters_t param, QString dia, 
     {
         delete graph;
     }
-    graph = new graphwindow(this);
-    connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
-    connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
+//    graph = new graphwindow(this);
+//    connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
+//    connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
 
     //Setup Buttons and link to images
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
@@ -165,19 +165,13 @@ void filtrowindow::handleParametrosQuimicosButton()
 
 void filtrowindow::InitTooltips()
 {
-    tool_tip_filtro_electricos = new custom_tooltip(ui->widget, MainWindow::conf_filtro_elect.ids, MainWindow::conf_filtro_elect.names,
-                                      MainWindow::filtro_outputs.ids, MainWindow::MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_filtro_fisicos = new custom_tooltip(ui->widget_2, MainWindow::conf_filtro_fisic.ids,  MainWindow::conf_filtro_fisic.names,
-                                                 MainWindow::filtro_outputs.ids, MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_filtro_quimicos = new custom_tooltip(ui->widget_3, MainWindow::conf_filtro_quimi.ids, MainWindow::conf_filtro_quimi.names,
-                                                  MainWindow::filtro_outputs.ids, MainWindow::filtro_outputs.names, this, ui->modulo_1, TYPE_QUIMICOS, graph,  this->my_name);
+    tool_tip_filtro_electricos  = new custom_tooltip(ui->widget,   configuration::conf_filtro_elect, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_filtro_fisicos     = new custom_tooltip(ui->widget_2, configuration::conf_filtro_fisic, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_filtro_quimicos    = new custom_tooltip(ui->widget_3, configuration::conf_filtro_quimi, this, ui->modulo_1, TYPE_QUIMICOS, graph,  this->my_name);
 
-    tool_tip_filtro_bomba_electricos = new custom_tooltip(ui->widget_4, MainWindow::conf_filtro_bomba_elect.ids, MainWindow::conf_filtro_bomba_elect.names,
-                                      MainWindow::filtro_bomba_outputs.ids, MainWindow::MainWindow::filtro_bomba_outputs.names, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_filtro_bomba_fisicos = new custom_tooltip(ui->widget_5, MainWindow::conf_filtro_bomba_fisic.ids,  MainWindow::conf_filtro_bomba_fisic.names,
-                                                 MainWindow::filtro_bomba_outputs.ids, MainWindow::filtro_bomba_outputs.names, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_filtro_bomba_quimicos = new custom_tooltip(ui->widget_6, MainWindow::conf_filtro_bomba_quimi.ids, MainWindow::conf_filtro_bomba_quimi.names,
-                                                  MainWindow::filtro_bomba_outputs.ids, MainWindow::filtro_bomba_outputs.names, this, ui->modulo_2, TYPE_QUIMICOS, graph,  this->my_name);
+    tool_tip_filtro_bomba_electricos = new custom_tooltip(ui->widget_4, configuration::conf_filtro_bomba_elect, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_filtro_bomba_fisicos    = new custom_tooltip(ui->widget_5, configuration::conf_filtro_bomba_fisic, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_filtro_bomba_quimicos   = new custom_tooltip(ui->widget_6, configuration::conf_filtro_bomba_quimi, this, ui->modulo_2, TYPE_QUIMICOS, graph,  this->my_name);
 
     init_complete = true;
 }
@@ -290,10 +284,10 @@ void filtrowindow::update_other(QString dia, QString hora, QString user)
     }
 
     // Update graph if open
-    if(false == graph->isHidden())
-    {
-        graph->update_graph();
-    }
+//    if(false == graph->isHidden())
+//    {
+//        graph->update_graph();
+//    }
 }
 
 void filtrowindow::on_modulo_1_clicked()

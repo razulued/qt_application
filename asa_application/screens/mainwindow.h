@@ -8,18 +8,18 @@
 #include "parameters.h"
 #include "settings.h"
 #include "custom_tooltip.h"
-#include "configuration.h"
+#include "configuration/configuration.h"
 #include "bitacora.h"
 #include "rutinas_mantenimiento.h"
 
-#include "mod_1_carcamo.h"
-#include "mod_1_regulador.h"
-#include "mod_2_reactor.h"
-#include "mod_3_clarificador.h"
-#include "mod_4_clorador.h"
-#include "mod_5_digestor.h"
-#include "mod_6_lechos.h"
-#include "mod_flechas.h"
+#include "animated/mod_1_carcamo.h"
+#include "animated/mod_1_regulador.h"
+#include "animated/mod_2_reactor.h"
+#include "animated/mod_3_clarificador.h"
+#include "animated/mod_4_clorador.h"
+#include "animated/mod_5_digestor.h"
+#include "animated/mod_6_lechos.h"
+#include "animated/mod_flechas.h"
 #include "dataproccess.h"
 #include "graphwindow.h"
 #include "login_dialog.h"
@@ -52,61 +52,7 @@ public:
     ~MainWindow();
     void InitTooltips();
 
-    static configuration_id conf_car_elect;
-    static configuration_id conf_car_fisic;
-    static configuration_id conf_car_quimic;
 
-    static configuration_id conf_reg_elect;
-    static configuration_id conf_reg_fisic;
-    static configuration_id conf_reg_quimic;
-
-    static configuration_id conf_react_elect;
-    static configuration_id conf_react_fisic;
-    static configuration_id conf_react_quimi;
-
-    static configuration_id conf_clarif_elect;
-    static configuration_id conf_clarif_fisic;
-    static configuration_id conf_clarif_quimi;
-
-    static configuration_id conf_clora_elect;
-    static configuration_id conf_clora_fisic;
-    static configuration_id conf_clora_quimi;
-
-    static configuration_id conf_digest_elect;
-    static configuration_id conf_digest_fisic;
-    static configuration_id conf_digest_quimi;
-
-    static configuration_id conf_deshid_elect;
-    static configuration_id conf_deshid_fisic;
-    static configuration_id conf_deshid_quimi;
-
-    static configuration_id conf_afluente_elect;
-    static configuration_id conf_afluente_fisic;
-    static configuration_id conf_afluente_quimi;
-
-    static configuration_id conf_efluente_elect;
-    static configuration_id conf_efluente_fisic;
-    static configuration_id conf_efluente_quimi;
-
-    static configuration_id conf_filtro_elect;
-    static configuration_id conf_filtro_fisic;
-    static configuration_id conf_filtro_quimi;
-
-    static configuration_id conf_filtro_bomba_elect;
-    static configuration_id conf_filtro_bomba_fisic;
-    static configuration_id conf_filtro_bomba_quimi;
-
-    static configuration_id car_outputs;
-    static configuration_id reg_outputs;
-    static configuration_id react_outputs;
-    static configuration_id clarif_outputs;
-    static configuration_id clora_outputs;
-    static configuration_id digest_outputs;
-    static configuration_id deshid_outputs;
-    static configuration_id afluente_outputs;
-    static configuration_id efluente_outputs;
-    static configuration_id filtro_outputs;
-    static configuration_id filtro_bomba_outputs;
 
     static int reg_op_mode;
     static int reg_mot_1;

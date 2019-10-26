@@ -18,12 +18,6 @@ QString get_value_by_ID(uint id);
 QString get_value_by_ID_base_units(uint id);
 QString get_value_units(uint id);
 QString inverse_value_by_ID_base_units(uint id, float value);
-QString units_scale(uint id, float value);
-
-QString get_units_longitud(void);
-QString get_units_presion(void);
-QString get_units_caudal(void);
-QString get_units_tiempo(void);
 
 typedef struct
 {

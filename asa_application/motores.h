@@ -2,7 +2,7 @@
 #define MOTORES_H
 
 #include <QDialog>
-#include "configuration.h"
+#include "configuration/configuration.h"
 #include <QVBoxLayout>
 #include "login_dialog.h"
 #include <QCheckBox>

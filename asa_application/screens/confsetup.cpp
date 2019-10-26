@@ -306,9 +306,12 @@ void confsetup::on_closeButton_clicked()
 void confsetup::on_closeButton_2_clicked()
 {
     //save and close
-    on_save_changes_pushButton_clicked();
-    on_save_changes_pushButton_2_clicked();
-    on_save_changes_pushButton_3_clicked();
+    if(!list_dir.isEmpty())
+    {
+        on_save_changes_pushButton_clicked();
+        on_save_changes_pushButton_2_clicked();
+        on_save_changes_pushButton_3_clicked();
+    }
     this->close();
 }
 

@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QtCore>
-#include "configuration.h"
+#include "configuration/configuration.h"
 #include "rutinas_mantenimiento.h"
 #include <QTableWidgetItem>
 #include "login_dialog.h"

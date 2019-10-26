@@ -1,17 +1,32 @@
-#include "mainwindow.h"
+#include "screens/mainwindow.h"
 #include <QApplication>
 #include "build_settings.h"
 #include "QTranslator"
 #include "QSettings"
 #include "screen_saver.h"
+#include "protocol/asa_protocol.h"
+
+#include "configuration/configuration.h"
+#include "socket_client.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    // Load configuration
+    configuration *global_conf = new configuration("holo");
+
+    //Create screen saver
     screen_saver *saver = new screen_saver();
 
     //Load language
     QTranslator T;
+
+    //Create socket for communication
+    socket_client *socket = new socket_client();
+
+    ASA_protocol_init();
+
 
     QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
     conf.sync();

@@ -3,9 +3,10 @@
 #include <QCheckBox>
 #include <QSignalMapper>
 #include <QDebug>
-#include "asa_conf_string.h"
+#include "protocol/asa_conf_string.h"
 #include "token_auth.h"
 #include "mainwindow.h"
+#include "configuration/configuration.h"
 #include "clickeablelabel.h"
 #include "QMovie"
 
@@ -47,11 +48,11 @@ motores::motores(QWidget *parent) :
     }
 
     number_of_motors = 0;
-    module_init( &MainWindow::reg_outputs, ui->gridLayout);
-    module_init( &MainWindow::react_outputs, ui->gridLayout_2);
-    module_init( &MainWindow::filtro_outputs, ui->gridLayout_3);
-    module_init( &MainWindow::filtro_bomba_outputs, ui->gridLayout_4);
-    module_init( &MainWindow::car_outputs, ui->gridLayout_5);
+    module_init( &configuration::reg_outputs, ui->gridLayout);
+    module_init( &configuration::react_outputs, ui->gridLayout_2);
+    module_init( &configuration::filtro_outputs, ui->gridLayout_3);
+    module_init( &configuration::filtro_bomba_outputs, ui->gridLayout_4);
+    module_init( &configuration::car_outputs, ui->gridLayout_5);
 
     this->setObjectName("MyMotors");
     this->setStyleSheet("#MyMotors{background-color: black;"
@@ -116,11 +117,11 @@ motores::~motores()
 
 void motores::update_motors()
 {
-    module_update(&MainWindow::reg_outputs);
-    module_update(&MainWindow::react_outputs);
-    module_update(&MainWindow::filtro_outputs);
-    module_update(&MainWindow::filtro_bomba_outputs);
-    module_update(&MainWindow::car_outputs);
+    module_update(&configuration::reg_outputs);
+    module_update(&configuration::react_outputs);
+    module_update(&configuration::filtro_outputs);
+    module_update(&configuration::filtro_bomba_outputs);
+    module_update(&configuration::car_outputs);
     motor_index = 0;
 }
 

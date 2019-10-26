@@ -10,7 +10,7 @@
 #include <QString>
 #include <QScroller>
 #include <QScrollerProperties>
-#include "asa_protocol.h"
+#include "protocol/asa_protocol.h"
 
 QMutex g_mutex;
 
@@ -219,9 +219,9 @@ void graphwindow::show_graph(uint type)
     g_mutex.lock();
 
     //SET UNITS
-    ui->label_14->setText(tr("Gasto") + " " + "(" + get_units_caudal() + ")");
-    ui->label_19->setText(tr("Nivel") + " " + "(" +get_units_longitud() + ")");
-    ui->label_21->setText(tr("Presión") + " " + "(" + get_units_presion() + ")");
+    ui->label_14->setText(tr("Gasto") + " " + "(" + ")");
+    ui->label_19->setText(tr("Nivel") + " " + "(" + ")");
+    ui->label_21->setText(tr("Presión") + " " + "(" + ")");
 
     element_type = type;
 

@@ -19,7 +19,6 @@ signals:
 
 private:
     void dataSPI();
-    void dataRandom();
     QTimer dataTimer;
     QList<double> dataProccessing;
     SPICOMM* spiObj;

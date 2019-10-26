@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include "settings.h"
-#include "confsetup.h"
+#include "screens/confsetup.h"
 
 namespace Ui {
 class contacto;

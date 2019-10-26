@@ -11,7 +11,7 @@
 #include <QScroller>
 #include <QScrollerProperties>
 #include "clickeablelabel.h"
-#include "asa_conf_string.h"
+#include "protocol/asa_conf_string.h"
 #include "token_auth.h"
 #include <QMutex>
 #include "login_dialog.h"
@@ -47,13 +47,10 @@ detailed_window_elements_t details_11=
     "instalar un cárcamo de bombeo que permita elevar las aguas residuales desde "
     "el nivel del drenaje hasta el tanque regulador."),
 
-    &MainWindow::conf_car_elect,
-
-    &MainWindow::conf_car_fisic,
-
-    &MainWindow::conf_car_quimic,
-
-    &MainWindow::car_outputs,
+    &configuration::conf_car_elect,
+    &configuration::conf_car_fisic,
+    &configuration::conf_car_quimic,
+    &configuration::car_outputs,
 };
 
 detailed_window_elements_t details_1=
@@ -66,13 +63,10 @@ detailed_window_elements_t details_1=
     "igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujo"
     "generado durante las horas pico"),
 
-    &MainWindow::conf_reg_elect,
-
-    &MainWindow::conf_reg_fisic,
-
-    &MainWindow::conf_reg_quimic,
-
-    &MainWindow::reg_outputs,
+    &configuration::conf_reg_elect,
+    &configuration::conf_reg_fisic,
+    &configuration::conf_reg_quimic,
+    &configuration::reg_outputs,
 };
 
 detailed_window_elements_t details_2=
@@ -84,13 +78,10 @@ detailed_window_elements_t details_2=
     QObject::tr("Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo "
     "en contacto las aguas residuales con una biomasa de microorganismos que la depuran."),
 
-    &MainWindow::conf_react_elect,
-
-    &MainWindow::conf_react_fisic,
-
-    &MainWindow::conf_react_quimi,
-
-    &MainWindow::react_outputs,
+    &configuration::conf_react_elect,
+    &configuration::conf_react_fisic,
+    &configuration::conf_react_quimi,
+    &configuration::react_outputs,
 };
 
 detailed_window_elements_t details_3=
@@ -100,13 +91,10 @@ detailed_window_elements_t details_3=
     QObject::tr("Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos "
     "suspendidos se sedimentan, separandose del agua."),
 
-    &MainWindow::conf_clarif_elect,
-
-    &MainWindow::conf_clarif_fisic,
-
-    &MainWindow::conf_clarif_quimi,
-
-    &MainWindow::clarif_outputs,
+    &configuration::conf_clarif_elect,
+    &configuration::conf_clarif_fisic,
+    &configuration::conf_clarif_quimi,
+    &configuration::clarif_outputs,
 };
 
 detailed_window_elements_t details_4=
@@ -115,13 +103,10 @@ detailed_window_elements_t details_4=
     ":/images/images/detail_clorador.png",
     QObject::tr("Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes."),
 
-    &MainWindow::conf_clora_elect,
-
-    &MainWindow::conf_clora_fisic,
-
-    &MainWindow::conf_clora_quimi,
-
-    &MainWindow::clora_outputs,
+    &configuration::conf_clora_elect,
+    &configuration::conf_clora_fisic,
+    &configuration::conf_clora_quimi,
+    &configuration::clora_outputs,
 };
 
 detailed_window_elements_t details_5=
@@ -131,13 +116,10 @@ detailed_window_elements_t details_5=
     QObject::tr("Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente"
     " hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos."),
 
-    &MainWindow::conf_digest_elect,
-
-    &MainWindow::conf_digest_fisic,
-
-    &MainWindow::conf_digest_quimi,
-
-    &MainWindow::digest_outputs,
+    &configuration::conf_digest_elect,
+    &configuration::conf_digest_fisic,
+    &configuration::conf_digest_quimi,
+    &configuration::digest_outputs,
 };
 
 detailed_window_elements_t details_6=
@@ -147,13 +129,10 @@ detailed_window_elements_t details_6=
     QObject::tr("Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y "
     "se permite su infiltración, dejando secar los lodos"),
 
-    &MainWindow::conf_deshid_elect,
-
-    &MainWindow::conf_deshid_fisic,
-
-    &MainWindow::conf_deshid_quimi,
-
-    &MainWindow::deshid_outputs,
+    &configuration::conf_deshid_elect,
+    &configuration::conf_deshid_fisic,
+    &configuration::conf_deshid_quimi,
+    &configuration::deshid_outputs,
 };
 
 detailed_window_elements_t details_7=
@@ -162,13 +141,10 @@ detailed_window_elements_t details_7=
     ":/images/images/afluente.png",
     QObject::tr("Agua residual sanitaria"),
 
-    &MainWindow::conf_afluente_elect,
-
-    &MainWindow::conf_afluente_fisic,
-
-    &MainWindow::conf_afluente_quimi,
-
-    &MainWindow::afluente_outputs,
+    &configuration::conf_afluente_elect,
+    &configuration::conf_afluente_fisic,
+    &configuration::conf_afluente_quimi,
+    &configuration::afluente_outputs,
 };
 
 detailed_window_elements_t details_8=
@@ -177,13 +153,10 @@ detailed_window_elements_t details_8=
     ":/images/images/efluente.png",
     QObject::tr("Agua tratada"),
 
-    &MainWindow::conf_efluente_elect,
-
-    &MainWindow::conf_efluente_fisic,
-
-    &MainWindow::conf_efluente_quimi,
-
-    &MainWindow::efluente_outputs,
+    &configuration::conf_efluente_elect,
+    &configuration::conf_efluente_fisic,
+    &configuration::conf_efluente_quimi,
+    &configuration::efluente_outputs,
 };
 
 detailed_window_elements_t details_9=
@@ -196,13 +169,10 @@ detailed_window_elements_t details_9=
     "una manta filtrante a fin de lograr el pulimento deseado."),
 
 
-    &MainWindow::conf_filtro_elect,
-
-    &MainWindow::conf_filtro_fisic,
-
-    &MainWindow::conf_filtro_quimi,
-
-    &MainWindow::filtro_outputs,
+    &configuration::conf_filtro_elect,
+    &configuration::conf_filtro_fisic,
+    &configuration::conf_filtro_quimi,
+    &configuration::filtro_outputs,
 };
 
 detailed_window_elements_t details_10=
@@ -212,13 +182,10 @@ detailed_window_elements_t details_10=
     QObject::tr("Agregar descripción"),
 
 
-    &MainWindow::conf_filtro_bomba_elect,
-
-    &MainWindow::conf_filtro_bomba_fisic,
-
-    &MainWindow::conf_filtro_bomba_quimi,
-
-    &MainWindow::filtro_bomba_outputs,
+    &configuration::conf_filtro_bomba_elect,
+    &configuration::conf_filtro_bomba_fisic,
+    &configuration::conf_filtro_bomba_quimi,
+    &configuration::filtro_bomba_outputs,
 };
 
 detailed_window_elements_t *detailed_elements[]=

@@ -9,9 +9,9 @@
 #include <Qt>
 #include <QMouseEvent>
 #include <QPushButton>
-#include <graphwindow.h>
+#include "screens/graphwindow.h"
 #include "arrowkeys.h"
-
+#include "configuration/configuration.h"
 enum
 {
     TYPE_ELECTRICOS,
@@ -31,7 +31,7 @@ public:
         return list;
     }
 
-    custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list, QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin);
+    custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin);
 
     void update_data();
     void init_data();

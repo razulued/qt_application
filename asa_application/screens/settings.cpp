@@ -2,15 +2,15 @@
 #include "ui_settings.h"
 #include <QDebug>
 #include <QDir>
-#include "configuration.h"
+#include "configuration/configuration.h"
 #include <QProcess>
 #include <QDir>
 #include <QScroller>
 #include "parameters.h"
-#include "asa_conf_string.h"
+#include "protocol/asa_conf_string.h"
 #include "QKeyEvent"
 #include "build_settings.h"
-#include "asa_protocol.h"
+#include "protocol/asa_protocol.h"
 
 #define VERSION_MAJOR   (0)
 #define VERSION_MID     (1)

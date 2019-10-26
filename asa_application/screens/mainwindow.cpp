@@ -6,8 +6,8 @@
 #include <QList>
 #include <QPainter>
 #include <QColor>
-#include "asa_protocol.h"
-#include "asa_conf_string.h"
+#include "protocol/asa_protocol.h"
+#include "protocol/asa_conf_string.h"
 #include "statistics.h"
 #include "token_auth.h"
 #include "build_settings.h"
@@ -15,62 +15,6 @@
 #include <QMouseEvent>
 
 #define ENABLE_TEST (1)
-
-configuration_id MainWindow::conf_car_elect;
-configuration_id MainWindow::conf_car_fisic;
-configuration_id MainWindow::conf_car_quimic;
-
-configuration_id MainWindow::conf_reg_elect;
-configuration_id MainWindow::conf_reg_fisic;
-configuration_id MainWindow::conf_reg_quimic;
-
-configuration_id MainWindow::conf_react_elect;
-configuration_id MainWindow::conf_react_fisic;
-configuration_id MainWindow::conf_react_quimi;
-
-configuration_id MainWindow::conf_clarif_elect;
-configuration_id MainWindow::conf_clarif_fisic;
-configuration_id MainWindow::conf_clarif_quimi;
-
-configuration_id MainWindow::conf_clora_elect;
-configuration_id MainWindow::conf_clora_fisic;
-configuration_id MainWindow::conf_clora_quimi;
-
-configuration_id MainWindow::conf_digest_elect;
-configuration_id MainWindow::conf_digest_fisic;
-configuration_id MainWindow::conf_digest_quimi;
-
-configuration_id MainWindow::conf_deshid_elect;
-configuration_id MainWindow::conf_deshid_fisic;
-configuration_id MainWindow::conf_deshid_quimi;
-
-configuration_id MainWindow::conf_afluente_elect;
-configuration_id MainWindow::conf_afluente_fisic;
-configuration_id MainWindow::conf_afluente_quimi;
-
-configuration_id MainWindow::conf_efluente_elect;
-configuration_id MainWindow::conf_efluente_fisic;
-configuration_id MainWindow::conf_efluente_quimi;
-
-configuration_id MainWindow::conf_filtro_elect;
-configuration_id MainWindow::conf_filtro_fisic;
-configuration_id MainWindow::conf_filtro_quimi;
-
-configuration_id MainWindow::conf_filtro_bomba_elect;
-configuration_id MainWindow::conf_filtro_bomba_fisic;
-configuration_id MainWindow::conf_filtro_bomba_quimi;
-
-configuration_id MainWindow::car_outputs;
-configuration_id MainWindow::reg_outputs;
-configuration_id MainWindow::react_outputs;
-configuration_id MainWindow::clarif_outputs;
-configuration_id MainWindow::clora_outputs;
-configuration_id MainWindow::digest_outputs;
-configuration_id MainWindow::deshid_outputs;
-configuration_id MainWindow::afluente_outputs;
-configuration_id MainWindow::efluente_outputs;
-configuration_id MainWindow::filtro_outputs;
-configuration_id MainWindow::filtro_bomba_outputs;
 
 int MainWindow::reg_op_mode;
 int MainWindow::reg_mot_1;
@@ -117,41 +61,41 @@ void MainWindow::HideButtons(bool hide)
 
 void MainWindow::InitTooltips()
 {
-    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, conf_car_elect.ids, conf_car_elect.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_carcamo_fisicos = new custom_tooltip(ui->widget_26, conf_car_fisic.ids, conf_car_fisic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_carcamo_quimicos = new custom_tooltip(ui->widget_27, conf_car_quimic.ids, conf_car_quimic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, configuration::conf_car_elect, this, ui->modulo_9, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_carcamo_fisicos    = new custom_tooltip(ui->widget_26, configuration::conf_car_fisic, this, ui->modulo_9, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_carcamo_quimicos   = new custom_tooltip(ui->widget_27, configuration::conf_car_quimic, this, ui->modulo_9, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, conf_reg_elect.ids, conf_reg_elect.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, conf_reg_fisic.ids, conf_reg_fisic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_regulador_quimicos = new custom_tooltip(ui->widget_3, conf_reg_quimic.ids, conf_reg_quimic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_regulador_electricos   = new custom_tooltip(ui->widget,    configuration::conf_reg_elect,  this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_regulador_fisicos      = new custom_tooltip(ui->widget_2,  configuration::conf_reg_fisic,  this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_regulador_quimicos     = new custom_tooltip(ui->widget_3,  configuration::conf_reg_quimic, this, ui->modulo_1, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4, conf_react_elect.ids, conf_react_elect.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_5, conf_react_fisic.ids, conf_react_fisic.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_6, conf_react_quimi.ids, conf_react_quimi.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4,  configuration::conf_react_elect, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_reactor_fisicos    = new custom_tooltip(ui->widget_5,  configuration::conf_react_fisic, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_reactor_quimicos   = new custom_tooltip(ui->widget_6,  configuration::conf_react_quimi, this, ui->modulo_2, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, conf_clarif_elect.ids, conf_clarif_elect.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_8, conf_clarif_fisic.ids, conf_clarif_fisic.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_clarificador_quimicos = new custom_tooltip(ui->widget_9, conf_clarif_quimi.ids, conf_clarif_quimi.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, configuration::conf_clarif_elect, this, ui->modulo_3, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_clarificador_fisicos    = new custom_tooltip(ui->widget_8, configuration::conf_clarif_fisic, this, ui->modulo_3, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_clarificador_quimicos   = new custom_tooltip(ui->widget_9, configuration::conf_clarif_quimi, this, ui->modulo_3, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, conf_clora_elect.ids, conf_clora_elect.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_11, conf_clora_fisic.ids, conf_clora_fisic.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_clorador_quimicos = new custom_tooltip(ui->widget_12, conf_clora_quimi.ids, conf_clora_quimi.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, configuration::conf_clora_elect, this, ui->modulo_4, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_clorador_fisicos    = new custom_tooltip(ui->widget_11, configuration::conf_clora_fisic, this, ui->modulo_4, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_clorador_quimicos   = new custom_tooltip(ui->widget_12, configuration::conf_clora_quimi, this, ui->modulo_4, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_digestor_electricos = new custom_tooltip(ui->widget_13, conf_digest_elect.ids, conf_digest_elect.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_digestor_fisicos = new custom_tooltip(ui->widget_14, conf_digest_fisic.ids, conf_digest_fisic.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_digestor_quimicos = new custom_tooltip(ui->widget_15, conf_digest_quimi.ids, conf_digest_quimi.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_digestor_electricos = new custom_tooltip(ui->widget_13, configuration::conf_digest_elect, this, ui->modulo_5, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_digestor_fisicos    = new custom_tooltip(ui->widget_14, configuration::conf_digest_fisic, this, ui->modulo_5, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_digestor_quimicos   = new custom_tooltip(ui->widget_15, configuration::conf_digest_quimi, this, ui->modulo_5, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_deshidratador_electricos = new custom_tooltip(ui->widget_16, conf_deshid_elect.ids, conf_deshid_elect.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_deshidratador_fisicos = new custom_tooltip(ui->widget_17, conf_deshid_fisic.ids, conf_deshid_fisic.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_deshidratador_quimicos = new custom_tooltip(ui->widget_18, conf_deshid_quimi.ids, conf_deshid_quimi.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_deshidratador_electricos = new custom_tooltip(ui->widget_16, configuration::conf_deshid_elect, this, ui->modulo_6, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_deshidratador_fisicos    = new custom_tooltip(ui->widget_17, configuration::conf_deshid_fisic, this, ui->modulo_6, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_deshidratador_quimicos   = new custom_tooltip(ui->widget_18, configuration::conf_deshid_quimi, this, ui->modulo_6, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_afluente_electricos = new custom_tooltip(ui->widget_19, conf_afluente_elect.ids, conf_afluente_elect.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_afluente_fisicos = new custom_tooltip(ui->widget_20, conf_afluente_fisic.ids, conf_afluente_fisic.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_afluente_quimicos = new custom_tooltip(ui->widget_21, conf_afluente_quimi.ids, conf_afluente_quimi.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_afluente_electricos = new custom_tooltip(ui->widget_19, configuration::conf_afluente_elect, this, ui->modulo_7, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_afluente_fisicos    = new custom_tooltip(ui->widget_20, configuration::conf_afluente_fisic, this, ui->modulo_7, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_afluente_quimicos   = new custom_tooltip(ui->widget_21, configuration::conf_afluente_quimi, this, ui->modulo_7, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, conf_efluente_elect.ids, conf_efluente_elect.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_efluente_fisicos = new custom_tooltip(ui->widget_23, conf_efluente_fisic.ids, conf_efluente_fisic.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_efluente_quimicos = new custom_tooltip(ui->widget_24, conf_efluente_quimi.ids, conf_efluente_quimi.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_QUIMICOS, graph, this->my_name);
+    tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, configuration::conf_efluente_elect, this, ui->modulo_8, TYPE_ELECTRICOS, graph, this->my_name);
+    tool_tip_efluente_fisicos    = new custom_tooltip(ui->widget_23, configuration::conf_efluente_fisic, this, ui->modulo_8, TYPE_FISICOS, graph, this->my_name);
+    tool_tip_efluente_quimicos   = new custom_tooltip(ui->widget_24, configuration::conf_efluente_quimi, this, ui->modulo_8, TYPE_QUIMICOS, graph, this->my_name);
 
 //    tool_tip_filtro_electricos = new custom_tooltip(ui->widget_25, conf_filtro_elect.ids, conf_filtro_elect.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS, graph);
 //    tool_tip_filtro_fisicos = new custom_tooltip(ui->widget_26, conf_filtro_fisic.ids, conf_filtro_fisic.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_FISICOS, graph);
@@ -166,9 +110,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     my_name = "PTAR";
-    graph = new graphwindow(this);
-    connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
-    connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
+//    graph = new graphwindow(this);
+//    connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
+//    connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
 
     // Init SPI
     dataObj = new DataProccess;
@@ -188,68 +132,7 @@ MainWindow::MainWindow(QWidget *parent) :
     init_plat_config();
 //    get_ASA_string();
 
-    configuration *config;
-
-    conf_car_elect = configuration::get_id_conf_from_module("Carcamo", PARAMETER_ELECTRIC);
-    conf_car_fisic = configuration::get_id_conf_from_module("Carcamo", PARAMETER_PHYSICAL);
-    conf_car_quimic = configuration::get_id_conf_from_module("Carcamo", PARAMETER_CHEMICAL);
-    car_outputs = configuration::get_id_conf_from_module("Carcamo", PARAMETER_OUTPUT);
-
-    conf_reg_elect = configuration::get_id_conf_from_module("Regulador", PARAMETER_ELECTRIC);
-    conf_reg_fisic = configuration::get_id_conf_from_module("Regulador", PARAMETER_PHYSICAL);
-    conf_reg_quimic = configuration::get_id_conf_from_module("Regulador", PARAMETER_CHEMICAL);
-    reg_outputs = configuration::get_id_conf_from_module("Regulador", PARAMETER_OUTPUT);
-
-    conf_react_elect = configuration::get_id_conf_from_module("Reactor", PARAMETER_ELECTRIC);
-    conf_react_fisic = configuration::get_id_conf_from_module("Reactor", PARAMETER_PHYSICAL);
-    conf_react_quimi = configuration::get_id_conf_from_module("Reactor", PARAMETER_CHEMICAL);
-    react_outputs = configuration::get_id_conf_from_module("Reactor", PARAMETER_OUTPUT);
-
-    conf_clarif_elect = configuration::get_id_conf_from_module("Clarificador", PARAMETER_ELECTRIC);
-    conf_clarif_fisic = configuration::get_id_conf_from_module("Clarificador", PARAMETER_PHYSICAL);
-    conf_clarif_quimi = configuration::get_id_conf_from_module("Clarificador", PARAMETER_CHEMICAL);
-    clarif_outputs = configuration::get_id_conf_from_module("Clarificador", PARAMETER_OUTPUT);
-
-    conf_clora_elect = configuration::get_id_conf_from_module("Clorador", PARAMETER_ELECTRIC);
-    conf_clora_fisic = configuration::get_id_conf_from_module("Clorador", PARAMETER_PHYSICAL);
-    conf_clora_quimi = configuration::get_id_conf_from_module("Clorador", PARAMETER_CHEMICAL);
-    clora_outputs = configuration::get_id_conf_from_module("CARCAMO", PARAMETER_OUTPUT);
-
-    conf_digest_elect = configuration::get_id_conf_from_module("Digestor", PARAMETER_ELECTRIC);
-    conf_digest_fisic = configuration::get_id_conf_from_module("Digestor", PARAMETER_PHYSICAL);
-    conf_digest_quimi = configuration::get_id_conf_from_module("Digestor", PARAMETER_CHEMICAL);
-    digest_outputs = configuration::get_id_conf_from_module("Digestor", PARAMETER_OUTPUT);
-
-    conf_deshid_elect = configuration::get_id_conf_from_module("Deshidratador", PARAMETER_ELECTRIC);
-    conf_deshid_fisic = configuration::get_id_conf_from_module("Deshidratador", PARAMETER_PHYSICAL);
-    conf_deshid_quimi = configuration::get_id_conf_from_module("Deshidratador", PARAMETER_CHEMICAL);
-    deshid_outputs = configuration::get_id_conf_from_module("Deshidratador", PARAMETER_OUTPUT);
-
-    conf_afluente_elect = configuration::get_id_conf_from_module("Afluente", PARAMETER_ELECTRIC);
-    conf_afluente_fisic = configuration::get_id_conf_from_module("Afluente", PARAMETER_PHYSICAL);
-    conf_afluente_quimi = configuration::get_id_conf_from_module("Afluente", PARAMETER_CHEMICAL);
-    afluente_outputs = configuration::get_id_conf_from_module("Afluente", PARAMETER_OUTPUT);
-
-    conf_efluente_elect = configuration::get_id_conf_from_module("Efluente", PARAMETER_ELECTRIC);
-    conf_efluente_fisic = configuration::get_id_conf_from_module("Efluente", PARAMETER_PHYSICAL);
-    conf_efluente_quimi = configuration::get_id_conf_from_module("Efluente", PARAMETER_CHEMICAL);
-    efluente_outputs = configuration::get_id_conf_from_module("Efluente", PARAMETER_OUTPUT);
-
-    conf_filtro_elect = configuration::get_id_conf_from_module("Filtro", PARAMETER_ELECTRIC);
-    conf_filtro_fisic = configuration::get_id_conf_from_module("Filtro", PARAMETER_PHYSICAL);
-    conf_filtro_quimi = configuration::get_id_conf_from_module("Filtro", PARAMETER_CHEMICAL);
-    filtro_outputs = configuration::get_id_conf_from_module("Filtro", PARAMETER_OUTPUT);
-
-    conf_filtro_bomba_elect = configuration::get_id_conf_from_module("Filtro Bomba", PARAMETER_ELECTRIC);
-    conf_filtro_bomba_fisic = configuration::get_id_conf_from_module("Filtro Bomba", PARAMETER_PHYSICAL);
-    conf_filtro_bomba_quimi = configuration::get_id_conf_from_module("Filtro Bomba", PARAMETER_CHEMICAL);
-    filtro_bomba_outputs = configuration::get_id_conf_from_module("Filtro Bomba", PARAMETER_OUTPUT);
-
-    config = new configuration("Product-Config");
-    if("1" == config->get_value("Product-Config", "Filtro"))
-    {
-        filtro_present = true;
-    }
+    filtro_present = configuration::filtro_present;
 
     //Setup Timer
     dataTimer.setInterval(100);
@@ -361,8 +244,6 @@ MainWindow::MainWindow(QWidget *parent) :
     mod_bomba_reg_4 = new mod_flechas(REGULADOR_MOTOR_4,  3, ui->gif_reg_mot);
     connect(mod_bomba_reg_4, SIGNAL(update_window()), this, SLOT(update_this()));
 
-    ASA_protocol_init();
-
     if((NULL == sim_window) && simulation)
     {
         sim_window = new simulation_input(this);
@@ -370,9 +251,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->prof_label->setStyleSheet("color:white;");
 
-    QString title_name;
-    config = new configuration("Titulos");
-    title_name = config->get_value("Titulos", "Diagrama");
+    QString title_name = configuration::window_title;
 
     QFont label_title_font("Typo Square Bold Demo",17,1);
 
@@ -596,10 +475,7 @@ void MainWindow::update_buttons_from_filter(bool active, parameters_t param)
 void MainWindow::update_title(QString text)
 {
     ui->label_title->setText(text);
-
-    configuration *config;
-    config = new configuration("Titulos");
-    config->saveSettings("Titulos", "Diagrama", text);
+    configuration::update_window_title(text);
 }
 
 void MainWindow::on_asa_logo_clicked()
@@ -1257,10 +1133,10 @@ void MainWindow::update_system_time()
         add_value_to_stats(Filtro_Turb_OUT, getParamValue(Filtro_Turb_OUT).toFloat());
         add_value_to_stats(Filtro_PH_OUT, getParamValue(Filtro_PH_OUT).toFloat());
         // Update graph if open
-        if(false == graph->isHidden())
-        {
-            graph->update_graph();
-        }
+//        if(false == graph->isHidden())
+//        {
+//            graph->update_graph();
+//        }
 
     }
 
