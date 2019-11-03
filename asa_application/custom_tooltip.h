@@ -31,9 +31,8 @@ public:
         return list;
     }
 
-    custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin);
+    custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *mainwindow, uint type);
 
-    void update_data();
     void init_data();
     void force_show();
     void force_hide();
@@ -72,6 +71,9 @@ private slots:
     void ListPressed();
     void checkClick();
     void retry_tool_pos();
+
+public slots:
+    void update_tooltip();
 
 protected:
 //    void mousePressEvent(QMouseEvent *event);

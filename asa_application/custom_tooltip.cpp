@@ -14,16 +14,13 @@ QPoint offset;
 
 uint custom_tooltip::tooltip_number = 0;
 
-custom_tooltip::custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin) : QWidget(frame)
+custom_tooltip::custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *mainwindow, uint type) : QWidget(frame)
 {
 
     element_type = type;
     parent_window = mainwindow;
-    graph_ptr = graph;
-    graph_origin = g_origin;
 
     parent_frame = frame;
-    connect_here = connect_to;
 //    parent_frame->setStyleSheet("color: rgb(0, 167, 250);"
 //                                "border-style: solid;"
 //                                "border-color: rgb(0, 167, 250);"
@@ -125,7 +122,7 @@ void custom_tooltip::init_data()
     }
 }
 
-void custom_tooltip::update_data()
+void custom_tooltip::update_tooltip()
 {
 //    QFont font_2("Ubuntu Bold",10,1);
     QFont font_2("Liberation Mono Bold",10,1);
@@ -145,11 +142,9 @@ void custom_tooltip::update_data()
     for(i = 0; i < (quint32)DataList.size(); i++)
     {
         param_id = DataList[i];
-
-        if(true == getParamActiveShow(param_id))
+//        if(true == getParamActiveShow(param_id))
+        if(1)
         {
-            qDebug() << "EL ID:" << param_id;
-
             label = new QListWidgetItem(NameList[i] + ": " + getParamValue_and_units(param_id));
 //            label->setTextFormat(Qt::RichText);
 

@@ -165,13 +165,13 @@ void filtrowindow::handleParametrosQuimicosButton()
 
 void filtrowindow::InitTooltips()
 {
-    tool_tip_filtro_electricos  = new custom_tooltip(ui->widget,   configuration::conf_filtro_elect, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_filtro_fisicos     = new custom_tooltip(ui->widget_2, configuration::conf_filtro_fisic, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_filtro_quimicos    = new custom_tooltip(ui->widget_3, configuration::conf_filtro_quimi, this, ui->modulo_1, TYPE_QUIMICOS, graph,  this->my_name);
+//    tool_tip_filtro_electricos  = new custom_tooltip(ui->widget,   configuration::conf_filtro_elect, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_filtro_fisicos     = new custom_tooltip(ui->widget_2, configuration::conf_filtro_fisic, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_filtro_quimicos    = new custom_tooltip(ui->widget_3, configuration::conf_filtro_quimi, this, ui->modulo_1, TYPE_QUIMICOS, graph,  this->my_name);
 
-    tool_tip_filtro_bomba_electricos = new custom_tooltip(ui->widget_4, configuration::conf_filtro_bomba_elect, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_filtro_bomba_fisicos    = new custom_tooltip(ui->widget_5, configuration::conf_filtro_bomba_fisic, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_filtro_bomba_quimicos   = new custom_tooltip(ui->widget_6, configuration::conf_filtro_bomba_quimi, this, ui->modulo_2, TYPE_QUIMICOS, graph,  this->my_name);
+//    tool_tip_filtro_bomba_electricos = new custom_tooltip(ui->widget_4, configuration::conf_filtro_bomba_elect, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_filtro_bomba_fisicos    = new custom_tooltip(ui->widget_5, configuration::conf_filtro_bomba_fisic, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_filtro_bomba_quimicos   = new custom_tooltip(ui->widget_6, configuration::conf_filtro_bomba_quimi, this, ui->modulo_2, TYPE_QUIMICOS, graph,  this->my_name);
 
     init_complete = true;
 }
@@ -229,13 +229,13 @@ void filtrowindow::update_tooltips(void)
     {
         if(init_complete)
         {
-            tool_tip_filtro_electricos->update_data();
-            tool_tip_filtro_fisicos->update_data();
-            tool_tip_filtro_quimicos->update_data();
+            tool_tip_filtro_electricos->update_tooltip();
+            tool_tip_filtro_fisicos->update_tooltip();
+            tool_tip_filtro_quimicos->update_tooltip();
 
-            tool_tip_filtro_bomba_electricos->update_data();
-            tool_tip_filtro_bomba_fisicos->update_data();
-            tool_tip_filtro_bomba_quimicos->update_data();
+            tool_tip_filtro_bomba_electricos->update_tooltip();
+            tool_tip_filtro_bomba_fisicos->update_tooltip();
+            tool_tip_filtro_bomba_quimicos->update_tooltip();
         }
 
     }

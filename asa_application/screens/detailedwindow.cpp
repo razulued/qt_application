@@ -373,7 +373,10 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
 
-    this->move(parent->pos());
+    if(parent != NULL)
+    {
+        this->move(parent->pos());
+    }
 
     reschedule_time = 0;
     init_completed = true;

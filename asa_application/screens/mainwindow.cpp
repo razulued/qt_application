@@ -61,41 +61,41 @@ void MainWindow::HideButtons(bool hide)
 
 void MainWindow::InitTooltips()
 {
-    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, configuration::conf_car_elect, this, ui->modulo_9, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_carcamo_fisicos    = new custom_tooltip(ui->widget_26, configuration::conf_car_fisic, this, ui->modulo_9, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_carcamo_quimicos   = new custom_tooltip(ui->widget_27, configuration::conf_car_quimic, this, ui->modulo_9, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, configuration::conf_car_elect, this, ui->modulo_9, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_carcamo_fisicos    = new custom_tooltip(ui->widget_26, configuration::conf_car_fisic, this, ui->modulo_9, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_carcamo_quimicos   = new custom_tooltip(ui->widget_27, configuration::conf_car_quimic, this, ui->modulo_9, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_regulador_electricos   = new custom_tooltip(ui->widget,    configuration::conf_reg_elect,  this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_regulador_fisicos      = new custom_tooltip(ui->widget_2,  configuration::conf_reg_fisic,  this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_regulador_quimicos     = new custom_tooltip(ui->widget_3,  configuration::conf_reg_quimic, this, ui->modulo_1, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_regulador_electricos   = new custom_tooltip(ui->widget,    configuration::conf_reg_elect,  this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_regulador_fisicos      = new custom_tooltip(ui->widget_2,  configuration::conf_reg_fisic,  this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_regulador_quimicos     = new custom_tooltip(ui->widget_3,  configuration::conf_reg_quimic, this, ui->modulo_1, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4,  configuration::conf_react_elect, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_reactor_fisicos    = new custom_tooltip(ui->widget_5,  configuration::conf_react_fisic, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_reactor_quimicos   = new custom_tooltip(ui->widget_6,  configuration::conf_react_quimi, this, ui->modulo_2, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4,  configuration::conf_react_elect, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_reactor_fisicos    = new custom_tooltip(ui->widget_5,  configuration::conf_react_fisic, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_reactor_quimicos   = new custom_tooltip(ui->widget_6,  configuration::conf_react_quimi, this, ui->modulo_2, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, configuration::conf_clarif_elect, this, ui->modulo_3, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_clarificador_fisicos    = new custom_tooltip(ui->widget_8, configuration::conf_clarif_fisic, this, ui->modulo_3, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_clarificador_quimicos   = new custom_tooltip(ui->widget_9, configuration::conf_clarif_quimi, this, ui->modulo_3, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, configuration::conf_clarif_elect, this, ui->modulo_3, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_clarificador_fisicos    = new custom_tooltip(ui->widget_8, configuration::conf_clarif_fisic, this, ui->modulo_3, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_clarificador_quimicos   = new custom_tooltip(ui->widget_9, configuration::conf_clarif_quimi, this, ui->modulo_3, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, configuration::conf_clora_elect, this, ui->modulo_4, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_clorador_fisicos    = new custom_tooltip(ui->widget_11, configuration::conf_clora_fisic, this, ui->modulo_4, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_clorador_quimicos   = new custom_tooltip(ui->widget_12, configuration::conf_clora_quimi, this, ui->modulo_4, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, configuration::conf_clora_elect, this, ui->modulo_4, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_clorador_fisicos    = new custom_tooltip(ui->widget_11, configuration::conf_clora_fisic, this, ui->modulo_4, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_clorador_quimicos   = new custom_tooltip(ui->widget_12, configuration::conf_clora_quimi, this, ui->modulo_4, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_digestor_electricos = new custom_tooltip(ui->widget_13, configuration::conf_digest_elect, this, ui->modulo_5, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_digestor_fisicos    = new custom_tooltip(ui->widget_14, configuration::conf_digest_fisic, this, ui->modulo_5, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_digestor_quimicos   = new custom_tooltip(ui->widget_15, configuration::conf_digest_quimi, this, ui->modulo_5, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_digestor_electricos = new custom_tooltip(ui->widget_13, configuration::conf_digest_elect, this, ui->modulo_5, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_digestor_fisicos    = new custom_tooltip(ui->widget_14, configuration::conf_digest_fisic, this, ui->modulo_5, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_digestor_quimicos   = new custom_tooltip(ui->widget_15, configuration::conf_digest_quimi, this, ui->modulo_5, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_deshidratador_electricos = new custom_tooltip(ui->widget_16, configuration::conf_deshid_elect, this, ui->modulo_6, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_deshidratador_fisicos    = new custom_tooltip(ui->widget_17, configuration::conf_deshid_fisic, this, ui->modulo_6, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_deshidratador_quimicos   = new custom_tooltip(ui->widget_18, configuration::conf_deshid_quimi, this, ui->modulo_6, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_deshidratador_electricos = new custom_tooltip(ui->widget_16, configuration::conf_deshid_elect, this, ui->modulo_6, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_deshidratador_fisicos    = new custom_tooltip(ui->widget_17, configuration::conf_deshid_fisic, this, ui->modulo_6, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_deshidratador_quimicos   = new custom_tooltip(ui->widget_18, configuration::conf_deshid_quimi, this, ui->modulo_6, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_afluente_electricos = new custom_tooltip(ui->widget_19, configuration::conf_afluente_elect, this, ui->modulo_7, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_afluente_fisicos    = new custom_tooltip(ui->widget_20, configuration::conf_afluente_fisic, this, ui->modulo_7, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_afluente_quimicos   = new custom_tooltip(ui->widget_21, configuration::conf_afluente_quimi, this, ui->modulo_7, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_afluente_electricos = new custom_tooltip(ui->widget_19, configuration::conf_afluente_elect, this, ui->modulo_7, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_afluente_fisicos    = new custom_tooltip(ui->widget_20, configuration::conf_afluente_fisic, this, ui->modulo_7, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_afluente_quimicos   = new custom_tooltip(ui->widget_21, configuration::conf_afluente_quimi, this, ui->modulo_7, TYPE_QUIMICOS, graph, this->my_name);
 
-    tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, configuration::conf_efluente_elect, this, ui->modulo_8, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_efluente_fisicos    = new custom_tooltip(ui->widget_23, configuration::conf_efluente_fisic, this, ui->modulo_8, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_efluente_quimicos   = new custom_tooltip(ui->widget_24, configuration::conf_efluente_quimi, this, ui->modulo_8, TYPE_QUIMICOS, graph, this->my_name);
+//    tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, configuration::conf_efluente_elect, this, ui->modulo_8, TYPE_ELECTRICOS, graph, this->my_name);
+//    tool_tip_efluente_fisicos    = new custom_tooltip(ui->widget_23, configuration::conf_efluente_fisic, this, ui->modulo_8, TYPE_FISICOS, graph, this->my_name);
+//    tool_tip_efluente_quimicos   = new custom_tooltip(ui->widget_24, configuration::conf_efluente_quimi, this, ui->modulo_8, TYPE_QUIMICOS, graph, this->my_name);
 
 //    tool_tip_filtro_electricos = new custom_tooltip(ui->widget_25, conf_filtro_elect.ids, conf_filtro_elect.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS, graph);
 //    tool_tip_filtro_fisicos = new custom_tooltip(ui->widget_26, conf_filtro_fisic.ids, conf_filtro_fisic.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_FISICOS, graph);
@@ -810,43 +810,43 @@ void MainWindow::update_tooltips(void)
         {
             if(0 == count)
             {
-                tool_tip_carcamo_electricos->update_data();
-                tool_tip_regulador_electricos->update_data();
-                tool_tip_reactor_electricos->update_data();
-                tool_tip_clarificador_electricos->update_data();
-                tool_tip_clorador_electricos->update_data();
-                tool_tip_digestor_electricos->update_data();
-                tool_tip_deshidratador_electricos->update_data();
-                tool_tip_afluente_electricos->update_data();
-                tool_tip_efluente_electricos->update_data();
+                tool_tip_carcamo_electricos->update_tooltip();
+                tool_tip_regulador_electricos->update_tooltip();
+                tool_tip_reactor_electricos->update_tooltip();
+                tool_tip_clarificador_electricos->update_tooltip();
+                tool_tip_clorador_electricos->update_tooltip();
+                tool_tip_digestor_electricos->update_tooltip();
+                tool_tip_deshidratador_electricos->update_tooltip();
+                tool_tip_afluente_electricos->update_tooltip();
+                tool_tip_efluente_electricos->update_tooltip();
     //            tool_tip_filtro_electricos->update_data();
                 count++;
             }
             else if(1 == count)
             {
-                tool_tip_carcamo_fisicos->update_data();
-                tool_tip_regulador_fisicos->update_data();
-                tool_tip_reactor_fisicos->update_data();
-                tool_tip_clarificador_fisicos->update_data();
-                tool_tip_clorador_fisicos->update_data();
-                tool_tip_digestor_fisicos->update_data();
-                tool_tip_deshidratador_fisicos->update_data();
-                tool_tip_afluente_fisicos->update_data();
-                tool_tip_efluente_fisicos->update_data();
+                tool_tip_carcamo_fisicos->update_tooltip();
+                tool_tip_regulador_fisicos->update_tooltip();
+                tool_tip_reactor_fisicos->update_tooltip();
+                tool_tip_clarificador_fisicos->update_tooltip();
+                tool_tip_clorador_fisicos->update_tooltip();
+                tool_tip_digestor_fisicos->update_tooltip();
+                tool_tip_deshidratador_fisicos->update_tooltip();
+                tool_tip_afluente_fisicos->update_tooltip();
+                tool_tip_efluente_fisicos->update_tooltip();
     //            tool_tip_filtro_fisicos->update_data();
                 count++;
             }
             else
             {
-                tool_tip_carcamo_quimicos->update_data();
-                tool_tip_regulador_quimicos->update_data();
-                tool_tip_reactor_quimicos->update_data();
-                tool_tip_clarificador_quimicos->update_data();
-                tool_tip_clorador_quimicos->update_data();
-                tool_tip_digestor_quimicos->update_data();
-                tool_tip_deshidratador_quimicos->update_data();
-                tool_tip_afluente_quimicos->update_data();
-                tool_tip_efluente_quimicos->update_data();
+                tool_tip_carcamo_quimicos->update_tooltip();
+                tool_tip_regulador_quimicos->update_tooltip();
+                tool_tip_reactor_quimicos->update_tooltip();
+                tool_tip_clarificador_quimicos->update_tooltip();
+                tool_tip_clorador_quimicos->update_tooltip();
+                tool_tip_digestor_quimicos->update_tooltip();
+                tool_tip_deshidratador_quimicos->update_tooltip();
+                tool_tip_afluente_quimicos->update_tooltip();
+                tool_tip_efluente_quimicos->update_tooltip();
     //            tool_tip_filtro_quimicos->update_data();
                 count = 0;
             }

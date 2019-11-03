@@ -128,7 +128,6 @@ configuration_id configuration::get_id_conf_from_module(QString name, elemnt_typ
                         temp_conf.ids_string << values.at(0);
                     }
                 }
-                qDebug() << "HERE:" << temp_conf.ids;
             }
             file.close();
         }

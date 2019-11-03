@@ -1,5 +1,6 @@
 #include "socket_client.h"
 #include <QDebug>
+#include "protocol/asa_protocol.h" // TODO remove this
 
 #define PTAR_PORT (1234)
 
@@ -27,8 +28,23 @@ void socket_client::timer_expired()
 
 void socket_client::ready_complete()
 {
-    qDebug() << "READ: " << m_socket->readAll();
+    bool ok;
+    QString stringo = QString::fromUtf8(m_socket->readAll());
+    qDebug() << "READ: " << stringo;
 
+    // TODO REMOVE THIS
+    QStringList ID_Parameters = stringo.split("|");
+    QStringList realParameters;
+    for(int i = 0; i < ID_Parameters.length() ; i++)
+    {
+        realParameters = ID_Parameters[i].split(":");
+        if(realParameters.length() > 1)
+        {
+            store_value_by_ID(realParameters[0].toInt(&ok,16) , realParameters[1]);
+        }
+    }
+
+    this->new_data_comming();
 }
 
 void socket_client::socket_disconnected()

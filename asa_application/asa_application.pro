@@ -63,7 +63,9 @@ SOURCES += main.cpp\
     screens/earm_update.cpp \
     socket_client.cpp \
     screens/confsetup.cpp \
-    screens/confentry.cpp
+    screens/confentry.cpp \
+    screens/generic_window.cpp \
+    ptar_main_window.cpp
 
 HEADERS  += \
     multistatebutton.h \
@@ -114,7 +116,9 @@ HEADERS  += \
     screens/mainwindow.h \
     socket_client.h \
     screens/confsetup.h \
-    screens/confentry.h
+    screens/confentry.h \
+    screens/generic_window.h \
+    ptar_main_window.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -136,7 +140,9 @@ FORMS    += mainwindow.ui \
     record_chart.ui \
     screen_saver.ui \
     confsetup.ui \
-    confentry.ui
+    confentry.ui \
+    screens/generic_window.ui \
+    ptar_main_window.ui
 
 RESOURCES += \
     fonts.qrc \

@@ -105,7 +105,6 @@ void store_value_by_ID(uint id, QString str_value)
     if(0 != id)
     {
         data_mutex.lock();
-        qDebug() << "Add: " << id << "" << str_value;
         hash_values.insert(id, str_value);
 
         // Check its index in the table and run its Received function, if present.

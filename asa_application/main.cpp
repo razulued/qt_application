@@ -8,6 +8,7 @@
 
 #include "configuration/configuration.h"
 #include "socket_client.h"
+#include "ptar_main_window.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,8 +23,9 @@ int main(int argc, char *argv[])
     //Load language
     QTranslator T;
 
-    //Create socket for communication
+    // Create socket for communication
     socket_client *socket = new socket_client();
+    // Connect socket with parameter handler
 
     ASA_protocol_init();
 
@@ -46,25 +48,27 @@ int main(int argc, char *argv[])
     a.setApplicationVersion("1.0");
     a.setOrganizationName("HGM - Luis Ramirez");
     a.setOrganizationDomain("none");
-    MainWindow w;
 
-    w.setObjectName("MyMainWindow");
-//    w.setStyleSheet("MainWindow#MyMainWindow{background-image:url(:/images/images/main_window_background.jpg)}");
-    w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
-    w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+    ptar_main_window *main_menu = new ptar_main_window(socket);
+
+
+//    MainWindow w;
+//    w.setObjectName("MyMainWindow");
+//    w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
+//    w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+//    w.show();
 
     //Qt::WindowStaysOnTopHint
 #if (1 == RELEASE_FOR_RPI)
     QApplication::setOverrideCursor(Qt::BlankCursor);
 #endif
 
-    a.installEventFilter(saver);
-    QObject::connect(&w, SIGNAL(send_date_hour(QDateTime)), saver, SLOT(receive_date_hour(QDateTime)));
-    QObject::connect(&w,SIGNAL(send_num_activities(uint)),saver, SLOT(pending_activities(uint)));
+//    QObject::connect(&w, SIGNAL(send_date_hour(QDateTime)), saver, SLOT(receive_date_hour(QDateTime)));
+//    QObject::connect(&w,SIGNAL(send_num_activities(uint)),saver, SLOT(pending_activities(uint)));
 //    w.showFullScreen();
-    w.show();
 
 
 
+    a.installEventFilter(saver);
     return a.exec();
 }

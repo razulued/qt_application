@@ -15,6 +15,9 @@ private slots:
     void socket_disconnected();
     void socket_error(QAbstractSocket::SocketError err);
 
+signals:
+    void new_data_comming();
+
 private:
     QTcpSocket* m_socket = NULL;
     QTimer *timer_connect = NULL;
