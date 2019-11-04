@@ -126,8 +126,6 @@ filtrowindow::~filtrowindow()
 void filtrowindow::on_go_to_main_clicked()
 {
     forward_param_buttons_state(display_parameters, GetParemeter());
-    //Parchesazo!!
-    custom_tooltip::tooltip_number -=6;
     release_lock();
     this->close();
 }
@@ -179,8 +177,6 @@ void filtrowindow::InitTooltips()
 void filtrowindow::on_asa_logo_clicked()
 {
     forward_param_buttons_state(display_parameters, GetParemeter());
-    //Parchesazo!!
-    custom_tooltip::tooltip_number -=6;
     release_lock();
     this->close();
 }

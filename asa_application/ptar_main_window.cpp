@@ -83,7 +83,7 @@ void ptar_main_window::create_detailed_window(int element)
 void ptar_main_window::main_view_init()
 {
     //Create screens
-    generic_window *win = new generic_window(this);
+    generic_window *win = new generic_window("MainView",this);
 
     win->add_image(":/gifs/1 Carcamo y Regulador/screen800x600/gifs/1 Carcamo y Regulador/regul hi quiet water 03.png",
                    QSize(180,180), QPoint(20,210), false);
@@ -134,7 +134,7 @@ void ptar_main_window::main_view_init()
     connect(detailed_view_Mapper, SIGNAL(mapped(int)), this, SLOT(create_detailed_window(int)));
 
     QList<configuration_id> parameter_list;
-    parameter_list << configuration::conf_car_fisic;
+    parameter_list << configuration::conf_car_fisic << configuration::conf_car_elect;
     win->InitToolTips(parameter_list);
 
     // Connect socket for updates

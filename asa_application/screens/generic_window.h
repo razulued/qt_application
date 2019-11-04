@@ -14,7 +14,7 @@ class generic_window : public QDialog
     Q_OBJECT
 
 public:
-    explicit generic_window(QWidget *parent = 0);
+    explicit generic_window(QString name, QWidget *parent = 0);
     ~generic_window();
     void add_image(QString image_path, QSize size, QPoint pos, bool fit_to_geometry);
 

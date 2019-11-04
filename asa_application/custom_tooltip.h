@@ -31,14 +31,12 @@ public:
         return list;
     }
 
-    custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *mainwindow, uint type);
+    custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *parent);
 
     void init_data();
     void force_show();
     void force_hide();
 
-    static uint tooltip_number;
-    uint actual_tooltip_number;
     QWidget *parent_window;
 private:
     QList<int> DataList;
@@ -61,12 +59,12 @@ private:
 
     uint number_of_clicks = 0;
 
-    uint element_type = 0;
-
     arrowkeys *arrow_key_window = NULL;
     QString graph_origin;
 
     QList<int> unknown_tool_pos;
+
+    QString file_name;
 private slots:
     void ListPressed();
     void checkClick();

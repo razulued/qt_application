@@ -8,7 +8,7 @@
 #include"custom_tooltip.h"
 
 #include "multistatebutton.h" //TODO: HACER CLASE
-generic_window::generic_window(QWidget *parent) :
+generic_window::generic_window(QString name, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::generic_window)
 {
@@ -19,8 +19,8 @@ generic_window::generic_window(QWidget *parent) :
     this->move(parent->pos());
 
     // SET WINDOW PROPERTIES
-    this->setObjectName("GenericWindow");
-    this->setStyleSheet("#GenericWindow{background-color: black;"
+    this->setObjectName(name);
+    this->setStyleSheet("#"+name+"{background-color: black;"
                         "border: none;}");
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
@@ -65,8 +65,6 @@ generic_window::generic_window(QWidget *parent) :
     connect(ui->pb_electricos, SIGNAL (released()),this, SLOT (handleParametrosElectricosButton()));
     connect(ui->pb_fisicos, SIGNAL (released()),this, SLOT (handleParametrosFisicosButton()));
     connect(ui->pb_quimicos, SIGNAL (released()),this, SLOT (handleParametrosQuimicosButton()));
-
-//    this->InitToolTips();
 }
 
 generic_window::~generic_window()
@@ -192,7 +190,7 @@ void generic_window::InitToolTips(QList<configuration_id> parameter_list)
     foreach (configuration_id parameter, parameter_list)
     {
         widget = new QWidget(this);
-        tool_tip = new custom_tooltip(widget, parameter, this, TYPE_FISICOS);
+        tool_tip = new custom_tooltip(widget, parameter, this);
         connect(this, SIGNAL(update_tooltips()), tool_tip, SLOT(update_tooltip()));
     }
 

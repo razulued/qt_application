@@ -128,6 +128,7 @@ configuration_id configuration::get_id_conf_from_module(QString name, elemnt_typ
                         temp_conf.ids_string << values.at(0);
                     }
                 }
+                temp_conf.group_name = name + QString::number(type);
             }
             file.close();
         }

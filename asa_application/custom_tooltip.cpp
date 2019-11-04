@@ -12,21 +12,15 @@
 #define HOLD_TIME (40)
 QPoint offset;
 
-uint custom_tooltip::tooltip_number = 0;
-
-custom_tooltip::custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *mainwindow, uint type) : QWidget(frame)
+custom_tooltip::custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *parent) : QWidget(frame)
 {
 
-    element_type = type;
-    parent_window = mainwindow;
+    parent_window = parent;
 
     parent_frame = frame;
-//    parent_frame->setStyleSheet("color: rgb(0, 167, 250);"
-//                                "border-style: solid;"
-//                                "border-color: rgb(0, 167, 250);"
-//                                "border-width: 1px;");
-    parent_frame->setObjectName("MyCustomTooltip");
-    parent_frame->setStyleSheet("#MyCustomTooltip{border-image: url(:/iconos/images/Iconos/Globo_azul.png);}");
+
+    parent_frame->setObjectName(parent_window->objectName() + "_" + conf_list.group_name);
+    parent_frame->setStyleSheet("#"+parent_frame->objectName()+"{border-image: url(:/iconos/images/Iconos/Globo_azul.png);}");
 
     layout = new QVBoxLayout(frame);
     layout->setAlignment(Qt::AlignTop);
@@ -47,28 +41,27 @@ custom_tooltip::custom_tooltip(QWidget *frame, configuration_id &conf_list, QWid
 
     item_is_pressed = false;
 
-//    parent_frame->setGeometry(30, 30, parent_frame->x(), parent_frame->y());
-    tooltip_number++;
-    actual_tooltip_number = tooltip_number;
-    QString filename = "./tooltips/tool"+QString::number(actual_tooltip_number);
+    file_name = parent->objectName() +"_"+conf_list.group_name;
+    QString filename = "./tooltips/"+file_name;
     QFile myFile(filename);
 
     QDataStream in(&myFile);
     in.setVersion(QDataStream::Qt_5_7);
 
+//    qDebug() << "TEXT:" << parent_window->objectName() << conf_list.group_name;
     QPoint pos = parent_frame->pos();
     if (!myFile.open(QIODevice::ReadOnly))
     {
         qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
-        // Re-try later
-        unknown_tool_pos.append(actual_tooltip_number);
-        QTimer::singleShot(3000, this, SLOT(retry_tool_pos()));
+//        // Re-try later
+//        unknown_tool_pos.append(actual_tooltip_number);
+//        QTimer::singleShot(3000, this, SLOT(retry_tool_pos()));
     }
     else
     {
         in >> pos;
         init_data();
-        qDebug() << "tool: " << actual_tooltip_number <<"pos " << pos;
+        qDebug() << "tool: " << conf_list.group_name << "pos " << pos;
     }
 
     if(pos.x() != 0 && pos.y() != 0)
@@ -241,7 +234,7 @@ void custom_tooltip::force_hide()
 
 void custom_tooltip::save_position()
 {
-    QString filename = "./tooltips/tool"+QString::number(actual_tooltip_number);
+    QString filename = "./tooltips/"+file_name;
     QFile myFile(filename);
     if (!myFile.open(QIODevice::WriteOnly))
     {

@@ -4,6 +4,7 @@
 #include <QString>
 typedef struct
 {
+    QString group_name;
     QStringList names;
     QList<int>  ids;
     QList<QString> ids_string;
