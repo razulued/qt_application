@@ -115,13 +115,13 @@ static void setState(multi_button_state_t state, parameters_t parameter)
 
 
 
-void SelectParemeter(parameters_t param)
+void SelectToolbarParameter(parameters_t param)
 {
     selected_parameter = param;
     UpdateButtons();
 }
 
-parameters_t GetParemeter()
+parameters_t GetToolbarParameter()
 {
     return selected_parameter;
 }

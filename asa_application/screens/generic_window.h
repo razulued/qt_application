@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QString>
 #include "configuration/configuration.h"
+#include <QMutex>
 
 namespace Ui {
 class generic_window;
@@ -27,19 +28,27 @@ private:
     Ui::generic_window *ui;
     bool display_parameters;
     void HideButtons(bool hide);
+    QMutex subwindow_mutex;
 
 signals:
     void update_tooltips();
+    void force_tooltips(bool hide);
 
 public slots:
     void new_data_comming();
 
 private slots:
+    void subwindow_closed();
     void handleMenuButton();
     void handleParametrosElectricosButton();
     void handleParametrosFisicosButton();
     void handleParametrosQuimicosButton();
     void on_top_main_menu_clicked();
+    void on_top_menu_1_clicked();
+    void on_top_menu_2_clicked();
+    void on_top_menu_3_clicked();
+    void on_top_menu_4_clicked();
+    void on_asa_logo_clicked();
 };
 
 #endif // GENERIC_WINDOW_H

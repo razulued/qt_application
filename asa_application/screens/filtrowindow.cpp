@@ -125,7 +125,7 @@ filtrowindow::~filtrowindow()
 
 void filtrowindow::on_go_to_main_clicked()
 {
-    forward_param_buttons_state(display_parameters, GetParemeter());
+    forward_param_buttons_state(display_parameters, GetToolbarParameter());
     release_lock();
     this->close();
 }
@@ -145,19 +145,19 @@ void filtrowindow::handleMenuButton()
 }
 void filtrowindow::handleParametrosElectricosButton()
 {
-    SelectParemeter(PARAM_ELECTRIC);
+    SelectToolbarParameter(PARAM_ELECTRIC);
     ui->active_param_label->setText(tr("Parametros Eléctricos"));
 }
 
 void filtrowindow::handleParametrosFisicosButton()
 {
-    SelectParemeter(PARAM_PHYSHIC);
+    SelectToolbarParameter(PARAM_PHYSHIC);
     ui->active_param_label->setText(tr("Parametros Físicos"));
 }
 
 void filtrowindow::handleParametrosQuimicosButton()
 {
-    SelectParemeter(PARAM_CHEMIC);
+    SelectToolbarParameter(PARAM_CHEMIC);
     ui->active_param_label->setText(tr("Parametros Químicos"));
 }
 
@@ -176,65 +176,13 @@ void filtrowindow::InitTooltips()
 
 void filtrowindow::on_asa_logo_clicked()
 {
-    forward_param_buttons_state(display_parameters, GetParemeter());
+    forward_param_buttons_state(display_parameters, GetToolbarParameter());
     release_lock();
     this->close();
 }
 
 void filtrowindow::update_tooltips(void)
 {
-    if(true == display_parameters)
-    {
-        switch(GetParemeter())
-        {
-        case PARAM_ELECTRIC:
-
-            tool_tip_filtro_electricos->force_show();
-            tool_tip_filtro_fisicos->force_hide();
-            tool_tip_filtro_quimicos->force_hide();
-
-            tool_tip_filtro_bomba_electricos->force_show();
-            tool_tip_filtro_bomba_fisicos->force_hide();
-            tool_tip_filtro_bomba_quimicos->force_hide();
-
-            break;
-        case PARAM_PHYSHIC:
-            tool_tip_filtro_electricos->force_hide();
-            tool_tip_filtro_fisicos->force_show();
-            tool_tip_filtro_quimicos->force_hide();
-
-            tool_tip_filtro_bomba_electricos->force_hide();
-            tool_tip_filtro_bomba_fisicos->force_show();
-            tool_tip_filtro_bomba_quimicos->force_hide();
-
-            break;
-        case PARAM_CHEMIC:
-            tool_tip_filtro_electricos->force_hide();
-            tool_tip_filtro_fisicos->force_hide();
-            tool_tip_filtro_quimicos->force_show();
-
-            tool_tip_filtro_bomba_electricos->force_hide();
-            tool_tip_filtro_bomba_fisicos->force_hide();
-            tool_tip_filtro_bomba_quimicos->force_show();
-            break;
-        default:
-            break;
-        }
-    }
-    else
-    {
-        if(init_complete)
-        {
-            tool_tip_filtro_electricos->update_tooltip();
-            tool_tip_filtro_fisicos->update_tooltip();
-            tool_tip_filtro_quimicos->update_tooltip();
-
-            tool_tip_filtro_bomba_electricos->update_tooltip();
-            tool_tip_filtro_bomba_fisicos->update_tooltip();
-            tool_tip_filtro_bomba_quimicos->update_tooltip();
-        }
-
-    }
 }
 
 void filtrowindow::check_lock()

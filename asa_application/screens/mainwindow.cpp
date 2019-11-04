@@ -289,21 +289,21 @@ void MainWindow::handleMenuButton()
 void MainWindow::handleParametrosElectricosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
-    SelectParemeter(PARAM_ELECTRIC);
+    SelectToolbarParameter(PARAM_ELECTRIC);
     ui->active_param_label->setText(tr("Parametros Eléctricos"));
 }
 
 void MainWindow::handleParametrosFisicosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
-    SelectParemeter(PARAM_PHYSHIC);
+    SelectToolbarParameter(PARAM_PHYSHIC);
     ui->active_param_label->setText(tr("Parametros Físicos"));
 }
 
 void MainWindow::handleParametrosQuimicosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
-    SelectParemeter(PARAM_CHEMIC);
+    SelectToolbarParameter(PARAM_CHEMIC);
     ui->active_param_label->setText(tr("Parametros Químicos"));
 }
 
@@ -688,172 +688,7 @@ void MainWindow::on_top_menu_2_clicked()
 
 void MainWindow::update_tooltips(void)
 {
-    static uint count = 0;
-    if(true == display_parameters)
-    {
-        switch(GetParemeter())
-        {
-        case PARAM_ELECTRIC:
-            tool_tip_carcamo_electricos->force_show();
-            tool_tip_regulador_electricos->force_show();
-            tool_tip_reactor_electricos->force_show();
-            tool_tip_clarificador_electricos->force_show();
-            tool_tip_clorador_electricos->force_show();
-            tool_tip_digestor_electricos->force_show();
-            tool_tip_deshidratador_electricos->force_show();
-            tool_tip_afluente_electricos->force_show();
-            tool_tip_efluente_electricos->force_show();
-//            tool_tip_filtro_electricos->force_show();
 
-            tool_tip_carcamo_fisicos->force_hide();
-            tool_tip_regulador_fisicos->force_hide();
-            tool_tip_reactor_fisicos->force_hide();
-            tool_tip_clarificador_fisicos->force_hide();
-            tool_tip_clorador_fisicos->force_hide();
-            tool_tip_digestor_fisicos->force_hide();
-            tool_tip_deshidratador_fisicos->force_hide();
-            tool_tip_afluente_fisicos->force_hide();
-            tool_tip_efluente_fisicos->force_hide();
-//            tool_tip_filtro_fisicos->force_hide();
-
-            tool_tip_carcamo_quimicos->force_hide();
-            tool_tip_regulador_quimicos->force_hide();
-            tool_tip_reactor_quimicos->force_hide();
-            tool_tip_clarificador_quimicos->force_hide();
-            tool_tip_clorador_quimicos->force_hide();
-            tool_tip_digestor_quimicos->force_hide();
-            tool_tip_deshidratador_quimicos->force_hide();
-            tool_tip_afluente_quimicos->force_hide();
-            tool_tip_efluente_quimicos->force_hide();
-//            tool_tip_filtro_quimicos->force_hide();
-
-            break;
-        case PARAM_PHYSHIC:
-            tool_tip_carcamo_electricos->force_hide();
-            tool_tip_regulador_electricos->force_hide();
-            tool_tip_reactor_electricos->force_hide();
-            tool_tip_clarificador_electricos->force_hide();
-            tool_tip_clorador_electricos->force_hide();
-            tool_tip_digestor_electricos->force_hide();
-            tool_tip_deshidratador_electricos->force_hide();
-            tool_tip_afluente_electricos->force_hide();
-            tool_tip_efluente_electricos->force_hide();
-//            tool_tip_filtro_electricos->force_hide();
-
-
-            tool_tip_carcamo_fisicos->force_show();
-            tool_tip_regulador_fisicos->force_show();
-            tool_tip_reactor_fisicos->force_show();
-            tool_tip_clarificador_fisicos->force_show();
-            tool_tip_clorador_fisicos->force_show();
-            tool_tip_digestor_fisicos->force_show();
-            tool_tip_deshidratador_fisicos->force_show();
-            tool_tip_afluente_fisicos->force_show();
-            tool_tip_efluente_fisicos->force_show();
-//            tool_tip_filtro_fisicos->force_show();
-
-            tool_tip_carcamo_quimicos->force_hide();
-            tool_tip_regulador_quimicos->force_hide();
-            tool_tip_reactor_quimicos->force_hide();
-            tool_tip_clarificador_quimicos->force_hide();
-            tool_tip_clorador_quimicos->force_hide();
-            tool_tip_digestor_quimicos->force_hide();
-            tool_tip_deshidratador_quimicos->force_hide();
-            tool_tip_afluente_quimicos->force_hide();
-            tool_tip_efluente_quimicos->force_hide();
-//            tool_tip_filtro_quimicos->force_hide();
-
-
-            break;
-        case PARAM_CHEMIC:
-            tool_tip_carcamo_electricos->force_hide();
-            tool_tip_regulador_electricos->force_hide();
-            tool_tip_reactor_electricos->force_hide();
-            tool_tip_clarificador_electricos->force_hide();
-            tool_tip_clorador_electricos->force_hide();
-            tool_tip_digestor_electricos->force_hide();
-            tool_tip_deshidratador_electricos->force_hide();
-            tool_tip_afluente_electricos->force_hide();
-            tool_tip_efluente_electricos->force_hide();
-//            tool_tip_filtro_electricos->force_hide();
-
-            tool_tip_carcamo_fisicos->force_hide();
-            tool_tip_regulador_fisicos->force_hide();
-            tool_tip_reactor_fisicos->force_hide();
-            tool_tip_clarificador_fisicos->force_hide();
-            tool_tip_clorador_fisicos->force_hide();
-            tool_tip_digestor_fisicos->force_hide();
-            tool_tip_deshidratador_fisicos->force_hide();
-            tool_tip_afluente_fisicos->force_hide();
-            tool_tip_efluente_fisicos->force_hide();
-//            tool_tip_filtro_fisicos->force_hide();
-
-            tool_tip_carcamo_quimicos->force_show();
-            tool_tip_regulador_quimicos->force_show();
-            tool_tip_reactor_quimicos->force_show();
-            tool_tip_clarificador_quimicos->force_show();
-            tool_tip_clorador_quimicos->force_show();
-            tool_tip_digestor_quimicos->force_show();
-            tool_tip_deshidratador_quimicos->force_show();
-            tool_tip_afluente_quimicos->force_show();
-            tool_tip_efluente_quimicos->force_show();
-//            tool_tip_filtro_quimicos->force_show();
-
-            break;
-        default:
-            break;
-        }
-    }
-    else
-    {
-        if(init_complete)
-        {
-            if(0 == count)
-            {
-                tool_tip_carcamo_electricos->update_tooltip();
-                tool_tip_regulador_electricos->update_tooltip();
-                tool_tip_reactor_electricos->update_tooltip();
-                tool_tip_clarificador_electricos->update_tooltip();
-                tool_tip_clorador_electricos->update_tooltip();
-                tool_tip_digestor_electricos->update_tooltip();
-                tool_tip_deshidratador_electricos->update_tooltip();
-                tool_tip_afluente_electricos->update_tooltip();
-                tool_tip_efluente_electricos->update_tooltip();
-    //            tool_tip_filtro_electricos->update_data();
-                count++;
-            }
-            else if(1 == count)
-            {
-                tool_tip_carcamo_fisicos->update_tooltip();
-                tool_tip_regulador_fisicos->update_tooltip();
-                tool_tip_reactor_fisicos->update_tooltip();
-                tool_tip_clarificador_fisicos->update_tooltip();
-                tool_tip_clorador_fisicos->update_tooltip();
-                tool_tip_digestor_fisicos->update_tooltip();
-                tool_tip_deshidratador_fisicos->update_tooltip();
-                tool_tip_afluente_fisicos->update_tooltip();
-                tool_tip_efluente_fisicos->update_tooltip();
-    //            tool_tip_filtro_fisicos->update_data();
-                count++;
-            }
-            else
-            {
-                tool_tip_carcamo_quimicos->update_tooltip();
-                tool_tip_regulador_quimicos->update_tooltip();
-                tool_tip_reactor_quimicos->update_tooltip();
-                tool_tip_clarificador_quimicos->update_tooltip();
-                tool_tip_clorador_quimicos->update_tooltip();
-                tool_tip_digestor_quimicos->update_tooltip();
-                tool_tip_deshidratador_quimicos->update_tooltip();
-                tool_tip_afluente_quimicos->update_tooltip();
-                tool_tip_efluente_quimicos->update_tooltip();
-    //            tool_tip_filtro_quimicos->update_data();
-                count = 0;
-            }
-
-        }
-
-    }
 }
 
 void MainWindow::new_spi_data()
@@ -1282,7 +1117,7 @@ void MainWindow::on_go_to_filtro_clicked()
         {
             delete filt_window;
         }
-        filt_window = new filtrowindow(display_parameters, GetParemeter(),
+        filt_window = new filtrowindow(display_parameters, GetToolbarParameter(),
                                        ui->label_dia->text(), ui->label_hora->text(), ui->label_title->text(),
                                        rutinas,
                                        this);

@@ -2,14 +2,6 @@
 #define CONFIGURATION_H
 #include <QList>
 #include <QString>
-typedef struct
-{
-    QString group_name;
-    QStringList names;
-    QList<int>  ids;
-    QList<QString> ids_string;
-}configuration_id;
-
 typedef enum
 {
     PARAMETER_NONE,
@@ -18,6 +10,15 @@ typedef enum
     PARAMETER_CHEMICAL,
     PARAMETER_OUTPUT
 }elemnt_type;
+
+typedef struct
+{
+    QString group_name;
+    elemnt_type type;
+    QStringList names;
+    QList<int>  ids;
+    QList<QString> ids_string;
+}configuration_id;
 
 class configuration
 {

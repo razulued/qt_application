@@ -1,6 +1,7 @@
 #include "custom_tooltip.h"
 #include "protocol/asa_protocol.h"
 #include "parameters.h"
+#include "multistatebutton.h"
 #include <QDebug>
 #include <QMimeData>
 #include <QDrag>
@@ -36,12 +37,13 @@ custom_tooltip::custom_tooltip(QWidget *frame, configuration_id &conf_list, QWid
 
     connect(list_widget, SIGNAL(itemPressed(QListWidgetItem*)),this, SLOT (ListPressed()));
 
-    DataList = conf_list.ids;
-    NameList = conf_list.names;
-
     item_is_pressed = false;
 
+    DataList = conf_list.ids;
+    NameList = conf_list.names;
+    type = conf_list.type;
     file_name = parent->objectName() +"_"+conf_list.group_name;
+
     QString filename = "./tooltips/"+file_name;
     QFile myFile(filename);
 
@@ -74,11 +76,11 @@ custom_tooltip::custom_tooltip(QWidget *frame, configuration_id &conf_list, QWid
 
 void custom_tooltip::init_data()
 {
+    update_lock.lock();
     /*QFont font_2("Typo Square Ligth Demo",10,1);*/
     QFont font_2("Liberation Mono Bold",10,1);
     list_widget->setFont(font_2);
     QListWidgetItem *label;
-
 
     quint32 i, param_id;
     int items = 0;
@@ -113,13 +115,12 @@ void custom_tooltip::init_data()
     {
         parent_frame->hide();
     }
+    update_lock.unlock();
 }
 
 void custom_tooltip::update_tooltip()
 {
-//    QFont font_2("Ubuntu Bold",10,1);
-    QFont font_2("Liberation Mono Bold",10,1);
-
+    update_lock.lock();
     quint32 i, param_id;
     int items = 0;
 
@@ -131,15 +132,22 @@ void custom_tooltip::update_tooltip()
         save_position();
     }
 
-
     for(i = 0; i < (quint32)DataList.size(); i++)
     {
         param_id = DataList[i];
-//        if(true == getParamActiveShow(param_id))
-        if(1)
+        if(toolbar_active)
+        {
+            if((GetToolbarParameter() == (type -1))) // TODO: this is a patch because multistate button and conf have different enums
+            {
+                label = new QListWidgetItem(NameList[i] + ": " + getParamValue_and_units(param_id));
+
+                list_widget->addItem(label);
+                items++;
+            }
+        }
+        else if(true == getParamActiveShow(param_id))
         {
             label = new QListWidgetItem(NameList[i] + ": " + getParamValue_and_units(param_id));
-//            label->setTextFormat(Qt::RichText);
 
             list_widget->addItem(label);
             items++;
@@ -160,76 +168,14 @@ void custom_tooltip::update_tooltip()
     {
         parent_frame->hide();
     }
+    update_lock.unlock();
 }
 
 
-void custom_tooltip::force_show()
+void custom_tooltip::force_show(bool show)
 {
-    quint32 i, param_id;
-    int items = 0;
-
-    list_widget->clear();
-
-
-//    if(true == item_is_pressed)
-//    {
-//        parent_frame->move(mapTo(parent_window, mapFromGlobal(QCursor::pos()) - offset));
-
-//        if(0 == item_pressed_counter)
-//        {
-//            item_is_pressed = false;
-//            list_widget->setStyleSheet("background: transparent;"
-//                                          "color: rgb(0, 167, 250);"
-//                                            "border: none;"
-//                                       "border-image: none;");
-
-//            save_position();
-//        }
-//        else if(last_position == parent_frame->pos())
-//        {
-//            item_pressed_counter--;
-//        }
-
-//        last_position = parent_frame->pos();
-//    }
-    if(last_position != parent_frame->pos())
-    {
-        save_position();
-    }
-
-    for(i = 0; i < (quint32)DataList.size(); i++)
-    {
-        param_id = DataList[i];
-
-        list_widget->addItem(NameList[i]  + ": " + getParamValue_and_units(param_id));
-//        list_widget->item(i)->setFlags(Qt::ItemIsEnabled);
-        items++;
-    }
-
-    if(items>0)
-    {
-        list_widget->setMaximumWidth(list_widget->sizeHintForColumn(0) + 5);
-        list_widget->setMaximumHeight(list_widget->sizeHintForRow(items-1)*items);
-        list_widget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-        layout->addWidget(list_widget);
-//        parent_frame->setLayout(layout);
-
-        parent_frame->adjustSize();
-        parent_frame->show();
-    }
-    else
-    {
-        parent_frame->hide();
-    }
-}
-
-void custom_tooltip::force_hide()
-{
-    if(false == parent_frame->isHidden())
-    {
-        parent_frame->hide();
-    }
+    toolbar_active = show;
+    this->update_tooltip();
 }
 
 void custom_tooltip::save_position()
@@ -261,28 +207,6 @@ void custom_tooltip::checkClick()
 {
     if(number_of_clicks >= 2)
     {
-//        if(item_is_pressed == false)
-//        {
-//            item_is_pressed = true;
-//            offset = mapFromGlobal(QCursor::pos());
-//            list_widget->setStyleSheet("background: white;"
-//                                          "color: rgb(0, 167, 250);"
-//                                            "border: none;"
-//                                       "border-image: none;");
-//            item_pressed_counter = HOLD_TIME;
-//        }
-//        else
-//        {
-//            item_is_pressed = false;
-//            list_widget->setStyleSheet("background: transparent;"
-//                                          "color: rgb(0, 167, 250);"
-//                                            "border: none;"
-//                                       "border-image: none;");
-//            item_pressed_counter = 0;
-
-//            save_position();
-//        }
-
         if(NULL != arrow_key_window)
         {
             delete arrow_key_window;

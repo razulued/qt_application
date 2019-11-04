@@ -5,7 +5,8 @@
 #include <QDir>
 #include <QTextStream>
 #include <QDebug>
-#include"custom_tooltip.h"
+#include "custom_tooltip.h"
+#include "contacto.h"
 
 #include "multistatebutton.h" //TODO: HACER CLASE
 generic_window::generic_window(QString name, QWidget *parent) :
@@ -192,6 +193,7 @@ void generic_window::InitToolTips(QList<configuration_id> parameter_list)
         widget = new QWidget(this);
         tool_tip = new custom_tooltip(widget, parameter, this);
         connect(this, SIGNAL(update_tooltips()), tool_tip, SLOT(update_tooltip()));
+        connect(this, SIGNAL(force_tooltips(bool)), tool_tip, SLOT(force_show(bool)));
     }
 
 }
@@ -202,6 +204,11 @@ void generic_window::new_data_comming()
 
     // Update tooltips
     this->update_tooltips();
+}
+
+void generic_window::subwindow_closed()
+{
+    subwindow_mutex.unlock();
 }
 
 void generic_window::handleMenuButton()
@@ -216,31 +223,67 @@ void generic_window::handleMenuButton()
         HideButtons(true);
         display_parameters = false;
     }
+    force_tooltips(display_parameters);
 }
 
 void generic_window::handleParametrosElectricosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
-    SelectParemeter(PARAM_ELECTRIC);
+    SelectToolbarParameter(PARAM_ELECTRIC);
     ui->active_param_label->setText(tr("Parametros Eléctricos"));
+    force_tooltips(true);
 }
 
 void generic_window::handleParametrosFisicosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
-    SelectParemeter(PARAM_PHYSHIC);
+    SelectToolbarParameter(PARAM_PHYSHIC);
     ui->active_param_label->setText(tr("Parametros Físicos"));
+    force_tooltips(true);
 }
 
 void generic_window::handleParametrosQuimicosButton()
 {
     InitButtons(ui->pb_electricos, ui->pb_fisicos, ui->pb_quimicos);
-    SelectParemeter(PARAM_CHEMIC);
+    SelectToolbarParameter(PARAM_CHEMIC);
     ui->active_param_label->setText(tr("Parametros Químicos"));
+    force_tooltips(true);
 }
 
 void generic_window::on_top_main_menu_clicked()
 {
     main_menu->show();
     this->close();
+}
+
+void generic_window::on_top_menu_1_clicked()
+{
+    main_menu->show();
+    this->close();
+}
+
+void generic_window::on_top_menu_2_clicked()
+{
+
+}
+
+void generic_window::on_top_menu_3_clicked()
+{
+
+}
+
+void generic_window::on_top_menu_4_clicked()
+{
+
+}
+
+void generic_window::on_asa_logo_clicked()
+{
+    if(subwindow_mutex.tryLock(0))
+    {
+        contacto * contacto_window = new contacto(this);
+//        connect(contacto_window, SIGNAL(close_app()), this, SLOT(close()));
+        connect(contacto_window, SIGNAL(release_lock()), this, SLOT(subwindow_closed()));
+        contacto_window->show();
+    }
 }

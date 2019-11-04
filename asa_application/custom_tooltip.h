@@ -12,6 +12,8 @@
 #include "screens/graphwindow.h"
 #include "arrowkeys.h"
 #include "configuration/configuration.h"
+#include <QMutex>
+
 enum
 {
     TYPE_ELECTRICOS,
@@ -34,8 +36,6 @@ public:
     custom_tooltip(QWidget *frame, configuration_id &conf_list, QWidget *parent);
 
     void init_data();
-    void force_show();
-    void force_hide();
 
     QWidget *parent_window;
 private:
@@ -46,7 +46,6 @@ private:
 
     QWidget *parent_frame;
     QPushButton *connect_here;
-    graphwindow *graph_ptr;
 
     QLayout *layout;
     QListWidget *list_widget;
@@ -65,6 +64,11 @@ private:
     QList<int> unknown_tool_pos;
 
     QString file_name;
+
+    bool toolbar_active = false;
+    elemnt_type type;
+
+    QMutex update_lock;
 private slots:
     void ListPressed();
     void checkClick();
@@ -72,6 +76,7 @@ private slots:
 
 public slots:
     void update_tooltip();
+    void force_show(bool show);
 
 protected:
 //    void mousePressEvent(QMouseEvent *event);

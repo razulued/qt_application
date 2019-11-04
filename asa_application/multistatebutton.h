@@ -31,7 +31,7 @@ typedef struct
 void InitButtons(QPushButton *elec, QPushButton *fis, QPushButton *chem);
 void UpdateButtons();
 
-void SelectParemeter(parameters_t param);
-parameters_t GetParemeter();
+void SelectToolbarParameter(parameters_t param);
+parameters_t GetToolbarParameter();
 
 #endif // MULTISTATEBUTTON_H
