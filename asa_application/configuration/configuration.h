@@ -37,7 +37,14 @@ public:
     static void saveSettings(const QString &group, const QString &key, const QVariant &value);
     static void update_window_title(QString title);
 
+    static bool token_state;
+    static void validate_token(bool tk);
+
+    // Window labels
     static QString window_title;
+    static QString username;
+
+
     static bool filtro_present;
     //Carcamo
     static configuration_id conf_car_elect;

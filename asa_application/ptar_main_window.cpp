@@ -1,6 +1,5 @@
 #include "ptar_main_window.h"
 #include "ui_ptar_main_window.h"
-
 #include "screens/generic_window.h"
 
 ptar_main_window::ptar_main_window(socket_client *socket, QWidget *parent) :
@@ -18,8 +17,6 @@ ptar_main_window::ptar_main_window(socket_client *socket, QWidget *parent) :
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
     this->show();
-
-
 }
 
 ptar_main_window::~ptar_main_window()
@@ -34,7 +31,7 @@ void ptar_main_window::on_launch_view1_clicked()
 
 void ptar_main_window::on_launch_view2_clicked()
 {
-
+    filtro_view_init();
 }
 
 
@@ -53,19 +50,6 @@ void ptar_main_window::detailed_closed()
     mutex_detailed.unlock();
 }
 
-void ptar_main_window::detailed_window_carcamo()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_CARCAMO, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(detailed_closed()));
-        detail_window->show();
-    }
-}
-
 void ptar_main_window::create_detailed_window(int element)
 {
     qDebug() << "Create detailed win";
@@ -79,6 +63,8 @@ void ptar_main_window::create_detailed_window(int element)
         detail_window->show();
     }
 }
+
+/** CREATE A NEW FUNCTION LIKE THIS FOR EACH NEW WINDOW **/
 
 void ptar_main_window::main_view_init()
 {
@@ -140,7 +126,40 @@ void ptar_main_window::main_view_init()
     // Connect socket for updates
     connect(socket, SIGNAL(new_data_comming()), win, SLOT(new_data_comming()));
 
+    win->show();
+    //this->hide();
+}
 
+void ptar_main_window::filtro_view_init()
+{
+    //Create screens
+    generic_window *win = new generic_window("FiltroView",this);
+
+    win->add_image(":/diagrama/screen800x600/diagrama/motor_filtro.png",
+                   QSize(211,131), QPoint(80,310), false);
+    win->add_image(":/diagrama/screen800x600/diagrama/Filtro 5SDF portátil_1.png",
+                   QSize(321,411), QPoint(250,91), false);
+
+    QSignalMapper *detailed_view_Mapper = new QSignalMapper(this);
+
+    QPushButton *motor_module = win->add_clickeable_module(QSize(211,131), QPoint(80,310), "filtro bomba", "blue");
+    connect(motor_module, SIGNAL(clicked(bool)), detailed_view_Mapper, SLOT(map()));
+    detailed_view_Mapper->setMapping(motor_module, ELEMENT_FILTRO_BOMBA);
+
+    QPushButton *filtro_module = win->add_clickeable_module(QSize(181,221), QPoint(310,190), "filtro", "green");
+    connect(filtro_module, SIGNAL(clicked(bool)), detailed_view_Mapper, SLOT(map()));
+    detailed_view_Mapper->setMapping(filtro_module, ELEMENT_FILTRO);
+
+
+    // Connect all buttons to mapper
+    connect(detailed_view_Mapper, SIGNAL(mapped(int)), this, SLOT(create_detailed_window(int)));
+
+    QList<configuration_id> parameter_list;
+    parameter_list << configuration::conf_car_fisic << configuration::conf_car_elect;
+    win->InitToolTips(parameter_list);
+
+    // Connect socket for updates
+    connect(socket, SIGNAL(new_data_comming()), win, SLOT(new_data_comming()));
 
     win->show();
     //this->hide();

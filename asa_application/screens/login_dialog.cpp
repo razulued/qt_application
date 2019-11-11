@@ -1,7 +1,7 @@
 #include "login_dialog.h"
 #include "ui_login_dialog.h"
 #include "token_auth.h"
-#include "asa_conf_string.h"
+#include "protocol/asa_conf_string.h"
 #include <QFont>
 #include <QDebug>
 #include <QLabel>
@@ -11,31 +11,41 @@ login_dialog::login_dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFont font("Typo Square Ligth Demo",20,1);
-//    ui->textedit->setFont(font);
+    if(configuration::token_state == false)
+    {
+        QFont font("Typo Square Ligth Demo",20,1);
+    //    ui->textedit->setFont(font);
 
-    input_password = "";
+        input_password = "";
 
-//    ui->horizontalLayout->setSpacing(0);
-//    ui->horizontalLayout->setMargin(0);
-//    ui->horizontalLayout->setContentsMargins(30,30,30,30);
+    //    ui->horizontalLayout->setSpacing(0);
+    //    ui->horizontalLayout->setMargin(0);
+    //    ui->horizontalLayout->setContentsMargins(30,30,30,30);
 
-    this->setStyleSheet("background-color:black;"
-                        "color:white"
-                        );
+        this->setStyleSheet("background-color:black;"
+                            "color:white"
+                            );
 
-    //Hide window bars and buttons
-    QFont label_title_font("Typo Square Bold Demo",17,1);
+        //Hide window bars and buttons
+        QFont label_title_font("Typo Square Bold Demo",17,1);
 
-    ui->label_2->setFont(label_title_font);
-    ui->label_2->setStyleSheet("Text-align:left;"
-                                   "border:none;"
-                                   "color:black;"
-                                   "background-color:transparent;");
+        ui->label_2->setFont(label_title_font);
+        ui->label_2->setStyleSheet("Text-align:left;"
+                                       "border:none;"
+                                       "color:black;"
+                                       "background-color:transparent;");
 
-    this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
-    this->move(parent->pos());
-    this->show();
+        this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+        this->move(parent->pos());
+        this->show();
+    }
+    else
+    {
+        // token already true, make token validity false
+        configuration::validate_token(false);
+        this->release_lock();
+        this->close();
+    }
 }
 
 login_dialog::~login_dialog()
@@ -88,16 +98,20 @@ void login_dialog::on_key_enter_clicked()
     qDebug() << "Password is " << input_password;
     if(true == check_user_password(input_password))
     {
-        synch_config_string();
-        synch_output_state();
+        configuration::validate_token(true);
+//        synch_config_string();
+//        synch_output_state();
 
-        validate_token(true);
+//        validate_token(true);
+        qDebug() << "Password ok";
     }
     else
     {
-        validate_token(false);
-//        ui->textedit->clear();
+//        validate_token(false);
+        configuration::validate_token(true);
+        qDebug() << "Password nok";
     }
+    release_lock();
     this->close();
 }
 
@@ -111,14 +125,10 @@ void login_dialog::on_key_back_clicked()
 
     if(input_password.length() >= 0)
     {
-//        ui->horizontalLayout->removeItem(ui->horizontalLayout->itemAt(input_password.length()));
         QLayoutItem *item = ui->horizontalLayout->takeAt(input_password.length());
 
         if(item != 0)
         {
-//            item->widget()->setParent(NULL);
-//            delete item;
-//            ui->horizontalLayout->removeItem(item);
             item->widget()->close();
             delete item;
         }
@@ -141,5 +151,6 @@ void login_dialog::add_punto()
 
 void login_dialog::on_asa_logo_clicked()
 {
+    release_lock();
     this->close();
 }

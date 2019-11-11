@@ -4,6 +4,9 @@
 #include <QDebug>
 
 QString configuration::window_title;
+QString configuration::username;
+bool configuration::token_state = false;
+
 bool configuration::filtro_present;
 
 configuration_id configuration::conf_car_elect;
@@ -67,6 +70,8 @@ configuration::configuration(QString name)
     reload_parameters();
 
     window_title = get_value("Titulos", "Diagrama");
+    username = QObject::tr("Sin Usuario");
+
     if ("1" == get_value("Product-Config", "Filtro"))
     {
         filtro_present = true;
@@ -223,4 +228,18 @@ void configuration::update_window_title(QString title)
 {
     window_title = title;
     saveSettings("Titulos", "Diagrama", title);
+}
+
+void configuration::validate_token(bool tk)
+{
+    if(tk)
+    {
+        username = "chompy";
+        token_state = true;
+    }
+    else
+    {
+        username = QObject::tr("Sin Usuario");
+        token_state = false;
+    }
 }

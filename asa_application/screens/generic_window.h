@@ -29,7 +29,8 @@ private:
     bool display_parameters;
     void HideButtons(bool hide);
     QMutex subwindow_mutex;
-
+    void update_time_date();
+    QString build_date_string(QDateTime time);
 signals:
     void update_tooltips();
     void force_tooltips(bool hide);
@@ -38,6 +39,7 @@ public slots:
     void new_data_comming();
 
 private slots:
+    void update_user();
     void subwindow_closed();
     void handleMenuButton();
     void handleParametrosElectricosButton();
@@ -49,6 +51,7 @@ private slots:
     void on_top_menu_3_clicked();
     void on_top_menu_4_clicked();
     void on_asa_logo_clicked();
+    void on_prof_pic_clicked();
 };
 
 #endif // GENERIC_WINDOW_H

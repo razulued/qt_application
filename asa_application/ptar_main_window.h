@@ -33,12 +33,12 @@ private slots:
 
     void detailed_closed();
 
-    void detailed_window_carcamo();
     void create_detailed_window(int element);
 private:
     Ui::ptar_main_window *ui;
 
     void main_view_init();
+    void filtro_view_init();
 
     socket_client *socket;
 

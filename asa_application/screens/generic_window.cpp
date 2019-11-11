@@ -5,8 +5,14 @@
 #include <QDir>
 #include <QTextStream>
 #include <QDebug>
+#include <QDateTime>
 #include "custom_tooltip.h"
+
+// Subwindows
 #include "contacto.h"
+#include "motores.h"
+#include "parameters.h"
+#include "login_dialog.h"
 
 #include "multistatebutton.h" //TODO: HACER CLASE
 generic_window::generic_window(QString name, QWidget *parent) :
@@ -45,6 +51,8 @@ generic_window::generic_window(QString name, QWidget *parent) :
     ui->label_hora->setFont(hora_font);
     ui->label_dia->setStyleSheet("color: white");
     ui->label_dia->setFont(dia_font);
+    this->update_time_date();
+
     // Win title
     QString title_name = configuration::window_title;
     QFont label_title_font("Typo Square Bold Demo",17,1);
@@ -184,6 +192,110 @@ void generic_window::HideButtons(bool hide)
     }
 }
 
+void generic_window::update_time_date()
+{
+    QString dos_mil = "20";
+    QString time_format = "yyyy/MM/dd,HH.mm.ss";
+    QString hora =  dos_mil+ getParamValue(0x0402);
+    QDateTime time = QDateTime::fromString(hora, time_format);
+    QString display_time = QString::number(time.time().hour())+":"+QString("%1").arg(time.time().minute(), 2, 10, QChar('0'))+":"+QString("%1").arg(time.time().second(), 2, 10, QChar('0'));
+    QString display_dia = build_date_string(time);
+
+    ui->label_dia->setText(display_dia);
+    ui->label_hora->setText(display_time);
+}
+
+void generic_window::update_user()
+{
+    ui->prof_label->setText(configuration::username);
+    if(configuration::token_state)
+    {
+        ui->prof_pic->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Prof pic blanco.png);"
+                                       "border: none;"
+                                       "background-repeat: none;"
+                                       "background-position: center;");
+    }
+    else
+    {
+        ui->prof_pic->setStyleSheet("background-image: url(:/iconos/screen800x600/iconos/Prof pic azul.png);"
+                                       "border: none;"
+                                       "background-repeat: none;"
+                                       "background-position: center;");
+    }
+}
+
+QString generic_window::build_date_string(QDateTime time)
+{
+    QString dia_semana;
+    QString mes;
+    switch(time.date().dayOfWeek())
+    {
+    case 1:
+        dia_semana = tr("Lunes");
+        break;
+    case 2:
+        dia_semana = tr("Martes");
+        break;
+    case 3:
+        dia_semana = tr("Miércoles");
+        break;
+    case 4:
+        dia_semana = tr("Jueves");
+        break;
+    case 5:
+        dia_semana = tr("Viernes");
+        break;
+    case 6:
+        dia_semana = tr("Sábado");
+        break;
+    case 7:
+        dia_semana = tr("Domingo");
+        break;
+    }
+
+    switch(time.date().month())
+    {
+    case 1:
+        mes = tr("Enero");
+        break;
+    case 2:
+        mes = tr("Febrero");
+        break;
+    case 3:
+        mes = tr("Marzo");
+        break;
+    case 4:
+        mes = tr("Abril");
+        break;
+    case 5:
+        mes = tr("Mayo");
+        break;
+    case 6:
+        mes = tr("Junio");
+        break;
+    case 7:
+        mes = tr("Julio");
+        break;
+    case 8:
+        mes = tr("Agosto");
+        break;
+    case 9:
+        mes = tr("Septiembre");
+        break;
+    case 10:
+        mes = tr("Octubre");
+        break;
+    case 11:
+        mes = tr("Noviembre");
+        break;
+    case 12:
+        mes = tr("Diciembre");
+        break;
+    }
+//    QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
+    return dia_semana + " " + QString::number(time.date().day()) + " " + mes + " " + QString::number(time.date().year());
+}
+
 void generic_window::InitToolTips(QList<configuration_id> parameter_list)
 {
     QWidget *widget;
@@ -204,10 +316,19 @@ void generic_window::new_data_comming()
 
     // Update tooltips
     this->update_tooltips();
+
+    // Update time date
+    this->update_time_date();
+
+    // Update user
+//    this->update_user();
+
+    qDebug() << "configuration::token_state" << configuration::token_state;
 }
 
 void generic_window::subwindow_closed()
 {
+    qDebug() << "Subwindow Closed";
     subwindow_mutex.unlock();
 }
 
@@ -258,13 +379,21 @@ void generic_window::on_top_main_menu_clicked()
 
 void generic_window::on_top_menu_1_clicked()
 {
+    // Return to main menu
     main_menu->show();
     this->close();
 }
 
 void generic_window::on_top_menu_2_clicked()
 {
+    // Motores View
+    if(subwindow_mutex.tryLock(0))
+    {
+        motores *motrores_window = new motores(this);
 
+        connect(motrores_window, SIGNAL(release_lock()), this, SLOT(subwindow_closed()));
+        motrores_window->show();
+    }
 }
 
 void generic_window::on_top_menu_3_clicked()
@@ -285,5 +414,23 @@ void generic_window::on_asa_logo_clicked()
 //        connect(contacto_window, SIGNAL(close_app()), this, SLOT(close()));
         connect(contacto_window, SIGNAL(release_lock()), this, SLOT(subwindow_closed()));
         contacto_window->show();
+    }
+}
+
+void generic_window::on_prof_pic_clicked()
+{
+    if(configuration::token_state == false)
+    {
+        if(subwindow_mutex.tryLock(0))
+        {
+            login_dialog * login_window = new login_dialog(this);
+            connect(login_window, SIGNAL(release_lock()), this, SLOT(update_user()));
+            connect(login_window, SIGNAL(release_lock()), this, SLOT(subwindow_closed()));
+        }
+    }
+    else
+    {
+        configuration::validate_token(false);
+        this->update_user();
     }
 }

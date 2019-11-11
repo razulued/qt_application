@@ -61,6 +61,8 @@ private slots:
     void on_key_back_clicked();
 
     void on_asa_logo_clicked();
+signals:
+    void release_lock();
 
 private:
     Ui::login_dialog *ui;

@@ -1,6 +1,6 @@
 #include "token_auth.h"
 #include <QDebug>
-#include "asa_conf_string.h"
+#include "protocol/asa_conf_string.h"
 #include <QMutex>
 #include <QSettings>
 #include <QDir>
@@ -29,7 +29,6 @@ bool check_user_password(QString str)
     {
         if(key == hash_password)
         {
-//            qDebug() << "KEY FOUND - ID: " << conf.value(key);
             current_user_key = key;
             ret = true;
             break;
