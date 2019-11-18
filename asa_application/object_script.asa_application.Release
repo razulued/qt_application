@@ -47,6 +47,7 @@ INPUT(
 ./release/mod_1_regulador.o
 ./release/analisis_demo.o
 ./release/donut_chart.o
+./release/analisis_graph.o
 ./release/qrc_fonts.o
 ./release/qrc_screen800x600.o
 ./release/qrc_images.o
@@ -84,4 +85,5 @@ INPUT(
 ./release/moc_mod_1_regulador.o
 ./release/moc_analisis_demo.o
 ./release/moc_donut_chart.o
+./release/moc_analisis_graph.o
 );

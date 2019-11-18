@@ -177,3 +177,12 @@ void analisis_demo::on_show_menu_clicked()
 {
     ui->left_menu->show();
 }
+
+void analisis_demo::on_graph_button_clicked()
+{
+    if(graph != NULL)
+    {
+        delete graph;
+    }
+    graph = new analisis_graph(this);
+}

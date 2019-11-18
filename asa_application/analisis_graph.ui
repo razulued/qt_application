@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>analisis_graph</class>
+ <widget class="QDialog" name="analisis_graph">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="controls" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>430</y>
+     <width>761</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#controls
+{
+background-color: rgb(32,29,72);
+border: none;
+border-radius: 10px;
+}</string>
+   </property>
+   <widget class="QPushButton" name="start_test">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>26</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#start_test
+{
+background-color: transparent;
+background-image: url(:/demo/images/Demo/Play.png);
+background-repeat: none;
+background-position: center;
+border: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>20</y>
+      <width>500</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#tableWidget
+{
+border-radius: 10px;
+}</string>
+    </property>
+    <column>
+     <property name="text">
+      <string>P1</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P2</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P3</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P4</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P5</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P6</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P7</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P8</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P9</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>P10</string>
+     </property>
+    </column>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>761</width>
+     <height>341</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

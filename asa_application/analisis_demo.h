@@ -6,6 +6,7 @@
 #include <QListWidget>
 #include <QVBoxLayout>
 #include <QList>
+#include "analisis_graph.h"
 
 class QWidget;
 class aleta_widget : public QWidget
@@ -46,11 +47,14 @@ private slots:
 
     void on_show_menu_clicked();
 
+    void on_graph_button_clicked();
+
 private:
     Ui::analisis_demo *ui;
     aleta_widget *aleta_1 = NULL;
     aleta_widget *aleta_2 = NULL;
 
+    analisis_graph *graph = NULL;
 signals:
     void update_donut_1(float value);
     void update_donut_2(float value);
