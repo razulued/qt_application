@@ -17,7 +17,7 @@ class donut_chart : public QWidget
     Q_OBJECT
 
 public:
-    explicit donut_chart(float value, float max, QWidget *parent = 0);
+    explicit donut_chart(QString name, float value, float max, QWidget *parent = 0);
     ~donut_chart();
     void set_value();
 

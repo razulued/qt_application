@@ -11,8 +11,19 @@
 #define L2_AmpsID   (0x3015)
 #define L3_AmpsID   (0x3016)
 
-#define L1_VALUE    (getParamValue(0x1234))
-#define DONUT1_VALUE (getParamValue(0x1234).toFloat())
+#define DONUT1_CAUDAL    (getParamValue(0x1234).toFloat())
+#define DONUT1_MAX      (500)
+#define DONUT2_PRESION   (getParamValue(0x1235).toFloat())
+#define DONUT2_MAX      (500)
+#define DONUT3_VOLT     ((getParamValue(L1_VoltID).toFloat()+\
+                        getParamValue(L2_VoltID).toFloat()+\
+                        (getParamValue(L3_VoltID).toFloat()))/3)
+#define DONUT3_MAX      (500)
+#define DONUT4_AMP      ((getParamValue(L1_AmpsID).toFloat()+\
+                        getParamValue(L2_AmpsID).toFloat()+\
+                        (getParamValue(L3_AmpsID).toFloat()))/3)
+#define DONUT4_MAX      (500)
+
 
 analisis_demo::analisis_demo(QWidget *parent) :
     QDialog(parent),
@@ -22,6 +33,7 @@ analisis_demo::analisis_demo(QWidget *parent) :
 
     this->move(parent->pos());
 
+    ui->left_menu->hide();
     this->setStyleSheet("background-color:rgb(45,43,83);"
                         "color:white"
                         );
@@ -36,17 +48,17 @@ analisis_demo::analisis_demo(QWidget *parent) :
 //    ui->aleta1->move(ui->widget->x() - 70, ui->widget->y());
 
     // DONUTS
-    donut_chart *donut_1 = new donut_chart(DONUT1_VALUE, 120, ui->widget);
+    donut_chart *donut_1 = new donut_chart("Caudal",DONUT1_CAUDAL, DONUT1_MAX, ui->widget);
     connect(this, SIGNAL(update_donut_1(float)), donut_1, SLOT(update_data(float)));
 
-    donut_chart *donut_2 = new donut_chart(DONUT1_VALUE, 120, ui->widget_2);
-    connect(this, SIGNAL(update_donut_1(float)), donut_2, SLOT(update_data(float)));
+    donut_chart *donut_2 = new donut_chart("Presión",DONUT2_PRESION, DONUT2_MAX, ui->widget_2);
+    connect(this, SIGNAL(update_donut_2(float)), donut_2, SLOT(update_data(float)));
 
-    donut_chart *donut_3 = new donut_chart(DONUT1_VALUE, 120, ui->widget_3);
-    connect(this, SIGNAL(update_donut_1(float)), donut_3, SLOT(update_data(float)));
+    donut_chart *donut_3 = new donut_chart("Voltaje AVG",DONUT3_VOLT, DONUT2_MAX, ui->widget_3);
+    connect(this, SIGNAL(update_donut_3(float)), donut_3, SLOT(update_data(float)));
 
-    donut_chart *donut_4 = new donut_chart(DONUT1_VALUE, 120, ui->widget_4);
-    connect(this, SIGNAL(update_donut_1(float)), donut_4, SLOT(update_data(float)));
+    donut_chart *donut_4 = new donut_chart("Amperaje AVG",DONUT4_AMP, DONUT2_MAX, ui->widget_4);
+    connect(this, SIGNAL(update_donut_4(float)), donut_4, SLOT(update_data(float)));
 
     // ALETAS
     ui->aleta1->hide();
@@ -74,7 +86,10 @@ analisis_demo::~analisis_demo()
 
 void analisis_demo::update_data()
 {
-    update_donut_1(DONUT1_VALUE);
+    update_donut_1(DONUT1_CAUDAL);
+    update_donut_2(DONUT2_PRESION);
+    update_donut_3(DONUT3_VOLT);
+    update_donut_4(DONUT4_AMP);
 
     if(NULL != aleta_1)
     {
@@ -94,12 +109,6 @@ void analisis_demo::on_pushButton_clicked()
 aleta_widget::aleta_widget(QList<uint> id_list, QList<QString> names, QWidget *parent):
     QWidget(parent)
 {
-//    parent->setStyleSheet("background-color: transparent;"
-//                          "background-image: url(:/demo/images/Demo/Aleta-izq.png);"
-//                          "background-repeat: none;"
-//                          "background-position: center;"
-//                          "border: none;");
-
     parent_widget = parent;
     layout = new QVBoxLayout(parent);
 
@@ -157,4 +166,14 @@ void aleta_widget::toogle_hide_show()
         show_aleta = false;
         parent_widget->hide();
     }
+}
+
+void analisis_demo::on_close_menu_clicked()
+{
+    ui->left_menu->hide();
+}
+
+void analisis_demo::on_show_menu_clicked()
+{
+    ui->left_menu->show();
 }

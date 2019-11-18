@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>180</width>
-    <height>180</height>
+    <height>200</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>91</width>
+     <width>151</width>
      <height>50</height>
     </rect>
    </property>
@@ -47,8 +47,30 @@
     </rect>
    </property>
   </widget>
+  <widget class="QLabel" name="namelabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>139</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
   <zorder>graphicsView</zorder>
   <zorder>valuelabel</zorder>
+  <zorder>namelabel</zorder>
  </widget>
  <customwidgets>
   <customwidget>

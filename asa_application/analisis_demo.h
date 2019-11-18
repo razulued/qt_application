@@ -42,6 +42,10 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_close_menu_clicked();
+
+    void on_show_menu_clicked();
+
 private:
     Ui::analisis_demo *ui;
     aleta_widget *aleta_1 = NULL;
@@ -49,6 +53,9 @@ private:
 
 signals:
     void update_donut_1(float value);
+    void update_donut_2(float value);
+    void update_donut_3(float value);
+    void update_donut_4(float value);
 };
 
 

@@ -7,7 +7,7 @@
 
 
 
-donut_chart::donut_chart(float value, float max, QWidget *parent) :
+donut_chart::donut_chart(QString name, float value, float max, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::donut_chart)
 {
@@ -18,10 +18,19 @@ donut_chart::donut_chart(float value, float max, QWidget *parent) :
 
     ui->graphicsView->setGeometry(this->geometry());
     ui->valuelabel->move(this->rect().center()- ui->valuelabel->rect().center());
+    ui->valuelabel->move(ui->valuelabel->x(),ui->valuelabel->y()-10);
+
 
     ui->valuelabel->setStyleSheet("background-color: transparent;"
-                                  "color: white;");
-    ui->valuelabel->setText(QString::number(value));
+                                  "color: rgb(146,205,186);");
+    ui->valuelabel->setText(QString::number(value,'f',2));
+
+    ui->namelabel->setStyleSheet(ui->valuelabel->styleSheet());
+    ui->namelabel->setText(name);
+//    ui->namelabel->adjustSize();
+    ui->namelabel->move(this->rect().center()- ui->valuelabel->rect().center());
+    ui->namelabel->move(ui->namelabel->x(),ui->namelabel->y()+90);
+
     max_value = max;
 
     color1.setRgb(0, 163, 176);
@@ -115,7 +124,7 @@ void donut_chart::update_data(float value)
     series->slices().at(0)->setValue(value);
     series->slices().at(1)->setValue(max_value - value);
     series->slices().at(0)->setBrush(QBrush(get_color((int)value)));
-    ui->valuelabel->setText(QString::number(value));
+    ui->valuelabel->setText(QString::number(value,'f',2));
 //    qDebug() << "Slice val: " << value;
 }
 
