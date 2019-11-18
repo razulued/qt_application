@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
@@ -27,7 +28,9 @@ public:
     QWidget *controls;
     QPushButton *start_test;
     QTableWidget *tableWidget;
+    QProgressBar *progressBar;
     QWidget *widget;
+    QPushButton *graph_button;
 
     void setupUi(QDialog *analisis_graph)
     {
@@ -45,7 +48,7 @@ public:
 "}"));
         start_test = new QPushButton(controls);
         start_test->setObjectName(QStringLiteral("start_test"));
-        start_test->setGeometry(QRect(20, 26, 111, 111));
+        start_test->setGeometry(QRect(30, 10, 111, 111));
         start_test->setStyleSheet(QLatin1String("#start_test\n"
 "{\n"
 "background-color: transparent;\n"
@@ -78,14 +81,42 @@ public:
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(230, 20, 500, 121));
+        tableWidget->setGeometry(QRect(210, 20, 541, 121));
         tableWidget->setStyleSheet(QLatin1String("#tableWidget\n"
 "{\n"
 "border-radius: 10px;\n"
 "}"));
+        progressBar = new QProgressBar(controls);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setGeometry(QRect(20, 130, 131, 23));
+        progressBar->setStyleSheet(QLatin1String("#progressBar\n"
+"{\n"
+"background-color: transparent;\n"
+"border: 2px solid gray;\n"
+"border-radius: 10px;\n"
+"}\n"
+"#progressBar:chunk\n"
+"{\n"
+"background-color: rgb(70,154,170);\n"
+"width: 2px;\n"
+"margin: 1px;\n"
+"}"));
+        progressBar->setValue(0);
+        progressBar->setTextVisible(false);
         widget = new QWidget(analisis_graph);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(20, 60, 761, 341));
+        graph_button = new QPushButton(analisis_graph);
+        graph_button->setObjectName(QStringLiteral("graph_button"));
+        graph_button->setGeometry(QRect(720, 10, 61, 41));
+        graph_button->setStyleSheet(QLatin1String("#graph_button\n"
+"{\n"
+"background-color: transparent;\n"
+"background-image: url(:/demo/images/Demo/Graph Home.png);\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"border: none;\n"
+"}"));
 
         retranslateUi(analisis_graph);
 
@@ -116,6 +147,7 @@ public:
         ___qtablewidgetitem8->setText(QApplication::translate("analisis_graph", "P9", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
         ___qtablewidgetitem9->setText(QApplication::translate("analisis_graph", "P10", Q_NULLPTR));
+        graph_button->setText(QString());
     } // retranslateUi
 
 };

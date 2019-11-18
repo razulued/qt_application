@@ -155,6 +155,12 @@ void simulation_input::on_horizontalScrollBar_4_actionTriggered(int action)
     ui->lineEdit_4->setText(QString::number(ui->horizontalScrollBar_4->value()));
 }
 
+void simulation_input::on_horizontalScrollBar_5_actionTriggered(int action)
+{
+    store_value_by_ID((0x3204), QString::number(ui->horizontalScrollBar_5->value()));
+    ui->lineEdit_11->setText(QString::number(ui->horizontalScrollBar_5->value()));
+}
+
 void simulation_input::on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime)
 {
     simDateTime = dateTime;

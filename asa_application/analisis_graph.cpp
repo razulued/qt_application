@@ -7,7 +7,7 @@
 
 #define STEP_INCREMENT  (10)
 
-#define DATA1_ID    (getParamValue(0x1234).toFloat())
+#define DATA1_ID    (getParamValue(0x3204).toFloat())
 #define DATA2_ID    (getParamValue(0x1234).toFloat())
 
 #define DATA4_ID    (getParamValue(0x3011).toFloat())   /* Voltage */
@@ -24,6 +24,7 @@
 #define DATA12_ID   (getParamValue(0x1234).toFloat())
 #define DATA13_ID   (getParamValue(0x1234).toFloat())
 
+QList<float> step_series;
 QList<float> data1;
 QList<float> data2;
 QList<float> data3;
@@ -61,7 +62,20 @@ analisis_graph::analisis_graph(QWidget *parent) :
                                    "border-top: none;"
                                    "}"
                                    );
-    ui->tableWidget->setRowCount(10);
+    ui->tableWidget->setRowCount(13);
+    ui->tableWidget->setColumnWidth(0, 50);
+    ui->tableWidget->setColumnWidth(1, 50);
+    ui->tableWidget->setColumnWidth(2, 50);
+    ui->tableWidget->setColumnWidth(3, 50);
+    ui->tableWidget->setColumnWidth(4, 50);
+    ui->tableWidget->setColumnWidth(5, 50);
+    ui->tableWidget->setColumnWidth(6, 50);
+    ui->tableWidget->setColumnWidth(7, 50);
+    ui->tableWidget->setColumnWidth(8, 50);
+    ui->tableWidget->setColumnWidth(9, 50);
+    ui->tableWidget->setColumnWidth(10, 50);
+
+    curve = new curve_chart(ui->widget);
 
     this->show();
 }
@@ -122,6 +136,7 @@ void analisis_graph::analysis_sm()
     case AN_IN_PROGRESS:
         valve_state = 0;
         current_round = 0;
+        clear_data_lists();
         qDebug() << "Starting Analysis";
         QTimer::singleShot(1000, this, SLOT(analysis_sm()));
         analysis_state = AN_STOP_ALL_MODULES;
@@ -144,6 +159,9 @@ void analisis_graph::analysis_sm()
     case AN_MOVE_VALVE:
         qDebug() << "Valvee at "<< valve_state << "%";
         // SEND VALVE % HERE
+
+        step_series.append(valve_state);
+        ui->progressBar->setValue(valve_state);
         QTimer::singleShot(500, this, SLOT(analysis_sm()));
         analysis_state = AN_TAKE_READING;
         break;
@@ -191,7 +209,8 @@ void analisis_graph::analysis_sm()
         qDebug() << data12;
         qDebug() << data13;
 
-        clear_data_lists();
+        // Draw Chart
+        curve->draw_chart(step_series,data1);
         break;
     default:
         break;
@@ -246,4 +265,16 @@ void analisis_graph::clear_data_lists()
     data11.clear();
     data12.clear();
     data13.clear();
+
+    step_series.clear();
+    ui->progressBar->setValue(0);
+
+    ui->tableWidget->setRowCount(0);
+    ui->tableWidget->setRowCount(13);
+
+}
+
+void analisis_graph::on_graph_button_clicked()
+{
+    this->close();
 }

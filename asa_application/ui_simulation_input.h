@@ -43,11 +43,6 @@ public:
     QCheckBox *checkBox_4;
     QCheckBox *checkBox_5;
     QCheckBox *checkBox_6;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_8;
-    QVBoxLayout *verticalLayout;
-    QLineEdit *lineEdit;
-    QScrollBar *horizontalScrollBar;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_2;
     QHBoxLayout *horizontalLayout_4;
@@ -55,6 +50,16 @@ public:
     QCheckBox *checkBox_3;
     QCheckBox *checkBox_7;
     QCheckBox *checkBox_8;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *label_5;
+    QVBoxLayout *verticalLayout_4;
+    QLineEdit *lineEdit_4;
+    QScrollBar *horizontalScrollBar_4;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_8;
+    QVBoxLayout *verticalLayout;
+    QLineEdit *lineEdit;
+    QScrollBar *horizontalScrollBar;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_3;
     QVBoxLayout *verticalLayout_2;
@@ -65,11 +70,11 @@ public:
     QVBoxLayout *verticalLayout_3;
     QLineEdit *lineEdit_3;
     QScrollBar *horizontalScrollBar_3;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *label_5;
-    QVBoxLayout *verticalLayout_4;
-    QLineEdit *lineEdit_4;
-    QScrollBar *horizontalScrollBar_4;
+    QHBoxLayout *horizontalLayout_14;
+    QLabel *label_9;
+    QVBoxLayout *verticalLayout_6;
+    QLineEdit *lineEdit_11;
+    QScrollBar *horizontalScrollBar_5;
     QWidget *tab_2;
     QGridLayout *gridLayout_3;
     QHBoxLayout *horizontalLayout_9;
@@ -107,10 +112,10 @@ public:
     {
         if (simulation_input->objectName().isEmpty())
             simulation_input->setObjectName(QStringLiteral("simulation_input"));
-        simulation_input->resize(470, 376);
+        simulation_input->resize(470, 445);
         tabWidget = new QTabWidget(simulation_input);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(10, 10, 448, 360));
+        tabWidget->setGeometry(QRect(10, 10, 448, 361));
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         gridLayout_2 = new QGridLayout(tab);
@@ -150,32 +155,6 @@ public:
 
         gridLayout_2->addLayout(horizontalLayout_3, 0, 0, 1, 1);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_8 = new QLabel(tab);
-        label_8->setObjectName(QStringLiteral("label_8"));
-
-        horizontalLayout_2->addWidget(label_8);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        lineEdit = new QLineEdit(tab);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-
-        verticalLayout->addWidget(lineEdit);
-
-        horizontalScrollBar = new QScrollBar(tab);
-        horizontalScrollBar->setObjectName(QStringLiteral("horizontalScrollBar"));
-        horizontalScrollBar->setOrientation(Qt::Horizontal);
-
-        verticalLayout->addWidget(horizontalScrollBar);
-
-
-        horizontalLayout_2->addLayout(verticalLayout);
-
-
-        gridLayout_2->addLayout(horizontalLayout_2, 1, 0, 1, 1);
-
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
         label_2 = new QLabel(tab);
@@ -210,6 +189,59 @@ public:
 
 
         gridLayout_2->addLayout(horizontalLayout_5, 2, 0, 1, 1);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
+        label_5 = new QLabel(tab);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        horizontalLayout_8->addWidget(label_5);
+
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        lineEdit_4 = new QLineEdit(tab);
+        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+
+        verticalLayout_4->addWidget(lineEdit_4);
+
+        horizontalScrollBar_4 = new QScrollBar(tab);
+        horizontalScrollBar_4->setObjectName(QStringLiteral("horizontalScrollBar_4"));
+        horizontalScrollBar_4->setMaximum(1000);
+        horizontalScrollBar_4->setOrientation(Qt::Horizontal);
+
+        verticalLayout_4->addWidget(horizontalScrollBar_4);
+
+
+        horizontalLayout_8->addLayout(verticalLayout_4);
+
+
+        gridLayout_2->addLayout(horizontalLayout_8, 5, 0, 1, 1);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_8 = new QLabel(tab);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        horizontalLayout_2->addWidget(label_8);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        lineEdit = new QLineEdit(tab);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+
+        verticalLayout->addWidget(lineEdit);
+
+        horizontalScrollBar = new QScrollBar(tab);
+        horizontalScrollBar->setObjectName(QStringLiteral("horizontalScrollBar"));
+        horizontalScrollBar->setOrientation(Qt::Horizontal);
+
+        verticalLayout->addWidget(horizontalScrollBar);
+
+
+        horizontalLayout_2->addLayout(verticalLayout);
+
+
+        gridLayout_2->addLayout(horizontalLayout_2, 1, 0, 1, 1);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
@@ -265,32 +297,32 @@ public:
 
         gridLayout_2->addLayout(horizontalLayout_7, 4, 0, 1, 1);
 
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        label_5 = new QLabel(tab);
-        label_5->setObjectName(QStringLiteral("label_5"));
+        horizontalLayout_14 = new QHBoxLayout();
+        horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
+        label_9 = new QLabel(tab);
+        label_9->setObjectName(QStringLiteral("label_9"));
 
-        horizontalLayout_8->addWidget(label_5);
+        horizontalLayout_14->addWidget(label_9);
 
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
-        lineEdit_4 = new QLineEdit(tab);
-        lineEdit_4->setObjectName(QStringLiteral("lineEdit_4"));
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        lineEdit_11 = new QLineEdit(tab);
+        lineEdit_11->setObjectName(QStringLiteral("lineEdit_11"));
 
-        verticalLayout_4->addWidget(lineEdit_4);
+        verticalLayout_6->addWidget(lineEdit_11);
 
-        horizontalScrollBar_4 = new QScrollBar(tab);
-        horizontalScrollBar_4->setObjectName(QStringLiteral("horizontalScrollBar_4"));
-        horizontalScrollBar_4->setMaximum(1000);
-        horizontalScrollBar_4->setOrientation(Qt::Horizontal);
+        horizontalScrollBar_5 = new QScrollBar(tab);
+        horizontalScrollBar_5->setObjectName(QStringLiteral("horizontalScrollBar_5"));
+        horizontalScrollBar_5->setMaximum(500);
+        horizontalScrollBar_5->setOrientation(Qt::Horizontal);
 
-        verticalLayout_4->addWidget(horizontalScrollBar_4);
-
-
-        horizontalLayout_8->addLayout(verticalLayout_4);
+        verticalLayout_6->addWidget(horizontalScrollBar_5);
 
 
-        gridLayout_2->addLayout(horizontalLayout_8, 5, 0, 1, 1);
+        horizontalLayout_14->addLayout(verticalLayout_6);
+
+
+        gridLayout_2->addLayout(horizontalLayout_14, 6, 0, 1, 1);
 
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
@@ -446,7 +478,7 @@ public:
 
         retranslateUi(simulation_input);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(simulation_input);
@@ -460,15 +492,16 @@ public:
         checkBox_4->setText(QApplication::translate("simulation_input", "Motor 2", Q_NULLPTR));
         checkBox_5->setText(QApplication::translate("simulation_input", "Motor 3", Q_NULLPTR));
         checkBox_6->setText(QApplication::translate("simulation_input", "Motor 4", Q_NULLPTR));
-        label_8->setText(QApplication::translate("simulation_input", "Carcamo Level", Q_NULLPTR));
         label_2->setText(QApplication::translate("simulation_input", "Reactor", Q_NULLPTR));
         checkBox_2->setText(QApplication::translate("simulation_input", "Motor 1", Q_NULLPTR));
         checkBox_3->setText(QApplication::translate("simulation_input", "Motor 2", Q_NULLPTR));
         checkBox_7->setText(QApplication::translate("simulation_input", "Motor 3", Q_NULLPTR));
         checkBox_8->setText(QApplication::translate("simulation_input", "Motor 4", Q_NULLPTR));
+        label_5->setText(QApplication::translate("simulation_input", "Return", Q_NULLPTR));
+        label_8->setText(QApplication::translate("simulation_input", "Carcamo Level", Q_NULLPTR));
         label_3->setText(QApplication::translate("simulation_input", "Caudal in", Q_NULLPTR));
         label_4->setText(QApplication::translate("simulation_input", "Caudal out", Q_NULLPTR));
-        label_5->setText(QApplication::translate("simulation_input", "Return", Q_NULLPTR));
+        label_9->setText(QApplication::translate("simulation_input", "Presion", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("simulation_input", "Tab 1", Q_NULLPTR));
         label_6->setText(QApplication::translate("simulation_input", "Date Time", Q_NULLPTR));
         dateTimeEdit->setDisplayFormat(QApplication::translate("simulation_input", "dd/MM/yy HH:mm:ss", Q_NULLPTR));

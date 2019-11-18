@@ -62,7 +62,8 @@ SOURCES += main.cpp\
     mod_1_regulador.cpp \
     analisis_demo.cpp \
     donut_chart.cpp \
-    analisis_graph.cpp
+    analisis_graph.cpp \
+    curve_chart.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -111,7 +112,8 @@ HEADERS  += mainwindow.h \
     mod_1_regulador.h \
     analisis_demo.h \
     donut_chart.h \
-    analisis_graph.h
+    analisis_graph.h \
+    curve_chart.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -134,7 +136,8 @@ FORMS    += mainwindow.ui \
     screen_saver.ui \
     analisis_demo.ui \
     donut_chart.ui \
-    analisis_graph.ui
+    analisis_graph.ui \
+    curve_chart.ui
 
 RESOURCES += \
     fonts.qrc \

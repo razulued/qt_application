@@ -13,7 +13,7 @@
 
 #define DONUT1_CAUDAL    (getParamValue(0x1234).toFloat())
 #define DONUT1_MAX      (500)
-#define DONUT2_PRESION   (getParamValue(0x1235).toFloat())
+#define DONUT2_PRESION   (getParamValue(0x3204).toFloat())
 #define DONUT2_MAX      (500)
 #define DONUT3_VOLT     ((getParamValue(L1_VoltID).toFloat()+\
                         getParamValue(L2_VoltID).toFloat()+\

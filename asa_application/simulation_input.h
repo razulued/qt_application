@@ -41,6 +41,8 @@ private slots:
 
     void on_horizontalScrollBar_4_actionTriggered(int action);
 
+    void on_horizontalScrollBar_5_actionTriggered(int action);
+
     void on_dateTimeEdit_dateTimeChanged(const QDateTime &dateTime);
 
     void on_pushButton_clicked();

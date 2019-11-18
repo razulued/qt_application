@@ -2,6 +2,7 @@
 #define ANALISIS_GRAPH_H
 
 #include <QDialog>
+#include "curve_chart.h"
 
 typedef enum
 {
@@ -32,11 +33,15 @@ public:
 private slots:
     void on_start_test_clicked();
     void analysis_sm(void);
+    void on_graph_button_clicked();
+
 private:
     Ui::analisis_graph *ui;
     en_analysis_state analysis_state = AN_IDLE;
     void capture_data(int round);
     void clear_data_lists();
+
+    curve_chart *curve = NULL;
 };
 
 #endif // ANALISIS_GRAPH_H
