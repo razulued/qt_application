@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>analisis_demo</class>
+ <widget class="QDialog" name="analisis_demo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>75</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>GO BACK</string>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>90</y>
+     <width>691</width>
+     <height>391</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>10</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>10</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_3" native="true">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>190</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_4" native="true">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>190</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="aleta1" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>56</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#aleta1
+{
+background-color: transparent;
+background-image: url(:/demo/images/Demo/Aleta-izq.png);
+background-repeat: none;
+background-position: center;
+border: none;
+}</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="aleta2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>56</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#aleta2
+{
+background-color: transparent;
+background-image: url(:/demo/images/Demo/Aleta-Dere.png);
+background-repeat: none;
+background-position: center;
+border: none;
+}</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="aleta3" native="true">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>236</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#aleta3
+{
+background-color: transparent;
+background-image: url(:/demo/images/Demo/Aleta-izq.png);
+background-repeat: none;
+background-position: center;
+border: none;
+}</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="aleta4" native="true">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>236</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#aleta4
+{
+background-color: transparent;
+background-image: url(:/demo/images/Demo/Aleta-Dere.png);
+background-repeat: none;
+background-position: center;
+border: none;
+}</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

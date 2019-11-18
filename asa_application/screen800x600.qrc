@@ -142,6 +142,15 @@
         <file>screen800x600/iconos/Bell_2.png</file>
         <file>screen800x600/gifs/OK.gif</file>
         <file>screen800x600/gifs/PTAR-VAB.gif</file>
+        <file>screen800x600/iconos/Recurso4.png</file>
+        <file>screen800x600/iconos/Recurso5.png</file>
+        <file>screen800x600/iconos/qr-code.svg</file>
+        <file>screen800x600/iconos/qr-code.png</file>
+        <file>screen800x600/iconos/Recurso10.png</file>
+        <file>screen800x600/iconos/Recurso8.png</file>
+        <file>screen800x600/iconos/QR HGM.png</file>
+        <file>screen800x600/iconos/Monitor1.png</file>
+        <file>screen800x600/iconos/Logo.png</file>
     </qresource>
     <qresource prefix="/texto">
         <file>screen800x600/texto/Teclado 1.1/0 azul.png</file>

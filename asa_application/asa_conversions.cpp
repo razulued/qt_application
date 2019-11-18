@@ -18,8 +18,8 @@ QString conv_integer_caudal(QString str, uint param1)
     Si el resultado de la ecuación es MENOR a 9.45, la página deberá mostrar 0.
 */
 
-    ret = decimal * 0.16312;
-    ret = ret - 66.54025;
+    ret = decimal * 0.163355;
+    ret = ret - 66.18912;
 
     if(ret < 9.45)
     {
@@ -111,8 +111,8 @@ QString conv_integer_presion(QString str, uint param1)
         return "Falla [cuentas <410]";
     }
 
-    ret = decimal *0.080255644;
-    ret = ret - 36.2594;
+    ret = decimal *0.807605;
+    ret = ret - 373.9986;
     if(ret < 0)
     {
         return "0";
@@ -202,8 +202,8 @@ QString conv_nivel_1(QString str, uint param1)
  *  Midel= 0.0016972*Cuentas [m /adc] - 0.7858[l/m] (VERIFICADO!)
 */
 
-    ret = decimal * 0.0016972;
-    ret = ret - 0.7858;
+    ret = decimal * 0.567802;
+    ret = ret - 262.947;
 
     if(ret < 0)
     {

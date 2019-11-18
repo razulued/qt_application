@@ -157,4 +157,28 @@
         <file>images/6_Lechos/sand_bed_02.png</file>
         <file>images/6_Lechos/sand_bed_03.png</file>
     </qresource>
+    <qresource prefix="/demo">
+        <file>images/Demo/Aleta-Dere.png</file>
+        <file>images/Demo/Aleta-izq.png</file>
+        <file>images/Demo/Close Menu.png</file>
+        <file>images/Demo/Config.png</file>
+        <file>images/Demo/Datos Home.png</file>
+        <file>images/Demo/Datos.png</file>
+        <file>images/Demo/Donas.png</file>
+        <file>images/Demo/Fondo #252348(RGB-373572).png</file>
+        <file>images/Demo/Graph Home.png</file>
+        <file>images/Demo/Graph Menu.png</file>
+        <file>images/Demo/Home .png</file>
+        <file>images/Demo/Manu Bar full.png</file>
+        <file>images/Demo/Menu Bar.png</file>
+        <file>images/Demo/Menu.png</file>
+        <file>images/Demo/Pause.png</file>
+        <file>images/Demo/Play.png</file>
+        <file>images/Demo/Solapa Dere.png</file>
+        <file>images/Demo/Solapa izq.png</file>
+        <file>images/Demo/Tabla graph empty.png</file>
+        <file>images/Demo/Tabla Graph full.png</file>
+        <file>images/Demo/Tabla Vacia.png</file>
+        <file>images/Demo/Tabla Valores.png</file>
+    </qresource>
 </RCC>

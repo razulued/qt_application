@@ -14,3 +14,7 @@ build-asa_application-QT_RASPBERRY_compilacion_cruzada-Debug/
 build-asa_application-QT_RASPBERRY_compilacion_cruzada-Release/
 
 *.zip
+
+asa_application/debug/
+
+asa_application/release/

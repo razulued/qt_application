@@ -486,7 +486,7 @@ background-position: center;
     </property>
     <property name="styleSheet">
      <string notr="true">#asa_logo{ 
-background-image: url(:/iconos/screen800x600/iconos/ASA logo.png);
+background-image: url(:/iconos/screen800x600/iconos/Logo.png);
 border: none; 
 background-repeat: none;
 background-position: center;
@@ -1115,9 +1115,9 @@ background-repeat: none;
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>2</y>
+      <y>0</y>
       <width>31</width>
-      <height>41</height>
+      <height>40</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -1126,7 +1126,7 @@ background-repeat: none;
     <property name="styleSheet">
      <string notr="true">#top_menu_3 { 
 background-color: transparent;
-background-image: url(:/iconos/screen800x600/iconos/Diagrama.png);
+background-image: url(:/iconos/screen800x600/iconos/Monitor1.png);
 background-position: center;
 border: none; 
 background-repeat: none;

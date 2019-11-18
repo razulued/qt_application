@@ -30,7 +30,7 @@
 #include "contacto.h"
 #include "earm_update.h"
 #include "stop_button.h"
-
+#include "analisis_demo.h"
 namespace Ui {
 class MainWindow;
 }
@@ -175,6 +175,8 @@ private slots:
     void update_demo_mode();
     void on_top_menu_1_clicked();
 
+    void on_top_menu_3_clicked();
+
 private:
     QTimer dataTimer;
     uint title_click_count = 0;
@@ -187,6 +189,7 @@ private:
     settings    *settingswindow = NULL;
     bitacora    *bitacorawindow = NULL;
     login_dialog *login_d = NULL;
+    analisis_demo *analysis_window = NULL;
 
     void HideButtons(bool show);
     parameter_state_t electric_state;

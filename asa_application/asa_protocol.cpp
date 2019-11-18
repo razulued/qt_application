@@ -592,7 +592,7 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /* Sens 2 State        */ 0x4202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* s2 value            */ 0x4203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
 /* Sens 3 State        */ 0x4204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x4205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion_2,   conv_integer_presion_inv_2, 0,    "presion",
+/* s3 value            */ 0x4205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,   conv_integer_presion_inv, 0,    "presion",
 /* Sens 4 State        */ 0x4206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /* s4 value            */ 0x4207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
 /*----- 4:Plant Reactores 3:Status:Quimicos   ----*/

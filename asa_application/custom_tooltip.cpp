@@ -60,23 +60,23 @@ custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList name
     QString filename = "./tooltips/tool"+QString::number(actual_tooltip_number);
     QFile myFile(filename);
 
-    QDataStream in(&myFile);
-    in.setVersion(QDataStream::Qt_5_7);
+//    QDataStream in(&myFile);
+//    in.setVersion(QDataStream::Qt_5_7);
 
     QPoint pos = parent_frame->pos();
-    if (!myFile.open(QIODevice::ReadOnly))
-    {
-        qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
-        // Re-try later
-        unknown_tool_pos.append(actual_tooltip_number);
-        QTimer::singleShot(3000, this, SLOT(retry_tool_pos()));
-    }
-    else
-    {
-        in >> pos;
-        init_data();
-        qDebug() << "tool: " << actual_tooltip_number <<"pos " << pos;
-    }
+//    if (!myFile.open(QIODevice::ReadOnly))
+//    {
+//        qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
+//        // Re-try later
+//        unknown_tool_pos.append(actual_tooltip_number);
+//        QTimer::singleShot(3000, this, SLOT(retry_tool_pos()));
+//    }
+//    else
+//    {
+//        in >> pos;
+//        init_data();
+//        qDebug() << "tool: " << actual_tooltip_number <<"pos " << pos;
+//    }
 
     if(pos.x() != 0 && pos.y() != 0)
     {
@@ -248,18 +248,18 @@ void custom_tooltip::force_hide()
 
 void custom_tooltip::save_position()
 {
-    QString filename = "./tooltips/tool"+QString::number(actual_tooltip_number);
-    QFile myFile(filename);
-    if (!myFile.open(QIODevice::WriteOnly))
-    {
-        qDebug() << "Could not write to file:" << filename << "Error string:" << myFile.errorString();
-    }
-    else
-    {
-        QDataStream out(&myFile);
-        out.setVersion(QDataStream::Qt_5_7);
-        out << parent_frame->pos();
-    }
+//    QString filename = "./tooltips/tool"+QString::number(actual_tooltip_number);
+//    QFile myFile(filename);
+//    if (!myFile.open(QIODevice::WriteOnly))
+//    {
+//        qDebug() << "Could not write to file:" << filename << "Error string:" << myFile.errorString();
+//    }
+//    else
+//    {
+//        QDataStream out(&myFile);
+//        out.setVersion(QDataStream::Qt_5_7);
+//        out << parent_frame->pos();
+//    }
 }
 
 void custom_tooltip::ListPressed()
@@ -335,7 +335,7 @@ void custom_tooltip::retry_tool_pos()
 {
     uint tooltip_num = unknown_tool_pos.takeLast();
 
-    if (0 != tooltip_num)
+    if (0)
     {
         QString filename = "./tooltips/tool"+QString::number(tooltip_num);
         QFile myFile(filename);

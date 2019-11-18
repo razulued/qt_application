@@ -1029,6 +1029,11 @@ void MainWindow::update_tooltips(void)
 void MainWindow::new_spi_data()
 {
     /* Update data in detailed window (if open) */
+    if((NULL != analysis_window) && (analysis_window->isVisible()))
+    {
+        analysis_window->update_data();
+    }
+
     if((NULL != detail_window) && detail_window->isActiveWindow())
     {
         detail_window->update_params();
@@ -1537,4 +1542,18 @@ void MainWindow::update_activity_alarm(void)
         send_num_activities(num_of_pending_act);
     }
     last_value = num_of_pending_act;
+}
+
+void MainWindow::on_top_menu_3_clicked()
+{
+    if(mutex_detailed.tryLock(0))
+    {
+        if(analysis_window !=NULL)
+        {
+            delete analysis_window;
+        }
+        analysis_window = new analisis_demo(this);
+        connect(analysis_window, SIGNAL(accepted()), this, SLOT(window_closed()));
+        analysis_window->show();
+    }
 }

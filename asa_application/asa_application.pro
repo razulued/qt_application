@@ -59,7 +59,9 @@ SOURCES += main.cpp\
     chart.cpp \
     screen_saver.cpp \
     build_settings.cpp \
-    mod_1_regulador.cpp
+    mod_1_regulador.cpp \
+    analisis_demo.cpp \
+    donut_chart.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -105,7 +107,9 @@ HEADERS  += mainwindow.h \
     sql_cmd_manager.h \
     chart.h \
     screen_saver.h \
-    mod_1_regulador.h
+    mod_1_regulador.h \
+    analisis_demo.h \
+    donut_chart.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -125,7 +129,9 @@ FORMS    += mainwindow.ui \
     records.ui \
     calendario_filtro.ui \
     record_chart.ui \
-    screen_saver.ui
+    screen_saver.ui \
+    analisis_demo.ui \
+    donut_chart.ui
 
 RESOURCES += \
     fonts.qrc \
