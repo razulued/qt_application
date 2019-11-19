@@ -15,7 +15,7 @@ curve_chart::~curve_chart()
     delete ui;
 }
 
-void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY)
+void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY, QString xname, QString yname)
 {
     QSplineSeries *seriesXY = new QSplineSeries;
     seriesXY->clear();
@@ -35,6 +35,10 @@ void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY)
     ui->graphicsView->chart()->createDefaultAxes();
     ui->graphicsView->chart()->axisX()->setLabelsColor(Qt::white);
     ui->graphicsView->chart()->axisY()->setLabelsColor(Qt::white);
+    ui->graphicsView->chart()->axisX()->setTitleBrush(Qt::white);
+    ui->graphicsView->chart()->axisX()->setTitleText(xname);
+    ui->graphicsView->chart()->axisY()->setTitleBrush(Qt::white);
+    ui->graphicsView->chart()->axisY()->setTitleText(yname);
 
     ui->graphicsView->resize(this->width()-30, this->height()-80);
 }

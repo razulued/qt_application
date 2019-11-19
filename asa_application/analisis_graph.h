@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include "curve_chart.h"
-
+#include "date_widget.h"
+#include <QDateTime>
 typedef enum
 {
     AN_IDLE,
@@ -30,18 +31,30 @@ public:
     ~analisis_graph();
     void start_analysis(void);
 
+signals:
+    void send_datetime(QDateTime datetime);
+
 private slots:
     void on_start_test_clicked();
     void analysis_sm(void);
     void on_graph_button_clicked();
+    void update_time(QDateTime datetime);
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_comboBox_2_currentIndexChanged(int index);
+
+    void on_comboBox_3_currentIndexChanged(int index);
 
 private:
     Ui::analisis_graph *ui;
     en_analysis_state analysis_state = AN_IDLE;
     void capture_data(int round);
     void clear_data_lists();
-
+    void select_data_and_graph();
     curve_chart *curve = NULL;
+    date_widget *date_wid = NULL;
+    QList<QList<float>> master_data;
+    QList<float> index_to_data_list(int index);
 };
 
 #endif // ANALISIS_GRAPH_H

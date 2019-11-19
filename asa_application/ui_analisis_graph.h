@@ -13,8 +13,10 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
@@ -29,8 +31,13 @@ public:
     QPushButton *start_test;
     QTableWidget *tableWidget;
     QProgressBar *progressBar;
+    QComboBox *comboBox;
+    QComboBox *comboBox_2;
+    QComboBox *comboBox_3;
     QWidget *widget;
     QPushButton *graph_button;
+    QWidget *datewidget;
+    QLabel *label;
 
     void setupUi(QDialog *analisis_graph)
     {
@@ -48,7 +55,7 @@ public:
 "}"));
         start_test = new QPushButton(controls);
         start_test->setObjectName(QStringLiteral("start_test"));
-        start_test->setGeometry(QRect(30, 10, 111, 111));
+        start_test->setGeometry(QRect(10, 10, 111, 111));
         start_test->setStyleSheet(QLatin1String("#start_test\n"
 "{\n"
 "background-color: transparent;\n"
@@ -81,14 +88,14 @@ public:
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(210, 20, 541, 121));
+        tableWidget->setGeometry(QRect(210, 20, 541, 131));
         tableWidget->setStyleSheet(QLatin1String("#tableWidget\n"
 "{\n"
 "border-radius: 10px;\n"
 "}"));
         progressBar = new QProgressBar(controls);
         progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(20, 130, 131, 23));
+        progressBar->setGeometry(QRect(10, 130, 111, 23));
         progressBar->setStyleSheet(QLatin1String("#progressBar\n"
 "{\n"
 "background-color: transparent;\n"
@@ -103,6 +110,15 @@ public:
 "}"));
         progressBar->setValue(0);
         progressBar->setTextVisible(false);
+        comboBox = new QComboBox(controls);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->setGeometry(QRect(130, 49, 74, 22));
+        comboBox_2 = new QComboBox(controls);
+        comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
+        comboBox_2->setGeometry(QRect(130, 76, 74, 22));
+        comboBox_3 = new QComboBox(controls);
+        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
+        comboBox_3->setGeometry(QRect(130, 103, 74, 22));
         widget = new QWidget(analisis_graph);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(20, 60, 761, 341));
@@ -117,8 +133,23 @@ public:
 "background-position: center;\n"
 "border: none;\n"
 "}"));
+        datewidget = new QWidget(analisis_graph);
+        datewidget->setObjectName(QStringLiteral("datewidget"));
+        datewidget->setGeometry(QRect(310, 5, 180, 50));
+        label = new QLabel(analisis_graph);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(296, 400, 161, 20));
+        QFont font;
+        font.setPointSize(12);
+        label->setFont(font);
+        label->setAlignment(Qt::AlignCenter);
 
         retranslateUi(analisis_graph);
+
+        comboBox->setCurrentIndex(13);
+        comboBox_2->setCurrentIndex(1);
+        comboBox_3->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(analisis_graph);
     } // setupUi
@@ -147,7 +178,59 @@ public:
         ___qtablewidgetitem8->setText(QApplication::translate("analisis_graph", "P9", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
         ___qtablewidgetitem9->setText(QApplication::translate("analisis_graph", "P10", Q_NULLPTR));
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("analisis_graph", "Caudal", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Presi\303\263n", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje AVG", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L1-L2", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L2-L3", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L3-L1", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje AVG", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L1-L2", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L2-L3", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L3-L1", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "FP", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Coseno Phi", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Frecuencia", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "%Valvula", Q_NULLPTR)
+        );
+        comboBox_2->clear();
+        comboBox_2->insertItems(0, QStringList()
+         << QApplication::translate("analisis_graph", "Caudal", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Presi\303\263n", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje AVG", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L1-L2", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L2-L3", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L3-L1", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje AVG", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L1-L2", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L2-L3", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L3-L1", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "FP", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Coseno Phi", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Frecuencia", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "%Valvula", Q_NULLPTR)
+        );
+        comboBox_3->clear();
+        comboBox_3->insertItems(0, QStringList()
+         << QApplication::translate("analisis_graph", "Caudal", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Presi\303\263n", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje AVG", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L1-L2", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L2-L3", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Voltaje L3-L1", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje AVG", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L1-L2", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L2-L3", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Amperaje L3-L1", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "FP", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Coseno Phi", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "Frecuencia", Q_NULLPTR)
+         << QApplication::translate("analisis_graph", "%Valvula", Q_NULLPTR)
+        );
         graph_button->setText(QString());
+        label->setText(QString());
     } // retranslateUi
 
 };

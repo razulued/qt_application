@@ -38,6 +38,7 @@ public:
     QPushButton *graph_button;
     QPushButton *close_menu;
     QPushButton *show_menu;
+    QWidget *datewidget;
 
     void setupUi(QDialog *analisis_demo)
     {
@@ -158,10 +159,14 @@ public:
 "background-position: center;\n"
 "border: none;\n"
 "}"));
+        datewidget = new QWidget(analisis_demo);
+        datewidget->setObjectName(QStringLiteral("datewidget"));
+        datewidget->setGeometry(QRect(310, 5, 180, 50));
         show_menu->raise();
         frame->raise();
         left_menu->raise();
         pushButton->raise();
+        datewidget->raise();
 
         retranslateUi(analisis_demo);
 

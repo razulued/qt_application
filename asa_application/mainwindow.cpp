@@ -1554,6 +1554,8 @@ void MainWindow::on_top_menu_3_clicked()
         }
         analysis_window = new analisis_demo(this);
         connect(analysis_window, SIGNAL(accepted()), this, SLOT(window_closed()));
+        connect(this,SIGNAL(send_date_hour(QDateTime)),analysis_window,SLOT(update_datetime(QDateTime)));
+        send_date_hour(time);
         analysis_window->show();
     }
 }

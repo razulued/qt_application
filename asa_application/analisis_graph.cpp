@@ -7,8 +7,8 @@
 
 #define STEP_INCREMENT  (10)
 
-#define DATA1_ID    (getParamValue(0x3204).toFloat())
-#define DATA2_ID    (getParamValue(0x1234).toFloat())
+#define DATA1_ID    (getParamValue(0x5201).toFloat())   /* Caudal */
+#define DATA2_ID    (getParamValue(0x3204).toFloat())   /* Presion */
 
 #define DATA4_ID    (getParamValue(0x3011).toFloat())   /* Voltage */
 #define DATA5_ID    (getParamValue(0x3012).toFloat())   /* Voltage */
@@ -62,7 +62,7 @@ analisis_graph::analisis_graph(QWidget *parent) :
                                    "border-top: none;"
                                    "}"
                                    );
-    ui->tableWidget->setRowCount(13);
+    ui->tableWidget->setRowCount(3);
     ui->tableWidget->setColumnWidth(0, 50);
     ui->tableWidget->setColumnWidth(1, 50);
     ui->tableWidget->setColumnWidth(2, 50);
@@ -76,6 +76,12 @@ analisis_graph::analisis_graph(QWidget *parent) :
     ui->tableWidget->setColumnWidth(10, 50);
 
     curve = new curve_chart(ui->widget);
+    date_wid = new date_widget(ui->datewidget);
+    connect(this,SIGNAL(send_datetime(QDateTime)),date_wid,SLOT(update_hour(QDateTime)));
+    ui->datewidget->setStyleSheet("background-color: rgb(18,18,49);"
+                        "border: none;"
+                        "border-radius: 10px;"
+                        "color: rgb(161,206,174);");
 
     this->show();
 }
@@ -208,9 +214,11 @@ void analisis_graph::analysis_sm()
         qDebug() << data11;
         qDebug() << data12;
         qDebug() << data13;
+        master_data << data1 << data2 << data3 << data4 << data5 << data6
+                    << data7 << data8 << data9 << data10 << data11 << data12 << data13 << step_series;
 
         // Draw Chart
-        curve->draw_chart(step_series,data1);
+        select_data_and_graph();
         break;
     default:
         break;
@@ -234,19 +242,20 @@ void analisis_graph::capture_data(int round)
     data12.append(DATA12_ID);
     data13.append(DATA13_ID);
 
-    ui->tableWidget->setItem(0,round,new QTableWidgetItem(QString::number(DATA1_ID,'f',2)));
-    ui->tableWidget->setItem(1,round,new QTableWidgetItem(QString::number(DATA2_ID,'f',2)));
-    ui->tableWidget->setItem(2,round,new QTableWidgetItem(QString::number(DATA3_ID,'f',2)));
-    ui->tableWidget->setItem(3,round,new QTableWidgetItem(QString::number(DATA4_ID,'f',2)));
-    ui->tableWidget->setItem(4,round,new QTableWidgetItem(QString::number(DATA5_ID,'f',2)));
-    ui->tableWidget->setItem(5,round,new QTableWidgetItem(QString::number(DATA6_ID,'f',2)));
-    ui->tableWidget->setItem(6,round,new QTableWidgetItem(QString::number(DATA7_ID,'f',2)));
-    ui->tableWidget->setItem(7,round,new QTableWidgetItem(QString::number(DATA8_ID,'f',2)));
-    ui->tableWidget->setItem(8,round,new QTableWidgetItem(QString::number(DATA9_ID,'f',2)));
-    ui->tableWidget->setItem(9,round,new QTableWidgetItem(QString::number(DATA10_ID,'f',2)));
-    ui->tableWidget->setItem(10,round,new QTableWidgetItem(QString::number(DATA11_ID,'f',2)));;
-    ui->tableWidget->setItem(11,round,new QTableWidgetItem(QString::number(DATA12_ID,'f',2)));;
-    ui->tableWidget->setItem(12,round,new QTableWidgetItem(QString::number(DATA13_ID,'f',2)));;
+
+//    ui->tableWidget->setItem(0,round,new QTableWidgetItem(QString::number(index_to_data_list(ui->comboBox->currentIndex()).last(),'f',2)));
+//    ui->tableWidget->setItem(1,round,new QTableWidgetItem(QString::number(index_to_data_list(ui->comboBox_2->currentIndex()).last(),'f',2)));
+//    ui->tableWidget->setItem(2,round,new QTableWidgetItem(QString::number(index_to_data_list(ui->comboBox_3->currentIndex()).last(),'f',2)));
+//    ui->tableWidget->setItem(3,round,new QTableWidgetItem(QString::number(DATA4_ID,'f',2)));
+//    ui->tableWidget->setItem(4,round,new QTableWidgetItem(QString::number(DATA5_ID,'f',2)));
+//    ui->tableWidget->setItem(5,round,new QTableWidgetItem(QString::number(DATA6_ID,'f',2)));
+//    ui->tableWidget->setItem(6,round,new QTableWidgetItem(QString::number(DATA7_ID,'f',2)));
+//    ui->tableWidget->setItem(7,round,new QTableWidgetItem(QString::number(DATA8_ID,'f',2)));
+//    ui->tableWidget->setItem(8,round,new QTableWidgetItem(QString::number(DATA9_ID,'f',2)));
+//    ui->tableWidget->setItem(9,round,new QTableWidgetItem(QString::number(DATA10_ID,'f',2)));
+//    ui->tableWidget->setItem(10,round,new QTableWidgetItem(QString::number(DATA11_ID,'f',2)));;
+//    ui->tableWidget->setItem(11,round,new QTableWidgetItem(QString::number(DATA12_ID,'f',2)));;
+//    ui->tableWidget->setItem(12,round,new QTableWidgetItem(QString::number(DATA13_ID,'f',2)));;
 
 }
 
@@ -267,14 +276,110 @@ void analisis_graph::clear_data_lists()
     data13.clear();
 
     step_series.clear();
+    master_data.clear();
     ui->progressBar->setValue(0);
 
     ui->tableWidget->setRowCount(0);
-    ui->tableWidget->setRowCount(13);
+    ui->tableWidget->setRowCount(3);
 
+}
+
+void analisis_graph::select_data_and_graph()
+{
+    if(!master_data.isEmpty())
+    {
+        curve->draw_chart(master_data.at(ui->comboBox->currentIndex()),
+                      master_data.at(ui->comboBox_2->currentIndex()),
+                          ui->comboBox->currentText(),
+                          ui->comboBox_2->currentText());
+
+        ui->tableWidget->setRowCount(0);
+        ui->tableWidget->setRowCount(3);
+        for(int i = 0; i < master_data.at(0).length(); i++)
+        {
+//            qDebug() << "Item debug: " << QString::number(index_to_data_list(ui->comboBox_3->currentIndex()).at(i));
+            ui->tableWidget->setItem(0,i,new QTableWidgetItem(QString::number(master_data.at(ui->comboBox->currentIndex())
+                                                                              .at(i),'f',2)));
+            ui->tableWidget->setItem(1,i,new QTableWidgetItem(QString::number(master_data.at(ui->comboBox_2->currentIndex())
+                                                                              .at(i),'f',2)));
+            ui->tableWidget->setItem(2,i,new QTableWidgetItem(QString::number(master_data.at(ui->comboBox_3->currentIndex())
+                                                                              .at(i),'f',2)));
+        }
+    //
+    }
+}
+
+QList<float> analisis_graph::index_to_data_list(int index)
+{
+    switch(index)
+    {
+    case 0:
+        return data1;
+        break;
+    case 1:
+        return data2;
+        break;
+    case 2:
+        return data3;
+        break;
+    case 3:
+        return data4;
+        break;
+    case 4:
+        return data5;
+        break;
+    case 5:
+        return data6;
+        break;
+    case 6:
+        return data7;
+        break;
+    case 7:
+        return data8;
+        break;
+    case 8:
+        return data9;
+        break;
+    case 9:
+        return data10;
+        break;
+    case 10:
+        return data11;
+        break;
+    case 11:
+        return data12;
+        break;
+    case 12:
+        return data13;
+        break;
+    case 13:
+    default:
+        return step_series;
+        break;
+    }
 }
 
 void analisis_graph::on_graph_button_clicked()
 {
     this->close();
+}
+
+void analisis_graph::update_time(QDateTime datetime)
+{
+    send_datetime(datetime);
+}
+
+void analisis_graph::on_comboBox_currentIndexChanged(int index)
+{
+    select_data_and_graph();
+}
+
+void analisis_graph::on_comboBox_2_currentIndexChanged(int index)
+{
+    select_data_and_graph();
+}
+
+void analisis_graph::on_comboBox_3_currentIndexChanged(int index)
+{
+    select_data_and_graph();
 }

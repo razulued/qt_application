@@ -33,7 +33,7 @@ border-radius: 10px;
    <widget class="QPushButton" name="start_test">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>10</y>
       <width>111</width>
       <height>111</height>
@@ -59,7 +59,7 @@ border: none;
       <x>210</x>
       <y>20</y>
       <width>541</width>
-      <height>121</height>
+      <height>131</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -122,9 +122,9 @@ border-radius: 10px;
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>130</y>
-      <width>131</width>
+      <width>111</width>
       <height>23</height>
      </rect>
     </property>
@@ -148,6 +148,255 @@ margin: 1px;
     <property name="textVisible">
      <bool>false</bool>
     </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>49</y>
+      <width>74</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>13</number>
+    </property>
+    <item>
+     <property name="text">
+      <string>Caudal</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Presión</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje AVG</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L1-L2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L2-L3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L3-L1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje AVG</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L1-L2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L2-L3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L3-L1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>FP</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Coseno Phi</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Frecuencia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>%Valvula</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBox_2">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>76</y>
+      <width>74</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <item>
+     <property name="text">
+      <string>Caudal</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Presión</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje AVG</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L1-L2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L2-L3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L3-L1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje AVG</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L1-L2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L2-L3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L3-L1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>FP</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Coseno Phi</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Frecuencia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>%Valvula</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBox_3">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>103</y>
+      <width>74</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <item>
+     <property name="text">
+      <string>Caudal</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Presión</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje AVG</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L1-L2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L2-L3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Voltaje L3-L1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje AVG</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L1-L2</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L2-L3</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Amperaje L3-L1</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>FP</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Coseno Phi</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Frecuencia</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>%Valvula</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QWidget" name="widget" native="true">
@@ -181,6 +430,37 @@ border: none;
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="datewidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>5</y>
+     <width>180</width>
+     <height>50</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>296</x>
+     <y>400</y>
+     <width>161</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

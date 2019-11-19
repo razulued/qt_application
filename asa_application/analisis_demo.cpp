@@ -11,7 +11,7 @@
 #define L2_AmpsID   (0x3015)
 #define L3_AmpsID   (0x3016)
 
-#define DONUT1_CAUDAL    (getParamValue(0x1234).toFloat())
+#define DONUT1_CAUDAL    (getParamValue(0x5201).toFloat())
 #define DONUT1_MAX      (500)
 #define DONUT2_PRESION   (getParamValue(0x3204).toFloat())
 #define DONUT2_MAX      (500)
@@ -39,6 +39,13 @@ analisis_demo::analisis_demo(QWidget *parent) :
                         );
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
+
+    date_wid = new date_widget(ui->datewidget);
+    connect(this,SIGNAL(send_datetime(QDateTime)),date_wid,SLOT(update_hour(QDateTime)));
+    ui->datewidget->setStyleSheet("background-color: rgb(18,18,49);"
+                        "border: none;"
+                        "border-radius: 10px;"
+                        "color: rgb(161,206,174);");
 
     // Center donut graphs
     ui->frame->move(this->rect().center() - ui->frame->rect().center());
@@ -99,6 +106,12 @@ void analisis_demo::update_data()
     {
         aleta_2->update_data();
     }
+}
+
+void analisis_demo::update_datetime(QDateTime datetime)
+{
+    time = datetime;
+    send_datetime(time);
 }
 
 void analisis_demo::on_pushButton_clicked()
@@ -185,4 +198,6 @@ void analisis_demo::on_graph_button_clicked()
         delete graph;
     }
     graph = new analisis_graph(this);
+    connect(this,SIGNAL(send_datetime(QDateTime)),graph,SLOT(update_time(QDateTime)));
+    send_datetime(time);
 }

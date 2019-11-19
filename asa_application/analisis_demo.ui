@@ -260,10 +260,21 @@ border: none;
     <string/>
    </property>
   </widget>
+  <widget class="QWidget" name="datewidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>5</y>
+     <width>180</width>
+     <height>50</height>
+    </rect>
+   </property>
+  </widget>
   <zorder>show_menu</zorder>
   <zorder>frame</zorder>
   <zorder>left_menu</zorder>
   <zorder>pushButton</zorder>
+  <zorder>datewidget</zorder>
  </widget>
  <resources/>
  <connections/>

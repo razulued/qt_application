@@ -19,7 +19,7 @@ class curve_chart : public QWidget
 public:
     explicit curve_chart(QWidget *parent = 0);
     ~curve_chart();
-    void draw_chart(QList<float> seriesX, QList<float> seriesY);
+    void draw_chart(QList<float> seriesX, QList<float> seriesY, QString xname, QString yname);
 
 private:
     Ui::curve_chart *ui;

@@ -6,7 +6,9 @@
 #include <QListWidget>
 #include <QVBoxLayout>
 #include <QList>
+#include <QDateTime>
 #include "analisis_graph.h"
+#include "date_widget.h"
 
 class QWidget;
 class aleta_widget : public QWidget
@@ -40,6 +42,9 @@ public:
     explicit analisis_demo(QWidget *parent = 0);
     ~analisis_demo();
     void update_data();
+public slots:
+    void update_datetime(QDateTime datetime);
+
 private slots:
     void on_pushButton_clicked();
 
@@ -55,11 +60,15 @@ private:
     aleta_widget *aleta_2 = NULL;
 
     analisis_graph *graph = NULL;
+    date_widget *date_wid = NULL;
+    QDateTime time;
+
 signals:
     void update_donut_1(float value);
     void update_donut_2(float value);
     void update_donut_3(float value);
     void update_donut_4(float value);
+    void send_datetime(QDateTime datetime);
 };
 
 
