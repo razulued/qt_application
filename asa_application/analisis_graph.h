@@ -55,6 +55,9 @@ private:
     date_widget *date_wid = NULL;
     QList<QList<float>> master_data;
     QList<float> index_to_data_list(int index);
+    void analysis_sm_stop_all();
+    void analysis_sm_enter_manual();
+    void analysis_sm_toggle_pump();
 };
 
 #endif // ANALISIS_GRAPH_H

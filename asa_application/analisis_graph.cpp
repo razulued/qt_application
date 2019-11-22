@@ -149,23 +149,26 @@ void analisis_graph::analysis_sm()
         break;
     case AN_STOP_ALL_MODULES:
         qDebug() << "Stopping All modules";
+        analysis_sm_stop_all();
         QTimer::singleShot(1000, this, SLOT(analysis_sm()));
         analysis_state = AN_ENTER_MANUAL_MODE;
         break;
     case AN_ENTER_MANUAL_MODE:
         qDebug() << "Entering Manual Mode";
+        analysis_sm_enter_manual();
         QTimer::singleShot(1000, this, SLOT(analysis_sm()));
         analysis_state = AN_TURN_ON_PUMP;
         break;
     case AN_TURN_ON_PUMP:
         qDebug() << "Turning ON Pump";
+        analysis_sm_toggle_pump();
         QTimer::singleShot(1000, this, SLOT(analysis_sm()));
         analysis_state = AN_TAKE_READING;
         break;
     case AN_MOVE_VALVE:
         qDebug() << "Valvee at "<< valve_state << "%";
         // SEND VALVE % HERE
-
+        demo_set_percentaje((int)valve_state);
         step_series.append(valve_state);
         ui->progressBar->setValue(valve_state);
         QTimer::singleShot(500, this, SLOT(analysis_sm()));
@@ -189,6 +192,7 @@ void analisis_graph::analysis_sm()
         break;
     case AN_TURN_OFF_PUMP:
         qDebug() << "Turn OFF Pump";
+        analysis_sm_toggle_pump();
         QTimer::singleShot(1000, this, SLOT(analysis_sm()));
         analysis_state = AN_COMPLETE;
         break;
@@ -241,7 +245,6 @@ void analisis_graph::capture_data(int round)
     data11.append(DATA11_ID);
     data12.append(DATA12_ID);
     data13.append(DATA13_ID);
-
 
 //    ui->tableWidget->setItem(0,round,new QTableWidgetItem(QString::number(index_to_data_list(ui->comboBox->currentIndex()).last(),'f',2)));
 //    ui->tableWidget->setItem(1,round,new QTableWidgetItem(QString::number(index_to_data_list(ui->comboBox_2->currentIndex()).last(),'f',2)));
@@ -357,6 +360,37 @@ QList<float> analisis_graph::index_to_data_list(int index)
         return step_series;
         break;
     }
+}
+
+void analisis_graph::analysis_sm_stop_all()
+{
+    QString str;
+    str = "04";
+//    str = "03";
+    output_op_mode("3E00", str); /* Antes 3600 */
+    output_op_mode("4600", str);
+    output_op_mode("5600", str);
+    output_op_mode("9600", str);
+    output_op_mode("9700", str);
+    output_op_mode("3600", str);
+}
+
+void analisis_graph::analysis_sm_enter_manual()
+{
+    QString str;
+    str = "03";
+    output_op_mode("3E00", str); /* Antes 3600 */
+    output_op_mode("4600", str);
+//    output_op_mode("5600", str);
+//    output_op_mode("9600", str);
+//    output_op_mode("9700", str);
+//    output_op_mode("3600", str);
+}
+
+void analisis_graph::analysis_sm_toggle_pump()
+{
+    // Numero de salida en DECIMAL!
+    output_control_toggle(12345);
 }
 
 void analisis_graph::on_graph_button_clicked()

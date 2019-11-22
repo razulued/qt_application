@@ -7,6 +7,8 @@
 
 QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
 
+int demo_percentaje = 0;
+
 QString conf_string;
 QMutex mutex;
 bool calibration_needed = false;
@@ -20,7 +22,7 @@ void init_plat_config()
 
     conf.sync();
     conf.beginGroup("Plant-Cfg");
-
+    qDebug() << "path" << QDir::currentPath();
     plant_config.names = conf.childKeys();
     foreach(const QString &key, plant_config.names)
     {
@@ -44,7 +46,6 @@ QString build_string(configuration_id *conf)
     {
         temp += conf->names.at(i) + ":" + conf->ids_string.at(i) + "|";
     }
-
     return temp;
 }
 
@@ -321,6 +322,12 @@ QString get_config_string()
 //    qDebug() << "STRING: " << one_time_transmit;
 //    qDebug() << "conf: " << conf_string;
     one_time_transmit.clear();
+
+    // For DEMO
+    QString percent_string = "A000:"+QString::number(demo_percentaje,16).toUpper();
+    ret.append(percent_string);
+
+
     mutex.unlock();
     return ret;
 }
@@ -768,4 +775,9 @@ void save_calibrations()
     conf.setValue("1107", getParamValue_RAW(0x1107));
     conf.endGroup();
 
+}
+
+void demo_set_percentaje(int per)
+{
+    demo_percentaje = per;
 }

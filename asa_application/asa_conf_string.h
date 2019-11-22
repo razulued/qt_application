@@ -24,4 +24,6 @@ void add_to_one_time_transmit(QString str);
 void get_calibrations_and_set_config_str();
 void save_calibrations();
 
+void demo_set_percentaje(int per);
+
 #endif // ASA_CONF_STRING_H
