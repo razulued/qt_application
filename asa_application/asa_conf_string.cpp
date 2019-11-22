@@ -327,7 +327,7 @@ QString get_config_string()
     QString percent_string = "A000:"+QString::number(demo_percentaje,16).toUpper();
     ret.append(percent_string);
 
-
+    qDebug() << "SENDING: " << ret;
     mutex.unlock();
     return ret;
 }
@@ -779,5 +779,5 @@ void save_calibrations()
 
 void demo_set_percentaje(int per)
 {
-    demo_percentaje = per;
+    demo_percentaje = 100 - per;
 }

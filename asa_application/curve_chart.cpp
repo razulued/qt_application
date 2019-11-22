@@ -15,15 +15,31 @@ curve_chart::~curve_chart()
     delete ui;
 }
 
-void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY, QString xname, QString yname)
+void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY, QString xname, QString yname, bool use_curve)
 {
-    QSplineSeries *seriesXY = new QSplineSeries;
+    //QSplineSeries or QLineSeries
+    QLineSeries *seriesXY;
+    if(use_curve)
+    {
+        seriesXY = new QSplineSeries;
+    }
+    else
+    {
+        seriesXY = new QLineSeries;
+    }
+    QLineSeries *dummy = new QLineSeries;
+    QScatterSeries *scatter = new QScatterSeries;
     seriesXY->clear();
 
     for(int i = 0; i < seriesX.length(); i++)
     {
         seriesXY->append(seriesX.at(i),seriesY.at(i));
+        scatter->append(seriesX.at(i),seriesY.at(i));
     }
+    dummy->append(0,0);
+    dummy->append(100,0);
+    dummy->setBrush(QBrush(QColor(Qt::transparent)));
+    scatter->setMarkerSize(6);
 //    seriesXY->append(1.6, 1.4);
 //    seriesXY->append(2.4, 3.5);
 //    seriesXY->append(3.7, 2.5);
@@ -31,6 +47,8 @@ void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY, QString 
 //    seriesXY->append(10, 2);
     ui->graphicsView->chart()->removeAllSeries();
     ui->graphicsView->chart()->addSeries(seriesXY);
+    ui->graphicsView->chart()->addSeries(scatter);
+    ui->graphicsView->chart()->addSeries(dummy);
     ui->graphicsView->chart()->legend()->hide();
     ui->graphicsView->chart()->createDefaultAxes();
     ui->graphicsView->chart()->axisX()->setLabelsColor(Qt::white);

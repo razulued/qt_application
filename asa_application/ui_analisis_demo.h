@@ -48,6 +48,7 @@ public:
         pushButton = new QPushButton(analisis_demo);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(730, 10, 51, 51));
+        pushButton->setFocusPolicy(Qt::NoFocus);
         pushButton->setStyleSheet(QLatin1String("#pushButton\n"
 "{\n"
 "background-color: transparent;\n"
@@ -127,6 +128,7 @@ public:
         graph_button = new QPushButton(left_menu);
         graph_button->setObjectName(QStringLiteral("graph_button"));
         graph_button->setGeometry(QRect(10, 80, 51, 41));
+        graph_button->setFocusPolicy(Qt::NoFocus);
         graph_button->setStyleSheet(QLatin1String("#graph_button\n"
 "{\n"
 "background-color: transparent;\n"
@@ -138,6 +140,7 @@ public:
         close_menu = new QPushButton(left_menu);
         close_menu->setObjectName(QStringLiteral("close_menu"));
         close_menu->setGeometry(QRect(10, 20, 51, 41));
+        close_menu->setFocusPolicy(Qt::NoFocus);
         close_menu->setStyleSheet(QLatin1String("#close_menu\n"
 "{\n"
 "background-color: transparent;\n"
@@ -151,6 +154,7 @@ public:
         show_menu = new QPushButton(analisis_demo);
         show_menu->setObjectName(QStringLiteral("show_menu"));
         show_menu->setGeometry(QRect(10, 20, 51, 41));
+        show_menu->setFocusPolicy(Qt::NoFocus);
         show_menu->setStyleSheet(QLatin1String("#show_menu\n"
 "{\n"
 "background-color: transparent;\n"

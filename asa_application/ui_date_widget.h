@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QWidget>
@@ -25,7 +24,6 @@ class Ui_date_widget
 public:
     QLabel *label_hour;
     QLabel *label_ampm;
-    QFrame *line;
     QLabel *label_day;
     QLabel *label_month;
     QLabel *label_year;
@@ -37,36 +35,26 @@ public:
         date_widget->resize(180, 50);
         label_hour = new QLabel(date_widget);
         label_hour->setObjectName(QStringLiteral("label_hour"));
-        label_hour->setGeometry(QRect(-7, 10, 81, 31));
+        label_hour->setGeometry(QRect(-9, 12, 81, 31));
         QFont font;
         font.setPointSize(20);
         label_hour->setFont(font);
         label_hour->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         label_ampm = new QLabel(date_widget);
         label_ampm->setObjectName(QStringLiteral("label_ampm"));
-        label_ampm->setGeometry(QRect(75, 11, 21, 16));
-        line = new QFrame(date_widget);
-        line->setObjectName(QStringLiteral("line"));
-        line->setGeometry(QRect(83, 10, 20, 31));
-        line->setFrameShape(QFrame::VLine);
-        line->setFrameShadow(QFrame::Sunken);
+        label_ampm->setGeometry(QRect(73, 13, 21, 16));
         label_day = new QLabel(date_widget);
         label_day->setObjectName(QStringLiteral("label_day"));
-        label_day->setGeometry(QRect(103, 10, 41, 31));
+        label_day->setGeometry(QRect(95, 12, 31, 31));
         label_day->setFont(font);
-        label_day->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        label_day->setAlignment(Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing);
         label_month = new QLabel(date_widget);
         label_month->setObjectName(QStringLiteral("label_month"));
-        label_month->setGeometry(QRect(145, 11, 31, 16));
+        label_month->setGeometry(QRect(132, 12, 61, 16));
         label_year = new QLabel(date_widget);
         label_year->setObjectName(QStringLiteral("label_year"));
-        label_year->setGeometry(QRect(145, 25, 31, 13));
-        line->raise();
-        label_hour->raise();
-        label_ampm->raise();
-        label_day->raise();
-        label_month->raise();
-        label_year->raise();
+        label_year->setGeometry(QRect(129, 25, 61, 15));
+        label_year->setAlignment(Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft);
 
         retranslateUi(date_widget);
 

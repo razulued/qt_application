@@ -109,6 +109,15 @@ QColor donut_chart::get_color(int value)
     int g = rect_eq_y((color2.green() - color1.green()), value, color1.green());
     int b = rect_eq_y((color2.blue() - color1.blue()), value, color1.blue());
 
+    if(r >= color2.red() || r < 0){
+        r = color2.red();
+    }
+    if(g >= color2.green() || g < 0){
+        g = color2.green();
+    }
+    if(b >= color2.blue() || b < 0){
+        b = color2.blue();
+    }
     return QColor(r,g,b);
 }
 
@@ -122,7 +131,14 @@ void donut_chart::update_data(float value)
 {
 
     series->slices().at(0)->setValue(value);
-    series->slices().at(1)->setValue(max_value - value);
+    if(value >= max_value)
+    {
+        series->slices().at(1)->setValue(0);
+    }
+    else
+    {
+        series->slices().at(1)->setValue(max_value - value);
+    }
     series->slices().at(0)->setBrush(QBrush(get_color((int)value)));
     ui->valuelabel->setText(QString::number(value,'f',2));
 //    qDebug() << "Slice val: " << value;

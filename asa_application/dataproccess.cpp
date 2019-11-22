@@ -116,6 +116,7 @@ void DataProccess::dataSPI()
         send_ASA_Conf = true;
 #if SHOW_DEBUG
         qDebug() << "Receive data";
+        qDebug() << bufferString;
 #endif
         QStringList ID_Parameters = bufferString.split("|");
         QStringList realParameters ;
@@ -147,6 +148,10 @@ void DataProccess::dataSPI()
                 {
                     continue;
                 }
+            }
+            if(0x4205 == intString2Int(realParameters[0]))
+            {
+                qDebug() << "0x4205:" << intString2Int(realParameters[1]);
             }
 //#endif
             if(realParameters.length() > 1)

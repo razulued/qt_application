@@ -45,6 +45,10 @@ private slots:
 
     void on_comboBox_3_currentIndexChanged(int index);
 
+    void on_checkBox_toggled(bool checked);
+
+    void on_start_test_released();
+
 private:
     Ui::analisis_graph *ui;
     en_analysis_state analysis_state = AN_IDLE;

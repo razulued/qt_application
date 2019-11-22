@@ -4,25 +4,25 @@
 #include "parameters.h"
 #include <QDebug>
 
-#define L1_VoltID   (0x3011)
-#define L2_VoltID   (0x3012)
-#define L3_VoltID   (0x3013)
-#define L1_AmpsID   (0x3014)
-#define L2_AmpsID   (0x3015)
-#define L3_AmpsID   (0x3016)
+#define L1_VoltID   (0x3001)
+#define L2_VoltID   (0x3002)
+#define L3_VoltID   (0x3003)
+#define L1_AmpsID   (0x3004)
+#define L2_AmpsID   (0x3005)
+#define L3_AmpsID   (0x3006)
 
-#define DONUT1_CAUDAL    (getParamValue(0x5201).toFloat())
-#define DONUT1_MAX      (500)
-#define DONUT2_PRESION   (getParamValue(0x3204).toFloat())
-#define DONUT2_MAX      (500)
+#define DONUT1_CAUDAL    (getParamValue(0x3203).toFloat())
+#define DONUT1_MAX      (100)
+#define DONUT2_PRESION   (getParamValue(0x4205).toFloat())
+#define DONUT2_MAX      (100)
 #define DONUT3_VOLT     ((getParamValue(L1_VoltID).toFloat()+\
                         getParamValue(L2_VoltID).toFloat()+\
                         (getParamValue(L3_VoltID).toFloat()))/3)
-#define DONUT3_MAX      (500)
+#define DONUT3_MAX      (440)
 #define DONUT4_AMP      ((getParamValue(L1_AmpsID).toFloat()+\
                         getParamValue(L2_AmpsID).toFloat()+\
                         (getParamValue(L3_AmpsID).toFloat()))/3)
-#define DONUT4_MAX      (500)
+#define DONUT4_MAX      (10)
 
 
 analisis_demo::analisis_demo(QWidget *parent) :
@@ -37,6 +37,13 @@ analisis_demo::analisis_demo(QWidget *parent) :
     this->setStyleSheet("background-color:rgb(45,43,83);"
                         "color:white"
                         );
+    this->setFocusPolicy(Qt::NoFocus);
+    ui->close_menu->setFocusPolicy(Qt::NoFocus);
+    ui->graph_button->setFocusPolicy(Qt::NoFocus);
+    ui->left_menu->setFocusPolicy(Qt::NoFocus);
+    ui->pushButton->setFocusPolicy(Qt::NoFocus);
+    ui->show_menu->setFocusPolicy(Qt::NoFocus);
+
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
@@ -61,10 +68,10 @@ analisis_demo::analisis_demo(QWidget *parent) :
     donut_chart *donut_2 = new donut_chart("Presión",DONUT2_PRESION, DONUT2_MAX, ui->widget_2);
     connect(this, SIGNAL(update_donut_2(float)), donut_2, SLOT(update_data(float)));
 
-    donut_chart *donut_3 = new donut_chart("Voltaje AVG",DONUT3_VOLT, DONUT2_MAX, ui->widget_3);
+    donut_chart *donut_3 = new donut_chart("Voltaje AVG",DONUT3_VOLT, DONUT3_MAX, ui->widget_3);
     connect(this, SIGNAL(update_donut_3(float)), donut_3, SLOT(update_data(float)));
 
-    donut_chart *donut_4 = new donut_chart("Amperaje AVG",DONUT4_AMP, DONUT2_MAX, ui->widget_4);
+    donut_chart *donut_4 = new donut_chart("Amperaje AVG",DONUT4_AMP, DONUT4_MAX, ui->widget_4);
     connect(this, SIGNAL(update_donut_4(float)), donut_4, SLOT(update_data(float)));
 
     // ALETAS
@@ -133,7 +140,7 @@ aleta_widget::aleta_widget(QList<uint> id_list, QList<QString> names, QWidget *p
                                "border: none;"
                                "border-image: none;"
                                "font-weight: bold;"
-                               "font-size: 17px;");
+                               "font-size: 15px;");
     QFont font("Liberation Mono Bold",15,1);
     list_widget->setFont(font);
 

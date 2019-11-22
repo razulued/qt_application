@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
@@ -34,6 +35,7 @@ public:
     QComboBox *comboBox;
     QComboBox *comboBox_2;
     QComboBox *comboBox_3;
+    QCheckBox *checkBox;
     QWidget *widget;
     QPushButton *graph_button;
     QWidget *datewidget;
@@ -46,7 +48,7 @@ public:
         analisis_graph->resize(800, 600);
         controls = new QWidget(analisis_graph);
         controls->setObjectName(QStringLiteral("controls"));
-        controls->setGeometry(QRect(20, 430, 761, 161));
+        controls->setGeometry(QRect(10, 430, 781, 161));
         controls->setStyleSheet(QLatin1String("#controls\n"
 "{\n"
 "background-color: rgb(32,29,72);\n"
@@ -56,6 +58,7 @@ public:
         start_test = new QPushButton(controls);
         start_test->setObjectName(QStringLiteral("start_test"));
         start_test->setGeometry(QRect(10, 10, 111, 111));
+        start_test->setFocusPolicy(Qt::NoFocus);
         start_test->setStyleSheet(QLatin1String("#start_test\n"
 "{\n"
 "background-color: transparent;\n"
@@ -65,8 +68,8 @@ public:
 "border: none;\n"
 "}"));
         tableWidget = new QTableWidget(controls);
-        if (tableWidget->columnCount() < 10)
-            tableWidget->setColumnCount(10);
+        if (tableWidget->columnCount() < 11)
+            tableWidget->setColumnCount(11);
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
@@ -87,8 +90,11 @@ public:
         tableWidget->setHorizontalHeaderItem(8, __qtablewidgetitem8);
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(9, __qtablewidgetitem9);
+        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
+        tableWidget->setHorizontalHeaderItem(10, __qtablewidgetitem10);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(210, 20, 541, 131));
+        tableWidget->setGeometry(QRect(210, 20, 551, 131));
+        tableWidget->setFocusPolicy(Qt::NoFocus);
         tableWidget->setStyleSheet(QLatin1String("#tableWidget\n"
 "{\n"
 "border-radius: 10px;\n"
@@ -113,18 +119,26 @@ public:
         comboBox = new QComboBox(controls);
         comboBox->setObjectName(QStringLiteral("comboBox"));
         comboBox->setGeometry(QRect(130, 49, 74, 22));
+        comboBox->setFocusPolicy(Qt::NoFocus);
         comboBox_2 = new QComboBox(controls);
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
         comboBox_2->setGeometry(QRect(130, 76, 74, 22));
+        comboBox_2->setFocusPolicy(Qt::NoFocus);
         comboBox_3 = new QComboBox(controls);
         comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
         comboBox_3->setGeometry(QRect(130, 103, 74, 22));
+        comboBox_3->setFocusPolicy(Qt::NoFocus);
+        checkBox = new QCheckBox(controls);
+        checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBox->setGeometry(QRect(130, 20, 71, 18));
+        checkBox->setChecked(true);
         widget = new QWidget(analisis_graph);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(20, 60, 761, 341));
+        widget->setGeometry(QRect(20, 27, 761, 451));
         graph_button = new QPushButton(analisis_graph);
         graph_button->setObjectName(QStringLiteral("graph_button"));
         graph_button->setGeometry(QRect(720, 10, 61, 41));
+        graph_button->setFocusPolicy(Qt::NoFocus);
         graph_button->setStyleSheet(QLatin1String("#graph_button\n"
 "{\n"
 "background-color: transparent;\n"
@@ -143,12 +157,17 @@ public:
         font.setPointSize(12);
         label->setFont(font);
         label->setAlignment(Qt::AlignCenter);
+        widget->raise();
+        controls->raise();
+        graph_button->raise();
+        datewidget->raise();
+        label->raise();
 
         retranslateUi(analisis_graph);
 
-        comboBox->setCurrentIndex(13);
+        comboBox->setCurrentIndex(0);
         comboBox_2->setCurrentIndex(1);
-        comboBox_3->setCurrentIndex(0);
+        comboBox_3->setCurrentIndex(6);
 
 
         QMetaObject::connectSlotsByName(analisis_graph);
@@ -159,25 +178,27 @@ public:
         analisis_graph->setWindowTitle(QApplication::translate("analisis_graph", "Dialog", Q_NULLPTR));
         start_test->setText(QString());
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("analisis_graph", "P1", Q_NULLPTR));
+        ___qtablewidgetitem->setText(QApplication::translate("analisis_graph", "P0", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("analisis_graph", "P2", Q_NULLPTR));
+        ___qtablewidgetitem1->setText(QApplication::translate("analisis_graph", "P1", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("analisis_graph", "P3", Q_NULLPTR));
+        ___qtablewidgetitem2->setText(QApplication::translate("analisis_graph", "P2", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("analisis_graph", "P4", Q_NULLPTR));
+        ___qtablewidgetitem3->setText(QApplication::translate("analisis_graph", "P3", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("analisis_graph", "P5", Q_NULLPTR));
+        ___qtablewidgetitem4->setText(QApplication::translate("analisis_graph", "P4", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("analisis_graph", "P6", Q_NULLPTR));
+        ___qtablewidgetitem5->setText(QApplication::translate("analisis_graph", "P5", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem6 = tableWidget->horizontalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QApplication::translate("analisis_graph", "P7", Q_NULLPTR));
+        ___qtablewidgetitem6->setText(QApplication::translate("analisis_graph", "P6", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem7 = tableWidget->horizontalHeaderItem(7);
-        ___qtablewidgetitem7->setText(QApplication::translate("analisis_graph", "P8", Q_NULLPTR));
+        ___qtablewidgetitem7->setText(QApplication::translate("analisis_graph", "P7", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem8 = tableWidget->horizontalHeaderItem(8);
-        ___qtablewidgetitem8->setText(QApplication::translate("analisis_graph", "P9", Q_NULLPTR));
+        ___qtablewidgetitem8->setText(QApplication::translate("analisis_graph", "P8", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem9 = tableWidget->horizontalHeaderItem(9);
-        ___qtablewidgetitem9->setText(QApplication::translate("analisis_graph", "P10", Q_NULLPTR));
+        ___qtablewidgetitem9->setText(QApplication::translate("analisis_graph", "P9", Q_NULLPTR));
+        QTableWidgetItem *___qtablewidgetitem10 = tableWidget->horizontalHeaderItem(10);
+        ___qtablewidgetitem10->setText(QApplication::translate("analisis_graph", "P10", Q_NULLPTR));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("analisis_graph", "Caudal", Q_NULLPTR)
@@ -229,6 +250,7 @@ public:
          << QApplication::translate("analisis_graph", "Frecuencia", Q_NULLPTR)
          << QApplication::translate("analisis_graph", "%Valvula", Q_NULLPTR)
         );
+        checkBox->setText(QApplication::translate("analisis_graph", "Curva", Q_NULLPTR));
         graph_button->setText(QString());
         label->setText(QString());
     } // retranslateUi

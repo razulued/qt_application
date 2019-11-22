@@ -4,7 +4,7 @@
 #include <QMovie>
 #include <QFont>
 #include <token_auth.h>
-#define TIMEOUT (60)
+#define TIMEOUT (300)
 
 bool screen_saver::eventFilter(QObject *obj, QEvent *event)
 {

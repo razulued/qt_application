@@ -18,17 +18,22 @@ QString conv_integer_caudal(QString str, uint param1)
     Si el resultado de la ecuación es MENOR a 9.45, la página deberá mostrar 0.
 */
 
-    ret = decimal * 0.163355;
-    ret = ret - 66.18912;
+    ret = decimal *0.0556822;
+    ret = ret - 25.78625;
 
-    if(ret < 9.45)
+    if(ret < 0)
     {
-        return "0.0";
+        ret = 0;
     }
-    else
-    {
-        return QString::number(ret,'f',1);
-    }
+
+//    if(ret < 9.45)
+//    {
+//        return "0.0";
+//    }
+//    else
+//    {
+//    }
+    return QString::number(ret,'f',1);
 
 }
 
@@ -106,25 +111,25 @@ QString conv_integer_presion(QString str, uint param1)
     Para el rango de 0 a 145.038psi: PSI=0.080255644*Cuentas [psi/adc] - 36.2594[psi]
 */
 
-    if(decimal < 410)
-    {
-        return "Falla [cuentas <410]";
-    }
+//    if(decimal < 410)
+//    {
+//        return "Falla [cuentas <410]";
+//    }
 
-    ret = decimal *0.807605;
-    ret = ret - 373.9986;
+    ret = decimal *0.0556822;
+    ret = ret - 25.78625;
     if(ret < 0)
     {
-        return "0";
+        return 0;
     }
-    else if(ret > 145.038)
-    {
-        return "Falla [>145.038]";
-    }
-    else
-    {
-        return QString::number(ret,'f',1);
-    }
+//    else if(ret > 145.038)
+//    {
+//        return "Falla [>145.038]";
+//    }
+//    else
+//    {
+//    }
+    return QString::number(ret,'f',1);
 
 }
 
