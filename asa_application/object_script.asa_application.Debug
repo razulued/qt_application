@@ -50,6 +50,7 @@ INPUT(
 ./debug/analisis_graph.o
 ./debug/curve_chart.o
 ./debug/date_widget.o
+./debug/analisys_full_table.o
 ./debug/qrc_fonts.o
 ./debug/qrc_screen800x600.o
 ./debug/qrc_images.o
@@ -90,4 +91,5 @@ INPUT(
 ./debug/moc_analisis_graph.o
 ./debug/moc_curve_chart.o
 ./debug/moc_date_widget.o
+./debug/moc_analisys_full_table.o
 );

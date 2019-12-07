@@ -4453,7 +4453,7 @@ public:
         QObject::connect(buttonBox, SIGNAL(accepted()), settings, SLOT(accept()));
         QObject::connect(buttonBox, SIGNAL(rejected()), settings, SLOT(reject()));
 
-        tabWidget->setCurrentIndex(6);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(settings);

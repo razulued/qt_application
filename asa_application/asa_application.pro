@@ -64,7 +64,8 @@ SOURCES += main.cpp\
     donut_chart.cpp \
     analisis_graph.cpp \
     curve_chart.cpp \
-    date_widget.cpp
+    date_widget.cpp \
+    analisys_full_table.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -115,7 +116,8 @@ HEADERS  += mainwindow.h \
     donut_chart.h \
     analisis_graph.h \
     curve_chart.h \
-    date_widget.h
+    date_widget.h \
+    analisys_full_table.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
@@ -140,7 +142,8 @@ FORMS    += mainwindow.ui \
     donut_chart.ui \
     analisis_graph.ui \
     curve_chart.ui \
-    date_widget.ui
+    date_widget.ui \
+    analisys_full_table.ui
 
 RESOURCES += \
     fonts.qrc \

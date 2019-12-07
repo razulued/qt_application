@@ -5,6 +5,7 @@
 #include "curve_chart.h"
 #include "date_widget.h"
 #include <QDateTime>
+#include "analisys_full_table.h"
 typedef enum
 {
     AN_IDLE,
@@ -16,6 +17,8 @@ typedef enum
     AN_MOVE_VALVE,
     AN_TAKE_READING,
     AN_TURN_OFF_PUMP,
+    AN_OPEN_SLOW,
+    AN_CAPTURE_AT_100,
     AN_COMPLETE
 }en_analysis_state;
 namespace Ui {
@@ -49,6 +52,8 @@ private slots:
 
     void on_start_test_released();
 
+    void on_full_graph_button_released();
+
 private:
     Ui::analisis_graph *ui;
     en_analysis_state analysis_state = AN_IDLE;
@@ -62,6 +67,7 @@ private:
     void analysis_sm_stop_all();
     void analysis_sm_enter_manual();
     void analysis_sm_toggle_pump();
+    analisys_full_table *full_table= NULL;
 };
 
 #endif // ANALISIS_GRAPH_H

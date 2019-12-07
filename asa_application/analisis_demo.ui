@@ -242,9 +242,6 @@ border: none;
      <string/>
     </property>
    </widget>
-   <zorder>graph_button</zorder>
-   <zorder>close_menu</zorder>
-   <zorder>show_menu</zorder>
   </widget>
   <widget class="QPushButton" name="show_menu">
    <property name="geometry">
@@ -282,11 +279,43 @@ border: none;
     </rect>
    </property>
   </widget>
+  <widget class="QDoubleSpinBox" name="control_A000">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>10</y>
+     <width>81</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="accelerated">
+    <bool>true</bool>
+   </property>
+   <property name="prefix">
+    <string/>
+   </property>
+   <property name="suffix">
+    <string/>
+   </property>
+   <property name="decimals">
+    <number>0</number>
+   </property>
+   <property name="minimum">
+    <double>0.000000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>9999999999.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>1.000000000000000</double>
+   </property>
+  </widget>
   <zorder>show_menu</zorder>
   <zorder>frame</zorder>
   <zorder>left_menu</zorder>
   <zorder>pushButton</zorder>
   <zorder>datewidget</zorder>
+  <zorder>control_A000</zorder>
  </widget>
  <resources/>
  <connections/>

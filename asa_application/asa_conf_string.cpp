@@ -324,7 +324,7 @@ QString get_config_string()
     one_time_transmit.clear();
 
     // For DEMO
-    QString percent_string = "A000:"+QString::number(demo_percentaje,16).toUpper();
+    QString percent_string = "A001:0|A000:"+QString::number(demo_percentaje,16).toUpper();
     ret.append(percent_string);
 
     qDebug() << "SENDING: " << ret;
@@ -779,5 +779,14 @@ void save_calibrations()
 
 void demo_set_percentaje(int per)
 {
+    if(per > 100)
+    {
+        per = 100;
+    }
+    if(per < 0)
+    {
+        per = 0;
+    }
+    qDebug() << "-------Valve at "<< per << "%";
     demo_percentaje = 100 - per;
 }

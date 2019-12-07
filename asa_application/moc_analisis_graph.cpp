@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_analisis_graph_t {
-    QByteArrayData data[15];
-    char stringdata0[266];
+    QByteArrayData data[16];
+    char stringdata0[296];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,7 +45,8 @@ QT_MOC_LITERAL(10, 147, 33), // "on_comboBox_2_currentIndexCha..."
 QT_MOC_LITERAL(11, 181, 33), // "on_comboBox_3_currentIndexCha..."
 QT_MOC_LITERAL(12, 215, 19), // "on_checkBox_toggled"
 QT_MOC_LITERAL(13, 235, 7), // "checked"
-QT_MOC_LITERAL(14, 243, 22) // "on_start_test_released"
+QT_MOC_LITERAL(14, 243, 22), // "on_start_test_released"
+QT_MOC_LITERAL(15, 266, 29) // "on_full_graph_button_released"
 
     },
     "analisis_graph\0send_datetime\0\0datetime\0"
@@ -55,7 +56,8 @@ QT_MOC_LITERAL(14, 243, 22) // "on_start_test_released"
     "on_comboBox_2_currentIndexChanged\0"
     "on_comboBox_3_currentIndexChanged\0"
     "on_checkBox_toggled\0checked\0"
-    "on_start_test_released"
+    "on_start_test_released\0"
+    "on_full_graph_button_released"
 };
 #undef QT_MOC_LITERAL
 
@@ -65,7 +67,7 @@ static const uint qt_meta_data_analisis_graph[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -73,18 +75,19 @@ static const uint qt_meta_data_analisis_graph[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   64,    2, 0x06 /* Public */,
+       1,    1,   69,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   67,    2, 0x08 /* Private */,
-       5,    0,   68,    2, 0x08 /* Private */,
-       6,    0,   69,    2, 0x08 /* Private */,
-       7,    1,   70,    2, 0x08 /* Private */,
-       8,    1,   73,    2, 0x08 /* Private */,
-      10,    1,   76,    2, 0x08 /* Private */,
-      11,    1,   79,    2, 0x08 /* Private */,
-      12,    1,   82,    2, 0x08 /* Private */,
-      14,    0,   85,    2, 0x08 /* Private */,
+       4,    0,   72,    2, 0x08 /* Private */,
+       5,    0,   73,    2, 0x08 /* Private */,
+       6,    0,   74,    2, 0x08 /* Private */,
+       7,    1,   75,    2, 0x08 /* Private */,
+       8,    1,   78,    2, 0x08 /* Private */,
+      10,    1,   81,    2, 0x08 /* Private */,
+      11,    1,   84,    2, 0x08 /* Private */,
+      12,    1,   87,    2, 0x08 /* Private */,
+      14,    0,   90,    2, 0x08 /* Private */,
+      15,    0,   91,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QDateTime,    3,
@@ -98,6 +101,7 @@ static const uint qt_meta_data_analisis_graph[] = {
     QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void, QMetaType::Bool,   13,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -119,6 +123,7 @@ void analisis_graph::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 7: _t->on_comboBox_3_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 8: _t->on_checkBox_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 9: _t->on_start_test_released(); break;
+        case 10: _t->on_full_graph_button_released(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -159,13 +164,13 @@ int analisis_graph::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

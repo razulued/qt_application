@@ -54,6 +54,8 @@ private slots:
 
     void on_graph_button_clicked();
 
+    void on_control_A000_valueChanged(double arg1);
+
 private:
     Ui::analisis_demo *ui;
     aleta_widget *aleta_1 = NULL;

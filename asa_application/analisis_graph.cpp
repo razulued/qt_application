@@ -42,11 +42,12 @@ QList<float> data12;
 QList<float> data13;
 
 #define STEP_DELAY (25000)
-//const int hard_coded_percent[10] = {0,30,31,32,35,37,38,45,90,100};
-const int hard_coded_percent[10] = {0,10,20,30,40,50,60,70,90,100};
+#define NUMBER_OF_SHOTS (11)
+const int hard_coded_percent[NUMBER_OF_SHOTS]   = {0,4,5,7,9,11,13,15,18,23,100};
+//const int hard_coded_percent[11] = {0,10,20,30,40,50,60,70,80,90,100};
 
-QList<uint> DAC_counts;
-QList<uint> Time_wait;
+//QList<uint> DAC_counts;
+//QList<uint> Time_wait;
 
 
 analisis_graph::analisis_graph(QWidget *parent) :
@@ -99,40 +100,40 @@ analisis_graph::analisis_graph(QWidget *parent) :
     //Get step settings
     QSettings conf(QDir::currentPath() + "/config.ini", QSettings::IniFormat);
 
-    conf.sync();
-    conf.beginGroup("Pump-profile-steps");
-    DAC_counts << conf.value("DAC_step0").toInt();
-    DAC_counts << conf.value("DAC_step1").toInt();
-    DAC_counts << conf.value("DAC_step2").toInt();
-    DAC_counts << conf.value("DAC_step3").toInt();
-    DAC_counts << conf.value("DAC_step4").toInt();
-    DAC_counts << conf.value("DAC_step5").toInt();
-    DAC_counts << conf.value("DAC_step6").toInt();
-    DAC_counts << conf.value("DAC_step7").toInt();
-    DAC_counts << conf.value("DAC_step8").toInt();
-    DAC_counts << conf.value("DAC_step9").toInt();
-    DAC_counts << conf.value("DAC_step10").toInt();
-    conf.endGroup();
+//    conf.sync();
+//    conf.beginGroup("Pump-profile-steps");
+//    DAC_counts << conf.value("DAC_step0").toInt();
+//    DAC_counts << conf.value("DAC_step1").toInt();
+//    DAC_counts << conf.value("DAC_step2").toInt();
+//    DAC_counts << conf.value("DAC_step3").toInt();
+//    DAC_counts << conf.value("DAC_step4").toInt();
+//    DAC_counts << conf.value("DAC_step5").toInt();
+//    DAC_counts << conf.value("DAC_step6").toInt();
+//    DAC_counts << conf.value("DAC_step7").toInt();
+//    DAC_counts << conf.value("DAC_step8").toInt();
+//    DAC_counts << conf.value("DAC_step9").toInt();
+//    DAC_counts << conf.value("DAC_step10").toInt();
+//    conf.endGroup();
 
-    conf.sync();
-    conf.beginGroup("Pump-profile-time");
-    Time_wait << conf.value("time_step0").toInt();
-    Time_wait << conf.value("time_step1").toInt();
-    Time_wait << conf.value("time_step2").toInt();
-    Time_wait << conf.value("time_step3").toInt();
-    Time_wait << conf.value("time_step4").toInt();
-    Time_wait << conf.value("time_step5").toInt();
-    Time_wait << conf.value("time_step6").toInt();
-    Time_wait << conf.value("time_step7").toInt();
-    Time_wait << conf.value("time_step8").toInt();
-    Time_wait << conf.value("time_step9").toInt();
-    Time_wait << conf.value("time_step10").toInt();
-    conf.endGroup();
+//    conf.sync();
+//    conf.beginGroup("Pump-profile-time");
+//    Time_wait << conf.value("time_step0").toInt();
+//    Time_wait << conf.value("time_step1").toInt();
+//    Time_wait << conf.value("time_step2").toInt();
+//    Time_wait << conf.value("time_step3").toInt();
+//    Time_wait << conf.value("time_step4").toInt();
+//    Time_wait << conf.value("time_step5").toInt();
+//    Time_wait << conf.value("time_step6").toInt();
+//    Time_wait << conf.value("time_step7").toInt();
+//    Time_wait << conf.value("time_step8").toInt();
+//    Time_wait << conf.value("time_step9").toInt();
+//    Time_wait << conf.value("time_step10").toInt();
+//    conf.endGroup();
 
-    for(int i=0; i< DAC_counts.length(); i++)
-    {
-        qDebug() << DAC_counts.at(i) << "waits: " << Time_wait.at(i);
-    }
+//    for(int i=0; i< DAC_counts.length(); i++)
+//    {
+//        qDebug() << DAC_counts.at(i) << "waits: " << Time_wait.at(i);
+//    }
 
     this->show();
 }
@@ -214,25 +215,34 @@ void analisis_graph::analysis_sm()
         analysis_sm_toggle_pump();
         qDebug() << "Close valve and wait";
         demo_set_percentaje((int)valve_state);
-        QTimer::singleShot(500, this, SLOT(analysis_sm()));
+        ui->progressBar->setValue(valve_state);
+        QTimer::singleShot(STEP_DELAY, this, SLOT(analysis_sm()));
         analysis_state = AN_MOVE_VALVE;
         break;
     case AN_MOVE_VALVE:
-        qDebug() << "-------Valve at "<< valve_state << "%";
         // SEND VALVE % HERE
-        demo_set_percentaje((int)valve_state);
-        step_series.append(valve_state);
-        ui->progressBar->setValue(valve_state);
-//        QTimer::singleShot(STEP_DELAY, this, SLOT(analysis_sm()));
-        QTimer::singleShot(Time_wait.at(current_round), this, SLOT(analysis_sm()));
-        analysis_state = AN_TAKE_READING;
+        if(current_round < (NUMBER_OF_SHOTS-1))
+        {
+            valve_state = hard_coded_percent[current_round];
+            demo_set_percentaje((int)valve_state);
+            step_series.append(valve_state);
+            ui->progressBar->setValue(valve_state);
+            QTimer::singleShot(STEP_DELAY, this, SLOT(analysis_sm()));
+    //        QTimer::singleShot(Time_wait.at(current_round), this, SLOT(analysis_sm()));
+            analysis_state = AN_TAKE_READING;
+        }
+        else
+        {
+            QTimer::singleShot(500, this, SLOT(analysis_sm()));
+            analysis_state = AN_OPEN_SLOW;
+        }
         break;
     case AN_TAKE_READING:
 //        valve_state += STEP_INCREMENT;
-//        valve_state = hard_coded_percent[current_round];
-        valve_state = hard_coded_percent[DAC_counts.at(current_round)];
-        if(valve_state <= 100)
+//        valve_state = hard_coded_percent[DAC_counts.at(current_round)];
+        if(current_round < (NUMBER_OF_SHOTS-1))
         {
+            valve_state = hard_coded_percent[current_round];
             qDebug() << "Taking Reads at "<< valve_state << "%";
             capture_data(current_round);
             select_data_and_graph();
@@ -243,8 +253,34 @@ void analisis_graph::analysis_sm()
         else
         {
             QTimer::singleShot(500, this, SLOT(analysis_sm()));
-            analysis_state = AN_TURN_OFF_PUMP;
+            analysis_state = AN_OPEN_SLOW;
         }
+        break;
+    case AN_OPEN_SLOW:
+        qDebug() << "Open Slow";
+        if(valve_state < 100)
+        {
+            valve_state += 5;
+            demo_set_percentaje((int)valve_state);
+            ui->progressBar->setValue(valve_state);
+            QTimer::singleShot(1000, this, SLOT(analysis_sm()));
+            analysis_state = AN_OPEN_SLOW;
+        }
+        else
+        {
+            valve_state = 100;
+            demo_set_percentaje((int)valve_state);
+            ui->progressBar->setValue(valve_state);
+            QTimer::singleShot(STEP_DELAY, this, SLOT(analysis_sm()));
+            analysis_state = AN_CAPTURE_AT_100;
+        }
+        break;
+    case AN_CAPTURE_AT_100:
+        qDebug() << "Taking Reads at "<< valve_state << "%";
+        capture_data(current_round);
+        select_data_and_graph();
+        QTimer::singleShot(1000, this, SLOT(analysis_sm()));
+        analysis_state = AN_TURN_OFF_PUMP;
         break;
     case AN_TURN_OFF_PUMP:
         qDebug() << "Turn OFF Pump";
@@ -486,4 +522,16 @@ void analisis_graph::on_checkBox_toggled(bool checked)
 void analisis_graph::on_start_test_released()
 {
     start_analysis();
+}
+
+void analisis_graph::on_full_graph_button_released()
+{
+    if(full_table != NULL)
+    {
+        delete full_table;
+    }
+    if(!master_data.isEmpty())
+    {
+        full_table = new analisys_full_table(master_data, this);
+    }
 }

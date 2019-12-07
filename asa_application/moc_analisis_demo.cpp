@@ -115,8 +115,8 @@ int aleta_widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_analisis_demo_t {
-    QByteArrayData data[14];
-    char stringdata0[209];
+    QByteArrayData data[16];
+    char stringdata0[243];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -138,7 +138,9 @@ QT_MOC_LITERAL(9, 104, 15), // "update_datetime"
 QT_MOC_LITERAL(10, 120, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(11, 142, 21), // "on_close_menu_clicked"
 QT_MOC_LITERAL(12, 164, 20), // "on_show_menu_clicked"
-QT_MOC_LITERAL(13, 185, 23) // "on_graph_button_clicked"
+QT_MOC_LITERAL(13, 185, 23), // "on_graph_button_clicked"
+QT_MOC_LITERAL(14, 209, 28), // "on_control_A000_valueChanged"
+QT_MOC_LITERAL(15, 238, 4) // "arg1"
 
     },
     "analisis_demo\0update_donut_1\0\0value\0"
@@ -146,7 +148,8 @@ QT_MOC_LITERAL(13, 185, 23) // "on_graph_button_clicked"
     "update_donut_4\0send_datetime\0datetime\0"
     "update_datetime\0on_pushButton_clicked\0"
     "on_close_menu_clicked\0on_show_menu_clicked\0"
-    "on_graph_button_clicked"
+    "on_graph_button_clicked\0"
+    "on_control_A000_valueChanged\0arg1"
 };
 #undef QT_MOC_LITERAL
 
@@ -156,7 +159,7 @@ static const uint qt_meta_data_analisis_demo[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -164,18 +167,19 @@ static const uint qt_meta_data_analisis_demo[] = {
        5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   64,    2, 0x06 /* Public */,
-       4,    1,   67,    2, 0x06 /* Public */,
-       5,    1,   70,    2, 0x06 /* Public */,
-       6,    1,   73,    2, 0x06 /* Public */,
-       7,    1,   76,    2, 0x06 /* Public */,
+       1,    1,   69,    2, 0x06 /* Public */,
+       4,    1,   72,    2, 0x06 /* Public */,
+       5,    1,   75,    2, 0x06 /* Public */,
+       6,    1,   78,    2, 0x06 /* Public */,
+       7,    1,   81,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    1,   79,    2, 0x0a /* Public */,
-      10,    0,   82,    2, 0x08 /* Private */,
-      11,    0,   83,    2, 0x08 /* Private */,
-      12,    0,   84,    2, 0x08 /* Private */,
-      13,    0,   85,    2, 0x08 /* Private */,
+       9,    1,   84,    2, 0x0a /* Public */,
+      10,    0,   87,    2, 0x08 /* Private */,
+      11,    0,   88,    2, 0x08 /* Private */,
+      12,    0,   89,    2, 0x08 /* Private */,
+      13,    0,   90,    2, 0x08 /* Private */,
+      14,    1,   91,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Float,    3,
@@ -190,6 +194,7 @@ static const uint qt_meta_data_analisis_demo[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Double,   15,
 
        0        // eod
 };
@@ -210,6 +215,7 @@ void analisis_demo::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 7: _t->on_close_menu_clicked(); break;
         case 8: _t->on_show_menu_clicked(); break;
         case 9: _t->on_graph_button_clicked(); break;
+        case 10: _t->on_control_A000_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -278,13 +284,13 @@ int analisis_demo::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 11;
     }
     return _id;
 }

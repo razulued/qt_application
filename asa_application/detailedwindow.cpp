@@ -407,6 +407,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     //Hide window bars and buttons
     this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
+//    this->setAttribute(Qt::WA_DeleteOnClose);
 
     this->move(parent->pos());
 

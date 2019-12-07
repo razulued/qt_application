@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
@@ -39,6 +40,7 @@ public:
     QPushButton *close_menu;
     QPushButton *show_menu;
     QWidget *datewidget;
+    QDoubleSpinBox *control_A000;
 
     void setupUi(QDialog *analisis_demo)
     {
@@ -149,8 +151,6 @@ public:
 "background-position: center;\n"
 "border: none;\n"
 "}"));
-        graph_button->raise();
-        close_menu->raise();
         show_menu = new QPushButton(analisis_demo);
         show_menu->setObjectName(QStringLiteral("show_menu"));
         show_menu->setGeometry(QRect(10, 20, 51, 41));
@@ -166,11 +166,20 @@ public:
         datewidget = new QWidget(analisis_demo);
         datewidget->setObjectName(QStringLiteral("datewidget"));
         datewidget->setGeometry(QRect(310, 5, 180, 50));
+        control_A000 = new QDoubleSpinBox(analisis_demo);
+        control_A000->setObjectName(QStringLiteral("control_A000"));
+        control_A000->setGeometry(QRect(150, 10, 81, 71));
+        control_A000->setAccelerated(true);
+        control_A000->setDecimals(0);
+        control_A000->setMinimum(0);
+        control_A000->setMaximum(1e+10);
+        control_A000->setSingleStep(1);
         show_menu->raise();
         frame->raise();
         left_menu->raise();
         pushButton->raise();
         datewidget->raise();
+        control_A000->raise();
 
         retranslateUi(analisis_demo);
 
@@ -184,6 +193,8 @@ public:
         graph_button->setText(QString());
         close_menu->setText(QString());
         show_menu->setText(QString());
+        control_A000->setPrefix(QString());
+        control_A000->setSuffix(QString());
     } // retranslateUi
 
 };

@@ -16,9 +16,9 @@
   <widget class="QWidget" name="controls" native="true">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>0</x>
      <y>430</y>
-     <width>781</width>
+     <width>801</width>
      <height>161</height>
     </rect>
    </property>
@@ -33,7 +33,7 @@ border-radius: 10px;
    <widget class="QPushButton" name="start_test">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>5</x>
       <y>10</y>
       <width>111</width>
       <height>111</height>
@@ -61,7 +61,7 @@ border: none;
      <rect>
       <x>210</x>
       <y>20</y>
-      <width>551</width>
+      <width>571</width>
       <height>131</height>
      </rect>
     </property>
@@ -133,7 +133,7 @@ border-radius: 10px;
    <widget class="QProgressBar" name="progressBar">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>6</x>
       <y>130</y>
       <width>111</width>
       <height>23</height>
@@ -163,9 +163,9 @@ margin: 1px;
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>123</x>
       <y>49</y>
-      <width>74</width>
+      <width>81</width>
       <height>22</height>
      </rect>
     </property>
@@ -249,9 +249,9 @@ margin: 1px;
    <widget class="QComboBox" name="comboBox_2">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>123</x>
       <y>76</y>
-      <width>74</width>
+      <width>81</width>
       <height>22</height>
      </rect>
     </property>
@@ -335,9 +335,9 @@ margin: 1px;
    <widget class="QComboBox" name="comboBox_3">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>123</x>
       <y>103</y>
-      <width>74</width>
+      <width>81</width>
       <height>22</height>
      </rect>
     </property>
@@ -502,11 +502,38 @@ border: none;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="full_graph_button">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>150</y>
+     <width>51</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#full_graph_button
+{
+background-color: transparent;
+background-image: url(:/demo/images/Demo/Solapa izq.png);
+background-repeat: none;
+background-position: center;
+border: none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>widget</zorder>
   <zorder>controls</zorder>
   <zorder>graph_button</zorder>
   <zorder>datewidget</zorder>
   <zorder>label</zorder>
+  <zorder>full_graph_button</zorder>
  </widget>
  <resources/>
  <connections/>

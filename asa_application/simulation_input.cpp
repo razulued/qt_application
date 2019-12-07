@@ -151,13 +151,13 @@ void simulation_input::on_horizontalScrollBar_3_actionTriggered(int action)
 
 void simulation_input::on_horizontalScrollBar_4_actionTriggered(int action)
 {
-    store_value_by_ID((0x5201), QString::number(ui->horizontalScrollBar_4->value()));
+    store_value_by_ID((0x3203), QString::number(ui->horizontalScrollBar_4->value()));
     ui->lineEdit_4->setText(QString::number(ui->horizontalScrollBar_4->value()));
 }
 
 void simulation_input::on_horizontalScrollBar_5_actionTriggered(int action)
 {
-    store_value_by_ID((0x3204), QString::number(ui->horizontalScrollBar_5->value()));
+    store_value_by_ID((0x4205), QString::number(ui->horizontalScrollBar_5->value()));
     ui->lineEdit_11->setText(QString::number(ui->horizontalScrollBar_5->value()));
 }
 

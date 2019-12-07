@@ -40,6 +40,7 @@ public:
     QPushButton *graph_button;
     QWidget *datewidget;
     QLabel *label;
+    QPushButton *full_graph_button;
 
     void setupUi(QDialog *analisis_graph)
     {
@@ -48,7 +49,7 @@ public:
         analisis_graph->resize(800, 600);
         controls = new QWidget(analisis_graph);
         controls->setObjectName(QStringLiteral("controls"));
-        controls->setGeometry(QRect(10, 430, 781, 161));
+        controls->setGeometry(QRect(0, 430, 801, 161));
         controls->setStyleSheet(QLatin1String("#controls\n"
 "{\n"
 "background-color: rgb(32,29,72);\n"
@@ -57,7 +58,7 @@ public:
 "}"));
         start_test = new QPushButton(controls);
         start_test->setObjectName(QStringLiteral("start_test"));
-        start_test->setGeometry(QRect(10, 10, 111, 111));
+        start_test->setGeometry(QRect(5, 10, 111, 111));
         start_test->setFocusPolicy(Qt::NoFocus);
         start_test->setStyleSheet(QLatin1String("#start_test\n"
 "{\n"
@@ -93,7 +94,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(10, __qtablewidgetitem10);
         tableWidget->setObjectName(QStringLiteral("tableWidget"));
-        tableWidget->setGeometry(QRect(210, 20, 551, 131));
+        tableWidget->setGeometry(QRect(210, 20, 571, 131));
         tableWidget->setFocusPolicy(Qt::NoFocus);
         tableWidget->setStyleSheet(QLatin1String("#tableWidget\n"
 "{\n"
@@ -101,7 +102,7 @@ public:
 "}"));
         progressBar = new QProgressBar(controls);
         progressBar->setObjectName(QStringLiteral("progressBar"));
-        progressBar->setGeometry(QRect(10, 130, 111, 23));
+        progressBar->setGeometry(QRect(6, 130, 111, 23));
         progressBar->setStyleSheet(QLatin1String("#progressBar\n"
 "{\n"
 "background-color: transparent;\n"
@@ -118,15 +119,15 @@ public:
         progressBar->setTextVisible(false);
         comboBox = new QComboBox(controls);
         comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(130, 49, 74, 22));
+        comboBox->setGeometry(QRect(123, 49, 81, 22));
         comboBox->setFocusPolicy(Qt::NoFocus);
         comboBox_2 = new QComboBox(controls);
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
-        comboBox_2->setGeometry(QRect(130, 76, 74, 22));
+        comboBox_2->setGeometry(QRect(123, 76, 81, 22));
         comboBox_2->setFocusPolicy(Qt::NoFocus);
         comboBox_3 = new QComboBox(controls);
         comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
-        comboBox_3->setGeometry(QRect(130, 103, 74, 22));
+        comboBox_3->setGeometry(QRect(123, 103, 81, 22));
         comboBox_3->setFocusPolicy(Qt::NoFocus);
         checkBox = new QCheckBox(controls);
         checkBox->setObjectName(QStringLiteral("checkBox"));
@@ -157,11 +158,24 @@ public:
         font.setPointSize(12);
         label->setFont(font);
         label->setAlignment(Qt::AlignCenter);
+        full_graph_button = new QPushButton(analisis_graph);
+        full_graph_button->setObjectName(QStringLiteral("full_graph_button"));
+        full_graph_button->setGeometry(QRect(760, 150, 51, 111));
+        full_graph_button->setFocusPolicy(Qt::NoFocus);
+        full_graph_button->setStyleSheet(QLatin1String("#full_graph_button\n"
+"{\n"
+"background-color: transparent;\n"
+"background-image: url(:/demo/images/Demo/Solapa izq.png);\n"
+"background-repeat: none;\n"
+"background-position: center;\n"
+"border: none;\n"
+"}"));
         widget->raise();
         controls->raise();
         graph_button->raise();
         datewidget->raise();
         label->raise();
+        full_graph_button->raise();
 
         retranslateUi(analisis_graph);
 
@@ -253,6 +267,7 @@ public:
         checkBox->setText(QApplication::translate("analisis_graph", "Curva", Q_NULLPTR));
         graph_button->setText(QString());
         label->setText(QString());
+        full_graph_button->setText(QString());
     } // retranslateUi
 
 };

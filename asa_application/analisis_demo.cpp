@@ -2,6 +2,7 @@
 #include "ui_analisis_demo.h"
 #include "donut_chart.h"
 #include "parameters.h"
+#include "asa_conf_string.h"
 #include <QDebug>
 
 #define L1_VoltID   (0x3001)
@@ -207,4 +208,9 @@ void analisis_demo::on_graph_button_clicked()
     graph = new analisis_graph(this);
     connect(this,SIGNAL(send_datetime(QDateTime)),graph,SLOT(update_time(QDateTime)));
     send_datetime(time);
+}
+
+void analisis_demo::on_control_A000_valueChanged(double arg1)
+{
+    demo_set_percentaje(arg1);
 }
