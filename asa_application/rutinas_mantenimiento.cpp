@@ -5,8 +5,8 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QDateTime>
-#include "mainwindow.h"
 #include <QVector>
+#include <QProcess>
 
 #define FIRST_MONDAY_EPOCH (345600)
 #define SECONDS_IN_A_WEEK (60 * 60 * 24 * 7)

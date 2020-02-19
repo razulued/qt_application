@@ -9,6 +9,8 @@ bool configuration::token_state = false;
 
 bool configuration::filtro_present;
 
+QDateTime configuration::time;
+
 configuration_id configuration::conf_car_elect;
 configuration_id configuration::conf_car_fisic;
 configuration_id configuration::conf_car_quimic;
@@ -80,6 +82,8 @@ configuration::configuration(QString name)
     {
         filtro_present = false;
     }
+
+    time = QDateTime::currentDateTime();
 }
 
 

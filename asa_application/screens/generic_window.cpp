@@ -10,7 +10,6 @@
 
 // Subwindows
 #include "contacto.h"
-#include "motores.h"
 #include "parameters.h"
 #include "login_dialog.h"
 
@@ -386,14 +385,14 @@ void generic_window::on_top_menu_1_clicked()
 
 void generic_window::on_top_menu_2_clicked()
 {
-    // Motores View
-    if(subwindow_mutex.tryLock(0))
-    {
-        motores *motrores_window = new motores(this);
+//    // Motores View
+//    if(subwindow_mutex.tryLock(0))
+//    {
+//        motores *motrores_window = new motores(this);
 
-        connect(motrores_window, SIGNAL(release_lock()), this, SLOT(subwindow_closed()));
-        motrores_window->show();
-    }
+//        connect(motrores_window, SIGNAL(release_lock()), this, SLOT(subwindow_closed()));
+//        motrores_window->show();
+//    }
 }
 
 void generic_window::on_top_menu_3_clicked()
@@ -433,4 +432,9 @@ void generic_window::on_prof_pic_clicked()
         configuration::validate_token(false);
         this->update_user();
     }
+}
+
+void generic_window::add_graph()
+{
+    line_chart *caudal = new line_chart();
 }

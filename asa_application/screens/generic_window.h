@@ -5,6 +5,12 @@
 #include <QString>
 #include "configuration/configuration.h"
 #include <QMutex>
+#include "line_chart.h"
+
+//#include <QLineSeries>
+//#include <QtCharts/QChartView>
+
+//QT_CHARTS_USE_NAMESPACE
 
 namespace Ui {
 class generic_window;
@@ -23,6 +29,7 @@ public:
     QPushButton* add_clickeable_module(QSize size, QPoint pos, QString text, QString color);
     void InitToolTips(QList<configuration_id> parameter_list);
 
+    void add_graph();
 private:
     QWidget *main_menu;
     Ui::generic_window *ui;

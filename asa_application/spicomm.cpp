@@ -8,7 +8,7 @@
 #include "my_crc_api.h"
 #include <stdint.h>
 #include <stdlib.h>
-#include "asa_conf_string.h"
+#include "protocol/asa_conf_string.h"
 #include "build_settings.h"
 
 #define SPI_STX 0x02

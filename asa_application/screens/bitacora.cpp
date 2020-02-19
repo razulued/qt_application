@@ -4,11 +4,11 @@
 #include <QLabel>
 #include <QScroller>
 #include <QScrollerProperties>
-#include "mainwindow.h"
 #include <QSqlQuery>
 #include <QSqlError>
 #include "records.h"
 #include "token_auth.h"
+#include "configuration/configuration.h"
 // rgb(0, 167, 250)
 
 bitacora::bitacora(rutinas_mantenimiento *rutina, uint tab_ini, QWidget *parent) :
@@ -771,7 +771,7 @@ void bitacora::on_key_Reschedule_clicked()
             break;
         }
     }
-    calendar_window = new calendar(MainWindow::time, periodo, this);
+    calendar_window = new calendar(configuration::time, periodo, this);
     connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate, QDateTime)), this, SLOT(receive_date(uint,QDate, QDateTime)));
 }
 
@@ -793,7 +793,7 @@ void bitacora::receive_date(uint hora, QDate date, QDateTime datetime)
     qDebug() << "XXXX: temp " << *temp;
     qDebug() << "XXXX: reschedule_time " << reschedule_time;
 
-    if(reschedule_time < MainWindow::time.toTime_t())
+    if(reschedule_time < configuration::time.toTime_t())
     {
         ui->label_2->setText(tr("Error: nueva fecha es menor a fecha actual"));
         ui->label_horas->setText("");
@@ -942,7 +942,7 @@ void bitacora::on_key_Reschedule_2_clicked()
             break;
         }
     }
-    calendar_window = new calendar(MainWindow::time, 0, this);
+    calendar_window = new calendar(configuration::time, 0, this);
     connect(calendar_window, SIGNAL(send_calendar_datetime(QDateTime)), this, SLOT(update_datetime(QDateTime)));
 }
 

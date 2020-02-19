@@ -410,55 +410,55 @@ void graphwindow::init_graph(uint param)
 {
     QList<float>list_of_values;
 
-    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
-    g_mutex.lock();
-    list_of_values = get_list(param);
-    g_mutex.unlock();
-//    qDebug() << "values_60_seconds " << values_60_seconds;
-    char_left = new Chart(list_of_values, graph_divisions,ui->splineGraph_1);
-//    chart->setTitle("Dynamic spline chart");
-    char_left->legend()->hide();
-    ui->splineGraph_1->setChart(char_left);
-//    ui->splineGraph_1->show();
+//    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
+//    g_mutex.lock();
+//    list_of_values = get_list(param);
+//    g_mutex.unlock();
+////    qDebug() << "values_60_seconds " << values_60_seconds;
+//    char_left = new Chart(list_of_values, graph_divisions,ui->splineGraph_1);
+////    chart->setTitle("Dynamic spline chart");
+//    char_left->legend()->hide();
+//    ui->splineGraph_1->setChart(char_left);
+////    ui->splineGraph_1->show();
 
-    g_mutex.lock();
-    list_of_values = get_list(parameter_to_graph_righside);
-    g_mutex.unlock();
-//    qDebug() << "values_60_seconds " << values_60_seconds;
-    char_rigth = new Chart(list_of_values, graph_divisions,ui->splineGraph_1);
-//    chart->setTitle("Dynamic spline chart");
-    char_rigth->legend()->hide();
-    ui->splineGraph_2->setChart(char_rigth);
+//    g_mutex.lock();
+//    list_of_values = get_list(parameter_to_graph_righside);
+//    g_mutex.unlock();
+////    qDebug() << "values_60_seconds " << values_60_seconds;
+//    char_rigth = new Chart(list_of_values, graph_divisions,ui->splineGraph_1);
+////    chart->setTitle("Dynamic spline chart");
+//    char_rigth->legend()->hide();
+//    ui->splineGraph_2->setChart(char_rigth);
 //    ui->splineGraph_2->show();
 
 }
 void graphwindow::update_graphs(uint param)
 {
-    QList<float>list_of_values;
+//    QList<float>list_of_values;
 
 
-    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
-    g_mutex.lock();
-    list_of_values = get_list(param);
-    g_mutex.unlock();
+//    qDebug() << "parameter_to_graph " << QString("%1").arg(parameter_to_graph, 0, 16);
+//    g_mutex.lock();
+//    list_of_values = get_list(param);
+//    g_mutex.unlock();
 
-    char_left->append_to_end(list_of_values);
-//    ui->splineGraph_1->setChart(chart);
-    ui->splineGraph_1->show();
+//    char_left->append_to_end(list_of_values);
+////    ui->splineGraph_1->setChart(chart);
+//    ui->splineGraph_1->show();
 
-    if(show_both_graph == true)
-    {
-        g_mutex.lock();
-        list_of_values = get_list(parameter_to_graph_righside);
-        g_mutex.unlock();
-        char_rigth->append_to_end(list_of_values);
-    //    qDebug() << "values_60_seconds " << values_60_seconds;
-//        Chart *chart2 = new Chart(value, graph_divisions,ui->splineGraph_1);
-    //    chart->setTitle("Dynamic spline chart");
-//        chart2->legend()->hide();
-//        ui->splineGraph_2->setChart(chart2);
-        ui->splineGraph_2->show();
-    }
+//    if(show_both_graph == true)
+//    {
+//        g_mutex.lock();
+//        list_of_values = get_list(parameter_to_graph_righside);
+//        g_mutex.unlock();
+//        char_rigth->append_to_end(list_of_values);
+//    //    qDebug() << "values_60_seconds " << values_60_seconds;
+////        Chart *chart2 = new Chart(value, graph_divisions,ui->splineGraph_1);
+//    //    chart->setTitle("Dynamic spline chart");
+////        chart2->legend()->hide();
+////        ui->splineGraph_2->setChart(chart2);
+//        ui->splineGraph_2->show();
+//    }
 }
 
 void graphwindow::on_tabWidget_currentChanged(int index)

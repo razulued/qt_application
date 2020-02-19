@@ -1,7 +1,7 @@
-#ifndef PTAR_MAIN_WINDOW_H
-#define PTAR_MAIN_WINDOW_H
+#ifndef MAINMENU_H
+#define MAINMENU_H
 
-#include <QDialog>
+#include <QMainWindow>
 #include <QMutex>
 #include <QPointer>
 
@@ -12,16 +12,16 @@
 
 
 namespace Ui {
-class ptar_main_window;
+class MainMenu;
 }
 
-class ptar_main_window : public QDialog
+class MainMenu : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit ptar_main_window(socket_client *socket, QWidget *parent = 0);
-    ~ptar_main_window();
+    explicit MainMenu(socket_client *socket, QWidget *parent = 0);
+    ~MainMenu();
 
 private slots:
     void on_launch_view1_clicked();
@@ -36,7 +36,7 @@ private slots:
 
     void create_detailed_window(int element);
 private:
-    Ui::ptar_main_window *ui;
+    Ui::MainMenu *ui;
 
     void main_view_init();
     void filtro_view_init();
@@ -53,4 +53,4 @@ private:
 
 };
 
-#endif // PTAR_MAIN_WINDOW_H
+#endif // MAINMENU_H

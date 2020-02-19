@@ -2,7 +2,7 @@
 #include "ui_calendario_filtro.h"
 #include "clickeablelabel.h"
 #include <QDateTime>
-#include "mainwindow.h"
+#include "configuration/configuration.h"
 
 calendario_filtro::calendario_filtro(QWidget *parent) :
     QDialog(parent),
@@ -63,7 +63,7 @@ void calendario_filtro::on_fecha_inicio_btn_clicked()
         delete calendar_window;
     }
 
-    calendar_window = new calendar(MainWindow::time, 0, this);
+    calendar_window = new calendar(configuration::time, 0, this);
     connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate)),
             this, SLOT(registros_filter_init_date(uint,QDate)));
 }
@@ -75,7 +75,7 @@ void calendario_filtro::on_fecha_fin_btn_clicked()
         delete calendar_window;
     }
 
-    calendar_window = new calendar(MainWindow::time, 0, this);
+    calendar_window = new calendar(configuration::time, 0, this);
     connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate)),
             this, SLOT(registros_filter_end_date(uint,QDate)));
 }

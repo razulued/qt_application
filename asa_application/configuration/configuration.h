@@ -2,6 +2,9 @@
 #define CONFIGURATION_H
 #include <QList>
 #include <QString>
+
+#include <QDateTime>
+
 typedef enum
 {
     PARAMETER_NONE,
@@ -102,6 +105,8 @@ public:
     static configuration_id efluente_outputs;
     static configuration_id filtro_outputs;
     static configuration_id filtro_bomba_outputs;
+
+    static QDateTime time; // TODO I DONT LIKE THIS
 private:
     configuration_id get_id_conf_from_module(QString name, elemnt_type type);
 };

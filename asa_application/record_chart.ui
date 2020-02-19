@@ -279,7 +279,7 @@ color: white;
   <customwidget>
    <class>QChartView</class>
    <extends>QGraphicsView</extends>
-   <header>QtCharts</header>
+   <header location="global">QtCharts</header>
   </customwidget>
  </customwidgets>
  <resources/>

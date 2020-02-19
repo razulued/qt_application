@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql charts network
+QT       += core gui sql network charts
 
 LIBS += -lQt5Charts
 
@@ -25,9 +25,7 @@ SOURCES += main.cpp\
     token_auth.cpp \
     statistics.cpp \
     sql_cmd_manager.cpp \
-    chart.cpp \
     build_settings.cpp \
-    spline_chart.cpp \
     spi_lib/bcm2835.c \
     protocol/asa_conf_string.cpp \
     protocol/asa_conversions.cpp \
@@ -42,8 +40,6 @@ SOURCES += main.cpp\
     animated/mod_flechas.cpp \
     protocol/parameters.cpp \
     configuration/configuration.cpp \
-    screens/mainwindow.cpp \
-    screens/filtrowindow.cpp \
     screens/graphwindow.cpp \
     screens/detailedwindow.cpp \
     screens/arrowkeys.cpp \
@@ -52,12 +48,10 @@ SOURCES += main.cpp\
     screens/calendario_filtro.cpp \
     screens/change_text.cpp \
     screens/contacto.cpp \
-    screens/motores.cpp \
     screens/record_chart.cpp \
     screens/records.cpp \
     screens/screen_saver.cpp \
     screens/settings.cpp \
-    screens/simulation_input.cpp \
     screens/stop_button.cpp \
     screens/login_dialog.cpp \
     screens/earm_update.cpp \
@@ -65,7 +59,12 @@ SOURCES += main.cpp\
     screens/confsetup.cpp \
     screens/confentry.cpp \
     screens/generic_window.cpp \
-    ptar_main_window.cpp
+    ptar_main_window.cpp \
+    mainmenu.cpp \
+    line_chart.cpp \
+    view.cpp \
+    callout.cpp \
+    protocol/configuration.cpp
 
 HEADERS  += \
     multistatebutton.h \
@@ -82,8 +81,6 @@ HEADERS  += \
     token_auth.h \
     statistics.h \
     arrowkeys.h \
-    simulation_input.h \
-    motores.h \
     change_text.h \
     calendar.h \
     contacto.h \
@@ -94,9 +91,7 @@ HEADERS  += \
     calendario_filtro.h \
     record_chart.h \
     sql_cmd_manager.h \
-    chart.h \
     screen_saver.h \
-    spline_chart.h \
     spi_lib/bcm2835.h \
     protocol/asa_conf_string.h \
     protocol/asa_conversions.h \
@@ -110,26 +105,26 @@ HEADERS  += \
     animated/mod_6_lechos.h \
     animated/mod_flechas.h \
     configuration/configuration.h \
-    screens/filtrowindow.h \
     screens/detailedwindow.h \
     screens/graphwindow.h \
-    screens/mainwindow.h \
     socket_client.h \
     screens/confsetup.h \
     screens/confentry.h \
     screens/generic_window.h \
-    ptar_main_window.h
+    ptar_main_window.h \
+    mainmenu.h \
+    line_chart.h \
+    view.h \
+    callout.h \
+    protocol/configuration.h
 
-FORMS    += mainwindow.ui \
+FORMS    += \
     detailedwindow.ui \
     settings.ui \
     bitacora.ui \
     login_dialog.ui \
     graphwindow.ui \
     arrowkeys.ui \
-    simulation_input.ui \
-    motores.ui \
-    filtrowindow.ui \
     change_text.ui \
     calendar.ui \
     contacto.ui \
@@ -142,7 +137,8 @@ FORMS    += mainwindow.ui \
     confsetup.ui \
     confentry.ui \
     screens/generic_window.ui \
-    ptar_main_window.ui
+    ptar_main_window.ui \
+    mainmenu.ui
 
 RESOURCES += \
     fonts.qrc \

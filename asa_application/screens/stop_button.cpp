@@ -1,6 +1,6 @@
 #include "stop_button.h"
 #include "ui_stop_button.h"
-#include "asa_conf_string.h"
+#include "protocol/asa_conf_string.h"
 #include "QTimer"
 stop_button::stop_button(QWidget *parent) :
     QDialog(parent),

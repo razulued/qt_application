@@ -17,7 +17,6 @@
 #include "login_dialog.h"
 #include "QMovie"
 #include "records.h"
-#include "mainwindow.h"
 
 #define BUILD_FOR_RPI (1)
 
@@ -747,7 +746,7 @@ void detailedwindow::on_key_Reschedule_clicked()
             break;
         }
     }
-    calendar_window = new calendar(MainWindow::time, periodo, this);
+    calendar_window = new calendar(configuration::time, periodo, this);
     connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate)), this, SLOT(receive_date(uint,QDate)));
 
 

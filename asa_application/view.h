@@ -27,47 +27,46 @@
 **
 ****************************************************************************/
 
-#ifndef CHART_H
-#define CHART_H
+#ifndef VIEW_H
+#define VIEW_H
+#include <QtWidgets/QGraphicsView>
+#include <QtCharts/QChartGlobal>
 
-#include <QtCharts/QChart>
-#include <QtCore/QTimer>
-#include <QChartView>
+QT_BEGIN_NAMESPACE
+class QGraphicsScene;
+class QMouseEvent;
+class QResizeEvent;
+QT_END_NAMESPACE
 
 QT_CHARTS_BEGIN_NAMESPACE
-class QSplineSeries;
-class QValueAxis;
+class QChart;
 QT_CHARTS_END_NAMESPACE
+
+class Callout;
 
 QT_CHARTS_USE_NAMESPACE
 
-//![1]
-class Chart: public QChart
+class View: public QGraphicsView
 {
     Q_OBJECT
+
 public:
-    Chart(QList<float> values, uint ticks, QtCharts::QChartView *target, QGraphicsItem *parent = 0, Qt::WindowFlags wFlags = 0);
-    void append_to_end(QList<float> values);
-    virtual ~Chart();
+    View(QWidget *parent = 0);
+
+protected:
+    void resizeEvent(QResizeEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 public slots:
-    void handleTimeout();
+    void keepCallout();
+    void tooltip(QPointF point, bool state);
 
 private:
-    QTimer m_timer;
-    QSplineSeries *m_series;
-    QStringList m_titles;
-    QValueAxis *m_axis;
-    qreal m_step;
-    qreal m_x;
-    qreal m_y;
-    qreal yMin;
-    qreal yMax;
-    qreal roundUp(qreal actual, qreal base, qreal gap);
-    qreal roundDown(qreal actual, qreal base, qreal gap);
-    void draw_end_ball(QChartView *tar,int x, int y);
-    uint global_x;
+    QGraphicsSimpleTextItem *m_coordX;
+    QGraphicsSimpleTextItem *m_coordY;
+    QChart *m_chart;
+    Callout *m_tooltip;
+    QList<Callout *> m_callouts;
 };
-//![1]
 
-#endif /* CHART_H */
+#endif

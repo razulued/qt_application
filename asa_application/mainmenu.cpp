@@ -1,12 +1,12 @@
-#include "ptar_main_window.h"
-#include "ui_ptar_main_window.h"
+#include "mainmenu.h"
+#include "ui_mainmenu.h"
 #include "screens/generic_window.h"
 
 
 
-ptar_main_window::ptar_main_window(socket_client *socket, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ptar_main_window)
+MainMenu::MainMenu(socket_client *socket, QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
 
@@ -21,38 +21,38 @@ ptar_main_window::ptar_main_window(socket_client *socket, QWidget *parent) :
     this->show();
 }
 
-ptar_main_window::~ptar_main_window()
+MainMenu::~MainMenu()
 {
     delete ui;
 }
 
-void ptar_main_window::on_launch_view1_clicked()
+void MainMenu::on_launch_view1_clicked()
 {
     main_view_init();
 }
 
-void ptar_main_window::on_launch_view2_clicked()
+void MainMenu::on_launch_view2_clicked()
 {
     filtro_view_init();
 }
 
 
-void ptar_main_window::on_launch_view3_clicked()
+void MainMenu::on_launch_view3_clicked()
 {
     graph_demo_init();
 }
 
-void ptar_main_window::on_launch_view4_clicked()
+void MainMenu::on_launch_view4_clicked()
 {
 
 }
 
-void ptar_main_window::detailed_closed()
+void MainMenu::detailed_closed()
 {
     mutex_detailed.unlock();
 }
 
-void ptar_main_window::create_detailed_window(int element)
+void MainMenu::create_detailed_window(int element)
 {
     qDebug() << "Create detailed win";
     if(mutex_detailed.tryLock(0))
@@ -68,7 +68,7 @@ void ptar_main_window::create_detailed_window(int element)
 
 /** CREATE A NEW FUNCTION LIKE THIS FOR EACH NEW WINDOW **/
 
-void ptar_main_window::main_view_init()
+void MainMenu::main_view_init()
 {
     //Create screens
     generic_window *win = new generic_window("MainView",this);
@@ -132,7 +132,7 @@ void ptar_main_window::main_view_init()
     //this->hide();
 }
 
-void ptar_main_window::filtro_view_init()
+void MainMenu::filtro_view_init()
 {
     //Create screens
     generic_window *win = new generic_window("FiltroView",this);
@@ -167,7 +167,7 @@ void ptar_main_window::filtro_view_init()
     //this->hide();
 }
 
-void ptar_main_window::graph_demo_init()
+void MainMenu::graph_demo_init()
 {
     //Create screens
     generic_window *win = new generic_window("Graph",this);

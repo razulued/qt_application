@@ -5,7 +5,7 @@
 #include <QPen>
 #include <QGraphicsEllipseItem>
 #include <QLabel>
-#include "chart.h"
+//#include "chart.h"
 
 #define OD_IN   (0x4307)
 #define SST_IN  (0x3305)
@@ -160,8 +160,8 @@ private:
     QList<float> get_list(uint param);
     uint graph_divisions = 0;
 
-    Chart *char_left = NULL;
-    Chart *char_rigth = NULL;
+//    Chart *char_left = NULL;
+//    Chart *char_rigth = NULL;
     float get_last_param_from_list(uint param);
 signals:
     void forward_bitacora_clicked();
