@@ -65,7 +65,8 @@ SOURCES += main.cpp\
     analisis_graph.cpp \
     curve_chart.cpp \
     date_widget.cpp \
-    analisys_full_table.cpp
+    analisys_full_table.cpp \
+    pid.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -117,7 +118,8 @@ HEADERS  += mainwindow.h \
     analisis_graph.h \
     curve_chart.h \
     date_widget.h \
-    analisys_full_table.h
+    analisys_full_table.h \
+    pid.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \

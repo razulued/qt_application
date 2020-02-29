@@ -97,6 +97,9 @@ int DataProccess::intString2Int(QString inputString)
 void DataProccess::dataSPI()
 {
     static bool send_ASA_Conf = false;
+    static float presion_array[10];
+    static int avg_index = 0;
+    float presion_avg = 0;
 
     if(true == send_ASA_Conf)
     {
@@ -152,6 +155,17 @@ void DataProccess::dataSPI()
             if(0x4205 == intString2Int(realParameters[0]))
             {
                 qDebug() << "0x4205:" << intString2Int(realParameters[1]);
+                // Run average
+//                presion_array[avg_index++] = intString2Int(realParameters[1]);
+//                if(avg_index >= 10) avg_index = 0;
+
+//                for(int i = 0; i < 10 ; i++)
+//                {
+//                    presion_avg += presion_array[i];
+//                }
+//                presion_avg = presion_avg/10;
+//                store_value_by_ID(0xFF05 , QString::number(presion_avg, 'f', 0));
+//                qDebug() << "0xFF05" << presion_avg;
             }
 //#endif
             if(realParameters.length() > 1)
@@ -165,6 +179,7 @@ void DataProccess::dataSPI()
 //                qDebug() << "++++(Z)" << realParameters[0];
                 store_value_by_ID(intString2Int(realParameters[0]) , "");
             }
+
         }
 
         if(MainWindow::demo_mode_enabled == true)

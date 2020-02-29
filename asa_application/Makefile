@@ -99,7 +99,8 @@ SOURCES       = main.cpp \
 		analisis_graph.cpp \
 		curve_chart.cpp \
 		date_widget.cpp \
-		analisys_full_table.cpp qrc_fonts.cpp \
+		analisys_full_table.cpp \
+		pid.cpp qrc_fonts.cpp \
 		qrc_screen800x600.cpp \
 		qrc_images.cpp \
 		qrc_languages.cpp \
@@ -192,6 +193,7 @@ OBJECTS       = main.obj \
 		curve_chart.obj \
 		date_widget.obj \
 		analisys_full_table.obj \
+		pid.obj \
 		qrc_fonts.obj \
 		qrc_screen800x600.obj \
 		qrc_images.obj \
@@ -283,7 +285,8 @@ DIST          =  mainwindow.h \
 		analisis_graph.h \
 		curve_chart.h \
 		date_widget.h \
-		analisys_full_table.h main.cpp \
+		analisys_full_table.h \
+		pid.h main.cpp \
 		mainwindow.cpp \
 		detailedwindow.cpp \
 		multistatebutton.cpp \
@@ -334,7 +337,8 @@ DIST          =  mainwindow.h \
 		analisis_graph.cpp \
 		curve_chart.cpp \
 		date_widget.cpp \
-		analisys_full_table.cpp
+		analisys_full_table.cpp \
+		pid.cpp
 QMAKE_TARGET  = asa_application
 DESTDIR       = 
 TARGET        = asa_application
@@ -699,8 +703,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents fonts.qrc screen800x600.qrc images.qrc languages.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h detailedwindow.h multistatebutton.h parameters.h bcm2835.h spicomm.h my_crc_api.h dataproccess.h custom_tooltip.h settings.h configuration.h bitacora.h rutinas_mantenimiento.h mod_1_carcamo.h mod_2_reactor.h mod_3_clarificador.h mod_4_clorador.h mod_5_digestor.h mod_flechas.h mod_6_lechos.h asa_protocol.h asa_conversions.h clickeablelabel.h login_dialog.h token_auth.h asa_conf_string.h graphwindow.h statistics.h arrowkeys.h simulation_input.h motores.h filtrowindow.h change_text.h calendar.h contacto.h build_settings.h earm_update.h stop_button.h records.h calendario_filtro.h record_chart.h sql_cmd_manager.h chart.h screen_saver.h mod_1_regulador.h analisis_demo.h donut_chart.h analisis_graph.h curve_chart.h date_widget.h analisys_full_table.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp detailedwindow.cpp multistatebutton.cpp bcm2835.c parameters.cpp spicomm.cpp my_crc_api.cpp dataproccess.cpp custom_tooltip.cpp settings.cpp configuration.cpp bitacora.cpp rutinas_mantenimiento.cpp mod_1_carcamo.cpp mod_2_reactor.cpp mod_3_clarificador.cpp mod_4_clorador.cpp mod_5_digestor.cpp mod_flechas.cpp mod_6_lechos.cpp asa_protocol.cpp asa_conversions.cpp clickeablelabel.cpp login_dialog.cpp token_auth.cpp asa_conf_string.cpp graphwindow.cpp statistics.cpp arrowkeys.cpp simulation_input.cpp motores.cpp filtrowindow.cpp change_text.cpp calendar.cpp contacto.cpp earm_update.cpp stop_button.cpp records.cpp calendario_filtro.cpp record_chart.cpp sql_cmd_manager.cpp chart.cpp screen_saver.cpp build_settings.cpp mod_1_regulador.cpp analisis_demo.cpp donut_chart.cpp analisis_graph.cpp curve_chart.cpp date_widget.cpp analisys_full_table.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h detailedwindow.h multistatebutton.h parameters.h bcm2835.h spicomm.h my_crc_api.h dataproccess.h custom_tooltip.h settings.h configuration.h bitacora.h rutinas_mantenimiento.h mod_1_carcamo.h mod_2_reactor.h mod_3_clarificador.h mod_4_clorador.h mod_5_digestor.h mod_flechas.h mod_6_lechos.h asa_protocol.h asa_conversions.h clickeablelabel.h login_dialog.h token_auth.h asa_conf_string.h graphwindow.h statistics.h arrowkeys.h simulation_input.h motores.h filtrowindow.h change_text.h calendar.h contacto.h build_settings.h earm_update.h stop_button.h records.h calendario_filtro.h record_chart.h sql_cmd_manager.h chart.h screen_saver.h mod_1_regulador.h analisis_demo.h donut_chart.h analisis_graph.h curve_chart.h date_widget.h analisys_full_table.h pid.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp detailedwindow.cpp multistatebutton.cpp bcm2835.c parameters.cpp spicomm.cpp my_crc_api.cpp dataproccess.cpp custom_tooltip.cpp settings.cpp configuration.cpp bitacora.cpp rutinas_mantenimiento.cpp mod_1_carcamo.cpp mod_2_reactor.cpp mod_3_clarificador.cpp mod_4_clorador.cpp mod_5_digestor.cpp mod_flechas.cpp mod_6_lechos.cpp asa_protocol.cpp asa_conversions.cpp clickeablelabel.cpp login_dialog.cpp token_auth.cpp asa_conf_string.cpp graphwindow.cpp statistics.cpp arrowkeys.cpp simulation_input.cpp motores.cpp filtrowindow.cpp change_text.cpp calendar.cpp contacto.cpp earm_update.cpp stop_button.cpp records.cpp calendario_filtro.cpp record_chart.cpp sql_cmd_manager.cpp chart.cpp screen_saver.cpp build_settings.cpp mod_1_regulador.cpp analisis_demo.cpp donut_chart.cpp analisis_graph.cpp curve_chart.cpp date_widget.cpp analisys_full_table.cpp pid.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui detailedwindow.ui settings.ui bitacora.ui login_dialog.ui graphwindow.ui arrowkeys.ui simulation_input.ui motores.ui filtrowindow.ui change_text.ui calendar.ui contacto.ui earm_update.ui stop_button.ui records.ui calendario_filtro.ui record_chart.ui screen_saver.ui analisis_demo.ui donut_chart.ui analisis_graph.ui curve_chart.ui date_widget.ui analisys_full_table.ui $(DISTDIR)/
 
 
@@ -15488,9 +15492,13 @@ analisis_demo.obj: analisis_demo.cpp analisis_demo.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/QFrame \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/QHeaderView \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qheaderview.h \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/QLabel \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qlabel.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/QPushButton \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qpushbutton.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qabstractbutton.h \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/QRadioButton \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qradiobutton.h \
 		donut_chart.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtGui/QColor \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtCharts/QChartView \
@@ -15509,6 +15517,10 @@ analisis_demo.obj: analisis_demo.cpp analisis_demo.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtCore/Qt \
 		configuration.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtCore/QString \
+		pid.h \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtCore/QTimer \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtCore/qtimer.h \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtCore/qbasictimer.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o analisis_demo.obj analisis_demo.cpp
 
@@ -16247,6 +16259,8 @@ analisis_graph.obj: analisis_graph.cpp analisis_graph.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qprogressbar.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/QPushButton \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qpushbutton.h \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/QSpinBox \
+		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qspinbox.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/QTableWidget \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qtablewidget.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qtableview.h \
@@ -17101,6 +17115,9 @@ analisys_full_table.obj: analisys_full_table.cpp analisys_full_table.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtWidgets/qlabel.h \
 		../../../SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/local/qt5/include/QtCore/Qt
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o analisys_full_table.obj analisys_full_table.cpp
+
+pid.obj: pid.cpp pid.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pid.obj pid.cpp
 
 qrc_fonts.obj: qrc_fonts.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_fonts.obj qrc_fonts.cpp

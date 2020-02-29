@@ -20,6 +20,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
 
@@ -41,6 +42,7 @@ public:
     QWidget *datewidget;
     QLabel *label;
     QPushButton *full_graph_button;
+    QSpinBox *xscale;
 
     void setupUi(QDialog *analisis_graph)
     {
@@ -170,12 +172,20 @@ public:
 "background-position: center;\n"
 "border: none;\n"
 "}"));
+        xscale = new QSpinBox(analisis_graph);
+        xscale->setObjectName(QStringLiteral("xscale"));
+        xscale->setGeometry(QRect(15, 380, 91, 51));
+        xscale->setMinimum(50);
+        xscale->setMaximum(500);
+        xscale->setSingleStep(50);
+        xscale->setValue(100);
         widget->raise();
         controls->raise();
         graph_button->raise();
         datewidget->raise();
         label->raise();
         full_graph_button->raise();
+        xscale->raise();
 
         retranslateUi(analisis_graph);
 

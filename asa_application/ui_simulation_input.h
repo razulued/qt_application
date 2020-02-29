@@ -478,7 +478,7 @@ public:
 
         retranslateUi(simulation_input);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(simulation_input);

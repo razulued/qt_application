@@ -15,7 +15,7 @@ curve_chart::~curve_chart()
     delete ui;
 }
 
-void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY, QString xname, QString yname, bool use_curve)
+void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY, QString xname, QString yname, bool use_curve, uint xscale)
 {
     //QSplineSeries or QLineSeries
     QLineSeries *seriesXY;
@@ -37,7 +37,7 @@ void curve_chart::draw_chart(QList<float> seriesX, QList<float>seriesY, QString 
         scatter->append(seriesX.at(i),seriesY.at(i));
     }
     dummy->append(0,0);
-    dummy->append(100,0);
+    dummy->append(xscale,0);
     dummy->setBrush(QBrush(QColor(Qt::transparent)));
     scatter->setMarkerSize(6);
 //    seriesXY->append(1.6, 1.4);

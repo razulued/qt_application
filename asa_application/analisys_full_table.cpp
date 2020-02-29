@@ -42,6 +42,7 @@ analisys_full_table::analisys_full_table(QList<QList<float> > master_data, QWidg
     ui->tableWidget->setColumnWidth(9, 55);
     ui->tableWidget->setColumnWidth(10, 55);
 
+    ui->tableWidget->removeRow(11);
 
     this->show();
 }

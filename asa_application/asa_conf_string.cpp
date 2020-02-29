@@ -16,7 +16,7 @@ QString calib_string;
 QStringList one_time_transmit;
 
 configuration_id plant_config;
-void init_plat_config()
+void init_out_string()
 {
     mutex.lock();
 
@@ -31,13 +31,13 @@ void init_plat_config()
 
     conf.endGroup();
 
-    conf_string = build_string(&plant_config);
+    conf_string = build_out_string(&plant_config);
     qDebug() << conf_string;
 
     mutex.unlock();
 }
 
-QString build_string(configuration_id *conf)
+QString build_out_string(configuration_id *conf)
 {
     int i = 0;
     QString temp;
@@ -86,7 +86,7 @@ void output_control_toggle(uint id)
     }
     conf.endGroup();
 
-    conf_string = build_string(&temp_config);
+    conf_string = build_out_string(&temp_config);
 
     qDebug() << conf_string;
     mutex.unlock();
@@ -112,7 +112,7 @@ void output_op_mode(QString id, QString val)
     }
     conf.endGroup();
 
-    conf_string = build_string(&temp_config);
+    conf_string = build_out_string(&temp_config);
 
     qDebug() << conf_string;
     mutex.unlock();
@@ -150,7 +150,7 @@ void output_token_transfer(bool val)
     }
     conf.endGroup();
 
-    conf_string = build_string(&temp_config);
+    conf_string = build_out_string(&temp_config);
 
     qDebug() << conf_string;
     mutex.unlock();
@@ -186,7 +186,7 @@ void emergency_stop(bool val)
     }
     conf.endGroup();
 
-    conf_string = build_string(&temp_config);
+    conf_string = build_out_string(&temp_config);
 
     qDebug() << conf_string;
     mutex.unlock();
@@ -268,7 +268,7 @@ void synch_output_state()
     }
     conf.endGroup();
 
-    conf_string = build_string(&temp_config);
+    conf_string = build_out_string(&temp_config);
 
     qDebug() << conf_string;
     mutex.unlock();
@@ -327,7 +327,7 @@ QString get_config_string()
     QString percent_string = "A001:0|A000:"+QString::number(demo_percentaje,16).toUpper();
     ret.append(percent_string);
 
-    qDebug() << "SENDING: " << ret;
+//    qDebug() << "SENDING: " << ret;
     mutex.unlock();
     return ret;
 }

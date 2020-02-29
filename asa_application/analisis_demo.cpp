@@ -3,6 +3,8 @@
 #include "donut_chart.h"
 #include "parameters.h"
 #include "asa_conf_string.h"
+#include "pid.h"
+#include <QTimer>
 #include <QDebug>
 
 #define L1_VoltID   (0x3001)
@@ -14,7 +16,8 @@
 
 #define DONUT1_CAUDAL    (getParamValue(0x3203).toFloat())
 #define DONUT1_MAX      (100)
-#define DONUT2_PRESION   (getParamValue(0x4205).toFloat())
+#define DONUT2_PRESION   (get_presion())
+//#define DONUT2_PRESION   (getParamValue(0xFF05).toFloat())
 #define DONUT2_MAX      (100)
 #define DONUT3_VOLT     ((getParamValue(L1_VoltID).toFloat()+\
                         getParamValue(L2_VoltID).toFloat()+\
@@ -25,6 +28,26 @@
                         (getParamValue(L3_AmpsID).toFloat()))/3)
 #define DONUT4_MAX      (10)
 
+
+float get_presion()
+{
+    bool ok;
+    static float presion_array[3];
+    static int presion_index = 0;
+    float presion_acc = 0;
+    static float presion_avg;
+
+    presion_array[presion_index++] = getParamValue(0x4205).toFloat();
+    if( presion_index >= 3) presion_index = 0;
+    for(int i = 0; i < 3; i++)
+    {
+        presion_acc += presion_array[i];
+    }
+    presion_avg = presion_acc / 3;
+    QString presion_string = QString::number(presion_avg, 'f', 0);
+//    QString presion_string = QString::number(getParamValue(0x4205).toFloat(), 'f', 0);
+    return presion_string.toInt(&ok);
+}
 
 analisis_demo::analisis_demo(QWidget *parent) :
     QDialog(parent),
@@ -92,6 +115,11 @@ analisis_demo::analisis_demo(QWidget *parent) :
     amp_list << L1_AmpsID << L2_AmpsID << L3_AmpsID;
     aleta_2 = new aleta_widget(amp_list, fase_names, ui->aleta4);
     connect(donut_4, SIGNAL(clicked()), aleta_2, SLOT(toogle_hide_show()));
+
+    // Disable A000 control
+    ui->control_A000->setEnabled(false);
+    ui->control_A000->setValue(0);
+    ui->setpoint_presion->setEnabled(false);
 }
 
 analisis_demo::~analisis_demo()
@@ -213,4 +241,113 @@ void analisis_demo::on_graph_button_clicked()
 void analisis_demo::on_control_A000_valueChanged(double arg1)
 {
     demo_set_percentaje(arg1);
+
+    float mA_val = arg1 * (-0.16) + 20;
+    QString mA_String = QString::number(mA_val, 'f', 2);
+
+    ui->valv_ma->setText(mA_String + " mA");
+}
+
+void analisis_demo::on_radioButton_2_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->control_A000->setEnabled(true);
+        demo_set_percentaje(ui->control_A000->value());
+    }
+    else
+    {
+        ui->control_A000->setEnabled(false);
+    }
+}
+
+pid_ctrl_t pid;
+float valve_control = 0;
+
+void analisis_demo::on_radioButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->setpoint_presion->setEnabled(true);
+        pid_init(&pid);
+
+        /* PD controller. */
+        pid_set_gains(&pid, 5., 0, 1.);
+
+        QTimer::singleShot(10, this, SLOT(PID_main_func()));
+    }
+    else
+    {
+        ui->setpoint_presion->setEnabled(false);
+    }
+}
+
+
+void analisis_demo::PID_main_func()
+{
+    qDebug() << "PID Main";
+    if(ui->setpoint_presion->isEnabled())
+    {
+        float error = DONUT2_PRESION - ui->setpoint_presion->value();
+        float valve_action;
+        valve_action = pid_process(&pid, error);
+        qDebug() << "error: " << error;
+        qDebug() << "valve action: " << valve_action;
+//        ui->control_A000->setValue(valve_percent);
+
+        if(valve_action > 0)
+        {
+            qDebug() << "Cerrar Valvula";
+            if(valve_action > 50)
+            {
+                qDebug() << "Cerrar Valvula 5%";
+                ui->control_A000->setValue(ui->control_A000->value() - 1);
+                QTimer::singleShot(2000, this, SLOT(PID_main_func()));
+            }
+            else if(valve_action > 20)
+            {
+                qDebug() << "Cerrar Valvula 5%";
+                ui->control_A000->setValue(ui->control_A000->value() - 1);
+                QTimer::singleShot(5000, this, SLOT(PID_main_func()));
+            }
+            else
+            {
+                qDebug() << "Cerrar Valvula 1%";
+                ui->control_A000->setValue(ui->control_A000->value() - 1);
+                QTimer::singleShot(15000, this, SLOT(PID_main_func()));
+            }
+        }
+        else if(valve_action < 0)
+        {
+            qDebug() << "Abrir Valvula";
+            qDebug() << "Cerrar Valvula";
+            if(valve_action < -50)
+            {
+                qDebug() << "Abrir Valvula 5%";
+                ui->control_A000->setValue(ui->control_A000->value() + 1);
+                QTimer::singleShot(2000, this, SLOT(PID_main_func()));
+            }
+            else if(valve_action < -20)
+            {
+                qDebug() << "Abrir Valvula 5%";
+                ui->control_A000->setValue(ui->control_A000->value() + 1);
+                QTimer::singleShot(5000, this, SLOT(PID_main_func()));
+            }
+            else
+            {
+                qDebug() << "Abrir Valvula 1%";
+                ui->control_A000->setValue(ui->control_A000->value() + 1);
+                QTimer::singleShot(15000, this, SLOT(PID_main_func()));
+            }
+        }
+        else
+        {
+            qDebug() << "No control needed Valvula 1%";
+        }
+
+    }
+    else
+    {
+        qDebug() << "PID Stop";
+    }
 }

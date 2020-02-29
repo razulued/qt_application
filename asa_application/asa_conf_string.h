@@ -3,8 +3,8 @@
 #include <Qt>
 #include "configuration.h"
 
-void init_plat_config();
-QString build_string(configuration_id *conf);
+void init_out_string();
+QString build_out_string(configuration_id *conf);
 void get_plant_config();
 void output_control_toggle(uint id);
 void output_token_transfer(bool val);

@@ -13,10 +13,20 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">RadioButton {
+	text: &quot;Round X, -90 degr.&quot;
+	ButtonGroup.group: tabRotationGroup
+	Layout.preferredHeight: 15
+	indicator.height: 100
+	indicator.width: 10
+	onClicked:{ currentRotationIndex = 2 }
+}</string>
+  </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>730</x>
+     <x>740</x>
      <y>10</y>
      <width>51</width>
      <height>51</height>
@@ -43,7 +53,7 @@ border: none;
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>90</y>
+     <y>160</y>
      <width>691</width>
      <height>431</height>
     </rect>
@@ -282,11 +292,55 @@ border: none;
   <widget class="QDoubleSpinBox" name="control_A000">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>10</y>
+     <x>90</x>
+     <y>60</y>
      <width>81</width>
      <height>71</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="accelerated">
+    <bool>true</bool>
+   </property>
+   <property name="prefix">
+    <string/>
+   </property>
+   <property name="suffix">
+    <string/>
+   </property>
+   <property name="decimals">
+    <number>0</number>
+   </property>
+   <property name="minimum">
+    <double>0.000000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>100.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>1.000000000000000</double>
+   </property>
+   <property name="value">
+    <double>1.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="setpoint_presion">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>60</y>
+     <width>91</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
    </property>
    <property name="accelerated">
     <bool>true</bool>
@@ -310,12 +364,74 @@ border: none;
     <double>1.000000000000000</double>
    </property>
   </widget>
+  <widget class="QRadioButton" name="radioButton">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>39</y>
+     <width>151</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#radioButton::indicator {
+    width:   30px;
+    height:  30px;
+  
+}</string>
+   </property>
+   <property name="text">
+    <string>Setpoint Presion</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>40</y>
+     <width>81</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="text">
+    <string>% Valvula</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="valv_ma">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>139</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>mA</string>
+   </property>
+  </widget>
   <zorder>show_menu</zorder>
   <zorder>frame</zorder>
   <zorder>left_menu</zorder>
   <zorder>pushButton</zorder>
   <zorder>datewidget</zorder>
   <zorder>control_A000</zorder>
+  <zorder>setpoint_presion</zorder>
+  <zorder>radioButton</zorder>
+  <zorder>radioButton_2</zorder>
+  <zorder>valv_ma</zorder>
  </widget>
  <resources/>
  <connections/>

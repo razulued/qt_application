@@ -390,7 +390,8 @@ void analisis_graph::select_data_and_graph()
                       master_data.at(ui->comboBox_2->currentIndex()),
                           ui->comboBox->currentText(),
                           ui->comboBox_2->currentText(),
-                          ui->checkBox->isChecked());
+                          ui->checkBox->isChecked(),
+                          ui->xscale->value());
 
         ui->tableWidget->setRowCount(0);
         ui->tableWidget->setRowCount(3);
@@ -534,4 +535,9 @@ void analisis_graph::on_full_graph_button_released()
     {
         full_table = new analisys_full_table(master_data, this);
     }
+}
+
+void analisis_graph::on_xscale_valueChanged(int arg1)
+{
+    select_data_and_graph();
 }

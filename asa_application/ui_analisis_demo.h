@@ -17,7 +17,9 @@
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -41,15 +43,27 @@ public:
     QPushButton *show_menu;
     QWidget *datewidget;
     QDoubleSpinBox *control_A000;
+    QDoubleSpinBox *setpoint_presion;
+    QRadioButton *radioButton;
+    QRadioButton *radioButton_2;
+    QLabel *valv_ma;
 
     void setupUi(QDialog *analisis_demo)
     {
         if (analisis_demo->objectName().isEmpty())
             analisis_demo->setObjectName(QStringLiteral("analisis_demo"));
         analisis_demo->resize(800, 600);
+        analisis_demo->setStyleSheet(QLatin1String("RadioButton {\n"
+"	text: \"Round X, -90 degr.\"\n"
+"	ButtonGroup.group: tabRotationGroup\n"
+"	Layout.preferredHeight: 15\n"
+"	indicator.height: 100\n"
+"	indicator.width: 10\n"
+"	onClicked:{ currentRotationIndex = 2 }\n"
+"}"));
         pushButton = new QPushButton(analisis_demo);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(730, 10, 51, 51));
+        pushButton->setGeometry(QRect(740, 10, 51, 51));
         pushButton->setFocusPolicy(Qt::NoFocus);
         pushButton->setStyleSheet(QLatin1String("#pushButton\n"
 "{\n"
@@ -61,7 +75,7 @@ public:
 "}"));
         frame = new QFrame(analisis_demo);
         frame->setObjectName(QStringLiteral("frame"));
-        frame->setGeometry(QRect(80, 90, 691, 431));
+        frame->setGeometry(QRect(80, 160, 691, 431));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         widget = new QWidget(frame);
@@ -168,18 +182,52 @@ public:
         datewidget->setGeometry(QRect(310, 5, 180, 50));
         control_A000 = new QDoubleSpinBox(analisis_demo);
         control_A000->setObjectName(QStringLiteral("control_A000"));
-        control_A000->setGeometry(QRect(150, 10, 81, 71));
+        control_A000->setGeometry(QRect(90, 60, 81, 71));
+        QFont font;
+        font.setPointSize(20);
+        control_A000->setFont(font);
         control_A000->setAccelerated(true);
         control_A000->setDecimals(0);
         control_A000->setMinimum(0);
-        control_A000->setMaximum(1e+10);
+        control_A000->setMaximum(100);
         control_A000->setSingleStep(1);
+        control_A000->setValue(1);
+        setpoint_presion = new QDoubleSpinBox(analisis_demo);
+        setpoint_presion->setObjectName(QStringLiteral("setpoint_presion"));
+        setpoint_presion->setGeometry(QRect(610, 60, 91, 71));
+        setpoint_presion->setFont(font);
+        setpoint_presion->setAccelerated(true);
+        setpoint_presion->setDecimals(0);
+        setpoint_presion->setMinimum(0);
+        setpoint_presion->setMaximum(1e+10);
+        setpoint_presion->setSingleStep(1);
+        radioButton = new QRadioButton(analisis_demo);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(580, 39, 151, 21));
+        radioButton->setFocusPolicy(Qt::NoFocus);
+        radioButton->setStyleSheet(QLatin1String("#radioButton::indicator {\n"
+"    width:   30px;\n"
+"    height:  30px;\n"
+"  \n"
+"}"));
+        radioButton->setIconSize(QSize(32, 32));
+        radioButton_2 = new QRadioButton(analisis_demo);
+        radioButton_2->setObjectName(QStringLiteral("radioButton_2"));
+        radioButton_2->setGeometry(QRect(90, 40, 81, 18));
+        radioButton_2->setFocusPolicy(Qt::NoFocus);
+        valv_ma = new QLabel(analisis_demo);
+        valv_ma->setObjectName(QStringLiteral("valv_ma"));
+        valv_ma->setGeometry(QRect(90, 139, 81, 16));
         show_menu->raise();
         frame->raise();
         left_menu->raise();
         pushButton->raise();
         datewidget->raise();
         control_A000->raise();
+        setpoint_presion->raise();
+        radioButton->raise();
+        radioButton_2->raise();
+        valv_ma->raise();
 
         retranslateUi(analisis_demo);
 
@@ -195,6 +243,11 @@ public:
         show_menu->setText(QString());
         control_A000->setPrefix(QString());
         control_A000->setSuffix(QString());
+        setpoint_presion->setPrefix(QString());
+        setpoint_presion->setSuffix(QString());
+        radioButton->setText(QApplication::translate("analisis_demo", "Setpoint Presion", Q_NULLPTR));
+        radioButton_2->setText(QApplication::translate("analisis_demo", "% Valvula", Q_NULLPTR));
+        valv_ma->setText(QApplication::translate("analisis_demo", "mA", Q_NULLPTR));
     } // retranslateUi
 
 };

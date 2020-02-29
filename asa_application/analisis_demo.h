@@ -46,6 +46,8 @@ public slots:
     void update_datetime(QDateTime datetime);
 
 private slots:
+    void PID_main_func();
+
     void on_pushButton_clicked();
 
     void on_close_menu_clicked();
@@ -55,6 +57,10 @@ private slots:
     void on_graph_button_clicked();
 
     void on_control_A000_valueChanged(double arg1);
+
+    void on_radioButton_2_toggled(bool checked);
+
+    void on_radioButton_toggled(bool checked);
 
 private:
     Ui::analisis_demo *ui;

@@ -54,6 +54,8 @@ private slots:
 
     void on_full_graph_button_released();
 
+    void on_xscale_valueChanged(int arg1);
+
 private:
     Ui::analisis_graph *ui;
     en_analysis_state analysis_state = AN_IDLE;

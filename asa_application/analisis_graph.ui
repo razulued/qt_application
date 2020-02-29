@@ -528,12 +528,35 @@ border: none;
     <string/>
    </property>
   </widget>
+  <widget class="QSpinBox" name="xscale">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>380</y>
+     <width>91</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>50</number>
+   </property>
+   <property name="maximum">
+    <number>500</number>
+   </property>
+   <property name="singleStep">
+    <number>50</number>
+   </property>
+   <property name="value">
+    <number>100</number>
+   </property>
+  </widget>
   <zorder>widget</zorder>
   <zorder>controls</zorder>
   <zorder>graph_button</zorder>
   <zorder>datewidget</zorder>
   <zorder>label</zorder>
   <zorder>full_graph_button</zorder>
+  <zorder>xscale</zorder>
  </widget>
  <resources/>
  <connections/>

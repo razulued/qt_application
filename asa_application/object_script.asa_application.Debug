@@ -51,6 +51,7 @@ INPUT(
 ./debug/curve_chart.o
 ./debug/date_widget.o
 ./debug/analisys_full_table.o
+./debug/pid.o
 ./debug/qrc_fonts.o
 ./debug/qrc_screen800x600.o
 ./debug/qrc_images.o

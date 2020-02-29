@@ -51,6 +51,7 @@ INPUT(
 ./release/curve_chart.o
 ./release/date_widget.o
 ./release/analisys_full_table.o
+./release/pid.o
 ./release/qrc_fonts.o
 ./release/qrc_screen800x600.o
 ./release/qrc_images.o

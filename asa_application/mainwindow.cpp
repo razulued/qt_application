@@ -185,7 +185,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Get config
     validate_token(false);
-    init_plat_config();
+//    init_plat_config();
 //    get_ASA_string();
 
     configuration *config;
@@ -1546,16 +1546,16 @@ void MainWindow::update_activity_alarm(void)
 
 void MainWindow::on_top_menu_3_clicked()
 {
-    if(mutex_detailed.tryLock(0))
-    {
-        if(analysis_window !=NULL)
-        {
-            delete analysis_window;
-        }
-        analysis_window = new analisis_demo(this);
-        connect(analysis_window, SIGNAL(accepted()), this, SLOT(window_closed()));
-        connect(this,SIGNAL(send_date_hour(QDateTime)),analysis_window,SLOT(update_datetime(QDateTime)));
-        send_date_hour(time);
-        analysis_window->show();
-    }
+//    if(mutex_detailed.tryLock(0))
+//    {
+//        if(analysis_window !=NULL)
+//        {
+//            delete analysis_window;
+//        }
+//        analysis_window = new analisis_demo(this);
+//        connect(analysis_window, SIGNAL(accepted()), this, SLOT(window_closed()));
+//        connect(this,SIGNAL(send_date_hour(QDateTime)),analysis_window,SLOT(update_datetime(QDateTime)));
+//        send_date_hour(time);
+//        analysis_window->show();
+//    }
 }

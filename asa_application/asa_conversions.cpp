@@ -18,9 +18,10 @@ QString conv_integer_caudal(QString str, uint param1)
     Si el resultado de la ecuación es MENOR a 9.45, la página deberá mostrar 0.
 */
 
-    ret = decimal *0.0556822;
-    ret = ret - 25.78625;
-
+//    ret = decimal *0.0556822;
+//    ret = ret - 25.78625;
+    ret = decimal * 0.163714913;
+    ret = ret - 78.0885;
     if(ret < 0)
     {
         ret = 0;
