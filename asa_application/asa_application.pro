@@ -45,8 +45,6 @@ SOURCES += main.cpp\
     statistics.cpp \
     arrowkeys.cpp \
     simulation_input.cpp \
-    motores.cpp \
-    filtrowindow.cpp \
     change_text.cpp \
     calendar.cpp \
     contacto.cpp \
@@ -98,8 +96,6 @@ HEADERS  += mainwindow.h \
     statistics.h \
     arrowkeys.h \
     simulation_input.h \
-    motores.h \
-    filtrowindow.h \
     change_text.h \
     calendar.h \
     contacto.h \
@@ -129,8 +125,6 @@ FORMS    += mainwindow.ui \
     graphwindow.ui \
     arrowkeys.ui \
     simulation_input.ui \
-    motores.ui \
-    filtrowindow.ui \
     change_text.ui \
     calendar.ui \
     contacto.ui \

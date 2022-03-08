@@ -21,11 +21,8 @@
 #include "mod_6_lechos.h"
 #include "mod_flechas.h"
 #include "dataproccess.h"
-#include "graphwindow.h"
 #include "login_dialog.h"
 #include "simulation_input.h"
-#include "motores.h"
-#include "filtrowindow.h"
 #include "change_text.h"
 #include "contacto.h"
 #include "earm_update.h"
@@ -56,61 +53,8 @@ public:
     static configuration_id conf_car_fisic;
     static configuration_id conf_car_quimic;
 
-    static configuration_id conf_reg_elect;
-    static configuration_id conf_reg_fisic;
-    static configuration_id conf_reg_quimic;
-
-    static configuration_id conf_react_elect;
-    static configuration_id conf_react_fisic;
-    static configuration_id conf_react_quimi;
-
-    static configuration_id conf_clarif_elect;
-    static configuration_id conf_clarif_fisic;
-    static configuration_id conf_clarif_quimi;
-
-    static configuration_id conf_clora_elect;
-    static configuration_id conf_clora_fisic;
-    static configuration_id conf_clora_quimi;
-
-    static configuration_id conf_digest_elect;
-    static configuration_id conf_digest_fisic;
-    static configuration_id conf_digest_quimi;
-
-    static configuration_id conf_deshid_elect;
-    static configuration_id conf_deshid_fisic;
-    static configuration_id conf_deshid_quimi;
-
-    static configuration_id conf_afluente_elect;
-    static configuration_id conf_afluente_fisic;
-    static configuration_id conf_afluente_quimi;
-
-    static configuration_id conf_efluente_elect;
-    static configuration_id conf_efluente_fisic;
-    static configuration_id conf_efluente_quimi;
-
-    static configuration_id conf_filtro_elect;
-    static configuration_id conf_filtro_fisic;
-    static configuration_id conf_filtro_quimi;
-
-    static configuration_id conf_filtro_bomba_elect;
-    static configuration_id conf_filtro_bomba_fisic;
-    static configuration_id conf_filtro_bomba_quimi;
-
     static configuration_id car_outputs;
-    static configuration_id reg_outputs;
-    static configuration_id react_outputs;
-    static configuration_id clarif_outputs;
-    static configuration_id clora_outputs;
-    static configuration_id digest_outputs;
-    static configuration_id deshid_outputs;
-    static configuration_id afluente_outputs;
-    static configuration_id efluente_outputs;
-    static configuration_id filtro_outputs;
-    static configuration_id filtro_bomba_outputs;
 
-    static int reg_op_mode;
-    static int reg_mot_1;
-    static int reg_mot_2;
 
     static QString ASA_conf_only_string;
     static QString ASA_conf_string;
@@ -120,12 +64,10 @@ public:
     rutinas_mantenimiento *rutinas;
 
     DataProccess *dataObj;
-    graphwindow *graph = NULL;
 
     static bool simulation;
     static QDateTime time;
 
-    bool filtro_present = false;
 
     static uint num_of_pending_act;
     void update_activity_alarm(void);
@@ -160,12 +102,8 @@ private slots:
 
 //    void on_pb_simulacion_clicked();
 
-    void on_top_menu_6_clicked();
-
     void on_prof_pic_clicked();
 
-    void on_go_to_filtro_clicked();
-    void update_buttons_from_filter(bool active, parameters_t param);
     void update_title(QString text);
 
     void on_label_title_clicked();
@@ -201,46 +139,9 @@ private:
     custom_tooltip *tool_tip_carcamo_fisicos;
     custom_tooltip *tool_tip_carcamo_quimicos;
 
-    custom_tooltip *tool_tip_regulador_electricos;
-    custom_tooltip *tool_tip_regulador_fisicos;
-    custom_tooltip *tool_tip_regulador_quimicos;
-
-    custom_tooltip *tool_tip_reactor_electricos;
-    custom_tooltip *tool_tip_reactor_fisicos;
-    custom_tooltip *tool_tip_reactor_quimicos;
     QString my_name;
 
-    custom_tooltip *tool_tip_clarificador_electricos;
-    custom_tooltip *tool_tip_clarificador_fisicos;
-    custom_tooltip *tool_tip_clarificador_quimicos;
 
-
-    custom_tooltip *tool_tip_clorador_electricos;
-    custom_tooltip *tool_tip_clorador_fisicos;
-    custom_tooltip *tool_tip_clorador_quimicos;
-
-    custom_tooltip *tool_tip_digestor_electricos;
-    custom_tooltip *tool_tip_digestor_fisicos;
-    custom_tooltip *tool_tip_digestor_quimicos;
-
-    custom_tooltip *tool_tip_deshidratador_electricos;
-    custom_tooltip *tool_tip_deshidratador_fisicos;
-    custom_tooltip *tool_tip_deshidratador_quimicos;
-
-    custom_tooltip *tool_tip_afluente_electricos;
-    custom_tooltip *tool_tip_afluente_fisicos;
-    custom_tooltip *tool_tip_afluente_quimicos;
-
-    custom_tooltip *tool_tip_efluente_electricos;
-    custom_tooltip *tool_tip_efluente_fisicos;
-    custom_tooltip *tool_tip_efluente_quimicos;
-
-//    custom_tooltip *tool_tip_filtro_electricos;
-//    custom_tooltip *tool_tip_filtro_fisicos;
-//    custom_tooltip *tool_tip_filtro_quimicos;
-
-//    void get_ASA_string(void);
-//    void update_ASA_string(void);
     void update_tooltips(void);
 
     void trace_lines(QWidget *tooltip, QPushButton *module, QPainter &painter);
@@ -279,8 +180,6 @@ private:
     QString build_date_string(QDateTime);
 
     simulation_input *sim_window = NULL;
-    motores *motrores_window = NULL;
-    filtrowindow *filt_window = NULL;
     change_text *change_text_window = NULL;
 
     contacto *contacto_window = NULL;

@@ -15,13 +15,11 @@ QPoint offset;
 uint custom_tooltip::tooltip_number = 0;
 
 custom_tooltip::custom_tooltip(QWidget *frame, QList<int> list, QStringList names, QList<int> out_list,
-                               QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type, graphwindow *graph, QString g_origin) : QWidget(frame)
+                               QStringList out_names, QWidget *mainwindow, QPushButton *connect_to, uint type) : QWidget(frame)
 {
 
     element_type = type;
     parent_window = mainwindow;
-    graph_ptr = graph;
-    graph_origin = g_origin;
 
     parent_frame = frame;
     connect_here = connect_to;
@@ -307,13 +305,7 @@ void custom_tooltip::checkClick()
     {
         if(item_is_pressed == false)
         {
-            //Emit signal for graph
-            if(graph_ptr->isHidden())
-            {
-                graph_ptr->show_graph(element_type);
-                graph_ptr->set_type(graph_origin);
-                graph_ptr->set_graph_span(0);
-            }
+
         }
         else
         {

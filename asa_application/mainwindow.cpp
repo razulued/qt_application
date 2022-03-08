@@ -20,61 +20,7 @@ configuration_id MainWindow::conf_car_elect;
 configuration_id MainWindow::conf_car_fisic;
 configuration_id MainWindow::conf_car_quimic;
 
-configuration_id MainWindow::conf_reg_elect;
-configuration_id MainWindow::conf_reg_fisic;
-configuration_id MainWindow::conf_reg_quimic;
-
-configuration_id MainWindow::conf_react_elect;
-configuration_id MainWindow::conf_react_fisic;
-configuration_id MainWindow::conf_react_quimi;
-
-configuration_id MainWindow::conf_clarif_elect;
-configuration_id MainWindow::conf_clarif_fisic;
-configuration_id MainWindow::conf_clarif_quimi;
-
-configuration_id MainWindow::conf_clora_elect;
-configuration_id MainWindow::conf_clora_fisic;
-configuration_id MainWindow::conf_clora_quimi;
-
-configuration_id MainWindow::conf_digest_elect;
-configuration_id MainWindow::conf_digest_fisic;
-configuration_id MainWindow::conf_digest_quimi;
-
-configuration_id MainWindow::conf_deshid_elect;
-configuration_id MainWindow::conf_deshid_fisic;
-configuration_id MainWindow::conf_deshid_quimi;
-
-configuration_id MainWindow::conf_afluente_elect;
-configuration_id MainWindow::conf_afluente_fisic;
-configuration_id MainWindow::conf_afluente_quimi;
-
-configuration_id MainWindow::conf_efluente_elect;
-configuration_id MainWindow::conf_efluente_fisic;
-configuration_id MainWindow::conf_efluente_quimi;
-
-configuration_id MainWindow::conf_filtro_elect;
-configuration_id MainWindow::conf_filtro_fisic;
-configuration_id MainWindow::conf_filtro_quimi;
-
-configuration_id MainWindow::conf_filtro_bomba_elect;
-configuration_id MainWindow::conf_filtro_bomba_fisic;
-configuration_id MainWindow::conf_filtro_bomba_quimi;
-
 configuration_id MainWindow::car_outputs;
-configuration_id MainWindow::reg_outputs;
-configuration_id MainWindow::react_outputs;
-configuration_id MainWindow::clarif_outputs;
-configuration_id MainWindow::clora_outputs;
-configuration_id MainWindow::digest_outputs;
-configuration_id MainWindow::deshid_outputs;
-configuration_id MainWindow::afluente_outputs;
-configuration_id MainWindow::efluente_outputs;
-configuration_id MainWindow::filtro_outputs;
-configuration_id MainWindow::filtro_bomba_outputs;
-
-int MainWindow::reg_op_mode;
-int MainWindow::reg_mot_1;
-int MainWindow::reg_mot_2;
 
 #if (1 == RELEASE_FOR_RPI)
 bool MainWindow::simulation =false;
@@ -117,45 +63,9 @@ void MainWindow::HideButtons(bool hide)
 
 void MainWindow::InitTooltips()
 {
-    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, conf_car_elect.ids, conf_car_elect.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_carcamo_fisicos = new custom_tooltip(ui->widget_26, conf_car_fisic.ids, conf_car_fisic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_carcamo_quimicos = new custom_tooltip(ui->widget_27, conf_car_quimic.ids, conf_car_quimic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_QUIMICOS, graph, this->my_name);
-
-    tool_tip_regulador_electricos = new custom_tooltip(ui->widget, conf_reg_elect.ids, conf_reg_elect.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_regulador_fisicos = new custom_tooltip(ui->widget_2, conf_reg_fisic.ids, conf_reg_fisic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_regulador_quimicos = new custom_tooltip(ui->widget_3, conf_reg_quimic.ids, conf_reg_quimic.names, reg_outputs.ids, reg_outputs.names, this, ui->modulo_1, TYPE_QUIMICOS, graph, this->my_name);
-
-    tool_tip_reactor_electricos = new custom_tooltip(ui->widget_4, conf_react_elect.ids, conf_react_elect.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_reactor_fisicos = new custom_tooltip(ui->widget_5, conf_react_fisic.ids, conf_react_fisic.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_reactor_quimicos = new custom_tooltip(ui->widget_6, conf_react_quimi.ids, conf_react_quimi.names, react_outputs.ids, react_outputs.names, this, ui->modulo_2, TYPE_QUIMICOS, graph, this->my_name);
-
-    tool_tip_clarificador_electricos = new custom_tooltip(ui->widget_7, conf_clarif_elect.ids, conf_clarif_elect.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_clarificador_fisicos = new custom_tooltip(ui->widget_8, conf_clarif_fisic.ids, conf_clarif_fisic.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_clarificador_quimicos = new custom_tooltip(ui->widget_9, conf_clarif_quimi.ids, conf_clarif_quimi.names, clarif_outputs.ids, clarif_outputs.names, this, ui->modulo_3, TYPE_QUIMICOS, graph, this->my_name);
-
-    tool_tip_clorador_electricos = new custom_tooltip(ui->widget_10, conf_clora_elect.ids, conf_clora_elect.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_clorador_fisicos = new custom_tooltip(ui->widget_11, conf_clora_fisic.ids, conf_clora_fisic.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_clorador_quimicos = new custom_tooltip(ui->widget_12, conf_clora_quimi.ids, conf_clora_quimi.names, clora_outputs.ids, clora_outputs.names, this, ui->modulo_4, TYPE_QUIMICOS, graph, this->my_name);
-
-    tool_tip_digestor_electricos = new custom_tooltip(ui->widget_13, conf_digest_elect.ids, conf_digest_elect.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_digestor_fisicos = new custom_tooltip(ui->widget_14, conf_digest_fisic.ids, conf_digest_fisic.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_digestor_quimicos = new custom_tooltip(ui->widget_15, conf_digest_quimi.ids, conf_digest_quimi.names, digest_outputs.ids, digest_outputs.names, this, ui->modulo_5, TYPE_QUIMICOS, graph, this->my_name);
-
-    tool_tip_deshidratador_electricos = new custom_tooltip(ui->widget_16, conf_deshid_elect.ids, conf_deshid_elect.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_deshidratador_fisicos = new custom_tooltip(ui->widget_17, conf_deshid_fisic.ids, conf_deshid_fisic.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_deshidratador_quimicos = new custom_tooltip(ui->widget_18, conf_deshid_quimi.ids, conf_deshid_quimi.names, deshid_outputs.ids, deshid_outputs.names, this, ui->modulo_6, TYPE_QUIMICOS, graph, this->my_name);
-
-    tool_tip_afluente_electricos = new custom_tooltip(ui->widget_19, conf_afluente_elect.ids, conf_afluente_elect.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_afluente_fisicos = new custom_tooltip(ui->widget_20, conf_afluente_fisic.ids, conf_afluente_fisic.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_afluente_quimicos = new custom_tooltip(ui->widget_21, conf_afluente_quimi.ids, conf_afluente_quimi.names, afluente_outputs.ids, afluente_outputs.names, this, ui->modulo_7, TYPE_QUIMICOS, graph, this->my_name);
-
-    tool_tip_efluente_electricos = new custom_tooltip(ui->widget_22, conf_efluente_elect.ids, conf_efluente_elect.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_ELECTRICOS, graph, this->my_name);
-    tool_tip_efluente_fisicos = new custom_tooltip(ui->widget_23, conf_efluente_fisic.ids, conf_efluente_fisic.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_FISICOS, graph, this->my_name);
-    tool_tip_efluente_quimicos = new custom_tooltip(ui->widget_24, conf_efluente_quimi.ids, conf_efluente_quimi.names, efluente_outputs.ids, efluente_outputs.names, this, ui->modulo_8, TYPE_QUIMICOS, graph, this->my_name);
-
-//    tool_tip_filtro_electricos = new custom_tooltip(ui->widget_25, conf_filtro_elect.ids, conf_filtro_elect.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS, graph);
-//    tool_tip_filtro_fisicos = new custom_tooltip(ui->widget_26, conf_filtro_fisic.ids, conf_filtro_fisic.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_FISICOS, graph);
-//    tool_tip_filtro_quimicos = new custom_tooltip(ui->widget_27, conf_filtro_quimi.ids, conf_filtro_quimi.names, filtro_outputs.ids, filtro_outputs.names, this, ui->modulo_9, TYPE_QUIMICOS, graph);
+    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, conf_car_elect.ids, conf_car_elect.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS);
+    tool_tip_carcamo_fisicos = new custom_tooltip(ui->widget_26, conf_car_fisic.ids, conf_car_fisic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_FISICOS);
+    tool_tip_carcamo_quimicos = new custom_tooltip(ui->widget_27, conf_car_quimic.ids, conf_car_quimic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_QUIMICOS);
 
     init_complete = true;
 }
@@ -166,9 +76,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     my_name = "PTAR";
-    graph = new graphwindow(this);
-    connect(graph, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
-    connect(graph, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
 
     // Init SPI
     dataObj = new DataProccess;
@@ -196,106 +103,6 @@ MainWindow::MainWindow(QWidget *parent) :
     conf_car_fisic = config->get_config();
     config = new configuration("Carcamo-Quimicos");
     conf_car_quimic = config->get_config();
-
-    config = new configuration("Regulador-Electricos");
-    conf_reg_elect = config->get_config();
-    config = new configuration("Regulador-Fisicos");
-    conf_reg_fisic = config->get_config();
-    config = new configuration("Regulador-Quimicos");
-    conf_reg_quimic = config->get_config();
-
-    config = new configuration("Reactor-Electricos");
-    conf_react_elect = config->get_config();
-    config = new configuration("Reactor-Fisicos");
-    conf_react_fisic = config->get_config();
-    config = new configuration("Reactor-Quimicos");
-    conf_react_quimi = config->get_config();
-
-    config = new configuration("Clarificador-Electricos");
-    conf_clarif_elect = config->get_config();
-    config = new configuration("Clarificador-Fisicos");
-    conf_clarif_fisic = config->get_config();
-    config = new configuration("Clarificador-Quimicos");
-    conf_clarif_quimi = config->get_config();
-
-    config = new configuration("Clorador-Electricos");
-    conf_clora_elect = config->get_config();
-    config = new configuration("Clorador-Fisicos");
-    conf_clora_fisic = config->get_config();
-    config = new configuration("Clorador-Quimicos");
-    conf_clora_quimi = config->get_config();
-
-    config = new configuration("Digestor-Electricos");
-    conf_digest_elect = config->get_config();
-    config = new configuration("Digestor-Fisicos");
-    conf_digest_fisic = config->get_config();
-    config = new configuration("Digestor-Quimicos");
-    conf_digest_quimi = config->get_config();
-
-    config = new configuration("Deshidratador-Electricos");
-    conf_deshid_elect = config->get_config();
-    config = new configuration("Deshidratador-Fisicos");
-    conf_deshid_fisic = config->get_config();
-    config = new configuration("Deshidratador-Quimicos");
-    conf_deshid_quimi = config->get_config();
-
-    config = new configuration("Afluente-Electricos");
-    conf_afluente_elect = config->get_config();
-    config = new configuration("Afluente-Fisicos");
-    conf_afluente_fisic = config->get_config();
-    config = new configuration("Afluente-Quimicos");
-    conf_afluente_quimi = config->get_config();
-
-    config = new configuration("Efluente-Electricos");
-    conf_efluente_elect = config->get_config();
-    config = new configuration("Efluente-Fisicos");
-    conf_efluente_fisic = config->get_config();
-    config = new configuration("Efluente-Quimicos");
-    conf_efluente_quimi = config->get_config();
-
-    config = new configuration("Filtro-Electricos");
-    conf_filtro_elect = config->get_config();
-    config = new configuration("Filtro-Fisicos");
-    conf_filtro_fisic = config->get_config();
-    config = new configuration("Filtro-Quimicos");
-    conf_filtro_quimi = config->get_config();
-
-    config = new configuration("Filtro-Bomba-Electricos");
-    conf_filtro_bomba_elect = config->get_config();
-    config = new configuration("Filtro-Bomba-Fisicos");
-    conf_filtro_bomba_fisic = config->get_config();
-    config = new configuration("Filtro-Bomba-Quimicos");
-    conf_filtro_bomba_quimi = config->get_config();
-
-    //Get outputs
-    config = new configuration("Carcamo-Out");
-    car_outputs = config->get_config();
-    config = new configuration("Regulador-Out");
-    reg_outputs = config->get_config();
-    config = new configuration("Reactor-Out");
-    react_outputs = config->get_config();
-    config = new configuration("Clarificador-Out");
-    clarif_outputs = config->get_config();
-    config = new configuration("Clorador-Out");
-    clora_outputs = config->get_config();
-    config = new configuration("Digestor-Out");
-    digest_outputs = config->get_config();
-    config = new configuration("Deshidratador-Out");
-    deshid_outputs = config->get_config();
-    config = new configuration("Afluente-Out");
-    afluente_outputs = config->get_config();
-    config = new configuration("Efluente-Out");
-    efluente_outputs = config->get_config();
-    config = new configuration("Filtro-Out");
-    filtro_outputs = config->get_config();
-    config = new configuration("Filtro-Bomba-Out");
-    filtro_bomba_outputs = config->get_config();
-
-    config = new configuration("Product-Config");
-    if("1" == config->get_value("Product-Config", "Filtro"))
-    {
-        filtro_present = true;
-    }
 
     //Setup Timer
     dataTimer.setInterval(100);
@@ -618,27 +425,6 @@ void MainWindow::update_this()
     this->update();
 }
 
-void MainWindow::update_buttons_from_filter(bool active, parameters_t param)
-{
-//    display_parameters = !active;
-//    handleMenuButton();
-
-    switch(param)
-    {
-    case PARAM_ELECTRIC:
-        handleParametrosElectricosButton();
-        break;
-    case PARAM_PHYSHIC:
-        handleParametrosFisicosButton();
-        break;
-    case PARAM_CHEMIC:
-        handleParametrosQuimicosButton();
-        break;
-    default:
-        break;
-    }
-}
-
 void MainWindow::update_title(QString text)
 {
     ui->label_title->setText(text);
@@ -667,15 +453,6 @@ void MainWindow::on_asa_logo_clicked()
 void MainWindow::dataTimerSlot()
 {
     static uint count = 0;
-    static bool goto_filtro = true;
-
-    // Go to filtro for non-PTAR application
-    if((true == goto_filtro && count > 5) && (true == filtro_present))
-    {
-        //TO FILTRO
-        on_go_to_filtro_clicked();
-        goto_filtro = false;
-    }
 
     check_lock();
 
@@ -684,12 +461,6 @@ void MainWindow::dataTimerSlot()
     {
         // Fastest time for smooth transition when moving
         update_tooltips();
-
-
-        if((NULL != filt_window))
-        {
-            filt_window->update_tooltips();
-        }
     }
 
 
@@ -865,110 +636,19 @@ void MainWindow::update_tooltips(void)
         {
         case PARAM_ELECTRIC:
             tool_tip_carcamo_electricos->force_show();
-            tool_tip_regulador_electricos->force_show();
-            tool_tip_reactor_electricos->force_show();
-            tool_tip_clarificador_electricos->force_show();
-            tool_tip_clorador_electricos->force_show();
-            tool_tip_digestor_electricos->force_show();
-            tool_tip_deshidratador_electricos->force_show();
-            tool_tip_afluente_electricos->force_show();
-            tool_tip_efluente_electricos->force_show();
-//            tool_tip_filtro_electricos->force_show();
-
             tool_tip_carcamo_fisicos->force_hide();
-            tool_tip_regulador_fisicos->force_hide();
-            tool_tip_reactor_fisicos->force_hide();
-            tool_tip_clarificador_fisicos->force_hide();
-            tool_tip_clorador_fisicos->force_hide();
-            tool_tip_digestor_fisicos->force_hide();
-            tool_tip_deshidratador_fisicos->force_hide();
-            tool_tip_afluente_fisicos->force_hide();
-            tool_tip_efluente_fisicos->force_hide();
-//            tool_tip_filtro_fisicos->force_hide();
-
             tool_tip_carcamo_quimicos->force_hide();
-            tool_tip_regulador_quimicos->force_hide();
-            tool_tip_reactor_quimicos->force_hide();
-            tool_tip_clarificador_quimicos->force_hide();
-            tool_tip_clorador_quimicos->force_hide();
-            tool_tip_digestor_quimicos->force_hide();
-            tool_tip_deshidratador_quimicos->force_hide();
-            tool_tip_afluente_quimicos->force_hide();
-            tool_tip_efluente_quimicos->force_hide();
-//            tool_tip_filtro_quimicos->force_hide();
 
             break;
         case PARAM_PHYSHIC:
             tool_tip_carcamo_electricos->force_hide();
-            tool_tip_regulador_electricos->force_hide();
-            tool_tip_reactor_electricos->force_hide();
-            tool_tip_clarificador_electricos->force_hide();
-            tool_tip_clorador_electricos->force_hide();
-            tool_tip_digestor_electricos->force_hide();
-            tool_tip_deshidratador_electricos->force_hide();
-            tool_tip_afluente_electricos->force_hide();
-            tool_tip_efluente_electricos->force_hide();
-//            tool_tip_filtro_electricos->force_hide();
-
-
             tool_tip_carcamo_fisicos->force_show();
-            tool_tip_regulador_fisicos->force_show();
-            tool_tip_reactor_fisicos->force_show();
-            tool_tip_clarificador_fisicos->force_show();
-            tool_tip_clorador_fisicos->force_show();
-            tool_tip_digestor_fisicos->force_show();
-            tool_tip_deshidratador_fisicos->force_show();
-            tool_tip_afluente_fisicos->force_show();
-            tool_tip_efluente_fisicos->force_show();
-//            tool_tip_filtro_fisicos->force_show();
-
             tool_tip_carcamo_quimicos->force_hide();
-            tool_tip_regulador_quimicos->force_hide();
-            tool_tip_reactor_quimicos->force_hide();
-            tool_tip_clarificador_quimicos->force_hide();
-            tool_tip_clorador_quimicos->force_hide();
-            tool_tip_digestor_quimicos->force_hide();
-            tool_tip_deshidratador_quimicos->force_hide();
-            tool_tip_afluente_quimicos->force_hide();
-            tool_tip_efluente_quimicos->force_hide();
-//            tool_tip_filtro_quimicos->force_hide();
-
-
             break;
         case PARAM_CHEMIC:
             tool_tip_carcamo_electricos->force_hide();
-            tool_tip_regulador_electricos->force_hide();
-            tool_tip_reactor_electricos->force_hide();
-            tool_tip_clarificador_electricos->force_hide();
-            tool_tip_clorador_electricos->force_hide();
-            tool_tip_digestor_electricos->force_hide();
-            tool_tip_deshidratador_electricos->force_hide();
-            tool_tip_afluente_electricos->force_hide();
-            tool_tip_efluente_electricos->force_hide();
-//            tool_tip_filtro_electricos->force_hide();
-
             tool_tip_carcamo_fisicos->force_hide();
-            tool_tip_regulador_fisicos->force_hide();
-            tool_tip_reactor_fisicos->force_hide();
-            tool_tip_clarificador_fisicos->force_hide();
-            tool_tip_clorador_fisicos->force_hide();
-            tool_tip_digestor_fisicos->force_hide();
-            tool_tip_deshidratador_fisicos->force_hide();
-            tool_tip_afluente_fisicos->force_hide();
-            tool_tip_efluente_fisicos->force_hide();
-//            tool_tip_filtro_fisicos->force_hide();
-
             tool_tip_carcamo_quimicos->force_show();
-            tool_tip_regulador_quimicos->force_show();
-            tool_tip_reactor_quimicos->force_show();
-            tool_tip_clarificador_quimicos->force_show();
-            tool_tip_clorador_quimicos->force_show();
-            tool_tip_digestor_quimicos->force_show();
-            tool_tip_deshidratador_quimicos->force_show();
-            tool_tip_afluente_quimicos->force_show();
-            tool_tip_efluente_quimicos->force_show();
-//            tool_tip_filtro_quimicos->force_show();
-
             break;
         default:
             break;
@@ -981,46 +661,18 @@ void MainWindow::update_tooltips(void)
             if(0 == count)
             {
                 tool_tip_carcamo_electricos->update_data();
-                tool_tip_regulador_electricos->update_data();
-                tool_tip_reactor_electricos->update_data();
-                tool_tip_clarificador_electricos->update_data();
-                tool_tip_clorador_electricos->update_data();
-                tool_tip_digestor_electricos->update_data();
-                tool_tip_deshidratador_electricos->update_data();
-                tool_tip_afluente_electricos->update_data();
-                tool_tip_efluente_electricos->update_data();
-    //            tool_tip_filtro_electricos->update_data();
                 count++;
             }
             else if(1 == count)
             {
                 tool_tip_carcamo_fisicos->update_data();
-                tool_tip_regulador_fisicos->update_data();
-                tool_tip_reactor_fisicos->update_data();
-                tool_tip_clarificador_fisicos->update_data();
-                tool_tip_clorador_fisicos->update_data();
-                tool_tip_digestor_fisicos->update_data();
-                tool_tip_deshidratador_fisicos->update_data();
-                tool_tip_afluente_fisicos->update_data();
-                tool_tip_efluente_fisicos->update_data();
-    //            tool_tip_filtro_fisicos->update_data();
                 count++;
             }
             else
             {
                 tool_tip_carcamo_quimicos->update_data();
-                tool_tip_regulador_quimicos->update_data();
-                tool_tip_reactor_quimicos->update_data();
-                tool_tip_clarificador_quimicos->update_data();
-                tool_tip_clorador_quimicos->update_data();
-                tool_tip_digestor_quimicos->update_data();
-                tool_tip_deshidratador_quimicos->update_data();
-                tool_tip_afluente_quimicos->update_data();
-                tool_tip_efluente_quimicos->update_data();
-    //            tool_tip_filtro_quimicos->update_data();
                 count = 0;
             }
-
         }
 
     }
@@ -1037,17 +689,6 @@ void MainWindow::new_spi_data()
     if((NULL != detail_window) && detail_window->isActiveWindow())
     {
         detail_window->update_params();
-    }
-
-    if((NULL != motrores_window) && motrores_window->isActiveWindow())
-    {
-        motrores_window->update_motors();
-    }
-
-    /* Update filer data if open */
-    if(NULL != filt_window && filt_window->isVisible())
-    {
-        filt_window->update_other(ui->label_dia->text(), ui->label_hora->text(), ui->label_title->text());
     }
 
     if(0xBB11 == getParamValue(0x0201).toInt())
@@ -1134,184 +775,6 @@ void MainWindow::update_system_time()
         ui->label_dia->setText(display_dia);
         ui->label_hora->setText(display_time);
         send_date_hour(time);
-
-        //CARCAMO
-        add_value_to_stats(0x3001, getParamValue(0x3001).toFloat());
-        add_value_to_stats(0x3002, getParamValue(0x3002).toFloat());
-        add_value_to_stats(0x3003, getParamValue(0x3003).toFloat());
-        add_value_to_stats(0x3004, getParamValue(0x3004).toFloat());
-        add_value_to_stats(0x3005, getParamValue(0x3005).toFloat());
-        add_value_to_stats(0x3006, getParamValue(0x3006).toFloat());
-
-        add_value_to_stats(0x3011, getParamValue(0x3011).toFloat());
-        add_value_to_stats(0x3012, getParamValue(0x3012).toFloat());
-        add_value_to_stats(0x3013, getParamValue(0x3013).toFloat());
-        add_value_to_stats(0x3014, getParamValue(0x3014).toFloat());
-        add_value_to_stats(0x3015, getParamValue(0x3015).toFloat());
-        add_value_to_stats(0x3016, getParamValue(0x3016).toFloat());
-
-        add_value_to_stats(0x3021, getParamValue(0x3021).toFloat());
-        add_value_to_stats(0x3022, getParamValue(0x3022).toFloat());
-        add_value_to_stats(0x3023, getParamValue(0x3023).toFloat());
-        add_value_to_stats(0x3024, getParamValue(0x3024).toFloat());
-        add_value_to_stats(0x3025, getParamValue(0x3025).toFloat());
-        add_value_to_stats(0x3026, getParamValue(0x3026).toFloat());
-
-        add_value_to_stats(0x3031, getParamValue(0x3031).toFloat());
-        add_value_to_stats(0x3032, getParamValue(0x3032).toFloat());
-        add_value_to_stats(0x3033, getParamValue(0x3033).toFloat());
-        add_value_to_stats(0x3034, getParamValue(0x3034).toFloat());
-        add_value_to_stats(0x3035, getParamValue(0x3035).toFloat());
-        add_value_to_stats(0x3036, getParamValue(0x3036).toFloat());
-
-        // REGULADOR
-        add_value_to_stats(0x3801, getParamValue(0x3801).toFloat());
-        add_value_to_stats(0x3802, getParamValue(0x3802).toFloat());
-        add_value_to_stats(0x3803, getParamValue(0x3803).toFloat());
-        add_value_to_stats(0x3804, getParamValue(0x3804).toFloat());
-        add_value_to_stats(0x3805, getParamValue(0x3805).toFloat());
-        add_value_to_stats(0x3806, getParamValue(0x3806).toFloat());
-
-        add_value_to_stats(0x3811, getParamValue(0x3811).toFloat());
-        add_value_to_stats(0x3812, getParamValue(0x3812).toFloat());
-        add_value_to_stats(0x3813, getParamValue(0x3813).toFloat());
-        add_value_to_stats(0x3814, getParamValue(0x3814).toFloat());
-        add_value_to_stats(0x3815, getParamValue(0x3815).toFloat());
-        add_value_to_stats(0x3816, getParamValue(0x3816).toFloat());
-
-        add_value_to_stats(0x3821, getParamValue(0x3821).toFloat());
-        add_value_to_stats(0x3822, getParamValue(0x3822).toFloat());
-        add_value_to_stats(0x3823, getParamValue(0x3823).toFloat());
-        add_value_to_stats(0x3824, getParamValue(0x3824).toFloat());
-        add_value_to_stats(0x3825, getParamValue(0x3825).toFloat());
-        add_value_to_stats(0x3826, getParamValue(0x3826).toFloat());
-
-        add_value_to_stats(0x3831, getParamValue(0x3831).toFloat());
-        add_value_to_stats(0x3832, getParamValue(0x3832).toFloat());
-        add_value_to_stats(0x3833, getParamValue(0x3833).toFloat());
-        add_value_to_stats(0x3834, getParamValue(0x3834).toFloat());
-        add_value_to_stats(0x3835, getParamValue(0x3835).toFloat());
-        add_value_to_stats(0x3836, getParamValue(0x3836).toFloat());
-
-        add_value_to_stats(0x4001, getParamValue(0x4001).toFloat());
-        add_value_to_stats(0x4002, getParamValue(0x4002).toFloat());
-        add_value_to_stats(0x4003, getParamValue(0x4003).toFloat());
-        add_value_to_stats(0x4004, getParamValue(0x4004).toFloat());
-        add_value_to_stats(0x4005, getParamValue(0x4005).toFloat());
-        add_value_to_stats(0x4006, getParamValue(0x4006).toFloat());
-
-        add_value_to_stats(0x4011, getParamValue(0x4011).toFloat());
-        add_value_to_stats(0x4012, getParamValue(0x4012).toFloat());
-        add_value_to_stats(0x4013, getParamValue(0x4013).toFloat());
-        add_value_to_stats(0x4014, getParamValue(0x4014).toFloat());
-        add_value_to_stats(0x4015, getParamValue(0x4015).toFloat());
-        add_value_to_stats(0x4016, getParamValue(0x4016).toFloat());
-
-        add_value_to_stats(0x4021, getParamValue(0x4021).toFloat());
-        add_value_to_stats(0x4022, getParamValue(0x4022).toFloat());
-        add_value_to_stats(0x4023, getParamValue(0x4023).toFloat());
-        add_value_to_stats(0x4024, getParamValue(0x4024).toFloat());
-        add_value_to_stats(0x4025, getParamValue(0x4025).toFloat());
-        add_value_to_stats(0x4026, getParamValue(0x4026).toFloat());
-
-        add_value_to_stats(0x4031, getParamValue(0x4031).toFloat());
-        add_value_to_stats(0x4032, getParamValue(0x4032).toFloat());
-        add_value_to_stats(0x4033, getParamValue(0x4033).toFloat());
-        add_value_to_stats(0x4034, getParamValue(0x4034).toFloat());
-        add_value_to_stats(0x4035, getParamValue(0x4035).toFloat());
-        add_value_to_stats(0x4036, getParamValue(0x4036).toFloat());
-
-        add_value_to_stats(0x4031, getParamValue(0x4031).toFloat());
-        add_value_to_stats(0x4032, getParamValue(0x4032).toFloat());
-        add_value_to_stats(0x4033, getParamValue(0x4033).toFloat());
-        add_value_to_stats(0x4034, getParamValue(0x4034).toFloat());
-        add_value_to_stats(0x4035, getParamValue(0x4035).toFloat());
-        add_value_to_stats(0x4036, getParamValue(0x4036).toFloat());
-
-        add_value_to_stats(0x9000, getParamValue(0x9000).toFloat());
-        add_value_to_stats(0x9010, getParamValue(0x9010).toFloat());
-        add_value_to_stats(0x9020, getParamValue(0x9020).toFloat());
-        add_value_to_stats(0x9030, getParamValue(0x9030).toFloat());
-        add_value_to_stats(0x9080, getParamValue(0x9080).toFloat());
-
-        add_value_to_stats(0x9001, getParamValue(0x9001).toFloat());
-        add_value_to_stats(0x9011, getParamValue(0x9011).toFloat());
-        add_value_to_stats(0x9021, getParamValue(0x9021).toFloat());
-        add_value_to_stats(0x9031, getParamValue(0x9031).toFloat());
-        add_value_to_stats(0x9081, getParamValue(0x9081).toFloat());
-
-        add_value_to_stats(0x9002, getParamValue(0x9002).toFloat());
-        add_value_to_stats(0x9012, getParamValue(0x9012).toFloat());
-        add_value_to_stats(0x9022, getParamValue(0x9022).toFloat());
-        add_value_to_stats(0x9032, getParamValue(0x9032).toFloat());
-        add_value_to_stats(0x9082, getParamValue(0x9082).toFloat());
-
-        add_value_to_stats(0x9003, getParamValue(0x9003).toFloat());
-        add_value_to_stats(0x9013, getParamValue(0x9013).toFloat());
-        add_value_to_stats(0x9023, getParamValue(0x9023).toFloat());
-        add_value_to_stats(0x9033, getParamValue(0x9033).toFloat());
-        add_value_to_stats(0x9083, getParamValue(0x9083).toFloat());
-
-        add_value_to_stats(0x9004, getParamValue(0x9004).toFloat());
-        add_value_to_stats(0x9014, getParamValue(0x9014).toFloat());
-        add_value_to_stats(0x9024, getParamValue(0x9024).toFloat());
-        add_value_to_stats(0x9034, getParamValue(0x9034).toFloat());
-        add_value_to_stats(0x9084, getParamValue(0x9084).toFloat());
-
-        add_value_to_stats(0x9005, getParamValue(0x9005).toFloat());
-        add_value_to_stats(0x9015, getParamValue(0x9015).toFloat());
-        add_value_to_stats(0x9025, getParamValue(0x9025).toFloat());
-        add_value_to_stats(0x9035, getParamValue(0x9035).toFloat());
-        add_value_to_stats(0x9085, getParamValue(0x9085).toFloat());
-
-        add_value_to_stats(0x9006, getParamValue(0x9006).toFloat());
-        add_value_to_stats(0x9016, getParamValue(0x9016).toFloat());
-        add_value_to_stats(0x9026, getParamValue(0x9026).toFloat());
-        add_value_to_stats(0x9036, getParamValue(0x9036).toFloat());
-        add_value_to_stats(0x9086, getParamValue(0x9086).toFloat());
-
-        //FISICOS
-        add_value_to_stats(GASTO_INS, getParamValue(GASTO_INS).toFloat());
-        add_value_to_stats(GASTO_ACC, getParamValue(GASTO_ACC).toFloat());
-        add_value_to_stats(PRES_AIR, getParamValue(PRES_AIR).toFloat());
-        add_value_to_stats(NIVEL_CAR, getParamValue(NIVEL_CAR).toFloat());
-        add_value_to_stats(PRES_FIL, getParamValue(PRES_FIL).toFloat());
-        add_value_to_stats(NIVEL_REG, getParamValue(NIVEL_REG).toFloat());
-
-        // QUIMICOS
-        add_value_to_stats(OD_IN, getParamValue(OD_IN).toFloat());    //0x4307
-        add_value_to_stats(SST_IN, getParamValue(SST_IN).toFloat());  //0x3305
-        add_value_to_stats(Turb_IN, getParamValue(Turb_IN).toFloat());//0x3303
-        add_value_to_stats(PH_IN, getParamValue(PH_IN).toFloat());    //0x3301
-
-        add_value_to_stats(OD_OUT, getParamValue(OD_OUT).toFloat());
-        add_value_to_stats(SST_OUT, getParamValue(SST_OUT).toFloat());
-        add_value_to_stats(Turb_OUT, getParamValue(Turb_OUT).toFloat());
-        add_value_to_stats(PH_OUT, getParamValue(PH_OUT).toFloat());
-
-        //FISICOS
-        add_value_to_stats(Filtro_GASTO_INS, getParamValue(Filtro_GASTO_INS).toFloat());
-        add_value_to_stats(Filtro_GASTO_ACC, getParamValue(Filtro_GASTO_ACC).toFloat());
-        add_value_to_stats(Filtro_PRES_AIR, getParamValue(Filtro_PRES_AIR).toFloat());
-        add_value_to_stats(Filtro_PRES_FIL, getParamValue(Filtro_PRES_FIL).toFloat());
-        add_value_to_stats(Filtro_NIVEL_CL, getParamValue(Filtro_NIVEL_CL).toFloat());
-        add_value_to_stats(Filtro_NIVEL_REG, getParamValue(Filtro_NIVEL_REG).toFloat());
-
-        // QUIMICOS
-        add_value_to_stats(Filtro_OD_IN, getParamValue(Filtro_OD_IN).toFloat());    //0x4307
-        add_value_to_stats(Filtro_SST_IN, getParamValue(Filtro_SST_IN).toFloat());  //0x3305
-        add_value_to_stats(Filtro_Turb_IN, getParamValue(Filtro_Turb_IN).toFloat());//0x3303
-        add_value_to_stats(Filtro_PH_IN, getParamValue(Filtro_PH_IN).toFloat());    //0x3301
-
-        add_value_to_stats(Filtro_OD_OUT, getParamValue(Filtro_OD_OUT).toFloat());
-        add_value_to_stats(Filtro_SST_OUT, getParamValue(Filtro_SST_OUT).toFloat());
-        add_value_to_stats(Filtro_Turb_OUT, getParamValue(Filtro_Turb_OUT).toFloat());
-        add_value_to_stats(Filtro_PH_OUT, getParamValue(Filtro_PH_OUT).toFloat());
-        // Update graph if open
-        if(false == graph->isHidden())
-        {
-            graph->update_graph();
-        }
 
     }
 
@@ -1416,21 +879,6 @@ QString MainWindow::build_date_string(QDateTime time)
     return dia_semana + " " + QString::number(time.date().day()) + " " + mes + " " + QString::number(time.date().year());
 }
 
-void MainWindow::on_top_menu_6_clicked()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if(NULL != motrores_window)
-        {
-            delete motrores_window;
-        }
-        motrores_window = new motores(this);
-
-        connect(motrores_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        motrores_window->show();
-    }
-}
-
 void MainWindow::on_prof_pic_clicked()
 {
     synch_output_state();
@@ -1449,28 +897,6 @@ void MainWindow::on_prof_pic_clicked()
     }
 }
 
-void MainWindow::on_go_to_filtro_clicked()
-{
-//    if(mutex_detailed.tryLock(0))
-//    {
-        if(NULL != filt_window)
-        {
-            delete filt_window;
-        }
-        filt_window = new filtrowindow(display_parameters, GetParemeter(),
-                                       ui->label_dia->text(), ui->label_hora->text(), ui->label_title->text(),
-                                       rutinas,
-                                       this);
-        connect(filt_window, SIGNAL(forward_param_buttons_state(bool,parameters_t)),this, SLOT (update_buttons_from_filter(bool,parameters_t)));
-        connect(filt_window, SIGNAL(forward_prof_pic_clicked()),this, SLOT (on_prof_pic_clicked()));
-        connect(filt_window, SIGNAL(forward_bitacora_clicked()),this, SLOT (on_top_menu_2_clicked()));
-        connect(filt_window, SIGNAL(forward_control_clicked()),this, SLOT (on_top_menu_6_clicked()));
-
-//        connect(filt_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        filt_window->show();
-//    }
-
-}
 
 void MainWindow::on_label_title_clicked()
 {
