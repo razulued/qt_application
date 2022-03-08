@@ -9,8 +9,6 @@
 #include "settings.h"
 #include "custom_tooltip.h"
 #include "configuration.h"
-#include "bitacora.h"
-#include "rutinas_mantenimiento.h"
 
 #include "mod_1_carcamo.h"
 #include "mod_1_regulador.h"
@@ -27,7 +25,6 @@
 #include "contacto.h"
 #include "earm_update.h"
 #include "stop_button.h"
-#include "analisis_demo.h"
 namespace Ui {
 class MainWindow;
 }
@@ -61,8 +58,6 @@ public:
 
     static bool demo_mode_enabled;
 
-    rutinas_mantenimiento *rutinas;
-
     DataProccess *dataObj;
 
     static bool simulation;
@@ -78,14 +73,6 @@ public slots:
     void handleParametrosFisicosButton();
     void handleParametrosQuimicosButton();
     void handleDetailedView_1();
-    void handleDetailedView_2();
-    void handleDetailedView_3();
-    void handleDetailedView_4();
-    void handleDetailedView_5();
-    void handleDetailedView_6();
-    void handleDetailedView_7();
-    void handleDetailedView_8();
-    void handleDetailedView_9();
 
     void update_this();
 
@@ -125,9 +112,7 @@ private:
     /* Windows */
     detailedwindow *detail_window = NULL;
     settings    *settingswindow = NULL;
-    bitacora    *bitacorawindow = NULL;
     login_dialog *login_d = NULL;
-    analisis_demo *analysis_window = NULL;
 
     void HideButtons(bool show);
     parameter_state_t electric_state;

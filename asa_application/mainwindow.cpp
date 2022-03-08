@@ -83,13 +83,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     output_op_mode("1FFF", "0");
 
-
-    // Rutinas y DB
-    rutinas = new rutinas_mantenimiento(tr("rutinas.db"));
-    rutinas->number_of_activities_found = get_number_of_pending_activities;
-
-//    records *rec_ptr = new records("rutinas.db", 103, 6, this);
-
     //Get config
     validate_token(false);
 //    init_plat_config();
@@ -138,14 +131,6 @@ MainWindow::MainWindow(QWidget *parent) :
     //Connect slot to signal
     detail_window = NULL;
     connect(ui->modulo_1, SIGNAL (released()),this, SLOT (handleDetailedView_1()));
-    connect(ui->modulo_2, SIGNAL (released()),this, SLOT (handleDetailedView_2()));
-    connect(ui->modulo_3, SIGNAL (released()),this, SLOT (handleDetailedView_3()));
-    connect(ui->modulo_4, SIGNAL (released()),this, SLOT (handleDetailedView_4()));
-    connect(ui->modulo_5, SIGNAL (released()),this, SLOT (handleDetailedView_5()));
-    connect(ui->modulo_6, SIGNAL (released()),this, SLOT (handleDetailedView_6()));
-    connect(ui->modulo_7, SIGNAL (released()),this, SLOT (handleDetailedView_7()));
-    connect(ui->modulo_8, SIGNAL (released()),this, SLOT (handleDetailedView_8()));
-    connect(ui->modulo_9, SIGNAL (released()),this, SLOT (handleDetailedView_9()));
 
     QFont active_parameter_font("Typo Square Bold Demo",16,1);
     ui->active_param_label->setFont(active_parameter_font);
@@ -314,106 +299,7 @@ void MainWindow::handleDetailedView_1()
             qDebug() << "delete";
             delete detail_window;
         }
-        detail_window = new detailedwindow(ELEMENT_REGULADOR, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        detail_window->show();
-    }
-}
-void MainWindow::handleDetailedView_2()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_REACTOR, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        detail_window->show();
-    }
-}
-void MainWindow::handleDetailedView_3()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_CLARIFICADOR, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        detail_window->show();
-    }
-}
-void MainWindow::handleDetailedView_4()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_CLORADOR, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        detail_window->show();
-    }
-}
-void MainWindow::handleDetailedView_5()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_DIGESTOR, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        detail_window->show();
-    }
-}
-void MainWindow::handleDetailedView_6()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_DESHIDRATADOR, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        detail_window->show();
-    }
-}
-
-void MainWindow::handleDetailedView_7()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_AFLUENTE, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        detail_window->show();
-    }
-}
-
-void MainWindow::handleDetailedView_8()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_EFLUENTE, rutinas, this);
-        connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        detail_window->show();
-    }
-}
-
-void MainWindow::handleDetailedView_9()
-{
-    if(mutex_detailed.tryLock(0))
-    {
-        if (detail_window != NULL) {
-            delete detail_window;
-        }
-        detail_window = new detailedwindow(ELEMENT_CARCAMO, rutinas, this);
+        detail_window = new detailedwindow(ELEMENT_REGULADOR, this);
         connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
         detail_window->show();
     }
@@ -611,19 +497,7 @@ void MainWindow::on_top_menu_5_clicked()
 
 void MainWindow::on_top_menu_2_clicked()
 {
-    if(mutex_detailed.tryLock(0))
-    {
-        if(bitacorawindow !=NULL)
-        {
-            delete bitacorawindow;
-        }
-        bitacorawindow = new bitacora(rutinas, 2, this);
-        connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        connect(this, SIGNAL(send_num_activities(uint)), bitacorawindow, SLOT(update_act_icon(uint)));
-        bitacorawindow->show();
-//        ui->loading_icon->hide();
 
-    }
 }
 
 
@@ -680,12 +554,6 @@ void MainWindow::update_tooltips(void)
 
 void MainWindow::new_spi_data()
 {
-    /* Update data in detailed window (if open) */
-    if((NULL != analysis_window) && (analysis_window->isVisible()))
-    {
-        analysis_window->update_data();
-    }
-
     if((NULL != detail_window) && detail_window->isActiveWindow())
     {
         detail_window->update_params();
@@ -750,21 +618,6 @@ void MainWindow::update_system_time()
     if(temp_time.toTime_t() != time.toTime_t())
     {
         temp_time = time;
-        //Update bitacora and rutinas
-        /* Check rutinas (new events have occurred?) */
-        if(NULL != rutinas)
-        {
-
-            rutinas->set_time(time);
-            rutinas->check_rutinas();
-            update_activity_alarm();
-        }
-
-        /* Check update values in bitacora window (if open) */
-        if((NULL != bitacorawindow) && bitacorawindow->isActiveWindow())
-        {
-            bitacorawindow->update_table();
-        }
 
         //Update text on screen
 //        QString display_time = QString::number(time.date().year())+"/"+QString::number(time.date().month())+"/"+QString::number(time.date().day())+" "+time.time().toString();
@@ -927,17 +780,7 @@ void MainWindow::check_title_click()
 
 void MainWindow::on_top_menu_1_clicked()
 {
-    if(mutex_detailed.tryLock(0))
-    {
-        if(bitacorawindow !=NULL)
-        {
-            delete bitacorawindow;
-        }
-        bitacorawindow = new bitacora(rutinas, 0, this);
-        connect(bitacorawindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
-        connect(this, SIGNAL(send_num_activities(uint)), bitacorawindow, SLOT(update_act_icon(uint)));
-        bitacorawindow->show();
-    }
+
 }
 
 void MainWindow::update_activity_alarm(void)
@@ -972,16 +815,5 @@ void MainWindow::update_activity_alarm(void)
 
 void MainWindow::on_top_menu_3_clicked()
 {
-//    if(mutex_detailed.tryLock(0))
-//    {
-//        if(analysis_window !=NULL)
-//        {
-//            delete analysis_window;
-//        }
-//        analysis_window = new analisis_demo(this);
-//        connect(analysis_window, SIGNAL(accepted()), this, SLOT(window_closed()));
-//        connect(this,SIGNAL(send_date_hour(QDateTime)),analysis_window,SLOT(update_datetime(QDateTime)));
-//        send_date_hour(time);
-//        analysis_window->show();
-//    }
+
 }

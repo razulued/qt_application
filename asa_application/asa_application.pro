@@ -26,8 +26,6 @@ SOURCES += main.cpp\
     custom_tooltip.cpp \
     settings.cpp \
     configuration.cpp \
-    bitacora.cpp \
-    rutinas_mantenimiento.cpp \
     mod_1_carcamo.cpp \
     mod_2_reactor.cpp \
     mod_3_clarificador.cpp \
@@ -41,7 +39,6 @@ SOURCES += main.cpp\
     login_dialog.cpp \
     token_auth.cpp \
     asa_conf_string.cpp \
-    graphwindow.cpp \
     statistics.cpp \
     arrowkeys.cpp \
     simulation_input.cpp \
@@ -53,17 +50,11 @@ SOURCES += main.cpp\
     records.cpp \
     calendario_filtro.cpp \
     record_chart.cpp \
-    sql_cmd_manager.cpp \
     chart.cpp \
     screen_saver.cpp \
     build_settings.cpp \
     mod_1_regulador.cpp \
-    analisis_demo.cpp \
-    donut_chart.cpp \
-    analisis_graph.cpp \
-    curve_chart.cpp \
     date_widget.cpp \
-    analisys_full_table.cpp \
     pid.cpp
 
 HEADERS  += mainwindow.h \
@@ -77,8 +68,6 @@ HEADERS  += mainwindow.h \
     custom_tooltip.h \
     settings.h \
     configuration.h \
-    bitacora.h \
-    rutinas_mantenimiento.h \
     mod_1_carcamo.h \
     mod_2_reactor.h \
     mod_3_clarificador.h \
@@ -92,7 +81,6 @@ HEADERS  += mainwindow.h \
     login_dialog.h \
     token_auth.h \
     asa_conf_string.h \
-    graphwindow.h \
     statistics.h \
     arrowkeys.h \
     simulation_input.h \
@@ -105,24 +93,16 @@ HEADERS  += mainwindow.h \
     records.h \
     calendario_filtro.h \
     record_chart.h \
-    sql_cmd_manager.h \
     chart.h \
     screen_saver.h \
     mod_1_regulador.h \
-    analisis_demo.h \
-    donut_chart.h \
-    analisis_graph.h \
-    curve_chart.h \
     date_widget.h \
-    analisys_full_table.h \
     pid.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \
     settings.ui \
-    bitacora.ui \
     login_dialog.ui \
-    graphwindow.ui \
     arrowkeys.ui \
     simulation_input.ui \
     change_text.ui \
@@ -134,12 +114,7 @@ FORMS    += mainwindow.ui \
     calendario_filtro.ui \
     record_chart.ui \
     screen_saver.ui \
-    analisis_demo.ui \
-    donut_chart.ui \
-    analisis_graph.ui \
-    curve_chart.ui \
-    date_widget.ui \
-    analisys_full_table.ui
+    date_widget.ui
 
 RESOURCES += \
     fonts.qrc \

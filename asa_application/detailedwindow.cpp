@@ -63,7 +63,7 @@ detailed_window_elements_t *detailed_elements[]=
     &details_11,
 };
 
-detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimiento *rutina, QWidget *parent) :
+detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::detailedwindow)
 {
@@ -108,9 +108,6 @@ detailedwindow::detailedwindow(detailed_elements_t element, rutinas_mantenimient
     }
 
     synch_output_state();
-
-
-    rutinas_ptr = rutina;
 
     this->setObjectName("DetailedWindow");
     this->setStyleSheet("detailedwindow#DetailedWindow{"
@@ -548,19 +545,6 @@ void detailedwindow::item_selected(QTableWidgetItem* item)
 
     ui->tableWidget_2->setRowCount(0);
 
-    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-    {
-        if(rutinas_ptr->id(i) == selected_id)
-        {
-            ui->explicacion->setText(rutinas_ptr->explicacion(i));
-            // Si la rutina pertenece a este elemento agregar a la tabla
-            ui->tableWidget_2->insertRow(0);
-            ui->tableWidget_2->setItem(0,0, new QTableWidgetItem(QString::number(rutinas_ptr->id(i))));
-            ui->tableWidget_2->setItem(0,1, new QTableWidgetItem(rutinas_ptr->nombre(i)));
-            break;
-        }
-    }
-
     ui->tableWidget_2->resizeRowsToContents();
     ui->tableWidget_2->setColumnWidth(0, 40);
     ui->tableWidget_2->setWordWrap(true);
@@ -573,132 +557,11 @@ void detailedwindow::item_selected(QTableWidgetItem* item)
 
 void detailedwindow::on_key_Reschedule_clicked()
 {
-    uint i;
-    uint periodo;
-//    if(false == ui->key_frame->isVisible())
-//    {
-        /* Show keyboard and text edit */
-//        ui->textEdit->setVisible(true);
-//        ui->key_frame->setVisible(true);
-//        ui->frame->setGeometry(ui->frame->pos().x(),70,ui->frame->width(),ui->frame->height());
 
-//        ui->textEdit->clear();
-
-//        for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-//        {
-//            if(rutinas_ptr->id(i) == selected_id)
-//            {
-//                ui->textEdit->setText(rutinas_ptr->texto_ayuda(i));
-//                break;
-//            }
-//        }
-//    }
-
-    if(NULL != calendar_window)
-    {
-        delete calendar_window;
-    }
-    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-    {
-        if(rutinas_ptr->id(i) == selected_id)
-        {
-            periodo = rutinas_ptr->periodo(i);
-            break;
-        }
-    }
-    qDebug() << "a ver wero";
-    calendar_window = new calendar(MainWindow::time, periodo, this);
-    connect(calendar_window, SIGNAL(send_calendar_date(uint,QDate, QDateTime)), this, SLOT(receive_date(uint,QDate, QDateTime)));
-
-
-    has_activity = true;
 }
 
 void detailedwindow::on_key_OK_clicked()
 {
-    uint i = 0;
-    QStringList list_records;
-    records *rec_ptr;
-
-    if(0 != selected_id)
-    {
-        qDebug() << "Button clicked ID: " << selected_id;
-        for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-        {
-            qDebug() << "RUTINA: " << rutinas_ptr->id(i);
-            if(rutinas_ptr->id(i) == selected_id)
-            {
-                qDebug() << "ID match at: " << i;
-
-                if(reschedule_time > 0)
-                {
-                    rutinas_ptr->reschedule_rutina(i, reschedule_time);
-                    //update database
-                    list_records.append("2"); /* #2 is reserved for reschedule */
-                    rec_ptr = new records(tr("rutinas.db"),
-                                          list_records,
-                                          selected_id,
-                                          rutinas_ptr->get_current_time().toTime_t(),
-                                          reschedule_time,
-                                          this);
-                }
-                else
-                {
-                    //Parse to open record window.
-                    list_records = rutinas_ptr->texto_ayuda(i).split(',');
-                    // remove #2 from the list, it would cause to always report it.
-                    uint items = 0;
-                    for(items = 0; items < list_records.length(); items++)
-                    {
-                        if("2" == list_records.at(items))
-                        {
-                            list_records.removeAt(items);
-                            break;
-                        }
-                    }
-//                    qDebug() << "SPLIT: " << list_records << "len: " << list_records.length();
-                    if(list_records.length() > 0)
-                    {
-                        if(list_records.at(0) != "")
-                        {
-                            if(list_records.last() == "")
-                            {
-                                list_records.removeLast();
-                            }
-
-                            rec_ptr = new records(tr("rutinas.db"),
-                                                  list_records,
-                                                  selected_id,
-                                                  rutinas_ptr->get_current_time().toTime_t(),
-                                                  reschedule_time,
-                                                  this);
-
-                            // Wait to be completed? release lock
-                            connect(rec_ptr,SIGNAL(all_questions_ok(uint)),this,SLOT(activity_is_completed(uint)));
-
-                        }
-                        else
-                        {
-                            rutinas_ptr->complete_rutina(i);
-                        }
-                    }
-                    else
-                    {
-                        rutinas_ptr->complete_rutina(i);
-                    }
-                }
-                reschedule_time = 0;
-                break;
-            }
-        }
-
-    }
-
-    ui->textEdit->setVisible(false);
-    ui->key_frame->setVisible(false);
-    ui->frame->setGeometry(ui->frame->pos().x(),150,ui->frame->width(),ui->frame->height());
-    ui->tabWidget->setCurrentIndex(1);
-    has_activity = true;
 
 }
 
@@ -902,79 +765,6 @@ void detailedwindow::tab_2_init()
 
 
     connect(ui->tableWidget, SIGNAL(itemPressed(QTableWidgetItem*)), this, SLOT(item_selected(QTableWidgetItem*)));
-
-    switch(what_element)
-    {
-    case ELEMENT_REGULADOR:
-        origentype = ORIGEN_REGULADOR;
-        break;
-    case ELEMENT_REACTOR:
-        origentype = ORIGEN_REACTOR;
-        break;
-    case ELEMENT_CLARIFICADOR:
-        origentype = ORIGEN_CLARIFICADOR;
-        break;
-    case ELEMENT_CLORADOR:
-        origentype = ORIGEN_CLORADOR;
-        break;
-    case ELEMENT_DIGESTOR:
-        origentype = ORIGEN_DIGESTOR;
-        break;
-    case ELEMENT_DESHIDRATADOR:
-        origentype = ORIGEN_SECADO;
-        break;
-    case ELEMENT_AFLUENTE:
-        origentype = ORIGEN_AFLUENTE;
-        break;
-    case ELEMENT_EFLUENTE:
-        origentype = ORIGEN_EFLUENTE;
-        break;
-    case ELEMENT_FILTRO:
-        origentype = ORIGEN_FILTRO;
-        break;
-    case ELEMENT_FILTRO_BOMBA:
-        origentype = ORIGEN_FILTRO_BOMBA;
-        break;
-    case ELEMENT_CARCAMO:
-        origentype = ORIGEN_CARCAMO;
-        break;
-    default:
-        origentype = ORIGEN_GENERAL;
-        break;
-    }
-
-    uint fila = 0;
-    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-    {
-        if((origentype == rutinas_ptr->origen(i)) && (0 == rutinas_ptr->ready(i)))
-        {
-            fila++;
-        }
-    }
-
-
-    if(fila > 0)
-    {
-        fila = 0;
-        for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-        {
-            if((origentype == rutinas_ptr->origen(i)) && (0 == rutinas_ptr->ready(i)))
-            {
-                // Si la rutina pertenece a este elemento agregar a la tabla
-                ui->tableWidget->insertRow(fila);
-
-                ui->tableWidget->setItem(fila,0, new QTableWidgetItem(QString::number(rutinas_ptr->id(i))));
-
-                ui->tableWidget->setItem(fila,1, new QTableWidgetItem(rutinas_ptr->nombre(i)));
-
-                fila++;
-            }
-        }
-
-        ui->tableWidget->setColumnWidth(0, 40);
-        ui->tableWidget_2->setColumnWidth(0, 40);
-    }
-
 }
 
 void detailedwindow::tab_3_init()
@@ -1264,56 +1054,6 @@ void detailedwindow::tab_1_update()
 
 void detailedwindow::tab_2_update()
 {
-    uint i = 0, row = 0;
-    bool item_found = false;
-
-    //Add new elements to the table
-    for(i = 0; i < rutinas_ptr->num_of_rutinas; i++)
-    {
-        if((origentype == rutinas_ptr->origen(i)) && (0 == rutinas_ptr->ready(i)))
-        {
-            for(row = 0; row < ui->tableWidget->rowCount() ; row++)
-            {
-                if(ui->tableWidget->item(row,0)->text().toInt() == rutinas_ptr->id(i))
-                {
-                    item_found = true;
-                    break;
-                }
-            }
-            if(!item_found)
-            {
-                add_row_rutina(ui->tableWidget->rowCount(), i, ui->tableWidget);
-            }
-        }
-        item_found = false;
-    }
-
-
-    // Remove elelents
-    for(i = 0; i < rutinas_ptr->num_of_rutinas; i++)
-    {
-        if((origentype == rutinas_ptr->origen(i)) && (1 == rutinas_ptr->ready(i)))
-        {
-            for(row = 0; row < ui->tableWidget->rowCount() ; row++)
-            {
-                if(ui->tableWidget->item(row,0)->text().toInt() == rutinas_ptr->id(i))
-                {
-                    item_found = true;
-                    break;
-                }
-            }
-
-            if(item_found)
-            {
-                delete_row(row, ui->tableWidget);
-            }
-        }
-        item_found = false;
-    }
-
-    ui->tableWidget->resizeRowsToContents();
-    ui->tableWidget->setColumnWidth(0, 40);
-    ui->tableWidget->setWordWrap(true);
 
 }
 
@@ -1411,11 +1151,7 @@ void detailedwindow::tab_5_update()
 
 void detailedwindow::add_row_rutina(uint row, uint rutina, QTableWidget *table)
 {
-    table->insertRow(row);
 
-    table->setItem(row,0, new QTableWidgetItem(QString::number(rutinas_ptr->id(rutina))));
-
-    table->setItem(row,1, new QTableWidgetItem(rutinas_ptr->nombre(rutina)));
 }
 
 void detailedwindow::delete_row(uint row, QTableWidget *table)
@@ -1425,36 +1161,6 @@ void detailedwindow::delete_row(uint row, QTableWidget *table)
 
 void detailedwindow::on_ayuda_btn_clicked()
 {
-//    uint i = 0;
-//    uint record_idx = 0;
-//    QString record_ID;
-//    QStringList list_records;
-//    records *rec_ptr;
-    /* Show keyboard and text edit */
-//    ui->textEdit->setVisible(true);
-//    ui->key_frame->setVisible(true);
-//    ui->frame->setGeometry(ui->frame->pos().x(),70,ui->frame->width(),ui->frame->height());
-
-//    ui->textEdit->clear();
-
-//    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-//    {
-//        if(rutinas_ptr->id(i) == selected_id)
-//        {
-//            //Parse to open record window.
-//            list_records = rutinas_ptr->texto_ayuda(i).split(',');
-//            ui->textEdit->setText(rutinas_ptr->texto_ayuda(i));
-//            qDebug() << "SPLIT: " << list_records;
-//            for(record_idx = 0; record_idx < list_records.length(); record_idx++)
-//            {
-//                record_ID = list_records.at(record_idx);
-//                rec_ptr = new records("rutinas.db", record_ID.toInt(), this);
-//            }
-
-//            break;
-//        }
-//    }
-    has_activity = true;
 
 }
 
@@ -1940,15 +1646,7 @@ bool detailedwindow::stop_op_mode()
 
 void detailedwindow::activity_is_completed(uint id)
 {
-    uint i;
-    for(i = 0; i < rutinas_ptr->num_of_rutinas ; i++)
-    {
-        if(rutinas_ptr->id(i) == id)
-        {
-            rutinas_ptr->complete_rutina(i);
-            break;
-        }
-    }
+
 }
 
 void detailedwindow::on_pushButton_modulo_clicked()

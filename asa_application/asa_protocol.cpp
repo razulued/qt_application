@@ -246,19 +246,6 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
     0x1106,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
     0x1107,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
 
-/*+++++++++++++++++++++ Commands Database ++++++++++++++++++++++*/
-    0x1800,   ASA_TYPE_INTEGER,   Query_ID_last_activity,   conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1801,   ASA_TYPE_INTEGER,   Query_ID_last_record,     conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1802,   ASA_TYPE_INTEGER,   Query_N_record,           conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1803,   ASA_TYPE_INTEGER,   Query_last_log,           conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1880,   ASA_TYPE_INTEGER,   Store_activity,           conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1881,   ASA_TYPE_INTEGER,   Store_record,             conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1882,   ASA_TYPE_INTEGER,   Edit_activity,            conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1883,   ASA_TYPE_INTEGER,   Edit_record,              conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1884,   ASA_TYPE_INTEGER,   Delete_activity,          conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-    0x1885,   ASA_TYPE_INTEGER,   Delete_record,            conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
-
-    0x1FFF,   ASA_TYPE_INTEGER,   NULL,                     conv_none_or_passthru,          conv_none_or_passthru,          0,    "",
 
 
 /*+++++++++++++++++++++ PTAR ++++++++++++++++++++++*/

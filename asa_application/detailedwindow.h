@@ -4,7 +4,6 @@
 #include <QDialog>
 #include <QtCore>
 #include "configuration.h"
-#include "rutinas_mantenimiento.h"
 #include <QTableWidgetItem>
 #include "login_dialog.h"
 #include <QCheckBox>
@@ -47,7 +46,7 @@ class detailedwindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit detailedwindow(detailed_elements_t element, rutinas_mantenimiento *rutina, QWidget *parent = 0);
+    explicit detailedwindow(detailed_elements_t element, QWidget *parent = 0);
     ~detailedwindow();
     void update_params();
     static bool user_lock;
@@ -166,7 +165,6 @@ private:
     Ui::detailedwindow *ui;
     detailed_elements_t what_element;
     uint selected_id;
-    rutinas_mantenimiento *rutinas_ptr;
 
     uint reschedule_time;
 
