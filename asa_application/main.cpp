@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
     MainWindow w;
 
     w.setObjectName("MyMainWindow");
-//    w.setStyleSheet("MainWindow#MyMainWindow{background-image:url(:/images/images/main_window_background.jpg)}");
-    w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
+    w.setStyleSheet("MainWindow#MyMainWindow{background-image:url(:/images/images/P FF.png)}");
+//    w.setStyleSheet("MainWindow#MyMainWindow{background-color:black}");
     w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint);
 
     //Qt::WindowStaysOnTopHint

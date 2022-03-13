@@ -101,7 +101,7 @@ void custom_tooltip::init_data()
 
         if(true == getParamActiveShow(param_id))
         {
-            label = new QListWidgetItem(NameList[i] + ": " + getParamValue_and_units(param_id));
+            label = new QListWidgetItem(getParamName(param_id) + ": " + getParamValue_and_units(param_id));
 //            label->setTextFormat(Qt::RichText);
 
             list_widget->addItem(label);
@@ -150,7 +150,9 @@ void custom_tooltip::update_data()
 
         if(true == getParamActiveShow(param_id))
         {
-            label = new QListWidgetItem(NameList[i] + ": " + getParamValue_and_units(param_id));
+//            label = new QListWidgetItem(NameList[i] + ": " + getParamValue_and_units(param_id));
+            label = new QListWidgetItem(getParamName(param_id) + ": " + getParamValue_and_units(param_id));
+
 //            label->setTextFormat(Qt::RichText);
 
             list_widget->addItem(label);
@@ -213,7 +215,9 @@ void custom_tooltip::force_show()
     {
         param_id = DataList[i];
 
-        list_widget->addItem(NameList[i]  + ": " + getParamValue_and_units(param_id));
+//        list_widget->addItem(NameList[i]  + ": " + getParamValue_and_units(param_id));
+        list_widget->addItem(getParamName(param_id)  + ": " + getParamValue_and_units(param_id));
+
 //        list_widget->item(i)->setFlags(Qt::ItemIsEnabled);
         items++;
     }

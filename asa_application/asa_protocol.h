@@ -3,7 +3,7 @@
 #include <QtCore>
 #include <QVariant>
 #include <QString>
-
+#include "configuration.h"
 typedef enum
 {
     ASA_TYPE_NONE,
@@ -15,11 +15,12 @@ typedef enum
 
 void store_value_by_ID(uint id, QString str_value);
 QString get_value_by_ID(uint id);
+QString get_name_by_ID(uint id);
 QString get_value_by_ID_base_units(uint id);
 QString get_value_units(uint id);
 QString inverse_value_by_ID_base_units(uint id, float value);
 QString units_scale(uint id, float value);
-
+float get_max_value_by_ID(uint id);
 QString get_units_longitud(void);
 QString get_units_presion(void);
 QString get_units_caudal(void);
@@ -40,5 +41,6 @@ void ASA_protocol_init();
 
 QString get_RAW_value_by_ID(uint id);
 
-
+configuration_id ASA_get_module_sensors(QString module, QString type);
+void ASA_load_active_parameters();
 #endif // ASA_PROTOCOL_H

@@ -233,6 +233,7 @@ public:
 
         horizontalScrollBar = new QScrollBar(tab);
         horizontalScrollBar->setObjectName(QStringLiteral("horizontalScrollBar"));
+        horizontalScrollBar->setMaximum(2500);
         horizontalScrollBar->setOrientation(Qt::Horizontal);
 
         verticalLayout->addWidget(horizontalScrollBar);

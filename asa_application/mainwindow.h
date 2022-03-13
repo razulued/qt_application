@@ -46,9 +46,9 @@ public:
     ~MainWindow();
     void InitTooltips();
 
-    static configuration_id conf_car_elect;
-    static configuration_id conf_car_fisic;
-    static configuration_id conf_car_quimic;
+    static configuration_id conf_press_elect;
+    static configuration_id conf_press_fisic;
+    static configuration_id conf_press_quimic;
 
     static configuration_id car_outputs;
 
@@ -65,14 +65,13 @@ public:
 
 
     static uint num_of_pending_act;
-    void update_activity_alarm(void);
 
 public slots:
     void handleMenuButton();
     void handleParametrosElectricosButton();
     void handleParametrosFisicosButton();
     void handleParametrosQuimicosButton();
-    void handleDetailedView_1();
+    void handleDetailedView_9();
 
     void update_this();
 
@@ -80,10 +79,8 @@ private slots:
     void on_asa_logo_clicked();
     void dataTimerSlot();
 
-    void on_top_menu_5_clicked();
 
 
-    void on_top_menu_2_clicked();
 
     void new_spi_data();
 
@@ -98,9 +95,7 @@ private slots:
 
     void window_closed();
     void update_demo_mode();
-    void on_top_menu_1_clicked();
 
-    void on_top_menu_3_clicked();
 
 private:
     QTimer dataTimer;
@@ -130,34 +125,6 @@ private:
     void update_tooltips(void);
 
     void trace_lines(QWidget *tooltip, QPushButton *module, QPainter &painter);
-    mod_1_carcamo *mod_9;
-    mod_1_regulador *mod_1;
-    mod_2_reactor *mod_2;
-    mod_3_clarificador *mod_3;
-    mod_4_clorador *mod_4;
-    mod_5_digestor *mod_5;
-    mod_6_lechos *mod_6;
-    mod_flechas *mod_afluente;
-    mod_flechas *mod_efluente;
-    mod_flechas *mod_sludge_a;
-    mod_flechas *mod_sludge_b;
-    mod_flechas *mod_water_flown_a;
-    mod_flechas *mod_sludge_return;
-
-    mod_flechas *mod_blower_1;
-    mod_flechas *mod_blower_2;
-    mod_flechas *mod_blower_3;
-    mod_flechas *mod_blower_4;
-
-    mod_flechas *mod_bomba_1;
-    mod_flechas *mod_bomba_2;
-    mod_flechas *mod_bomba_3;
-    mod_flechas *mod_bomba_4;
-
-    mod_flechas *mod_bomba_reg_1;
-    mod_flechas *mod_bomba_reg_2;
-    mod_flechas *mod_bomba_reg_3;
-    mod_flechas *mod_bomba_reg_4;
 
     void update_system_time();
 
@@ -178,6 +145,7 @@ private:
 
     stop_button *stop_button_window = NULL;
 
+    QRect level_label_size;
 protected:
     void paintEvent(QPaintEvent *);
 

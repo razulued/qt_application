@@ -37,21 +37,19 @@ QList<int> create_list()
     return list;
 }
 
-detailed_window_elements_t details_11=
+detailed_window_elements_t details=
 {
-    QObject::tr("Carcamo"),
+    QObject::tr("Presurizador"),
 
-    ":/images/images/detail_regulador.png",
+    ":/images/images/HIDROM.png",
 
-    QObject::tr("Dado el nivel de arrastre de la línea de drenaje es necesario "
-    "instalar un cárcamo de bombeo que permita elevar las aguas residuales desde "
-    "el nivel del drenaje hasta el tanque regulador."),
+    QObject::tr("Descripción presurizador"),
 
-    &MainWindow::conf_car_elect,
+    &MainWindow::conf_press_elect,
 
-    &MainWindow::conf_car_fisic,
+    &MainWindow::conf_press_fisic,
 
-    &MainWindow::conf_car_quimic,
+    &MainWindow::conf_press_quimic,
 
     &MainWindow::car_outputs,
 };
@@ -60,7 +58,7 @@ detailed_window_elements_t details_11=
 
 detailed_window_elements_t *detailed_elements[]=
 {
-    &details_11,
+    &details,
 };
 
 detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
@@ -69,6 +67,8 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->label_paro_general->hide();
+    ui->pushButton->hide();
     what_element = element;
 
     init_completed = false;
@@ -138,17 +138,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
     QFont font_2("Typo Square Bold Italic Demo",14,1);
 
     QString nombres[] = {
-        tr("Regulador"),
-        tr("Reactor Biológico"),
-        tr("Clarificador"),
-        tr("Clorador"),
-        tr("Digestor de lodos"),
-        tr("Deshidratador"),
-        tr("Afluente"),
-        tr("Efluente"),
-        tr("Filtro"),
-        tr("Bomba Alimentación"),
-        tr("Cárcamo"),
+        tr("Presurizador")
     };
 
     // Nombre Del elemento
@@ -210,7 +200,7 @@ detailedwindow::detailedwindow(detailed_elements_t element, QWidget *parent) :
         output_token_transfer(false);
     }
 
-    mode_4600 = load_parameter("mode4600.bin");
+//    mode_4600 = load_parameter("mode4600.bin");
     read_op_mode();
 
 
@@ -607,7 +597,9 @@ void detailedwindow::tab_1_init(uint selected_type)
             param_id = detailed_elements[what_element]->list_elect->ids.at(i);
     //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
             ui->tableWidget_tab_1->insertRow(fila);
-            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_elect->names.at(i) + ":"));
+//            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_elect->names.at(i) + ":"));
+            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(getParamName(param_id) + ":"));
+
             ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
@@ -632,7 +624,8 @@ void detailedwindow::tab_1_init(uint selected_type)
             param_id = detailed_elements[what_element]->list_phys->ids.at(i);
     //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
             ui->tableWidget_tab_1->insertRow(fila);
-            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_phys->names.at(i) + ":"));
+//            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_phys->names.at(i) + ":"));
+            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(getParamName(param_id) + ":"));
             ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
@@ -657,7 +650,8 @@ void detailedwindow::tab_1_init(uint selected_type)
             param_id = detailed_elements[what_element]->list_chem->ids.at(i);
     //        qDebug() << getParamName(param_id) <<" "<< param_id << " " << getParamValue(param_id);
             ui->tableWidget_tab_1->insertRow(fila);
-            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_chem->names.at(i) + ":"));
+//            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(detailed_elements[what_element]->list_chem->names.at(i) + ":"));
+            ui->tableWidget_tab_1->setItem(fila,0, new QTableWidgetItem(getParamName(param_id) + ":"));
             ui->tableWidget_tab_1->setItem(fila,1, new QTableWidgetItem(getParamValue_and_units(param_id)));
             fila++;
         }
@@ -772,37 +766,7 @@ void detailedwindow::tab_3_init()
     QFont font("Typo Square Ligth Demo",10,1);
     QString description[] = {
         /*Regulador*/
-        tr("Amortigua los picos de flujo y carga, de manera que la planta de tratamiento reciba de manera constante un flujo "
-            "igual al de diseño y su eficiencia no se vea afectada. Tiene volumen suficiente para poder almacenar el flujo"
-            "generado durante las horas pico"),
-        /*Reactor*/
-        tr("Tratamiento secundario donde se elimina la materia orgánica por procesos de oxidación biológica; es decir, poniendo "
-            "en contacto las aguas residuales con una biomasa de microorganismos que la depuran."),
-        /*Clarificador*/
-        tr("Recibe el afluente del reactor biológico, conformado por agua y lodo biológico. Los lodos biológicos y los sólidos "
-            "suspendidos se sedimentan, separandose del agua."),
-        /*Clorador*/
-        tr("Proceso de desinfección de hipoclorito de sodio/calcio líquido/sólido. Se eliminan los microorganismos presentes."),
-        /*Digestor de lodos*/
-        tr("Recibe los lodos biológicos generados en exeso y separados en el clarificador secundario; estos se oxidan biológicamente"
-            " hasta obtener una reducción de 40 a 60% en los sólidos volátiles presentes, logrando así una estabilización de lodos."),
-        /*Deshidratador*/
-        tr("Lechos de secado, filtro horizontal de flujo descendiente empacado con gravas y arena. Sobre este se vierte una cantidad de lodo y "
-            "se permite su infiltración, dejando secar los lodos"),
-        /*Afluente*/
-        tr("Agua residual sanitaria"),
-        /*Efluente*/
-        tr("Agua tratada"),
-        /*Filtro*/
-        tr("Equipo de filtración terciaria. Utilizando una tela especializada como medio fijo filtrante logra la remoción "
-            "adicional de sólidos así como el color ámbar característico de las aguas tratadas. "
-            "Dadas las características de la tela filtrante, no se requiere la acumulación de material ni la formación de "
-            "una manta filtrante a fin de lograr el pulimento deseado."),
-        /* Bomba de alimentacion */
-        tr("Agregar descripción"),
-        tr("Dado el nivel de arrastre de la línea de drenaje es necesario "
-        "instalar un cárcamo de bombeo que permita elevar las aguas residuales desde "
-        "el nivel del drenaje hasta el tanque regulador."),
+        tr("Descripción presurizador.")
     };
 
     ui->description_label->setFont(font);
@@ -1307,10 +1271,10 @@ void detailedwindow::check_lock()
 
 void detailedwindow::save_stop_status(uint mode)
 {
-    if((ELEMENT_REACTOR == what_element))
-    {
-        write_parameter("mot_stat/m4600_stop.bin", mode);
-    }
+//    if((ELEMENT_REACTOR == what_element))
+//    {
+//        write_parameter("mot_stat/m4600_stop.bin", mode);
+//    }
 }
 
 void detailedwindow::set_op_mode(uint mode)
@@ -1325,14 +1289,14 @@ void detailedwindow::set_op_mode(uint mode)
     else if(CONTROL_AUTOMATICO == mode)
     {
         // AUTOMATICO
-        if((2 == mode_4600) && (ELEMENT_REACTOR == what_element))
-        {
-            str = "02";
-        }
-        else
-        {
-            str = "01";
-        }
+//        if((2 == mode_4600) && (ELEMENT_REACTOR == what_element))
+//        {
+//            str = "02";
+//        }
+//        else
+//        {
+//        }
+        str = "01";
 
         // Make sure STOP button is not active
         ui->pushButton_modulo->setChecked(false);
@@ -1354,23 +1318,6 @@ void detailedwindow::set_op_mode(uint mode)
 
     switch(what_element)
     {
-    case ELEMENT_REGULADOR:
-        output_op_mode("3E00", str);/* Antes 3600 */
-        break;
-    case ELEMENT_REACTOR:
-        output_op_mode("4600", str);
-        break;
-    case ELEMENT_CLARIFICADOR:
-        output_op_mode("5600", str);
-        break;
-    case ELEMENT_CLORADOR:
-        break;
-    case ELEMENT_FILTRO:
-        output_op_mode("9600", str);
-        break;
-    case ELEMENT_FILTRO_BOMBA:
-        output_op_mode("9700", str);
-        break;
     case ELEMENT_CARCAMO:
         output_op_mode("3600", str);
         break;
@@ -1384,23 +1331,6 @@ void detailedwindow::read_op_mode()
     QString str;
     switch(what_element)
     {
-    case ELEMENT_REGULADOR:
-        str = getParamValue(0x3E00);  /* Antes 3600*/
-        break;
-    case ELEMENT_REACTOR:
-        str = getParamValue(0x4600);
-        break;
-    case ELEMENT_CLARIFICADOR:
-        str = getParamValue(0x5600);
-        break;
-    case ELEMENT_CLORADOR:
-        break;
-    case ELEMENT_FILTRO:
-        str = getParamValue(0x9600);
-        break;
-    case ELEMENT_FILTRO_BOMBA:
-        str = getParamValue(0x9700);
-        break;
     case ELEMENT_CARCAMO:
         str = getParamValue(0x3600);
         break;
@@ -1612,23 +1542,6 @@ bool detailedwindow::stop_op_mode()
     QString str;
     switch(what_element)
     {
-    case ELEMENT_REGULADOR:
-        str = get_id_state("3E00"); /* Antes 3600 */
-        break;
-    case ELEMENT_REACTOR:
-        str = get_id_state("4600");
-        break;
-    case ELEMENT_CLARIFICADOR:
-        str = get_id_state("5600");
-        break;
-    case ELEMENT_CLORADOR:
-        break;
-    case ELEMENT_FILTRO:
-        str = get_id_state("9600");
-        break;
-    case ELEMENT_FILTRO_BOMBA:
-        str = get_id_state("9700");
-        break;
     case ELEMENT_CARCAMO:
         str = get_id_state("3600");
         break;

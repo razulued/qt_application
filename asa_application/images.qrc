@@ -28,6 +28,9 @@
         <file>images/retorno_2.png</file>
         <file>images/retorno_3.png</file>
         <file>images/retorno_4.png</file>
+        <file>images/P FF.png</file>
+        <file>images/watertile.png</file>
+        <file>images/HIDROM.png</file>
     </qresource>
     <qresource prefix="/flechas">
         <file>images/0_Flechas_de_flujo/none.png</file>

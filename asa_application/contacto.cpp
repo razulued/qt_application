@@ -9,7 +9,7 @@ contacto::contacto(QWidget *parent) :
     ui(new Ui::contacto)
 {
     ui->setupUi(this);
-
+    ui->top_menu_5->hide();
     this->setObjectName("Calendar");
     this->setStyleSheet("#Calendar{background-color: black;"
                         "border: none;}");

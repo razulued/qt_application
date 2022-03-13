@@ -259,7 +259,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 297, 187));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 299, 189));
         scrollArea->setWidget(scrollAreaWidgetContents);
         tabWidget->addTab(tab_4, QString());
         tab_5 = new QWidget();
@@ -1349,6 +1349,7 @@ public:
         pushButton->setChecked(false);
         label_paro_general = new QLabel(detailedwindow);
         label_paro_general->setObjectName(QStringLiteral("label_paro_general"));
+        label_paro_general->setEnabled(true);
         label_paro_general->setGeometry(QRect(111, 63, 151, 16));
         QFont font3;
         font3.setPointSize(12);

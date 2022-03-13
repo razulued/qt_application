@@ -55,7 +55,8 @@ SOURCES += main.cpp\
     build_settings.cpp \
     mod_1_regulador.cpp \
     date_widget.cpp \
-    pid.cpp
+    pid.cpp \
+    sensorconfig.cpp
 
 HEADERS  += mainwindow.h \
     detailedwindow.h \
@@ -97,7 +98,8 @@ HEADERS  += mainwindow.h \
     screen_saver.h \
     mod_1_regulador.h \
     date_widget.h \
-    pid.h
+    pid.h \
+    sensorconfig.h
 
 FORMS    += mainwindow.ui \
     detailedwindow.ui \

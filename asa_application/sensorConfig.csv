@@ -1,0 +1,7 @@
+ID(HEX),Modulo,Nombre,Unidades,Tipo,Const1,Const2,Const3,PreFormulaMin,PreFormulaMax,PostFormulaMin,PostFormulaMax,Precision
+3201,Presurizador,Nivel de Agua, m,Fisico,1,100,,,,,20,1
+3203,Presurizador,Caudal, lts/s,Fisico,1,2,1,0,50,0,20,2
+3001,Presurizador,V1, V,Electrico,,,,,,,,
+3002,Presurizador,V2, V,Electrico,,,,,,,,
+3003,Presurizador,V3, V,Electrico,,,,,,,,
+3301,Presurizador,PH,,Quimico,,,,,,,,

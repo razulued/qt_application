@@ -160,6 +160,9 @@
          </item>
          <item>
           <widget class="QScrollBar" name="horizontalScrollBar">
+           <property name="maximum">
+            <number>2500</number>
+           </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>

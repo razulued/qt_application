@@ -165,7 +165,7 @@ public:
         asa_logo->setGeometry(QRect(740, 550, 51, 51));
         asa_logo->setFocusPolicy(Qt::NoFocus);
         asa_logo->setStyleSheet(QLatin1String("#asa_logo{ \n"
-"background-image: url(:/iconos/screen800x600/iconos/Logo.png);\n"
+"background-image: url(:/iconos/screen800x600/iconos/ASA logo.png);\n"
 "border: none; \n"
 "background-repeat: none;\n"
 "background-position: center;\n"
@@ -229,11 +229,11 @@ public:
         top_menu_2->setCheckable(true);
         top_menu_3 = new QPushButton(filtrowindow);
         top_menu_3->setObjectName(QStringLiteral("top_menu_3"));
-        top_menu_3->setGeometry(QRect(10, 1, 31, 41));
+        top_menu_3->setGeometry(QRect(10, 2, 31, 41));
         top_menu_3->setFocusPolicy(Qt::NoFocus);
         top_menu_3->setStyleSheet(QLatin1String("#top_menu_3 { \n"
 "background-color: transparent;\n"
-"background-image: url(:/iconos/screen800x600/iconos/Monitor1.png);\n"
+"background-image: url(:/iconos/screen800x600/iconos/Diagrama.png);\n"
 "background-position: center;\n"
 "border: none; \n"
 "background-repeat: none;\n"

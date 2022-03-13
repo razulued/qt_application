@@ -147,10 +147,9 @@ QHash<uint,uint> load_active_parameters()
 
     if (!myFile.open(QIODevice::ReadOnly))
     {
-        //qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
+        qDebug() << "Could not read the file:" << filename << "Error string:" << myFile.errorString();
         return active_parameter;
     }
-
     in >> active_parameter;
     myFile.close();
     return active_parameter;
@@ -159,6 +158,10 @@ QHash<uint,uint> load_active_parameters()
 QString getParamValue(unsigned int id)
 {
     return get_value_by_ID(id);
+}
+
+float getParamMaxValue(unsigned int id){
+    return get_max_value_by_ID(id);
 }
 
 QString getParamValue_base_units(unsigned int id)
@@ -180,6 +183,11 @@ QString invese_getParamValue(unsigned int id, float_t value)
 QString getParamValue_and_units(unsigned int id)
 {
     return get_value_by_ID(id) + get_value_units(id);
+}
+
+QString getParamName(unsigned int id)
+{
+    return get_name_by_ID(id);
 }
 
 bool getParamActiveShow(unsigned int id)

@@ -16,9 +16,9 @@
 
 #define ENABLE_TEST (1)
 
-configuration_id MainWindow::conf_car_elect;
-configuration_id MainWindow::conf_car_fisic;
-configuration_id MainWindow::conf_car_quimic;
+configuration_id MainWindow::conf_press_elect;
+configuration_id MainWindow::conf_press_fisic;
+configuration_id MainWindow::conf_press_quimic;
 
 configuration_id MainWindow::car_outputs;
 
@@ -63,10 +63,11 @@ void MainWindow::HideButtons(bool hide)
 
 void MainWindow::InitTooltips()
 {
-    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, conf_car_elect.ids, conf_car_elect.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS);
-    tool_tip_carcamo_fisicos = new custom_tooltip(ui->widget_26, conf_car_fisic.ids, conf_car_fisic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_FISICOS);
-    tool_tip_carcamo_quimicos = new custom_tooltip(ui->widget_27, conf_car_quimic.ids, conf_car_quimic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_QUIMICOS);
+    ASA_load_active_parameters();
 
+    tool_tip_carcamo_electricos = new custom_tooltip(ui->widget_25, conf_press_elect.ids, conf_press_elect.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_ELECTRICOS);
+    tool_tip_carcamo_fisicos = new custom_tooltip(ui->widget_26, conf_press_fisic.ids, conf_press_fisic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_FISICOS);
+    tool_tip_carcamo_quimicos = new custom_tooltip(ui->widget_27, conf_press_quimic.ids, conf_press_quimic.names, car_outputs.ids, car_outputs.names, this, ui->modulo_9, TYPE_QUIMICOS);
     init_complete = true;
 }
 
@@ -90,12 +91,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     configuration *config;
 
-    config = new configuration("Carcamo-Electricos");
-    conf_car_elect = config->get_config();
-    config = new configuration("Carcamo-Fisicos");
-    conf_car_fisic = config->get_config();
-    config = new configuration("Carcamo-Quimicos");
-    conf_car_quimic = config->get_config();
+    ASA_protocol_init();
+    conf_press_elect = ASA_get_module_sensors("Presurizador", "Electrico");
+    conf_press_fisic = ASA_get_module_sensors("Presurizador", "Fisico");
+    conf_press_quimic = ASA_get_module_sensors("Presurizador", "Quimico");
 
     //Setup Timer
     dataTimer.setInterval(100);
@@ -127,10 +126,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pb_electricos, SIGNAL (released()),this, SLOT (handleParametrosElectricosButton()));
     connect(ui->pb_fisicos, SIGNAL (released()),this, SLOT (handleParametrosFisicosButton()));
     connect(ui->pb_quimicos, SIGNAL (released()),this, SLOT (handleParametrosQuimicosButton()));
-
     //Connect slot to signal
     detail_window = NULL;
-    connect(ui->modulo_1, SIGNAL (released()),this, SLOT (handleDetailedView_1()));
+    connect(ui->modulo_9, SIGNAL (released()),this, SLOT (handleDetailedView_9()));
 
     QFont active_parameter_font("Typo Square Bold Demo",16,1);
     ui->active_param_label->setFont(active_parameter_font);
@@ -146,60 +144,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->label_dia->setStyleSheet("color: white");
     ui->label_dia->setFont(dia_font);
 
-    mod_9 = new mod_1_carcamo(ui->gif_modulo_9);
-    connect(mod_9, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_1 = new mod_1_regulador(ui->gif_modulo_1);
-    connect(mod_1, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_2 = new mod_2_reactor(ui->gif_modulo_2);
-    connect(mod_2, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_3 = new mod_3_clarificador(ui->gif_modulo_3);
-    connect(mod_3, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_4 = new mod_4_clorador(ui->gif_modulo_4);
-    connect(mod_4, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_5 = new mod_5_digestor(ui->gif_modulo_5);
-    connect(mod_5, SIGNAL(update_window()), this, SLOT(update_this()));
-//    mod_6 = new mod_6_lechos(ui->gif_modulo_6);
-    mod_afluente = new mod_flechas(AFLUENTE_1, ARRW_AFLUENTE_GIF_STATE_QUIET, ui->gif_modulo_7);
-    connect(mod_afluente, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_efluente = new mod_flechas(EFLUENTE_1, ARRW_EFLUENTE_GIF_STATE_QUIET, ui->gif_modulo_8);
-    connect(mod_efluente, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_sludge_a = new mod_flechas(SLUDGE_1,  ARRW_SLUDGE_GIF_STATE_QUIET, ui->gif_sludge_a);
-    connect(mod_sludge_a, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_sludge_b = new mod_flechas(SLUDGE_1,  ARRW_SLUDGE_GIF_STATE_QUIET, ui->gif_sludge_b);
-    connect(mod_sludge_b, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_water_flown_a = new mod_flechas(WATER_FLOWN_1,  ARRW_WATER_FLOWN_GIF_STATE_QUIET, ui->gif_water_flown_a);
-    connect(mod_water_flown_a, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_sludge_return = new mod_flechas(SLUDGE_RETURN,  ARRW_SLUDGE_RETURN_GIF_STATE_QUIET, ui->gif_sludge_return_a);
-    connect(mod_sludge_return, SIGNAL(update_window()), this, SLOT(update_this()));
 
-    mod_blower_1 = new mod_flechas(BLOWER_1,  3, ui->gif_blower_4);
-    connect(mod_blower_1, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_blower_2 = new mod_flechas(BLOWER_2,  3, ui->gif_blower_3);
-    connect(mod_blower_2, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_blower_3 = new mod_flechas(BLOWER_3,  3, ui->gif_blower_2);
-    connect(mod_blower_3, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_blower_4 = new mod_flechas(BLOWER_4,  3, ui->gif_blower);
-    connect(mod_blower_4, SIGNAL(update_window()), this, SLOT(update_this()));
-
-    mod_bomba_1 = new mod_flechas(CARCAMO_MOTOR_1,  3, ui->gif_car_mot_4);
-    connect(mod_bomba_1, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_bomba_2 = new mod_flechas(CARCAMO_MOTOR_2,  3, ui->gif_car_mot_3);
-    connect(mod_bomba_2, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_bomba_3 = new mod_flechas(CARCAMO_MOTOR_3,  3, ui->gif_car_mot_2);
-    connect(mod_bomba_3, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_bomba_4 = new mod_flechas(CARCAMO_MOTOR_4,  3, ui->gif_car_mot);
-    connect(mod_bomba_4, SIGNAL(update_window()), this, SLOT(update_this()));
-
-    mod_bomba_reg_1 = new mod_flechas(REGULADOR_MOTOR_1,  3, ui->gif_reg_mot_4);
-    connect(mod_bomba_reg_1, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_bomba_reg_2 = new mod_flechas(REGULADOR_MOTOR_2,  3, ui->gif_reg_mot_3);
-    connect(mod_bomba_reg_2, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_bomba_reg_3 = new mod_flechas(REGULADOR_MOTOR_3,  3, ui->gif_reg_mot_2);
-    connect(mod_bomba_reg_3, SIGNAL(update_window()), this, SLOT(update_this()));
-    mod_bomba_reg_4 = new mod_flechas(REGULADOR_MOTOR_4,  3, ui->gif_reg_mot);
-    connect(mod_bomba_reg_4, SIGNAL(update_window()), this, SLOT(update_this()));
-
-    ASA_protocol_init();
 
     if((NULL == sim_window) && simulation)
     {
@@ -221,8 +166,8 @@ MainWindow::MainWindow(QWidget *parent) :
                                    "background-color:transparent;");
     ui->label_title->setText(title_name);
 
+    level_label_size  = ui->water_level->geometry();
     update_demo_mode();
-
 }
 
 
@@ -291,7 +236,7 @@ void MainWindow::update_demo_mode()
     conf.endGroup();
 }
 
-void MainWindow::handleDetailedView_1()
+void MainWindow::handleDetailedView_9()
 {
     if(mutex_detailed.tryLock(0))
     {
@@ -299,7 +244,7 @@ void MainWindow::handleDetailedView_1()
             qDebug() << "delete";
             delete detail_window;
         }
-        detail_window = new detailedwindow(ELEMENT_REGULADOR, this);
+        detail_window = new detailedwindow(ELEMENT_CARCAMO, this);
         connect(detail_window, SIGNAL(release_lock()), this, SLOT(window_closed()));
         detail_window->show();
     }
@@ -342,7 +287,6 @@ void MainWindow::dataTimerSlot()
 
     check_lock();
 
-
     if(0 == (count % 10)) /* 20 ms */
     {
         // Fastest time for smooth transition when moving
@@ -354,6 +298,17 @@ void MainWindow::dataTimerSlot()
     {
         update_this();
 
+        float level = getParamValue(0x3201).toFloat();
+        float percent =float(level / getParamMaxValue(0x3201));
+        int percent_image = int(level_label_size.height() * percent);
+//        qDebug() << level << getParamMaxValue(0x3201) << percent << percent_image;
+
+        ui->water_level->setGeometry(level_label_size.x() ,
+                                     level_label_size.y() + level_label_size.height() - percent_image,
+                                     level_label_size.width(),
+                                     percent_image);
+
+
     }
     if(0 == (count % 10)) /* 2 segundo */
     {
@@ -361,31 +316,6 @@ void MainWindow::dataTimerSlot()
 
 #if (1 ==ENABLE_TEST)
         /***** DEMO *****/
-        mod_9->check_update_animation();
-        mod_1->check_update_animation();
-        mod_2->check_update_animation();
-        mod_3->check_update_animation();
-        mod_4->check_update_animation();
-        mod_5->check_update_animation();
-
-        mod_afluente->check_update_animation();
-        mod_efluente->check_update_animation();
-        mod_sludge_return->check_update_animation();
-
-        mod_blower_1->check_update_animation();
-        mod_blower_2->check_update_animation();
-        mod_blower_3->check_update_animation();
-        mod_blower_4->check_update_animation();
-
-        mod_bomba_1->check_update_animation();
-        mod_bomba_2->check_update_animation();
-        mod_bomba_3->check_update_animation();
-        mod_bomba_4->check_update_animation();
-
-        mod_bomba_reg_1->check_update_animation();
-        mod_bomba_reg_2->check_update_animation();
-        mod_bomba_reg_3->check_update_animation();
-        mod_bomba_reg_4->check_update_animation();
 
 #endif
     }
@@ -449,57 +379,8 @@ void MainWindow::trace_lines(QWidget * tooltip, QPushButton *module, QPainter &p
 
 void MainWindow::paintEvent(QPaintEvent *)
 {
-//     QPainter painter(this);
-
-//     QColor line_color;
-//     line_color.setRgb(0, 167, 250,150);
-
-//     QPen pen;
-//     pen.setColor(line_color);
-//     pen.setCapStyle(Qt::RoundCap);
-//     pen.setWidth(3);
-//     painter.setPen(pen);
-
-//     trace_lines(ui->widget, ui->modulo_1, painter);
-//     trace_lines(ui->widget_2, ui->modulo_1, painter);
-//     trace_lines(ui->widget_3, ui->modulo_1, painter);
-
-//     trace_lines(ui->widget_4, ui->modulo_2, painter);
-//     trace_lines(ui->widget_5, ui->modulo_2, painter);
-//     trace_lines(ui->widget_6, ui->modulo_2, painter);
-
-//     trace_lines(ui->widget_7, ui->modulo_3, painter);
-//     trace_lines(ui->widget_8, ui->modulo_3, painter);
-//     trace_lines(ui->widget_9, ui->modulo_3, painter);
-
-//     trace_lines(ui->widget_10, ui->modulo_4, painter);
-//     trace_lines(ui->widget_11, ui->modulo_4, painter);
-//     trace_lines(ui->widget_12, ui->modulo_4, painter);
-}
-
-void MainWindow::on_top_menu_5_clicked()
-{
-    if(true == get_validity_state())
-    {
-        if(mutex_detailed.tryLock(0))
-        {
-            if(settingswindow != NULL)
-            {
-                delete settingswindow;
-            }
-            settingswindow = new settings(this);
-            connect(settingswindow, SIGNAL(release_lock()), this, SLOT(window_closed()));
-            connect(settingswindow, SIGNAL(update_conf()), this, SLOT(update_demo_mode()));
-            settingswindow->show();
-        }
-    }
-}
-
-void MainWindow::on_top_menu_2_clicked()
-{
 
 }
-
 
 void MainWindow::update_tooltips(void)
 {
@@ -557,6 +438,7 @@ void MainWindow::new_spi_data()
     if((NULL != detail_window) && detail_window->isActiveWindow())
     {
         detail_window->update_params();
+        qDebug() << "Update param";
     }
 
     if(0xBB11 == getParamValue(0x0201).toInt())
@@ -778,42 +660,3 @@ void MainWindow::check_title_click()
     }
 }
 
-void MainWindow::on_top_menu_1_clicked()
-{
-
-}
-
-void MainWindow::update_activity_alarm(void)
-{
-    static int last_value = -1;
-    if(1)
-    {
-        if(num_of_pending_act > 0)
-        {
-            ui->top_menu_1->setStyleSheet("background-color: transparent;"
-                                          "background-image: url(:/iconos/screen800x600/iconos/Campana_amarillo.png);"
-                                          "border: none;"
-                                          "background-repeat: none;"
-                                          "background-position: center;"
-                                          );
-            ui->num_of_act->setText(QString::number(num_of_pending_act));
-        }
-        else
-        {
-            ui->top_menu_1->setStyleSheet("background-color: transparent;"
-                                          "background-image: url(:/iconos/screen800x600/iconos/Campana.png);"
-                                          "border: none;"
-                                          "background-repeat: none;"
-                                          "background-position: center;"
-                                          );
-            ui->num_of_act->setText("");
-        }
-        send_num_activities(num_of_pending_act);
-    }
-    last_value = num_of_pending_act;
-}
-
-void MainWindow::on_top_menu_3_clicked()
-{
-
-}

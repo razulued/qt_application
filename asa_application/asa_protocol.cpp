@@ -4,7 +4,7 @@
 #include <QMutex>
 #include "asa_conversions.h"
 #include "parameters.h"
-
+#include "sensorconfig.h"
 const ASA_protocol_element_t supported_ASA_IDs[] =
 {
 /*+++++++++++++++++++++ COMMON ++++++++++++++++++++++*/
@@ -104,743 +104,7 @@ const ASA_protocol_element_t supported_ASA_IDs[] =
 /*---- f: special 3 ---*/
     //none
 
-/* ALARMAS */
-    0x1006,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1007,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1008,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1009,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x100A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x100B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x1126,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1127,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1128,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1129,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x112A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x112B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x101E,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x101F,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1020,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1021,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1022,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1023,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x113E,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x113F,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1140,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1141,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1142,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1143,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x103C,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-    0x103D,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-    0x103E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x103F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1040,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1041,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x1042,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-    0x1043,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-    0x1044,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1045,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1046,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1047,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x1048,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1049,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x104A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x104B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x104C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x104D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x1060,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1061,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x1062,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1063,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1064,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1065,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x1090,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-    0x1091,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-    0x1092,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1093,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1094,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1095,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x109C,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-    0x109D,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-    0x109E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x109F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10A0,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10A1,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-/* FILTRO ALARMAS */
-    0x10A2,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x10A3,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x10A4,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10A5,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10A6,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10A7,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x10A8,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x10A9,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x10AA,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10AB,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10AC,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10AD,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x10AE,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x10AF,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x10B0,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10B1,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10B2,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10B3,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x10B4,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x10B5,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-    0x10B6,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10B7,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10B8,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10B9,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x10D8,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-    0x10D9,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-    0x10DA,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10DB,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10DC,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10DD,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x10DE,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-    0x10DF,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-    0x10E0,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10E1,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10E2,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10E3,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x10EA,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-    0x10EB,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-    0x10EC,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10ED,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10EE,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10EF,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x10F0,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-    0x10F1,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-    0x10F2,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10F3,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10F4,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10F5,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x10FC,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-    0x10FD,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-    0x10FE,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x10FF,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1101,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-    0x1102,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-    0x1103,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-    0x1104,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1105,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1106,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-    0x1107,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-
-
-
-/*+++++++++++++++++++++ PTAR ++++++++++++++++++++++*/
-/*----- 2:Plant Cfg	0:config DIG OUT type1 --------*/
-/* cfg RELE out 1      */ 0x2000,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* cfg RELE out 2      */ 0x2001,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* cfg RELE out 3      */ 0x2002,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* cfg RELE out 4      */ 0x2003,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/*----- 2:Plant Cfg	0:config DIG OUT type2 --------*/
-/* cfg LED out 1       */ 0x2040,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* cfg LED out 2       */ 0x2041,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* cfg LED out 3       */ 0x2042,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* cfg LED out 4       */ 0x2043,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/*----- 2:Plant Cfg	1:config ANA IN       --------*/
-/* ana IN 1            */ 0x2100,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* ana IN 2            */ 0x2101,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* ana IN 3            */ 0x2102,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* ana IN 4            */ 0x2103,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* ana IN 5            */ 0x2104,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* ana IN 6            */ 0x2105,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* ana IN 7            */ 0x2106,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* ana IN 8            */ 0x2107,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* ana IN 9            */ 0x2108,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/*----- 2:Plant Cfg	2:config MODBUS_A     --------*/
-/* dig IN dev ADDR0    */ 0x2200,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR1    */ 0x2201,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR2    */ 0x2202,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR3    */ 0x2203,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR4    */ 0x2204,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR5    */ 0x2205,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR6    */ 0x2206,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR7    */ 0x2207,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR8    */ 0x2208,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDR9    */ 0x2209,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDRa    */ 0x220A,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDRb    */ 0x220B,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDRc    */ 0x220C,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDRd    */ 0x220D,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDRe    */ 0x220E,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig IN dev ADDRf    */ 0x220F,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/*----- 2:Plant Cfg	3:config MODBUS_B     --------*/
-/* dig DATA addr0 ch0  */ 0x2300,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig DATA addr0 ch1  */ 0x2301,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig DATA addr0 ch2  */ 0x2302,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig DATA addr0 ch3  */ 0x2303,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig DATA addr1 ch0  */ 0x2304,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig DATA addr1 ch1  */ 0x2305,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig DATA addr1 ch2  */ 0x2306,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-/* dig DATA addr1 ch3  */ 0x2307,   ASA_TYPE_INTEGER,   NULL,   conv_none_or_passthru,    conv_none_or_passthru,    0,    "",
-
-/* Niv Inst. carcamo   */ 0x2402,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/* Niv Inst. carcamo   */ 0x2403,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-
-/*----- 3:Plant Carcamo	0:Status:Electricos ------*/
-/* Motor1 State        */ 0x3000,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat1                */ 0x3001,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x3002,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x3003,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x3004,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x3005,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x3006,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x3007,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x3008,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x3009,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 1000,  "",
-/* dat10               */ 0x300A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat11               */ 0x300B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat12               */ 0x300C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat13               */ 0x300D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat14               */ 0x300E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat15               */ 0x300F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* Motor2 State        */ 0x3010,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat1                */ 0x3011,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x3012,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x3013,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x3014,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x3015,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x3016,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x3017,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x3018,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x3019,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x301A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat11               */ 0x301B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat12               */ 0x301C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat13               */ 0x301D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat14               */ 0x301E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat15               */ 0x301F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* Motor3 State        */ 0x3020,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat1                */ 0x3021,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x3022,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x3023,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x3024,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x3025,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x3026,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x3027,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x3028,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x3029,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x302A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat11               */ 0x302B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat12               */ 0x302C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat13               */ 0x302D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat14               */ 0x302E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat15               */ 0x302F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* Motor4 State        */ 0x3030,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat1                */ 0x3031,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x3032,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x3033,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x3034,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x3035,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x3036,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x3037,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x3038,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x3039,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x303A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat11               */ 0x303B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat12               */ 0x303C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat13               */ 0x303D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat14               */ 0x303E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat15               */ 0x303F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/*----- 3:Plant Carcamo	1:Status:MISC       ------*/
-/* Alert Indication    */ 0x3100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/*----- 3:Plant Carcamo	2:Status:Fisicos    ------*/
-/* Sens 1 State        */ 0x3200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* s1 value            */ 0x3201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,   "longitud",
-/* Sens 2 State        */ 0x3202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_integer_multiply_by, 0,    "",
-/* s2 value            */ 0x3203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
-/* Sens 3 State        */ 0x3204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* s3 value            */ 0x3205,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "presion",
-/* Sens 4 State        */ 0x3206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* s4 value            */ 0x3207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/*----- 3:Plant Carcamo	3:Status:Quimicos   ------*/
-/* Sens 1 State        */ 0x3300,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
-/* s1 value            */ 0x3301,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x3302,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
-/* s2 value            */ 0x3303,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x3304,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
-/* s3 value            */ 0x3305,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x3306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
-/* s4 value            */ 0x3307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/*----- 3:Plant Carcamo	4:Parametric:OPlevels ----*/
-/* Alert level         */ 0x3400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/* Off Level           */ 0x3401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/* Level ON1           */ 0x3402,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/* Level ON2           */ 0x3403,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/*----- 3:Plant Carcamo	5:Parametric:OPtimings ---*/
-/* Tipo alternado      */ 0x3500,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time Alt Max        */ 0x3501,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time On Min         */ 0x3502,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time Off Min        */ 0x3503,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 3:Plant Carcamo	6:CONTROL              ---*/
-/* Subsystem OPMODE    */ 0x3600,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Alert actuator over */ 0x3601,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 1 override    */ 0x3602,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 2 override    */ 0x3603,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 3 override    */ 0x3604,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 4 override    */ 0x3605,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-
-/*----- 3:Plant Regulador	0:Status:Electricos ------*/
-/* Motor1 State        */ 0x3800,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat1                */ 0x3801,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x3802,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x3803,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x3804,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x3805,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x3806,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x3807,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x3808,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x3809,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x380A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat11               */ 0x380B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat12               */ 0x380C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat13               */ 0x380D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat14               */ 0x380E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat15               */ 0x380F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* Motor2 State        */ 0x3810,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat1                */ 0x3811,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x3812,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x3813,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x3814,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x3815,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x3816,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x3817,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x3818,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x3819,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x381A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat11               */ 0x381B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat12               */ 0x381C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat13               */ 0x381D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat14               */ 0x381E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat15               */ 0x381F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* Motor3 State        */ 0x3820,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat1                */ 0x3821,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x3822,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x3823,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x3824,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x3825,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x3826,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x3827,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x3828,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x3829,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x382A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat11               */ 0x382B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat12               */ 0x382C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat13               */ 0x382D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat14               */ 0x382E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat15               */ 0x382F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* Motor4 State        */ 0x3830,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat1                */ 0x3831,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x3832,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x3833,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x3834,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x3835,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x3836,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x3837,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x3838,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x3839,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x383A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat11               */ 0x383B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat12               */ 0x383C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat13               */ 0x383D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat14               */ 0x383E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* dat15               */ 0x383F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/*----- 3:Plant Regulador	1:Status:MISC       ------*/
-/* Alert Indication    */ 0x3900,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/*----- 3:Plant Regulador	2:Status:Fisicos    ------*/
-/* Sens 1 State        */ 0x3A00,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* s1 value            */ 0x3A01,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,   "longitud",
-/* Sens 2 State        */ 0x3A02,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_integer_multiply_by, 0,    "",
-/* s2 value            */ 0x3A03,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
-/* Sens 3 State        */ 0x3A04,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* s3 value            */ 0x3A05,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "presion",
-/* Sens 4 State        */ 0x3A06,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/* s4 value            */ 0x3A07,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,    "",
-/*----- 3:Plant Regulador	3:Status:Quimicos   ------*/
-/* Sens 1 State        */ 0x3B00,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
-/* s1 value            */ 0x3B01,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x3B02,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
-/* s2 value            */ 0x3B03,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x3B04,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
-/* s3 value            */ 0x3B05,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x3B06,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,          0,      "",
-/* s4 value            */ 0x3B07,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/*----- 3:Plant Regulador	4:Parametric:OPlevels ----*/
-/* Alert level         */ 0x3C00,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/* Off Level           */ 0x3C01,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/* Level ON1           */ 0x3C02,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/* Level ON2           */ 0x3C03,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/*----- 3:Plant Regulador	5:Parametric:OPtimings ---*/
-/* Tipo alternado      */ 0x3D00,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time Alt Max        */ 0x3D01,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time On Min         */ 0x3D02,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time Off Min        */ 0x3D03,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 3:Plant Regulador	6:CONTROL              ---*/
-/* Subsystem OPMODE    */ 0x3E00,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Alert actuator over */ 0x3E01,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 1 override    */ 0x3E02,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 2 override    */ 0x3E03,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 3 override    */ 0x3E04,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 4 override    */ 0x3E05,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-
-
-/*----- 4:Plant Reactores 0:Status:Electricos ----*/
-/* Motor1 State        */ 0x4000,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x4001,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x4002,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x4003,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x4004,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x4005,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x4006,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x4007,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x4008,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x4009,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x400A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x400B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x400C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x400D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x400E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x400F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor2 State        */ 0x4010,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x4011,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x4012,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x4013,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x4014,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x4015,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x4016,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x4017,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x4018,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x4019,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x401A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x401B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x401C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x401D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x401E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x401F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor3 State        */ 0x4020,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x4021,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x4022,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x4023,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x4024,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x4025,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x4026,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x4027,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x4028,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x4029,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x402A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x402B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x402C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x402D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x402E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x402F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor4 State        */ 0x4030,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x4031,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x4032,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x4033,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x4034,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x4035,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x4036,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x4037,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x4038,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x4039,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x403A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x403B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x403C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x403D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x403E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x403F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 4:Plant Reactores 1:Status:MISC       ----*/
-    //none
-/*----- 4:Plant Reactores 2:Status:Fisicos    ----*/
-/* Sens 1 State        */ 0x4200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x4201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
-/* Sens 2 State        */ 0x4202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x4203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
-/* Sens 3 State        */ 0x4204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x4205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,   conv_integer_presion_inv, 0,    "presion",
-/* Sens 4 State        */ 0x4206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s4 value            */ 0x4207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 4:Plant Reactores 3:Status:Quimicos   ----*/
-/* Sens 1 State        */ 0x4300,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s1 value            */ 0x4301,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x4302,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s2 value            */ 0x4303,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x4304,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s3 value            */ 0x4305,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x4306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s4 value            */ 0x4307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/*----- 4:Plant Reactores 4:Parametric:OPlevels --*/
-/* O2 level min        */ 0x4400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/* O2 level max        */ 0x4401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/*----- 4:Plant Reactores 5:Parametric:OPtimings--*/
-/* Tipo alternado      */ 0x4500,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time Alt Max        */ 0x4501,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time On Min         */ 0x4502,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Time Off Min        */ 0x4503,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Prog time ON        */ 0x4540,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Prog time OFF       */ 0x4541,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 4:Plant Reactores	6:CONTROL          ---*/
-/* Subsystem OPMODE    */ 0x4600,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 1 override    */ 0x4601,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 2 override    */ 0x4602,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 3 override    */ 0x4603,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 4 override    */ 0x4604,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 5:Plant Clarificador 0:Status:Electricos -*/
-/* Actuator 1 state    */ 0x5000,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 5:Plant Clarificador 1:Status:MISC  ------*/
-    //none
-/*----- 5:Plant Clarificador 2:Status:Fisicos ----*/
-/* Sens 1 State        */ 0x5200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x5201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
-/* Sens 2 State        */ 0x5202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x5203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
-/* Sens 3 State        */ 0x5204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x5205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
-/* Sens 4 State        */ 0x5206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s4 value            */ 0x5207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 5:Plant Clarificador 3:Status:Quimicos   ----*/
-/* Sens 1 State        */ 0x5300,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s1 value            */ 0x5301,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x5302,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s2 value            */ 0x5303,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x5304,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s3 value            */ 0x5305,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x5306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s4 value            */ 0x5307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/*----- 5:Plant Clarificador 4:Parametric:OPlevels -*/
-/* Pressure OPT        */ 0x5400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
-/* Pressure MAX        */ 0x5401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
-/*----- 5:Plant Clarificador 5:Parametric:OPtimings -*/
-    //none
-/*----- 5:Plant Clarificador 6:CONTROL -*/
-/* Subsystem OPMODE    */ 0x5600,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Valvula 1 override  */ 0x5601,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 6:Plant Clorador 0:Status:Electricos  -----*/
-/*----- 6:Plant Clorador 1:Status:MISC      -------*/
-/*----- 6:Plant Clorador 2:Status:Phys      -------*/
-/* Sens 1 State        */ 0x6200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x6201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
-/* Sens 2 State        */ 0x6202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x6203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
-/* Sens 3 State        */ 0x6204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x6205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
-/* Sens 4 State        */ 0x6206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s4 value            */ 0x6207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 6:Plant Clorador 3:Status:Quimicos   ----*/
-/* Sens 1 State        */ 0x6300,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s1 value            */ 0x6301,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x6302,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s2 value            */ 0x6303,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x6304,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s3 value            */ 0x6305,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x6306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s4 value            */ 0x6307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/*----- 7:Plant Digestor 0:Status:Electricos  -----*/
-/*----- 7:Plant Digestor 1:Status:MISC      -------*/
-/*----- 7:Plant Digestor 2:Status:Phys      -------*/
-/* Sens 1 State        */ 0x7200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x7201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
-/* Sens 2 State        */ 0x7202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x7203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
-/* Sens 3 State        */ 0x7204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x7205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
-/* Sens 4 State        */ 0x7206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s4 value            */ 0x7207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 7:Plant Digestor 3:Status:Quimicos   ----*/
-/* Sens 1 State        */ 0x7300,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s1 value            */ 0x7301,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x7302,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s2 value            */ 0x7303,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x7304,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s3 value            */ 0x7305,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x7306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s4 value            */ 0x7307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/*----- 8:Plant Secado 0:Status:Electricos  -----*/
-/*----- 8:Plant Secado 1:Status:MISC      -------*/
-/*----- 8:Plant Secado 2:Status:Phys      -------*/
-/* Sens 1 State        */ 0x8200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s1 value            */ 0x8201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2, conv_integer_multiply_by, 100,   "longitud",
-/* Sens 2 State        */ 0x8202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x8203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal,      conv_integer_caudal_inv,  0,    "caudal",
-/* Sens 3 State        */ 0x8204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x8205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
-/* Sens 4 State        */ 0x8206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s4 value            */ 0x8207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 8:Plant Secado 3:Status:Quimicos   ----*/
-/* Sens 1 State        */ 0x8300,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s1 value            */ 0x8301,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x8302,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s2 value            */ 0x8303,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x8304,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s3 value            */ 0x8305,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x8306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s4 value            */ 0x8307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/*----- 9:Plant Filtro 0:Status:Electricos  -----*/
-/* Motor1 State        */ 0x9000,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x9001,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x9002,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x9003,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x9004,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x9005,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x9006,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x9007,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x9008,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x9009,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x900A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x900B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x900C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x900D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x900E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x900F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor2 State        */ 0x9010,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x9011,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x9012,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x9013,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x9014,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x9015,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x9016,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x9017,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x9018,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x9019,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x901A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x901B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x901C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x901D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x901E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x901F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor3 State        */ 0x9020,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x9021,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x9022,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x9023,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x9024,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x9025,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x9026,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x9027,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x9028,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x9029,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x902A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x902B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x902C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x902D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x902E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x902F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor4 State        */ 0x9030,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x9031,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x9032,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x9033,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x9034,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x9035,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x9036,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x9037,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x9038,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x9039,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x903A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x903B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x903C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x903D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x903E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x903F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-
-/* Motor1 State        */ 0x9080,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat1                */ 0x9081,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat2                */ 0x9082,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat3                */ 0x9083,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " V",
-/* dat4                */ 0x9084,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat5                */ 0x9085,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat6                */ 0x9086,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by, 1000, " A",
-/* dat7                */ 0x9087,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,   " Hz",
-/* dat8                */ 0x9088,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat9                */ 0x9089,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,  "",
-/* dat10               */ 0x908A,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat11               */ 0x908B,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat12               */ 0x908C,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat13               */ 0x908D,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat14               */ 0x908E,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* dat15               */ 0x908F,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-
-/* Valvula 1 state     */ /*0x9100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",*/
-/* Valvula 3(S) state  */ /*0x9101,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",*/
-/* Valvula 2 state     */ /*0x9102,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",*/
-/*----- 9:Plant Filtro 1:Status:MISC      -------*/
-/* Valvula 1 state     */ 0x9100,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Valvula 2 state     */ 0x9101,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Valvula 3(S) state  */ 0x9102,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Alert Indication    */ 0x9180,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 9:Plant Filtro 2:Status:Phys      -------*/
-/* Sens 1 State        */ 0x9200,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-///* s1 value            */ 0x9201,   ASA_TYPE_INTEGER,   NULL,   conv_nivel_1,             conv_nivel_1_inv, 0,   "longitud",
-/* s1 value            */ 0x9201,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-/* Sens 2 State        */ 0x9202,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s2 value            */ 0x9203,   ASA_TYPE_INTEGER,   NULL,   conv_integer_caudal_2,    conv_integer_caudal_inv_2,  0,    "caudal",
-/* Sens 3 State        */ 0x9204,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s3 value            */ 0x9205,   ASA_TYPE_INTEGER,   NULL,   conv_integer_presion,     conv_integer_presion_inv, 0,    "presion",
-/* Sens 4 State        */ 0x9206,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* s4 value            */ 0x9207,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/*----- 8:Plant Secado 3:Status:Quimicos   ----*/
-/* Sens 1 State        */ 0x9300,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s1 value            */ 0x9301,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x9302,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s2 value            */ 0x9303,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x9304,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s3 value            */ 0x9305,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x9306,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s4 value            */ 0x9307,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-/* Sens 1 State        */ 0x9310,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s1 value            */ 0x9311,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " ph",
-/* Sens 2 State        */ 0x9312,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s2 value            */ 0x9313,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 10,     " NTU",
-/* Sens 3 State        */ 0x9314,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s3 value            */ 0x9315,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " mg/l",
-/* Sens 4 State        */ 0x9316,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,      "",
-/* s4 value            */ 0x9317,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,   conv_integer_multiply_by, 100,    " PPM",
-
-/* CALIBRACIONES*/
-0x9400,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-0x9401,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-0x9402,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by_pres2,   conv_integer_multiply_by,   100,    "longitud",
-0x9403,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,         conv_integer_multiply_by,   10,     " NTU",
-0x9404,   ASA_TYPE_INTEGER,   NULL,   conv_integer_divide_by,         conv_integer_multiply_by,   10,     " NTU",
-
-0x9500,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,       "",
-0x9501,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,       "",
-0x9502,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,       "",
-0x9503,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,       "",
-0x9504,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,       "",
-
-/*----- 8:Plant Filtro	6:CONTROL              ---*/
-/* Subsystem OPMODE    */ 0x9600,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 1 override    */ 0x9601,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 2 override    */ 0x9602,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 3 override    */ 0x9603,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-
-/* Valve 1 override    */ 0x9640,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Valve 2 override    */ 0x9641,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Valve 3 override    */ 0x9642,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-
-/* Subsystem OPMODE    */ 0x9700,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
-/* Motor 4 override    */ 0x9701,   ASA_TYPE_INTEGER,   NULL,   conv_hex_to_int,          conv_int_to_hex,  0,    "",
+///* ALARMAS */
 };
 
 QHash<uint, uint> hash_indices;
@@ -857,9 +121,93 @@ float factor_presion;
 float factor_caudal;
 float factor_tiempo;
 
+enum {
+    ID,
+    MODULE,
+    NAME,
+    UNITS,
+    TYPE,
+    CONST1,
+    CONST2,
+    CONST3,
+    MINPRE,
+    MAXPRE,
+    MINPOST,
+    MAXPOST,
+    DEC
+};
+QMap<uint, sensorConfig*> map_config;
+void load_sensorConfig(){
+    QFile file("sensorConfig.csv");
+    if(file.open(QFile::ReadOnly))
+    {
+        QTextStream stream(&file);
+        // Discard First Line (headers)
+        stream.readLine();
+        QList<QString> values;
+        while(!stream.atEnd())
+        {
+            values = stream.readLine().split(",");
+            qDebug() << values;
+            int id=0;
+            QString module;
+            QString name;
+            QString units;
+            QString type = "";
+            float const1 = 1.0;
+            float const2 = 1.0;
+            float const3 = 0.0;
+            float premin = 0.0;
+            float premax = 65535.0;
+            float postmin = 0.0;
+            float postmax = 65535.0;
+            int dec = 2;
+            bool ok;
+            if(values.size() >= TYPE){
+                id = values.at(ID).toInt(&ok,16);
+                if(!ok) continue;
+                module = values.at(MODULE);
+                name = values.at(NAME);
+                units = values.at(UNITS);
+                type = values.at(TYPE);
+            }
+            if(values.size() >= CONST3){
+                const1 = values.at(CONST1).toFloat(&ok);
+                if(!ok) const1 = 1.0;
+                const2 = values.at(CONST2).toFloat(&ok);
+                if(!ok) const2 = 1.0;
+                const3 = values.at(CONST3).toFloat(&ok);
+                if(!ok) const3 = 0.0;
+            }
+            if(values.size() >= MAXPRE){
+                premin = values.at(MINPRE).toFloat(&ok);
+                if(!ok) premin = 0.0;
+                premax = values.at(MAXPRE).toFloat(&ok);
+                if(!ok) premax = 65535.0;
+            }
+            if(values.size() >= MAXPOST){
+                postmin = values.at(MINPOST).toFloat(&ok);
+                if(!ok) postmin = 0.0;
+                postmax = values.at(MAXPOST).toFloat(&ok);
+                if(!ok) postmax = 65535.0;
+            }
+            if(values.size() >= DEC){
+                dec = values.at(DEC).toInt(&ok);
+                if(!ok) dec = 2;
+            }
+//            qDebug() << "MAKE CONF: "<< id << name << type << const1 << const2 << const3 << dec;
+            map_config.insert(id, new sensorConfig(id, module, name, units,type,
+                                                   const1,const2,const3,premin,premax,postmin,postmax,dec));
+        }
+    }
+    file.close();
+}
+
 void ASA_protocol_init()
 {
     uint i = 0;
+//sensorConfig *sens = new sensorConfig(0x3601, "Nivel chido", "m");
+    load_sensorConfig();
 
     //Store in known IDs and hash their index
     for(i = 0; i < (sizeof(supported_ASA_IDs) / sizeof(ASA_protocol_element_t)); i++)
@@ -959,6 +307,9 @@ void ASA_protocol_init()
     }
     conf.endGroup();
 
+}
+
+void ASA_load_active_parameters(){
     load_active_parameters();
 }
 
@@ -989,7 +340,6 @@ void store_value_by_ID(uint id, QString str_value)
     }
 }
 
-//void ASA_protocol::get_value_by_ID(uint id)
 QString get_value_by_ID(uint id)
 {
     QString str;
@@ -1001,17 +351,29 @@ QString get_value_by_ID(uint id)
     index = hash_indices.value(id);
     str = supported_ASA_IDs[index].conversion_hanlder(hash_values[id].value<QString>(), supported_ASA_IDs[index].param1);
 
-    //Apply scale by units for non-pass thrus or hex to ints
-    if(supported_ASA_IDs[index].conversion_hanlder != conv_none_or_passthru &&
-       supported_ASA_IDs[index].conversion_hanlder != conv_hex_to_int)
-    {
-        float number = str.toFloat();
-        str = units_scale(id, number);
-    }
+    float number = str.toFloat();
+    str = units_scale(id, number);
 
     data_mutex.unlock();
 
     return str;
+}
+
+float get_max_value_by_ID(uint id) {
+    if(map_config.contains(id)){
+        return map_config.value(id)->postmax;
+    }
+    return 0;
+}
+
+QString get_name_by_ID(uint id)
+{
+    if(map_config.contains(id)){
+        return map_config.value(id)->name;
+    }
+    else{
+        return "Unknown";
+    }
 }
 
 QString get_value_by_ID_base_units(uint id)
@@ -1074,7 +436,12 @@ QString get_value_units(uint id)
     }
     else
     {
-        str = supported_ASA_IDs[index].units;
+        if(map_config.contains(id)){
+            str = map_config.value(id)->units;
+        }
+        else{
+            str = supported_ASA_IDs[index].units;
+        }
     }
 
     data_mutex.unlock();
@@ -1085,27 +452,30 @@ QString get_value_units(uint id)
 QString units_scale(uint id, float value)
 {
     float val;
-    uint index = 0;
-    //Index in table (for conversions)
-    index = hash_indices.value(id);
-    if(supported_ASA_IDs[index].units == "longitud")
-    {
-        val = value * factor_longitud;
-    }
-    else if(supported_ASA_IDs[index].units == "presion")
-    {
-        val = value * factor_presion;
-    }
-    else if(supported_ASA_IDs[index].units == "caudal")
-    {
-        val = value * factor_caudal;
-    }
-    else if(supported_ASA_IDs[index].units == "tiempo")
-    {
-        val = value * factor_tiempo;
-    }
-    else
-    {
+    if (map_config.contains(id)) {
+        sensorConfig conf = *(map_config.value(id));
+        float c1 = conf.const1;
+        float c2 = conf.const2;
+        float c3 = conf.const3;
+
+        float premin = conf.premin;
+        float premax = conf.premax;
+        float postmin = conf.postmin;
+        float postmax = conf.postmax;
+
+        if(value < premin) value = premin;
+        if(value > premax) value = premax;
+
+        val = (float)(value * c1);
+        val = (float)(val/c2);
+        val = (float)(val - c3);
+
+        if(val < postmin) val = postmin;
+        if(val > postmax) val = postmax;
+
+        int dec = map_config.value(id)->dec;
+        return QString::number(val,'f',dec);
+    } else {
         val = value;
     }
     return QString::number(val,'f',2);
@@ -1150,4 +520,20 @@ QString get_RAW_value_by_ID(uint id)
     data_mutex.unlock();
 
     return str;
+}
+
+configuration_id ASA_get_module_sensors(QString module, QString type)
+{
+    configuration_id conf;
+    QMapIterator<uint, sensorConfig*> i(map_config);
+    while (i.hasNext()) {
+        i.next();
+        if(i.value()->module == module && i.value()->type == type){
+//        qDebug() << "GET MODULE SENS: "<< i.key() << ": " << i.value()->id << i.value()->name;
+            conf.ids.append(i.value()->id);
+            conf.names.append(i.value()->name);
+            conf.ids_string.append(QString::number(i.value()->id));
+        }
+    }
+    return conf;
 }
