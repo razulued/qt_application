@@ -1,0 +1,17 @@
+QMAKE_DEFAULT_INCDIRS = \
+    c:/sysgcc/raspberry/arm-linux-gnueabihf/include/c++/4.9 \
+    c:/sysgcc/raspberry/arm-linux-gnueabihf/include/c++/4.9/backward \
+    c:/sysgcc/raspberry/lib/gcc/arm-linux-gnueabihf/4.9/include \
+    c:/sysgcc/raspberry/lib/gcc/arm-linux-gnueabihf/4.9/include-fixed \
+    c:/sysgcc/raspberry/arm-linux-gnueabihf/include \
+    C:/SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/include/arm-linux-gnueabihf \
+    C:/SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/include
+QMAKE_DEFAULT_LIBDIRS = \
+    c:/sysgcc/raspberry/lib/gcc/arm-linux-gnueabihf/4.9 \
+    c:/sysgcc/raspberry/lib/gcc/arm-linux-gnueabihf \
+    c:/sysgcc/raspberry/lib/gcc \
+    c:/sysgcc/raspberry/arm-linux-gnueabihf/lib \
+    C:/SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/lib/arm-linux-gnueabihf \
+    C:/SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/lib \
+    C:/SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/lib/arm-linux-gnueabihf \
+    C:/SysGCC/Raspberry/arm-linux-gnueabihf/sysroot/usr/lib
