@@ -350,9 +350,11 @@ QString get_value_by_ID(uint id)
     //Index in table (for conversions)
     index = hash_indices.value(id);
     str = supported_ASA_IDs[index].conversion_hanlder(hash_values[id].value<QString>(), supported_ASA_IDs[index].param1);
-
-    float number = str.toFloat();
-    str = units_scale(id, number);
+    bool ok;
+    float number = str.toInt(&ok, 16);
+    if(ok) {
+        str = units_scale(id, number);
+    }
 
     data_mutex.unlock();
 

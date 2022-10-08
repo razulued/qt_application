@@ -154,7 +154,7 @@ void DataProccess::dataSPI()
             }
             if(0x4205 == intString2Int(realParameters[0]))
             {
-                qDebug() << "0x4205:" << intString2Int(realParameters[1]);
+//                qDebug() << "0x4205:" << intString2Int(realParameters[1]);
                 // Run average
 //                presion_array[avg_index++] = intString2Int(realParameters[1]);
 //                if(avg_index >= 10) avg_index = 0;

@@ -298,8 +298,8 @@ void MainWindow::dataTimerSlot()
     {
         update_this();
 
-        float level = getParamValue(0x3201).toFloat();
-        float percent =float(level / getParamMaxValue(0x3201));
+        float level = getParamValue(0x6203).toFloat();
+        float percent =float(level / getParamMaxValue(0x6203));
         int percent_image = int(level_label_size.height() * percent);
 //        qDebug() << level << getParamMaxValue(0x3201) << percent << percent_image;
 
@@ -479,6 +479,7 @@ void MainWindow::new_spi_data()
 
 void MainWindow::update_system_time()
 {
+
     /* Update Hora */
     //"18/03/06,13:34:55"
     /* Update reloj */
@@ -496,7 +497,6 @@ void MainWindow::update_system_time()
     {
         time = QDateTime::fromString(hora, time_format);
     }
-
     if(temp_time.toTime_t() != time.toTime_t())
     {
         temp_time = time;
